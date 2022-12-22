@@ -1,5 +1,5 @@
 // Meta
-:project-name: <Projektname (T00)>
+:project-name: Antrags- und Beschlussverwaltungstool
 // Settings:
 :toc:
 :toc-title: Inhaltsverzeichnis

@@ -6,13 +6,13 @@ include::../_includes/default-attributes.inc.adoc[]
 
 
 == Einführung
-Der Zweck dieses Dokuments ist es, die wesentlichen Bedarfe und Funktionalitäten des <Projektname-Systems> zu sammeln, zu analysieren und zu definieren. Der Fokus liegt auf den Fähigkeiten, die von Stakeholdern und adressierten Nutzern benötigt werden, und der Begründung dieser Bedarfe. Die  Details, wie das <Projektname-System> diese Bedarfe erfüllt, werden in der Use-Case und Supplementary Specification beschrieben.
+Der Zweck dieses Dokuments ist es, die wesentlichen Bedarfe und Funktionalitäten für das Antrags- und Beschlussverwaltungstool zu sammeln, zu analysieren und zu definieren. Der Fokus liegt auf den Fähigkeiten, die von Stakeholdern und adressierten Nutzern benötigt werden, und der Begründung dieser Bedarfe. Die  Details, wie das ntrags- und Beschlussverwaltungstool diese Bedarfe erfüllt, werden in der Use-Case und Supplementary Specification beschrieben.
 
 === Zweck
 Der Zweck dieses Dokuments ist es, die wesentlichen Anforderungen an das System aus Sicht und mit den Begriffen der künftigen Anwender zu beschreiben.
 
 === Gültigkeitsbereich (Scope)
-Dieses Visions-Dokument bezieht sich auf das <Projektthema-System>, das von <Team> entwickelt wird. Das System wird es <Zielkunde/Auftraggeber> erlauben, <Hauptfunktionen> zu nutzen, um damit <Vorteile> zu erreichen / <Aufgabe> zu erleichtern / <Problem> zu lösen.
+Dieses Visions-Dokument bezieht sich auf das Antrags- und Beschlussverwaltungstool, das von Team I5 entwickelt wird. Das System wird es dem StuRa der HTW Dresden erlauben, den Prozess von der Antragstellung, über die Durchführung der Sitzungen und Beschlussfassung bis zur Ausfertigung zu vereinheitlichen und zu zentralisieren und insebsondere eine einheitliche, fortlaufende Vergabe von Antragsnummern zu ermöglichen .
 
 === Definitionen, Akronyme und Abkürzungen
 //Verweis passend zum Belegabgabe-Template se1_belegabgabe_t00.adoc
@@ -21,6 +21,8 @@ Siehe <<#glossary, Glossar>>.
 === Referenzen
 (hier externe Verweise zu anderen Dokumenten, Quellen, Standards etc. einfügen, sofern notwendig)
 
+//Link von altem ABV Tool?
+https://antragsgruen.de
 
 == Positionierung
 
