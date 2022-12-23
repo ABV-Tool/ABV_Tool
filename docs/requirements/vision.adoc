@@ -113,11 +113,28 @@ Beispiel Produkt:
 === Benutzerumgebung
 Beschreiben Sie die Arbeitsumgebung des Nutzers. Hier sind einige Anregungen:
 
+*Antragsteller*
+
 //Zutreffendes angeben, nicht zutreffendes streichen oder auskommentieren
-. Anzahl der Personen, die an der Erfüllung der Aufgabe beteiligt sind. Ändert sich das?
-. Wie lange dauert die Bearbeitung der Aufgabe? Wie viel Zeit wird für jeden Arbeitsschritt benötigt? Ändert sich das?
+. Anzahl der Personen, die an der Erfüllung der Aufgabe beteiligt sind. Ändert sich das? + 
+ein Antragsteller pro Antrag, ändert sich nicht 
+
+. Wie lange dauert die Bearbeitung der Aufgabe? Wie viel Zeit wird für jeden Arbeitsschritt benötigt? Ändert sich das? +
+Wie viel Zeit pro Antrag? ca.10 min, wenn man davon ausgeht das Vorarbeit geleistet wurde und nur Formular ausgefüllt werden muss
 . Gibt es besondere Umgebungsbedingungen, z.B. mobil, offline, Außeneinsatz, Touchbedienung, Nutzung durch seh- oder hörbeeinträchtigte Personen?
 . Welche Systemplattformen werden heute eingesetzt? Welche sind es ggf. zukünftig?
+. Welche anderen Anwendungen sind im Einsatz? Muss ihre Anwendung mit diesen integriert werden?
+
+*Antragsverwaltung/Sitzungsverwaltung ...*
+
+. Anzahl der Personen, die an der Erfüllung der Aufgabe beteiligt sind. Ändert sich das? + 
+ein Antragsteller pro Antrag, ändert sich nicht 
+
+. Wie lange dauert die Bearbeitung der Aufgabe? Wie viel Zeit wird für jeden Arbeitsschritt benötigt? Ändert sich das? +
+Wie viel Zeit für Vorbereitung der Sitzung mit Tagesordnung usw., wi viele Anträge pro Sitzung insbs. Finanzanträge und Dringlichkeitsanträge
+. Gibt es besondere Umgebungsbedingungen, z.B. mobil, offline, Außeneinsatz, Touchbedienung, Nutzung durch seh- oder hörbeeinträchtigte Personen?
+. Welche Systemplattformen werden heute eingesetzt? Welche sind es ggf. zukünftig? +
+Pentapad
 . Welche anderen Anwendungen sind im Einsatz? Muss ihre Anwendung mit diesen integriert werden?
 
 Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigramme, IT-Landschaft, ...) eingefügt werden, um die beteiligten Aufgaben und Rollen zu skizzieren.
@@ -131,16 +148,26 @@ Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigra
 [%header, cols="4,1,4,1"]
 |===
 | Bedarf | Priorität | Features | Geplantes Release
-| xx | xx | xx | xx
+| Antragstellung | hoch | verschiedene Antragsfomulare ausfüllen und absenden (mit Anfügen von Anlagen) | xx
+| Antragsnummer vergeben | hoch | Nachdem der Antragsteller einen Antrag abgesendet hat, wird eine fortlaufende Antragsnummer vergeben und dem Antragsteller mitgeteilt | xx
+| Beschlussfassung | hoch | Änderung Antragstatus auf beschlossen, Abstimmungsergebnis soll erfassst werden | xx
+| automatische Tagesordnung erstellen | hoch | vor einer Sitzung wird aus allen eingegangen Anträgen eine Tagesordnung generiert | xx
+| Tagesordnung verwalten/bearbeiten | hoch | Möglichkeit nach der Generierung der Tagesordnung diese zu bearbeiten und weitere Themen hinzuzufügen (Formalia und ITOPs) | xx
+| Antrag auf Dringlichkeit | xx | bei verspäteter Antragstellung soll eine Prüfinstanz über die Dringlichkeit entscheiden | xx
+| Benutzeradministration | xx | xx | xx
+
 |===
 
 
 == Zusätzliche Produktanforderungen
 //Zutreffendes angeben, nicht zutreffendes streichen oder auskommentieren
+
 Hinweise:
 
-. Führen Sie die wesentlichen anzuwendenden Standards, Hardware oder andere Plattformanforderungen, Leistungsanforderungen und Umgebungsanforderungen auf
-. Definieren Sie grob die Qualitätsanforderungen für Leistung, Robustheit, Ausfalltoleranz, Benutzbarkeit und ähnliche Merkmale, die nicht von den genannten Features erfasst werden.
+. Führen Sie die wesentlichen anzuwendenden Standards, Hardware oder andere Plattformanforderungen, Leistungsanforderungen und Umgebungsanforderungen auf +
+*Implementierung und Deployment Engineer*
+. Definieren Sie grob die Qualitätsanforderungen für Leistung, Robustheit, Ausfalltoleranz, Benutzbarkeit und ähnliche Merkmale, die nicht von den genannten Features erfasst werden. +
+*Implementierung und Deployment Engineer*
 . Notieren Sie alle Entwurfseinschränkungen, externe Einschränkungen, Annahmen oder andere Abhängigkeiten, die wenn Sie geändert werden, das Visions-Dokument beeinflussen. Ein Beispiel wäre die Annahme, dass ein bestimmtes Betriebssystem für die vom System erforderliche Hardware verfügbar ist. Ist das Betriebssystem nicht verfügbar, muss das Visions-Dokument angepasst werden.
 . Definieren Sie alle Dokumentationsanforderugen, inkl. Benutzerhandbücher, Onlinehilfe, Installations-, Kennzeichnungs- und Auslieferungsanforderungen-
 . Definieren Sie die Priorität für diese zusätzlichen Produktanforderungen. Ergänzen Sie, falls sinnvoll, Angaben zu Stabilität, Nutzen, Aufwand und Risiko für diese Anforderungen.
@@ -148,5 +175,5 @@ Hinweise:
 [%header, cols="4,1,1"]
 |===
 | Anforderung | Priorität | Geplantes Release
-| xx | xx | xx
+| Einfache und intuitive Bedienbarkeit | Hoch | xx
 |===
