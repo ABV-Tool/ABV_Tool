@@ -91,9 +91,23 @@ Beispiel Produkt:
 |===
 | Name | Beschreibung | Verantwortlichkeiten
 
-| [Benennung des Stakeholder-Typs.]
-| [Kurze Beschreibung des Stakeholders.]
-| [Fassen Sie die wesentlichen Verantwortlichkeiten des Stakeholder mit Bezug auf das zu entwickelnde System kurz zusammen, d.h. ihr besonderen Interessen. Beispiele: Dieser Stakeholder sorgt dafür, dass das System gewartet wird / dass die angezeigten Daten aktuell sind / überwacht den Projektfortschritt / usw.]
+| Antragsberechtigte
+| Plenum, Präsidium, Vorstand, Referatsleitung, Bereichsleitung, Hochschulangehörige
+
+| Stellen über das System Anträge die anschließend im Plenum beraten werden
+
+|Präsidium
+|Sitzungsdurchführung, Ausfertigung der Beschlüsse
+|Verantwortlich von Antragstellung bis Ausfertigung der Beschlüsse
+
+|Adminstratoren
+|
+|
+
+|Gesetzgebung/Geschäftsordnung ggf. auch Plenum, da diese eigenen Ablauf festlegen
+|
+|
+
 |===
 
 === Benutzerumgebung
