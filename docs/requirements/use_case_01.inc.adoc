@@ -1,13 +1,15 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC01 <use-case name>
+== Use-Case: UC01 <Antrag stellen>
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
-
+Studenten und Stura-Mitgleider können Anträge stellen, die in vom Nutzer gewählter Plenumssitzung aufgenommen wird.
 === Kurzbeschreibung der Akteure
 
-==== <Akteur 1 Name>
+==== <Akteur 1 Präsidium>
+
+==== <Akteur 2 Antrangsberechtigte>
 
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
