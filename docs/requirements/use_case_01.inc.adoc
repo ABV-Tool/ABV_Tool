@@ -4,34 +4,35 @@
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
-Studenten und Stura-Mitgleider können Anträge stellen, die in vom Nutzer gewählter Plenumssitzung aufgenommen wird.
+Studenten und Stura-Mitgleider können Anträge stellen, die anschließend in der Plenumssitzung beschlossen werden.
 === Kurzbeschreibung der Akteure
 
-==== <Akteur 1 Präsidium>
-
-==== <Akteur 2 Antrangsberechtigte>
+==== <Akteur 1 Antrangsberechtigte>
+Plenum, Präsidium, Vorstand, Referatsleitung, Bereichsleitung, Hochschulangehörige
 
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
 
-<Vorbedingung 1>
+- Antragsteller müss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn <akteur> <macht>…
-. <Standardablauf Schritt 1>
-. …
-. <Standardablauf Schritt n>
+. Der Use Case beginnt mit dem Aufruf des Online-Tools.
+. Der Antragssteller wählt seine gewünschte Antragsart aus. 
+. Antragsteller füllt Antrag aus.
+. Antragsteller klickt auf "Antrag absenden".
+. Antrag bekommt eine Antragsnummer zugewiesen und Antragsteller wird daüber informiert.
 . Der Use Case ist abgeschlossen.
 
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
 ==== <Alternativer Ablauf 1>
-Wenn <Akteur> im Schritt <x> des Standardablauf <etwas macht>, dann
-. <Ablauf beschreiben>
-. Der Use Case wird im Schritt <y> fortgesetzt.
+Wenn Antragsteller im Schritt 2 des Standardablauf Finanzantrag auswählt, dann müss der Antragsteller die Kostenposition des Haushaltsplans angeben sowie eine Kostenaufstellung als Anlage hochladen.
+
+==== <Alternativer Ablauf 2>
+Wenn Antragsteller im Schritt 4 des Standardablauf auf "Antrag absenden" klickt und die nächste Plenumssitzung in weniger als 1 Woche stattfindet, so wird der Nutzer über die Verschiebung seines Antrags auf die übernächste Plenumssitzung informiert. Des Weiteren wird der Antragsteller informiert, dass er ein Dringlichkeitsantrag stellen kann, um seinen Antrag auf die nächstmögliche Sitzung zu vertagen.
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
