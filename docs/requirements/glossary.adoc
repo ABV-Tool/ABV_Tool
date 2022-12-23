@@ -13,7 +13,10 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |===
 | Begriff | Definition und Erläuterung | Synonyme
 //| Kommissionierung | Bereitstellung von Waren aus einem Lager entsprechend eines Kundenauftrags | (keine)
-| xx | xx | xx
+| Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Führungsgremium
+| Plenum | Gewählte Studenten, die ein Wahlrecht innerhalb des Sturas besitzen. | (keine)
+| Referatsleitung | Eine Person, die an der HTW die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
+| Bereichsleitung | Personen, die Zuständigkeiten von Untergeordnete Bereichen von Referaten übernehmen. | (keine) 
 |===
 
 
