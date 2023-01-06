@@ -6,13 +6,20 @@ include::../_includes/default-attributes.inc.adoc[]
 
 
 == Allgemeine Informationen
-// ...
+Nachfolgend werden die identifizierten Use Cases aufgelistet und näher bschrieben. Auch wird ein Use Case Diagramm eingefügt um die Gesamtübersicht zu verbessern.
 
 
 == Identifizierte Use Cases
 // Liste aller identifizierten Use Cases (priorisiert)
-* *UC01*: ...
-* *UC02*: ...
+* *UC01*: Antrag stellen
+* *UC02*: Tagesordnung erstellen (altn. Sitzungsvorbereitung oder -verwaltung)
+* *UC03*: Antrags-Beschlussfassung
+* *UC04*: Tagesordnung verwalten
+* *UC05*: Benutzeradministration
+
+weitere Ideen für Use Cases:
+
+* Antragsformular erstellen ?
 
 
 == Use Case Diagramm
