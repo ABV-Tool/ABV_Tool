@@ -42,7 +42,11 @@ CREATE TABLE public.antrag (
     id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
     sitzung uuid NOT NULL,
     typ uuid NOT NULL,
-    beschluss text
+    beschluss text,
+    markdown text NOT NULL,
+    jahr integer NOT NULL,
+    sitzungnr integer NOT NULL,
+    antragsnr integer NOT NULL
 );
 
 
@@ -91,7 +95,7 @@ ALTER TABLE public.sitzung OWNER TO abv;
 -- Data for Name: antrag; Type: TABLE DATA; Schema: public; Owner: abv
 --
 
-COPY public.antrag (id, sitzung, typ, beschluss) FROM stdin;
+COPY public.antrag (id, sitzung, typ, beschluss, markdown, jahr, sitzungnr, antragsnr) FROM stdin;
 \.
 
 
