@@ -25,7 +25,9 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |===
 | Abkürzung | Bedeutung | Erläuterung
 //| UP | Unified Process | Vorgehensmodell für die Softwareentwicklung
-| xx | xx | xx
+|TOP  |    |
+|ITOP | xx | xx
+|StuRa  |   |
 |===
 
 == Verzeichnis der Datenstrukturen
@@ -33,15 +35,75 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |===
 | Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
 
-| Anmeldedaten
+| Anmeldedaten (Bsp.)
 | Zusammensetzung von Benutzername und Passwort.
 | String
 | Emailadresse muss `@`-Zeichen und `.` Punkt enthalten.
 | Login
 
-| xx
-| xx
-| xx
+| Antragsdaten
+| Sammlung aller eingegebenen Daten
+| 
 | xx
 | xx
 |===
+
+
+//Antragsdaten einmal ausführlich erklären, wo was rein kommt
+
+//erstmal nur Auflistung, noch Aufbereitung notwendig
+
+.Antragsdaten - gültig für alle
+
+Antragstitel +
+zuständige Stelle (Auswahl) +
+Name +
+E-Mail Adresse +
+Antragstext +
+Anlagen
+
+.Antrag ohne finanzielle Mittel
+
+Begründung zum Antrag +
+Vorschlag zum weiteren Verfahren
+
+.Antrag mit finanziellen Mitteln
+
+Begründung zum Antrag +
+Kostenposition im Haushaltsplan +
+Vorschlag zum weiteren Verfahren 
+
+.Antrag zu beratendes Mitglied
+
+Vorstellung der Person: +
+- Mitgliedschaften in weiteren Organisationen +
+- Umfang der Funktionsausübung +
+- Bereitschaft zu weiterem Engagement +
+- Unterstützungsbereitschaft 
+
+.Antrag zu Stelle/Amt
+
+StuRa Mitglied (Ja/Nein) +
+Vorstellung der Person: +
+- Mitgliedschaften in weiteren Organisationen +
+- Umfang der Funktionsausübung +
+- Bereitschaft zu weiterem Engagement +
+- Unterstützungsbereitschaft +
+Allgemeine Fragen zum speziellen Amt: +
+- Wie bewertest du die Ausschreibung für das Amt? +
+- Wie bewertest du die Arbeit deiner VorgängerInnen? +
+- Welche Themen würdest du in der Amtszeit in den Fordergrund stellen? 
+
+.Antrag zu Herstellung des Benehmens
+
+Begründung zum Antrag +
+Vorschlag zum weiteren Verfahren
+
+.Antrag zu Veranstaltung
+
+Begründung zum Antrag +
+Vorschlag zum weiteren Verfahren +
+Verantwortlichkeit für Nachbereitung
+
+
+
