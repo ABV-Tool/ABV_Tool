@@ -9,18 +9,29 @@
 
 ==== <Akteur 1 Name>
 
+#Administrator#
+
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
 
-<Vorbedingung 1>
+- #Admin# muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+
+- #Admin# muss angemeldet sein
+
+- Anträge müssen vorhanden sein
+
+- Sitzung vorhanden?
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn <akteur> <macht>…
-. <Standardablauf Schritt 1>
-. …
-. <Standardablauf Schritt n>
+. Der Use Case beginnt, wenn der #Admin# auf Tagesordnung generieren klickt.
+
+. Es wird ein ein Markdown-Dokument zum ausfüllen erstellt und es erfolgt eine Auflistung aller bereits eingegangenen Anträge nach Kategorie und Datum.
+//siehe Wireframe - Tagesordnung 
+. Der #Admin# trägt via markup unter Top 0 - Formalia sowie unter ITOP weitere Tagesordnungspunkte ein. (unabhängig vom ABV-Tool)
+. 
+. Tagesordnung wird auf Website des StuRa veröffentlicht?
 . Der Use Case ist abgeschlossen.
 
 === Alternative Abläufe
