@@ -17,20 +17,26 @@ NOTE: Die funktionalen Anforderungen, die sich aus der Interaktion von Nutzern m
 
 == Systemweite funktionale Anforderungen
 //Angabe von system-weiten funktionalen Anforderungen, die nicht als Use Cases ausgedrückt werden können. Beispiele sind Drucken, Berichte, Authentifizierung, Änderungsverfolgung (Auditing), zeitgesteuerte Aktivitäten (Scheduling), Sicherheit / Maßnahmen zum Datenschutz
+=== SWFA-1: Das System muss alle Anträge und Tagesordnungen persistent speichern.
+Zur Überprüfung wird die Datenbank mit Testdaten gefüllt. Anschließend wird das System ausgeschaltet. Die Daten sollten nach dem Neustart vollständig vorhanden sein.
 
+=== SWFA-2: Das System muss sicherstellen das nur Admins die Tagesordnung bearbeiten können.
+Zur Überprüfung werden Konten ohne Admin Berechtigungen angelegt und versucht die Daten in der Tagesordnung zu ändern.
 
 == Qualitätsanforderungen für das Gesamtsystem
 //Qualitätsanforderungen repräsentieren das "URPS" im FURPS+ zu Klassifikation von Anforderungen
 
 === Benutzbarkeit (Usability)
 //Beschreiben Sie Anforderungen für Eigenschaften wie einfache Bedienung, einfaches Erlernen, Standards für die Benutzerfreundlichkeit, Lokalisierung (landesspezifische Anpassungen von Sprache, Datumsformaten, Währungen usw.)
-- Das Online-Tool soll einfach zu bedienen sein.
-- Das Online-Tool soll einfach zu erlenen sein.
+==== NFAU-1: Der Antragsteller sollte maximal 3 Klicks bis zur Antragseingabe benötigen.
+
+
+==== NFAU-2:
+// Platzhalter
 
 === Zuverlässigkeit (Reliability)
 // Zuverlässigkeit beinhaltet die Fähigkeit des Produkts und/oder des Systems unter Stress und ungünstigen Bedingungen am laufen zu bleiben. Spezifizieren Sie Anforderungen für zuverlässige Akzeptanzstufen, und wie diese gemessen und evaluiert werden. Vorgeschlagene Themen sind Verfügbarkeit, Häufigkeit und Schwere von Fehlern und Wiederherstellbarkeit.
-- Das System muss robust gegen Abstürtze und Datenverlust sein.
-+
+==== NFAR-1: Bei einem Absturz des Systems darf kein Datenverlust enstehen.
 Zur Überprüfung wird das System unerwartet heruntergefahren.
 
 === Effizienz (Performance)
