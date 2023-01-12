@@ -1,0 +1,209 @@
+Vorname Nachname <email@domain.org>; Vorname2 Nachname2 <email2@domain.org>; Vorname3 Nachname3 <email3@domain.org>
+{localdatetime}
+include::../_includes/default-attributes.inc.adoc[]
+// Platzhalter für weitere Dokumenten-Attribute
+
+== Antragsdaten
+
+Es erfolgt zu besseren Übersicht eine Auflistung aller Antragsarten mit den jeweiligen Antragsdaten.
+
+=== Antragsdaten - gültig für alle
+
+Daten die für jeden Antrag gleich gelten.
+
+[%header]
+|===
+| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+
+| Antragstitel 
+| 
+| 
+| 
+| Antragsname
+
+| zuständige Stelle (Auswahl) 
+| 
+| drop down Menü
+| 
+| 
+
+| Name 
+| 
+| 
+| 
+| 
+
+| E-Mail Adresse 
+| 
+| 
+| 
+| 
+
+| Antragstext
+| 
+| 
+| 
+| 
+
+| Anlagen
+| 
+| 
+| 
+| 
+
+|===
+
+
+=== Antrag ohne finanzielle Mittel
+
+[%header]
+|===
+| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+
+| Begründung zum Antrag
+| 
+| 
+| 
+| 
+
+| Vorschlag zum weiteren Verfahren
+| 
+| 
+| 
+| 
+
+|===
+
+=== Antrag mit finanziellen Mitteln
+
+[%header]
+|===
+| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+
+| Begründung zum Antrag
+| 
+| 
+| 
+| 
+
+| Kostenposition im Haushaltsplan
+| 
+| 
+| 
+| 
+
+| Vorschlag zum weiteren Verfahren
+| 
+| 
+| 
+| 
+
+|===
+
+=== Antrag zu beratendes Mitglied
+//Strukturierung
+[%header]
+|===
+| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+
+| Vorstellung der Person
+| - Mitgliedschaften in weiteren Organisationen +
+- Umfang der Funktionsausübung +
+- Bereitschaft zu weiterem Engagement +
+- Unterstützungsbereitschaft 
+| 
+| 
+| 
+
+| 
+| 
+| 
+| 
+| 
+
+| 
+| 
+| 
+| 
+| 
+
+|===
+
+=== Antrag zu Stelle/Amt
+
+[%header]
+|===
+| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+
+| StuRa Mitglied (Ja/Nein)
+| 
+| boolean
+| 
+| 
+
+| Vorstellung der Person
+| - Mitgliedschaften in weiteren Organisationen +
+- Umfang der Funktionsausübung +
+- Bereitschaft zu weiterem Engagement +
+- Unterstützungsbereitschaft 
+| 
+| 
+| 
+
+
+| Allgemeine Fragen zum speziellen Amt:
+| Wie bewertest du die Ausschreibung für das Amt? +
+- Wie bewertest du die Arbeit deiner VorgängerInnen? +
+- Welche Themen würdest du in der Amtszeit in den Fordergrund stellen? 
+| 
+| 
+| 
+
+|===
+
+=== Antrag zu Herstellung des Benehmens
+
+[%header]
+|===
+| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+
+| Begründung zum Antrag
+| 
+| 
+| 
+| 
+
+| Vorschlag zum weiteren Verfahren
+| 
+| 
+| 
+| 
+
+|===
+
+=== Antrag zu Veranstaltung
+
+[%header]
+|===
+| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+
+| Begründung zum Antrag
+| 
+| 
+| 
+| 
+
+| Vorschlag zum weiteren Verfahren
+| 
+| 
+| 
+| 
+
+| Verantwortlichkeit für Nachbereitung
+| 
+| 
+| 
+| 
+
+|===
+

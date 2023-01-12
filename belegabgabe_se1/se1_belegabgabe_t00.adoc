@@ -60,6 +60,7 @@ include::{docs-requirements}/system-wide_requirements.adoc[lines=1..1;4..-1,leve
 // Glossar
 [#glossary]
 include::{docs-requirements}/glossary.adoc[lines=1..1;4..-1,leveloffset=+1]
+include::{docs-requirements}/Antragsdaten.adoc[lines=1..1;4..-1,leveloffset=+1]
 <<<
 // Domänenmodell
 include::{docs-requirements}/domain_model.adoc[lines=1..1;4..-1,leveloffset=+1]
