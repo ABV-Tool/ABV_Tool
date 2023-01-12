@@ -12,12 +12,11 @@ Nachfolgend werden die identifizierten Use Cases aufgelistet und näher bschrieb
 == Identifizierte Use Cases
 // Liste aller identifizierten Use Cases (priorisiert)
 * *UC01*: Antrag stellen
-* *UC02*: Tagesordnung erstellen/verwalten 
+* *UC02*: Tagesordnung verwalten 
 * *UC03*: Antrags-Beschlussfassung
-* *UC04*: Tagesordnung verwalten
-* *UC05*: Benutzeradministration 
-* *UC06*: Download als PDF
-* *UC07*: Sitzungen verwalten
+* *UC04*: Benutzeradministration 
+* *UC05*: Download als PDF
+* *UC06*: Sitzungen verwalten
 
 #Bezeichnungen + Prio ist noch zu klären#
 
