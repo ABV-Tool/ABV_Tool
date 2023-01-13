@@ -11,12 +11,14 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 == Begriffe
 [%header]
 |===
+
 | Begriff | Definition und Erläuterung | Synonyme
-//| Kommissionierung | Bereitstellung von Waren aus einem Lager entsprechend eines Kundenauftrags | (keine)
-| Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Führungsgremium
-| Plenum | Gewählte Studenten, die ein Wahlrecht innerhalb des Sturas besitzen. | (keine)
-| Referatsleitung | Eine Person, die an der HTW die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
 | Bereichsleitung | Personen, die Zuständigkeiten von Untergeordnete Bereichen von Referaten übernehmen. | (keine) 
+| Pflichtfelder| Antragsfeld für das eine Pflichteingabe besteht | (keine) 
+| Plenum | Gewählte Studenten, die ein Wahlrecht innerhalb des Sturas besitzen. | (keine)
+| Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Führungsgremium
+| Referatsleitung | Eine Person, die an der HTW die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
+| #Templates# |festgelegte Vorlage für Anträge |Antragsformulare
 |===
 
 
@@ -25,9 +27,22 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |===
 | Abkürzung | Bedeutung | Erläuterung
 //| UP | Unified Process | Vorgehensmodell für die Softwareentwicklung
-|TOP  |    |
-|ITOP | xx | xx
-|StuRa  |   |
+
+|ABV-Tool 
+|Antrags- und Beschlussverwaltungstool
+|
+
+|ITOP 
+| informeller Tagesordnungspunkt 
+| Punkt auf der Tagesordnung für die Plenumssitzung der nur zur Information der Mitglieder dient (kein Beschluss)
+
+|StuRa  
+|Studentinnenrat  
+|Studentinnenschaft der Hochschule für Technik und Wirtschaft Dresden, Ansprechpartner für Studierende
+
+|TOP  |Tagesordnungspunkt    |Punkt auf der Tagesordnung für die Plenumssitzung 
+
+
 |===
 
 == Verzeichnis der Datenstrukturen
