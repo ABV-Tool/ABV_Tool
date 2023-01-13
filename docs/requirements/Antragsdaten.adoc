@@ -16,39 +16,39 @@ Diese Antragsdaten sind in jedem Antrag vorhanden und deshalb einmal hier zusamm
 | Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
 
 | Antragstitel 
-| 
-| 
+| Thematische Überschrift des Antrages
+| String
 | 
 | Antragsname
 
 | zuständige Stelle (Auswahl) 
 | 
 | drop down Menü
-| 
+| nur Auswahl aus Liste zulässig
 | 
 
 | Name 
-| 
-| 
+| Name und Vorname des Antragstellers bzw. Bezeichnungs des Referates
+| String
 | 
 | 
 
 | E-Mail Adresse 
 | 
-| 
-| 
+| String
+| Emailadresse muss @-Zeichen und . Punkt enthalten.
 | 
 
 | Antragstext
 | 
-| 
+| String
 | 
 | 
 
 | Anlagen
-| 
-| 
-| 
+| zusätzliche Informationen zu einem Antrag z. B. ein Finanzplan
+| keine Einschränkungen auf bestimmte Dateiformate
+| #Dateigröße?#
 | 
 
 |===
@@ -60,17 +60,15 @@ Alle Anträge, bei denen der StuRa keine Gelder bereitstellen soll und die nicht
 
 [%header]
 |===
-| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+| Bezeichnung  | Format | Gültigkeitsregeln | Aliase
 
 | Begründung zum Antrag
-| 
-| 
+| String
 | 
 | 
 
 | Vorschlag zum weiteren Verfahren
-| 
-| 
+| String
 | 
 | 
 
@@ -82,24 +80,21 @@ Alle Anträge, bei denen der StuRa Geld bereitstellen soll, gehören hier her. D
 
 [%header]
 |===
-| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+| Bezeichnung  | Format | Gültigkeitsregeln | Aliase
 
 | Begründung zum Antrag
-| 
-| 
-| 
+| String
+| #max. Zeichen#
 | 
 
 | Kostenposition im Haushaltsplan
-| 
-| 
-| 
+| #String#
+| Pflichtfeld
 | 
 
 | Vorschlag zum weiteren Verfahren
-| 
-| 
-| 
+| String
+| #max Zeichen#
 | 
 
 |===
@@ -111,29 +106,16 @@ Jede Person, die im StuRa mitwirken möchte, kann Beratendes Mitglied werden. Di
 //Strukturierung
 [%header]
 |===
-| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+| Bezeichnung | Format | Gültigkeitsregeln | Aliase
 
-| Vorstellung der Person
-| - Mitgliedschaften in weiteren Organisationen +
+| *Vorstellung der Person* + 
+- Mitgliedschaften in weiteren Organisationen +
 - Umfang der Funktionsausübung +
 - Bereitschaft zu weiterem Engagement +
-- Unterstützungsbereitschaft 
+- Unterstützungs-bereitschaft 
+| String
+| #max Zeichen#
 | 
-| 
-| 
-
-| 
-| 
-| 
-| 
-| 
-
-| 
-| 
-| 
-| 
-| 
-
 |===
 
 === Antrag zu Stelle/Amt
@@ -144,29 +126,28 @@ Ebenso kann hiermit nicht als Stimmberechtigtes Mitglied im Plenum kandidert wer
 
 [%header]
 |===
-| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+| Bezeichnung | Format | Gültigkeitsregeln | Aliase
 
 | StuRa Mitglied (Ja/Nein)
-| 
 | boolean
-| 
+| Auswahlfeld mit Ja/Nein
 | 
 
-| Vorstellung der Person
-| - Mitgliedschaften in weiteren Organisationen +
+|*Vorstellung der Person* + 
+- Mitgliedschaften in weiteren Organisationen +
 - Umfang der Funktionsausübung +
 - Bereitschaft zu weiterem Engagement +
-- Unterstützungsbereitschaft 
-| 
+- Unterstützungs-bereitschaft 
+| String
 | 
 | 
 
 
-| Allgemeine Fragen zum speziellen Amt:
-| Wie bewertest du die Ausschreibung für das Amt? +
+| *Allgemeine Fragen zum speziellen Amt:*
+Wie bewertest du die Ausschreibung für das Amt? +
 - Wie bewertest du die Arbeit deiner VorgängerInnen? +
 - Welche Themen würdest du in der Amtszeit in den Fordergrund stellen? 
-| 
+| String
 | 
 | 
 
@@ -178,44 +159,39 @@ Dieses Antragsformular richtet sich vor allem an die Dekan:innen und Studiendeka
 
 [%header]
 |===
-| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+| Bezeichnung  | Format | Gültigkeitsregeln | Aliase
 
 | Begründung zum Antrag
-| 
-| 
+| String
 | 
 | 
 
 | Vorschlag zum weiteren Verfahren
-| 
-| 
+| String
 | 
 | 
 
 |===
 
-=== Antrag zu Veranstaltung
+=== #Antrag zu Veranstaltung#
 
 [%header]
 |===
-| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+| Bezeichnung  | Format | Gültigkeitsregeln | Aliase
 
 | Begründung zum Antrag
-| 
-| 
+| String
 | 
 | 
 
 | Vorschlag zum weiteren Verfahren
-| 
-| 
+| String
 | 
 | 
 
 | Verantwortlichkeit für Nachbereitung
-| 
-| 
-| 
+| String
+| Pflichtfeld
 | 
 
 |===
