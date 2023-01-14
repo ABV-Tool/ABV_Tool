@@ -74,6 +74,12 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 | xx
 | xx
 
+| Antragsnummer
+| Nummer, die bei Antragseinreichung jedem für jeden Antrag vergeben wird. Zusammensetzung: Legislaturperiode/ Sitzungsnummer/ Antragsnummer
+| 
+| xx
+| xx
+
 
 |===
 
