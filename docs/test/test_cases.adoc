@@ -7,8 +7,143 @@ include::../_includes/default-attributes.inc.adoc[]
 
 == Allgemeine Informationen
 
+Mit diesen Test Cases (*TC*) soll überprüft werden, ob die Software wie erwartet funktioniert, welche Fehler auftreten können und welche Verhaltensweise bei unerwarteten Fehlern zu sehen ist.
+
+Dabei werden den Use-Cases mittels [*Klammern*] Kategorien zugewiesen.
+
+Dies lässt sich in folgende Aspekte gliedern:
+
+- Eingabevalidierung von Benutzern (z. B. Login-Daten & Anträgen)
+- Ausgabevalidierung nach Verarbeitung durch die Software
+- Überprüfung von Zugriffsberechtigungen
+- Handhabung unerwarteter Fehler
+- Zukünftige Fehler bei nachträglicher Erweiterung
+
+== Vorbedingungen
+
+Um sie Software nutzen zu können, müssen die folgenden Bedingungen gelten:
+
+. Es besteht eine aktive Internetverbindung
+. Der Benutzer befindet sich im internen Netzwerk der HTW Dresden
+. Der Host-Server ist online und erreichbar
+
 == Test Cases
 
-=== Test Case 01
+=== TC01 [Login] - Gültige Eingaben akzeptiert
 
-=== Test Case 02
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Benutzer gültige Logindaten eingegeben. Der Login-Vorgang muss erfolgreich beendet werden.
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| Zeitstempel und Benutzerkennung müssen in ein Log gespeichert werden
+
+| Benötigte Daten   
+| Logindaten (Benutzername, Passwort)
+|===
+
+=== TC02 [Login] - Ungültige Eingaben abgelehnt
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Benutzer hat ungültige Logindaten eingegeben. Die Software muss den Login-Vorgang abbrechen.
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| Ausgabe einer Fehlermeldung
+
+| Benötigte Daten   
+| Logindaten (Benutzername, Passwort)
+|===
+
+=== TC03 [Antrag] - Gültigen Antrag einreichen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Benutzer hat einen Antrag vollständig ausgefüllt und abgeschickt. Der Antrag muss an die Datenbank gesendet und der Vorgang beendet werden.
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| Der Antrag muss der korrekten nächsten Sitzung des ausgewählen Plenums zugewiesen werden.
+
+| Benötigte Daten   
+| Abtragsdaten
+|===
+
+=== TC04 [Antrag] - Ungültigen Antrag einreichen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Benutzer hat einen unvollständigen Antrag abgeschickt. Der Vorgang muss abgebrochen werden.
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| Es wird eine Fehlermeldung ausgegeben, die dem Benutzer aufzeigt, welche Angaben fehlen/ungültig sind.
+
+| Benötigte Daten   
+| Antragsdaten
+|===
+
+=== TC05 [Tagesordnung] - Erfolgreiches Generieren
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Administrator generierte die Tagesordnung erfolgreich und erhielt einen Link zu einem PentaPad-Dokument, in welchem die Tagesordnung korrekt abgespeichert wurde.
+
+| Vorbedingung      
+| Alle zu besprechenden Anträge wurden zur Tagesordnung hinzugefügt.
+
+| Nachbedingung     
+| Generierung des PentaPad-Dokuments mit korrektem Inhalt.
+
+| Benötigte Daten   
+| -
+|===
+
+=== TC06 [Tagesordnung] - Fehlerhaftes Generieren
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| -
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| -
+
+| Benötigte Daten   
+| -
+|===
+
+=== TC07 [Keine] - Fehlerhaftes Generieren
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| -
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| -
+
+| Benötigte Daten   
+| -
+|===
