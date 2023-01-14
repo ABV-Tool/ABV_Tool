@@ -6,19 +6,16 @@ include::../_includes/default-attributes.inc.adoc[]
 
 
 == Allgemeine Informationen
-Nachfolgend werden die identifizierten Use Cases aufgelistet und näher bschrieben. Auch wird ein Use Case Diagramm eingefügt um die Gesamtübersicht zu verbessern.
+Nachfolgend werden die identifizierten Use Cases (UC) aufgelistet und näher bschrieben. Auch wird ein Use Case Diagramm eingefügt um die Gesamtübersicht zu verbessern.
 
 
 == Identifizierte Use Cases
 // Liste aller identifizierten Use Cases (priorisiert)
 * *UC01*: Antrag stellen
-* *UC02*: Tagesordnung verwalten 
-* *UC03*: Antrags-Beschlussfassung
-* *UC04*: Benutzeradministration 
-* *UC05*: Download als PDF
-* *UC06*: Sitzungen verwalten
-
-#Bezeichnungen + Prio ist noch zu klären#
+* *UC02*: Tagesordnung erstellen 
+* *UC03*: Tagesordnung abschließen
+* *UC04*: Plenumssitzung verwalten 
+* *UC05*: Benutzer administrieren
 
 == Use Case Diagramm
 // ...
@@ -38,26 +35,11 @@ include::use_case_01.inc.adoc[]
 <<<
 include::use_case_02.inc.adoc[]
 
-//<<<
-//include::use_case_03.inc.adoc[]
+<<<
+include::use_case_03.inc.adoc[]
 
-//<<<
-//include::use_case_04.inc.adoc[]
+<<<
+include::use_case_04.inc.adoc[]
 
-//<<<
-//include::use_case_05.inc.adoc[]
-
-//<<<
-//include::use_case_06.inc.adoc[]
-
-//<<<
-//include::use_case_07.inc.adoc[]
-
-//<<<
-//include::use_case_08.inc.adoc[]
-
-//<<<
-//include::use_case_09.inc.adoc[]
-
-//<<<
-//include::use_case_10.inc.adoc[]
+<<<
+include::use_case_05.inc.adoc[]
