@@ -1,38 +1,24 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC03 Tagesordnung abschließen
+== Use-Case: UC05 <Benutzer administrieren>
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
-Der Use Case beschreibt die Fertigstellung der Tagesordnung.
 
 === Kurzbeschreibung der Akteure
 
-==== Admin
-Ist zuständig für die jeweilige Plenumssitzung.
+==== <Akteur 1 Name>
+
+
 
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
-
-- #Admin# muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
-
-- #Admin# muss angemeldet sein.
-
-- Sitzung muss angelegt sein.
-
-- Tagesordnung muss bereits generiert worden sein.
 
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der Admin die aktuelle Sitzung ausgewählt hat. Dabei wird ihm die Markdown-Tagesordnung angezeigt.
-. Der Admin makiert die gestellten Anträge als Angenommen oder Abgelehnt.
-. System vermerkt die die Angenommen und Abgelehnten Anträge.
-. Der Admin klickt auf Tagesordnung exportieren.
-. Das System übergibt die Tagesordnung als PDF.
-. Er klickt auf Tagesordnung abschließen.
-. Der Use Case ist beendet.
+
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
