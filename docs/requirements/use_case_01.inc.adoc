@@ -4,10 +4,11 @@
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
-Studenten und Stura-Mitgleider können Anträge stellen, die anschließend in der Plenumssitzung beschlossen werden.
+Studenten und StuRa-Mitgleider können Anträge stellen, die anschließend in der Plenumssitzung beschlossen werden.
+
 === Kurzbeschreibung der Akteure
 
-==== <Akteur 1 Antrangsberechtigte>
+==== Antragsteller
 Plenum, Präsidium, Vorstand, Referatsleitung, Bereichsleitung, Hochschulangehörige
 
 === Vorbedingungen
