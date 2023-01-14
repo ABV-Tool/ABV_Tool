@@ -1,55 +1,47 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC02 Tagesordnung erstellen
+== Use-Case: UC05 <Benutzer administrieren>
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
 
 === Kurzbeschreibung der Akteure
 
-==== <Akteur 1 Admin>
-Leitet die Sitzung und ist verantwortlich für die Tagesordnung.
+==== <Akteur 1 Name>
+
 
 
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
 
-- #Admin# muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
-
-- #Admin# muss angemeldet sein.
-
-- Sitzung muss angelegt sein.
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der #Admin# auf Tagesordnung generieren klickt.
-
-. Es wird ein ein Markdown-Dokument zum ausfüllen erstellt und es erfolgt eine Auflistung aller bereits eingegangenen Anträge nach Kategorie und Datum.
-//siehe Wireframe - Tagesordnung 
-. Der #Admin# trägt via markup unter Top 0 - Formalia sowie unter ITOP weitere Tagesordnungspunkte ein. (unabhängig vom ABV-Tool)
-. Es wird ein Link zur Tagesordnung generiert, der zugriff auf die Tagesordnung bereitstellt.
-. Der Use Case ist abgeschlossen.
 
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
 ==== <Alternativer Ablauf 1>
-Wenn die Tagesordnung bereits generiert wurde, dann
-. Kann der #Admin# auf Tagesordnung bearbeiten klicken.
-. Der Use Case wird im Schritt 3 fortgesetzt.
+Wenn <Akteur> im Schritt <x> des Standardablauf <etwas macht>, dann
+. <Ablauf beschreiben>
+. Der Use Case wird im Schritt <y> fortgesetzt.
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
 
-==== Unterablauf vorläufige Tagesordnung generieren
-. Es wird immer eine vorläufige Tagesordnung zum #Due Date# generiert.
+==== <Unterablauf 1>
+. <Unterablauf 1, Schritt 1>
+. …
+. <Unterablauf 1, Schritt n>
 
 === Wesentliche Szenarios
 //Szenarios sind konkrete Instanzen eines Use Case, d.h. mit einem konkreten Akteur und einem konkreten Durchlauf der o.g. Flows. Szenarios können als Vorstufe für die Entwicklung von Flows und/oder zu deren Validierung verwendet werden.
 
-==== Erfolgreiche generierung der Tagesordnung
-- *Sc1:* Frau Y möchte die nächste Plenumssitzung vorbereiten, Sie wählt die gewünschte Sitzung aus und klickt auf Tagesordnung generieren. Es wird erfolgreich eine Tagesordnung generiert mit mehrern Finanzanträgen und sonstigen Anträgen.
+==== <Szenario 1>
+. <Szenario 1, Schritt 1>
+. …
+. <Szenario 1, Schritt n>
 
 === Nachbedingungen
 //Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.

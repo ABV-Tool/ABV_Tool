@@ -7,9 +7,9 @@ include::../_includes/default-attributes.inc.adoc[]
 
 Es erfolgt zu besseren Übersicht eine Auflistung aller Antragsarten mit den jeweiligen Antragsdaten.
 
-=== Antragsdaten - gültig für alle
+=== Antragsdaten - Stammdaten
 
-Daten die für jeden Antrag gleich gelten.
+Diese Antragsdaten sind in jedem Antrag vorhanden und deshalb einmal hier zusammengefasst aufgeführt. 
 
 [%header]
 |===
@@ -56,6 +56,8 @@ Daten die für jeden Antrag gleich gelten.
 
 === Antrag ohne finanzielle Mittel
 
+Alle Anträge, bei denen der StuRa keine Gelder bereitstellen soll und die nicht zu Personalentscheidungen gehören, sollen hier gestellt werden. Dazu gehören zum Beispiel ideelle Unterstützungsanträge oder Anträge auf Änderung einer Ordnung des StuRa oder der Studentinnen- und Studentenschaft.
+
 [%header]
 |===
 | Bezeichnung  | Format | Gültigkeitsregeln | Aliase
@@ -73,6 +75,8 @@ Daten die für jeden Antrag gleich gelten.
 |===
 
 === Antrag mit finanziellen Mitteln
+
+Alle Anträge, bei denen der StuRa Geld bereitstellen soll, gehören hier her. Dazu gehören zum Beispiel Anträge auf Ausrichtung einer Veranstaltung, die Übernahme von Fahrt- oder Reisekosten, die Übernahme von Beratungsgebühren oder die Beschaffung von Gegenständen, Software oder anderen Gütern.
 
 [%header]
 |===
@@ -96,6 +100,9 @@ Daten die für jeden Antrag gleich gelten.
 |===
 
 === Antrag zu beratendes Mitglied
+
+Jede Person, die im StuRa mitwirken möchte, kann Beratendes Mitglied werden. Dies ist unter anderem die Voraussetzung dafür, Zugriff auf die Ressourcen des StuRa zu erhalten, Mitwirkung finanziell entschädigt zu bekommen oder eine Nichtanrechnung von Semestern nach §20 Abs. 4 SächsHSFG zu erhalten, wenn nicht bereits andere Ämter in der studentischen Interessenvertretung ausgeübt werden. Allgemein ist eine Wahl zum Beratenden Mitglied meist der niedrigschwellige Einstieg in die Mitwirkung beim StuRa.
+
 //Strukturierung
 [%header]
 |===
@@ -112,6 +119,10 @@ Daten die für jeden Antrag gleich gelten.
 |===
 
 === Antrag zu Stelle/Amt
+
+Wer auf ein konkretes Amt im StuRa kandidieren möchte, kann hier einen Antrag stellen. Eine vorherige Wahl zum Beratenden Mitglied ist nicht notwendig. Es sei auf die Stellenausschreibungen hingewiesen, die der StuRa auf seiner Webseite veröffentlicht.
+Dieser Antrag kann nicht verwendet werden, um auf ein Amt der akademischen Selbstverwaltung zu kandideren, wie zum Beispiel dem Senat, dem Fakultätsrat oder einer Studienkommission! Die Adressaten solcher Kandidaturen sind in der Regel die jeweiligen Vorsitzenden der Gremien. Allerding können hier auch Anträge gestellt werden, als Wahlvorschlag des StuRa auf ein solches Amt zu kandidieren. Fragen hierzu können am besten an stura@stura.htw-dresden.de gestellt werden.
+Ebenso kann hiermit nicht als Stimmberechtigtes Mitglied im Plenum kandidert werden. Dies ist nur nach vorheriger Wahlausschreibung durch die Wahlleitung der Studentinnen- und Studentenschaft möglich. Kandidaturen für das Plenum des StuRa müssen an die Wahlleiterin der Studentinnen- und Studentenschaft, erreichbar unter wahl@stura.htw-dresden, gerichtet werden.
 
 [%header]
 |===
@@ -143,6 +154,8 @@ Wie bewertest du die Ausschreibung für das Amt? +
 |===
 
 === Antrag zu Herstellung des Benehmens
+
+Dieses Antragsformular richtet sich vor allem an die Dekan:innen und Studiendekan:innen der HTW. Soll nach §91 SächsHSFG das Benehmen für eine odere mehrere Personen hergestellt werden, die Studiendekan:in oder Mitglied einer Studienkommission werden sollen, kann dies hier beantragt werden.
 
 [%header]
 |===

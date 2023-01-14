@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC01 <Antrag stellen>
+== Use-Case: UC01 Antrag stellen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
@@ -29,10 +29,10 @@ Plenum, Präsidium, Vorstand, Referatsleitung, Bereichsleitung, Hochschulangehö
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
-==== <Alternativer Ablauf 1>
+==== Alternativer Ablauf Finanzantrag
 Wenn Antragsteller im Schritt 2 des Standardablauf Finanzantrag auswählt, dann müss der Antragsteller die Kostenposition des Haushaltsplans angeben sowie eine Kostenaufstellung als Anlage hochladen.
 
-==== <Alternativer Ablauf 2>
+==== Alternativer Ablauf Dringlichkeitsantrag
 Wenn Antragsteller im Schritt 4 des Standardablauf auf "Antrag absenden" klickt und die nächste Plenumssitzung in weniger als 1 Woche stattfindet, so wird der Nutzer über die Verschiebung seines Antrags auf die übernächste Plenumssitzung informiert. Des Weiteren wird der Antragsteller informiert, dass er ein Dringlichkeitsantrag stellen kann, um seinen Antrag auf die nächstmögliche Sitzung zu vertagen.
 
 // === Unterabläufe (subflows)
