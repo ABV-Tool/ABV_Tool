@@ -1,0 +1,25 @@
+//Usecase diagramm
+
+== Use Case Diagramm 
+....
+@startuml
+left to right direction
+skinparam actorStyle awesome
+actor Antragssteller as AS
+actor Systemadministrator as SA
+
+package Use-Cases {
+    usecase "Antrag stellen" as UC1
+    usecase "Tagesordnung erstellen" as UC2
+    usecase "Tagesordnung abschließen" as UC3
+    usecase "Plenumssitzung verwalten" as UC4
+    usecase "Benutzeradministration" as UC5
+}
+AS --> UC1
+SA --> UC2
+SA --> UC3
+SA --> UC4
+SA --> UC5
+
+@enduml
+....
