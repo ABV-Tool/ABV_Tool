@@ -1,7 +1,7 @@
 // --- 1. Projektthema -------------------------
 = SE I - Belegabgabe: {project-name}
 // --- 2. Teammitglieder -----------------------
-Marten Petters <marten.petters@htw-dresden.de>; Alexander Minukow <alexander.minukow@htw-dresden.de>; Göran Heinemann <göran.heinemann@htw-dresden.de>; Huy Nguyen <huy.nguyen@htw-dresden.de>; Simon Voges <simon.voges@htw-dresden.de>; Max Patecky <max.patecky@htw-dresden.de>; Mirjam Müller <mirjam.müller@htw-dresden.de>
+Marten Petters <marten.petters@htw-dresden.de>; Alexander Minukow <alexander.minukow@htw-dresden.de>; Göran Heinemann <göran.heinemann@htw-dresden.de>; Xuan Huy Nguyen <xuanhuy.nguyen@htw-dresden.de>; Simon Voges <simon.voges@htw-dresden.de>; Max Patecky <max.patecky@htw-dresden.de>; Mirjam Müller <mirjam.müller@htw-dresden.de>
 // --- 3. Abgabedatum --------------------------
 27. Januar 2023
 // ---------------------------------------------
