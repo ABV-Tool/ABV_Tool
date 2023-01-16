@@ -39,26 +39,37 @@ SET default_table_access_method = heap;
 --
 
 CREATE TABLE public.antrag (
-    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
-    sitzung uuid NOT NULL,
-    typ uuid NOT NULL,
-    beschluss text,
-    markdown text NOT NULL,
-    jahr integer NOT NULL,
-    sitzungnr integer NOT NULL,
-    antragsnr integer NOT NULL
+    antrag_id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    sitz_id uuid NOT NULL,
+    typ_id uuid NOT NULL,
+    antrag_text text NOT NULL,
+    asteller_id uuid NOT NULL,
+    antrag_summe money
 );
 
 
 ALTER TABLE public.antrag OWNER TO abv;
 
 --
+-- Name: antragssteller; Type: TABLE; Schema: public; Owner: abv
+--
+
+CREATE TABLE public.antragssteller (
+    asteller_id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    asteller_name character varying(50) NOT NULL,
+    asteller_vorname character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.antragssteller OWNER TO abv;
+
+--
 -- Name: antragstyp; Type: TABLE; Schema: public; Owner: abv
 --
 
 CREATE TABLE public.antragstyp (
-    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
-    name character varying(200) NOT NULL,
+    typ_id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    typ_name character varying(200) NOT NULL,
     form json NOT NULL
 );
 
@@ -66,12 +77,26 @@ CREATE TABLE public.antragstyp (
 ALTER TABLE public.antragstyp OWNER TO abv;
 
 --
+-- Name: beschluesse; Type: TABLE; Schema: public; Owner: abv
+--
+
+CREATE TABLE public.beschluesse (
+    antrag_id uuid NOT NULL,
+    sitz_id uuid NOT NULL,
+    sitz_berechtigung integer,
+    beschluss text
+);
+
+
+ALTER TABLE public.beschluesse OWNER TO abv;
+
+--
 -- Name: referat; Type: TABLE; Schema: public; Owner: abv
 --
 
 CREATE TABLE public.referat (
-    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
-    name character varying(200) NOT NULL,
+    ref_id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    ref_name character varying(200) NOT NULL,
     zyklus interval
 );
 
@@ -83,9 +108,9 @@ ALTER TABLE public.referat OWNER TO abv;
 --
 
 CREATE TABLE public.sitzung (
-    id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
-    date date DEFAULT now() NOT NULL,
-    referat uuid NOT NULL
+    sitz_id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
+    sitz_date date DEFAULT now() NOT NULL,
+    ref_id uuid NOT NULL
 );
 
 
@@ -95,7 +120,15 @@ ALTER TABLE public.sitzung OWNER TO abv;
 -- Data for Name: antrag; Type: TABLE DATA; Schema: public; Owner: abv
 --
 
-COPY public.antrag (id, sitzung, typ, beschluss, markdown, jahr, sitzungnr, antragsnr) FROM stdin;
+COPY public.antrag (antrag_id, sitz_id, typ_id, antrag_text, asteller_id, antrag_summe) FROM stdin;
+\.
+
+
+--
+-- Data for Name: antragssteller; Type: TABLE DATA; Schema: public; Owner: abv
+--
+
+COPY public.antragssteller (asteller_id, asteller_name, asteller_vorname) FROM stdin;
 \.
 
 
@@ -103,7 +136,15 @@ COPY public.antrag (id, sitzung, typ, beschluss, markdown, jahr, sitzungnr, antr
 -- Data for Name: antragstyp; Type: TABLE DATA; Schema: public; Owner: abv
 --
 
-COPY public.antragstyp (id, name, form) FROM stdin;
+COPY public.antragstyp (typ_id, typ_name, form) FROM stdin;
+\.
+
+
+--
+-- Data for Name: beschluesse; Type: TABLE DATA; Schema: public; Owner: abv
+--
+
+COPY public.beschluesse (antrag_id, sitz_id, sitz_berechtigung, beschluss) FROM stdin;
 \.
 
 
@@ -111,7 +152,7 @@ COPY public.antragstyp (id, name, form) FROM stdin;
 -- Data for Name: referat; Type: TABLE DATA; Schema: public; Owner: abv
 --
 
-COPY public.referat (id, name, zyklus) FROM stdin;
+COPY public.referat (ref_id, ref_name, zyklus) FROM stdin;
 \.
 
 
@@ -119,7 +160,7 @@ COPY public.referat (id, name, zyklus) FROM stdin;
 -- Data for Name: sitzung; Type: TABLE DATA; Schema: public; Owner: abv
 --
 
-COPY public.sitzung (id, date, referat) FROM stdin;
+COPY public.sitzung (sitz_id, sitz_date, ref_id) FROM stdin;
 \.
 
 
@@ -128,7 +169,15 @@ COPY public.sitzung (id, date, referat) FROM stdin;
 --
 
 ALTER TABLE ONLY public.antrag
-    ADD CONSTRAINT antrag_pk PRIMARY KEY (id);
+    ADD CONSTRAINT antrag_pk PRIMARY KEY (antrag_id);
+
+
+--
+-- Name: antragssteller antragssteller_pk; Type: CONSTRAINT; Schema: public; Owner: abv
+--
+
+ALTER TABLE ONLY public.antragssteller
+    ADD CONSTRAINT antragssteller_pk PRIMARY KEY (asteller_id);
 
 
 --
@@ -136,7 +185,15 @@ ALTER TABLE ONLY public.antrag
 --
 
 ALTER TABLE ONLY public.antragstyp
-    ADD CONSTRAINT antragstyp_pk PRIMARY KEY (id);
+    ADD CONSTRAINT antragstyp_pk PRIMARY KEY (typ_id);
+
+
+--
+-- Name: beschluesse beschluesse_pk; Type: CONSTRAINT; Schema: public; Owner: abv
+--
+
+ALTER TABLE ONLY public.beschluesse
+    ADD CONSTRAINT beschluesse_pk PRIMARY KEY (antrag_id, sitz_id);
 
 
 --
@@ -144,7 +201,7 @@ ALTER TABLE ONLY public.antragstyp
 --
 
 ALTER TABLE ONLY public.referat
-    ADD CONSTRAINT referat_pk PRIMARY KEY (id);
+    ADD CONSTRAINT referat_pk PRIMARY KEY (ref_id);
 
 
 --
@@ -152,21 +209,21 @@ ALTER TABLE ONLY public.referat
 --
 
 ALTER TABLE ONLY public.sitzung
-    ADD CONSTRAINT sitzung_pk PRIMARY KEY (id);
+    ADD CONSTRAINT sitzung_pk PRIMARY KEY (sitz_id);
 
 
 --
 -- Name: antragstyp_name_index; Type: INDEX; Schema: public; Owner: abv
 --
 
-CREATE INDEX antragstyp_name_index ON public.antragstyp USING btree (name);
+CREATE INDEX antragstyp_name_index ON public.antragstyp USING btree (typ_name);
 
 
 --
 -- Name: referat_name_index; Type: INDEX; Schema: public; Owner: abv
 --
 
-CREATE INDEX referat_name_index ON public.referat USING btree (name);
+CREATE INDEX referat_name_index ON public.referat USING btree (ref_name);
 
 
 --
@@ -174,7 +231,23 @@ CREATE INDEX referat_name_index ON public.referat USING btree (name);
 --
 
 ALTER TABLE ONLY public.antrag
-    ADD CONSTRAINT antrag_antragstyp_id_fk FOREIGN KEY (typ) REFERENCES public.antragstyp(id);
+    ADD CONSTRAINT antrag_antragstyp_id_fk FOREIGN KEY (typ_id) REFERENCES public.antragstyp(typ_id);
+
+
+--
+-- Name: antrag antrag_asteller; Type: FK CONSTRAINT; Schema: public; Owner: abv
+--
+
+ALTER TABLE ONLY public.antrag
+    ADD CONSTRAINT antrag_asteller FOREIGN KEY (asteller_id) REFERENCES public.antragssteller(asteller_id);
+
+
+--
+-- Name: beschluesse antrag_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: abv
+--
+
+ALTER TABLE ONLY public.beschluesse
+    ADD CONSTRAINT antrag_id_fk FOREIGN KEY (antrag_id) REFERENCES public.antrag(antrag_id);
 
 
 --
@@ -182,7 +255,15 @@ ALTER TABLE ONLY public.antrag
 --
 
 ALTER TABLE ONLY public.antrag
-    ADD CONSTRAINT antrag_sitzung_id_fk FOREIGN KEY (sitzung) REFERENCES public.sitzung(id);
+    ADD CONSTRAINT antrag_sitzung_id_fk FOREIGN KEY (sitz_id) REFERENCES public.sitzung(sitz_id);
+
+
+--
+-- Name: beschluesse sitzung_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: abv
+--
+
+ALTER TABLE ONLY public.beschluesse
+    ADD CONSTRAINT sitzung_id_fk FOREIGN KEY (sitz_id) REFERENCES public.sitzung(sitz_id);
 
 
 --
@@ -190,7 +271,7 @@ ALTER TABLE ONLY public.antrag
 --
 
 ALTER TABLE ONLY public.sitzung
-    ADD CONSTRAINT sitzung_referat_id_fk FOREIGN KEY (referat) REFERENCES public.referat(id);
+    ADD CONSTRAINT sitzung_referat_id_fk FOREIGN KEY (ref_id) REFERENCES public.referat(ref_id);
 
 
 --
