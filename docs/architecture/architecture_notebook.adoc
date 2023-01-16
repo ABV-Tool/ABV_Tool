@@ -48,13 +48,29 @@ _Abhängigkeiten:_
 
 == Architektur-relevante Anforderungen
 //Fügen Sie eine Referenz / Link zu den Anforderungen ein, die implementiert werden müssen, um die Architektur zu erzeugen.
+*Funktional*
 
+- NFAF-1: Das System muss alle Anträge, sowie deren Anlagen und die Tagesordnungen persistent speichern.
+- NFAF-2: Das System soll die Anträge mit dem entsprechenden Beschluss als pdf-Datei exportieren können.
+- NFAF-3: Das System muss sicherstellen das nur berechtigte Personen die Tagesordnung bearbeiten können.
+- NFAF-4: Das System soll den Anträge automatisch eine semantisch korrekte Antragsnummer zuweisen.
+
+*Effizienz*
+
+- NFAP-1: Das System soll resistent gegen einen Ausfall bei einer hohen Anzahl gleichzeitiger Nutzer sein.
+- NFAP-2: Man soll innerhalb von 3 Klicks zur Antragsstellung kommen.
+
+*Wartbarkeit*
+
+- NFAS-1 Das System soll für einen Administrator verständlich dokumentiert sein.
+-NFAS-2 Das System soll fähig sein weitere Schnittstellen zur Funktionserweiterung zu unterstützen
+(z.B. Mitgliederdatenbank).
 
 == Entscheidungen, Nebenbedingungen und Begründungen
 //[List the decisions that have been made regarding architectural approaches and the constraints being placed on the way that the developers build the system. These will serve as guidelines for defining architecturally significant parts of the system. Justify each decision or constraint so that developers understand the importance of building the system according to the context created by those decisions and constraints. This may include a list of DOs and DON’Ts to guide the developers in building the system.]
 
-- Wir nutzen Django für das Frontend, da der Vorgänger dies dafür nutzte
-. Entscheidung oder Einschränkung oder Begründung 2
+- Wir nutzen Django für das Frontend, da der Vorgänger dies dafür nutzte.
+- Die Erstellung neuer Datenbanken ist wichtig, da die Datenbanken des Vorgängers keine einheitliche Form haben und wir keine Dokumentation vom Vorgänger haben, um die Entscheidungen nachzuvollziehen.
 
 
 == Architekturmechanismen
