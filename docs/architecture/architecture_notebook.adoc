@@ -34,10 +34,11 @@ Des Weiteren wollen wir zum Ende ein Tool entwickelt haben, dass man sowohl tats
 _Annahmen:_
 
 - Das Vorgängertool wird neuentwickelt.
-- Jeder Nutzer besitzt eine stabile Verbindung zum HTW-Netz
-- Jeder Nutzer benutzt einen aktuellen Webbrowser
-- Das Framework des Vorgängers funktioniert problemlos und ist zukunftssicher
-- Jeder Nutzer ist mit der allgemeinen Nutzung eines Computers vertraut
+- Jeder Nutzer besitzt eine stabile Verbindung zum HTW-Netz.
+- Jeder Nutzer benutzt einen aktuellen Webbrowser.
+- Das Framework des Vorgängers wird vom Stakeholder designtechnisch akzeptiert.
+- Das Framework des Vorgängers funktioniert problemlos und ist zukunftssicher.
+- Jeder Nutzer ist mit der allgemeinen Nutzung eines Computers vertraut.
 - Die Server des StuRas laufen zu jeder Zeit stabil.
 
 _Abhängigkeiten:_
