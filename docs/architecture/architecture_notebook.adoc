@@ -63,7 +63,7 @@ _Abhängigkeiten:_
 *Wartbarkeit*
 
 - NFAS-1 Das System soll für einen Administrator verständlich dokumentiert sein.
--NFAS-2 Das System soll fähig sein weitere Schnittstellen zur Funktionserweiterung zu unterstützen
+- NFAS-2 Das System soll fähig sein weitere Schnittstellen zur Funktionserweiterung zu unterstützen
 (z.B. Mitgliederdatenbank).
 
 == Entscheidungen, Nebenbedingungen und Begründungen
