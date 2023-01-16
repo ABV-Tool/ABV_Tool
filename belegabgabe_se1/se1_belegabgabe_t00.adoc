@@ -1,9 +1,9 @@
 // --- 1. Projektthema -------------------------
 = SE I - Belegabgabe: {project-name}
 // --- 2. Teammitglieder -----------------------
-Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>
+Marten Petters <marten.petters@htw-dresden.de>; Alexander Minukow <alexander.minukow@htw-dresden.de>; Göran Heinemann <göran.heinemann@htw-dresden.de>; Xuan Huy Nguyen <xuanhuy.nguyen@htw-dresden.de>; Simon Voges <simon.voges@htw-dresden.de>; Max Patecky <max.patecky@htw-dresden.de>; Mirjam Müller <mirjam.müller@htw-dresden.de>
 // --- 3. Abgabedatum --------------------------
-01. Januar 2020
+27. Januar 2023
 // ---------------------------------------------
 :docs: ../docs
 include::{docs}/_includes/default-attributes.inc.adoc[]

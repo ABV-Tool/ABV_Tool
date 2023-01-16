@@ -1,4 +1,12 @@
 ﻿ID;Datum;Name;Beschreibung;Typ;IMP;PRB;MAG;Owner;Gegenmaßnahme
-1;01.12.2019;Teammitglied fällt aus;Mitglied des Teams kann (dauerhaft oder zeitweise) nicht mehr am Projekt teilnehmen; z.B. wegen Krankheit oder Studiengangswechsel;4;20%;0,8;Max Müller;Backup-Rollen nutzen und Know-How zwischen diesen Personen kontinuierlich teilen
-2;-;-;-;-;-;-;-;-;-
-3;-;-;-;-;-;-;-;-;-
+1;01.12.2022;Teammitglied fällt aus;Mitglied des Teams kann (dauerhaft oder zeitweise) nicht mehr am Projekt teilnehmen; z.B. wegen Krankheit oder Studiengangswechsel;4;20%;0,8;Max Müller;Backup-Rollen nutzen und Know-How zwischen diesen Personen kontinuierlich teilen
+2;15.12.2022;Datenschutz von Systemadmin/Systemnutzer;Die Benutzernamen sowie Passwörter aller Benutzer müssen vor dem Zugriff durch nicht Berechtigte geschützt werden. Vor allem bei den Systemadministratoren ist dies essentiell;Technisch;5;10%;0,5;Projoktmanagement;Sichere Passwörter erfordern (Ein Großbuchstabe, Zahl und Sonderzeichen). Passwörter durch Systemverschlüsseln Architecture notebook
+3;16.12.2022;Misskommunikation zwischen Team und Auftraggeber;Missverständnisse die Entstehen können durch Kommunikationsfehler;Geschäftlich;5;40%;2;Projoktmanagement;Ein konstanter Informationsaustausch zwischen Team und Auftraggeber. Ständige rücksprache halten bei aufkomenden Fragen. Versuchen Fachausdrücke zu meiden.
+4;10.1.12;Dokumentations abgabe;Versehentliches auslassen von Pflichtdokumenten für die Belegabgabe;Geschäftlich;5;60%;3;Teamleader, Projoktmanagement; Anlegen einer Abarbeitungsliste für alle nötigen Dokumente des Belegs. Schnelle arbeitszuweisung für noch nicht fertige Dokumente. Kontrolle durch Teamleiter.
+5;01.12.2022;Teamleiter verlässt das Projekt nach dem 1. Semester;Der Teamleiter des Projekts ist nur für das erste Semester in unserem Team. ;Zeitlich;2;100%;2;Projektmanagement, Team;Die Teamleiter Position wird von einem anderen Teammitglied übernommen, die auch im zweiten Semester noch dabei ist. 
+6;07.01.2023;Übernahme des bestehendem Projektes;Die Teammitglieder müssen sich mit dem bestehenden Projekt auseinandersetzen und die benutzte Logik und Systemstruktur verstehen und weiter verwenden, wobei Kommunikation mit den Entwicklern nur begrenzt möglich ist.;Geschäftlich, technisch;5;70%;3,5;Team;Genaues befassen mit der Systemstruktur des bestehenden Projektes. Bestehende Funktionalitäten nur verändern, wenn dies nötig ist.   
+7;09.12.2022;Einsatz von Tools /Frameworks die manche Teammitglieder nicht kennen;Für das Projekt werden tools wie Github und Docker und Frameworks wie Django benutzt mit denen manche Teammitglieder noch nicht vertraut sind.;Geschäftlich;3;30%;0,9;Team;Teammitglieder mit mehr Erfahrung unterstützen andere Teammitglieder. Selbstständiges vertraut machen mit genutzten Frameworks/Tools.
+8;-;-;-;-;-;-;-;-;-
+9;-;-;-;-;-;-;-;-;-
+10;-;-;-;-;-;-;-;-;-
+4;-;-;-;-;-;-;-;-;-
