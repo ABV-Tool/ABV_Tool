@@ -65,9 +65,13 @@ https://www2.htw-dresden.de/~anke/openup/core.tech.common.extend_supp/guidances/
 
 //Beschreiben Sie den Zweck, Eigenschaften und Funktion der Architekturmechanismen.
 
-. Architekturmechanismus 1
-. Architekturmechanismus 2
-
+- Sicherheit
+- Workflow, mit der Erstellung einer standardisierten TO
+- Persistenz
+- Informationsaustausch
+- Internationalisierung (haben wir zumindest im Nachinein vor, damit auch englischsprachige Stundenten/Personen Anträge stellen können)
+- Scheduling, Anträge müssen zu einer gewissen Zeit vor der Plenumssitzung gestellt werden (Ausnahme hier: Eilantrag)
+- Online-Hilfe, können Doku online stellen
 
 == Wesentliche Abstraktionen
 //[List and briefly describe the key abstractions of the system. This should be a relatively short list of the critical concepts that define the system. The key abstractions will usually translate to the initial analysis classes and important patterns.]

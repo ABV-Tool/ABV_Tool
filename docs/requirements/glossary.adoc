@@ -19,6 +19,7 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 | Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Führungsgremium
 | Referatsleitung | Eine Person, die an der HTW die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
 | #Templates# |festgelegte Vorlage für Anträge |Antragsformulare
+|Antragssteller|Person, die einen Antrag stellt|
 |===
 
 
@@ -32,15 +33,21 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |Antrags- und Beschlussverwaltungstool
 |
 
-|ITOP 
-| informeller Tagesordnungspunkt 
-| Punkt auf der Tagesordnung für die Plenumssitzung der nur zur Information der Mitglieder dient (kein Beschluss)
-
 |StuRa  
 |Studentinnenrat  
 |Studentinnenschaft der Hochschule für Technik und Wirtschaft Dresden, Ansprechpartner für Studierende
 
-|TOP  |Tagesordnungspunkt    |Punkt auf der Tagesordnung für die Plenumssitzung 
+|TO
+|Tagesordnung
+|Liste und Reihenfolge der zu besprechenden Themen in der Sitzung
+
+|TOP
+|Tagesordnungspunkt
+|Punkt auf der Tagesordnung für die Plenumssitzung 
+
+|ITOP 
+|informeller Tagesordnungspunkt 
+|Punkt auf der Tagesordnung für die Plenumssitzung der nur zur Information der Mitglieder dient (kein Beschluss)
 
 
 |===
@@ -79,8 +86,6 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 | 
 | xx
 | xx
-
-
 |===
 
 
