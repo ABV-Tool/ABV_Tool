@@ -13,13 +13,15 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |===
 
 | Begriff | Definition und Erläuterung | Synonyme
+|Antragssteller|Person, die einen Antrag stellt|
 | Bereichsleitung | Personen, die Zuständigkeiten von Untergeordnete Bereichen von Referaten übernehmen. | (keine) 
+|Formalia |Tagesordnungspunkt |
 | Pflichtfelder| Antragsfeld für das eine Pflichteingabe besteht | (keine) 
 | Plenum | Gewählte Studenten, die ein Wahlrecht innerhalb des Sturas besitzen. | (keine)
 | Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Führungsgremium
 | Referatsleitung | Eine Person, die an der HTW die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
 | #Templates# |festgelegte Vorlage für Anträge |Antragsformulare
-|Antragssteller|Person, die einen Antrag stellt|
+
 |===
 
 
