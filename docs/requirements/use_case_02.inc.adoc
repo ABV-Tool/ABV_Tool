@@ -20,6 +20,8 @@ Leitet die Sitzung und ist verantwortlich für die Tagesordnung.
 
 - Die Sitzung muss angelegt sein.
 
+- Anträge müssen eingegangen sein. 
+
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
