@@ -18,12 +18,13 @@ Dieses Visions-Dokument bezieht sich auf das Antrags- und Beschlussverwaltungsto
 Siehe <<#glossary, Glossar>>.
 
 === Referenzen
-(hier externe Verweise zu anderen Dokumenten, Quellen, Standards etc. einfügen, sofern notwendig)
+Dies ist nicht das erste Mal, dass ein Prototyp für eine solche Anwendung erstellt wurde. Es existiert ein Vorgängerprojekt, an welchem wir uns primär in dessen Design orientieren. Ebenfalls wurde ein anderes Tool erstellt, was diese Aufgabe erfüllen sollte, jedoch nie zum praktischen Einsatz kam.
 
-Tool zu Orientierung: https://antragsgruen.de
-
-Vorgängerprojekt: https://github.com/EdLaser/ABV_Tool
+- Vorgängerprojekt [Code]: https://github.com/EdLaser/ABV_Tool
+- Vorgängerprojekt [Doku]: https://github.com/EdLaser/I3_Antragsverwaltungstool
 //funktionierender! Link von altem ABV Tool? ggf. Screenshot
+
+- Tool zu Orientierung: https://antragsgruen.de
 
 == Positionierung
 
