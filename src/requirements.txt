@@ -1,3 +1,5 @@
 martor
 gunicorn
 Django
+django-money
+psycopg2
