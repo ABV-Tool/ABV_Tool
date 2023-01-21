@@ -15,6 +15,7 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 | Begriff | Definition und Erläuterung | Synonyme
 |Antragssteller|Person, die einen Antrag stellt|
 | Bereichsleitung | Personen, die Zuständigkeiten von Untergeordnete Bereichen von Referaten übernehmen. | (keine) 
+| Beschluss | getroffene Entscheidung zu einem Antrag in einer Plenumssitzung | (keine) 
 |Formalia |Tagesordnungspunkt |
 | Pflichtfelder| Antragsfeld für das eine Pflichteingabe besteht | (keine) 
 | Plenum | Gewählte Studenten, die ein Wahlrecht innerhalb des Sturas besitzen. | (keine)
