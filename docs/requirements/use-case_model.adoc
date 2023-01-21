@@ -6,16 +6,16 @@ include::../_includes/default-attributes.inc.adoc[]
 
 
 == Allgemeine Informationen
-Nachfolgend werden die identifizierten Use Cases aufgelistet und näher beschrieben. Zur Verbesserung der Gesamtübersicht wird ein Use Case Diagramm abgebildet.
+Nachfolgend werden die identifizierten Use Cases (UC) aufgelistet und näher beschrieben. Zur Verbesserung der Gesamtübersicht wird ein Use Case Diagramm abgebildet.
 
 == Identifizierte Use Cases
 // Liste aller identifizierten Use Cases (priorisiert)
-* *UC01*: Antrag stellen
-* *UC02*: Tagesordnung erstellen 
-* *UC06*: Beschlüsse einpflegen
-* *UC03*: Tagesordnung abschließen
-* *UC04*: Plenumssitzung vertagen 
-* *UC05*: Benutzer administrieren 
+* *link:use_case_01.inc.adoc#UC01[UC01]*: Antrag stellen
+* *link:use_case_02.inc.adoc#UC02[UC02]*: Tagesordnung erstellen 
+* *link:use_case_03.inc.adoc#UC03[UC03]*: Tagesordnung abschließen
+* *link:use_case_04.inc.adoc#UC04[UC04]*: Plenumssitzung vertagen 
+* *link:use_case_05.inc.adoc#UC05[UC05]*: Antragsverwalter anmelden
+* *link:use_case_06.inc.adoc#UC06[UC06]*: Beschlüsse einpflegen
 
 //Benutzer registrieren?
 
@@ -58,20 +58,22 @@ Zwischen `include::...` und dem darauf folgenden `<<<` muss sich eine Leerzeile 
 Ein `include` entfernt am Anfang und Ende eine möglich Leerzeile, was in Kombination mit `<<<` zu Fehlern führen kann.
 ////
 
-<<<
-include::use_case_01.inc.adoc[]
+== Use Cases
 
 <<<
-include::use_case_02.inc.adoc[]
+include::use_case_01.inc.adoc[leveloffset=1]
 
 <<<
-include::use_case_06.inc.adoc[]
+include::use_case_02.inc.adoc[leveloffset=1]
 
 <<<
-include::use_case_03.inc.adoc[]
+include::use_case_03.inc.adoc[leveloffset=1]
 
 <<<
-include::use_case_04.inc.adoc[]
+include::use_case_04.inc.adoc[leveloffset=1]
 
 <<<
-include::use_case_05.inc.adoc[]
+include::use_case_05.inc.adoc[leveloffset=1]
+
+<<<
+include::use_case_06.inc.adoc[leveloffset=1]

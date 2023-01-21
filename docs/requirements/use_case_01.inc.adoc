@@ -1,10 +1,10 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC01 Antrag stellen
+== <<UC01, UC01>> => Antrag stellen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
-Jede natürliche Person aber insbesondere Studenten und StuRa-Mitgleider können Anträge stellen, die anschließend in der Plenumssitzung beschlossen werden.
+Jede natürliche Person und insbesondere Studenten und StuRa-Mitgleider können Anträge stellen, die anschließend in der Plenumssitzung beschlossen werden.
 
 === Kurzbeschreibung der Akteure
 
@@ -15,14 +15,14 @@ Grundsätzlich kann jede natürliche Person einen Antrag beim StuRa einreichen. 
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
 
-- Antragsteller müss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+- Der Antragsteller muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
 . Der Use Case beginnt mit dem Aufruf des Online-Tools.
-. Der Antragssteller wählt seine gewünschte Antragsart aus. 
-. Der Antragsteller füllt den entsprechenden Antrag aus.
+. Der Antragsteller wählt seine gewünschte Antragsart aus. 
+. Der Antragsteller füllt den entsprechenden Antrag mit korrekten Angaben aus.
 . Der Antragsteller klickt auf "Antrag absenden".
 . Der Antrag bekommt eine Antragsnummer zugewiesen und Antragsteller wird daüber informiert.
 . Der Use Case ist abgeschlossen.
@@ -31,13 +31,13 @@ Grundsätzlich kann jede natürliche Person einen Antrag beim StuRa einreichen. 
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
 ==== Alternativer Ablauf Finanzantrag
-Wenn Antragsteller im Schritt 2 des Standardablauf Finanzantrag auswählt, dann muss der Antragsteller die Kostenposition des Haushaltsplans (Pflichtfeld) angeben sowie eine Kostenaufstellung als Anlage hochladen.
+Wenn der Antragsteller in Schritt 2 des Standardablaufes einen Finanzantrag auswählt, dann muss dieser die Kostenposition des Haushaltsplans (Pflichtfeld) angeben sowie eine Kostenaufstellung als Anlage hochladen.
 
 ==== Alternativer Ablauf Antrag auf Veranstaltung
-Wenn Antragsteller im Schritt 2 des Standardablauf Antrag auf Veranstaltung auswählt, dann muss der Antragsteller eine verantwortliche Person benennen, die für die Nachbereitung der Veranstaltung verantwortlich ist (Pflichfeld).
+Wenn der Antragsteller in Schritt 2 des Standardablaufes Antrag auf Veranstaltung auswählt, dann muss dieser eine verantwortliche Person benennen, die für die Nachbereitung der Veranstaltung verantwortlich ist (Pflichfeld).
 
 ==== Alternativer Ablauf Dringlichkeitsantrag
-Wenn Antragsteller im Schritt 4 des Standardablauf auf "Antrag absenden" klickt und die nächste Plenumssitzung in weniger als einer Woche stattfindet, so wird er über die Verschiebung seines Antrags auf die übernächste Plenumssitzung informiert. 
+Wenn Antragsteller in Schritt 4 des Standardablaufes auf "Antrag absenden" klickt und die nächste Plenumssitzung in weniger als einer Woche stattfindet, so wird er über die Verschiebung seines Antrags auf die übernächste Plenumssitzung informiert. 
 
 Des Weiteren wird er informiert, dass er ein Dringlichkeitsantrag stellen kann, um seinen Antrag auf die nächstmögliche Sitzung zu vertagen. 
 
@@ -60,7 +60,7 @@ Des Weiteren wird er informiert, dass er ein Dringlichkeitsantrag stellen kann, 
 === Nachbedingungen
 // //Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
 
-- persistene Speicherung der Antragsdaten ohne Datenverlust durch das System
+- Persistene Speicherung der Antragsdaten ohne Datenverlust durch das System
 - Vergabe einer AntragsID (nicht die Antragsnummer)
 - Antrag wird je nach Antragsart einer Kategorie für die Tagesordnung zugeordnet
 

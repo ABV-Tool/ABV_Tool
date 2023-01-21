@@ -1,9 +1,9 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC04 Plenumssitzung vertagen
+== <<UC04, UC04>> => Plenumssitzung vertagen
 
 === Kurzbeschreibung
-Der Use Case beschreibt das vertagen von Plenumssitzungen.
+Der Use Case beschreibt das Vertagen von Plenumssitzungen.
 
 === Kurzbeschreibung der Akteure
 
@@ -22,9 +22,9 @@ Ist zuständig für die jeweilige Plenumssitzung.
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 . Der Use Case beginnt, wenn der Antragsverwalter auf "Sitzung verwalten" klickt. 
-. System zeigt schon vorhandene Sitzungen an.
+. System zeigt bereits vorhandene Sitzungen an.
 . Der Antragsverwalter klickt auf "Sitzung vertagen".
-. System bindet die Tagesordnung der ausgewählten Sitzung samt Anträgen in die nächste Sitzung mit ein und makiert die Sitzung als "vertagt".
+. System bindet die Tagesordnung der ausgewählten Sitzung samt Anträgen in die nächste Sitzung ein und makiert die aktuelle Sitzung als "vertagt".
 . Der Use Case ist beendet.
 
 === Alternative Abläufe

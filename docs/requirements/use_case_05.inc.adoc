@@ -1,9 +1,9 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC05 Antragsverwalter anmelden
+== <<UC05, UC05>> => Antragsverwalter anmelden
 
 === Kurzbeschreibung
-Der Use Case beschreibt den anmeldevorgang des Antragsverwalters.
+Der Use Case beschreibt den Anmeldevorgang des Antragsverwalters.
 
 === Kurzbeschreibung der Akteure
 
@@ -14,26 +14,26 @@ Ist zuständig für die jeweilige Plenumssitzung.
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
 
-- Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+- Der Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
 
-- Antragsverwalter muss vom Systemadministrator des Stura einen Account erstellt bekommen haben. 
+- Der Antragsverwalter muss vom Systemadministrator des Stura einen Account mit den erforderlichen Berechtigungen erhalten haben. 
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 . Der Use Case beginnt, wenn der Antragsverwalter auf Anmelden klickt.
 . Das Systen erfragt den Anmeldenamen und das Passwort.
 . Der Antragsverwalter gibt seine Anmeldedaten ein.
-. System verifiziert eingegebende Anmeldedaten.
-. Antragsverwalter bekommt zugang zur Sitzungsverwaltung. (UC2; UC3; UC4)
+. Das System verifiziert die eingegebenden Anmeldedaten.
+. Der Antragsverwalter erhält Zugang zur Sitzungsverwaltung. (UC2; UC3; UC4)
 . Der Use Case ist beendet.
 
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
 ==== Invalide Daten
-Wenn Antragsverwalter im Schritt 3 des Standardablauf Invalide Daten eingibt, dann gibt das System die Fehlermeldung "Invalide Daten" aus.
+Wenn Antragsverwalter in Schritt 3 des Standardablaufes ungültige Daten eingibt, dann gibt das System die Fehlermeldung "Ungültige Daten" aus.
 
-Der Use Case wird im Schritt 2 fortgesetzt.
+Der Use Case wird in Schritt 2 fortgesetzt.
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern

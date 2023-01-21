@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC03 Tagesordnung abschließen
+== <<UC03, UC03>> => Tagesordnung abschließen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
@@ -29,12 +29,12 @@ Ist zuständig für die jeweilige Plenumssitzung.
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der Antragsverwalter die aktuelle Sitzung ausgewählt hat. Dabei wird ihm die Markdown-Tagesordnung angezeigt.
+. Der Use Case beginnt, wenn der Antragsverwalter die aktuelle Sitzung auswählt. Dabei wird ihm die Markdown-Tagesordnung angezeigt.
 . Der Antragsverwalter sieht alle Beschlüsse aus der Sitzung.
 . Der Antragsverwalter klickt auf Tagesordnung exportieren.
 . Das System übergibt die Tagesordnung als PDF.
 . Er klickt auf Tagesordnung abschließen.
-. Sitzung wird als abgeschlossen makiert.
+. Sitzung wird als Abgeschlossen makiert.
 . Der Use Case ist beendet.
 
 === Wesentliche Szenarios
@@ -49,6 +49,8 @@ Ist zuständig für die jeweilige Plenumssitzung.
 //Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
 
 ==== <Nachbedingung 1>
+
+- Abspeicherung der generierten PDF in einem Archiv
 
 === Besondere Anforderungen
 //Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.

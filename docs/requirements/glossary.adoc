@@ -36,9 +36,13 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |Antrags- und Beschlussverwaltungstool
 |
 
+|HTW
+|Hochschule für Technik und Wirtschaft
+|
+
 |StuRa  
 |Studentinnenrat  
-|Studentinnenschaft der Hochschule für Technik und Wirtschaft Dresden, Ansprechpartner für Studierende
+|Studentinnenschaft der HTW Dresden, Ansprechpartner für Studierende
 
 |TO
 |Tagesordnung
@@ -49,7 +53,7 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |Punkt auf der Tagesordnung für die Plenumssitzung 
 
 |ITOP 
-|informeller Tagesordnungspunkt 
+|Informeller Tagesordnungspunkt 
 |Punkt auf der Tagesordnung für die Plenumssitzung der nur zur Information der Mitglieder dient (kein Beschluss)
 
 

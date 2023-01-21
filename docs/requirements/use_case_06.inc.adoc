@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC06 Beschluss einpflegen
+== <<UC06, UC06>> => Beschlüsse einpflegen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
@@ -22,7 +22,7 @@ Ist zuständig für die jeweilige Plenumssitzung.
 
 - Die Tagesordnung muss bereits generiert worden sein.
 
-- mindestens ein Antrag wurde gestellt.
+- Es muss mindestens ein Antrag gestellt worden sein.
 
 - #Die Sitzung muss stattgefunden haben.#
 
@@ -30,7 +30,7 @@ Ist zuständig für die jeweilige Plenumssitzung.
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
 . Der Use Case beginnt, wenn der Antragsverwalter die aktuelle Sitzung ausgewählt hat.
-. System zeigt die Markdown-Tagesordnung an samt Anträgen die gestellt wurden.
+. Das System zeigt die Markdown-Tagesordnung samt aller gestellten Anträge an.
 . Der Antragsverwalter markiert die gestellten Anträge als angenommen oder abgelehnt.
 . Das System vermerkt die angenommenen und abgelehnten Anträge.
 . Er klickt auf "speichern".
@@ -40,11 +40,11 @@ Ist zuständig für die jeweilige Plenumssitzung.
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
 ==== Antrag vertagen
-Wenn der Antragsverwalter im Schritt 3 des Standardablauf statt auf angenommen/abgelehnt auf vertagen klickt, dann wird der Antrag in die nächste Sitzung verschoben.
+Wenn der Antragsverwalter in Schritt 3 des Standardablaufes statt auf angenommen/abgelehnt auf vertagen klickt, dann wird der Antrag in die nächste Sitzung verschoben.
 
 Dabei fügt das System den Antrag zur nächsten Sitzung hinzu. 
 
-Der Use Case wird im Schritt 4 fortgesetzt.
+Der Use Case wird in Schritt 4 fortgesetzt.
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
