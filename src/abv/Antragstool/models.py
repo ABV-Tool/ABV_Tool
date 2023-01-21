@@ -11,12 +11,20 @@ class Sitzung(models.Model):
     sitzDate = models.DateField()
 
 
+class Antragssteller(models.Model):
+    astellerID = models.UUIDField(primary_key=True,
+                                  default=uuid.uuid4,
+                                  editable=False)
+    astellerName = models.TextField(max_length=50)
+    astellerVorname = models.TextField(max_length=50)
+
+
 class Antrag(models.Model):
     antragID = models.UUIDField(primary_key=True,
                                 default=uuid.uuid4,
                                 editable=False)
     sitzID = models.ForeignKey(Sitzung)
     typID = models.UUIDField()
-    astellerID = models.UUIDField()
+    astellerID = models.ForeignKey(Antragssteller)
     antragText = models.TextField()
     antragSumme = MoneyField(default_currency='EUR')
