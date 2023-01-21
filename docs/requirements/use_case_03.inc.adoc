@@ -8,38 +8,39 @@ Der Use Case beschreibt die Fertigstellung der Tagesordnung.
 
 === Kurzbeschreibung der Akteure
 
-==== Admin
+==== Antragsverwalter
 Ist zuständig für die jeweilige Plenumssitzung.
 
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
 
-- #Admin# muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+- Der Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
 
-- #Admin# muss angemeldet sein.
+- Der Antragsverwalter muss angemeldet sein.
 
-- Sitzung muss angelegt sein.
+- Die Sitzung muss angelegt sein.
 
-- Tagesordnung muss bereits generiert worden sein.
+- Die Tagesordnung muss bereits generiert worden sein.
 
+- #Die Sitzung muss stattgefunden haben.#
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der Admin die aktuelle Sitzung ausgewählt hat. Dabei wird ihm die Markdown-Tagesordnung angezeigt.
-. Der Admin makiert die gestellten Anträge als Angenommen oder Abgelehnt.
-. System vermerkt die die Angenommen und Abgelehnten Anträge.
+. Der Use Case beginnt, wenn der Antragsverwalter die aktuelle Sitzung ausgewählt hat. Dabei wird ihm die Markdown-Tagesordnung angezeigt.
+. Der Admin markiert die gestellten Anträge als angenommen oder abgelehnt.
+. Das System vermerkt die angenommenen und abgelehnten Anträge.
 . Der Admin klickt auf Tagesordnung exportieren.
 . Das System übergibt die Tagesordnung als PDF.
 . Er klickt auf Tagesordnung abschließen.
+. #Sitzung wird geschlossen.#
 . Der Use Case ist beendet.
+
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
-==== <Alternativer Ablauf 1>
-Wenn <Akteur> im Schritt <x> des Standardablauf <etwas macht>, dann
-. <Ablauf beschreiben>
-. Der Use Case wird im Schritt <y> fortgesetzt.
+==== Antrag vertagen
+Wenn der Antragsverwalter im Schritt 3 des Standardablauf statt auf angenommen/abgelehnt auf vertagen klickt, dann wird der Antrag in die nächste Sitzung verschoben. Dazu geniert das System eine neue Antragsnummer und fügt den Antrag zu nächsten Sitzung hinzu. Der Use Case wird im Schritt 4 fortgesetzt.
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern

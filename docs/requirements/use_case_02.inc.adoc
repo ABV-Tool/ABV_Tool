@@ -4,40 +4,43 @@
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
+Der Antragsverwalter kann hier über das Sitzungsmenü alle Anträge nach Kategorien für die kommende Sitzung einsehen und in der gewünschten Reihenfolge in die Tagesordnung einsortieren. 
 
 === Kurzbeschreibung der Akteure
 
 ==== Antragsverwalter
 Leitet die Sitzung und ist verantwortlich für die Tagesordnung.
 
-
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
 
 - Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
 
-- Antragsverwalter muss angemeldet sein.
+- Der Antragsverwalter muss angemeldet sein.
 
-- Sitzung muss angelegt sein.
+- Die Sitzung muss angelegt sein.
+
+- Anträge müssen eingegangen sein. 
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der Antragsverwalter auf Tagesordnung generieren klickt.
+. Der Use Case beginnt, wenn der Antragsverwalter #in der Sitzungsverwaltung# auf Tagesordnung generieren klickt.
 
 . Es wird ein ein Markdown-Dokument zum ausfüllen erstellt und es erfolgt eine Auflistung aller bereits eingegangenen Anträge nach Kategorie und Datum.
 //siehe Wireframe - Tagesordnung 
-. Der Antragsverwalter trägt via markup unter Top 0 - Formalia sowie unter ITOP weitere Tagesordnungspunkte ein. (unabhängig vom ABV-Tool)
-. Es wird ein Link zur Tagesordnung generiert, der zugriff auf die Tagesordnung bereitstellt.
+. Der Antragsverwalter trägt manuell via markup unter Top 0 - Formalia sowie unter ITOP weitere Tagesordnungspunkte ein. (unabhängig vom ABV-Tool)
+. #Es wird ein Link zur Tagesordnung generiert, der zugriff auf die Tagesordnung bereitstellt.#
 . Der Use Case ist abgeschlossen.
+
+//nochmal genauer zum Abschluss des UC was schreiben
 
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
 ==== <Alternativer Ablauf 1>
-Wenn die Tagesordnung bereits generiert wurde, dann
-. Kann der Antragsverwalter auf Tagesordnung bearbeiten klicken.
-. Der Use Case wird im Schritt 3 fortgesetzt.
+Wenn die Tagesordnung bereits generiert wurde, dann kann der Antragsverwalter auf Tagesordnung bearbeiten klicken.
+- Der Use Case wird im Schritt 3 fortgesetzt.
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
