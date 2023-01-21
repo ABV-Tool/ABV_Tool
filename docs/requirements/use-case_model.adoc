@@ -12,6 +12,7 @@ Nachfolgend werden die identifizierten Use Cases aufgelistet und näher beschrie
 // Liste aller identifizierten Use Cases (priorisiert)
 * *UC01*: Antrag stellen
 * *UC02*: Tagesordnung erstellen 
+* *UC06*: Beschlüsse einpflegen
 * *UC03*: Tagesordnung abschließen
 * *UC04*: Plenumssitzung vertagen 
 * *UC05*: Benutzer administrieren 
@@ -32,12 +33,14 @@ actor Systemadministrator as SA
 package Use-Cases {
     usecase "Antrag stellen" as UC1
     usecase "Tagesordnung erstellen" as UC2
+    usecase "Beschlüsse einpflegen" as UC6
     usecase "Tagesordnung abschließen" as UC3
     usecase "Plenumssitzung vertagen" as UC4
     usecase "Benutzeradministration" as UC5
 }
 AS --> UC1
 AV --> UC2
+AV --> UC6
 AV --> UC3
 AV --> UC4
 AV --> UC5
@@ -60,6 +63,9 @@ include::use_case_01.inc.adoc[]
 
 <<<
 include::use_case_02.inc.adoc[]
+
+<<<
+include::use_case_06.inc.adoc[]
 
 <<<
 include::use_case_03.inc.adoc[]
