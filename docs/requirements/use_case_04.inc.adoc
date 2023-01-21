@@ -1,37 +1,37 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== Use-Case: UC04 Plenumssitzung verwalten
+== Use-Case: UC04 Plenumssitzung vertagen
 
 === Kurzbeschreibung
-//<Kurze Beschreibung des Use Case>
+Der Use Case beschreibt das vertagen von Plenumssitzungen.
 
 === Kurzbeschreibung der Akteure
 
-==== Admin
+==== Antragsverwalter
 Ist zuständig für die jeweilige Plenumssitzung.
 
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
 
-- #Admin# muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+- Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
 
-- #Admin# muss angemeldet sein.
+- Antragsverwalter muss angemeldet sein.
+
+- System hat Plenumssitzung bereits angelegt. (#Plenumssitzungen werden 4 Wochen in voraus vom System generiert.#)
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
-. Der Use Case beginnt, wenn der Admin auf Sitzung verwalten klickt. 
+. Der Use Case beginnt, wenn der Antragsverwalter auf "Sitzung verwalten" klickt. 
 . System zeigt schon vorhandene Sitzungen an.
-. Der Admin verschiebt einen Antrag von der Aktuellen Sitzung in die nächste geplante Sitzung.
-. System bindet den Antrag in die nächste Tagesordnung mit ein.
+. Der Antragsverwalter klickt auf "Sitzung vertagen".
+. System bindet die Tagesordnung der ausgewählten Sitzung samt Anträgen in die nächste Sitzung mit ein und makiert die Sitzung als "vertagt".
 . Der Use Case ist beendet.
+
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
-==== Alternativer Ablauf Sitzung vertagen
-Wenn der Admin im Schritt 3 des Standardablauf auf Sitzung vertagen klickt, dann
-. wird die Tageordnung der ausgewählten Sitzung samt Anträgen auf die nächste Sitzung verschoben.
-. Das System zeigt an, dass die Sitzung vertagt wurde.
-. Der Use Case ist beendet.
+//==== AB1 
+
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
