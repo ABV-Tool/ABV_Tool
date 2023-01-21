@@ -1,5 +1,6 @@
 martor
 gunicorn
 Django
-django-money
 psycopg2
+django-money
+django-jsonfield
