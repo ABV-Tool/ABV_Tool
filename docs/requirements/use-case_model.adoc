@@ -13,7 +13,7 @@ Nachfolgend werden die identifizierten Use Cases aufgelistet und näher beschrie
 * *UC01*: Antrag stellen
 * *UC02*: Tagesordnung erstellen 
 * *UC03*: Tagesordnung abschließen
-* *UC04*: Plenumssitzung verwalten 
+* *UC04*: Plenumssitzung vertagen 
 * *UC05*: Benutzer administrieren 
 
 //Benutzer registrieren?
@@ -33,7 +33,7 @@ package Use-Cases {
     usecase "Antrag stellen" as UC1
     usecase "Tagesordnung erstellen" as UC2
     usecase "Tagesordnung abschließen" as UC3
-    usecase "Plenumssitzung verwalten" as UC4
+    usecase "Plenumssitzung vertagen" as UC4
     usecase "Benutzeradministration" as UC5
 }
 AS --> UC1
