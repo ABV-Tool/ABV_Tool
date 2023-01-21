@@ -41,10 +41,13 @@ Zur Überprüfung wird das System unerwartet heruntergefahren.
 
 === Effizienz (Performance)
 // Die Performanz Charakteristiken des Systems sollten in diesem Bereich ausgeführt werden. Beispiele sind Antwortzeit, Durchsatz, Kapazität und Zeiten zum Starten oder Beenden.
+==== NFAP-1: Das Sofwaresystem soll einen Wechsel von Webiste zu Website in maximal 4 Sekunden ermöglichen.
+Zur Überprüfung #...#
 
 === Wartbarkeit (Supportability)
 // Dieser Bereich beschreibt sämtliche Anforderungen welche die Supportfähigkeit oder Wartbarkeit des zu entwickelnden Systems verbessern, einschließlich Anpassungsfähigkeit und Erweiterbarkeit, Kompatibilität, Skalierbarkeit und Anforderungen bezüglich der System Installation sowie Maß an Support und Wartbarkeit.
-- Das System soll einfach erweiterbar sein, darunter zählt mitunter das Hinzufügen von neuen Funktionalitäten und neuen Antragsbezeichnungen
+==== NFAS-1: Das System soll einfach erweiterbar sein, darunter zählt mitunter das Hinzufügen von neuen Funktionalitäten und neuen Antragsbezeichnungen
+Zur Überprüfung #...#
 
 == Zusätzliche Anforderungen
 
@@ -67,4 +70,4 @@ Zur Überprüfung wird das System unerwartet heruntergefahren.
 //Angaben ergänzen, nicht relevante Unterpunkte streichen oder auskommentieren
 //* Lizensierung der Anwendung
 //* Datenschutz
-- Das System muss den Datenschutzanforderungen der HTW Dresden und der DSGVO entsprechen.
+- *BR1:* Das System muss den Datenschutzanforderungen der HTW Dresden und der DSGVO entsprechen.
