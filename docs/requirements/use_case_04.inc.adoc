@@ -1,0 +1,60 @@
+//Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
+
+== Use-Case: UC04 Plenumssitzung vertagen
+
+=== Kurzbeschreibung
+Der Use Case beschreibt das vertagen von Plenumssitzungen.
+
+=== Kurzbeschreibung der Akteure
+
+==== Antragsverwalter
+Ist zuständig für die jeweilige Plenumssitzung.
+
+=== Vorbedingungen
+//Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
+
+- Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+
+- Antragsverwalter muss angemeldet sein.
+
+- System hat Plenumssitzung bereits angelegt. (#Plenumssitzungen werden 4 Wochen in voraus vom System generiert.#)
+
+=== Standardablauf (Basic Flow)
+//Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
+. Der Use Case beginnt, wenn der Antragsverwalter auf "Sitzung verwalten" klickt. 
+. System zeigt schon vorhandene Sitzungen an.
+. Der Antragsverwalter klickt auf "Sitzung vertagen".
+. System bindet die Tagesordnung der ausgewählten Sitzung samt Anträgen in die nächste Sitzung mit ein und makiert die Sitzung als "vertagt".
+. Der Use Case ist beendet.
+
+=== Alternative Abläufe
+//Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
+
+//==== AB1 
+
+
+=== Unterabläufe (subflows)
+//Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
+
+==== <Unterablauf 1>
+. <Unterablauf 1, Schritt 1>
+. …
+. <Unterablauf 1, Schritt n>
+
+=== Wesentliche Szenarios
+//Szenarios sind konkrete Instanzen eines Use Case, d.h. mit einem konkreten Akteur und einem konkreten Durchlauf der o.g. Flows. Szenarios können als Vorstufe für die Entwicklung von Flows und/oder zu deren Validierung verwendet werden.
+
+==== <Szenario 1>
+. <Szenario 1, Schritt 1>
+. …
+. <Szenario 1, Schritt n>
+
+=== Nachbedingungen
+//Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
+
+==== <Nachbedingung 1>
+
+=== Besondere Anforderungen
+//Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
+
+==== <Besondere Anforderung 1>

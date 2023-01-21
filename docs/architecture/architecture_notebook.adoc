@@ -6,7 +6,10 @@ include::../_includes/default-attributes.inc.adoc[]
 
 
 == Zweck
-Dieses Dokument beschreibt die Philosophie, Entscheidungen, Nebenbedingungen, Begründungen, wesentliche Elemente und andere übergreifende Aspekte des Systems, die Einfluss auf Entwurf und Implementierung haben.
+Dieses Dokument beschreibt die Philosophie, Nebenbedingungen, Begründungen, wesentliche
+Elemente und andere übergreifende Aspekte, die Einfluss auf Entwurf und Implementierung
+bezüglich der Realisierung eines in der Vision beschriebenen Antrags- und Beschlussverwaltungstool haben. Die für die Architektur getroffenen Entscheidungen und Ihre
+Hintergründe werden hier festgehalten.
 
 //Hinweise: Bearbeiten Sie immer die Abschnitte 2-6 dieser Vorlage. Nachfolgende Abschnitte sind empfohlen, aber optional und sollten je nach Umfang der künftigen Wartungsarbeiten, Fähigkeiten des Entwicklungsteams und Bedeutung anderer architektureller Belange.
 
@@ -14,6 +17,13 @@ Dieses Dokument beschreibt die Philosophie, Entscheidungen, Nebenbedingungen, Be
 
 
 == Architekturziele und Philosophie
+Das Tool soll eine webbasierte Anwendung für den StuRa der Htw Dresden sein. Sie dient zum Stellen von Anträgen, zur Verwaltung dieser Anträge und der Dokumentation von Beschlüssen, sowie der automatischen Erstellung einer standardisierten übersichtlichen Tagesordnung für die Sitzungen des StuRas. Dabei wird der Großteil der Benutzeroberfläche vom Vorgänger übernommen.
+
+Da die Antragsstellung ein zentraler Aspekt in der Arbeit des StuRas darstellt, soll das Tool selbsterklärend und intuitiv bedienbar sein.
+
+Ziel ist es, dass das Programm 24h am Tag verfügbar ist. Ausnahmen sind die Downtimes des Servers auf dem die Anwendung laufen soll. Hierbei sollen vorzugsweise die Server des StuRas als Host dienen, da diese bereits 24h am Tag laufen und die Mehrkosten eines Containers deutlich niedriger sind als vergleichsweise die Anmietung eines externen Dienstes.
+
+Des Weiteren wollen wir zum Ende ein Tool entwickelt haben, dass man sowohl tatsächlich implementieren und nutzen kann, als auch einfach zu warten ist indem wir Codekommentierung nutzen.
 //Hinweise: Beschreiben Sie die Philosophie der Architektur, d.h. den zentralen Ansatz für ihre Architektur. Identifizieren Sie alle Aspekte, die die Philosophie beeinflussen, z.B. komplexe Auslieferung Aspekte, Anpassung von Altsystemen oder besondere Geschwindigkeitsanforderungen. Muss es besonders robust sein, um eine langfristige Wartung und Pflege zu ermöglichen?
 
 //Formulieren Sie eine Reihe von Zielen, die die Architektur in ihrer Struktur und ihrem Verhalten erfüllen muss. Identifizieren Sie kritische Fragen, die von der Architektur adressiert werden müssen, z.B. besondere Hardware-Abhängigkeiten, die vom Rest des Systems isoliert werden sollten oder Sicherstellung der Funktionsfähigkeit unter besonderen Bedingungen (z.B. Offline-Nutzung).
@@ -21,17 +31,47 @@ Dieses Dokument beschreibt die Philosophie, Entscheidungen, Nebenbedingungen, Be
 
 == Annahmen und Abhängigkeiten
 //[List the assumptions and dependencies that drive architectural decisions. This could include sensitive or critical areas, dependencies on legacy interfaces, the skill and experience of the team, the availability of important resources, and so forth]
+_Annahmen:_
 
+- Das Vorgängertool wird neuentwickelt.
+- Jeder Nutzer besitzt eine stabile Verbindung zum HTW-Netz.
+- Jeder Nutzer benutzt einen aktuellen Webbrowser.
+- Das Framework des Vorgängers wird vom Stakeholder designtechnisch akzeptiert.
+- Das Framework des Vorgängers funktioniert problemlos und ist zukunftssicher.
+- Jeder Nutzer ist mit der allgemeinen Nutzung eines Computers vertraut.
+- Die Server des StuRas laufen zu jeder Zeit stabil.
+
+_Abhängigkeiten:_
+
+- Wir sind darauf angewiesen, dass alle eingesetzten Frameworks zukunftssicher sind.
+- Wir sind auf die Uptime der Server des StuRas angewiesen, damit das Tool weiterhin erreichbar bleibt.
+- Ein Teil des Teams lernt DJango als Programmiersprache.
 
 == Architektur-relevante Anforderungen
 //Fügen Sie eine Referenz / Link zu den Anforderungen ein, die implementiert werden müssen, um die Architektur zu erzeugen.
+*Funktional*
 
+- NFAF-1: Das System muss alle Anträge, sowie deren Anlagen und die Tagesordnungen persistent speichern.
+- NFAF-2: Das System soll die Anträge mit dem entsprechenden Beschluss als pdf-Datei exportieren können.
+- NFAF-3: Das System muss sicherstellen das nur berechtigte Personen die Tagesordnung bearbeiten können.
+- NFAF-4: Das System soll den Anträge automatisch eine semantisch korrekte Antragsnummer zuweisen.
+
+*Effizienz*
+
+- NFAP-1: Das System soll resistent gegen einen Ausfall bei einer hohen Anzahl gleichzeitiger Nutzer sein.
+- NFAP-2: Man soll innerhalb von 3 Klicks zur Antragsstellung kommen.
+
+*Wartbarkeit*
+
+- NFAS-1 Das System soll für einen Administrator verständlich dokumentiert sein.
+- NFAS-2 Das System soll fähig sein weitere Schnittstellen zur Funktionserweiterung zu unterstützen
+(z.B. Mitgliederdatenbank).
 
 == Entscheidungen, Nebenbedingungen und Begründungen
 //[List the decisions that have been made regarding architectural approaches and the constraints being placed on the way that the developers build the system. These will serve as guidelines for defining architecturally significant parts of the system. Justify each decision or constraint so that developers understand the importance of building the system according to the context created by those decisions and constraints. This may include a list of DOs and DON’Ts to guide the developers in building the system.]
 
-. Entscheidung oder Einschränkung oder Begründung 1
-. Entscheidung oder Einschränkung oder Begründung 2
+- Wir nutzen Django für das Frontend, da der Vorgänger dies dafür nutzte.
+- Die Erstellung neuer Datenbanken ist wichtig, da die Datenbanken des Vorgängers keine einheitliche Form haben und wir keine Dokumentation vom Vorgänger haben, um die Entscheidungen nachzuvollziehen.
 
 
 == Architekturmechanismen
@@ -42,9 +82,13 @@ https://www2.htw-dresden.de/~anke/openup/core.tech.common.extend_supp/guidances/
 
 //Beschreiben Sie den Zweck, Eigenschaften und Funktion der Architekturmechanismen.
 
-. Architekturmechanismus 1
-. Architekturmechanismus 2
-
+- Sicherheit
+- Workflow, mit der Erstellung einer standardisierten TO
+- Persistenz
+- Informationsaustausch
+- Internationalisierung (haben wir zumindest im Nachinein vor, damit auch englischsprachige Stundenten/Personen Anträge stellen können)
+- Scheduling, Anträge müssen zu einer gewissen Zeit vor der Plenumssitzung gestellt werden (Ausnahme hier: Eilantrag)
+- Online-Hilfe, können Doku online stellen
 
 == Wesentliche Abstraktionen
 //[List and briefly describe the key abstractions of the system. This should be a relatively short list of the critical concepts that define the system. The key abstractions will usually translate to the initial analysis classes and important patterns.]

@@ -1,18 +1,17 @@
 = Vision: {project-name}
-Vorname Nachname <email@domain.org>; Vorname2 Nachname2 <email2@domain.org>; Vorname3 Nachname3 <email3@domain.org>
+Alexander Minukow <alexander.minukow@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
 // Platzhalter für weitere Dokumenten-Attribute
 
-
 == Einführung
-Der Zweck dieses Dokuments ist es, die wesentlichen Bedarfe und Funktionalitäten für das Antrags- und Beschlussverwaltungstool zu sammeln, zu analysieren und zu definieren. Der Fokus liegt auf den Fähigkeiten, die von Stakeholdern und adressierten Nutzern benötigt werden, und der Begründung dieser Bedarfe. Die  Details, wie das ntrags- und Beschlussverwaltungstool diese Bedarfe erfüllt, werden in der Use-Case und Supplementary Specification beschrieben.
+Der Zweck dieses Dokuments ist es, die wesentlichen Bedarfe und Funktionalitäten für das Antrags- und Beschlussverwaltungstool des StuRa der HTW Dresden zu sammeln, zu analysieren und zu definieren. Der Fokus liegt auf den Fähigkeiten, die von Stakeholdern und adressierten Nutzern benötigt werden, und der Begründung dieser Bedarfe. Die  Details, wie das Antrags- und Beschlussverwaltungstool diese Bedarfe erfüllt, werden in der Use-Case und Supplementary Specification beschrieben.
 
 === Zweck
 Der Zweck dieses Dokuments ist es, die wesentlichen Anforderungen an das System aus Sicht und mit den Begriffen der künftigen Anwender zu beschreiben.
 
 === Gültigkeitsbereich (Scope)
-Dieses Visions-Dokument bezieht sich auf das Antrags- und Beschlussverwaltungstool, das von Team I5 entwickelt wird. Das System wird es dem StuRa der HTW Dresden erlauben, den Prozess von der Antragstellung, über die Durchführung der Sitzungen und Beschlussfassung bis zur Ausfertigung zu vereinheitlichen und zu zentralisieren und insebsondere eine einheitliche, fortlaufende Vergabe von Antragsnummern zu ermöglichen .
+Dieses Visions-Dokument bezieht sich auf das Antrags- und Beschlussverwaltungstool, das von Team I5 entwickelt wird. Das System wird es dem StuRa der HTW Dresden erlauben, den Prozess von der Antragstellung, über die Durchführung der Sitzungen und Beschlussfassung bis zur Ausfertigung zu vereinheitlichen und zu zentralisieren sowie insebsondere eine einheitliche, fortlaufende Vergabe von Antragsnummern zu ermöglichen .
 
 === Definitionen, Akronyme und Abkürzungen
 //Verweis passend zum Belegabgabe-Template se1_belegabgabe_t00.adoc
@@ -21,14 +20,16 @@ Siehe <<#glossary, Glossar>>.
 === Referenzen
 (hier externe Verweise zu anderen Dokumenten, Quellen, Standards etc. einfügen, sofern notwendig)
 
-//Link von altem ABV Tool?
-https://antragsgruen.de
+Tool zu Orientierung: https://antragsgruen.de
+
+Vorgängerprojekt: https://github.com/EdLaser/ABV_Tool
+//funktionierender! Link von altem ABV Tool? ggf. Screenshot
 
 == Positionierung
 
 === Fachliche Motivation
 //Erläutern Sie kurz den Hintergrund, in dem das Projekt angesiedelt ist. Welches Problem soll gelöst werden, wie ist es entstanden? Welche Verbesserung wird angestrebt. Achten Sie darauf, eine fachliche (organisatorische, betriebswirtschaftliche) Perspektive einzunehmen.
-Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- und Beschlussverwaltung, da diese manuell erfolgt. Antragsnummern werden händisch vergeben und auch einheitliche bzw. unveränderliche Templates sind nicht vorhanden. Vor jeder Sitzung muss manuell eine Tagesordnung aus den gestellten Anträgen erstellt werden. Dies bindet viele zeitliche und personelle Ressourcen, was durch die Einführung des Antrags- und Beschlussverwaltungstools reduziert werden soll. Besonders hervorzugeben ist hierbei die automatisierte Vergabe von Antragsnummern nach einen bestimmten Schema, da die händische Vergabe und Kontrolle besonders hohen Organisationsaufwand bedeutet.   
+Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- und Beschlussverwaltung, da diese manuell erfolgt. Antragsnummern werden händisch vergeben und auch einheitliche bzw. unveränderliche Templates sind nicht vorhanden. Vor jeder Sitzung muss manuell eine Tagesordnung aus den gestellten Anträgen erstellt werden. Dies bindet viele zeitliche und personelle Ressourcen, was durch die Einführung eines Antrags- und Beschlussverwaltungstools reduziert werden soll. Besonders hervorzugeben ist hierbei die automatisierte Vergabe von Antragsnummern nach einen bestimmten Schema, da die händische Vergabe und Kontrolle besonders hohen Organisationsaufwand erfordert.   
 
 //genaueres zu den Vorlagen/Templates schreiben
 
@@ -38,7 +39,7 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 [cols="1,3"]
 |===
 | Das Problem | es gibt keine zentrale Verwaltungsmöglichkeit, mit automatischer Vergabe der Antragsnummern und einheitlichen Templates
-| betrifft | [die Stakeholder, die vom Problem betroffen sind]
+| betrifft | alle Antragsteller, insbesondere aber das Präsidium
 | die Auswirkung davon ist | zeitaufwändige Verwaltung der gestellten Anträge und Beschlüsse
 | eine erfolgreiche Lösung wäre | zentrale Verwaltungsmöglichkeit mit einheitlichen Antragsformularen, eine fortlaufende, automatische Vergabe der Antragsnummern sowie automatisches generieren der Tagesordnung vor jeder Sitzung
 |===
@@ -91,21 +92,28 @@ Beispiel Produkt:
 |===
 | Name | Beschreibung | Verantwortlichkeiten
 
-| Antragsberechtigte
-| Plenum, Präsidium, Vorstand, Referatsleitung, Bereichsleitung, Hochschulangehörige
+| Auftraggeber
+| StuRa der HTW Dresden
+| Antragsteller, Antrags- und Beschlussverwaltung
 
+| Antragssteller
+| jede natürliche Person insbesondere aber Plenum, Präsidium, Vorstand, Referatsleitung und Bereichsleitung des StuRa sowie Hochschulangehörige
 | Stellen über das System Anträge die anschließend im Plenum beraten werden
+
+| Antragsverwalter
+| 
+| erstellt aus eingegangen Anträgen die Tagesordnung und verwaltet die Sitzungen
 
 |Präsidium
 |Sitzungsdurchführung, Ausfertigung der Beschlüsse
 |Verantwortlich von Antragstellung bis Ausfertigung der Beschlüsse
 
-|Adminstratoren
+|Systemadminstrator
 |
 |
 
-|Gesetzgebung/Geschäftsordnung ggf. auch Plenum, da diese eigenen Ablauf festlegen
-|
+|StuRa als BeschlussorangOrdnungen des StuRa insb. Geschäftsordnung
+|Der StuRa gibt sich im Rahmen seiner Selbstverwaltung 
 |
 
 |===

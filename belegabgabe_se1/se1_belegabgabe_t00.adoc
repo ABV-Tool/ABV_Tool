@@ -1,9 +1,9 @@
 // --- 1. Projektthema -------------------------
 = SE I - Belegabgabe: {project-name}
 // --- 2. Teammitglieder -----------------------
-Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>; Vorname Nachname <s00000@htw-dresden.de>
+Marten Petters <marten.petters@htw-dresden.de>; Alexander Minukow <alexander.minukow@htw-dresden.de>; Göran Heinemann <goeran.heinemann@htw-dresden.de>; Xuan Huy Nguyen <xuanhuy.nguyen@htw-dresden.de>; Simon Voges <simon.voges@htw-dresden.de>; Max Patecky <max.patecky@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>
 // --- 3. Abgabedatum --------------------------
-01. Januar 2020
+27. Januar 2023
 // ---------------------------------------------
 :docs: ../docs
 include::{docs}/_includes/default-attributes.inc.adoc[]
@@ -60,6 +60,7 @@ include::{docs-requirements}/system-wide_requirements.adoc[lines=1..1;4..-1,leve
 // Glossar
 [#glossary]
 include::{docs-requirements}/glossary.adoc[lines=1..1;4..-1,leveloffset=+1]
+include::{docs-requirements}/Antragsdaten.adoc[lines=1..1;4..-1,leveloffset=+1]
 <<<
 // Domänenmodell
 include::{docs-requirements}/domain_model.adoc[lines=1..1;4..-1,leveloffset=+1]

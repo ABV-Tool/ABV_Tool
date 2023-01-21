@@ -11,12 +11,17 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 == Begriffe
 [%header]
 |===
+
 | Begriff | Definition und Erläuterung | Synonyme
-//| Kommissionierung | Bereitstellung von Waren aus einem Lager entsprechend eines Kundenauftrags | (keine)
-| Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Führungsgremium
-| Plenum | Gewählte Studenten, die ein Wahlrecht innerhalb des Sturas besitzen. | (keine)
-| Referatsleitung | Eine Person, die an der HTW die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
+|Antragssteller|Person, die einen Antrag stellt|
 | Bereichsleitung | Personen, die Zuständigkeiten von Untergeordnete Bereichen von Referaten übernehmen. | (keine) 
+|Formalia |Tagesordnungspunkt |
+| Pflichtfelder| Antragsfeld für das eine Pflichteingabe besteht | (keine) 
+| Plenum | Gewählte Studenten, die ein Wahlrecht innerhalb des Sturas besitzen. | (keine)
+| Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Führungsgremium
+| Referatsleitung | Eine Person, die an der HTW die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
+| #Templates# |festgelegte Vorlage für Anträge |Antragsformulare
+
 |===
 
 
@@ -25,7 +30,28 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |===
 | Abkürzung | Bedeutung | Erläuterung
 //| UP | Unified Process | Vorgehensmodell für die Softwareentwicklung
-| xx | xx | xx
+
+|ABV-Tool 
+|Antrags- und Beschlussverwaltungstool
+|
+
+|StuRa  
+|Studentinnenrat  
+|Studentinnenschaft der Hochschule für Technik und Wirtschaft Dresden, Ansprechpartner für Studierende
+
+|TO
+|Tagesordnung
+|Liste und Reihenfolge der zu besprechenden Themen in der Sitzung
+
+|TOP
+|Tagesordnungspunkt
+|Punkt auf der Tagesordnung für die Plenumssitzung 
+
+|ITOP 
+|informeller Tagesordnungspunkt 
+|Punkt auf der Tagesordnung für die Plenumssitzung der nur zur Information der Mitglieder dient (kein Beschluss)
+
+
 |===
 
 == Verzeichnis der Datenstrukturen
@@ -33,15 +59,35 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 |===
 | Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
 
-| Anmeldedaten
+| Anmeldedaten (Bsp.)
 | Zusammensetzung von Benutzername und Passwort.
 | String
 | Emailadresse muss `@`-Zeichen und `.` Punkt enthalten.
 | Login
 
+| Antragsdaten
+| Sammlung aller eingegebenen Daten, siehe <<Antragsdaten.adoc>>
+| 
 | xx
 | xx
+
+|Sitzungsdaten
+|Datum, Wochentag, Sitzungsnummer
+|Datum, String, Int
+|
+|
+
+| Abstimmungsergebnisse
+| 
+| 
 | xx
+| xx
+
+| Antragsnummer
+| Nummer, die bei Antragseinreichung jedem für jeden Antrag vergeben wird. Zusammensetzung: Legislaturperiode/ Sitzungsnummer/ Antragsnummer
+| 
 | xx
 | xx
 |===
+
+

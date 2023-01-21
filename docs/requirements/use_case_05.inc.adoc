@@ -1,0 +1,62 @@
+//Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
+
+== Use-Case: UC05 Antragsverwalter anmelden
+
+=== Kurzbeschreibung
+Der Use Case beschreibt den anmeldevorgang des Antragsverwalters.
+
+=== Kurzbeschreibung der Akteure
+
+==== Antragsverwalter
+Ist zuständig für die jeweilige Plenumssitzung.
+
+
+=== Vorbedingungen
+//Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
+
+- Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+
+- Antragsverwalter muss vom Systemadministrator des Stura einen Account erstellt bekommen haben. 
+
+=== Standardablauf (Basic Flow)
+//Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
+. Der Use Case beginnt, wenn der Antragsverwalter auf Anmelden klickt.
+. Das Systen erfragt den Anmeldenamen und das Passwort.
+. Der Antragsverwalter gibt seine Anmeldedaten ein.
+. System verifiziert eingegebende Anmeldedaten.
+. Antragsverwalter bekommt zugang zur Sitzungsverwaltung. (UC2; UC3; UC4)
+. Der Use Case ist beendet.
+
+=== Alternative Abläufe
+//Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
+
+==== Invalide Daten
+Wenn Antragsverwalter im Schritt 3 des Standardablauf Invalide Daten eingibt, dann gibt das System die Fehlermeldung "Invalide Daten" aus.
+
+Der Use Case wird im Schritt 2 fortgesetzt.
+
+=== Unterabläufe (subflows)
+//Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
+
+==== <Unterablauf 1>
+. <Unterablauf 1, Schritt 1>
+. …
+. <Unterablauf 1, Schritt n>
+
+=== Wesentliche Szenarios
+//Szenarios sind konkrete Instanzen eines Use Case, d.h. mit einem konkreten Akteur und einem konkreten Durchlauf der o.g. Flows. Szenarios können als Vorstufe für die Entwicklung von Flows und/oder zu deren Validierung verwendet werden.
+
+==== <Szenario 1>
+. <Szenario 1, Schritt 1>
+. …
+. <Szenario 1, Schritt n>
+
+=== Nachbedingungen
+//Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
+
+==== <Nachbedingung 1>
+
+=== Besondere Anforderungen
+//Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
+
+==== <Besondere Anforderung 1>
