@@ -37,7 +37,9 @@ Wenn Antragsteller im Schritt 2 des Standardablauf Finanzantrag auswählt, dann 
 Wenn Antragsteller im Schritt 2 des Standardablauf Antrag auf Veranstaltung auswählt, dann muss der Antragsteller eine verantwortliche Person benennen, die für die Nachbereitung der Veranstaltung verantwortlich ist (Pflichfeld).
 
 ==== Alternativer Ablauf Dringlichkeitsantrag
-Wenn Antragsteller im Schritt 4 des Standardablauf auf "Antrag absenden" klickt und die nächste Plenumssitzung in weniger als einer Woche stattfindet, so wird er über die Verschiebung seines Antrags auf die übernächste Plenumssitzung informiert. Des Weiteren wird er informiert, dass er ein Dringlichkeitsantrag stellen kann, um seinen Antrag auf die nächstmögliche Sitzung zu vertagen. 
+Wenn Antragsteller im Schritt 4 des Standardablauf auf "Antrag absenden" klickt und die nächste Plenumssitzung in weniger als einer Woche stattfindet, so wird er über die Verschiebung seines Antrags auf die übernächste Plenumssitzung informiert. 
+
+Des Weiteren wird er informiert, dass er ein Dringlichkeitsantrag stellen kann, um seinen Antrag auf die nächstmögliche Sitzung zu vertagen. 
 
 // === Unterabläufe (subflows)
 // //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
