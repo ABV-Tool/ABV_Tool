@@ -12,14 +12,18 @@ include::../_includes/default-attributes.inc.adoc[]
 |===
 | Meilenstein | Datum
 
-| Beginn der Iteration | -
+| Beginn der Iteration | 12.12.2022
 | ... | -
-| Ende der Iteration | -
+| Ende der Iteration | 21.12.2022
 |===
 
 
 == Wesentliche Ziele
 //Nennen Sie 1-5 wesentliche Ziele für die Iteration.
+* Erstellung der Vision
+* Glossar erstellen
+* Use Case Modell inklusive Use Case Diagramm erstellen
+
 
 Beispiele:
 
@@ -38,7 +42,7 @@ _alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 |===
 | Aufgabe bzw. Beschreibung | Priorität | Schätzung der Größe (Punkte) |Status | Referenzen | geplante Iteration | Zugewiesen (Name) | Gearbeite Stunden | Schätzung der verbleibenden Stunden
 
-| x | x | x | x | x | x | x | x | x
+| Antrag stellen | x | x | x | x | x | x | x | x
 |===
 
 
