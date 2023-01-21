@@ -38,9 +38,10 @@ Leitet die Sitzung und ist verantwortlich für die Tagesordnung.
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
-==== <Alternativer Ablauf 1>
+==== Alternativer Ablauf Tagesordnung bereits vorhanden
 Wenn die Tagesordnung bereits generiert wurde, dann kann der Antragsverwalter auf Tagesordnung bearbeiten klicken.
-- Der Use Case wird im Schritt 3 fortgesetzt.
+
+Der Use Case wird im Schritt 3 fortgesetzt.
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
