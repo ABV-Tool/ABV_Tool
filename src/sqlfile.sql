@@ -97,7 +97,7 @@ ALTER TABLE public.beschluesse OWNER TO abv;
 CREATE TABLE public.referat (
     ref_id uuid DEFAULT public.uuid_generate_v4() NOT NULL,
     ref_name character varying(200) NOT NULL,
-    zyklus interval
+    zyklus integer
 );
 
 

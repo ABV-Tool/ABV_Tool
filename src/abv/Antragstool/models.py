@@ -11,6 +11,8 @@ class Referat(models.Model):
                              default=uuid.uuid4,
                              editable=False,
                              db_column='ref_id')
+    refName = models.TextField(db_column='ref_name', max_length=200)
+    refZyklus = models.IntegerField(db_column='zyklus')
 
 
 class Sitzung(models.Model):
