@@ -20,6 +20,7 @@ include::../_includes/default-attributes.inc.adoc[]
 
 == Wesentliche Ziele
 //Nennen Sie 1-5 wesentliche Ziele für die Iteration.
+* Rollenverteilung
 * Erstellung der Vision
 * Glossar erstellen
 * Use Case Modell inklusive Use Case Diagramm erstellen
@@ -43,6 +44,10 @@ _alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 | Aufgabe bzw. Beschreibung | Priorität | Schätzung der Größe (Punkte) |Status | Referenzen | geplante Iteration | Zugewiesen (Name) | Gearbeite Stunden | Schätzung der verbleibenden Stunden
 
 | Antrag stellen | x | x | x | x | x | x | x | x
+|Vision erarbeiten|niedrig|x|erledigt|x|2|Mirjam, Alexander|2|2
+|Glossar vervollständigen|niedrig|x|erledigt|x|3|x|1|1
+
+
 |===
 
 
