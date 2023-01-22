@@ -11,7 +11,15 @@ image: :../wireframe_login.png[]
 
 _Erklärung:_ 
 
-Systemadministratoren benötigen einen Login um zugriff auf das Tool zu bekommen. 
+Systemadministratoren benötigen einen Login um zugriff auf das Tool zu bekommen, um features wie Tagesordnung erstellen benutzen zu können.
 
 === WF2 Tagesordnung erstellen 
+
+image:{imagesdir}:wireframe_sitzungsverwaltung.png[]
+
+_Erklärung:_
+
+Über die Sitzungsverwaltung können alle Anträge betrachtet werden und eine Tagesordnung für die kommende Plenumssitzung erstellt werden. Anträge die in der Sitzung besprochen werden sollen können ausgewehlt werden. Tagesordnungen für kommende Sitzungen können schon im voraus entschieden werden.
+
+
 
