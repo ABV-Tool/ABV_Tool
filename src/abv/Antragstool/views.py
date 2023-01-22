@@ -20,8 +20,6 @@ def ReferatListe(request):
 
 def SitzungenVonReferat(request, sitzid):
     sitzungen = Sitzung.objects.filter(refID=sitzid)
-    for s in sitzungen:
-        __import__('pprint').pprint(s)
     return render(
         request,
         'Antragstool/sitzungen.html',
