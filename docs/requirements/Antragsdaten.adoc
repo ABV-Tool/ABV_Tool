@@ -1,4 +1,4 @@
-Vorname Nachname <email@domain.org>; Vorname2 Nachname2 <email2@domain.org>; Vorname3 Nachname3 <email3@domain.org>
+Mirjam Müller <mirjam.mueller@htw-dresden.de>; Vorname2 Nachname2 <email2@domain.org>
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
 // Platzhalter für weitere Dokumenten-Attribute
@@ -18,7 +18,7 @@ Diese Antragsdaten sind in jedem Antrag vorhanden und deshalb einmal hier zusamm
 | Antragstitel 
 | Thematische Überschrift des Antrages
 | String
-| 
+| Pflichtfeld
 | Antragsname
 
 | zuständige Stelle (Auswahl) 
@@ -30,20 +30,20 @@ Diese Antragsdaten sind in jedem Antrag vorhanden und deshalb einmal hier zusamm
 | Name 
 | Name und Vorname des Antragstellers bzw. Bezeichnungs des Referates
 | String
-| 
-| 
+| Pflichtfeld
+| Antragsteller
 
 | E-Mail Adresse 
 | 
 | String
-| Emailadresse muss @-Zeichen und . Punkt enthalten.
+| Emailadresse muss @-Zeichen und . Punkt enthalten; Pflichtfeld
 | 
 
 | Antragstext
-| 
+| Text mit dem Anliegen an den StuRa: "Der StuRa möge beschließen ..."
 | String
 | 
-| 
+| Antragsbeschreibung
 
 | Anlagen
 | zusätzliche Informationen zu einem Antrag z. B. ein Finanzplan
