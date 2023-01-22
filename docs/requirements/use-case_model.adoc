@@ -36,7 +36,7 @@ package Use-Cases {
     usecase "Beschlüsse einpflegen" as UC6
     usecase "Tagesordnung abschließen" as UC3
     usecase "Plenumssitzung vertagen" as UC4
-    usecase "Benutzeradministration" as UC5
+    usecase "Benutzer administrieren" as UC5
 }
 AS --> UC1
 AV --> UC2
