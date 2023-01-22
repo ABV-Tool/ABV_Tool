@@ -1,0 +1,7 @@
+{% load static %}
+<div class = "navigation">
+    <ul class = "mainnav">
+        <li {% if request.get_full_path == "/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'index' %}">Home</a></li>
+    </ul>
+</div>
+
