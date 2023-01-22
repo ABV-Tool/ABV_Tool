@@ -1,0 +1,7 @@
+== Wireframes
+:imagesdir: docs\requirements\images
+:data-uri:
+
+image: :Wireframe-login.png[]
+
+Für die anfängliche Darstellung des Tools werden folgende Wireframes benutzt die im laufe der verschiedenen Iterationen weitergeführt und angepasst. 
