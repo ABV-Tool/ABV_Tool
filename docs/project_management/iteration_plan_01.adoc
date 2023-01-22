@@ -13,13 +13,14 @@ include::../_includes/default-attributes.inc.adoc[]
 | Meilenstein | Datum
 
 | Beginn der Iteration | 12.12.2022
-| ... | -
+| Treffen mit Auftraggeber| 15.12.2022
 | Ende der Iteration | 21.12.2022
 |===
 
 
 == Wesentliche Ziele
 //Nennen Sie 1-5 wesentliche Ziele für die Iteration.
+* Rollenverteilung
 * Erstellung der Vision
 * Glossar erstellen
 * Use Case Modell inklusive Use Case Diagramm erstellen
@@ -42,7 +43,13 @@ _alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 |===
 | Aufgabe bzw. Beschreibung | Priorität | Schätzung der Größe (Punkte) |Status | Referenzen | geplante Iteration | Zugewiesen (Name) | Gearbeite Stunden | Schätzung der verbleibenden Stunden
 
-| Antrag stellen | x | x | x | x | x | x | x | x
+| Fragen an Kunden erstellen | hoch | x |erledigt| x | 1 | gesamtes Team | 1 | 0
+|Vision erarbeiten|niedrig|x|erledigt|x|2|Mirjam, Alexander|2|2
+|Glossar vervollständigen|niedrig|x|erledigt|x|3|x|1|1
+|Coach kontaktieren|mittel|x|erledigt|x|1|Marten|0,5|0
+|Test Cases überlegen|mittel|x|erledigt|x|1| Max, Huy|1|0
+
+
 |===
 
 
@@ -59,6 +66,9 @@ _alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 
 == Bewertungskriterien
 //Eine kurze Beschreibung, wie Erfüllung die o.g. Ziele bewertet werden sollen.
+* die Rollenverteilung ist dem gesamten Team klar
+* die Aufgabenstellung wurde von allen Teammitgliedern verstanden
+* Teammeetings werden wahrgenommen oder durch einzelne Mitglieder bei nichtwahrnehmung entschuldigt
 
 Beispiele:
 
@@ -74,9 +84,9 @@ Beispiele:
 |===
 | Assessment Ziel | Das kann die gesamte Iteration oder eine spezifische Komponente sein
 
-| Assessment Datum | ...
-| Teilnehmer | ...
-| Projektstatus	| Zum Beispiel ausgedrückt als rot, gelb oder grün.
+| Assessment Datum | 21.12.2022
+| Teilnehmer | gesamtes Team
+| Projektstatus	|grün
 |===
 
 * Beurteilung im Vergleich zu den Zielen
