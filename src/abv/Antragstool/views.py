@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Referat
+from .models import Referat, Sitzung
 
 
 def AppHome(request):
@@ -7,11 +7,25 @@ def AppHome(request):
 
 
 def ReferatListe(request):
+
     referate = Referat.objects.all()
     return render(
         request,
-        'Antragstool/list.html',
+        'Antragstool/referate.html',
         {
             'referate': referate
+        }
+    )
+
+
+def SitzungenVonReferat(request, sitzid):
+    sitzungen = Sitzung.objects.filter(refID=sitzid)
+    for s in sitzungen:
+        __import__('pprint').pprint(s)
+    return render(
+        request,
+        'Antragstool/sitzungen.html',
+        {
+            'sitzungen': sitzungen
         }
     )
