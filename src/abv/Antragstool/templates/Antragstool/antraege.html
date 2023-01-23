@@ -3,7 +3,7 @@
 <head>
     {% load static %}
     <meta charset="UTF-8">
-    <title>Antragsverwaltungstool</title>
+	<title>{{ sitzung.sitzDate }} - Antragsverwaltungstool</title>
     <link rel="icon" href="{% static 'icon.png' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'css/mainstyle.css' %}">
@@ -20,15 +20,15 @@
     <h1>Universelle Anträge:</h1>
 
     <div class = "w3-row" style="margin-bottom: 20px">
-		{% for sitzung in sitzungen %}
-        <a href="{% url 'AntraegeVonSitzung' sitzid=sitzung.sitzID %}"><div class="w3-half" style="margin-bottom: 10px;">
+		{% for antrag in antraege %}
+        <a href="{% url 'index' %}"><div class="w3-half" style="margin-bottom: 10px;">
             <div class="w3-card-4" style="margin-right: 10px">
                 <header class="w3-container" style="background-color: #F2AC2E;">
-				<h2>{{ sitzung.sitzDate }}</h2>
+				<h2>{{ antrag.astellerID.astellerVorname }} {{ antrag.astellerID.astellerName }}</h2>
                 </header>
 
                 <div class="w3-container w3-light-gray">
-					Test
+					{{ antrag.antragText }}
                 </div>
             </div>
         </div></a>

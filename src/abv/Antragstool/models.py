@@ -68,6 +68,6 @@ class Antrag(models.Model):
                                    on_delete=models.CASCADE,
                                    db_column='asteller_id')
     antragText = models.TextField(db_column='antrag_text')
-    antragSumme = MoneyField(default_currency='EUR',
-                             max_digits=10,
-                             db_column='antrag_summe')
+    #antragSumme = MoneyField(default_currency='EUR',
+    #                         max_digits=10,
+    #                         db_column='antrag_summe')
