@@ -14,6 +14,7 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 
 | Begriff | Definition und Erläuterung | Synonyme
 |Antragssteller|Person, die einen Antrag stellt|
+|Antragsstatus| Vor einer Sitzung: Antrag eingegereicht Nach einer Sitzung: Antrag angenommen, Antrag abgelehnt, Antrag vertagt| Antrag gestellt, Antrag beschlossen
 | Bereichsleitung | Personen, die Zuständigkeiten von Untergeordnete Bereichen von Referaten übernehmen. | (keine) 
 | Beschluss | getroffene Entscheidung zu einem Antrag in einer Plenumssitzung | (keine) 
 |Formalia |Tagesordnungspunkt |
@@ -21,7 +22,8 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 | Plenum | Gewählte Studenten, die ein Wahlrecht innerhalb des Sturas besitzen. | (keine)
 | Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Führungsgremium
 | Referatsleitung | Eine Person, die an der HTW die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
-| #Templates# |festgelegte Vorlage für Anträge |Antragsformulare
+|Tagesordnung |Liste mit Themen die in einer Sitzung besprochen werden und über die zum Teil abgestimmt wird|(keine)
+| #Templates# |festgelegte Vorlage für Anträge |Antragsformulare, Vorlagen
 
 |===
 
