@@ -125,29 +125,42 @@ Beschreiben Sie die Arbeitsumgebung des Nutzers. Hier sind einige Anregungen:
 *Antragsteller*
 
 //Zutreffendes angeben, nicht zutreffendes streichen oder auskommentieren
+
+* ein Antragsteller pro Antrag
+* Zahl der Antragsteller variiert, da alle natürlichen Personen antragsberechtigt sind
+* eher geringer Zeitaufwand, wenn man davon ausgeht, dass sich Antragsteller vorher inhaltlich mit seinem Anliegen beschäftigt hat und lediglich das Formular ausgefüllt werden muss
+* bei ersten Antragstellungen ist Zeitaufwand höger, da Antragssteller sich noch mit dem Tool vertraut machen muss, wird dann geringer
+* Antragsteller werden das Tool voraussichtlich als Webanwendung auf Rechnern verwenden
+* Antragstellung erfolgt nur online und über das #HTW Netz#
+
 . Anzahl der Personen, die an der Erfüllung der Aufgabe beteiligt sind. Ändert sich das? + 
-ein Antragsteller pro Antrag, ändert sich nicht 
 
 . Wie lange dauert die Bearbeitung der Aufgabe? Wie viel Zeit wird für jeden Arbeitsschritt benötigt? Ändert sich das? +
-Wie viel Zeit pro Antrag? ca.10 min, wenn man davon ausgeht das Vorarbeit geleistet wurde und nur Formular ausgefüllt werden muss
-. Gibt es besondere Umgebungsbedingungen, z.B. mobil, offline, Außeneinsatz, Touchbedienung, Nutzung durch seh- oder hörbeeinträchtigte Personen?
+//. Gibt es besondere Umgebungsbedingungen, z.B. mobil, offline, Außeneinsatz, Touchbedienung, Nutzung durch seh- oder hörbeeinträchtigte Personen?
 . Welche Systemplattformen werden heute eingesetzt? Welche sind es ggf. zukünftig?
 . Welche anderen Anwendungen sind im Einsatz? Muss ihre Anwendung mit diesen integriert werden?
 
-*Antragsverwaltung/Sitzungsverwaltung ...*
+*Antragsverwalter*
+
+* Es gibt einen festen Kreis an Personen im StuRa die für die Antragsverwaltung verantwortlich sind. Die Anzahl bleibt dabei im wesentlichen gleich und hat nur geringe Abweichungen.
+* Bearbeitungszeit richtet sich nach der Anzahl der eingegangenen Anträge sowie den zusätzlich in die Tagesordnung einzutragenden Informationen
+*derzeit erfolgt 
+*Die fertigen Beschlüsse sollen als PDF exportiert werden können.
+
 
 . Anzahl der Personen, die an der Erfüllung der Aufgabe beteiligt sind. Ändert sich das? + 
-ein Antragsteller pro Antrag, ändert sich nicht 
-
 . Wie lange dauert die Bearbeitung der Aufgabe? Wie viel Zeit wird für jeden Arbeitsschritt benötigt? Ändert sich das? +
-Wie viel Zeit für Vorbereitung der Sitzung mit Tagesordnung usw., wi viele Anträge pro Sitzung insbs. Finanzanträge und Dringlichkeitsanträge
 . Gibt es besondere Umgebungsbedingungen, z.B. mobil, offline, Außeneinsatz, Touchbedienung, Nutzung durch seh- oder hörbeeinträchtigte Personen?
 . Welche Systemplattformen werden heute eingesetzt? Welche sind es ggf. zukünftig? +
 Pentapad
 . Welche anderen Anwendungen sind im Einsatz? Muss ihre Anwendung mit diesen integriert werden?
 
+* Export in PDF der fertigen Beschlüsse und Tagesordnungen
+
+
 Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigramme, IT-Landschaft, ...) eingefügt werden, um die beteiligten Aufgaben und Rollen zu skizzieren.
 
+//Organigramm StuRa?
 
 == Produkt-/Lösungsüberblick
 
@@ -157,16 +170,28 @@ Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigra
 [%header, cols="4,1,4,1"]
 |===
 | Bedarf | Priorität | Features | Geplantes Release
-| Antragstellung | hoch | verschiedene Antragsfomulare ausfüllen und absenden (mit Anfügen von Anlagen) | xx
-| Antragsnummer vergeben | hoch | Nachdem der Antragsteller einen Antrag abgesendet hat, wird eine fortlaufende Antragsnummer vergeben und dem Antragsteller mitgeteilt | xx
-| Beschlussfassung | hoch | Änderung Antragstatus auf beschlossen, Abstimmungsergebnis soll erfassst werden | xx
-| automatische Tagesordnung erstellen | hoch | vor einer Sitzung wird aus allen eingegangen Anträgen eine Tagesordnung generiert | xx
-| Tagesordnung verwalten/bearbeiten | hoch | Möglichkeit nach der Generierung der Tagesordnung diese zu bearbeiten und weitere Themen hinzuzufügen (Formalia und ITOPs) | xx
-| Antrag auf Dringlichkeit | xx | bei verspäteter Antragstellung soll eine Prüfinstanz über die Dringlichkeit entscheiden | xx
-| Benutzeradministration | xx | xx | xx
+
+| Antragstellung | hoch | Möglichkeit verschiedene Antragsfomulare auszufüllen und abzusenden (mit Anfügen von Anlagen) | SoSe 23
+
+| Antragsnummer vergeben | hoch | Nachdem der Antragsteller einen Antrag abgesendet hat, wird eine fortlaufende Antragsnummer vergeben und dem Antragsteller mitgeteilt | SoSe 23
+
+| Beschlüsse einpflegen | hoch | Änderung Antragstatus auf beschlossen, abgelehnt oder vertagt, Abstimmungsergebnis soll erfassst werden | SoSe 23
+
+| automatische Tagesordnung erstellen | hoch | vor einer Sitzung wird aus allen eingegangen Anträgen eine Tagesordnung nach einer bestimmten Vorlage generiert | SoSe 23
+
+| Tagesordnung verwalten/bearbeiten | hoch | Möglichkeit nach der Generierung der Tagesordnung diese zu bearbeiten und weitere Themen hinzuzufügen (Formalia und ITOPs) | SoSe 23
+
+| Benutzeradministration | hoch | Vergabe eines Log-in für Antragsverwalter | SoSe 23
+
+| Antrag auf Dringlichkeit | mittel | bei verspäteter Antragstellung soll eine Prüfinstanz über die Dringlichkeit entscheiden | SoSe 23
+
+| Änderungsantrag stellen | mittel | Antrag auf Änderung einzelner Positionen zu einem schon vorhandenen Antrag stellen | SoSe 23
+
+| Benachrichtigung Antragsteller über Antragseingang und -status | mittel | Der Antragsteller soll nach Antragseingang eine E-Mail mit Antrag und Antragsnummer zugesendet bekommen sowie eine E-Mail erhalten, wenn sich der Antragsstatus geändert hat | SoSe 23
 
 |===
 
+//export der Beschlüsse als PDF
 
 == Zusätzliche Produktanforderungen
 //Zutreffendes angeben, nicht zutreffendes streichen oder auskommentieren
