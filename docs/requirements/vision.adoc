@@ -32,7 +32,7 @@ Dies ist nicht das erste Mal, dass ein Prototyp für eine solche Anwendung erste
 //Erläutern Sie kurz den Hintergrund, in dem das Projekt angesiedelt ist. Welches Problem soll gelöst werden, wie ist es entstanden? Welche Verbesserung wird angestrebt. Achten Sie darauf, eine fachliche (organisatorische, betriebswirtschaftliche) Perspektive einzunehmen.
 Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- und Beschlussverwaltung, da diese manuell erfolgt. Antragsnummern werden händisch vergeben und auch einheitliche bzw. unveränderliche Templates sind nicht vorhanden. Vor jeder Sitzung muss manuell eine Tagesordnung aus den gestellten Anträgen erstellt werden. Dies bindet viele zeitliche und personelle Ressourcen, was durch die Einführung eines Antrags- und Beschlussverwaltungstools reduziert werden soll. Besonders hervorzugeben ist hierbei die automatisierte Vergabe von Antragsnummern nach einen bestimmten Schema, da die händische Vergabe und Kontrolle besonders hohen Organisationsaufwand erfordert.   
 
-//genaueres zu den Vorlagen/Templates schreiben
+
 
 === Problem Statement
 //Stellen Sie zusammenfassend das Problem dar, das mit diesem Projekt gelöst werden soll. Das folgende Format kann dazu verwendet werden:
@@ -40,21 +40,10 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 [cols="1,3"]
 |===
 | Das Problem | es gibt keine zentrale Verwaltungsmöglichkeit, mit automatischer Vergabe der Antragsnummern und einheitlichen Templates
-| betrifft | alle Antragsteller, insbesondere aber das Präsidium
+| betrifft | alle Antragsteller sowie alles für die Antragsverwaltung zuständigen Personen
 | die Auswirkung davon ist | zeitaufwändige Verwaltung der gestellten Anträge und Beschlüsse
 | eine erfolgreiche Lösung wäre | zentrale Verwaltungsmöglichkeit mit einheitlichen Antragsformularen, eine fortlaufende, automatische Vergabe der Antragsnummern sowie automatisches generieren der Tagesordnung vor jeder Sitzung
 |===
-
-////
-Beispiel:
-[cols="1,3"]
-|===
-|Das Problem | aktuelle Informationen zum Stundenplan und Noten einfach zu erhalten
-|betrifft | Studierende der HTW Dresden
-|die Auswirkung davon ist | umständliche und aufwändige Suche nach Noten, Zeiten und Räumen
-|eine erfolgreiche Lösung wäre | die Zusammenführung und benutzer-individuelle Darstellung auf einem mobilen Endgerät
-|===
-////
 
 === Positionierung des Produkts
 //Ein Positionierung des Produkts beschreibt das Einsatzziel der Anwendung und die Bedeutung das Projekts an alle beteiligten Mitarbeiter.
@@ -65,8 +54,8 @@ Beispiel:
 |===
 | Für | StuRa der HTW Dresden
 | der | die Antrags- und Beschlussverwaltung vereinfachen und zentralisieren möchte
-| Das Produkt / die Lösung ist ein | Webanwendung
-| Die / Das | Templates für verschiedene Anträge bereitstellt, automatisiert Antragsnummern vergibt und eine automatische Tagesordnung generiert
+| Das Produkt / die Lösung ist eine | Webanwendung
+| Die | Templates für verschiedene Anträge bereitstellt, automatisiert Antragsnummern vergibt und eine automatische Tagesordnung generiert
 | Im Gegensatz zu | manueller Verwaltung mit händischer Vergabe der Antragsnummern und frei verändlichen Templates
 | Unser Produkt | ermöglicht eine zentrale Verwaltung des gesamten Prozesses.
 |===
@@ -187,7 +176,6 @@ Hinweise:
 
 . Führen Sie die wesentlichen anzuwendenden Standards, Hardware oder andere Plattformanforderungen, Leistungsanforderungen und Umgebungsanforderungen auf +
 . Definieren Sie grob die Qualitätsanforderungen für Leistung, Robustheit, Ausfalltoleranz, Benutzbarkeit und ähnliche Merkmale, die nicht von den genannten Features erfasst werden. +
-*Implementierung und Deployment Engineer*
 . Notieren Sie alle Entwurfseinschränkungen, externe Einschränkungen, Annahmen oder andere Abhängigkeiten, die wenn Sie geändert werden, das Visions-Dokument beeinflussen. Ein Beispiel wäre die Annahme, dass ein bestimmtes Betriebssystem für die vom System erforderliche Hardware verfügbar ist. Ist das Betriebssystem nicht verfügbar, muss das Visions-Dokument angepasst werden.
 . Definieren Sie alle Dokumentationsanforderugen, inkl. Benutzerhandbücher, Onlinehilfe, Installations-, Kennzeichnungs- und Auslieferungsanforderungen-
 . Definieren Sie die Priorität für diese zusätzlichen Produktanforderungen. Ergänzen Sie, falls sinnvoll, Angaben zu Stabilität, Nutzen, Aufwand und Risiko für diese Anforderungen.
