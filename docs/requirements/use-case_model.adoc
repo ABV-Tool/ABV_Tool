@@ -2,6 +2,7 @@
 Alexander Minukow <alexander.minukow@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>; Simon Voges <simon.voges@htw-dresden.de> 
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
+:imagesdir: images
 // Platzhalter für weitere Dokumenten-Attribute
 
 
@@ -12,12 +13,11 @@ Nachfolgend werden die identifizierten Use Cases (UC) aufgelistet und näher bes
 // Liste aller identifizierten Use Cases (priorisiert)
 * *link:use_case_01.inc.adoc#UC01[UC01]*: Antrag stellen
 * *link:use_case_02.inc.adoc#UC02[UC02]*: Tagesordnung erstellen 
+* *link:use_case_06.inc.adoc#UC06[UC06]*: Beschlüsse einpflegen
 * *link:use_case_03.inc.adoc#UC03[UC03]*: Tagesordnung abschließen
 * *link:use_case_04.inc.adoc#UC04[UC04]*: Plenumssitzung vertagen 
 * *link:use_case_05.inc.adoc#UC05[UC05]*: Antragsverwalter anmelden
-* *link:use_case_06.inc.adoc#UC06[UC06]*: Beschlüsse einpflegen
 
-//Benutzer registrieren?
 
 == Use Case Diagramm
 
@@ -77,3 +77,11 @@ include::use_case_05.inc.adoc[leveloffset=1]
 
 <<<
 include::use_case_06.inc.adoc[leveloffset=1]
+
+== Wireframe
+
+Für die Darstellung der Sitzungsverwaltung haben wir uns entschieden ein Wireframe zu erstellen, da das am wenigsten klar war wie das ganze Aussehen soll. 
+
+.Wireframe zu Sitzungsverwaltung 
+
+image::wireframe-sitzungsverwaltung.png[] 
