@@ -128,35 +128,22 @@ Beschreiben Sie die Arbeitsumgebung des Nutzers. Hier sind einige Anregungen:
 
 * ein Antragsteller pro Antrag
 * Zahl der Antragsteller variiert, da alle natürlichen Personen antragsberechtigt sind
-* eher geringer Zeitaufwand, wenn man davon ausgeht, dass sich Antragsteller vorher inhaltlich mit seinem Anliegen beschäftigt hat und lediglich das Formular ausgefüllt werden muss
-* bei ersten Antragstellungen ist Zeitaufwand höger, da Antragssteller sich noch mit dem Tool vertraut machen muss, wird dann geringer
-* Antragsteller werden das Tool voraussichtlich als Webanwendung auf Rechnern verwenden
-* Antragstellung erfolgt nur online und über das #HTW Netz#
-
-. Anzahl der Personen, die an der Erfüllung der Aufgabe beteiligt sind. Ändert sich das? + 
-
-. Wie lange dauert die Bearbeitung der Aufgabe? Wie viel Zeit wird für jeden Arbeitsschritt benötigt? Ändert sich das? +
-//. Gibt es besondere Umgebungsbedingungen, z.B. mobil, offline, Außeneinsatz, Touchbedienung, Nutzung durch seh- oder hörbeeinträchtigte Personen?
-. Welche Systemplattformen werden heute eingesetzt? Welche sind es ggf. zukünftig?
-. Welche anderen Anwendungen sind im Einsatz? Muss ihre Anwendung mit diesen integriert werden?
+* Aufwand pro Antrag variiert je nach Antragsart (unterschiedliche Anzahl an Feldern)
+* bei ersten Antragstellungen ist Zeitaufwand höher, da Antragssteller sich noch mit dem Tool vertraut machen muss, wird mit mehr Erfahrung geringer
+* Bereitstellung des Tools als Web-Applikation 
+* Antragstellung erfolgt online und ist nur im HTW-Netz bzw. über den HTW internen VPN möglich
 
 *Antragsverwalter*
 
-* Es gibt einen festen Kreis an Personen im StuRa die für die Antragsverwaltung verantwortlich sind. Die Anzahl bleibt dabei im wesentlichen gleich und hat nur geringe Abweichungen.
+* fester Kreis an Personen die für die Antragsverwaltung verantwortlich sind 
+* Anzahl bleibt im wesentlichen gleich bzw. schwankt nur geringfügig
 * Bearbeitungszeit richtet sich nach der Anzahl der eingegangenen Anträge sowie den zusätzlich in die Tagesordnung einzutragenden Informationen
-*derzeit erfolgt 
-*Die fertigen Beschlüsse sollen als PDF exportiert werden können.
-
-
-. Anzahl der Personen, die an der Erfüllung der Aufgabe beteiligt sind. Ändert sich das? + 
-. Wie lange dauert die Bearbeitung der Aufgabe? Wie viel Zeit wird für jeden Arbeitsschritt benötigt? Ändert sich das? +
-. Gibt es besondere Umgebungsbedingungen, z.B. mobil, offline, Außeneinsatz, Touchbedienung, Nutzung durch seh- oder hörbeeinträchtigte Personen?
-. Welche Systemplattformen werden heute eingesetzt? Welche sind es ggf. zukünftig? +
-Pentapad
-. Welche anderen Anwendungen sind im Einsatz? Muss ihre Anwendung mit diesen integriert werden?
-
-* Export in PDF der fertigen Beschlüsse und Tagesordnungen
-
+* Bereitstellung des Tools als Web-Applikation 
+* Design des Vorgängerprojektes wird größtenteils übernommen
+* Antragsverwaltung kann nur mit zugewiesenem Log-in vom Systemadminitrator erfolgen
+* Anmeldung kann nur im HTW-Netz bzw. über den HTW internen VPN erfolgen
+* Beschlüsse sollen als PDF exportiert werden können
+* #bisher wurde für das erstellen der Tagesordnung Pentapad (etherpad) verwendet -> wird von uns ins Tool integriert zur Erhöhung der Flexibilität#
 
 Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigramme, IT-Landschaft, ...) eingefügt werden, um die beteiligten Aufgaben und Rollen zu skizzieren.
 
@@ -199,7 +186,6 @@ Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigra
 Hinweise:
 
 . Führen Sie die wesentlichen anzuwendenden Standards, Hardware oder andere Plattformanforderungen, Leistungsanforderungen und Umgebungsanforderungen auf +
-*Implementierung und Deployment Engineer*
 . Definieren Sie grob die Qualitätsanforderungen für Leistung, Robustheit, Ausfalltoleranz, Benutzbarkeit und ähnliche Merkmale, die nicht von den genannten Features erfasst werden. +
 *Implementierung und Deployment Engineer*
 . Notieren Sie alle Entwurfseinschränkungen, externe Einschränkungen, Annahmen oder andere Abhängigkeiten, die wenn Sie geändert werden, das Visions-Dokument beeinflussen. Ein Beispiel wäre die Annahme, dass ein bestimmtes Betriebssystem für die vom System erforderliche Hardware verfügbar ist. Ist das Betriebssystem nicht verfügbar, muss das Visions-Dokument angepasst werden.
@@ -209,5 +195,10 @@ Hinweise:
 [%header, cols="4,1,1"]
 |===
 | Anforderung | Priorität | Geplantes Release
-| Einfache und intuitive Bedienbarkeit | Hoch | xx
+| kein Java verwenden | Hoch | xx
+| muss auf Unix/Linux laufen | Hoch | xx
+| freie Lizenz benutzen (z.B. GPL, MIT, Apache) | Hoch | xx
+| muss nach Anleitung selbst installierbar sein | Hoch | xx
+| Einfache Bedienbarkeit | Hoch | xx
+
 |===
