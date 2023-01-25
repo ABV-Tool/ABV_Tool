@@ -58,7 +58,7 @@ Zwischen `include::...` und dem darauf folgenden `<<<` muss sich eine Leerzeile 
 Ein `include` entfernt am Anfang und Ende eine möglich Leerzeile, was in Kombination mit `<<<` zu Fehlern führen kann.
 ////
 
-== Use Cases
+//== Use Cases
 
 <<<
 include::use_case_01.inc.adoc[leveloffset=1]
