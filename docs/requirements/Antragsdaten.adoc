@@ -104,52 +104,53 @@ Alle Anträge, bei denen der StuRa Geld bereitstellen soll, gehören hier her. D
 Jede Person, die im StuRa mitwirken möchte, kann Beratendes Mitglied werden. Dies ist unter anderem die Voraussetzung dafür, Zugriff auf die Ressourcen des StuRa zu erhalten, Mitwirkung finanziell entschädigt zu bekommen oder eine Nichtanrechnung von Semestern nach §20 Abs. 4 SächsHSFG zu erhalten, wenn nicht bereits andere Ämter in der studentischen Interessenvertretung ausgeübt werden. Allgemein ist eine Wahl zum Beratenden Mitglied meist der niedrigschwellige Einstieg in die Mitwirkung beim StuRa.
 
 //Strukturierung
-[%header]
+[%header, cols="20,50,~,~"]
 |===
-| Bezeichnung | Format | Gültigkeitsregeln | Aliase
+| Bezeichnung | Details |  Format | Gültigkeitsregeln
 
-| *Vorstellung der Person* + 
+| *Vorstellung der Person* 
+
+a| 
 - Mitgliedschaften in weiteren Organisationen +
 - Umfang der Funktionsausübung +
 - Bereitschaft zu weiterem Engagement +
 - Unterstützungs-bereitschaft 
 | String
 | #max Zeichen#
-| 
 |===
 
 === Antrag zu Stelle/Amt
 
 Wer auf ein konkretes Amt im StuRa kandidieren möchte, kann hier einen Antrag stellen. Eine vorherige Wahl zum Beratenden Mitglied ist nicht notwendig. Es sei auf die Stellenausschreibungen hingewiesen, die der StuRa auf seiner Webseite veröffentlicht.
 Dieser Antrag kann nicht verwendet werden, um auf ein Amt der akademischen Selbstverwaltung zu kandideren, wie zum Beispiel dem Senat, dem Fakultätsrat oder einer Studienkommission! Die Adressaten solcher Kandidaturen sind in der Regel die jeweiligen Vorsitzenden der Gremien. Allerding können hier auch Anträge gestellt werden, als Wahlvorschlag des StuRa auf ein solches Amt zu kandidieren. Fragen hierzu können am besten an stura@stura.htw-dresden.de gestellt werden.
-Ebenso kann hiermit nicht als Stimmberechtigtes Mitglied im Plenum kandidert werden. Dies ist nur nach vorheriger Wahlausschreibung durch die Wahlleitung der Studentinnen- und Studentenschaft möglich. Kandidaturen für das Plenum des StuRa müssen an die Wahlleiterin der Studentinnen- und Studentenschaft, erreichbar unter wahl@stura.htw-dresden, gerichtet werden.
+Ebenso kann hiermit nicht als Stimmberechtigtes Mitglied im Plenum kandidert werden. Dies ist nur nach vorheriger Wahlausschreibung durch die Wahlleitung der Studentinnen- und Studentenschaft möglich. Kandidaturen für das Plenum des StuRa müssen an die Wahlleiterin der Studentinnen- und Studentenschaft, erreichbar unter wahl@stura.htw-dresden.de, gerichtet werden.
 
-[%header]
+[%header, cols="20,50,~,~"]
 |===
-| Bezeichnung | Format | Gültigkeitsregeln | Aliase
+| Bezeichnung | Details | Format | Gültigkeitsregeln
 
-| StuRa Mitglied (Ja/Nein)
+| *StuRa Mitglied* (Ja/Nein)
+| Ist der Antragssteller bereits Mitglied im StuRa?
 | boolean
-| Auswahlfeld mit Ja/Nein
-| 
+| Pflichtfeld
 
-|*Vorstellung der Person* + 
-- Mitgliedschaften in weiteren Organisationen +
-- Umfang der Funktionsausübung +
-- Bereitschaft zu weiterem Engagement +
+|*Vorstellung der Person*
+a|
+- Mitgliedschaften in weiteren Organisationen
+- Umfang der Funktionsausübung
+- Bereitschaft zu weiterem Engagement
 - Unterstützungs-bereitschaft 
 | String
-| 
-| 
+| Pflichtfeld
 
 
-| *Allgemeine Fragen zum speziellen Amt:*
-Wie bewertest du die Ausschreibung für das Amt? +
-- Wie bewertest du die Arbeit deiner VorgängerInnen? +
+| *Allgemeine Fragen zum speziellen Amt*
+a| 
+- Wie bewertest du die Ausschreibung für das Amt? 
+- Wie bewertest du die Arbeit deiner VorgängerInnen? 
 - Welche Themen würdest du in der Amtszeit in den Fordergrund stellen? 
 | String
-| 
-| 
+| Pflichtfeld
 
 |===
 
@@ -195,4 +196,3 @@ Dieses Antragsformular richtet sich vor allem an die Dekan:innen und Studiendeka
 | 
 
 |===
-

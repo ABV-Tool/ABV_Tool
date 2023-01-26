@@ -6,7 +6,7 @@ include::../_includes/default-attributes.inc.adoc[]
 
 
 == Einführung
-In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fachdomäne) der <Projektthema-Systems> definiert. Zur besseren Übersichtlichkeit sind Begriffe, Abkürzungen und Datendefinitionen gesondert aufgeführt.
+In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fachdomäne) des Antrags- und Beschlussverwaltungstools definiert. Zur besseren Übersichtlichkeit sind Begriffe, Abkürzungen und Datendefinitionen gesondert aufgeführt.
 
 == Begriffe
 [%header]
@@ -73,7 +73,7 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 | Login
 
 | Antragsdaten
-| Sammlung aller eingegebenen Daten, siehe <<Antragsdaten.adoc>>
+| Sammlung aller eingegebenen Daten, siehe <<#Antragsdaten, Antragsdaten>>
 | 
 | xx
 | xx
