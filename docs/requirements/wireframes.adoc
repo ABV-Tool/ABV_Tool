@@ -19,7 +19,7 @@ image:{imagesdir}:wireframe_sitzungsverwaltung.png[]
 
 _Erklärung:_
 
-Über die Sitzungsverwaltung können alle Anträge betrachtet werden und eine Tagesordnung für die kommende Plenumssitzung erstellt werden. Anträge die in der Sitzung besprochen werden sollen können ausgewehlt werden. Tagesordnungen für kommende Sitzungen können schon im voraus entschieden werden.
+Über die Sitzungsverwaltung können alle Anträge betrachtet werden und eine Tagesordnung für die kommende Plenumssitzung erstellt werden sowie auch bearbeitet werden. Anträge die in der Sitzung besprochen werden sollen können ausgewehlt werden. Tagesordnungen für kommende Sitzungen können schon im voraus entschieden werden.
 
 
 
