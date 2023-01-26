@@ -6,8 +6,7 @@ Das Repository enthält die Vorlage einer Projektstruktur und Template-Dokumente
 - Templates der benötigten OpenUP-Dokumente (AsciiDoc-Format)
 - Vorlage für die Belegabgabe in SE I (AsciiDoc-Format)
 
-_Hinweis: Dieses Repository enthält keinen Code._
-
+_Hinweis: Dieses Repository enthält Code._
 
 
 **Inhaltsverzeichnis**
@@ -135,7 +134,7 @@ Folgende Schritte sind für eine Belegabgabe durchzuführen:
     ```
     oder:
     ```sh
-    $ asciidoctor -r asciidoctor-pdf -b pdf se1_belegabgabe_t00.adoc
+    $ asciidoctor -r asciidoctor-pdf -r asciidoctor-diagram  -b pdf se1_belegabgabe_t00.adoc
     ```
 5. Prüfen Sie, dass das korrekte **Projektthema**, alle **Teammitglieder** und das **Abgabedatum** auf dem Deckblatt stehen und dass ebefalls alle erforderlichen **Dokumente** mit ihren Inhalten enthalten sind.
 
