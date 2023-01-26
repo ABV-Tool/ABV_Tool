@@ -91,7 +91,7 @@ Beispiel Produkt:
 | Stellen über das System Anträge die anschließend im Plenum beraten werden
 
 | Antragsverwalter
-| 
+| Mitglied des StuRa der für Antrags- und Beschlussverwaltung verantwortlich ist,  insbesondere aber Referatsleitungen
 | erstellt aus eingegangen Anträgen die Tagesordnung und verwaltet die Sitzungen
 
 |Präsidium
@@ -99,7 +99,7 @@ Beispiel Produkt:
 |Verantwortlich von Antragstellung bis Ausfertigung der Beschlüsse
 
 |Systemadminstrator
-|
+|Person die innerhalb des StuRa mit der Verwaltung der Serverstruktur beauftragt ist
 |
 
 |StuRa als BeschlussorangOrdnungen des StuRa insb. Geschäftsordnung
@@ -132,11 +132,6 @@ Beschreiben Sie die Arbeitsumgebung des Nutzers. Hier sind einige Anregungen:
 * Antragsverwaltung kann nur mit zugewiesenem Log-in vom Systemadminitrator erfolgen
 * Anmeldung kann nur im HTW-Netz bzw. über den HTW internen VPN erfolgen
 * Beschlüsse sollen als PDF exportiert werden können
-* #bisher wurde für das erstellen der Tagesordnung Pentapad (etherpad) verwendet -> wird von uns ins Tool integriert zur Erhöhung der Flexibilität#
-
-Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigramme, IT-Landschaft, ...) eingefügt werden, um die beteiligten Aufgaben und Rollen zu skizzieren.
-
-//Organigramm StuRa?
 
 == Produkt-/Lösungsüberblick
 
@@ -151,19 +146,21 @@ Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigra
 
 | Antragsnummer vergeben | hoch | Nachdem der Antragsteller einen Antrag abgesendet hat, wird eine fortlaufende Antragsnummer vergeben und dem Antragsteller mitgeteilt | SoSe 23
 
-| Beschlüsse einpflegen | hoch | Änderung Antragstatus auf beschlossen, abgelehnt oder vertagt, Abstimmungsergebnis soll erfassst werden | SoSe 23
+
 
 | automatische Tagesordnung erstellen | hoch | vor einer Sitzung wird aus allen eingegangen Anträgen eine Tagesordnung nach einer bestimmten Vorlage generiert | SoSe 23
 
 | Tagesordnung verwalten/bearbeiten | hoch | Möglichkeit nach der Generierung der Tagesordnung diese zu bearbeiten und weitere Themen hinzuzufügen (Formalia und ITOPs) | SoSe 23
 
-| Benutzeradministration | hoch | Vergabe eines Log-in für Antragsverwalter | SoSe 23
+| Benutzeradministration | mittel | Vergabe eines Log-in für Antragsverwalter | SoSe 23
 
 | Antrag auf Dringlichkeit | mittel | bei verspäteter Antragstellung soll eine Prüfinstanz über die Dringlichkeit entscheiden | SoSe 23
 
 | Änderungsantrag stellen | mittel | Antrag auf Änderung einzelner Positionen zu einem schon vorhandenen Antrag stellen | SoSe 23
 
-| Benachrichtigung Antragsteller über Antragseingang und -status | mittel | Der Antragsteller soll nach Antragseingang eine E-Mail mit Antrag und Antragsnummer zugesendet bekommen sowie eine E-Mail erhalten, wenn sich der Antragsstatus geändert hat | SoSe 23
+| Beschlüsse einpflegen | mittel | Änderung Antragstatus auf beschlossen, abgelehnt oder vertagt, Abstimmungsergebnis soll erfassst werden | SoSe 23
+
+| Benachrichtigung Antragsteller über Antragseingang und -status | niedrig | Der Antragsteller soll nach Antragseingang eine E-Mail mit Antrag und Antragsnummer zugesendet bekommen sowie eine E-Mail erhalten, wenn sich der Antragsstatus geändert hat | SoSe 23
 
 |===
 
@@ -171,14 +168,6 @@ Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigra
 
 == Zusätzliche Produktanforderungen
 //Zutreffendes angeben, nicht zutreffendes streichen oder auskommentieren
-
-Hinweise:
-
-. Führen Sie die wesentlichen anzuwendenden Standards, Hardware oder andere Plattformanforderungen, Leistungsanforderungen und Umgebungsanforderungen auf +
-. Definieren Sie grob die Qualitätsanforderungen für Leistung, Robustheit, Ausfalltoleranz, Benutzbarkeit und ähnliche Merkmale, die nicht von den genannten Features erfasst werden. +
-. Notieren Sie alle Entwurfseinschränkungen, externe Einschränkungen, Annahmen oder andere Abhängigkeiten, die wenn Sie geändert werden, das Visions-Dokument beeinflussen. Ein Beispiel wäre die Annahme, dass ein bestimmtes Betriebssystem für die vom System erforderliche Hardware verfügbar ist. Ist das Betriebssystem nicht verfügbar, muss das Visions-Dokument angepasst werden.
-. Definieren Sie alle Dokumentationsanforderugen, inkl. Benutzerhandbücher, Onlinehilfe, Installations-, Kennzeichnungs- und Auslieferungsanforderungen-
-. Definieren Sie die Priorität für diese zusätzlichen Produktanforderungen. Ergänzen Sie, falls sinnvoll, Angaben zu Stabilität, Nutzen, Aufwand und Risiko für diese Anforderungen.
 
 [%header, cols="4,1,1"]
 |===
@@ -188,5 +177,6 @@ Hinweise:
 | freie Lizenz benutzen (z.B. GPL, MIT, Apache) | Hoch | xx
 | muss nach Anleitung selbst installierbar sein | Hoch | xx
 | Einfache Bedienbarkeit | Hoch | xx
+| Dokumentation in Wiki des StuRa | Niedrig | xx
 
 |===
