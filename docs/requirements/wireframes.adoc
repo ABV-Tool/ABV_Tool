@@ -1,21 +1,20 @@
 == Wireframes
-:imagesdir: ./images
 :data-uri:
 
+Um uns bereits vor der Implementierung der Benutzeroberfläche Gedanken zu deren Umsetzung zu machen, verwenden wir hier schematisch Wireframes.
 
-Für die anfängliche Darstellung des Tools werden folgende Wireframes benutzt die im laufe der verschiedenen Iterationen weitergeführt und angepasst. 
+Diese werden im Laufe der Entwicklung stetig und besonders nach Absprache mit den Stakeholdern weiterentwickelt.
 
+=== WF01 => Benutzer Login
+image::wireframe-login.png[title="Entwurf Sitzungsverwaltung"]
 
-=== WF1 Benutzer Login
-image: :../wireframe_login.png[]
-
-_Erklärung:_ 
+_Erklärung:_  
 
 Systemadministratoren benötigen einen Login um zugriff auf das Tool zu bekommen, um features wie Tagesordnung erstellen benutzen zu können.
 
-=== WF2 Tagesordnung erstellen 
+=== WF02 => Sitzungsverwaltung
 
-image:{imagesdir}:wireframe_sitzungsverwaltung.png[]
+image::wireframe-sitzungsverwaltung.png[title="Entwurf Sitzungsverwaltung"]
 
 _Erklärung:_
 

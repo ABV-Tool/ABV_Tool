@@ -2,6 +2,7 @@
 Alexander Minukow <alexander.minukow@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>; Simon Voges <simon.voges@htw-dresden.de> 
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
+:imagesdir: ./images
 // Platzhalter für weitere Dokumenten-Attribute
 
 
@@ -10,12 +11,15 @@ Nachfolgend werden die identifizierten Use Cases (UC) aufgelistet und näher bes
 
 == Identifizierte Use Cases
 // Liste aller identifizierten Use Cases (priorisiert)
-* *link:use_case_01.inc.adoc#UC01[UC01]*: Antrag stellen
-* *link:use_case_02.inc.adoc#UC02[UC02]*: Tagesordnung erstellen 
-* *link:use_case_06.inc.adoc#UC06[UC06]*: Beschlüsse einpflegen
-* *link:use_case_03.inc.adoc#UC03[UC03]*: Tagesordnung abschließen
-* *link:use_case_04.inc.adoc#UC04[UC04]*: Plenumssitzung vertagen 
-* *link:use_case_05.inc.adoc#UC05[UC05]*: Antragsverwalter anmelden
+
+Die Use Cases wollen wir in folgender Priorität umsetzen und implementieren:
+
+* *UC01*: Antrag stellen
+* *UC02*: Tagesordnung erstellen 
+* *UC06*: Beschlüsse einpflegen
+* *UC03*: Tagesordnung abschließen
+* *UC04*: Plenumssitzung vertagen 
+* *UC05*: Antragsverwalter anmelden
 
 
 == Use Case Diagramm
@@ -35,7 +39,7 @@ package Use-Cases {
     usecase "Beschlüsse einpflegen" as UC6
     usecase "Tagesordnung abschließen" as UC3
     usecase "Plenumssitzung vertagen" as UC4
-    usecase "Benutzer administrieren" as UC5
+    usecase "Antragsverwalter anmelden" as UC5
 }
 AS --> UC1
 AV --> UC2
@@ -60,27 +64,22 @@ Ein `include` entfernt am Anfang und Ende eine möglich Leerzeile, was in Kombin
 //== Use Cases
 
 <<<
-include::use_case_01.inc.adoc[leveloffset=1]
+include::use_case_01.inc.adoc[]
 
 <<<
-include::use_case_02.inc.adoc[leveloffset=1]
+include::use_case_02.inc.adoc[]
 
 <<<
-include::use_case_03.inc.adoc[leveloffset=1]
+include::use_case_03.inc.adoc[]
 
 <<<
-include::use_case_04.inc.adoc[leveloffset=1]
+include::use_case_04.inc.adoc[]
 
 <<<
-include::use_case_05.inc.adoc[leveloffset=1]
+include::use_case_05.inc.adoc[]
 
 <<<
-include::use_case_06.inc.adoc[leveloffset=1]
+include::use_case_06.inc.adoc[]
 
-== Wireframe
-
-Für die Darstellung der Sitzungsverwaltung haben wir uns entschieden ein Wireframe zu erstellen, da das am wenigsten klar war wie das ganze Aussehen soll. 
-
-.Wireframe zu Sitzungsverwaltung 
-image::wireframe-sitzungsverwaltung.png[] 
-
+<<<
+include::wireframes.adoc[]
