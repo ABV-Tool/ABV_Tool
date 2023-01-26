@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== <<UC02, UC02>> => Tagesordnung erstellen
+== UC02 => Tagesordnung erstellen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
@@ -55,6 +55,10 @@ Der Use Case wird in Schritt 3 fortgesetzt.
 ==== Erfolgreiche generierung der Tagesordnung
 - *SC1:* Frau Y möchte die nächste Plenumssitzung vorbereiten. Sie wählt die gewünschte Sitzung aus und klickt auf Tagesordnung generieren. Es wird erfolgreich eine Tagesordnung mit mehreren Finanzanträgen sowie sonstigen Anträgen generiert.
 
+////
+
+=> Platzhalter für Beleg entfernt
+
 === Nachbedingungen
 //Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
 
@@ -64,3 +68,5 @@ Der Use Case wird in Schritt 3 fortgesetzt.
 //Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
 
 ==== <Besondere Anforderung 1>
+
+////

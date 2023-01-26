@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== <<UC03, UC03>> => Tagesordnung abschließen
+== UC03 => Tagesordnung abschließen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
@@ -37,6 +37,10 @@ Ist zuständig für die jeweilige Plenumssitzung.
 . Sitzung wird als Abgeschlossen makiert.
 . Der Use Case ist beendet.
 
+////
+
+=> Platzhalter für Beleg entfernt
+
 === Wesentliche Szenarios
 //Szenarios sind konkrete Instanzen eines Use Case, d.h. mit einem konkreten Akteur und einem konkreten Durchlauf der o.g. Flows. Szenarios können als Vorstufe für die Entwicklung von Flows und/oder zu deren Validierung verwendet werden.
 
@@ -56,3 +60,5 @@ Ist zuständig für die jeweilige Plenumssitzung.
 //Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
 
 ==== <Besondere Anforderung 1>
+
+////
