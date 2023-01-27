@@ -6,7 +6,9 @@ include::../_includes/default-attributes.inc.adoc[]
 
 
 == Domain Diagramm
+
+Wir haben uns auf folgenden Entwurf für unser Domain-Model festgelegt:
+
 image::domain-model.png[Entwurf Domain Diagramm]
 
-
-
+Dieser Entwurf wird noch stetig im Laufe des Projektes weiterentwickelt, spiegelt aber im Moment bereits den Geschäftsprozess unserer Anwendung wieder.
