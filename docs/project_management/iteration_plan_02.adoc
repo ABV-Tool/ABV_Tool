@@ -85,3 +85,9 @@ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 
 * Andere Belange und Abweichungen
 //Führen Sie weitere Themen auf, für die eine Bewertung durchgeführt wurde. Beispiele sind Finanzen, Zeitabweichungen oder Feedback von Stakeholdern, die nicht bereits an anderer Stelle dokumentiert wurden.
+
+== Github Projekt
+
+Wir haben folgende Issues innerhalb der 2. Iteration bearbeitet und sind zu diesem Endstand gelangt.
+
+image::iteration-02.png[]
