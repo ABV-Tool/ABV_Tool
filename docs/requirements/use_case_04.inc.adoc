@@ -17,7 +17,7 @@ Ist zuständig für die jeweilige Plenumssitzung.
 
 - Antragsverwalter muss angemeldet sein.
 
-- System hat Plenumssitzung bereits angelegt. (#Plenumssitzungen werden 4 Wochen in voraus vom System generiert.#)
+- System hat Plenumssitzung bereits angelegt. (Plenumssitzungen werden 4 Wochen in voraus vom System generiert.)
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")

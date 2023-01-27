@@ -25,7 +25,7 @@ Leitet die Sitzung und ist verantwortlich für die Tagesordnung.
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der Antragsverwalter #in der Sitzungsverwaltung# auf Tagesordnung generieren klickt.
+. Der Use Case beginnt, wenn der Antragsverwalter in der Sitzungsverwaltung auf Tagesordnung generieren klickt.
 
 . Es wird ein ein Markdown-Dokument zum Ausfüllen erstellt und es erfolgt eine Auflistung aller bereits eingegangenen Anträge nach Kategorie und Datum.
 //siehe Wireframe - Tagesordnung 

@@ -1,5 +1,5 @@
 = Projektplan: {project-name}
-Vorname Nachname <email@domain.org>; Vorname2 Nachname2 <email2@domain.org>; Vorname3 Nachname3 <email3@domain.org>
+Marten Petters <marten.petters@htw-dresden.de>
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
 // Platzhalter für weitere Dokumenten-Attribute
@@ -16,14 +16,15 @@ Der StuRa hat aktuell einen sehr hohen Vewaltungsaufwand mit den Antrags- und Be
 * Huy Nguyen			*Entwurf*/Programmierung
 * Simon Voges			*Deployment-Engineer*
 * Max Patecky			*Tester* / Technical-Writer
-* Mirjam Müller       *Analyse* / Teamleitung
+* Mirjam Müller         *Analyse* / Teamleitung
 * Marten Petters	    *Teamleitung*	
 
 Das Team trifft sich regelmäßig jede Woche für neue Erkenntnisse und für den gegenseitigen Austausch. Die Termine werden individuell abgestimmt. 
+
 == Praktiken und Bewertung
 //Describe or reference which management and technical practices will be used in the project, such as iterative development, continuous integration, independent testing and list any changes or particular configuration to the project. Specify how you will track progress in each practice. As an example, for iterative development the team may decide to use iteration assessments and iteration burndown reports and collect metrics such as velocity (completed work item points/ iteration).
 
-Das Team nutzt Open Up für die Organisation des Projektes. In allen Meetings wird Protokoll geführt, ein Teammitglied ist dafür verantwortlich, das restliche Team kontroliert dieses. Alle Änderungen und Vorhaben werden umgeht mit dem Kunden abgeklärt und durch diesen bestätigt. Unser Kunden Kontakt ist Theresa Minister.
+Das Team nutzt Open Up für die Organisation des Projektes. In allen Meetings wird Protokoll geführt, ein Teammitglied ist dafür verantwortlich, das restliche Team kontrolliert dieses. Alle Änderungen und Vorhaben werden umgehend mit dem Kunden abgeklärt und durch diesen bestätigt. Unser Kunden Kontakt ist Theresa Minister.
 
 
 == Meilensteine und Ziele
@@ -39,7 +40,7 @@ Das Team nutzt Open Up für die Organisation des Projektes. In allen Meetings wi
 
 | I1
 |
-* Kennlerenen und Rollenverteilung
+* Kennenlerenen und Rollenverteilung
 * Kundenwünsche kennenleren
 | 12.12.2022/ 21.12.2022
 | 15

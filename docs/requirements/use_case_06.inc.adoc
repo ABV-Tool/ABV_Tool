@@ -24,7 +24,7 @@ Ist zuständig für die jeweilige Plenumssitzung.
 
 - Es muss mindestens ein Antrag gestellt worden sein.
 
-- #Die Sitzung muss stattgefunden haben.#
+- Die Sitzung muss stattgefunden haben.
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")

@@ -1,5 +1,5 @@
 = Iteration Plan 01: {project-name}
-Vorname Nachname <email@domain.org>; Vorname2 Nachname2 <email2@domain.org>; Vorname3 Nachname3 <email3@domain.org>
+Marten Petters <marten.petters@htw-dresden.de>
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
 // Platzhalter für weitere Dokumenten-Attribute
@@ -31,9 +31,7 @@ include::../_includes/default-attributes.inc.adoc[]
 == Aufgabenzuordnung
 //Dieser Abschnitt sollte einen Verweis auf die Work Items List enthalten, die die für diese Iteration vorgesehenen Aufgaben dokumentiert sowie die Zuordnung dieser Aufgaben zu Teammitgliedern. Alternativ können die Aufgaben für die Iteration und die Zuordnung zu Teammitgliedern in nachfolgender Tabelle dokumentiert werden - je nach dem, was einfacher für die Projektbeteiligten einfacher zu finden ist.
 
-Die in dieser Iteration geplanten Aufgaben sind in der Work Items List dargestellt (hier Verweis einfügen).
-
-_alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
+Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 [%header, cols="3,1,1,1,2,1,1,1,1"]
 |===
 | Aufgabe bzw. Beschreibung | Priorität | Schätzung der Größe (Punkte) |Status | Referenzen | geplante Iteration | Zugewiesen (Name) | Gearbeite Stunden | Schätzung der verbleibenden Stunden
@@ -50,22 +48,22 @@ _alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 |===
 
 
-== Probleme (optional)
+//== Probleme (optional)
 //Optional: Führen Sie alle Probleme auf, die in dieser Iteration adressiert werden sollen. Aktualisieren Sie den Status, wenn neue Probleme bei den täglichen / regelmäßigen Abstimmungen berichtet werden.
 
-[%header, cols="2,1,3"]
-|===
-| Problem | Status | Notizen
+//[%header, cols="2,1,3"]
+//|===
+//| Problem | Status | Notizen
 
-| x | x | x
-|===
+//| x | x | x
+//|===
 
 
 == Bewertungskriterien
 //Eine kurze Beschreibung, wie Erfüllung die o.g. Ziele bewertet werden sollen.
 * die Rollenverteilung ist dem gesamten Team klar
 * die Aufgabenstellung wurde von allen Teammitgliedern verstanden
-* Teammeetings werden wahrgenommen oder durch einzelne Mitglieder bei nichtwahrnehmung entschuldigt
+* Teammeetings werden wahrgenommen oder durch einzelne Mitglieder bei Nichtwahrnehmung entschuldigt
 
 
 

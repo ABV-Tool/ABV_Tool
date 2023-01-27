@@ -1,5 +1,5 @@
 = Iteration Plan 02: {project-name}
-Vorname Nachname <email@domain.org>; Vorname2 Nachname2 <email2@domain.org>; Vorname3 Nachname3 <email3@domain.org>
+Marten Petters <marten.petters@htw-dresden.de>
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
 // Platzhalter für weitere Dokumenten-Attribute
@@ -25,16 +25,10 @@ include::../_includes/default-attributes.inc.adoc[]
 * Risikoliste erstellen
 * Dokumentation
 
-
-
-
-
 == Aufgabenzuordnung
 //Dieser Abschnitt sollte einen Verweis auf die Work Items List enthalten, die die für diese Iteration vorgesehenen Aufgaben dokumentiert sowie die Zuordnung dieser Aufgaben zu Teammitgliedern. Alternativ können die Aufgaben für die Iteration und die Zuordnung zu Teammitgliedern in nachfolgender Tabelle dokumentiert werden - je nach dem, was einfacher für die Projektbeteiligten einfacher zu finden ist.
 
-Die in dieser Iteration geplanten Aufgaben sind in der Work Items List dargestellt (hier Verweis einfügen).
-
-_alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
+Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 [%header, cols="3,1,1,1,2,1,1,1,1"]
 |===
 | Aufgabe bzw. Beschreibung | Priorität | Schätzung der Größe (Punkte) |Status | Referenzen | geplante Iteration | Zugewiesen (Name) | Gearbeite Stunden | Schätzung der verbleibenden Stunden
@@ -47,32 +41,25 @@ _alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 |Architecture Notebook|mittel|x|erledigt|x|1| Göran, Huy|2|1
 |Kundenmeeting vereinbaren|wichtig|x|erledigt|x|1|Göran|0,5|0
 |Vision vervollständigen|mittel|x|erledigt|x|1|Alex, Mirjam|1|1
-
-
 |===
 
 
-== Probleme (optional)
+//== Probleme (optional)
 //Optional: Führen Sie alle Probleme auf, die in dieser Iteration adressiert werden sollen. Aktualisieren Sie den Status, wenn neue Probleme bei den täglichen / regelmäßigen Abstimmungen berichtet werden.
 
-[%header, cols="2,1,3"]
-|===
-| Problem | Status | Notizen
+//[%header, cols="2,1,3"]
+//|===
+//| Problem | Status | Notizen
 
-| x | x | x
-|===
+//| x | x | x
+//|===
 
 
 == Bewertungskriterien
 //Eine kurze Beschreibung, wie Erfüllung die o.g. Ziele bewertet werden sollen.
 * jedes Teammitglied weiß was seine Aufgaben sind
-* Zustimmung der Use Cases durch den Kuden
+* Zustimmung der Use Cases durch den Kunden
 * Vorgehen durch Coach bestätigt
-
-
-
-
-
 
 == Assessment
 //In diesem Abschnitt werden die Ergebnisse und Maßnahmen der Bewertung erfasst und kommuniziert. Die Bewertung wird üblicherweise am Ende jeder Iteration durchgeführt. Wenn Sie diese Bewertungen nicht machen, ist das Team möglicherweise nicht in der Lage, die eigene Arbeitsweise ("Way of Working") zu verbessern.
