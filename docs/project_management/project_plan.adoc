@@ -7,14 +7,23 @@ include::../_includes/default-attributes.inc.adoc[]
 
 == Einführung
 //Briefly describe the content of the project plan.
-
+Der StuRa hat aktuell einen sehr hohen Vewaltungsaufwand mit den Antrags- und Beschlussverwaltungen. Aktuell läuft jeder Arbeitsschritt manuell hab. Das Ziel ist daher die Erstellung eines Tools, welches den Aufwand, insbesondere die Vergabe und Überwachung der Auftragsnummern vereinfacht.
 
 == Projektorganisation
 //Introduce the project team, team members, and roles that they play during this project. If applicable, introduce work areas, domains, or technical work packages that are assigned to team members. Introduce neighboring projects, relationships, and communication channels. If the project is introduced somewhere else, reference that location with a link.
+* Alexander Minukow	    *Analyse* / Entwurf
+* Göran Heinemann		*Programmierung* / Tester
+* Huy Nguyen			*Entwurf*/Programmierung
+* Simon Voges			*Deployment-Engineer*
+* Max Patecky			*Tester* / Technical-Writer
+* Mirjam Müller       *Analyse* / Teamleitung
+* Marten Petters	    *Teamleitung*	
 
-
+Das Team trifft sich regelmäßig jede Woche für neue Erkenntnisse und für den gegenseitigen Austausch. Die Termine werden individuell abgestimmt. 
 == Praktiken und Bewertung
 //Describe or reference which management and technical practices will be used in the project, such as iterative development, continuous integration, independent testing and list any changes or particular configuration to the project. Specify how you will track progress in each practice. As an example, for iterative development the team may decide to use iteration assessments and iteration burndown reports and collect metrics such as velocity (completed work item points/ iteration).
+
+Das Team nutzt Open Up für die Organisation des Projektes. In allen Meetings wird Protokoll geführt, ein Teammitglied ist dafür verantwortlich, das restliche Team kontroliert dieses. Alle Änderungen und Vorhaben werden umgeht mit dem Kunden abgeklärt und durch diesen bestätigt. Unser Kunden Kontakt ist Theresa Minister.
 
 
 == Meilensteine und Ziele
@@ -30,23 +39,33 @@ include::../_includes/default-attributes.inc.adoc[]
 
 | I1
 |
-* Mitigate Risk1
-* Develop Use Case 3, Scenario 2
-| Date from/Date to
+* Kennlerenen und Rollenverteilung
+* Kundenwünsche kennenleren
+| 12.12.2022/ 21.12.2022
 | 15
 
 | I2
 |
-* Mitigate Risk 2
-* Develop Use Case 1, Scenario 2
-| Date from/Date to
+* Datenerfassung (Use-Cases, Vision, Glossar)
+* Projektdokumentation
+| 04.01.2023/13.01.2023
 | 16
+
+|I3
+|
+* Fertigstellung Prototyp
+* Fertigstellung Dokumentation
+|16.01.2023/ 27.01.2023
+|17
 |===
 
 
 == Deployment
 //Outline the strategy for deploying the software (and its updates) into the production environment.
+Am Ende von SE2 soll die Software fertig gestellt sein und auf den Servern des StuRa laufen. Ein Teammitglied ist ebenso StuRa-Mitglied und verantwortlich für Betreuung des Systems.
 
 
 == Erkenntnisse (Lessons learned)
 //List lessons learned from the retrospective, with special emphasis on actions to be taken to improve, for example: the development environment, the process, or team collaboration.
+
+Die Zusammenarbeit des Teams war grundlegend gut. Durch Verbesserung der Kommunikation und regelmäßige Rückfragen konnte das entfallen von Daten verbessert werden.

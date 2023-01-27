@@ -1,4 +1,4 @@
-= Iteration Plan 01: {project-name}
+= Iteration Plan 02: {project-name}
 Vorname Nachname <email@domain.org>; Vorname2 Nachname2 <email2@domain.org>; Vorname3 Nachname3 <email3@domain.org>
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
@@ -12,17 +12,18 @@ include::../_includes/default-attributes.inc.adoc[]
 |===
 | Meilenstein | Datum
 
-| Beginn der Iteration | 12.12.2022
-| Treffen mit Auftraggeber| 15.12.2022
-| Ende der Iteration | 21.12.2022
+| Beginn der Iteration | 04.01.2023
+|Treffen mit Coach| 11.01.2023
+| Ende der Iteration | 13.01.2023
 |===
 
 
 == Wesentliche Ziele
 //Nennen Sie 1-5 wesentliche Ziele für die Iteration.
-* Rollenverteilung
-* Erstellung der Vision
-* Glossar erstellen
+* Use Case Modell inklusive Use Case Diagramm erstellen
+* Prototyp erstellen
+* Risikoliste erstellen
+* Dokumentation
 
 
 
@@ -38,13 +39,14 @@ _alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 |===
 | Aufgabe bzw. Beschreibung | Priorität | Schätzung der Größe (Punkte) |Status | Referenzen | geplante Iteration | Zugewiesen (Name) | Gearbeite Stunden | Schätzung der verbleibenden Stunden
 
-| Fragen an Kunden erstellen | hoch | x |erledigt| x | 1 | gesamtes Team | 1 | 0
-|Termin für Kundenmeeting|hoch|x|erledigt|x|1|Göran|0,5|0
-|Vision erarbeiten|niedrig|x|erledigt|x|1|Mirjam, Alexander|2|2
-|Glossar vervollständigen|niedrig|x|erledigt|x|1|geamtes Team|1|2
-|Coach kontaktieren|mittel|x|erledigt|x|1|Marten|0,5|0
-|Fragen an Coach vorbereiten|mittel|x|erledigt|x|1|gesamtes Team|1|0
-|Test Cases überlegen|mittel|x|erledigt|x|1| Max, Huy|1|0
+|Use Cases erstellen|hoch|x|erledigt|x|1|Alexander, Mirjam|2|1
+|Risikoliste erstellen| mittel | x |erledigt| x | 1 | Simon, Marten | 1 | 1
+|Stakeholder erfassen|mittel|x|erledigt|x|1|Max|2|1
+|Glossar vervollständigen|niedrig|x|erledigt|x|1|gesamtes Team|1|1
+|Coachmeeting vorbereiten|mittel|x|erledigt|x|1|gesamtes Team|1|0
+|Architecture Notebook|mittel|x|erledigt|x|1| Göran, Huy|2|1
+|Kundenmeeting vereinbaren|wichtig|x|erledigt|x|1|Göran|0,5|0
+|Vision vervollständigen|mittel|x|erledigt|x|1|Alex, Mirjam|1|1
 
 
 |===
@@ -63,9 +65,11 @@ _alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 
 == Bewertungskriterien
 //Eine kurze Beschreibung, wie Erfüllung die o.g. Ziele bewertet werden sollen.
-* die Rollenverteilung ist dem gesamten Team klar
-* die Aufgabenstellung wurde von allen Teammitgliedern verstanden
-* Teammeetings werden wahrgenommen oder durch einzelne Mitglieder bei nichtwahrnehmung entschuldigt
+* jedes Teammitglied weiß was seine Aufgaben sind
+* Zustimmung der Use Cases durch den Kuden
+* Vorgehen durch Coach bestätigt
+
+
 
 
 
@@ -77,7 +81,7 @@ _alternativ:_ Die folgenden Aufgaben werden in dieser Iteration bearbeitet:
 |===
 | Assessment Ziel | Das kann die gesamte Iteration oder eine spezifische Komponente sein
 
-| Assessment Datum | 21.12.2022
+| Assessment Datum | 13.01.2023
 | Teilnehmer | gesamtes Team
 | Projektstatus	|grün
 |===

@@ -1,5 +1,5 @@
 ﻿ID;Datum;Name;Beschreibung;Typ;IMP;PRB;MAG;Owner;Gegenmaßnahme
-1;10.12.2022;Teammitglied fällt aus;Mitglied des Teams kann (dauerhaft oder zeitweise) nicht mehr am Projekt teilnehmen; z.B. wegen Krankheit oder Studiengangswechsel;4;20%;0,8;Max Müller;Backup-Rollen nutzen und Know-How zwischen diesen Personen kontinuierlich teilen
+1;10.12.2022;Teammitglied fällt aus;Mitglied des Teams kann (dauerhaft oder zeitweise) nicht mehr am Projekt teilnehmen; z.B. wegen Krankheit oder Studiengangswechsel;4;20%;0,8;Team;Backup-Rollen nutzen und Know-How zwischen diesen Personen kontinuierlich teilen
 2;10.12.2022;Einbuße von Terminen;wichtige Meetings oder Abgabetermine gehen verloren;z.B. Teammitglied verpasst Termin mit Kunden;4;20%;0,8;Marten Petters;für alle Teammitglieder zugänglicher Kalender
 3;12.12.2022;Fehlende Klarheit;Unklare Kommunikation;Aufgaben werden falsch verstanden;2;35%;0,7;Marten Petters;Anforderungen regelmäßig überprüfen, Verständnis aller Beteiligten prüfen
 4;15.12.2022;Teamkonflike;Meinungsverschiedenheiten zwischen Teammitgliedern;z.B. Mitglieder haben persönliche Differenzen;1;25%;0,25;Marten Petters;Teamgeist und Kommunikation stärken
