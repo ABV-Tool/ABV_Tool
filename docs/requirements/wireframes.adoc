@@ -1,24 +1,30 @@
-== Wireframes
-:data-uri:
+= Wireframes: {project-name}
+Alexander Minukow <alexander.minukow@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>
+{localdatetime}
+include::../_includes/default-attributes.inc.adoc[]
+// Platzhalter für weitere Dokumenten-Attribute
 
-Um uns bereits vor der Implementierung der Benutzeroberfläche Gedanken zu deren Umsetzung zu machen, verwenden wir hier schematisch Wireframes.
 
-Diese werden im Laufe der Entwicklung stetig und besonders nach Absprache mit den Stakeholdern weiterentwickelt.
+== test
 
-=== WF01 => Benutzer Login
-image::wireframe-login.png[title="Entwurf Sitzungsverwaltung"]
+Für die anfängliche Darstellung des Tools werden folgende Wireframes benutzt die im laufe der verschiedenen Iterationen weitergeführt und angepasst. 
 
-_Erklärung:_  
+
+== WF1 Benutzer Login
+
+image::wireframe_login.png[]
+
+_Erklärung:_ 
 
 Systemadministratoren benötigen einen Login um zugriff auf das Tool zu bekommen, um features wie Tagesordnung erstellen benutzen zu können.
 
-=== WF02 => Sitzungsverwaltung
+== WF2 Tagesordnung erstellen 
 
-image::wireframe-sitzungsverwaltung.png[title="Entwurf Sitzungsverwaltung"]
+image::wireframe-sitzungsverwaltung.png[]
 
 _Erklärung:_
 
-Über die Sitzungsverwaltung können alle Anträge betrachtet werden und eine Tagesordnung für die kommende Plenumssitzung erstellt werden. Anträge die in der Sitzung besprochen werden sollen können ausgewehlt werden. Tagesordnungen für kommende Sitzungen können schon im voraus entschieden werden.
+Über die Sitzungsverwaltung können alle Anträge betrachtet werden und eine Tagesordnung für die kommende Plenumssitzung erstellt werden sowie auch bearbeitet werden. Anträge die in der Sitzung besprochen werden sollen können ausgewehlt werden. Tagesordnungen für kommende Sitzungen können schon im voraus entschieden werden.
 
 
 

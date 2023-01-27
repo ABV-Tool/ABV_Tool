@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== UC01 => Antrag stellen
+== <<UC01, UC01>> => Antrag stellen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>

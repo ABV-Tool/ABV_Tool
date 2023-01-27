@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== UC02 => Tagesordnung erstellen
+== <<UC02, UC02>> => Tagesordnung erstellen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
@@ -25,7 +25,7 @@ Leitet die Sitzung und ist verantwortlich für die Tagesordnung.
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der Antragsverwalter in der Sitzungsverwaltung auf Tagesordnung generieren klickt.
+. Der Use Case beginnt, wenn der Antragsverwalter #in der Sitzungsverwaltung# auf Tagesordnung generieren klickt.
 
 . Es wird ein ein Markdown-Dokument zum Ausfüllen erstellt und es erfolgt eine Auflistung aller bereits eingegangenen Anträge nach Kategorie und Datum.
 //siehe Wireframe - Tagesordnung 
@@ -55,10 +55,6 @@ Der Use Case wird in Schritt 3 fortgesetzt.
 ==== Erfolgreiche generierung der Tagesordnung
 - *SC1:* Frau Y möchte die nächste Plenumssitzung vorbereiten. Sie wählt die gewünschte Sitzung aus und klickt auf Tagesordnung generieren. Es wird erfolgreich eine Tagesordnung mit mehreren Finanzanträgen sowie sonstigen Anträgen generiert.
 
-////
-
-=> Platzhalter für Beleg entfernt
-
 === Nachbedingungen
 //Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
 
@@ -68,5 +64,3 @@ Der Use Case wird in Schritt 3 fortgesetzt.
 //Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
 
 ==== <Besondere Anforderung 1>
-
-////

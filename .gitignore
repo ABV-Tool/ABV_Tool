@@ -6,5 +6,3 @@
 src/venv/
 __pycache__
 .idea
-.vscode
-.venv

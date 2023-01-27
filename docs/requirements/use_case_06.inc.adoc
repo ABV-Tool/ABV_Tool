@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== UC06 => Beschlüsse einpflegen
+== <<UC06, UC06>> => Beschlüsse einpflegen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
@@ -24,7 +24,7 @@ Ist zuständig für die jeweilige Plenumssitzung.
 
 - Es muss mindestens ein Antrag gestellt worden sein.
 
-- Die Sitzung muss stattgefunden haben.
+- #Die Sitzung muss stattgefunden haben.#
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
@@ -45,10 +45,6 @@ Wenn der Antragsverwalter in Schritt 3 des Standardablaufes statt auf angenommen
 Dabei fügt das System den Antrag zur nächsten Sitzung hinzu. 
 
 Der Use Case wird in Schritt 4 fortgesetzt.
-
-////
-
-=> Platzhalter für Beleg entfernt
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
@@ -75,5 +71,3 @@ Der Use Case wird in Schritt 4 fortgesetzt.
 //Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
 
 ==== <Besondere Anforderung 1>
-
-////
