@@ -13,9 +13,9 @@
 title \nC4 Model\n
 
 ' Diagram syntax
-Person(as, Antragsteller, "Person, die Antrag stellt")
-Person(av, Antragverwalter, "Person, die Anträge verwaltet")
-Person(sa, Systemadmin, "Administriert das System")
+Person(as, Antragsteller, "Stellt Antrag")
+Person(av, Antragverwalter, "Verwaltet Anträge")
+Person(sa, Systemadmin, "Betreut das System")
 
 System_Boundary(c0, "StuRa") {
 

@@ -87,44 +87,56 @@ _Abhängigkeiten:_
 Die Daten sollen so wie sie beschlossen werden, sicher verwahrt sein. Es sollen keine Zugriffe von unberechtigten Personen erfolgen.
 
 *2. Workflow*
+
 Mit der Erstellung einer standardisierten Tagesordnung, kann der Bearbeitungsprozess der Anträge und nach
 
 *3. Persistenz*
+
 Für die Zukunft soll das System, einfach wartbar und auch funktionell erweiterbar sein.
 
 *4. Informationsaustausch*
+
 Nachdem der Prozess der Antragstellung durchgelaufen ist, soll der Antragsteller eine E-Mail mit der Antragsnummer erhalten.
 
 *5. Internationalisierung*
+
 Wir haben vor eine englische Version des Tools bereitzustellen, damit es auch nicht-deutschsprachige Personen mit dem Tool arbeiten können.
 
 *6. Scheduling*
+
 Anträge müssen zu einer gewissen Zeit vor der Plenumssitzung gestellt werden und das Tool soll eine standardtisierte Tagesordnung für Sitzungen der Plena und Refarate ausgeben.
 
 *7. Online-Hilfe*
+
 Sofern wir genügend Zeit übrig haben, wollen wir Online ein Handbuch bereitstellen. Desweiteren werden wir Nutzungshinweise im Tool einfügen.
 
 == Wesentliche Abstraktionen
 //[List and briefly describe the key abstractions of the system. This should be a relatively short list of the critical concepts that define the system. The key abstractions will usually translate to the initial analysis classes and important patterns.]
 * *Klasse Antrag:*
-- *Finanzantrag:*
-- *nicht finanzieller Antrag:*
+- *Finanzantrag:* Enthält alle Informationen zu einem Antrag, mit Mittelanfrage (TOP).
+- *nicht finanzieller Antrag:* Enthält alle Informationen zu einem Antrag, ohne Mittelanfrage (ITOP).
 * *Klasse Nutzer:*
 - *Antragsteller:* Enthält alle Informationen zum Antrag und stellt diesen.
-- *Antragverwalter:* Trägt Beschlüsse ein und speichert Tagesordnung
+- *Antragverwalter:* Trägt Beschlüsse ein und speichert Tagesordnung.
 * *Tagesordnung:* Enthält alle Anträge, die in der Sitzung besprochen werden sollen.
 * *Beschluss:* Enthält alle Informationen zum Antrag und wie in der Sitzung darüber abgestimmt wurde.
 
 == Schichten oder Architektur-Framework
 //[Describe the architectural pattern that you will use or how the architecture will be consistent and uniform. This could be a simple reference to an existing or well-known architectural pattern, such as the Layer framework, a reference to a high-level model of the framework, or a description of how the major system components should be put together.]
-Wir nutzen eine Drei-Schichten-Architektur. Dadurch können wir notwendige Anpassungen schnell und flexibel verwirklichen, da die einzelnen Schichten klar voneinander getrennt sind.
+Wir nutzen ein MVC-Pattern. Dadurch können wir notwendige Anpassungen schnell und flexibel verwirklichen, da die einzelnen Schichten klar voneinander getrennt sind.
+
+Das MVC-Pattern ist ein Muster zur Unterteilung einer Software in die drei Komponenten Datenmodell (model), Präsentation (view) und Programmsteuerung (controller). Ziel ist die Begünstigung späterer Erweiterungen oder Änderungen und eine Wiederverwendbarkeit der einzelnen Komponenten durch einen flexiblen Programmentwurf.
+
+Die obere Schicht ist die Präsentationsschicht (Front-End, view). Sie wird als normale Website mit mehreren Unterseiten dargestellt. Sie dient zur Darstellung der Sitzungsdaten und hier soll der Antragssteller alle Daten für einen Antrag eingeben.
+
+Die mittlere Schicht ist die Logikschicht(controller). Sie stellt die Verbindung vom Front-End zum Back-End dar. Hier findet man alle Funktionalitäten, die vom Tool erwartet werden, wieder.
+
+Die untere Schicht ist die Datenhaltungsschicht (Back-End,model). Sie enthält die Datenbank und soll alle Anträge und Änderungen an den Anträgen speichern und archivieren.
 
 
 
 == Architektursichten (Views)
 //[Describe the architectural views that you will use to describe the software architecture. This illustrates the different perspectives that you will make available to review and to document architectural decisions.]
-
-Folgende Sichten werden empfohlen:
 
 === Use Case Modell
 
