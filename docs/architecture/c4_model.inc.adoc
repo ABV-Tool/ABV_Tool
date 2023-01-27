@@ -14,11 +14,10 @@ title \nC4 Model\n
 
 ' Diagram syntax
 Person(as, Antragsteller, "Person, die Antrag stellt")
+Person(av, Antragverwalter, "Person, die Anträge verwaltet")
+Person(sa, Systemadmin, "Administriert das System")
 
 System_Boundary(c0, "StuRa") {
-
-    Person(av, Antragverwalter, "Person, die Anträge verwaltet")
-    Person(sa, Systemadmin, "Administriert das System")
 
     System(avbt, "AVB-Tool", "Speichert Anträge und Beschlüsse und lässt bestimmte Nutzer verwalten.")
     System(mail_system, "E-Mail System", "Das interne E-Mailsystem.")

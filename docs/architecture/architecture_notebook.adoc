@@ -71,12 +71,11 @@ _Abhängigkeiten:_
 == Entscheidungen, Nebenbedingungen und Begründungen
 //[List the decisions that have been made regarding architectural approaches and the constraints being placed on the way that the developers build the system. These will serve as guidelines for defining architecturally significant parts of the system. Justify each decision or constraint so that developers understand the importance of building the system according to the context created by those decisions and constraints. This may include a list of DOs and DON’Ts to guide the developers in building the system.]
 
-- Wir nutzen Django für das Frontend, da der Vorgänger dies dafür nutzte und bereits Erfahrungen in Python haben.
-- Als
+- Wir nutzen HTML für das Frontend, da der Vorgänger dies dafür nutzte und bereits Erfahrungen in Python haben.
+- Als Backend nutzen wir eine Kombination aus DJango für die funktionalitäten und PostSQL für die Datenbank zu Speicherung der Daten.
 - Die Erstellung neuer Datenbanken ist wichtig, da die Datenbanken des Vorgängers keine einheitliche Form haben und wir keine Dokumentation vom Vorgänger haben, um die Entscheidungen nachzuvollziehen.
 
 == Architekturmechanismen
-https://www2.htw-dresden.de/~anke/openup/core.tech.common.extend_supp/guidances/concepts/arch_mechanism_2932DFB6.html[Doku "Concept: Architectural Mechanism"]
 //[List the architectural mechanisms and describe the current state of each one. Initially, each mechanism may be only name and a brief description. They will evolve until the mechanism is a collaboration or pattern that can be directly applied to some aspect of the design.]
 
 //Beispiele: relationales DBMS, Messaging-Dienste, Transaktionsserver, Webserver, Publish-Subscribe Mechanismus
@@ -85,29 +84,40 @@ https://www2.htw-dresden.de/~anke/openup/core.tech.common.extend_supp/guidances/
 
 === Sicherheit
 
-=== Workflow 
-- mit der Erstellung einer standardisierten Tagesordnung, kann der Bearbeitungsprozess der Anträge und nach
+Die Daten sollen so wie sie beschlossen werden, sicher verwahrt sein. Es sollen keine Zugriffe von unberechtigten Personen erfolgen.
 
-=== Persistenz 
-- 
+=== Workflow
+Mit der Erstellung einer standardisierten Tagesordnung, kann der Bearbeitungsprozess der Anträge und nach
 
-=== Informationsaustausch -- 
+=== Persistenz
+Für die Zukunft soll das System, einfach wartbar und auch funktionell erweiterbar sein.
 
-=== Internationalisierung 
-- (haben wir zumindest im Nachinein vor, damit auch englischsprachige Stundenten/Personen Anträge stellen können)
+=== Informationsaustausch
+Nachdem der Prozess der Antragstellung durchgelaufen ist, soll der Antragsteller eine E-Mail mit der Antragsnummer erhalten.
 
-=== Scheduling 
-- Anträge müssen zu einer gewissen Zeit vor der Plenumssitzung gestellt werden
+=== Internationalisierung
+Wir haben vor eine englische Version des Tools bereitzustellen, damit es auch nicht-deutschsprachige Personen mit dem Tool arbeiten können.
 
-=== Online-Hilfe 
-- sofern wir genügend Zeit übrig haben, wollen wir Online ein Handbuch bereitstellen
+=== Scheduling
+Anträge müssen zu einer gewissen Zeit vor der Plenumssitzung gestellt werden und das Tool soll eine standardtisierte Tagesordnung für Sitzungen der Plena und Refarate ausgeben.
+
+=== Online-Hilfe
+Sofern wir genügend Zeit übrig haben, wollen wir Online ein Handbuch bereitstellen. Desweiteren werden wir Nutzungshinweise im Tool einfügen.
 
 == Wesentliche Abstraktionen
 //[List and briefly describe the key abstractions of the system. This should be a relatively short list of the critical concepts that define the system. The key abstractions will usually translate to the initial analysis classes and important patterns.]
-
+* *Klasse Antrag:*
+- *Finanzantrag:*
+- *nicht finanzieller Antrag:*
+* *Klasse Nutzer:*
+- *Antragsteller:* Enthält alle Informationen zum Antrag und stellt diesen.
+- *Antragverwalter:* Trägt Beschlüsse ein und speichert Tagesordnung
+* *Tagesordnung:* Enthält alle Anträge, die in der Sitzung besprochen werden sollen.
+* *Beschluss:* Enthält alle Informationen zum Antrag und wie in der Sitzung darüber abgestimmt wurde.
 
 == Schichten oder Architektur-Framework
 //[Describe the architectural pattern that you will use or how the architecture will be consistent and uniform. This could be a simple reference to an existing or well-known architectural pattern, such as the Layer framework, a reference to a high-level model of the framework, or a description of how the major system components should be put together.]
+Wir nutzen eine Drei-Schichten-Architektur. Dadurch können wir notwendige Anpassungen schnell und flexibel verwirklichen, da die einzelnen Schichten klar voneinander getrennt sind.
 
 
 
@@ -124,3 +134,4 @@ Folgende Sichten werden empfohlen:
 //Beschreibt die Struktur und das Verhalten Systemteilen, die hohen Einfluss auf die Architektur haben. Dies kann die Paketstruktur, kritische Schnittstellen, wichtige Klassen und Subsysteme sowie die Beziehungen zwischen diesen Elementen enthalten. Zudem sollten die physische und logische Sicht persistenter Daten beschrieben werden, wenn es diesen Aspekt im System gibt. Dies ist ein hier dokumentierter Teilaspekt des Entwurfs.
 <<<
 include::c4_model.inc.adoc[]
+
