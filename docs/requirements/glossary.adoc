@@ -1,5 +1,5 @@
 = Glossar: {project-name}
-Vorname Nachname <email@domain.org>; Vorname2 Nachname2 <email2@domain.org>; Vorname3 Nachname3 <email3@domain.org>
+Alexander Minukow <alexander.minukow@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
 // Platzhalter für weitere Dokumenten-Attribute
@@ -9,7 +9,7 @@ include::../_includes/default-attributes.inc.adoc[]
 In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fachdomäne) des Antrags- und Beschlussverwaltungstools definiert. Zur besseren Übersichtlichkeit sind Begriffe, Abkürzungen und Datendefinitionen gesondert aufgeführt.
 
 == Begriffe
-[%header]
+[%header, cols="1,3,1"]
 |===
 
 | Begriff | Definition und Erläuterung | Synonyme
@@ -31,7 +31,7 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 
 
 == Abkürzungen und Akronyme
-[%header]
+[%header, cols="1,1,3"]
 |===
 | Abkürzung | Bedeutung | Erläuterung
 
@@ -66,7 +66,7 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 | Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
 
 | Anmeldedaten (Bsp.)
-| Zusammensetzung von Benutzername und Passwort.
+| Zusammensetzung von Benutzername und Passwort
 | String
 | Emailadresse muss `@`-Zeichen und `.` Punkt enthalten.
 | Log-in

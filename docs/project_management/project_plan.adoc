@@ -13,7 +13,7 @@ Der StuRa hat aktuell einen sehr hohen Vewaltungsaufwand mit den Antrags- und Be
 //Introduce the project team, team members, and roles that they play during this project. If applicable, introduce work areas, domains, or technical work packages that are assigned to team members. Introduce neighboring projects, relationships, and communication channels. If the project is introduced somewhere else, reference that location with a link.
 * Alexander Minukow	    *Analyse* / Entwurf
 * Göran Heinemann		*Programmierung* / Tester
-* Huy Nguyen			*Entwurf*/Programmierung
+* Huy Nguyen			*Entwurf* / Programmierung
 * Simon Voges			*Deployment-Engineer*
 * Max Patecky			*Tester* / Technical-Writer
 * Mirjam Müller         *Analyse* / Teamleitung

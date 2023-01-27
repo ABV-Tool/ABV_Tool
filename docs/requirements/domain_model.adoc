@@ -1,11 +1,14 @@
 = Domain Model: {project-name}
-Vorname Nachname <email@domain.org>; Vorname2 Nachname2 <email2@domain.org>; Vorname3 Nachname3 <email3@domain.org>
+Simon Voges <simon.voges@htw-dresden.de>; 
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
 // Platzhalter für weitere Dokumenten-Attribute
 
 
-== Allgemeine Informationen
+== Domain Diagramm
 
+Wir haben uns auf folgenden Entwurf für unser Domain-Model festgelegt:
 
-== ...
+image::domain-model.png[Entwurf Domain Diagramm]
+
+Dieser Entwurf wird noch stetig im Laufe des Projektes weiterentwickelt, spiegelt aber im Moment bereits den Geschäftsprozess unserer Anwendung wieder.
