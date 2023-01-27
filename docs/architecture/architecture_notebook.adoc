@@ -82,26 +82,26 @@ _Abhängigkeiten:_
 
 //Beschreiben Sie den Zweck, Eigenschaften und Funktion der Architekturmechanismen.
 
-=== Sicherheit
+*1. Sicherheit*
 
 Die Daten sollen so wie sie beschlossen werden, sicher verwahrt sein. Es sollen keine Zugriffe von unberechtigten Personen erfolgen.
 
-=== Workflow
+*2. Workflow*
 Mit der Erstellung einer standardisierten Tagesordnung, kann der Bearbeitungsprozess der Anträge und nach
 
-=== Persistenz
+*3. Persistenz*
 Für die Zukunft soll das System, einfach wartbar und auch funktionell erweiterbar sein.
 
-=== Informationsaustausch
+*4. Informationsaustausch*
 Nachdem der Prozess der Antragstellung durchgelaufen ist, soll der Antragsteller eine E-Mail mit der Antragsnummer erhalten.
 
-=== Internationalisierung
+*5. Internationalisierung*
 Wir haben vor eine englische Version des Tools bereitzustellen, damit es auch nicht-deutschsprachige Personen mit dem Tool arbeiten können.
 
-=== Scheduling
+*6. Scheduling*
 Anträge müssen zu einer gewissen Zeit vor der Plenumssitzung gestellt werden und das Tool soll eine standardtisierte Tagesordnung für Sitzungen der Plena und Refarate ausgeben.
 
-=== Online-Hilfe
+*7. Online-Hilfe*
 Sofern wir genügend Zeit übrig haben, wollen wir Online ein Handbuch bereitstellen. Desweiteren werden wir Nutzungshinweise im Tool einfügen.
 
 == Wesentliche Abstraktionen
