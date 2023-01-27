@@ -12,6 +12,7 @@ _Erklärung:_
 
 Systemadministratoren benötigen einen Login um zugriff auf das Tool zu bekommen, um features wie Tagesordnung erstellen benutzen zu können.
 
+<<<
 === WF02 => Sitzungsverwaltung
 
 image::wireframe-sitzungsverwaltung.png[title="Entwurf Sitzungsverwaltung"]

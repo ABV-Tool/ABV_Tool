@@ -21,7 +21,7 @@ Die Use Cases wollen wir in folgender Priorität umsetzen und implementieren:
 * *UC04*: Plenumssitzung vertagen 
 * *UC05*: Antragsverwalter anmelden
 
-
+<<<
 == Use Case Diagramm
 
 [plantuml, "{diagramsdir}/use-case-diagramm", svg]
@@ -60,10 +60,9 @@ Mit `<<<` wird im PDF ein Seitenumbruch erzeugt.
 Zwischen `include::...` und dem darauf folgenden `<<<` muss sich eine Leerzeile befinden. Fehlt diese, werden unter Umständen die erste Überschriften aus der inkludierten Datei nicht korrekt übernommen.
 Ein `include` entfernt am Anfang und Ende eine möglich Leerzeile, was in Kombination mit `<<<` zu Fehlern führen kann.
 ////
-
+<<<
 == Use Cases
 
-<<<
 include::use_case_01.inc.adoc[leveloffset=+1]
 
 <<<
