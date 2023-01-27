@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== UC05 => Antragsverwalter anmelden
+== <<UC05, UC05>> => Antragsverwalter anmelden
 
 === Kurzbeschreibung
 Der Use Case beschreibt den Anmeldevorgang des Antragsverwalters.
@@ -35,10 +35,6 @@ Wenn Antragsverwalter in Schritt 3 des Standardablaufes ungültige Daten eingibt
 
 Der Use Case wird in Schritt 2 fortgesetzt.
 
-////
-
-=> Platzhalter für Beleg entfernt
-
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
 
@@ -64,5 +60,3 @@ Der Use Case wird in Schritt 2 fortgesetzt.
 //Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
 
 ==== <Besondere Anforderung 1>
-
-////

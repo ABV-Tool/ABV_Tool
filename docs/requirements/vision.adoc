@@ -32,6 +32,8 @@ Dies ist nicht das erste Mal, dass ein Prototyp für eine solche Anwendung erste
 //Erläutern Sie kurz den Hintergrund, in dem das Projekt angesiedelt ist. Welches Problem soll gelöst werden, wie ist es entstanden? Welche Verbesserung wird angestrebt. Achten Sie darauf, eine fachliche (organisatorische, betriebswirtschaftliche) Perspektive einzunehmen.
 Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- und Beschlussverwaltung, da diese manuell erfolgt. Antragsnummern werden händisch vergeben und auch einheitliche bzw. unveränderliche Templates sind nicht vorhanden. Vor jeder Sitzung muss manuell eine Tagesordnung aus den gestellten Anträgen erstellt werden. Dies bindet viele zeitliche und personelle Ressourcen, was durch die Einführung eines Antrags- und Beschlussverwaltungstools reduziert werden soll. Besonders hervorzugeben ist hierbei die automatisierte Vergabe von Antragsnummern nach einen bestimmten Schema, da die händische Vergabe und Kontrolle besonders hohen Organisationsaufwand erfordert.   
 
+
+
 === Problem Statement
 //Stellen Sie zusammenfassend das Problem dar, das mit diesem Projekt gelöst werden soll. Das folgende Format kann dazu verwendet werden:
 
@@ -52,11 +54,25 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 |===
 | Für | StuRa der HTW Dresden
 | der | die Antrags- und Beschlussverwaltung vereinfachen und zentralisieren möchte
-| Die Lösung ist eine | Webanwendung
+| Das Produkt / die Lösung ist eine | Webanwendung
 | Die | Templates für verschiedene Anträge bereitstellt, automatisiert Antragsnummern vergibt und eine automatische Tagesordnung generiert
 | Im Gegensatz zu | manueller Verwaltung mit händischer Vergabe der Antragsnummern und frei verändlichen Templates
 | Unser Produkt | ermöglicht eine zentrale Verwaltung des gesamten Prozesses
 |===
+
+
+////
+Beispiel Produkt:
+|===
+| Für | Studierende der HTW
+| die | die ihren Studienalltag effizienter organisieren möchten
+| Das Produkt ist eine | mobile App für Smartphones
+| Die | für den Nutzer Informationen zum Stundenplan und Noten darstellt
+| Im Gegensatz zu | Stundenplänen der Website und HIS-Noteneinsicht
+| Unser Produkt | zeigt nur die für den Nutzer relevanten Informationen komfortabel auf dem Smartphone an.
+|===
+////
+
 
 == Stakeholder Beschreibungen
 
@@ -75,29 +91,29 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 | Stellen über das System Anträge die anschließend im Plenum beraten werden
 
 | Antragsverwalter
-| Mitglied des StuRa der für Antrags- und Beschlussverwaltung verantwortlich ist,  insbesondere aber Referatsleitungen
+| 
 | erstellt aus eingegangen Anträgen die Tagesordnung und verwaltet die Sitzungen
 
-|Präsidium des StuRa
+|Präsidium
 |Sitzungsdurchführung, Ausfertigung der Beschlüsse
 |Verantwortlich von Antragstellung bis Ausfertigung der Beschlüsse
 
 |Systemadminstrator
-|Person die innerhalb des StuRa mit der Verwaltung der Serverstruktur beauftragt ist
-|Vergabe des Log-ins für die Antragsverwalter, Wartung
+|
+|
 
 |Plenum des StuRa
 |Beschließt Ordnungen des StuRa und setzt damit den Hanbdlungsrahmen für die Arbeit des StuRa. Insbesondere die Geschäftsordnung regelt den Ablauf zur Antragstellung und Beschlussverwaltung
 |Überwachnung der eigenen Ordnungen und Bestimmungen 
 
-|Gesetzgeber
-|gibt rechtlichen Rahmen für den Umgang mit personenbezogenen Daten vor 
-|Überwachnung der datenschutzrechtlichen Bestimmungen
 |===
 
 === Benutzerumgebung
+Beschreiben Sie die Arbeitsumgebung des Nutzers. Hier sind einige Anregungen:
 
 *Antragsteller*
+
+//Zutreffendes angeben, nicht zutreffendes streichen oder auskommentieren
 
 * ein Antragsteller pro Antrag
 * Zahl der Antragsteller variiert, da alle natürlichen Personen antragsberechtigt sind
@@ -116,13 +132,18 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 * Antragsverwaltung kann nur mit zugewiesenem Log-in vom Systemadminitrator erfolgen
 * Anmeldung kann nur im HTW-Netz bzw. über den HTW internen VPN erfolgen
 * Beschlüsse sollen als PDF exportiert werden können
+* #bisher wurde für das erstellen der Tagesordnung Pentapad (etherpad) verwendet -> wird von uns ins Tool integriert zur Erhöhung der Flexibilität#
+
+Hier können zudem bei Bedarf Teile des Unternehmensmodells (Prozesse, Organigramme, IT-Landschaft, ...) eingefügt werden, um die beteiligten Aufgaben und Rollen zu skizzieren.
+
+//Organigramm StuRa?
 
 == Produkt-/Lösungsüberblick
 
 === Bedarfe und Hauptfunktionen
 //Vermeiden Sie Angaben zum Entwurf. Nennen wesentliche Features (Produktmerkmale) auf allgemeiner Ebene. Fokussieren Sie sich auf die benötigten Fähigkeiten des Systems und warum (nicht wie!) diese realisiert werden sollen. Geben Sie die von den Stakeholdern vorgegebenen Prioritäten und das geplante Release für die Veröffentlichung der Features an.
 
-[%header, cols="3,1,4,1"]
+[%header, cols="4,1,4,1"]
 |===
 | Bedarf | Priorität | Features | Geplantes Release
 
@@ -130,19 +151,19 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 
 | Antragsnummer vergeben | hoch | Nachdem der Antragsteller einen Antrag abgesendet hat, wird eine fortlaufende Antragsnummer vergeben und dem Antragsteller mitgeteilt | SoSe 23
 
+| Beschlüsse einpflegen | hoch | Änderung Antragstatus auf beschlossen, abgelehnt oder vertagt, Abstimmungsergebnis soll erfassst werden | SoSe 23
+
 | automatische Tagesordnung erstellen | hoch | vor einer Sitzung wird aus allen eingegangen Anträgen eine Tagesordnung nach einer bestimmten Vorlage generiert | SoSe 23
 
 | Tagesordnung verwalten/bearbeiten | hoch | Möglichkeit nach der Generierung der Tagesordnung diese zu bearbeiten und weitere Themen hinzuzufügen (Formalia und ITOPs) | SoSe 23
 
-| Benutzeradministration | mittel | Vergabe eines Log-in für Antragsverwalter | SoSe 23
+| Benutzeradministration | hoch | Vergabe eines Log-in für Antragsverwalter | SoSe 23
 
 | Antrag auf Dringlichkeit | mittel | bei verspäteter Antragstellung soll eine Prüfinstanz über die Dringlichkeit entscheiden | SoSe 23
 
 | Änderungsantrag stellen | mittel | Antrag auf Änderung einzelner Positionen zu einem schon vorhandenen Antrag stellen | SoSe 23
 
-| Beschlüsse einpflegen | mittel | Änderung Antragstatus auf beschlossen, abgelehnt oder vertagt, Abstimmungsergebnis soll erfassst werden | SoSe 23
-
-| Benachrichtigung Antragsteller über Antragseingang und -status | niedrig | Der Antragsteller soll nach Antragseingang eine E-Mail mit Antrag und Antragsnummer zugesendet bekommen sowie eine E-Mail erhalten, wenn sich der Antragsstatus geändert hat | SoSe 23
+| Benachrichtigung Antragsteller über Antragseingang und -status | mittel | Der Antragsteller soll nach Antragseingang eine E-Mail mit Antrag und Antragsnummer zugesendet bekommen sowie eine E-Mail erhalten, wenn sich der Antragsstatus geändert hat | SoSe 23
 
 |===
 
@@ -151,13 +172,21 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 == Zusätzliche Produktanforderungen
 //Zutreffendes angeben, nicht zutreffendes streichen oder auskommentieren
 
-[%header, cols="4,1"]
+Hinweise:
+
+. Führen Sie die wesentlichen anzuwendenden Standards, Hardware oder andere Plattformanforderungen, Leistungsanforderungen und Umgebungsanforderungen auf +
+. Definieren Sie grob die Qualitätsanforderungen für Leistung, Robustheit, Ausfalltoleranz, Benutzbarkeit und ähnliche Merkmale, die nicht von den genannten Features erfasst werden. +
+. Notieren Sie alle Entwurfseinschränkungen, externe Einschränkungen, Annahmen oder andere Abhängigkeiten, die wenn Sie geändert werden, das Visions-Dokument beeinflussen. Ein Beispiel wäre die Annahme, dass ein bestimmtes Betriebssystem für die vom System erforderliche Hardware verfügbar ist. Ist das Betriebssystem nicht verfügbar, muss das Visions-Dokument angepasst werden.
+. Definieren Sie alle Dokumentationsanforderugen, inkl. Benutzerhandbücher, Onlinehilfe, Installations-, Kennzeichnungs- und Auslieferungsanforderungen-
+. Definieren Sie die Priorität für diese zusätzlichen Produktanforderungen. Ergänzen Sie, falls sinnvoll, Angaben zu Stabilität, Nutzen, Aufwand und Risiko für diese Anforderungen.
+
+[%header, cols="4,1,1"]
 |===
-| Anforderung | Priorität 
-| kein Java verwenden | Hoch 
-| muss auf Unix/Linux laufen | Hoch 
-| freie Lizenz benutzen (z.B. GPL, MIT, Apache) | Hoch 
-| muss nach Anleitung selbst installierbar sein | Hoch 
-| Einfache Bedienbarkeit | Hoch 
-| Dokumentation in Wiki des StuRa | Niedrig 
+| Anforderung | Priorität | Geplantes Release
+| kein Java verwenden | Hoch | xx
+| muss auf Unix/Linux laufen | Hoch | xx
+| freie Lizenz benutzen (z.B. GPL, MIT, Apache) | Hoch | xx
+| muss nach Anleitung selbst installierbar sein | Hoch | xx
+| Einfache Bedienbarkeit | Hoch | xx
+
 |===

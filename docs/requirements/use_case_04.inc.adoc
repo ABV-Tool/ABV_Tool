@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== UC04 => Plenumssitzung vertagen
+== <<UC04, UC04>> => Plenumssitzung vertagen
 
 === Kurzbeschreibung
 Der Use Case beschreibt das Vertagen von Plenumssitzungen.
@@ -13,11 +13,11 @@ Ist zuständig für die jeweilige Plenumssitzung.
 === Vorbedingungen
 //Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
 
-- Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+- Der Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
 
-- Antragsverwalter muss angemeldet sein.
+- Der Antragsverwalter muss angemeldet sein.
 
-- System hat Plenumssitzung bereits angelegt. (Plenumssitzungen werden 4 Wochen in voraus vom System generiert.)
+- Das System hat Plenumssitzung bereits angelegt (Plenumssitzungen werden 4 Wochen im Voraus vom System generiert).
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
@@ -27,14 +27,11 @@ Ist zuständig für die jeweilige Plenumssitzung.
 . System bindet die Tagesordnung der ausgewählten Sitzung samt Anträgen in die nächste Sitzung ein und makiert die aktuelle Sitzung als "vertagt".
 . Der Use Case ist beendet.
 
-////
-
-=> Platzhalter für Beleg entfernt
-
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
 //==== AB1 
+
 
 === Unterabläufe (subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
@@ -61,5 +58,3 @@ Ist zuständig für die jeweilige Plenumssitzung.
 //Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
 
 ==== <Besondere Anforderung 1>
-
-////

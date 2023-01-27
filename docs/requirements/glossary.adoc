@@ -6,26 +6,24 @@ include::../_includes/default-attributes.inc.adoc[]
 
 
 == Einführung
-In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fachdomäne) des Antrags- und Beschlussverwaltungstools definiert. Zur besseren Übersichtlichkeit sind Begriffe, Abkürzungen und Datendefinitionen gesondert aufgeführt.
+In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fachdomäne) der <Projektthema-Systems> definiert. Zur besseren Übersichtlichkeit sind Begriffe, Abkürzungen und Datendefinitionen gesondert aufgeführt.
 
 == Begriffe
 [%header]
 |===
 
 | Begriff | Definition und Erläuterung | Synonyme
-|Antrag|Anliegen das in schriftlicher Form zur Entscheidung im Plenum gestellt wird |Gesuch, Anliegen
-|Antragssteller|Person, die einen Antrag stellt|(keine)
-|Antragsstatus| gibt Auskunft darüber, an welchem Punkt sich die Bearbeitung des Antrags befindet (Antrag eingegereicht, Antrag angenommen, Antrag abgelehnt, Antrag vertagt)| Antrag gestellt, Antrag beschlossen
+|Antragssteller|Person, die einen Antrag stellt|
+|Antragsstatus| Vor einer Sitzung: Antrag eingegereicht Nach einer Sitzung: Antrag angenommen, Antrag abgelehnt, Antrag vertagt| Antrag gestellt, Antrag beschlossen
 | Bereichsleitung | Personen, die Zuständigkeiten von Untergeordnete Bereichen von Referaten übernehmen. | (keine) 
 | Beschluss | getroffene Entscheidung zu einem Antrag in einer Plenumssitzung | (keine) 
-|Formalia |formeller Tagesordnungspunkt in der der formelle Ablauf einer Sitzung festgehalten wird |(keine)
+|Formalia |Tagesordnungspunkt |
 | Pflichtfelder| Antragsfeld für das eine Pflichteingabe besteht | (keine) 
 | Plenum | Gewählte Studenten, die ein Wahlrecht innerhalb des Sturas besitzen. | (keine)
-| Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Vorsitz, Führungsgremium
-| Referatsleitung | Eine Person im StuRa, die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
-|Tagesordnung |Liste mit Themen die in einer Sitzung besprochen werden und über die zum Teil abgestimmt wird|Agenda
-| Templates |festgelegte Vorlage für Anträge |Antragsformulare, Vorlagen
-| vertagen |Antrag wird auf eine andere Sitzung verlegt oder eine Sitzung wird auf ein anderes Datum verschoben|verlegen, verschieben
+| Präsidium | Sitzungsleitung, die durch das Plenum gewählt wird. | Führungsgremium
+| Referatsleitung | Eine Person, die an der HTW die fachliche Zuständigkeit für ein bestimmtes Aufgabengebiet innehat. | (keine)
+|Tagesordnung |Liste mit Themen die in einer Sitzung besprochen werden und über die zum Teil abgestimmt wird|(keine)
+| #Templates# |festgelegte Vorlage für Anträge |Antragsformulare, Vorlagen
 
 |===
 
@@ -34,14 +32,15 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 [%header]
 |===
 | Abkürzung | Bedeutung | Erläuterung
+//| UP | Unified Process | Vorgehensmodell für die Softwareentwicklung
 
 |ABV-Tool 
 |Antrags- und Beschlussverwaltungstool
-|Über das Tool werden die Anträge gestellt, die Tagesordnung generiert und die Beschlüsse eingepflegt
+|
 
-|HTW Dresden
-|Hochschule für Technik und Wirtschaft Dresden
-|Fachhochschule für Technik und Wirtschaft in Dresden
+|HTW
+|Hochschule für Technik und Wirtschaft
+|
 
 |StuRa  
 |Studentinnenrat  
@@ -57,7 +56,9 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 
 |ITOP 
 |Informeller Tagesordnungspunkt 
-|Punkt auf der Tagesordnung der nur zur Information der Mitglieder dient (kein Beschluss)
+|Punkt auf der Tagesordnung für die Plenumssitzung der nur zur Information der Mitglieder dient (kein Beschluss)
+
+
 |===
 
 == Verzeichnis der Datenstrukturen
@@ -69,22 +70,31 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 | Zusammensetzung von Benutzername und Passwort
 | String
 | Emailadresse muss `@`-Zeichen und `.` Punkt enthalten.
-| Log-in
+| Login
 
 | Antragsdaten
-4+| Sammlung aller eingegebenen Daten, siehe <<#Antragsdaten, Antragsdaten>>
+| Sammlung aller eingegebenen Daten, siehe <<Antragsdaten.adoc>>
+| 
+| xx
+| xx
+
+|Sitzungsdaten
+|Datum, Wochentag, Sitzungsnummer
+|Datum, String, Int
+|
+|
 
 | Abstimmungsergebnisse
-| Antrag angenommen oder abgelehnt
-| String
-| (keine)
-| Beschluss
+| 
+| 
+| xx
+| xx
 
 | Antragsnummer
-| Nummer, die bei Antragseingang für jeden Antrag vergeben wird. Zusammensetzung: Legislaturperiode-Sitzungsnummer-Antragsnummer (Bsp.: 22/23-01-001)
-| String
-| Antragsnummer darf nur in dem angegebenen Schema generiert werden
-| Aktenzeichen
+| Nummer, die bei Antragseinreichung jedem für jeden Antrag vergeben wird. Zusammensetzung: Legislaturperiode/ Sitzungsnummer/ Antragsnummer
+| 
+| xx
+| xx
 |===
 
 
