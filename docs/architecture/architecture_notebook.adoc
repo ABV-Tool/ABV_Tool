@@ -46,7 +46,7 @@ _Abhängigkeiten:_
 
 - Wir sind darauf angewiesen, dass alle eingesetzten Frameworks zukunftssicher sind.
 - Wir sind auf die Uptime der Server des StuRas angewiesen, damit das Tool weiterhin erreichbar bleibt.
-- Ein Teil des Teams lernt DJango als Programmiersprache.
+- Ein Teil des Teams lernt Django als Webframework.
 
 == Architektur-relevante Anforderungen
 //Fügen Sie eine Referenz / Link zu den Anforderungen ein, die implementiert werden müssen, um die Architektur zu erzeugen.
@@ -142,9 +142,11 @@ Die untere Schicht ist die Datenhaltungsschicht (Back-End,model). Sie enthält d
 
 <<Use Case Diagramm>>
 
-=== Logische Sicht
+=== Logische Sicht (C4-Modell)
 //Beschreibt die Struktur und das Verhalten Systemteilen, die hohen Einfluss auf die Architektur haben. Dies kann die Paketstruktur, kritische Schnittstellen, wichtige Klassen und Subsysteme sowie die Beziehungen zwischen diesen Elementen enthalten. Zudem sollten die physische und logische Sicht persistenter Daten beschrieben werden, wenn es diesen Aspekt im System gibt. Dies ist ein hier dokumentierter Teilaspekt des Entwurfs.
-[plantuml, "{diagramsdir}/c4-model-container", svg]
+*Kontext*
+
+[plantuml, "{diagramsdir}/c4-model-context", svg, title="Context Diagramm"]
 ....
 @startuml example-c4-modell-diagram
 ' source: https://github.com/plantuml-stdlib/C4-PlantUML
@@ -156,8 +158,32 @@ Die untere Schicht ist die Datenhaltungsschicht (Back-End,model). Sie enthält d
 !include <office/Users/user.puml>
 !include <office/Users/mobile_user.puml>
 
-' Diagram title
-title \nC4 Model\n
+
+' Diagram syntax
+Person(as, Antragsteller, "Stellt Antrag")
+Person(av, Antragverwalter, "Verwaltet Anträge")
+
+System(abvt,"ABV-Tool","Antrags- und Beschlussverwaltungstool")
+
+Rel(as, abvt,"Stellt Anträge")
+Rel(av,abvt, "verarbeitet Beschlüsse und verwaltet Anträge")
+SHOW_LEGEND()
+@enduml
+....
+
+*Container*
+
+[plantuml, "{diagramsdir}/c4-model-container", svg, title="Container Diagramm"]
+....
+@startuml example-c4-modell-diagram
+' source: https://github.com/plantuml-stdlib/C4-PlantUML
+' C4 Model
+!include <c4/C4_Context.puml>
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' Images
+!include <office/Users/user.puml>
+!include <office/Users/mobile_user.puml>
 
 ' Diagram syntax
 Person(as, Antragsteller, "Stellt Antrag")
@@ -178,5 +204,6 @@ System_Boundary(c0, "StuRa Server") {
     Rel(mail_system,as,"Informiert über Antragsnummer")
     Rel(av,avbt,"nutzt")
 }
+SHOW_LEGEND()
 @enduml
-
+....
