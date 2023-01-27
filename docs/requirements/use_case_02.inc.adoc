@@ -25,12 +25,12 @@ Leitet die Sitzung und ist verantwortlich für die Tagesordnung.
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der Antragsverwalter in der Sitzungsverwaltung auf Tagesordnung generieren klickt.
+. Der Use Case beginnt, wenn der Antragsverwalter in der Sitzungsverwaltung auf "Tagesordnung generieren" klickt.
 
 . Es wird ein ein Markdown-Dokument zum Ausfüllen erstellt und es erfolgt eine Auflistung aller bereits eingegangenen Anträge nach Kategorie und Datum.
 //siehe Wireframe - Tagesordnung 
 . Der Antragsverwalter trägt manuell via markup unter Top 0 - Formalia sowie unter ITOP weitere Tagesordnungspunkte ein. (unabhängig vom ABV-Tool)
-. #Es wird ein Link zur Tagesordnung generiert, der einen Online-Zugriff auf die Tagesordnung bereitstellt.#
+. Es wird eine Tagesordnung generiert, die als Datei exportiert werden kann. 
 . Der Use Case ist abgeschlossen.
 
 //nochmal genauer zum Abschluss des UC was schreiben
@@ -43,11 +43,9 @@ Wenn die Tagesordnung bereits generiert wurde, dann kann der Antragsverwalter au
 
 Der Use Case wird in Schritt 3 fortgesetzt.
 
-=== Unterabläufe (Subflows)
+//=== Unterabläufe (Subflows)
 //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
 
-==== Unterablauf vorläufige Tagesordnung generieren
-. Es wird immer eine vorläufige Tagesordnung zum #Due Date# generiert.
 
 === Wesentliche Szenarios
 //Szenarios sind konkrete Instanzen eines Use Case, d.h. mit einem konkreten Akteur und einem konkreten Durchlauf der o.g. Flows. Szenarios können als Vorstufe für die Entwicklung von Flows und/oder zu deren Validierung verwendet werden.
