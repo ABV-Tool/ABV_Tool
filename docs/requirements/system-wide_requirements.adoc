@@ -53,7 +53,7 @@ Zur Überprüfung wird die Ladezeit der jeweiligen Seite innerhalb der gesamten 
 ==== NFAS-1: Das System soll es ermöglichen, auch ohne GUI neue Datensätze (bspw. Referate) einzufügen.
 Zur Überprüfung wird ein neues Referat in die Datenbank eingefügt und geschaut, ob dies korrekt in der Anwendung angezeigt wird.
 
-==== NFAS-2: Das System soll es ermöglichen, in der Zukunft weitere gundlegende Funktionen einzibauen.
+==== NFAS-2: Das System soll es ermöglichen, in der Zukunft weitere gundlegende Funktionen einzubauen.
 Zur Überprüfung werden neue Module eingebaut, welche bei dem Aufruf einer Testseite geladen werden. Dies kann bspw. ein Widget oder ähnliches sein.
 
 == Zusätzliche Anforderungen
