@@ -71,8 +71,8 @@ _Abhängigkeiten:_
 == Entscheidungen, Nebenbedingungen und Begründungen
 //[List the decisions that have been made regarding architectural approaches and the constraints being placed on the way that the developers build the system. These will serve as guidelines for defining architecturally significant parts of the system. Justify each decision or constraint so that developers understand the importance of building the system according to the context created by those decisions and constraints. This may include a list of DOs and DON’Ts to guide the developers in building the system.]
 
-- Wir nutzen HTML für das Frontend, da der Vorgänger dies dafür nutzte und bereits Erfahrungen in Python haben.
-- Als Backend nutzen wir eine Kombination aus DJango für die funktionalitäten und PostSQL für die Datenbank zu Speicherung der Daten.
+- Wir nutzen HTML, CSS und Javascript für das Frontend, da der Vorgänger dies dafür nutzte und und wir in Absprache mit dem StuRa das Frontend weiterverwenden.
+- Als Backend nutzen wir eine Kombination aus Django für die funktionalitäten und PostgreSQL als Datenbank zu Speicherung der Daten.
 - Die Erstellung neuer Datenbanken ist wichtig, da die Datenbanken des Vorgängers keine einheitliche Form haben und wir keine Dokumentation vom Vorgänger haben, um die Entscheidungen nachzuvollziehen.
 
 == Architekturmechanismen
