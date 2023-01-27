@@ -31,9 +31,9 @@ Ist zuständig für die jeweilige Plenumssitzung.
 
 . Der Use Case beginnt, wenn der Antragsverwalter die aktuelle Sitzung auswählt. Dabei wird ihm die Markdown-Tagesordnung angezeigt.
 . Der Antragsverwalter sieht alle Beschlüsse aus der Sitzung.
-. Der Antragsverwalter klickt auf Tagesordnung exportieren.
+. Der Antragsverwalter klickt auf "Tagesordnung exportieren".
 . Das System übergibt die Tagesordnung als PDF.
-. Er klickt auf Tagesordnung abschließen.
+. Er klickt auf "Tagesordnung abschließen".
 . Sitzung wird als Abgeschlossen makiert.
 . Der Use Case ist beendet.
 

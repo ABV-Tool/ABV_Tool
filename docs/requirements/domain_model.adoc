@@ -1,5 +1,5 @@
 = Domain Model: {project-name}
-Simon Voges <s83764@htw-dresden.de>; 
+Simon Voges <simon.voges@htw-dresden.de>; 
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
 // Platzhalter für weitere Dokumenten-Attribute
