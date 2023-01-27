@@ -2,11 +2,7 @@
 Alexander Minukow <alexander.minukow@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>; Simon Voges <simon.voges@htw-dresden.de> 
 {localdatetime}
 include::../_includes/default-attributes.inc.adoc[]
-<<<<<<< HEAD
 :imagesdir: ./images
-=======
-:imagesdir: images
->>>>>>> parent of e9dd795 (wireframe bilder hinzugefügt)
 // Platzhalter für weitere Dokumenten-Attribute
 
 

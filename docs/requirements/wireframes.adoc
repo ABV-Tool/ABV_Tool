@@ -1,13 +1,11 @@
 == Wireframes
-:imagesdir: ./images
 :data-uri:
-
 
 Für die anfängliche Darstellung des Tools werden folgende Wireframes benutzt die im laufe der verschiedenen Iterationen weitergeführt und angepasst. 
 
 
 === WF1 Benutzer Login
-image: :../wireframe_login.png[]
+image::/wireframe_login.png[]
 
 _Erklärung:_ 
 
@@ -15,7 +13,7 @@ Systemadministratoren benötigen einen Login um zugriff auf das Tool zu bekommen
 
 === WF2 Tagesordnung erstellen 
 
-image:{imagesdir}:wireframe_sitzungsverwaltung.png[]
+image::wireframe_sitzungsverwaltung.png[]
 
 _Erklärung:_
 
