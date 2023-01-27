@@ -73,7 +73,7 @@ _Abhängigkeiten:_
 
 - Wir nutzen HTML, CSS und Javascript für das Frontend, da der Vorgänger dies dafür nutzte und und wir in Absprache mit dem StuRa das Frontend weiterverwenden.
 - Als Backend nutzen wir eine Kombination aus Django für die funktionalitäten und PostgreSQL als Datenbank zu Speicherung der Daten.
-- Die Erstellung neuer Datenbanken ist wichtig, da die Datenbanken des Vorgängers keine einheitliche Form haben und wir keine Dokumentation vom Vorgänger haben, um die Entscheidungen nachzuvollziehen.
+- Die Erstellung eines neuen Datenbankschemas ist wichtig, da die Datenbank des Vorgängers keine einheitliche Form (keine Normalisierung) hat und wir keine Dokumentation vom Vorgänger haben, um die Entscheidungen nachzuvollziehen.
 
 == Architekturmechanismen
 //[List the architectural mechanisms and describe the current state of each one. Initially, each mechanism may be only name and a brief description. They will evolve until the mechanism is a collaboration or pattern that can be directly applied to some aspect of the design.]
