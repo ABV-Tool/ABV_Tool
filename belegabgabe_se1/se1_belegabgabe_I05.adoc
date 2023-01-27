@@ -65,6 +65,9 @@ include::{docs-requirements}/Antragsdaten.adoc[lines=1..1;4..-1,leveloffset=+1]
 // Domänenmodell
 include::{docs-requirements}/domain_model.adoc[lines=1..1;4..-1,leveloffset=+1]
 <<<
+// Wireframe
+include::{docs-requirements}/wireframes.adoc[lines=1..1;4..-1,leveloffset=+1]
+<<<
 
 // --- Projektdokumentation ---
 = Projektdokumentation

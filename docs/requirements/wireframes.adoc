@@ -1,21 +1,26 @@
-== Wireframes
-:imagesdir: ./images
-:data-uri:
+= Wireframes: {project-name}
+Alexander Minukow <alexander.minukow@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>
+{localdatetime}
+include::../_includes/default-attributes.inc.adoc[]
+// Platzhalter für weitere Dokumenten-Attribute
 
+
+== test
 
 Für die anfängliche Darstellung des Tools werden folgende Wireframes benutzt die im laufe der verschiedenen Iterationen weitergeführt und angepasst. 
 
 
-=== WF1 Benutzer Login
-image: :../wireframe_login.png[]
+== WF1 Benutzer Login
+
+image::wireframe_login.png[]
 
 _Erklärung:_ 
 
 Systemadministratoren benötigen einen Login um zugriff auf das Tool zu bekommen, um features wie Tagesordnung erstellen benutzen zu können.
 
-=== WF2 Tagesordnung erstellen 
+== WF2 Tagesordnung erstellen 
 
-image:{imagesdir}:wireframe_sitzungsverwaltung.png[]
+image::wireframe-sitzungsverwaltung.png[]
 
 _Erklärung:_
 
