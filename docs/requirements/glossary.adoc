@@ -9,7 +9,7 @@ include::../_includes/default-attributes.inc.adoc[]
 In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fachdomäne) des Antrags- und Beschlussverwaltungstools definiert. Zur besseren Übersichtlichkeit sind Begriffe, Abkürzungen und Datendefinitionen gesondert aufgeführt.
 
 == Begriffe
-[%header]
+[%header, cols="1,3,1"]
 |===
 
 | Begriff | Definition und Erläuterung | Synonyme
@@ -31,7 +31,7 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 
 
 == Abkürzungen und Akronyme
-[%header]
+[%header, cols="1,1,3"]
 |===
 | Abkürzung | Bedeutung | Erläuterung
 
