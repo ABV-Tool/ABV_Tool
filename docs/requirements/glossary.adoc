@@ -66,7 +66,7 @@ In diesem Dokument werden die wesentlichen Begriffe aus dem Anwendungsgebiet (Fa
 | Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
 
 | Anmeldedaten (Bsp.)
-| Zusammensetzung von Benutzername und Passwort.
+| Zusammensetzung von Benutzername und Passwort
 | String
 | Emailadresse muss `@`-Zeichen und `.` Punkt enthalten.
 | Log-in

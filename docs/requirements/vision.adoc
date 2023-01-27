@@ -55,7 +55,7 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 | Die Lösung ist eine | Webanwendung
 | Die | Templates für verschiedene Anträge bereitstellt, automatisiert Antragsnummern vergibt und eine automatische Tagesordnung generiert
 | Im Gegensatz zu | manueller Verwaltung mit händischer Vergabe der Antragsnummern und frei verändlichen Templates
-| Unser Produkt | ermöglicht eine zentrale Verwaltung des gesamten Prozesses.
+| Unser Produkt | ermöglicht eine zentrale Verwaltung des gesamten Prozesses
 |===
 
 == Stakeholder Beschreibungen
@@ -87,7 +87,7 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 |Vergabe des Log-ins für die Antragsverwalter, Wartung
 
 |Plenum des StuRa
-|Beschließt Ordnungen des StuRa und setzt damit den Hanbdlungsrahmen für die Arbeit des StuRa. Insbesondere die Geschäftsordnung regelt den Ablauf zur Antragstellung und Beschlussverwaltung.
+|Beschließt Ordnungen des StuRa und setzt damit den Hanbdlungsrahmen für die Arbeit des StuRa. Insbesondere die Geschäftsordnung regelt den Ablauf zur Antragstellung und Beschlussverwaltung
 |Überwachnung der eigenen Ordnungen und Bestimmungen 
 
 |Gesetzgeber

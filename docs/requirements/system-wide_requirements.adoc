@@ -50,8 +50,11 @@ Zur Überprüfung wird die Ladezeit der jeweiligen Seite innerhalb der gesamten 
 
 === Wartbarkeit (Supportability)
 // Dieser Bereich beschreibt sämtliche Anforderungen welche die Supportfähigkeit oder Wartbarkeit des zu entwickelnden Systems verbessern, einschließlich Anpassungsfähigkeit und Erweiterbarkeit, Kompatibilität, Skalierbarkeit und Anforderungen bezüglich der System Installation sowie Maß an Support und Wartbarkeit.
-==== NFAS-1: Das System soll einfach erweiterbar sein. Darunter zählt mitunter das Hinzufügen von neuen Funktionalitäten und neuen Antragsbezeichnungen.
-Zur Überprüfung #...#
+==== NFAS-1: Das System soll einfach erweiterbar sein. Darunter zählt mitunter das Hinzufügen von neuen Funktionalitäten.
+Zur Überprüfung 
+
+==== NFAS-2: Das Hinzufügen von neuen Antragsarten sollte ohne großen Aufwand machbar sein.  
+Zur Überprüfung
 
 == Zusätzliche Anforderungen
 
