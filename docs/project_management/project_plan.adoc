@@ -11,15 +11,31 @@ Der StuRa hat aktuell einen sehr hohen Vewaltungsaufwand mit den Antrags- und Be
 
 == Projektorganisation
 //Introduce the project team, team members, and roles that they play during this project. If applicable, introduce work areas, domains, or technical work packages that are assigned to team members. Introduce neighboring projects, relationships, and communication channels. If the project is introduced somewhere else, reference that location with a link.
-* Alexander Minukow	    *Analyse* / Entwurf
-* Göran Heinemann		*Programmierung* / Tester
-* Huy Nguyen			*Entwurf* / Programmierung
-* Simon Voges			*Deployment-Engineer*
-* Max Patecky			*Tester* / Technical-Writer
-* Mirjam Müller         *Analyse* / Teamleitung
-* Marten Petters	    *Teamleitung*	
 
-Das Team trifft sich regelmäßig jede Woche für neue Erkenntnisse und für den gegenseitigen Austausch. Die Termine werden individuell abgestimmt. 
+In Software Engineering I einigte sich das Team zu Beginn des Projektes auf folgende Rollenverteilung:
+
+* Alexander Minukow	    *Analyse*/Entwurf
+* Göran Heinemann		*Programmierung*/Tester
+* Huy Nguyen			*Entwurf*/Programmierung
+* Simon Voges			*Deployment-Engineer*
+* Max Patecky			*Tester*/Technical-Writer
+* Mirjam Müller         *Analyse*/Teamleitung
+* Marten Petters	    *Teamleitung*
+
+Grundlage hierfür waren zum Einen die Vorkenntnisse der einzelnen Teammitglieder, welche sich aus Wissen aus dem Studium sowie selbst angeeignetem Wissen bestand. Zum Anderen war die Bereitschaft eine bestimmte Rolle zu übernehmen und sich dafür entsprechendes Wissen anzueignen ausschlaggebend. 
+
+In Software Engineering II verlässt Marten Petters das Team, da im Studiengang Wirtschaftsingeneurwesen nur das Modul Software Engineering I belegt werden kann. Dadurch und durch den Projektfortschritt sind Anpassungen an der Rollenverteilung notwendig. Das Team einigte sich auf folgende neue Rollenverteilung: 
+
+* Alexander Minukow	    *Analyse*/Entwurf
+* Göran Heinemann		*Programmierung/Deployment-Engineer*
+* Huy Nguyen			*Entwurf*/Programmierung
+* Simon Voges			*stellv. Teamleitung*/#Diagramm-Verantwortlicher#
+* Max Patecky			*Tester*/Technical-Writer
+* Mirjam Müller         *Teamleitung*/Analyse
+
+Neben der Teamleitung war eine größe Änderung die Rolle des Deployment-Engineers. #...#	
+
+In SE I gab es regelmäßige Treffen, die mindestens alle zwei Wochen stattfanden. In SE I wurden die Termine individuell abgestimmt. In SE II einigte sich das Team auf einen regelmäßig wiederkehrenden Termin, immer am Dienstag in der geraden Woche stattfindet. Zur Terminplanung und für kurze Absprachen oder Nachrichten hat das Team einen WhatsApp Gruppenchat. Weiterhin nutzen wir Discord für unsere Meetings und zum Austausch von Informationen. Unsere Meetings dokumentieren wir in einem Google Doc, was allen Mitgliedern zur Verfügung steht. 
 
 == Praktiken und Bewertung
 //Describe or reference which management and technical practices will be used in the project, such as iterative development, continuous integration, independent testing and list any changes or particular configuration to the project. Specify how you will track progress in each practice. As an example, for iterative development the team may decide to use iteration assessments and iteration burndown reports and collect metrics such as velocity (completed work item points/ iteration).
