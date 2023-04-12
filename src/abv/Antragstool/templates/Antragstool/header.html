@@ -3,7 +3,17 @@
     <ul class = "mainnav">
         <li {% if request.get_full_path == "/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'index' %}">Home</a></li>
         <li {% if request.get_full_path == "/referate/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'referate' %}">Referate</a></li>
-        <li {% if request.get_full_path == "/sitzungen/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'referate' %}">Referate</a></li>
+        <li {% if request.get_full_path == "/sitzungen/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'referate' %}">Sitzungen</a></li>
+
+        <!-- display login/logout if user is authenticated or not -->
+        {% if user.is_authenticated %}
+            <li class = "lir"><a href="/accounts/logout">Logout</a></li>
+            <li class = "lir"><a href="/admin">Administration</a></li>
+            <li class = "lir"><a>Willkommen, <b>{{ user.get_username }}</b>!</a></li>
+        {% else %}
+            <li {% if request.get_full_path == "/accounts/login/" %} id = "active"{% endif %} class = "lir"><a href="{%  url 'login' %}">Login</a></li>
+        {% endif %}
+
     </ul>
 </div>
 

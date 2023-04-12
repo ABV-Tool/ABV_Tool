@@ -5,6 +5,8 @@ from .models import Referat, Sitzung, Antrag
 def AppHome(request):
     return render(request, 'Antragstool/index.html')
 
+def Login(request):
+    return render(request, 'registration/login.html')
 
 def ReferatListe(request):
 
