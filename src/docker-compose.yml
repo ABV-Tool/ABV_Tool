@@ -1,16 +1,30 @@
 version: "3"
 services:
+
   db:
     image: postgres
     restart: unless-stopped
     ports:
       - 5432:5432
     environment:
+      POSTGRES_DB: abv
       POSTGRES_USER: abv
       POSTGRES_PASSWORD: abv
-      POSTGRES_DB: abv
     volumes:
       - pg_data:/var/lib/postgresql
+
+  #web:
+  #  build: .
+  #  command: python /app/manage.py runserver 0.0.0.0:8000
+  #  ports:
+  #    - "8000:8000"
+  #  environment:
+  #    POSTGRES_NAME: abv
+  #    POSTGRES_USER: abv
+  #    POSTGRES_PASSWORD: abv
+  #  depends_on:
+  #    - db
+
 
 volumes:
   pg_data:
