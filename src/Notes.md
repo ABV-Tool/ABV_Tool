@@ -5,6 +5,12 @@ http://www.seanbehan.com/how-to-enable-uuids-in-postgres/
 # Django Login
 
 ## Erstellung eines Superusers
+
+[Verwendeter Guide](https://learndjango.com/tutorials/django-login-and-logout-tutorial)
+
+=> `python manage.py createsuperuser`
+
+Credentials:
 * Login:    abv
 * Email:    abv@stura.htw-dresden.de
 * PW:       J9AHJL4hD3vc2PwP
