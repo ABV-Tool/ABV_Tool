@@ -8,12 +8,11 @@
         <!-- display login/logout if user is authenticated or not -->
         {% if user.is_authenticated %}
             <li class = "lir"><a href="/accounts/logout">Logout</a></li>
-            <li class = "lir"><a href="/admin">Administration</a></li>
-            <li class = "lir"><a>Willkommen, <b>{{ user.get_username }}</b>!</a></li>
+            <li class = "lir"><a href="/admin" target="_blank">Administration</a></li>
+            <li class = "lir"><a>Willkommen, <b>{% if request.user.first_name == '' %}{{ request.user }}{% else %}{{ request.user.first_name }}{% endif %}</b>!</a></li>
         {% else %}
             <li {% if request.get_full_path == "/accounts/login/" %} id = "active"{% endif %} class = "lir"><a href="{%  url 'login' %}">Login</a></li>
         {% endif %}
 
     </ul>
 </div>
-
