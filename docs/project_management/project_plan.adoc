@@ -5,7 +5,7 @@ include::../_includes/default-attributes.inc.adoc[]
 // Platzhalter für weitere Dokumenten-Attribute
 
 
-== Einführung
+== #Einführung#
 //Briefly describe the content of the project plan.
 Der StuRa hat aktuell einen sehr hohen Vewaltungsaufwand mit den Antrags- und Beschlussverwaltungen. Aktuell läuft jeder Arbeitsschritt manuell hab. Das Ziel ist daher die Erstellung eines Tools, welches den Aufwand, insbesondere die Vergabe und Überwachung der Auftragsnummern vereinfacht.
 
@@ -40,40 +40,122 @@ In SE I gab es regelmäßige Treffen, die mindestens alle zwei Wochen stattfande
 == Praktiken und Bewertung
 //Describe or reference which management and technical practices will be used in the project, such as iterative development, continuous integration, independent testing and list any changes or particular configuration to the project. Specify how you will track progress in each practice. As an example, for iterative development the team may decide to use iteration assessments and iteration burndown reports and collect metrics such as velocity (completed work item points/ iteration).
 
-Das Team nutzt Open Up für die Organisation des Projektes. In allen Meetings wird Protokoll geführt, ein Teammitglied ist dafür verantwortlich, das restliche Team kontrolliert dieses. Alle Änderungen und Vorhaben werden umgehend mit dem Kunden abgeklärt und durch diesen bestätigt. Unser Kunden Kontakt ist Theresa Minister.
+*Open UP*
+
+*Management Practices*
+
+* Iterative Developement
+* Risk-Value Lifecycle
+* Release Planning
+* Whole Team
+* Team Change Management
+* Project Process Tailoring
+
+*Technical Practices*
+
+* Concurrent Testing
+* Continuous Integration
+* Evolutionary Architecture
+* Ecolutionary Design
+* Shared Vision
+* Test Driven Developement
+* Use Case Driven Developement
+
+*Deployment Practices*
+
+* Docuemtenation and Training
+* Production Realease
 
 
 == Meilensteine und Ziele
 //Define and describe the high-level objectives for the iterations and define milestones. For example, use the following table to lay out the schedule. If needed you may group the iterations into phases and use a separate table for each phase
 
-[%header, cols="1,3a,2,1"]
+//Phasen --> Meilensteine müssen hier rein aus Open UP eigene Meilensteine möglich (Zeitpunkt!)
+
+[%header, cols="1,3a,2"]
 |===
 | Iteration
 | Primary objectives +
 (risks and use case scenarios)
 | Scheduled start or milestone
-| Target velocity
 
 | I1
 |
-* Kennenlerenen und Rollenverteilung
-* Kundenwünsche kennenleren
-| 12.12.2022/ 21.12.2022
-| 15
+* Kennenlernen des Teams
+* Rollenverteilung 
+* GitHub einrichten
+* Kundenwünsche kennenlernen und verstehen
+* Vision erarbeiten
+* *Meilenstein: Inception Phase abgeschlossen*
+| 12.12.2022/21.12.2022
 
 | I2
 |
-* Datenerfassung (Use-Cases, Vision, Glossar)
+* Use-Cases beschreiben
+* Vision beenden
+* system wide requirements bestimmen
+* Deployment
 * Projektdokumentation
 | 04.01.2023/13.01.2023
-| 16
 
 |I3
 |
-* Fertigstellung Prototyp
-* Fertigstellung Dokumentation
-|16.01.2023/ 27.01.2023
-|17
+* Analyse beenden
+* Architecture Notebook
+* Implemtierung und Präsentaion Prototyp
+* Termin mit Aufftraggeber
+* Fertigstellung Dokumentation und Abagbe Beleg
+* *Meilenstein: Elaboration Phase abgeschlossen*
+|16.01.2023/27.01.2023
+
+|I4
+|
+* Auswertung Beleg
+* Nacharbeiten SE I
+* Implemeniterung UC 5
+* #Deployment vorbereiten#
+|03.04.2023/16.04.2023
+
+|I5
+|
+* 
+* 
+* 
+* 
+|17.04.2023/30.04.2023
+
+|I6
+|
+* 
+* 
+* 
+* 
+|01.05.2023/14.05.2023
+
+|I7
+|
+* 
+* 
+* 
+* 
+|15.05.2023/28.05.2023
+
+|I8
+|
+* 
+* 
+* 
+* *Meilenstein: Construction Phase abgeschlossen*
+|29.05.2023/11.06.2023
+
+|I9
+|
+* System ist vom Kunden einsetzbar 
+* *Meilenstein: Transition Phase abgeschlossen*
+* *Präsentaion des Systems beim StuRa und Freigabe abholen
+* *Belegabgabe*
+|12.06.2023/23.06.2023
+
 |===
 
 
@@ -86,3 +168,9 @@ Am Ende von SE2 soll die Software fertig gestellt sein und auf den Servern des S
 //List lessons learned from the retrospective, with special emphasis on actions to be taken to improve, for example: the development environment, the process, or team collaboration.
 
 Die Zusammenarbeit des Teams war grundlegend gut. Durch Verbesserung der Kommunikation und regelmäßige Rückfragen konnte das entfallen von Daten verbessert werden.
+
+* Meetings vorbereiten und alle wichtigen Punkte vorher aufschreiben und diese dann im Meeting abarbeiten
+
+* festen wiederkehrenden Termin für Meetings festlegen, dass spart sehr viel Zeit
+
+* (Die wichtigsten) Aufgaben wirklich nach Kenntnissen und Fähigkeiten verteilen, weniger nach Kapazitäten und im Sinne von "Ja kann ich schon machen"
