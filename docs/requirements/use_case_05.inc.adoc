@@ -1,4 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
+:data-uri:
+//:imagesdir: ./images
 
 == UC05 => Antragsverwalter anmelden
 
@@ -34,6 +36,17 @@ Ist zuständig für die jeweilige Plenumssitzung.
 Wenn Antragsverwalter in Schritt 3 des Standardablaufes ungültige Daten eingibt, dann gibt das System die Fehlermeldung "Ungültige Daten" aus.
 
 Der Use Case wird in Schritt 2 fortgesetzt.
+
+
+=== Wireframe
+
+image::wireframe-login.png[title="Entwurf Sitzungsverwaltung"]
+
+_Erklärung:_  
+
+Systemadministratoren benötigen einen Login um Zugriff auf das Tool zu bekommen, um Features wie Tagesordnung erstellen nutzen zu können.
+
+
 
 ////
 

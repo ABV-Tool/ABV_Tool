@@ -80,5 +80,3 @@ include::use_case_05.inc.adoc[leveloffset=+1]
 <<<
 include::use_case_06.inc.adoc[leveloffset=+1]
 
-<<<
-include::wireframes.adoc[]

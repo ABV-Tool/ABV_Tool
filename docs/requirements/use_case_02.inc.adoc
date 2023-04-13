@@ -1,5 +1,7 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
+:data-uri:
+
 == UC02 => Tagesordnung erstellen
 
 === Kurzbeschreibung
@@ -52,6 +54,14 @@ Der Use Case wird in Schritt 3 fortgesetzt.
 
 ==== Erfolgreiche generierung der Tagesordnung
 - *SC1:* Frau Y möchte die nächste Plenumssitzung vorbereiten. Sie wählt die gewünschte Sitzung aus und klickt auf Tagesordnung generieren. Es wird erfolgreich eine Tagesordnung mit mehreren Finanzanträgen sowie sonstigen Anträgen generiert.
+
+=== Wireframe
+
+image::wireframe-sitzungsverwaltung.png[title="Entwurf Sitzungsverwaltung"]
+
+_Erklärung:_
+
+Über die Sitzungsverwaltung können alle Anträge betrachtet werden und eine Tagesordnung für die kommende Plenumssitzung erstellt werden. Anträge die in der Sitzung besprochen werden sollen können ausgewählt werden. Tagesordnungen für kommende Sitzungen können schon im voraus entschieden werden.
 
 ////
 
