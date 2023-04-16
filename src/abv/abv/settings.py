@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'djmoney',
     'jsonfield',
-    'Antragstool',
+    'fontawesomefree',
+    'Antragstool'
 ]
 
 MIDDLEWARE = [
