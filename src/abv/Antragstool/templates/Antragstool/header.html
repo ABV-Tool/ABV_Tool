@@ -1,18 +1,18 @@
 {% load static %}
 <div class = "navigation">
     <ul class = "mainnav">
-        <li {% if request.get_full_path == "/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'index' %}">Home</a></li>
-        <li {% if request.get_full_path == "/referate/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'referate' %}">Referate</a></li>
-        <li {% if request.get_full_path == "/sitzungen/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'referate' %}">Sitzungen</a></li>
+        <li class = "lil {% if request.get_full_path == "/" %} active{% endif %}"><a href="{%  url 'index' %}">Home</a></li>
+        <li class = "lil {% if request.get_full_path == "/referate/" %} active{% endif %}"><a href="{%  url 'referate' %}">Referate</a></li>
+        <li class = "lil {% if request.get_full_path == "/sitzungen/" %} active{% endif %}"><a href="{%  url 'referate' %}">Sitzungen</a></li>
 
         <!-- display login/logout if user is authenticated or not -->
         {% if user.is_authenticated %}
-            <li class = "lir"><a href="/accounts/logout">Logout</a></li>
-            <li class = "lir"><a href="/admin" target="_blank">Administration</a></li>
-            <li class = "lir"><a>Willkommen, <b>{% if request.user.first_name == '' %}{{ request.user }}{% else %}{{ request.user.first_name }}{% endif %}</b>!</a></li>
+            <li class="lir"><a href="{% url 'logout' %}">Abmelden</a></li>
+            <li class="lir"><a href="/admin" target="_blank">Administration</a></li>
+            <!-- display user's firstname if defined -->
+            <li class="lir"><a>Willkommen, <b>{% if request.user.first_name == '' %}{{ request.user }}{% else %}{{ request.user.first_name }}{% endif %}</b>!</a></li>
         {% else %}
-            <li {% if request.get_full_path == "/accounts/login/" %} id = "active"{% endif %} class = "lir"><a href="{%  url 'login' %}">Login</a></li>
+            <li class="lir {% if request.get_full_path == "/accounts/login/" %} active{% endif %}"><a href="{%  url 'login' %}">Anmelden</a></li>
         {% endif %}
-
     </ul>
 </div>
