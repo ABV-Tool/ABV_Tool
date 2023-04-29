@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+
+{% load static tailwind_tags %}
+
+<head>
+    {% load static %}
+    {% tailwind_css %}
+    <meta charset="UTF-8">
+    <title>Antragsverwaltungstool</title>
+    <link rel="icon" href="{% static 'icon.png' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/mainstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/W3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesomefree/css/all.min.css' %}" type="text/css">
+</head>
+
+<body>
+
+    <div class = "logo w3-animate-top">
+        <img src="{% static 'img/logo.png' %}" class = "sturalogo w3-hover-grayscale" alt="ToolLogo"/>
+    </div>
+    
+    {% include 'Antragstool/header.html' %}
+
+    <div class = "content w3-animate-opacity">
+        <div class="w3-card-4" style="margin-bottom: 20px">
+            <header class="w3-container" style="background-color: cornflowerblue;">
+                <h1>StuRa Antragsverwaltung</h1>
+            </header>
+
+            <div class="w3-container w3-light-gray">
+                <p><script src="{% static 'text/index/welcometext.js' %}"></script></p>
+            </div>
+        </div>
+
+        <h1>Universelle Anträge:</h1>
+
+        <div class = "w3-row" style="margin-bottom: 20px">
+            <a href="{% url 'index' %}"><div class="w3-half">
+                <div class="w3-card-4" style="margin-right: 10px">
+                    <header class="w3-container" style="background-color: #F2AC2E;">
+                        <h2><i class="fa-solid fa-file"></i> Antrag ohne finanziellen Mittel</h2>
+                    </header>
+
+                    <div class="w3-container w3-light-gray">
+                        <p><script src="{% static 'text/index/universaltext.js' %}"></script></p>
+                    </div>
+                </div>
+            </div></a>
+
+            <a href="{% url 'index' %}"><div class="w3-half">
+                <div class="w3-card-4" style="margin-left: 10px">
+                    <header class="w3-container" style="background-color: #F2AC2E;">
+                        <h2><i class="fa-solid fa-money-bill-1-wave"></i> Antrag mit finanziellen Mitteln</h2>
+                    </header>
+
+                    <div class="w3-container w3-light-gray">
+                        <p><script src="{% static 'text/index/financestext.js' %}"></script></p>
+                    </div>
+                </div>
+            </div></a>
+        </div>
+
+        <h1>Anträge zu Personen:</h1>
+
+        <div class = "w3-row" style="margin-bottom: 20px">
+            <a href="{% url 'index' %}"><div class="w3-third">
+                <div class="w3-card-4" style="margin-right: 10px">
+                    <header class="w3-container" style="background-color: #F2AC2E;">
+                        <h2><i class="fa-solid fa-user"></i> Beratendes Mitglied</h2>
+                    </header>
+
+                    <div class="w3-container w3-light-gray">
+                        <p><script src="{% static 'text/index/advisorytext.js' %}"></script></p>
+                    </div>
+                </div>
+            </div></a>
+
+            <a href="{% url 'index' %}"><div class="w3-third">
+                <div class="w3-card-4" style="margin-left: 10px; margin-right: 10px">
+                    <header class="w3-container" style="background-color: #F2AC2E;">
+                        <h2><i class="fa-solid fa-building"></i> Wahl auf Stelle/Amt</h2>
+                    </header>
+
+                    <div class="w3-container w3-light-gray">
+                        <p><script src="{% static 'text/index/electiontext.js' %}"></script></p>
+                    </div>
+                </div>
+            </div></a>
+
+            <a href="{% url 'index' %}"><div class="w3-third">
+                <div class="w3-card-4" style="margin-left: 10px">
+                    <header class="w3-container" style="background-color: #F2AC2E;">
+                        <h2><i class="fa-solid fa-gavel"></i> Herstellung des Benehmens</h2>
+                    </header>
+
+                    <div class="w3-container w3-light-gray">
+                        <p><script src="{% static 'text/index/establishing.js' %}"></script></p>
+                    </div>
+                </div>
+            </div></a>
+        </div>
+    </div>
+
+    {% include 'Antragstool/footer.html' %}
+
+</body>
+
+</html>

@@ -5,7 +5,7 @@ from .forms import LoginForm
 
 
 def AppHome(request):
-    return render(request, 'Antragstool/index.html')
+    return render(request, 'pages/home.html', context={'title': 'Home'})
 
 
 def LoginPage(request):
@@ -29,7 +29,7 @@ def LoginPage(request):
                 msg = 'Die eingegebenen Daten sind ungültig! Versuche es erneut.'
               
     return render(
-        request, 'registration/login.html', context={'form': form, 'msg': msg}
+        request, 'pages/login.html', context={'title': 'Anmelden', 'form': form, 'msg': msg}
     )
     
     
