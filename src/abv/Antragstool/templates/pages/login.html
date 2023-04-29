@@ -8,10 +8,10 @@
 {% endblock %}
 
 {% block content %}
-    <div class="login-wrapper">
+    <div class="login-wrapper shadow-card">
         <div class="content w3-animate-opacity">
-            <h1 class="text-center"><b>StuRa-Login</b></h1>
-            <form method="post" class="login-form">
+            <h1 class="text-center"><b>ABV-Anmeldung</b></h1>
+            <form method="POST" class="login-form">
                 {% csrf_token %}
                 {{ form.as_div }}
                 <button type="submit">Anmelden</button>

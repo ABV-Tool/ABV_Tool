@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from .models import Referat, Sitzung, Antrag
-from .forms import LoginForm
+from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
 
 
 def AppHome(request):
@@ -29,7 +29,7 @@ def LoginPage(request):
                 msg = 'Die eingegebenen Daten sind ungültig! Versuche es erneut.'
               
     return render(
-        request, 'pages/login.html', context={'title': 'Anmelden', 'form': form, 'msg': msg}
+        request, 'pages/login.html', context={'title': 'Anmelden', 'form': form, 'msg': msg, 'fixed_footer': True}
     )
     
     
@@ -71,3 +71,42 @@ def AntraegeVonSitzung(request, sitzid):
             'sitzung': sitzung
         }
     )
+
+
+# Anträge
+def AntragAllgemein(request):
+    return render(request, 'pages/antrag.html', context={
+        'title': 'Allgemeiner Antrag',
+        'form': AntragAllgemeinForm()
+    })
+
+def AntragFinanziell(request):
+    return render(request, 'pages/antrag.html', context={
+        'title': 'Antrag mit finanzellen Mitteln',
+        'form': AntragFinanziellForm()
+    })
+    
+def AntragVeranstaltung(request):
+    return render(request, 'pages/antrag.html', context={
+        'title': 'Antrag für eine Veranstaltung',
+        'form': AntragVeranstaltungForm()
+    })
+
+def AntragMitglied(request):
+    return render(request, 'pages/antrag.html', context={
+        'title': 'Antrag auf beratenes Mitglied',
+        'form': AntragMitgliedForm
+    })
+    
+def AntragAmt(request):
+    return render(request, 'pages/antrag.html', context={
+        'title': 'Antrag auf Stelle/Amt',
+        'form': AntragAmtForm
+        
+    })
+    
+def AntragBenehmen(request):
+    return render(request, 'pages/antrag.html', context={
+        'title': 'Antrag auf Herstellung des Benehmens',
+        'form': AntragBenehmenForm
+    })

@@ -7,7 +7,18 @@ body {
 
 
 /* + Custom Global Classes + */
-
+.fixed-footer{
+    position: fixed !important;
+    width: 100%;
+    bottom: 0;
+}
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    color: white;
+    background-color: #f2ac2e;
+}
 /* - Custom Global Classes - */
 
 
