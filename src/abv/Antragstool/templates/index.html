@@ -1,7 +1,7 @@
+{% load static tailwind_tags %}
+
 <!DOCTYPE html>
 <html lang="de">
-
-    {% load static tailwind_tags %}
 
     <head>
         {% block head %}
@@ -11,22 +11,21 @@
             <title>{% if title %}{{ title }}{% else %}Unbekannt{% endif %} | ABV-Tool StuRa</title>
             <link rel="icon" href="{% static 'icon.png' %}" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <link rel="stylesheet" href="{% static 'css/mainstyle.css' %}">
+            <link rel="stylesheet" href="{% static 'css/main.css' %}">
             <link rel="stylesheet" href="{% static 'css/W3.css' %}">
-            <link rel="stylesheet" href="{% static 'css/index.css' %}">
             <link rel="stylesheet" href="{% static 'fontawesomefree/css/all.min.css' %}" type="text/css">
         {% endblock %}    
     </head>
 
     <body>
-
+        
         <div class = "logo w3-animate-top">
-            <img src="{% static 'img/logo.png' %}" class = "sturalogo w3-hover-grayscale" alt="ToolLogo"/>
+            <img src="{% static 'img/logo.png' %}" class="w3-hover-grayscale m-3" alt="StuRa HTW Dresden"/>
         </div>
         
         {% include 'components/header.html' %}
 
-        <div class = "content w3-animate-opacity">
+        <div class = "content w3-animate-opacity m-10">
             {% block content %}
                 <!-- extended blocks will be placed here -->
             {% endblock %}

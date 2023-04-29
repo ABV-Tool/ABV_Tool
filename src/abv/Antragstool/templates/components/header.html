@@ -1,6 +1,7 @@
 {% load static %}
-<div class = "navigation">
-    <ul class = "mainnav">
+
+<div class="navigation w3-animate-top">
+    <ul class="mainnav">
         <li class = "lil {% if request.get_full_path == "/" %} active{% endif %}"><a href="{%  url 'index' %}">Home</a></li>
         <li class = "lil {% if request.get_full_path == "/referate/" %} active{% endif %}"><a href="{%  url 'referate' %}">Referate</a></li>
         <li class = "lil {% if request.get_full_path == "/sitzungen/" %} active{% endif %}"><a href="{%  url 'referate' %}">Sitzungen</a></li>
