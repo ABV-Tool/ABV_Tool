@@ -8,5 +8,10 @@
 {% endblock %}
 
 {% block content %}
-    <!-- insert content -->
+    <form method="POST" >
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button class="btn" type="submit">Anmelden</button>
+        <p class="feedback">{{ msg }}</p>
+    </form>
 {% endblock %}
