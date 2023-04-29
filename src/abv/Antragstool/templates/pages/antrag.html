@@ -11,7 +11,7 @@
     <form method="POST" >
         {% csrf_token %}
         {{ form.as_div }}
-        <button class="btn" type="submit">Anmelden</button>
+        <button class="btn" type="submit">Abschicken</button>
         <p class="feedback">{{ msg }}</p>
     </form>
 {% endblock %}
