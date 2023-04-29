@@ -39,3 +39,17 @@ https://forum.djangoproject.com/t/importerror-cannot-import-name-ugettext-lazy-f
 #### Temporärer Fix:
 https://forum.djangoproject.com/t/importerror-cannot-import-name-ugettext-lazy-from-django-utils-translation/10943/4
 => Ausführung in lokalem `venv`
+
+# TailwindCSS Setup
+
+Guide: https://django-tailwind.readthedocs.io/en/latest/installation.html
+
+Problem: Abhängigkeit von NPM => NPM-Pfad muss gesetzt werden
+
+## Start
+
+`python manage.py tailwind start`
+
+## Build
+
+`python manage.py tailwind build`
