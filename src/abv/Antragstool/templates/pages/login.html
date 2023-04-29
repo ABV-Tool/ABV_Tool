@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="login-wrapper">
+        <div class="content w3-animate-opacity">
+            <h1 class="text-center"><b>StuRa-Login</b></h1>
+            <form method="post" class="login-form">
+                {% csrf_token %}
+                {{ form.as_div }}
+                <button type="submit">Anmelden</button>
+                <p class="login-feedback">{{ msg }}</p>
+            </form>
+        </div>
+    </div>
+{% endblock %}
