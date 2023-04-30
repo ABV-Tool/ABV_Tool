@@ -9,14 +9,31 @@
     in
     {
       packages = forAllSystems (system: {
-        default = pkgs.${system}.poetry2nix.mkPoetryApplication { projectDir = self; };
+        #martor = pkgs.fetchPypi
       });
 
       devShells = forAllSystems (system: {
         default = pkgs.${system}.mkShellNoCC {
           packages = with pkgs.${system}; [
-            (poetry2nix.mkPoetryEnv { projectDir = self; })
-            poetry
+            (let 
+              martor = python39.pkgs.buildPythonPackage rec {
+                pname = "martor";
+                version = "1.6.26";
+                
+                src = python39.pkgs.fetchPypi {
+                  inherit pname version;
+                  hash = "";
+                };
+                
+                doCheck = false;
+                
+                meta = {
+                  homepage = "https://github.com/agusmakmun/django-markdown-editor";
+                  description = "Markdown editor for Django";
+                };
+              };
+
+			in python3.withPackages(p: [ p.django p.gunicorn martor ]))
           ];
         };
       });
