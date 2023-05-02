@@ -11,17 +11,17 @@ services:
       POSTGRES_DB: abv
     volumes:
       - pg_data:/var/lib/postgresql
-  abv:
-    build: .
-    restart: unless-stopped
-    ports:
-      - 8020:8020
-    depends_on:
-      - db
-    environment:
-      DJANGO_SUPERUSER_USERNAME: admin
-      DJANGO_SUPERUSER_USERNAME: admin
-      DJANGO_SUPERUSER_EMAIL: admin@test.com
+  #abv:
+  #  build: .
+  #  restart: unless-stopped
+  #  ports:
+  #    - 8020:8020
+  #  depends_on:
+  #    - db
+  #  environment:
+  #    DJANGO_SUPERUSER_USERNAME: admin
+  #    DJANGO_SUPERUSER_USERNAME: admin
+  #    DJANGO_SUPERUSER_EMAIL: admin@test.com
 
 volumes:
   pg_data:
