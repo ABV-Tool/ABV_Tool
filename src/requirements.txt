@@ -3,4 +3,4 @@ gunicorn
 Django
 psycopg2
 django-money
-django-jsonfield
+django-translator

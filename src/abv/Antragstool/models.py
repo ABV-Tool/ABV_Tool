@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from djmoney.models.fields import MoneyField
-import jsonfield
+#import jsonfield
 
 
 class Referat(models.Model):
@@ -48,7 +48,7 @@ class Antragstyp(models.Model):
                              editable=False,
                              db_column='typ_id')
     typName = models.TextField(max_length=200, db_column='typ_name')
-    form = jsonfield.JSONField(db_column='form')
+    # form = jsonfield.JSONField(db_column='form')
 
 
 class Antrag(models.Model):

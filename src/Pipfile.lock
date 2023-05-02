@@ -149,14 +149,6 @@
             "index": "pypi",
             "version": "==4.1.5"
         },
-        "django-jsonfield": {
-            "hashes": [
-                "sha256:ccb2fe623e1bf7799e49c593b0a89a85084ef8d3debbf26d92a54e27b5305d72",
-                "sha256:f789a0ea1f80b48aff7d6c36dd356ce125dbf1b7cd97a82d315607ac758f50ff"
-            ],
-            "index": "pypi",
-            "version": "==1.4.1"
-        },
         "django-money": {
             "hashes": [
                 "sha256:1f2a760d5da28de8e1beb05bfc66db0c29b4329c7e382cf69f2577315da3ee91",
