@@ -91,8 +91,12 @@ Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- un
 |Überwachnung der eigenen Ordnungen und Bestimmungen 
 
 |Gesetzgeber
-|gibt rechtlichen Rahmen für den Umgang mit personenbezogenen Daten vor 
+|Gibt rechtlichen Rahmen für den Umgang mit personenbezogenen Daten vor.
 |Überwachnung der datenschutzrechtlichen Bestimmungen
+
+|Prof. Anke
+|Gibt Rahmenbedingen sowie zeitliche Einschränkung für das gesamte Projekt vor.
+|Vermittlung von SE Inhalten, dokumentatorische Pflichten sowie Kontrolle und Bewertung des Projektes. 
 |===
 
 === Benutzerumgebung
