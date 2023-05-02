@@ -9,7 +9,6 @@ gunicorn = "*"
 django = "*"
 psycopg2 = "*"
 django-money = "*"
-django-jsonfield = "*"
 
 [dev-packages]
 
