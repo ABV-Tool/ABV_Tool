@@ -1,0 +1,90 @@
+[
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 1,
+            "refName": "Finanzen",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 2,
+            "refName": "Hochschulpolitik",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 3,
+            "refName": "Internationales",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 4,
+            "refName": "Kultur",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 5,
+            "refName": "Öffentlichkeitsarbeit",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 6,
+            "refName": "Personal",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 7,
+            "refName": "Qualitätsmanagement",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 8,
+            "refName": "Soziales",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 9,
+            "refName": "Sport",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 10,
+            "refName": "stud. Selbstverwaltung & Organisation",
+            "refZyklus": "2"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 11,
+            "refName": "Studium",
+            "refZyklus": "2"
+        }
+    }
+]
