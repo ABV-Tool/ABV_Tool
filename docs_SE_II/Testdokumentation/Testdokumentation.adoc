@@ -11,6 +11,193 @@
 // Ablaufbeschreibung des Tests (manuell oder automatisiert)
 // Erwartetes Ergebnis, z.B. bestimmter Systemzustand, Fehlermeldung, Ausgabedaten
 
+== Vorbedingungen
+
+Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
+
+. Es besteht eine aktive Internetverbindung
+. Der Benutzer befindet sich im internen Netzwerk der HTW Dresden
+. Der Host-Server ist online und erreichbar
+
+
+== Test Cases
+
+=== TC01 [Login] - Gültige Eingaben akzeptiert
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Benutzer hat gültige Logindaten eingegeben. Der Login-Vorgang muss erfolgreich beendet werden.
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| Zeitstempel und Benutzerkennung müssen in ein Log gespeichert werden
+
+| Benötigte Daten   
+| Logindaten (Benutzername, Passwort)
+|===
+
+
+=== TC02 [Login] - Ungültige Eingaben abgelehnt
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Benutzer hat ungültige Logindaten eingegeben. Die Software muss den Login-Vorgang abbrechen.
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| Ausgabe einer Fehlermeldung
+
+| Benötigte Daten   
+| Logindaten (Benutzername, Passwort)
+|===
+
+
+=== TC03 [Antrag] - Gültigen Antrag einreichen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Benutzer hat einen Antrag vollständig ausgefüllt und abgeschickt. Der Antrag muss an die Datenbank gesendet und der Vorgang beendet werden.
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| Der Antrag muss in die Datenbank eingefügt und der korrekten nächsten Sitzung des ausgewählen Plenums zugewiesen werden.
+
+| Benötigte Daten   
+| Antragsdaten
+|===
+
+
+=== TC04 [Antrag] - Anhänge werden überliefert
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Benutzer hat einen Antrag vollständig ausgefüllt und mit Anhängen (1x PDF, 1x DOCX & 2x PNG) abgeschickt.
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| Der Antrag muss in die Datenbank eingefügt und die Anhänge in einer separaten Tabelle, welche auf den Antrag verweist, abgespeichert werden.
+
+| Benötigte Daten   
+| Antragsdaten, Anhänge
+|===
+
+
+=== TC05 [Antrag] - Ungültigen Antrag ablehnen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Benutzer hat einen unvollständigen Antrag abgeschickt. Der Vorgang muss abgebrochen werden.
+
+| Vorbedingung      
+| -
+
+| Nachbedingung     
+| Es wird eine Fehlermeldung ausgegeben, die dem Benutzer aufzeigt, welche Angaben fehlen/ungültig sind.
+
+| Benötigte Daten   
+| Antragsdaten
+|===
+
+
+=== TC06 [Antrag] - Antrag anzeigen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Administrator kann sich einen Antrag auf der Weboberfläche der Anwendung anzeigen lassen.
+
+| Vorbedingung      
+| Der Antrag ist gültig und wurde erfolgreich eingereicht.
+
+| Nachbedingung     
+| Die Daten werden korrekt abgebildet.
+
+| Benötigte Daten   
+| Antragsdaten
+|===
+
+
+=== TC07 [Antrag] - Antrag bearbeiten
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Administrator kann einen Antrag auswählen und beliebig dessen Daten verändern.
+
+| Vorbedingung      
+| Der Antrag ist gültig und wurde erfolgreich eingereicht.
+
+| Nachbedingung     
+| Die Daten werden korrekt abgefragt und im Nachhinein korrekt in der Datenbank aktualisiert.
+
+| Benötigte Daten   
+| Antragsdaten
+|===
+
+
+=== TC08 [Tagesordnung] - Erfolgreiches Generieren
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Administrator generiert die Tagesordnung erfolgreich und erhält einen Link zu einem PentaPad-Dokument, in welchem die Tagesordnung korrekt dargestellt wird.
+
+| Vorbedingung      
+| Alle zu besprechenden Anträge wurden zur Tagesordnung hinzugefügt.
+
+| Nachbedingung     
+| Generierung des PentaPad-Dokuments mit korrektem Inhalt.
+
+| Benötigte Daten   
+| Sitzungsdaten
+|===
+
+=== TC09 [Sitzung] - Sitzung vertagen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Administrator wählt eine Sitzung aus und vertagt diese auf einen anderen Tag.
+
+| Vorbedingung      
+| Die Sitzung muss bereits in der Datenbank hinterlegt sein.
+
+| Nachbedingung     
+| Das Sitzungsdatum wird auf das eingegebene Datum verschoben.
+
+| Benötigte Daten   
+| Sitzungsdaten
+|===
+
+=== TC10 [Antrag] - Antrag einer anderen Sitzung zuweisen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Administrator vertagt einen Antrag auf eine andere Sitzung.
+
+| Vorbedingung      
+| Der Antrag muss gültig sein und die Sitzung muss bereits in der Datenbank hinterlegt sein.
+
+| Nachbedingung     
+| Der Antrag wird einer anderen Sitzung zugewiesen und kann in die nächste Tagesordnung übernommen werden.
+
+| Benötigte Daten   
+| Antragsdaten, Sitzungsdaten (aktuelle & nächste Sitzung)
+|===
 == Testergebnisse
 // Welche Ergebnisse sind bei der Testdurchführung entstanden?
 // Welche Konsequenzen ergeben sich aus erkannten Abweichungen?
