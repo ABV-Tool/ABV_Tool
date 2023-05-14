@@ -18,7 +18,7 @@
 
 * Iterative Developement
 
-Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um alle anstehenden Aufgaben zu besprechen und zu verteilen. Die daraus resultierenden Issues werden in unserem gemeinsamen GitGub Repository eingestellt und den verantwortlichen Personen zugewiesen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. Am Ende von SE I soll der Meilenstein Elaboration Phase abgeschlossen sein. Je nach Bedarf werden kurze Besprechungen während der Iteration durchgeführt z. B. um ein Meeting mit dem Coach oder dem StuRa vorzubereiten. Ein Teammitglied wird als Schriftführer benannt, welches dafür zuständig ist alle besprochenen Punkte in einem Protokoll festzuhalten.
+Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um alle anstehenden Aufgaben zu besprechen und zu verteilen. Die daraus resultierenden Issues werden in unserem gemeinsamen GitHub Repository eingestellt und den verantwortlichen Personen zugewiesen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. Je nach Bedarf werden kurze Besprechungen während der Iteration durchgeführt z. B. um ein Meeting mit dem Coach oder dem StuRa vorzubereiten. Ein Teammitglied wird als Schriftführer benannt, welches dafür zuständig ist alle besprochenen Punkte in einem Protokoll festzuhalten.
 
 
 * #Risk-Value Lifecycle#
@@ -28,6 +28,10 @@ Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das 
 Das Team ist über die gesamte Projektlaufzeit immer mehr zusammengewachsen.Schon von Beginn an war unser Team sehr eigenverantwortlich organisiert. Jeder hat seinen eigenen Verantwortlich- und Kompetenzbereich worin selbstständig Aufgaben erkannt, benannt und im Team besprochen und verteilt werden. Zu Beginn des Projektes führte dies zu einem sehr unterschiedlichen Workload, auch bedingt durch die Rollenverteilung. Im Laufe des Projektes glich sich der workload der einzelnen Teammitglieder immer mehr an. Zum einen war dies bedingt durch eine bessere Aufgabenverteilung bedingt, aber auch das Team ist über die Zeit besser zusammengewachsen. Durch das steigende Zugehörigkeitsgefühl stieg auch die Bereitschaft andere Aufgaben zu übernehmen und nicht nur auf seinem Bereich zu schauen. So glich sich der workload über die Projektlaufzeit immer mehr an, sodass zum Ende des Projektes jeder einen ähnlichen workload hatte. Besonders wichtig war es hierbei, dass auch Aufgaben übernommen wurden, die weniger den eigenen Kompetenzen oder Wünschen entsprachen, aber zum Wohle des Teams bzw. des Projektes übernommen wurden. 
 
 * #Team Change Management#
+
+*Team Change Management*
+Am Anfang von SE 1 haben wir Verantwortlichkeiten und Backup Rollen festgelegt, aus diesen Verantwortlichkeiten bilden sich Aufgaben, die selbstständig aber auch in Absprache mit dem Team abzuarbeiten sind. Bei Bedarf kann innerhalb des Teams auch eine Aufgabenumverteilung oder Unterstützung angefragt werden.
+Durch das Ausscheiden unseres Projektmanagers nach SE 1, mussten wir Rollen und Verantwortlichkeiten umverteilen, dies geschah unter Berücksichtigung von Kompetenzen und Wünschen der einzelnen Teammitglieder. Die Aufgabensammlung geschieht nach wie vor, wie in SE 1, durch die Verantwortlichen in den jeweiligen Bereichen, jedoch werden Aufgaben nun konkret nach Kompetenzen und nicht mehr nach Rollen bzw. Verantwortlichkeiten verteilt.
 
 * #Project Process Tailoring#
 
