@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djmoney',
-    'jsonfield',
     'fontawesomefree',
     'tailwind',
     'django_browser_reload',
