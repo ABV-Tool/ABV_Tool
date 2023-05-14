@@ -1,0 +1,17 @@
+= Betriebsdokumentation
+
+//Ziel: Administrator beim Einrichten, Konfigurieren und Betreuen des Systems unterstützen
+
+== Systemvoraussetzungen
+// Mindestanforderungen für Hardware: CPU, RAM, Festplatte, Netz 
+// Softwareanforderungen: Name und Version von Betriebssystem, Datenbank, Webserver, Browser
+
+== Systemeinrichtung
+// Aus welchen Komponenten (EXE, JAR, JS, HTML, CSS, …) besteht die Software? 
+// Wie müssen diese installiert (… kopiert, registriert, …) werden? Verzeichnisstruktur?
+// Wie müssen die Bestandteile ihres Systems konfiguriert werden? IP-Adressen, Passwörter, Berechtigungen, …
+
+== Systembetreuung
+// FAQ für Benutzersupport 
+// Fehlerdiagnose, z.B. anhand von Logfile-Einträgen
+// Datensicherung und –wiederherstellung

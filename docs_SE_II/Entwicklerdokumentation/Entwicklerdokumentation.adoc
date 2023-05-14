@@ -1,0 +1,18 @@
+= Entwicklerdokumentation
+
+== Entwurfsdokumentation
+
+=== Systemarchitektur
+// r logisch und ggf. physisch, z.B. mittels Paket- / Komponenten- / Klassen- / Verteilungsdiagramm
+
+=== Verwendete Bibliotheken/Frameworks...
+
+=== Datenbankschema
+
+=== Schnittstellen
+
+=== Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
+
+== Softwaredokumentation
+// Namen und Beschreibung aller Klassen
+// Namen, Kurzbeschreibung sowie Parameter aller Funktionen

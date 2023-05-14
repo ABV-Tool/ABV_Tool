@@ -1,0 +1,30 @@
+= Projektbericht
+
+== Projektplanung
+
+=== Aufgabenstellung und Auftraggeber
+
+=== Ausgangssituation
+
+=== Projektorganisation
+//d.h. Team, Rollen/Verantwortlichkeiten, Kommunikation im Team und zum Auftraggeber, eingesetzte Tools in der Projektarbeit, z.B. für Planung, Kommunikation, Dokumentation
+
+=== Techniken/Praktiken
+//Techniken/Praktiken: Welche wurden warum eingesetzt und wie genutzt? → „Way of Working“
+
+== Projektdurchführung
+// Kurze Beschreibung der Ziele, Aktivitäten und Ergebnisse in den OpenUP-Projektphasen / Iterationen, dabei Berücksichtigung des Zusammenspiels zwischen den einzelnen Rollen sowie Risiken
+
+
+== Ergebnisdokumentation
+
+=== Ergebnisse
+
+=== Reflexion der Teammitglieder
+
+==== Reflexion von Göran Heinemann
+==== Reflexion von Alexander Minukow
+==== Reflexion von Mirjam Müller
+==== Reflexion von Xuan Huy Nguyen
+==== Reflexion von Max Patecky
+==== Reflexion von Simon Voges

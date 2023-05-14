@@ -1,0 +1,12 @@
+= Anwenderdokumentation
+//8-10 Seiten inkl. Screenshots
+
+== Einführung
+//Zweck und Funktionsumfang des Systems
+
+== Aufbau/Organisation der Benutzeroberfläche
+
+== Beschreibung
+//Prägnante Beschreibung der Nutzung entlang der wichtigsten Aufgaben (→ Use Cases)
+
+== #Selten genutzte Funktionen und FAQ#

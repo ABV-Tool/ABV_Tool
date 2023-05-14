@@ -1,0 +1,17 @@
+= Testdokumentation
+
+== Testkonzept
+// Was sind die wichtigsten Komponenten, die getestet wurden? (Testobjekte auf unterschiedlichen Teststufen, siehe Testpyramide)
+// Wie wurde die Erfüllung der Anforderungen an diese Testobjekte getestet? (Testmethoden)
+// Wann führt wer welche Tests durch? (Testdurchführungsplanung)
+
+== Testfallbeschreibung
+// Vorbedingungen für den Test, z.B. bestimmter Systemzustand
+// Eingabedaten (Testdaten)
+// Ablaufbeschreibung des Tests (manuell oder automatisiert)
+// Erwartetes Ergebnis, z.B. bestimmter Systemzustand, Fehlermeldung, Ausgabedaten
+
+== Testergebnisse
+// Welche Ergebnisse sind bei der Testdurchführung entstanden?
+// Welche Konsequenzen ergeben sich aus erkannten Abweichungen?
+// Wichtig: Abnahmetests bei der Übergabe nicht vergessen!
