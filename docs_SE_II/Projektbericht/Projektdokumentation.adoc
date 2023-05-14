@@ -23,9 +23,15 @@ Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das 
 
 * #Risk-Value Lifecycle#
 * #Release Planning#
-* #Whole Team#
+
+* *Whole Team*
+Das Team ist über die gesamte Projektlaufzeit immer mehr zusammengewachsen.Schon von Beginn an war unser Team sehr eigenverantwortlich organisiert. Jeder hat seinen eigenen Verantwortlich- und Kompetenzbereich worin selbstständig Aufgaben erkannt, benannt und im Team besprochen und verteilt werden. Zu Beginn des Projektes führte dies zu einem sehr unterschiedlichen Workload, auch bedingt durch die Rollenverteilung. Im Laufe des Projektes glich sich der workload der einzelnen Teammitglieder immer mehr an. Zum einen war dies bedingt durch eine bessere Aufgabenverteilung bedingt, aber auch das Team ist über die Zeit besser zusammengewachsen. Durch das steigende Zugehörigkeitsgefühl stieg auch die Bereitschaft andere Aufgaben zu übernehmen und nicht nur auf seinem Bereich zu schauen. So glich sich der workload über die Projektlaufzeit immer mehr an, sodass zum Ende des Projektes jeder einen ähnlichen workload hatte. Besonders wichtig war es hierbei, dass auch Aufgaben übernommen wurden, die weniger den eigenen Kompetenzen oder Wünschen entsprachen, aber zum Wohle des Teams bzw. des Projektes übernommen wurden. 
+
 * #Team Change Management#
+
 * #Project Process Tailoring#
+
+
 
 *Technical Practices*
 
