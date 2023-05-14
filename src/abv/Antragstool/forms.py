@@ -1,6 +1,8 @@
 # authentication/forms.py
 from django import forms
 from Antragstool.models import Referat
+from djmoney.models.fields import MoneyField
+from djmoney.money import Currency
 
 # template for custom login form
 class LoginForm(forms.Form):
@@ -8,7 +10,7 @@ class LoginForm(forms.Form):
     password = forms.CharField(label="Passwort", max_length=100, required=True, widget=forms.PasswordInput)
     
 
-# get all referate from database and save to REFERATE
+# Referate aus DB laden
 referate_db = Referat.objects.all()
 REFERATE = [(entry.refID, entry.refName) for entry in referate_db]
 
@@ -27,9 +29,10 @@ class StammdatenForm(forms.Form):
     
 
 # Wiederholende Felder
-grund_feld = forms.CharField(label="Begründung zum Antrag", max_length=500, required=True, widget=forms.Textarea())
-vorschlag_feld = forms.CharField(label="Vorschlag zum weiteren Verfahren", max_length=500, required=True, widget=forms.Textarea())
+grund_feld = forms.CharField(label="Begründung zum Antrag", max_length=1000, required=True, widget=forms.Textarea())
+vorschlag_feld = forms.CharField(label="Vorschlag zum weiteren Verfahren", max_length=1000, required=True, widget=forms.Textarea())
 positions_feld = forms.CharField(label="Kostenposition im Haushaltsplan", max_length=100, required=True, widget=forms.TextInput())
+summe_feld = forms.DecimalField(label="Summe", max_digits=10, decimal_places=2, required=True, widget=forms.NumberInput())
 vorstellung_person_feld = forms.CharField(label="Vorstellung der Person", max_length=2000, required=True, widget=forms.Textarea())
     
     
@@ -41,12 +44,14 @@ class AntragAllgemeinForm(StammdatenForm):
 class AntragFinanziellForm(StammdatenForm):
     grund = grund_feld
     position = positions_feld
+    summe = summe_feld
     vorschlag = vorschlag_feld
 
 
 class AntragVeranstaltungForm(StammdatenForm):
     grund = grund_feld
     position = positions_feld
+    summe = summe_feld
     verantwortlichkeit = forms.CharField(label="Verantwortlichkeit für Nachbearbeitung", max_length=100, required=True, widget=forms.TextInput())
     zeitraum = forms.CharField(label="Zeitraum für Nachbearbeitung", max_length=100, required=True, widget=forms.TextInput())
     vorschlag = vorschlag_feld
@@ -59,7 +64,7 @@ class AntragMitgliedForm(StammdatenForm):
 
 # TODO: Vorstellung der Person/Allgemeine Fragen: Details über benötigte Punkte anzeigen lassen
 class AntragAmtForm(StammdatenForm):
-    ist_mitglied = forms.BooleanField(label="Bist du bereits ein StuRa Mitglied? (Leer für Nein)", required=True)
+    ist_mitglied = forms.BooleanField(label="Bist du bereits ein StuRa Mitglied? (Leer für Nein)", required=False, widget=forms.CheckboxInput())
     vorstellung_person = vorstellung_person_feld
     fragen_amt = forms.CharField(label="Allgemeine Fragen zum beworbenen Amt", max_length=1000, required=True, widget=forms.Textarea())
 

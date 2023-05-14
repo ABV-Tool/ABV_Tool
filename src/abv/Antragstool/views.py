@@ -89,70 +89,223 @@ def checkAntragsteller(form):
 
 
 # Prüfe, wann die nächste Sitzung des Referats stattfindet und gib diese zurück
-def checkSitzung(form):
+def checkSitzungen(form):
     refID = form.cleaned_data['referat']
     sitzungen = Sitzung.objects.filter(refID=refID).filter(sitzDate__gt=date.today()).order_by('sitzDate')
-    return sitzungen[0]
+    return sitzungen
 
-# Anträge
+
 def AntragAllgemein(request):
+    msg=''
     if request.method == 'POST':
-        form = AntragAllgemeinForm(request.POST)
+        form = AntragAllgemeinForm(request.POST, request.FILES)
         if form.is_valid():
-            
-            # Prüfe, wann die nächste Sitzung des Referats stattfindet
-            sitzung = checkSitzung(form)
-            
-            # Definiere den Antragstyp anhand der View
+            # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
+            sitzungen = checkSitzungen(form)
+            # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='antrag-ohne-finanzielle-mittel')
-            
             # Prüfe, ob Antragsteller bereits existiert
             asteller = checkAntragsteller(form)
             
             # Erstelle den Antrag
             antrag = Antrag()
-            
-            antrag.sitzID = sitzung
+            antrag.sitzID = sitzungen[0]
             antrag.typID = antragstyp
-            
             antrag.astellerID = asteller
             antrag.antragTitel = form.cleaned_data['titel']
             antrag.antragText = form.cleaned_data['text']
+            
+            antrag.antragGrund = form.cleaned_data['grund']
+            antrag.antragVorschlag = form.cleaned_data['vorschlag']
+            
             antrag.save()
+            
+            msg='Dein Antrag wurde erfolgreich eingereicht!'
             
     return render(request, 'pages/antrag.html', context={
         'title': 'Allgemeiner Antrag',
-        'form': AntragAllgemeinForm()
+        'form': AntragAllgemeinForm(),
+        'msg': msg
     })
+
 
 
 def AntragFinanziell(request):
+    msg=''
+    if request.method == 'POST':
+        form = AntragFinanziellForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
+            sitzungen = checkSitzungen(form)
+            # Definiere den Antragstyp anhand der Slug
+            antragstyp = Antragstyp.objects.get(typSlug='antrag-mit-finanziellen-mitteln')
+            # Prüfe, ob Antragsteller bereits existiert
+            asteller = checkAntragsteller(form)
+            
+            # Erstelle den Antrag
+            antrag = Antrag()
+            antrag.sitzID = sitzungen[0]
+            antrag.typID = antragstyp
+            antrag.astellerID = asteller
+            antrag.antragTitel = form.cleaned_data['titel']
+            antrag.antragText = form.cleaned_data['text']
+            
+            antrag.antragGrund = form.cleaned_data['grund']
+            antrag.antragKostenposition = form.cleaned_data['position']
+            antrag.antragSumme = form.cleaned_data['summe']
+            antrag.antragVorschlag = form.cleaned_data['vorschlag']
+                        
+            antrag.save()
+            
+            msg='Dein Antrag wurde erfolgreich eingereicht!'
+    
     return render(request, 'pages/antrag.html', context={
         'title': 'Antrag mit finanzellen Mitteln',
-        'form': AntragFinanziellForm()
+        'form': AntragFinanziellForm(),
+        'msg': msg
     })
+    
+    
     
 def AntragVeranstaltung(request):
+    msg=''
+    if request.method == 'POST':
+        form = AntragVeranstaltungForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
+            sitzungen = checkSitzungen(form)
+            # Definiere den Antragstyp anhand der Slug
+            antragstyp = Antragstyp.objects.get(typSlug='antrag-fuer-veranstaltungen')
+            # Prüfe, ob Antragsteller bereits existiert
+            asteller = checkAntragsteller(form)
+            
+            # Erstelle den Antrag
+            antrag = Antrag()
+            antrag.sitzID = sitzungen[0]
+            antrag.typID = antragstyp
+            antrag.astellerID = asteller
+            antrag.antragTitel = form.cleaned_data['titel']
+            antrag.antragText = form.cleaned_data['text']
+            
+            antrag.antragGrund = form.cleaned_data['grund']
+            antrag.antragKostenposition = form.cleaned_data['position']
+            antrag.antragSumme = form.cleaned_data['summe']
+            antrag.antragVerantwortlichkeit = form.cleaned_data['verantwortlichkeit']
+            antrag.antragZeitraum = form.cleaned_data['zeitraum']
+            antrag.antragVorschlag = form.cleaned_data['vorschlag']
+                        
+            antrag.save()
+            
+            msg='Dein Antrag wurde erfolgreich eingereicht!'
+            
     return render(request, 'pages/antrag.html', context={
         'title': 'Antrag für eine Veranstaltung',
-        'form': AntragVeranstaltungForm()
+        'form': AntragVeranstaltungForm(),
+        'msg': msg
     })
 
+
+
 def AntragMitglied(request):
+    msg=''
+    if request.method == 'POST':
+        form = AntragMitgliedForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
+            sitzungen = checkSitzungen(form)
+            # Definiere den Antragstyp anhand der Slug
+            antragstyp = Antragstyp.objects.get(typSlug='beratendes-mitglied')
+            # Prüfe, ob Antragsteller bereits existiert
+            asteller = checkAntragsteller(form)
+            
+            # Erstelle den Antrag
+            antrag = Antrag()
+            antrag.sitzID = sitzungen[0]
+            antrag.typID = antragstyp
+            antrag.astellerID = asteller
+            antrag.antragTitel = form.cleaned_data['titel']
+            antrag.antragText = form.cleaned_data['text']
+            
+            antrag.antragVorstellungPerson = form.cleaned_data['vorstellung_person']
+                        
+            antrag.save()
+            
+            msg='Dein Antrag wurde erfolgreich eingereicht!'
+            
     return render(request, 'pages/antrag.html', context={
         'title': 'Antrag auf beratenes Mitglied',
-        'form': AntragMitgliedForm
+        'form': AntragMitgliedForm,
+        'msg': msg
     })
     
+
+
 def AntragAmt(request):
+    msg=''
+    if request.method == 'POST':
+        form = AntragAmtForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
+            sitzungen = checkSitzungen(form)
+            # Definiere den Antragstyp anhand der Slug
+            antragstyp = Antragstyp.objects.get(typSlug='wahl-auf-stelle-oder-amt')
+            # Prüfe, ob Antragsteller bereits existiert & Mitglied ist
+            asteller = checkAntragsteller(form)
+            asteller.astellerIstMitglied = form.cleaned_data['ist_mitglied']
+            asteller.save()
+            
+            # Erstelle den Antrag
+            antrag = Antrag()
+            antrag.sitzID = sitzungen[0]
+            antrag.typID = antragstyp
+            antrag.astellerID = asteller
+            antrag.antragTitel = form.cleaned_data['titel']
+            antrag.antragText = form.cleaned_data['text']
+            
+            antrag.antragVorstellungPerson = form.cleaned_data['vorstellung_person']
+            antrag.antragFragenZumAmt = form.cleaned_data['fragen_amt']
+                        
+            antrag.save()
+            
+            msg='Dein Antrag wurde erfolgreich eingereicht!'
+            
     return render(request, 'pages/antrag.html', context={
         'title': 'Antrag auf Stelle/Amt',
-        'form': AntragAmtForm
-        
+        'form': AntragAmtForm,
+        'msg': msg
     })
-    
+
+
+
 def AntragBenehmen(request):
+    msg=''
+    if request.method == 'POST':
+        form = AntragBenehmenForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
+            sitzungen = checkSitzungen(form)
+            # Definiere den Antragstyp anhand der Slug
+            antragstyp = Antragstyp.objects.get(typSlug='herstellung-des-benehmens')
+            # Prüfe, ob Antragsteller bereits existiert
+            asteller = checkAntragsteller(form)
+            
+            # Erstelle den Antrag
+            antrag = Antrag()
+            antrag.sitzID = sitzungen[0]
+            antrag.typID = antragstyp
+            antrag.astellerID = asteller
+            antrag.antragTitel = form.cleaned_data['titel']
+            antrag.antragText = form.cleaned_data['text']
+            
+            antrag.antragGrund = form.cleaned_data['grund']
+            antrag.antragVorschlag = form.cleaned_data['vorschlag']
+            
+            antrag.save()
+            
+            msg='Dein Antrag wurde erfolgreich eingereicht!'
+            
     return render(request, 'pages/antrag.html', context={
         'title': 'Antrag auf Herstellung des Benehmens',
-        'form': AntragBenehmenForm
+        'form': AntragBenehmenForm,
+        'msg': msg
     })

@@ -3,7 +3,7 @@ from .models import Antrag, Sitzung, Referat, Antragssteller, Antragstyp
 
 # Register your models here.
 class AntragAdmin(admin.ModelAdmin):
-    list_display = ('get_antragstyp', 'antragTitel', 'get_referat', 'get_sitzung_date', 'get_antragsteller', )
+    list_display = ('antragTitel', 'get_antragstyp', 'get_referat', 'get_sitzung_date', 'get_antragsteller', )
     @admin.display(description='Referat')
     def get_referat(self, obj):
         return obj.sitzID.refID.refName
@@ -22,6 +22,7 @@ admin.site.register(Antrag, AntragAdmin)
 # https://stackoverflow.com/questions/163823/can-list-display-in-a-django-modeladmin-display-attributes-of-foreignkey-field
 class SitzungAdmin(admin.ModelAdmin):
     list_display = ('sitzID', 'get_referat', 'sitzDate')
+    ordering=('sitzDate', 'refID')
     @admin.display(description='Referat')
     def get_referat(self, obj):
         return obj.refID.refName
