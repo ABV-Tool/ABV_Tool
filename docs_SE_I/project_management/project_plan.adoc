@@ -7,7 +7,7 @@ include::../_includes/default-attributes.inc.adoc[]
 
 == #Einführung#
 //Briefly describe the content of the project plan.
-Der StuRa hat aktuell einen sehr hohen Vewaltungsaufwand mit den Antrags- und Beschlussverwaltungen. Aktuell läuft jeder Arbeitsschritt manuell hab. Das Ziel ist daher die Erstellung eines Tools, welches den Aufwand, insbesondere die Vergabe und Überwachung der Auftragsnummern vereinfacht.
+Der StuRa hat aktuell einen sehr hohen Verwaltungsaufwand mit den Antrags- und Beschlussverwaltungen. Aktuell läuft jeder Arbeitsschritt manuell hab. Das Ziel ist daher die Erstellung eines Tools, welches den Aufwand, insbesondere die Vergabe und Überwachung der Auftragsnummern vereinfacht.
 
 == Projektorganisation
 //Introduce the project team, team members, and roles that they play during this project. If applicable, introduce work areas, domains, or technical work packages that are assigned to team members. Introduce neighboring projects, relationships, and communication channels. If the project is introduced somewhere else, reference that location with a link.
@@ -33,7 +33,7 @@ In Software Engineering II verlässt Marten Petters das Team, da im Studiengang 
 * Max Patecky			*Tester*/Technical-Writer
 * Mirjam Müller         *Teamleitung*/Analyse
 
-Neben der Teamleitung war eine größe Änderung die Rolle des Deployment-Engineers. #...#	
+Neben der Teamleitung war eine größere Änderung die Rolle des Deployment-Engineers. #...#	
 
 In SE I gab es regelmäßige Treffen, die mindestens alle zwei Wochen stattfanden. In SE I wurden die Termine individuell abgestimmt. In SE II einigte sich das Team auf einen regelmäßig wiederkehrenden Termin, immer am Dienstag in der geraden Woche stattfindet. Zur Terminplanung und für kurze Absprachen oder Nachrichten hat das Team einen WhatsApp Gruppenchat. Weiterhin nutzen wir Discord für unsere Meetings und zum Austausch von Informationen. Unsere Meetings dokumentieren wir in einem Google Doc, was allen Mitgliedern zur Verfügung steht. 
 
@@ -45,21 +45,34 @@ In SE I gab es regelmäßige Treffen, die mindestens alle zwei Wochen stattfande
 *Management Practices*
 
 * Iterative Developement
-* Risk-Value Lifecycle
-* Release Planning
-* Whole Team
-* Team Change Management
-* Project Process Tailoring
+
+Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um alle anstehenden Aufgaben zu besprechen und zu verteilen. Die daraus resultierenden Issues werden in unserem gemeinsamen GitGub Respository eingestellt und den verantwortlichen Personen zugewiesen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. Am Ende von SE I soll der Meilenstein Elaboration Phase abgeschlossen sein. Je nach Bedarf werden kurze Besprechungen während der Iteration durchgeführt z. B. um ein Meeting mit dem Coach oder dem StuRa vorzubereiten. Ein Teammitglied wird als Schriftführer benannt, welches dafür zuständig ist alle besprochenen Punkte in einem Protokoll festzuhalten.
+
+
+* #Risk-Value Lifecycle#
+* #Release Planning#
+* #Whole Team#
+* #Team Change Management#
+* #Project Process Tailoring#
 
 *Technical Practices*
 
-* Concurrent Testing
-* Continuous Integration
+* #Concurrent Testing#
+* #Continuous Integration#
+
 * Evolutionary Architecture
-* Ecolutionary Design
+Das Architecture Notebook wird schrittweise bearbeitet. Es wird sich hierbei am Projektfortschritt orientiert.
+
+* #Ecolutionary Design#
+
 * Shared Vision
-* Test Driven Developement
+Die erarbeitet Vision mit Zweck und Problembeschreibung wurde in enger Zusammenarbeit mit dem Auftraggeber erarbeitet und mit diesem abgestimmt. Auch nach der finalen Abstimmung wird der Projektfortschritt regelmäßig mit der Vision und dem Auftraggeber abgeglichen und ggf. auf neue oder geänderte Anforderungen abgestimmt. 
+
+* #Test Driven Developement#
+
 * Use Case Driven Developement
+Dem gesamtem Projekt liegt das ein Use Case Model zugrunde welches in Zusammenarbeit mit dem Auftraggeber entwickelt wurde. Aus diesem ergeben sich auch die System Wide Requirements wo system-weite funktionale Anforderungen angegeben werden, die nicht als Use Cases ausgedrückt werden können. Auch Anforderungen zur Benutzbarkeit werden hier beschrieben.
+
 
 *Deployment Practices*
 
@@ -102,9 +115,9 @@ In SE I gab es regelmäßige Treffen, die mindestens alle zwei Wochen stattfande
 |
 * Analyse beenden
 * Architecture Notebook
-* Implemtierung und Präsentaion Prototyp
-* Termin mit Aufftraggeber
-* Fertigstellung Dokumentation und Abagbe Beleg
+* Implementierung und Präsentation Prototyp
+* Termin mit Auftraggeber
+* Fertigstellung Dokumentation und Abgabe Beleg
 * *Meilenstein: Elaboration Phase abgeschlossen*
 |16.01.2023/27.01.2023
 
@@ -112,16 +125,15 @@ In SE I gab es regelmäßige Treffen, die mindestens alle zwei Wochen stattfande
 |
 * Auswertung Beleg
 * Nacharbeiten SE I
-* Implemeniterung UC 5
+* Implementierung UC 5
 * #Deployment vorbereiten#
 |03.04.2023/16.04.2023
 
 |I5
 |
-* 
-* 
-* 
-* 
+* Implementierung UC 1
+* Umstrukturierung des Frontends
+* Deployment finalisieren
 |17.04.2023/30.04.2023
 
 |I6
@@ -152,7 +164,7 @@ In SE I gab es regelmäßige Treffen, die mindestens alle zwei Wochen stattfande
 |
 * System ist vom Kunden einsetzbar 
 * *Meilenstein: Transition Phase abgeschlossen*
-* *Präsentaion des Systems beim StuRa und Freigabe abholen
+* *Präsentation des Systems beim StuRa und Freigabe abholen
 * *Belegabgabe*
 |12.06.2023/23.06.2023
 
@@ -174,3 +186,5 @@ Die Zusammenarbeit des Teams war grundlegend gut. Durch Verbesserung der Kommuni
 * festen wiederkehrenden Termin für Meetings festlegen, dass spart sehr viel Zeit
 
 * (Die wichtigsten) Aufgaben wirklich nach Kenntnissen und Fähigkeiten verteilen, weniger nach Kapazitäten und im Sinne von "Ja kann ich schon machen"
+
+* Issues sollten kleinteiliger erstellt werden. Das wurde in SE II so umgesetzt und funktionierte insgesamt besser
