@@ -1,7 +1,11 @@
+# production dependencies
 martor
 gunicorn
 Django
 psycopg2
 django-money
-django-jsonfield
 fontawesomefree
+
+# development dependencies
+django-tailwind
+django-browser-reload
