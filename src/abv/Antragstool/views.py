@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .models import Referat, Sitzung, Antrag
+from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
-
+from datetime import date
 
 def AppHome(request):
     return render(request, 'pages/home.html', context={'title': 'Home'})
@@ -73,12 +73,58 @@ def AntraegeVonSitzung(request, sitzid):
     )
 
 
+
+# Prüfe, ob der Antragsteller bereits in der Datenbank existiert und gib diesen zurück
+def checkAntragsteller(form):
+    astellerEmail = form.cleaned_data['email']
+    if Antragssteller.objects.filter(astellerEmail=astellerEmail).exists():
+        asteller = Antragssteller.objects.get(astellerEmail=astellerEmail)
+    else:
+        asteller = Antragssteller()
+        asteller.astellerVorname = form.cleaned_data['vorname']
+        asteller.astellerName = form.cleaned_data['nachname']
+        asteller.astellerEmail = astellerEmail
+        asteller.save() 
+    return asteller
+
+
+# Prüfe, wann die nächste Sitzung des Referats stattfindet und gib diese zurück
+def checkSitzung(form):
+    refID = form.cleaned_data['referat']
+    sitzungen = Sitzung.objects.filter(refID=refID).filter(sitzDate__gt=date.today()).order_by('sitzDate')
+    return sitzungen[0]
+
 # Anträge
 def AntragAllgemein(request):
+    if request.method == 'POST':
+        form = AntragAllgemeinForm(request.POST)
+        if form.is_valid():
+            
+            # Prüfe, wann die nächste Sitzung des Referats stattfindet
+            sitzung = checkSitzung(form)
+            
+            # Definiere den Antragstyp anhand der View
+            antragstyp = Antragstyp.objects.get(typSlug='antrag-ohne-finanzielle-mittel')
+            
+            # Prüfe, ob Antragsteller bereits existiert
+            asteller = checkAntragsteller(form)
+            
+            # Erstelle den Antrag
+            antrag = Antrag()
+            
+            antrag.sitzID = sitzung
+            antrag.typID = antragstyp
+            
+            antrag.astellerID = asteller
+            antrag.antragTitel = form.cleaned_data['titel']
+            antrag.antragText = form.cleaned_data['text']
+            antrag.save()
+            
     return render(request, 'pages/antrag.html', context={
         'title': 'Allgemeiner Antrag',
         'form': AntragAllgemeinForm()
     })
+
 
 def AntragFinanziell(request):
     return render(request, 'pages/antrag.html', context={

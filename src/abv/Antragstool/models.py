@@ -7,10 +7,10 @@ from djmoney.models.fields import MoneyField
 class Referat(models.Model):
     class Meta:
         db_table = 'referat'
-    refID = models.UUIDField(primary_key=True,
-                             default=uuid.uuid4,
-                             editable=False,
-                             db_column='ref_id')
+    refID = models.PositiveIntegerField(primary_key=True,
+                                        default=int,
+                                        unique=True,
+                                        db_column='ref_id')
     refName = models.TextField(db_column='ref_name', max_length=200)
     refZyklus = models.IntegerField(db_column='zyklus')
 
@@ -38,17 +38,17 @@ class Antragssteller(models.Model):
     astellerName = models.TextField(max_length=50, db_column='asteller_name')
     astellerVorname = models.TextField(max_length=50,
                                        db_column='asteller_vorname')
+    astellerEmail = models.EmailField(max_length=50, db_column='asteller_email')
 
 
 class Antragstyp(models.Model):
     class Meta:
         db_table = 'antragstyp'
-    typID = models.UUIDField(primary_key=True,
-                             default=uuid.uuid4,
-                             editable=False,
-                             db_column='typ_id')
+    typID = models.PositiveIntegerField(primary_key=True,
+                                        default=int,
+                                        db_column='typ_id')
     typName = models.TextField(max_length=200, db_column='typ_name')
-    # form = jsonfield.JSONField(db_column='form')
+    typSlug = models.TextField(max_length=200, db_column='typ_slug')
 
 
 class Antrag(models.Model):
@@ -67,7 +67,8 @@ class Antrag(models.Model):
     astellerID = models.ForeignKey(Antragssteller,
                                    on_delete=models.CASCADE,
                                    db_column='asteller_id')
-    antragText = models.TextField(db_column='antrag_text')
+    antragTitel = models.TextField(db_column='antrag_titel', max_length=200)
+    antragText = models.TextField(db_column='antrag_text', max_length=2000, default=None)
     #antragSumme = MoneyField(default_currency='EUR',
     #                         max_digits=10,
     #                         db_column='antrag_summe')

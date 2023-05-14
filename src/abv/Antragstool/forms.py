@@ -1,18 +1,16 @@
 # authentication/forms.py
 from django import forms
+from Antragstool.models import Referat
 
 # template for custom login form
 class LoginForm(forms.Form):
     username = forms.CharField(label="Benutzername", max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'mb-3'}))
     password = forms.CharField(label="Passwort", max_length=100, required=True, widget=forms.PasswordInput)
     
-    
-# TODO: Referate aus DB laden
-REFERATE = [
-    (1, 'Finanzen'), (2, 'Hochschulpolitik'), (3, 'Internationales'), (4, 'Kultur'), (5, 'Öffentlichkeitsarbeit'), (6, 'Personal'), 
-    (7, 'Qualitätsmanagement'), (8, 'Soziales'), (9, 'Sport'), (10, 'stud. Selbstverwaltung & Organisation'), (11, 'Studium')
-]
 
+# get all referate from database and save to REFERATE
+referate_db = Referat.objects.all()
+REFERATE = [(entry.refID, entry.refName) for entry in referate_db]
 
 class StammdatenForm(forms.Form):
     referat = forms.ChoiceField(widget=forms.RadioSelect, choices=REFERATE)
@@ -21,17 +19,18 @@ class StammdatenForm(forms.Form):
     nachname = forms.CharField(label="Nachname", max_length=100, required=True, widget=forms.TextInput())
     email = forms.EmailField(label="E-Mail Adresse", max_length=100, required=True, widget=forms.EmailInput())
     
-    titel = forms.CharField(label="Antragstitel", max_length=100, required=True, widget=forms.TextInput())
-    text = forms.CharField(label="Antragstext", max_length=1000, required=True, widget=forms.Textarea())
+    titel = forms.CharField(label="Antragstitel", max_length=200, required=True, widget=forms.TextInput())
+    text = forms.CharField(label="Antragstext", max_length=2000, required=True, widget=forms.Textarea())
     
-    anlagen = forms.FileField(label="Anlagen", widget=forms.ClearableFileInput(attrs={"multiple": True}))
+    # TODO: Unterstützung für mehrere Dateien einbinden
+    anlagen = forms.FileField(label="Anlagen", required=False)
     
+
 # Wiederholende Felder
 grund_feld = forms.CharField(label="Begründung zum Antrag", max_length=500, required=True, widget=forms.Textarea())
 vorschlag_feld = forms.CharField(label="Vorschlag zum weiteren Verfahren", max_length=500, required=True, widget=forms.Textarea())
 positions_feld = forms.CharField(label="Kostenposition im Haushaltsplan", max_length=100, required=True, widget=forms.TextInput())
 vorstellung_person_feld = forms.CharField(label="Vorstellung der Person", max_length=2000, required=True, widget=forms.Textarea())
-    
     
     
 class AntragAllgemeinForm(StammdatenForm):
