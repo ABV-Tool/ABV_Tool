@@ -18,13 +18,18 @@
 
 * Iterative Developement
 
-Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um alle anstehenden Aufgaben zu besprechen und zu verteilen. Die daraus resultierenden Issues werden in unserem gemeinsamen GitGub Repository eingestellt und den verantwortlichen Personen zugewiesen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. Am Ende von SE I soll der Meilenstein Elaboration Phase abgeschlossen sein. Je nach Bedarf werden kurze Besprechungen während der Iteration durchgeführt z. B. um ein Meeting mit dem Coach oder dem StuRa vorzubereiten. Ein Teammitglied wird als Schriftführer benannt, welches dafür zuständig ist alle besprochenen Punkte in einem Protokoll festzuhalten.
+Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um alle anstehenden Aufgaben zu besprechen und zu verteilen. Die daraus resultierenden Issues werden in unserem gemeinsamen GitHub Repository eingestellt und den verantwortlichen Personen zugewiesen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. Je nach Bedarf werden kurze Besprechungen während der Iteration durchgeführt z. B. um ein Meeting mit dem Coach oder dem StuRa vorzubereiten. Ein Teammitglied wird als Schriftführer benannt, welches dafür zuständig ist alle besprochenen Punkte in einem Protokoll festzuhalten.
 
 
 * #Risk-Value Lifecycle#
 * #Release Planning#
 * #Whole Team#
 * #Team Change Management#
+
+*Team Change Management*
+Am Anfang von SE 1 haben wir Verantwortlichkeiten und Backup Rollen festgelegt, aus diesen Verantwortlichkeiten bilden sich Aufgaben, die selbstständig aber auch in Absprache mit dem Team abzuarbeiten sind. Bei Bedarf kann innerhalb des Teams auch eine Aufgabenumverteilung oder Unterstützung angefragt werden.
+Durch das Ausscheiden unseres Projektmanagers nach SE 1, mussten wir Rollen und Verantwortlichkeiten umverteilen, dies geschah unter Berücksichtigung von Kompetenzen und Wünschen der einzelnen Teammitglieder. Die Aufgabensammlung geschieht nach wie vor, wie in SE 1, durch die Verantwortlichen in den jeweiligen Bereichen, jedoch werden Aufgaben nun konkret nach Kompetenzen und nicht mehr nach Rollen bzw. Verantwortlichkeiten verteilt.
+
 * #Project Process Tailoring#
 
 *Technical Practices*
