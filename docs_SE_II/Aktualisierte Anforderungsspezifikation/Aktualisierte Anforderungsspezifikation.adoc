@@ -1,0 +1,237 @@
+= Aktualisierte Anforderungsspezifikation 
+
+
+== Vision
+
+=== Einführung
+Der Zweck dieses Dokuments ist es, die wesentlichen Bedarfe und Funktionalitäten für das Antrags- und Beschlussverwaltungstool des StuRa der HTW Dresden zu sammeln, zu analysieren und zu definieren. Der Fokus liegt auf den Fähigkeiten, die von Stakeholdern und adressierten Nutzern benötigt werden, und der Begründung dieser Bedarfe. Die  Details, wie das Antrags- und Beschlussverwaltungstool diese Bedarfe erfüllt, werden in der Use-Case und Supplementary Specification beschrieben.
+
+==== Zweck
+Der Zweck dieses Dokuments ist es, die wesentlichen Anforderungen an das System aus Sicht und mit den Begriffen der künftigen Anwender zu beschreiben.
+
+==== Gültigkeitsbereich (Scope)
+Dieses Visions-Dokument bezieht sich auf das Antrags- und Beschlussverwaltungstool, das von Team I5 entwickelt wird. Das System wird es dem StuRa der HTW Dresden erlauben, den Prozess von der Antragstellung, über die Durchführung der Sitzungen und Beschlussfassung bis zur Ausfertigung zu vereinheitlichen und zu zentralisieren sowie insebsondere eine einheitliche, fortlaufende Vergabe von Antragsnummern zu ermöglichen .
+
+==== Definitionen, Akronyme und Abkürzungen
+//Verweis passend zum Belegabgabe-Template se1_belegabgabe_t00.adoc
+Siehe <<#glossary, Glossar>>.
+
+==== Referenzen
+Dies ist nicht das erste Mal, dass ein Prototyp für eine solche Anwendung erstellt wurde. Es existiert ein Vorgängerprojekt, an welchem wir uns primär in dessen Design orientieren. Ebenfalls wurde ein anderes Tool erstellt, was diese Aufgabe erfüllen sollte, jedoch nie zum praktischen Einsatz kam.
+
+- Vorgängerprojekt [Code]: https://github.com/EdLaser/ABV_Tool
+- Vorgängerprojekt [Doku]: https://github.com/EdLaser/I3_Antragsverwaltungstool
+//funktionierender! Link von altem ABV Tool? ggf. Screenshot
+
+- Tool zu Orientierung: https://antragsgruen.de
+
+=== Positionierung
+
+==== Fachliche Motivation
+//Erläutern Sie kurz den Hintergrund, in dem das Projekt angesiedelt ist. Welches Problem soll gelöst werden, wie ist es entstanden? Welche Verbesserung wird angestrebt. Achten Sie darauf, eine fachliche (organisatorische, betriebswirtschaftliche) Perspektive einzunehmen.
+Der StuRa der HTW Dresden hat derzeit einen hohen Aufwand mit seiner Antrags- und Beschlussverwaltung, da diese manuell erfolgt. Antragsnummern werden händisch vergeben und auch einheitliche bzw. unveränderliche Templates sind nicht vorhanden. Vor jeder Sitzung muss manuell eine Tagesordnung aus den gestellten Anträgen erstellt werden. Dies bindet viele zeitliche und personelle Ressourcen, was durch die Einführung eines Antrags- und Beschlussverwaltungstools reduziert werden soll. Besonders hervorzugeben ist hierbei die automatisierte Vergabe von Antragsnummern nach einen bestimmten Schema, da die händische Vergabe und Kontrolle besonders hohen Organisationsaufwand erfordert.   
+
+==== Problem Statement
+//Stellen Sie zusammenfassend das Problem dar, das mit diesem Projekt gelöst werden soll. Das folgende Format kann dazu verwendet werden:
+
+[cols="1,3"]
+|===
+| Das Problem | es gibt keine zentrale Verwaltungsmöglichkeit, mit automatischer Vergabe der Antragsnummern und einheitlichen Templates
+| betrifft | alle Antragsteller sowie alles für die Antragsverwaltung zuständigen Personen
+| die Auswirkung davon ist | zeitaufwändige Verwaltung der gestellten Anträge und Beschlüsse
+| eine erfolgreiche Lösung wäre | zentrale Verwaltungsmöglichkeit mit einheitlichen Antragsformularen, eine fortlaufende, automatische Vergabe der Antragsnummern sowie automatisches generieren der Tagesordnung vor jeder Sitzung
+|===
+
+==== Positionierung des Produkts
+//Ein Positionierung des Produkts beschreibt das Einsatzziel der Anwendung und die Bedeutung das Projekts an alle beteiligten Mitarbeiter.
+
+//Geben Sie in knapper Form übersichtsartig die Positionierung der angestrebten Lösung im Vergleich zu verfügbaren Alternativen dar. Das folgende Format kann dazu verwendet werden:
+
+[cols="1,3"]
+|===
+| Für | StuRa der HTW Dresden
+| der | die Antrags- und Beschlussverwaltung vereinfachen und zentralisieren möchte
+| Die Lösung ist eine | Webanwendung
+| Die | Templates für verschiedene Anträge bereitstellt, automatisiert Antragsnummern vergibt und eine automatische Tagesordnung generiert
+| Im Gegensatz zu | manueller Verwaltung mit händischer Vergabe der Antragsnummern und frei veränderlichen Templates
+| Unser Produkt | ermöglicht eine zentrale Verwaltung des gesamten Prozesses
+|===
+
+=== Stakeholder Beschreibungen
+
+==== Zusammenfassung der Stakeholder
+
+[%header, cols="1,3,3"]
+|===
+| Name | Beschreibung | Verantwortlichkeiten
+
+| Auftraggeber
+| StuRa der HTW Dresden
+| Antragsteller, Antrags- und Beschlussverwaltung
+
+| Antragssteller
+| jede natürliche Person insbesondere aber Plenum, Präsidium, Vorstand, Referatsleitung und Bereichsleitung des StuRa sowie Hochschulangehörige
+| Stellen über das System Anträge die anschließend im Plenum beraten werden
+
+| Antragsverwalter
+| Mitglied des StuRa der für Antrags- und Beschlussverwaltung verantwortlich ist,  insbesondere aber Referatsleitungen
+| erstellt aus eingegangen Anträgen die Tagesordnung und verwaltet die Sitzungen
+
+|Präsidium des StuRa
+|Sitzungsdurchführung, Ausfertigung der Beschlüsse
+|Verantwortlich von Antragstellung bis Ausfertigung der Beschlüsse
+
+|Systemadministrator
+|Person die innerhalb des StuRa mit der Verwaltung der Serverstruktur beauftragt ist
+|Vergabe des Log-ins für die Antragsverwalter, Wartung
+
+|Plenum des StuRa
+|Beschließt Ordnungen des StuRa und setzt damit den Handlungsrahmen für die Arbeit des StuRa. Insbesondere die Geschäftsordnung regelt den Ablauf zur Antragstellung und Beschlussverwaltung.
+|Überwachung der eigenen Ordnungen und Bestimmungen 
+
+|Gesetzgeber
+|Gibt rechtlichen Rahmen für den Umgang mit personenbezogenen Daten vor.
+|Überwachung der datenschutzrechtlichen Bestimmungen
+
+|Prof. Anke
+|Gibt Rahmenbedingen sowie zeitliche Einschränkung für das gesamte Projekt vor.
+|Vermittlung von SE Inhalten, dokumentarische Pflichten sowie Kontrolle und Bewertung des Projektes. 
+|===
+
+==== Benutzerumgebung
+
+*Antragsteller*
+
+* ein Antragsteller pro Antrag
+* Zahl der Antragsteller variiert, da alle natürlichen Personen antragsberechtigt sind
+* Aufwand pro Antrag variiert je nach Antragsart (unterschiedliche Anzahl an Feldern)
+* bei ersten Antragstellungen ist Zeitaufwand höher, da Antragssteller sich noch mit dem Tool vertraut machen muss, wird mit mehr Erfahrung geringer
+* Bereitstellung des Tools als Web-Applikation 
+* Antragstellung erfolgt online und ist nur im HTW-Netz bzw. über den HTW internen VPN möglich
+
+*Antragsverwalter*
+
+* fester Kreis an Personen die für die Antragsverwaltung verantwortlich sind 
+* Anzahl bleibt im wesentlichen gleich bzw. schwankt nur geringfügig
+* Bearbeitungszeit richtet sich nach der Anzahl der eingegangenen Anträge sowie den zusätzlich in die Tagesordnung einzutragenden Informationen
+* Bereitstellung des Tools als Web-Applikation 
+* Design des Vorgängerprojektes wird größtenteils übernommen
+* Antragsverwaltung kann nur mit zugewiesenem Log-in vom Systemadminitrator erfolgen
+* Anmeldung kann nur im HTW-Netz bzw. über den HTW internen VPN erfolgen
+* Beschlüsse sollen als PDF exportiert werden können
+
+=== Produkt-/Lösungsüberblick
+
+==== Bedarfe und Hauptfunktionen
+//Vermeiden Sie Angaben zum Entwurf. Nennen wesentliche Features (Produktmerkmale) auf allgemeiner Ebene. Fokussieren Sie sich auf die benötigten Fähigkeiten des Systems und warum (nicht wie!) diese realisiert werden sollen. Geben Sie die von den Stakeholdern vorgegebenen Prioritäten und das geplante Release für die Veröffentlichung der Features an.
+
+[%header, cols="3,1,4,1"]
+|===
+| Bedarf | Priorität | Features | Geplantes Release
+
+| Antragstellung | hoch | Möglichkeit verschiedene Antragsfomulare auszufüllen und abzusenden (mit Anfügen von Anlagen) | SoSe 23
+
+| Antragsnummer vergeben | hoch | Nachdem der Antragsteller einen Antrag abgesendet hat, wird eine fortlaufende Antragsnummer vergeben und dem Antragsteller mitgeteilt | SoSe 23
+
+| automatische Tagesordnung erstellen | hoch | vor einer Sitzung wird aus allen eingegangen Anträgen eine Tagesordnung nach einer bestimmten Vorlage generiert | SoSe 23
+
+| Tagesordnung verwalten/bearbeiten | hoch | Möglichkeit nach der Generierung der Tagesordnung diese zu bearbeiten und weitere Themen hinzuzufügen (Formalia und ITOPs) | SoSe 23
+
+| Benutzeradministration | mittel | Vergabe eines Log-in für Antragsverwalter | SoSe 23
+
+| Antrag auf Dringlichkeit | mittel | bei verspäteter Antragstellung soll eine Prüfinstanz über die Dringlichkeit entscheiden | SoSe 23
+
+| Änderungsantrag stellen | mittel | Antrag auf Änderung einzelner Positionen zu einem schon vorhandenen Antrag stellen | SoSe 23
+
+| Beschlüsse einpflegen | mittel | Änderung Antragstatus auf beschlossen, abgelehnt oder vertagt, Abstimmungsergebnis soll erfassst werden | SoSe 23
+
+| Benachrichtigung Antragsteller über Antragseingang und -status | niedrig | Der Antragsteller soll nach Antragseingang eine E-Mail mit Antrag und Antragsnummer zugesendet bekommen sowie eine E-Mail erhalten, wenn sich der Antragsstatus geändert hat | SoSe 23
+
+|===
+
+//export der Beschlüsse als PDF
+
+=== Zusätzliche Produktanforderungen
+//Zutreffendes angeben, nicht zutreffendes streichen oder auskommentieren
+
+[%header, cols="4,1"]
+|===
+| Anforderung | Priorität 
+| kein Java verwenden | Hoch 
+| muss auf Unix/Linux laufen | Hoch 
+| freie Lizenz benutzen (z.B. GPL, MIT, Apache) | Hoch 
+| muss nach Anleitung selbst installierbar sein | Hoch 
+| Einfache Bedienbarkeit | Hoch 
+| Dokumentation in Wiki des StuRa | Niedrig 
+|===
+
+== Use-Case Model
+
+=== Allgemeine Informationen
+Nachfolgend werden die identifizierten Use Cases (UC) aufgelistet und näher beschrieben. Zur Verbesserung der Gesamtübersicht wird ein Use Case Diagramm abgebildet.
+
+=== Identifizierte Use Cases
+// Liste aller identifizierten Use Cases (priorisiert)
+
+Die Use Cases wollen wir in folgender Priorität umsetzen und implementieren:
+
+* *UC01*: Antrag stellen
+* *UC05*: Antragsverwalter anmelden
+* *UC02*: Tagesordnung erstellen 
+* *UC06*: Beschlüsse einpflegen
+* *UC03*: Tagesordnung abschließen
+* *UC04*: Plenumssitzung vertagen 
+
+// Antragsverwalter war niedrigste Priorität, --> geändert da ohne Anmeldung gesamte Applikation nicht sinnvoll --> Diskussionsbedarf ob an zweiter stelle oder nicht!!
+
+Die Priorisierung ergibt sich aus folgenden Faktoren:
+
+* Wichtigkeit für den Kunden
+* Sinnvolle Grundfunktionalitäten
+* Schwierigkeit der Umsetzung
+* Vorhandensein des benötigten Know-how für die Umsetzung.
+
+Da "UC01: Antrag stellen" die Kernfunktionalität der Webanwendung abbildet und es die wichtigste Funktionalität für den Kunden darstellt, ist es unsere höchste Priorität, diesen Use Case als Erstes zu implementieren. +
+Ohne "UC05: Antragsverwalter anmelden" kann die Webanwendung nicht sinnvoll verwendet werden, da sonst Authentifizierung als Admin möglich ist. Da es für die Verwaltung der Anträge nötig ist, ist es einer unserer hochpriorisierten Funktionalitäten. +
+UC02 und UC06 stellen wichtige Funktionalitäten für unseren Kunden dar, aufgrund des nötigen Know-hows und Komplexität sind sie von der Priorität mittig angesetzt. +
+UC03 und UC04 sind nicht zwangsläufig für die Benutzung der Webanwendung nötig, daher sind es unsere am niedrigsten priorisierten Funktionalitäten.
+
+<<<
+=== Use Case Diagramm
+
+[plantuml, "{diagramsdir}/use-case-diagramm", svg]
+....
+@startuml
+left to right direction
+skinparam actorStyle awesome
+actor Antragssteller as AS
+actor Antragsverwalter as AV
+actor Systemadministrator as SA
+
+package Use-Cases {
+    usecase "Antrag stellen" as UC1
+    usecase "Tagesordnung erstellen" as UC2
+    usecase "Beschlüsse einpflegen" as UC6
+    usecase "Tagesordnung abschließen" as UC3
+    usecase "Plenumssitzung vertagen" as UC4
+    usecase "Antragsverwalter anmelden" as UC5
+}
+AS --> UC1
+AV --> UC2
+AV --> UC6
+AV --> UC3
+AV --> UC4
+AV --> UC5
+SA --> UC5
+
+@enduml
+....
+
+//Fügen Sie nachfolgend alle detaillierten Use-Cases per Include ein.
+//Dafür sollten Sie pro Use-Case eine Datei anlegen, die auf dem use_case_01.inc.adoc Template basiert.
+
+////
+Mit `<<<` wird im PDF ein Seitenumbruch erzeugt.
+Zwischen `include::...` und dem darauf folgenden `<<<` muss sich eine Leerzeile befinden. Fehlt diese, werden unter Umständen die erste Überschriften aus der inkludierten Datei nicht korrekt übernommen.
+Ein `include` entfernt am Anfang und Ende eine möglich Leerzeile, was in Kombination mit `<<<` zu Fehlern führen kann.
+////

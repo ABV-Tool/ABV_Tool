@@ -12,6 +12,45 @@
 === Techniken/Praktiken
 //Techniken/Praktiken: Welche wurden warum eingesetzt und wie genutzt? → „Way of Working“
 
+*Open UP*
+
+*Management Practices*
+
+* Iterative Developement
+
+Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um alle anstehenden Aufgaben zu besprechen und zu verteilen. Die daraus resultierenden Issues werden in unserem gemeinsamen GitGub Repository eingestellt und den verantwortlichen Personen zugewiesen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. Am Ende von SE I soll der Meilenstein Elaboration Phase abgeschlossen sein. Je nach Bedarf werden kurze Besprechungen während der Iteration durchgeführt z. B. um ein Meeting mit dem Coach oder dem StuRa vorzubereiten. Ein Teammitglied wird als Schriftführer benannt, welches dafür zuständig ist alle besprochenen Punkte in einem Protokoll festzuhalten.
+
+
+* #Risk-Value Lifecycle#
+* #Release Planning#
+* #Whole Team#
+* #Team Change Management#
+* #Project Process Tailoring#
+
+*Technical Practices*
+
+* #Concurrent Testing#
+* #Continuous Integration#
+
+* Evolutionary Architecture
+Das Architecture Notebook wird schrittweise bearbeitet. Es wird sich hierbei am Projektfortschritt orientiert.
+
+* #Ecolutionary Design#
+
+* Shared Vision
+Die erarbeitet Vision mit Zweck und Problembeschreibung wurde in enger Zusammenarbeit mit dem Auftraggeber erarbeitet und mit diesem abgestimmt. Auch nach der finalen Abstimmung wird der Projektfortschritt regelmäßig mit der Vision und dem Auftraggeber abgeglichen und ggf. auf neue oder geänderte Anforderungen abgestimmt. 
+
+* #Test Driven Developement#
+
+* Use Case Driven Developement
+Dem gesamtem Projekt liegt das ein Use Case Model zugrunde welches in Zusammenarbeit mit dem Auftraggeber entwickelt wurde. Aus diesem ergeben sich auch die System Wide Requirements wo system-weite funktionale Anforderungen angegeben werden, die nicht als Use Cases ausgedrückt werden können. Auch Anforderungen zur Benutzbarkeit werden hier beschrieben.
+
+
+*Deployment Practices*
+
+* Docuemtenation and Training
+* Production Realease
+
 == Projektdurchführung
 // Kurze Beschreibung der Ziele, Aktivitäten und Ergebnisse in den OpenUP-Projektphasen / Iterationen, dabei Berücksichtigung des Zusammenspiels zwischen den einzelnen Rollen sowie Risiken
 
