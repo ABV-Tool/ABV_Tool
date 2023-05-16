@@ -4,10 +4,33 @@ from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
 from datetime import date
 
-def AppHome(request):
+
+# Hauptseiten
+def HomePage(request):
     return render(request, 'pages/home.html', context={'title': 'Home'})
 
+def AboutPage(request):
+    return render(request, 'pages/about.html', context={'title': 'Über Uns'})
 
+def ArchivPage(request):
+    return render(request, 'pages/archive.html', context={'title': 'Archiv'})
+
+
+# Interner Bereich
+def AntragsverwaltungPage(request):
+    return render(request, 'pages/intern/antragsverwaltung.html', context={'title': 'Antragsverwaltung'})
+
+
+def SitzungsverwaltungPage(request):
+    return render(request, 'pages/intern/sitzungen.html', context={'title': 'Sitzungsverwaltung'})
+
+    
+def TagesordnungPage(request):
+    return render(request, 'pages/intern/tagesordnung.html', context={'title': 'Tagesordnung'})
+
+
+
+# Benutzerauthentifizierung
 def LoginPage(request):
     # redirect if user is already logged in
     if request.user.is_authenticated:
@@ -38,42 +61,7 @@ def LogoutPage(request):
     return redirect('index')
 
 
-def ReferatListe(request):
-    referate = Referat.objects.all()
-    return render(
-        request,
-        'Antragstool/referate.html',
-        {
-            'referate': referate
-        }
-    )
-
-
-def SitzungenVonReferat(request, sitzid):
-    sitzungen = Sitzung.objects.filter(refID=sitzid)
-    return render(
-        request,
-        'Antragstool/sitzungen.html',
-        {
-            'sitzungen': sitzungen
-        }
-    )
-
-
-def AntraegeVonSitzung(request, sitzid):
-    antraege = Antrag.objects.filter(sitzID=sitzid)
-    sitzung = Sitzung.objects.get(sitzID=sitzid)
-    return render(
-        request,
-        'Antragstool/antraege.html',
-        {
-            'antraege': antraege,
-            'sitzung': sitzung
-        }
-    )
-
-
-
+# Anträge
 # Prüfe, ob der Antragsteller bereits in der Datenbank existiert und gib diesen zurück
 def checkAntragsteller(form):
     astellerEmail = form.cleaned_data['email']
@@ -114,6 +102,7 @@ def AntragAllgemein(request):
             antrag.astellerID = asteller
             antrag.antragTitel = form.cleaned_data['titel']
             antrag.antragText = form.cleaned_data['text']
+            antrag.istEilantrag = form.cleaned_data['ist_eilantrag']
             
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
@@ -149,6 +138,7 @@ def AntragFinanziell(request):
             antrag.astellerID = asteller
             antrag.antragTitel = form.cleaned_data['titel']
             antrag.antragText = form.cleaned_data['text']
+            antrag.istEilantrag = form.cleaned_data['ist_eilantrag']
             
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragKostenposition = form.cleaned_data['position']
@@ -186,6 +176,7 @@ def AntragVeranstaltung(request):
             antrag.astellerID = asteller
             antrag.antragTitel = form.cleaned_data['titel']
             antrag.antragText = form.cleaned_data['text']
+            antrag.istEilantrag = form.cleaned_data['ist_eilantrag']
             
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragKostenposition = form.cleaned_data['position']
@@ -225,6 +216,7 @@ def AntragMitglied(request):
             antrag.astellerID = asteller
             antrag.antragTitel = form.cleaned_data['titel']
             antrag.antragText = form.cleaned_data['text']
+            antrag.istEilantrag = form.cleaned_data['ist_eilantrag']
             
             antrag.antragVorstellungPerson = form.cleaned_data['vorstellung_person']
                         
@@ -261,6 +253,7 @@ def AntragAmt(request):
             antrag.astellerID = asteller
             antrag.antragTitel = form.cleaned_data['titel']
             antrag.antragText = form.cleaned_data['text']
+            antrag.istEilantrag = form.cleaned_data['ist_eilantrag']
             
             antrag.antragVorstellungPerson = form.cleaned_data['vorstellung_person']
             antrag.antragFragenZumAmt = form.cleaned_data['fragen_amt']
@@ -296,6 +289,7 @@ def AntragBenehmen(request):
             antrag.astellerID = asteller
             antrag.antragTitel = form.cleaned_data['titel']
             antrag.antragText = form.cleaned_data['text']
+            antrag.istEilantrag = form.cleaned_data['ist_eilantrag']
             
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']

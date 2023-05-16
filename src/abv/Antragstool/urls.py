@@ -1,18 +1,28 @@
-from django.urls import path
-from .views import AppHome, LoginPage, LogoutPage, ReferatListe, SitzungenVonReferat, AntraegeVonSitzung
+from django.contrib.auth.decorators import user_passes_test
+from django.urls import path, re_path
+from .views import  LoginPage, LogoutPage
+from .views import HomePage, AboutPage, ArchivPage
+from .views import AntragsverwaltungPage, SitzungsverwaltungPage, TagesordnungPage
 from .views import AntragAllgemein, AntragFinanziell, AntragVeranstaltung, AntragMitglied, AntragAmt, AntragBenehmen
 
+#TODO: Internen Bereich nur für superuser freigeben
 
 urlpatterns = [
-    path('', AppHome, name='index'),
+    # Hauptseiten
+    path('', HomePage, name='index'),
+    path('about/', AboutPage, name='about'),
+    path('archiv/', ArchivPage, name='archiv'),
     
-    path('referate/', ReferatListe, name='referate'),
-    path('sitzungen/<uuid:sitzid>/', SitzungenVonReferat, name='SitzungenVonReferat'),
-    path('sitzung/<uuid:sitzid>/', AntraegeVonSitzung, name='AntraegeVonSitzung'),
+    # Interner Bereich
+    path('intern/antragsverwaltung/', AntragsverwaltungPage, name='antragsverwaltung'),
+    path('intern/sitzungsverwaltung/', SitzungsverwaltungPage, name='sitzungsverwaltung'),
+    path('intern/tagesordnung/', TagesordnungPage, name='tagesordnung'),
     
+    # Benutzerverwaltung
     path('accounts/login/', LoginPage, name='login'),
     path('accounts/logout/', LogoutPage, name='logout'),
     
+    # Antragsverwaltung
     path('antrag/allgemein/', AntragAllgemein, name='antrag-allgemein'),
     path('antrag/finanziell/', AntragFinanziell, name='antrag-finanziell'),
     path('antrag/veranstaltung/', AntragVeranstaltung, name='antrag-veranstaltung'),
