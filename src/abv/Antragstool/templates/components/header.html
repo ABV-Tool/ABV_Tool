@@ -1,19 +1,63 @@
 {% load static %}
 
-<div class="navigation w3-animate-top">
-    <ul class="mainnav">
-        <li class = "lil {% if request.get_full_path == "/" %} active{% endif %}"><a href="{%  url 'index' %}">Home</a></li>
-        <li class = "lil {% if request.get_full_path == "/referate/" %} active{% endif %}"><a href="{%  url 'referate' %}">Referate</a></li>
-        <li class = "lil {% if request.get_full_path == "/sitzungen/" %} active{% endif %}"><a href="{%  url 'referate' %}">Sitzungen</a></li>
 
-        <!-- display login/logout if user is authenticated or not -->
-        {% if user.is_authenticated %}
-            <li class="lir"><a href="{% url 'logout' %}">Abmelden</a></li>
-            <li class="lir"><a href="/admin" target="_blank">Administration</a></li>
-            <!-- display user's firstname if defined -->
-            <li class="lir"><a>Willkommen, <b>{% if request.user.first_name == '' %}{{ request.user }}{% else %}{{ request.user.first_name }}{% endif %}</b>!</a></li>
-        {% else %}
-            <li class="lir {% if request.get_full_path == "/accounts/login/" %} active{% endif %}"><a href="{%  url 'login' %}">Anmelden</a></li>
-        {% endif %}
-    </ul>
+<div class="w3-animate-top bg-[#333] text-white justify-around select-none">
+    <div class="flex flex-row justify-center">
+
+        <!-- Hauptseiten -->
+        <div class="w-1/3">
+            <ul class="">
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/" %} active{% endif %}">
+                    <a href="{%  url 'index' %}">Home</a>
+                </li>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/about/" %} active{% endif %}">
+                    <a href="{%  url 'about' %}">Über Uns</a>
+                </li>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/archiv/" %} active{% endif %}">
+                    <a href="{%  url 'archiv' %}">Archiv</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Interner Bereich -->
+        <div class="w-1/3">
+            {% if user.is_authenticated %}
+            <ul class="flex flex-row justify-center">
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/antragsverwaltung/" %} active{% endif %}">
+                    <a href="{%  url 'antragsverwaltung' %}">Anträge</a>
+                </li>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/sitzungsverwaltung/" %} active{% endif %}">
+                    <a href="{%  url 'sitzungsverwaltung' %}">Sitzungen</a>
+                </li>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/tagesordnung/" %} active{% endif %}">
+                    <a href="{%  url 'tagesordnung' %}">Tagesordnung</a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+
+        <!-- Benutzer -->
+        <div class="w-1/3">
+            <ul>
+            {% if user.is_authenticated %}
+                <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed]">
+                    <a href="{% url 'logout' %}">Abmelden <i class="fa-solid fa-right-from-bracket"></i></a>
+                </li>
+                <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed]">
+                    <a href="/admin" target="_blank">Administration</a>
+                </li>
+                <!-- display user's firstname if defined -->
+                <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed]">
+                    <a>Willkommen, <b>{% if request.user.first_name == '' %}{{ request.user }}{% else %}{{ request.user.first_name }}{% endif %}</b>!</a>
+                </li>
+            {% else %}
+                <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed] {% if request.get_full_path == "/accounts/login/" %} active{% endif %}">
+                    <a href="{%  url 'login' %}">Anmelden <i class="fa-solid fa-right-from-bracket"></i></a>
+                </li>
+            {% endif %}
+            </ul>
+        </div>
+
+
+    </div>
 </div>
