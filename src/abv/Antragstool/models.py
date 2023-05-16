@@ -1,7 +1,7 @@
 import uuid
 from django.db import models
 from djmoney.models.fields import MoneyField
-from djmoney.money import Currency, Money
+from djmoney.money import Currency
 
 
 class Referat(models.Model):
@@ -74,6 +74,8 @@ class Antrag(models.Model):
     antragText = models.TextField(db_column='antrag_text')
     antragAnlagen = models.FileField(db_column='antrag_anlagen', null=True)
     
+    istEilantrag = models.BooleanField(db_column='ist_eilantrag', default=False)
+    
     # Antragsspezifische Daten
     # TODO: Überlegung zu besserer Strukturierung in DB
     antragGrund = models.TextField(db_column='antrag_grund', null=True)
@@ -88,6 +90,3 @@ class Antrag(models.Model):
     antragFragenZumAmt = models.TextField(db_column='antrag_fragen_zum_amt', null=True)
     antragZeitraum = models.TextField(db_column='antrag_zeitraum', null=True)
     antragVerantwortlichkeit = models.TextField(db_column='antrag_verantwortlichkeit', null=True)
-    
-    
-

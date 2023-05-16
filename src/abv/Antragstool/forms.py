@@ -19,10 +19,12 @@ class StammdatenForm(forms.Form):
     
     vorname = forms.CharField(label="Vorname", max_length=100, required=True, widget=forms.TextInput())
     nachname = forms.CharField(label="Nachname", max_length=100, required=True, widget=forms.TextInput())
-    email = forms.EmailField(label="E-Mail Adresse", max_length=100, required=True, widget=forms.EmailInput())
+    email = forms.EmailField(label="E-Mail Adresse", max_length=200, required=True, widget=forms.EmailInput())
     
     titel = forms.CharField(label="Antragstitel", max_length=200, required=True, widget=forms.TextInput())
     text = forms.CharField(label="Antragstext", max_length=2000, required=True, widget=forms.Textarea())
+    
+    ist_eilantrag = forms.BooleanField(label="Eilantrag", required=False)
     
     # TODO: Unterstützung für mehrere Dateien einbinden
     anlagen = forms.FileField(label="Anlagen", required=False)
