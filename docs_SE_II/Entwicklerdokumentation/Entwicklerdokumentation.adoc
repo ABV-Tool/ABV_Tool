@@ -4,15 +4,92 @@
 
 === Systemarchitektur
 // r logisch und ggf. physisch, z.B. mittels Paket- / Komponenten- / Klassen- / Verteilungsdiagramm
+[plantuml, "{diagramsdir}/klassendiagramm", svg]
+....
+database Datenbank{
+
+}
+
+interface ABVT <<Interface>> {
+  +LoginPage
+  +LogoutPage
+  +RefaratListe
+  +SitzungenVonRefarat
+  +AntraegeVonSitzung
+  +Antrag verschiedene
+  +checkAntragsteller()
+  +checkSitzung()
+}
+
+class Refarat{
+    -db_table = referat
+    #refID : uuid
+    +refName
+    +refZyklus
+}
+class Sitzung{
+    -db_table = sitzung
+    #sitzID : uuid
+    #refID : id
+    +sitzDate
+}
+class Antragssteller{
+    -db_table = antragssteller
+    #astellerID : uuid
+    #astellerIstMitglied : Boolean
+    +astellerName
+    +astellerVorname
+    +astellerEmail
+}
+class Antragstyp{
+    -db_table = antragstyp
+    #typID : int
+    +typName
+    +typSlug
+}
+class Antrag{
+    -db_table = antrag
+    #antragID : uuid
+    #sitzID : uuid
+    #typID : id
+    #astellerID : uuid
+    +antragTitel
+    +antragText
+    +antragAnlagen
+    +antragGrund
+    +antragVorschlag
+    +antragKostenposition
+    +antragSumme
+    +antragVorstellungPerson
+    +antragFragenZumAmt
+    +antragZeitraum
+    +antragVerantwortlichkeit
+}
+
+
+Refarat - Antragstyp
+Antragstyp - Antrag
+Antragssteller - Antrag
+Sitzung - Antrag
+Antrag -> ABVT
+
+....
 
 === Verwendete Bibliotheken/Frameworks...
 
-Wir verwenden als Framework verwenden wir Django, welches auf der Programmiersprache Python basiert, da wir das Projekt der vorangehenden Grupppe als Grundlage nutzen. Wir nehmen die Version 3 oder höher, da es sonst zu Kompatibilitätsproblemen mit verschiedenen Funktionen von Django selbst kommt. Zusätzlich werden folgende Erweiterungen von Python und Django benötigt:
+Wir verwenden als Framework verwenden wir Django, welches auf der Programmiersprache Python basiert, da wir das Projekt der vorangehenden Grupppe als Grundlage nutzen. Wir nehmen die Version 3 oder höher, da es sonst zu Kompatibilitätsproblemen mit verschiedenen Funktionen von Django selbst kommt. Tailwind ist die Frameworkgrundlage für das Frontend, da wir dadurch mehr . Zusätzlich werden folgende Erweiterungen von Python und Django benötigt:
 
-* mator
+* martor
 * gunicorn
 * psycopg2
 * django-money
+* fontawesomefree
+
+Für die Entwicklung benötigten wir noch:
+
+* django-tailwind
+* django-browser-reload
+
 
 === Datenbankschema
 
@@ -20,6 +97,8 @@ Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu hab
 
 image::Datenbankschema.png[title="Datenbankschema"]
 === Schnittstellen
+
+Martor ist die Schnittstelle zu Markdown.
 
 
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
