@@ -15,3 +15,4 @@
 // FAQ für Benutzersupport 
 // Fehlerdiagnose, z.B. anhand von Logfile-Einträgen
 // Datensicherung und –wiederherstellung
+Frag am Besten Göran Kappa

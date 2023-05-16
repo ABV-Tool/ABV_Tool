@@ -7,11 +7,24 @@
 
 === Verwendete Bibliotheken/Frameworks...
 
+Wir verwenden als Framework verwenden wir Django, welches auf der Programmiersprache Python basiert, da wir das Projekt der vorangehenden Grupppe als Grundlage nutzen. Wir nehmen die Version 3 oder höher, da es sonst zu Kompatibilitätsproblemen mit verschiedenen Funktionen von Django selbst kommt. Zusätzlich werden folgende Erweiterungen von Python und Django benötigt:
+
+* mator
+* gunicorn
+* psycopg2
+* django-money
+
 === Datenbankschema
 
+Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu haben, während wir eine hochdetaillierte Aufteilung der Daten behalten können.
+
+image::Datenbankschema.png[title="Datenbankschema"]
 === Schnittstellen
 
+
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
+
+
 
 == Softwaredokumentation
 // Namen und Beschreibung aller Klassen
