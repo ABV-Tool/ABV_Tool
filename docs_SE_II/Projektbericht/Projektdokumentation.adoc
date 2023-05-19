@@ -4,10 +4,42 @@
 
 === Aufgabenstellung und Auftraggeber
 
+
 === Ausgangssituation
 
 === Projektorganisation
 //d.h. Team, Rollen/Verantwortlichkeiten, Kommunikation im Team und zum Auftraggeber, eingesetzte Tools in der Projektarbeit, z.B. für Planung, Kommunikation, Dokumentation
+
+==== Rollenverteilung
+
+Zu Beginn des Projektes hat sich das Team auf folgende Rollenverteilung geeinigt: 
+
+
+* Göran Heinemann		*Programmierung*/Tester
+* Alexander Minukow	    *Analyse*/Entwurf
+* Mirjam Müller         *Analyse*/Teamleitung
+* Xuan Huy Nguyen		*Entwurf*/Programmierung
+* Max Patecky			*Tester*/Technical-Writer
+* Marten Petters	    *Teamleitung*
+* Simon Voges			*Deployment-Engineer*
+
+Die Rollenverteilung begründetet sich hauptsächlich auf die persönlichen Präferenzen der Teammitglieder in Verbindung mit den verschiedenen Vorkenntnissen und Kompetenzen. 
+
+Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studiengang Wirtschaftsingenieurwesen nur das Modul Software Engineering I Teil des Studiengangs ist. Dadurch ware eine Anpassung der Rollenverteilung notwendig. Im Zuge dessen wurde auch nochmal die generelle Verteilung der Aufgaben geprüft. Neben der Neuorganisation des Projektmanagements wurde auch die Rolle des Deployment-Engineers neu vergeben. 
+
+* Göran Heinemann		*Programmierung/Deployment-Engineer*
+* Alexander Minukow	    *Analyse*/Entwurf
+* Mirjam Müller         *Teamleitung*/Analyse
+* Xuan Huy Nguyen		*Entwurf*/Programmierung
+* Max Patecky			*Tester*/Technical-Writer
+* Simon Voges			*stellv. Teamleitung*/#Diagramm-Verantwortlicher#
+
+==== Kommunikation und Dokumentation
+
+Zur Kommunikation nutzte das Team einen WhatsApp Gruppenchat sowie einen Discord Server. Über WhatsApp wurden Termine abgestimmt und kurze Infos mitgeteilt. Alles weitere wurde über den Discord Server geteilt. Die Meetings wurden in einem Google Doc dokumentiert. Dazu nutzte das Team eine feste Vorlage, durch die auch der Ablauf eines Teammeetings unterstützt wurde. Die Aufgaben wurden in diesem Google Docs aufgeschrieben und anschließend in das GitHub repository übertragen. 
+
+#Screenshot Vorlage google docs#
+
 
 === Techniken/Praktiken
 //Techniken/Praktiken: Welche wurden warum eingesetzt und wie genutzt? → „Way of Working“
