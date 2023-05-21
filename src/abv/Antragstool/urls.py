@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import user_passes_test
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 from .views import  LoginPage, LogoutPage
 from .views import HomePage, AboutPage, ArchivPage
 from .views import ReferatsverwaltungPage, ReferatErstellenPage, ReferatBearbeitenPage, ReferatLoeschenPage
@@ -37,4 +37,6 @@ urlpatterns = [
     path('antrag/mitglied/', AntragMitglied, name='antrag-mitglied'),
     path('antrag/amt/', AntragAmt, name='antrag-amt'),
     path('antrag/benehmen/', AntragBenehmen, name='antrag-benehmen'),
+
+    path('martor/', include('martor.urls')),
 ]
