@@ -75,3 +75,9 @@ class AntragBenehmenForm(StammdatenForm):
     grund = grund_feld
     vorschlag = vorschlag_feld
     
+    
+    
+# Referate
+class ReferatForm(forms.Form):
+    referat_name = forms.CharField(label="Referats-Name:", max_length=100, required=True, widget=forms.TextInput())
+    referat_zyklus = forms.CharField(label="Referats-Zyklus:", max_length=100, required=True, widget=forms.NumberInput())

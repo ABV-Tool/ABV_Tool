@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+    <!-- insert custom header elements -->
+{% endblock %}
+
+{% block content %}
+    <!-- insert content -->
+
+    <div class="ml-80 mr-80">
+
+        <div class="w-full">
+            <a href="{% url 'sitzung-anlegen' %}" class="btn btn-success w-full hover:cursor-pointer">
+                <i class="fa-solid fa-circle-plus"></i> Sitzung anlegen
+            </a>
+        </div>
+
+        <table class="table-auto w-full text-left overflow-x-auto mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Referat</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sitzung in sitzungen %}
+                <tr>
+                    <td>{{ sitzung.sitzDate | date:"d.m.Y" }}</td>
+                    <td>{{ sitzung.refID.refName }}</td>
+                    <td>
+                        <a href="{% url 'sitzung-anzeigen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer">
+                            <i class="fa-solid fa-pen-to-square"></i> Anzeigen
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer">
+                            <i class="fa-solid fa-trash-can"></i> Vertagen
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer">
+                            <i class="fa-solid fa-trash-can"></i> Löschen
+                        </a>
+                    </td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

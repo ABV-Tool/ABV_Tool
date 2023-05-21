@@ -2,7 +2,8 @@ from django.contrib.auth.decorators import user_passes_test
 from django.urls import path, re_path
 from .views import  LoginPage, LogoutPage
 from .views import HomePage, AboutPage, ArchivPage
-from .views import AntragsverwaltungPage, SitzungsverwaltungPage, TagesordnungPage
+from .views import ReferatsverwaltungPage, ReferatErstellenPage, ReferatBearbeitenPage, ReferatLoeschenPage
+from .views import SitzungsverwaltungPage, SitzungAnlegenPage, SitzungAnzeigenPage, SitzungVertagenPage, SitzungLoeschenPage
 from .views import AntragAllgemein, AntragFinanziell, AntragVeranstaltung, AntragMitglied, AntragAmt, AntragBenehmen
 
 #TODO: Internen Bereich nur für superuser freigeben
@@ -14,9 +15,16 @@ urlpatterns = [
     path('archiv/', ArchivPage, name='archiv'),
     
     # Interner Bereich
-    path('intern/antragsverwaltung/', AntragsverwaltungPage, name='antragsverwaltung'),
+    path('intern/referatsverwaltung/', ReferatsverwaltungPage, name='referatsverwaltung'),
+    path('intern/referat/erstellen', ReferatErstellenPage, name='referat-erstellen'),
+    path('intern/referat/<int:refID>/bearbeiten', ReferatBearbeitenPage, name='referat-bearbeiten'),
+    path('intern/referat/<int:refID>/loeschen', ReferatLoeschenPage, name='referat-loeschen'),
+    
     path('intern/sitzungsverwaltung/', SitzungsverwaltungPage, name='sitzungsverwaltung'),
-    path('intern/tagesordnung/', TagesordnungPage, name='tagesordnung'),
+    path('intern/sitzung/anlegen', SitzungAnlegenPage, name='sitzung-anlegen'),
+    path('intern/sitzung/<uuid:sitzID>/anzeigen', SitzungAnzeigenPage, name='sitzung-anzeigen'),
+    path('intern/sitzung/<uuid:sitzID>/vertragen', SitzungVertagenPage, name='sitzung-vertagen'),
+    path('intern/sitzung/<uuid:sitzID>/löschen', SitzungLoeschenPage, name='sitzung-loeschen'),
     
     # Benutzerverwaltung
     path('accounts/login/', LoginPage, name='login'),
