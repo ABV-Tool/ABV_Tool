@@ -10,3 +10,4 @@ __pycache__
 .venv
 
 src/result
+src/node_modules
