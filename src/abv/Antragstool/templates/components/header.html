@@ -7,14 +7,14 @@
         <!-- Hauptseiten -->
         <div class="w-1/3">
             <ul class="">
-                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/" %} active{% endif %}">
-                    <a href="{%  url 'index' %}">Home</a>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/" %} active{% endif %}" onClick="location.href='{%  url 'index' %}'">
+                    <i class="fa-solid fa-house"></i> Home
                 </li>
-                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/about/" %} active{% endif %}">
-                    <a href="{%  url 'about' %}">Über Uns</a>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/about/" %} active{% endif %}" onClick="location.href='{%  url 'about' %}'">
+                    <i class="fa-solid fa-circle-info"></i> Über Uns
                 </li>
-                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/archiv/" %} active{% endif %}">
-                    <a href="{%  url 'archiv' %}">Archiv</a>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/archiv/" %} active{% endif %}" onClick="location.href='{%  url 'archiv' %}'">
+                    <i class="fa-solid fa-box-archive"></i> Archiv
                 </li>
             </ul>
         </div>
@@ -23,14 +23,11 @@
         <div class="w-1/3">
             {% if user.is_authenticated %}
             <ul class="flex flex-row justify-center">
-                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/antragsverwaltung/" %} active{% endif %}">
-                    <a href="{%  url 'antragsverwaltung' %}">Anträge</a>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/referatsverwaltung/" %} active{% endif %}" onClick="location.href='{%  url 'referatsverwaltung' %}'">
+                    <i class="fa-solid fa-rectangle-list"></i> Referatsverwaltung
                 </li>
-                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/sitzungsverwaltung/" %} active{% endif %}">
-                    <a href="{%  url 'sitzungsverwaltung' %}">Sitzungen</a>
-                </li>
-                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/tagesordnung/" %} active{% endif %}">
-                    <a href="{%  url 'tagesordnung' %}">Tagesordnung</a>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/sitzungsverwaltung/" %} active{% endif %}" onClick="location.href='{%  url 'sitzungsverwaltung' %}'">
+                    <i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung
                 </li>
             </ul>
             {% endif %}
@@ -40,15 +37,15 @@
         <div class="w-1/3">
             <ul>
             {% if user.is_authenticated %}
-                <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed]">
-                    <a href="{% url 'logout' %}">Abmelden <i class="fa-solid fa-right-from-bracket"></i></a>
+                <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed]" onClick="location.href='{%  url 'logout' %}'">
+                    Abmelden <i class="fa-solid fa-right-from-bracket"></i>
                 </li>
-                <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed]">
-                    <a href="/admin" target="_blank">Administration</a>
+                <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed]" onClick="window.open('/admin')">
+                    Administration <i class="fa-solid fa-screwdriver-wrench"></i>
                 </li>
                 <!-- display user's firstname if defined -->
                 <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed]">
-                    <a>Willkommen, <b>{% if request.user.first_name == '' %}{{ request.user }}{% else %}{{ request.user.first_name }}{% endif %}</b>!</a>
+                    Willkommen, <b>{% if request.user.first_name == '' %}{{ request.user }}{% else %}{{ request.user.first_name }}{% endif %}</b>!
                 </li>
             {% else %}
                 <li class="float-right p-4 cursor-pointer hover:bg-[#6495ed] {% if request.get_full_path == "/accounts/login/" %} active{% endif %}">

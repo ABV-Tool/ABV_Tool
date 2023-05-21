@@ -19,6 +19,15 @@ body {
     color: white;
     background-color: #f2ac2e;
 }
+.btn-neutral {
+    background-color: blue !important;
+}
+.btn-success {
+    background-color: limegreen !important;
+}
+.btn-danger {
+    background-color: red !important;
+}
 /* - Custom Global Classes - */
 
 
