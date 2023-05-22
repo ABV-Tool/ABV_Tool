@@ -24,7 +24,7 @@ urlpatterns = [
     path('intern/sitzung/anlegen', SitzungAnlegenPage, name='sitzung-anlegen'),
     path('intern/sitzung/<uuid:sitzID>/anzeigen', SitzungAnzeigenPage, name='sitzung-anzeigen'),
     path('intern/sitzung/<uuid:sitzID>/vertragen', SitzungVertagenPage, name='sitzung-vertagen'),
-    path('intern/sitzung/<uuid:sitzID>/löschen', SitzungLoeschenPage, name='sitzung-loeschen'),
+    path('intern/sitzung/<uuid:sitzID>/loeschen', SitzungLoeschenPage, name='sitzung-loeschen'),
     
     # Benutzerverwaltung
     path('accounts/login/', LoginPage, name='login'),
