@@ -1,21 +1,15 @@
-# authentication/forms.py
 from django import forms
 from Antragstool.models import Referat
-from djmoney.models.fields import MoneyField
-from djmoney.money import Currency
+
 
 # template for custom login form
 class LoginForm(forms.Form):
     username = forms.CharField(label="Benutzername", max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'mb-3'}))
     password = forms.CharField(label="Passwort", max_length=100, required=True, widget=forms.PasswordInput)
-    
 
-# Referate aus DB laden
-referate_db = Referat.objects.all()
-REFERATE = [(entry.refID, entry.refName) for entry in referate_db]
 
 class StammdatenForm(forms.Form):
-    referat = forms.ChoiceField(widget=forms.RadioSelect, choices=REFERATE)
+    referat = forms.ModelChoiceField(label="Referat", queryset=Referat.objects.all().order_by('refID'), required=True, empty_label="Bitte wählen")
     
     vorname = forms.CharField(label="Vorname", max_length=100, required=True, widget=forms.TextInput())
     nachname = forms.CharField(label="Nachname", max_length=100, required=True, widget=forms.TextInput())

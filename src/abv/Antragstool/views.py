@@ -1,10 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.core.mail import send_mail
+from datetime import date
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp
 from .forms import ReferatForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
-from datetime import date
 
+
+class FrontendFeedback:
+    type = ''
+    text = ''
+    back_url = ''
 
 # ========== Hauptseiten ========== #
 
@@ -22,12 +28,6 @@ def ArchivPage(request):
 # ========== Interner Bereich ========== #
 
 # ++++++ Referatsverwaltung ++++++ #
-
-class FrontendFeedback:
-    type = ''
-    text = ''
-    back_url = ''
-
 
 def ReferatsverwaltungPage(request):
     referate = Referat.objects.all().order_by('refID')
@@ -131,7 +131,11 @@ def SitzungAnlegenPage(request):
 
 
 def SitzungAnzeigenPage(request, sitzID):
-    return render(request, 'pages/intern/sitzung.html', context={'title': 'Sitzung anzeigen'})
+    antraege = Antrag.objects.filter(sitzID=sitzID)
+    return render(request, 'pages/intern/sitzung.html', context={
+        'title': 'Sitzung anzeigen',
+        'antraege': antraege
+    })
 
 
 def SitzungVertagenPage(request, sitzID):
@@ -147,12 +151,12 @@ def SitzungLoeschenPage(request, sitzID):
 # ++++++ Benutzerauthentifizierung ++++++ #
 
 def LoginPage(request):
+    feedback = FrontendFeedback()
+    
     # redirect if user is already logged in
     if request.user.is_authenticated:
         return redirect('index')
 
-    form = LoginForm()
-    msg = ''
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -164,11 +168,17 @@ def LoginPage(request):
                 login(request, user)
                 return redirect('index')
             else:
-                msg = 'Die eingegebenen Daten sind ungültig! Versuche es erneut.'
+                feedback.type = "ERROR"
+                feedback.text = 'Die eingegebenen Daten sind ungültig! Versuche es erneut.'
+    else: 
+        form = LoginForm()
               
-    return render(
-        request, 'pages/login.html', context={'title': 'Anmelden', 'form': form, 'msg': msg, 'fixed_footer': True}
-    )
+    return render(request, 'pages/login.html', context={
+        'title': 'Anmelden', 
+        'form': form, 
+        'feedback': feedback, 
+        'fixed_footer': True
+    })
 
 
 def LogoutPage(request):
@@ -198,10 +208,31 @@ def checkAntragsteller(form):
 
 
 # Prüfe, wann die nächste Sitzung des Referats stattfindet und gib diese zurück
+# TODO: Prüfung auf Eilantrag einbauen & E-Mail an Referat senden
 def checkSitzungen(form):
     refID = form.cleaned_data['referat']
     sitzungen = Sitzung.objects.filter(refID=refID).filter(sitzDate__gt=date.today()).order_by('sitzDate')
     return sitzungen
+
+
+# Sende eine Bestätigungsmail an den Antragsteller
+def sendConfirmationMail(asteller, antrag):
+    send_mail(
+        f"Dein { antrag.typID.typName } ist eingegeangen!",
+        f"Hi { asteller.astellerVorname },\n\nDein Antrag ist bei uns eingegangen und wird in der nächsten Sitzung des Referats behandelt.\n\nViele Grüße,\nDein StuRa-Team",
+        "abv@stura.htw-dresden.de",
+        [asteller.astellerEmail],
+        fail_silently=False,
+    )   
+    
+
+# Kurzfassung der render-Funktion für Antragsseiten
+def renderAntrag(request, title, form, feedback):
+    return render(request, 'pages/antrag.html', context={
+        'title': title, 
+        'form': form,
+        'feedback': feedback
+    })
 
 # ------ Funktionen ------ #
 
@@ -209,7 +240,8 @@ def checkSitzungen(form):
 # ++++++ Anträge ++++++ #
 
 def AntragAllgemein(request):
-    msg=''
+    feedback = FrontendFeedback()
+    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragAllgemeinForm(request.POST, request.FILES)
         if form.is_valid():
@@ -234,18 +266,19 @@ def AntragAllgemein(request):
             
             antrag.save()
             
-            msg='Dein Antrag wurde erfolgreich eingereicht!'
+            feedback.type='SUCCESS'
+            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-    return render(request, 'pages/antrag.html', context={
-        'title': 'Allgemeiner Antrag',
-        'form': AntragAllgemeinForm(),
-        'msg': msg
-    })
+            sendConfirmationMail(asteller, antrag)
+    else:
+        form = AntragAllgemeinForm()
 
+    return renderAntrag(request, 'Allgemeiner Antrag', form, feedback)
 
 
 def AntragFinanziell(request):
-    msg=''
+    feedback = FrontendFeedback()
+    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragFinanziellForm(request.POST, request.FILES)
         if form.is_valid():
@@ -272,18 +305,19 @@ def AntragFinanziell(request):
                         
             antrag.save()
             
-            msg='Dein Antrag wurde erfolgreich eingereicht!'
+            feedback.type='SUCCESS'
+            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
+            
+            sendConfirmationMail(asteller, antrag)
+    else:
+        form = AntragFinanziellForm()
     
-    return render(request, 'pages/antrag.html', context={
-        'title': 'Antrag mit finanzellen Mitteln',
-        'form': AntragFinanziellForm(),
-        'msg': msg
-    })
-    
-    
-    
+    return renderAntrag(request, 'Antrag mit finanziellen Mitteln', form, feedback)
+
+
 def AntragVeranstaltung(request):
-    msg=''
+    feedback = FrontendFeedback()
+    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragVeranstaltungForm(request.POST, request.FILES)
         if form.is_valid():
@@ -312,18 +346,19 @@ def AntragVeranstaltung(request):
                         
             antrag.save()
             
-            msg='Dein Antrag wurde erfolgreich eingereicht!'
+            feedback.type='SUCCESS'
+            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-    return render(request, 'pages/antrag.html', context={
-        'title': 'Antrag für eine Veranstaltung',
-        'form': AntragVeranstaltungForm(),
-        'msg': msg
-    })
-
+            sendConfirmationMail(asteller, antrag)
+    else:
+        form = AntragVeranstaltungForm()
+    
+    return renderAntrag(request, 'Antrag für Veranstaltungen', form, feedback)
 
 
 def AntragMitglied(request):
-    msg=''
+    feedback = FrontendFeedback()
+    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragMitgliedForm(request.POST, request.FILES)
         if form.is_valid():
@@ -344,21 +379,22 @@ def AntragMitglied(request):
             antrag.istEilantrag = form.cleaned_data['ist_eilantrag']
             
             antrag.antragVorstellungPerson = form.cleaned_data['vorstellung_person']
-                        
+            
             antrag.save()
+                        
+            feedback.type='SUCCESS'
+            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-            msg='Dein Antrag wurde erfolgreich eingereicht!'
-            
-    return render(request, 'pages/antrag.html', context={
-        'title': 'Antrag auf beratenes Mitglied',
-        'form': AntragMitgliedForm,
-        'msg': msg
-    })
+            sendConfirmationMail(asteller, antrag)
+    else:
+        form = AntragMitgliedForm()
     
+    return renderAntrag(request, 'Antrag zum beratenden MItglied', form, feedback)
 
 
 def AntragAmt(request):
-    msg=''
+    feedback = FrontendFeedback()
+    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragAmtForm(request.POST, request.FILES)
         if form.is_valid():
@@ -384,19 +420,20 @@ def AntragAmt(request):
             antrag.antragFragenZumAmt = form.cleaned_data['fragen_amt']
                         
             antrag.save()
+                        
+            feedback.type='SUCCESS'
+            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-            msg='Dein Antrag wurde erfolgreich eingereicht!'
-            
-    return render(request, 'pages/antrag.html', context={
-        'title': 'Antrag auf Stelle/Amt',
-        'form': AntragAmtForm,
-        'msg': msg
-    })
-
+            sendConfirmationMail(asteller, antrag)
+    else:
+        form = AntragAmtForm()
+    
+    return renderAntrag(request, 'Antrag zur Wahl für Stelle/Amt', form, feedback)
 
 
 def AntragBenehmen(request):
-    msg=''
+    feedback = FrontendFeedback()
+    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragBenehmenForm(request.POST, request.FILES)
         if form.is_valid():
@@ -420,13 +457,14 @@ def AntragBenehmen(request):
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
             
             antrag.save()
+                        
+            feedback.type='SUCCESS'
+            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-            msg='Dein Antrag wurde erfolgreich eingereicht!'
-            
-    return render(request, 'pages/antrag.html', context={
-        'title': 'Antrag auf Herstellung des Benehmens',
-        'form': AntragBenehmenForm,
-        'msg': msg
-    })
+            sendConfirmationMail(asteller, antrag)
+    else:
+        form = AntragAmtForm()
+    
+    return renderAntrag(request, 'Antrag zur Wahl für Stelle/Amt', form, feedback)
 
 # ------ Anträge ------ #

@@ -13,6 +13,9 @@ class Referat(models.Model):
                                         db_column='ref_id')
     refName = models.TextField(db_column='ref_name', max_length=200)
     refZyklus = models.IntegerField(db_column='zyklus')
+    
+    def __str__(self):
+        return self.refName
 
 
 class Sitzung(models.Model):
