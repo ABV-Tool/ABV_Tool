@@ -12,43 +12,15 @@ services:
       POSTGRES_PASSWORD: abv
     volumes:
       - pg_data:/var/lib/postgresql
-  #abv:
-  #  build: .
-  #  restart: unless-stopped
-  #  ports:
-  #    - 8020:8020
-  #  depends_on:
-  #    - db
-  #  environment:
-  #    DJANGO_SUPERUSER_USERNAME: admin
-  #    DJANGO_SUPERUSER_USERNAME: admin
-  #    DJANGO_SUPERUSER_EMAIL: admin@test.com
 
-  #web:
-  #  build: .
-  #  command: python /app/manage.py runserver 0.0.0.0:8000
-  #  ports:
-  #    - "8000:8000"
-  #  environment:
-  #    POSTGRES_NAME: abv
-  #    POSTGRES_USER: abv
-  #    POSTGRES_PASSWORD: abv
-  #  depends_on:
-  #    - db
-
-
-  #web:
-  #  build: .
-  #  command: python /app/manage.py runserver 0.0.0.0:8000
-  #  ports:
-  #    - "8000:8000"
-  #  environment:
-  #    POSTGRES_NAME: abv
-  #    POSTGRES_USER: abv
-  #    POSTGRES_PASSWORD: abv
-  #  depends_on:
-  #    - db
-
+  mailcatcher:
+    restart: on-failure
+    image: gitlab.goeranh.de/goeranh/mailcatcher:latest
+    environment:
+    - MDNS_HOSTNAME=mailcatcher
+    ports:
+    - "1080:1080"
+    - "1025:1025"
 
 volumes:
   pg_data:

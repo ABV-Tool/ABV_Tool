@@ -111,8 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'de-DE'
+TIME_ZONE = 'Europe/Berlin'
 USE_I18N = True
 USE_TZ = True
 
@@ -141,3 +141,8 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 NPM_BIN_PATH=r"C:\Program Files\nodejs\npm.cmd"
+
+# E-Mail Settings
+# TODO Production: Mailserver anpassen
+EMAIL_HOST = '127.0.0.1'
+EMAIL_PORT = 1025
