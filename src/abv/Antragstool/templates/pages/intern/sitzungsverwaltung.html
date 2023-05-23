@@ -36,12 +36,12 @@
                     <td>{{ sitzung.refID.refName }}</td>
                     <td>
                         <a href="{% url 'sitzung-anzeigen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer">
-                            <i class="fa-solid fa-pen-to-square"></i> Anzeigen
+                            <i class="fa-solid fa-eye"></i> Anzeigen
                         </a>
                     </td>
                     <td>
                         <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer">
-                            <i class="fa-solid fa-trash-can"></i> Vertagen
+                            <i class="fa-regular fa-calendar-xmark"></i> Vertagen
                         </a>
                     </td>
                     <td>

@@ -9,4 +9,64 @@
 
 {% block content %}
     <!-- insert content -->
+    <div class="ml-96 mr-96">
+        <div class="w-full">
+            <!-- TODO: URL-Referenzen einfügen -->
+            <a href="" class="btn btn-success hover:cursor-pointer mr-5">
+                <i class="fa-solid fa-circle-plus"></i> Tagesordnung erstellen
+            </a>
+            <a href="" class="btn btn-success hover:cursor-pointer">
+                <i class="fa-solid fa-circle-check"></i> Sitzung abschließen
+            </a>
+        </div>
+
+        <table class="table-auto w-full text-left overflow-x-auto mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">Antragstyp</th>
+                    <th scope="col">Titel</th>
+                    <th scope="col">Antragsteller</th>
+                    <th scope="col">Eilantrag?</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Beschluss</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for antrag in antraege %}
+                <tr>
+                    <td>{{ antrag.typID.typName }}</td>
+                    <td>{{ antrag.antragTitel }}</td>
+                    <td>{{ antrag.astellerID.astellerVorname }} {{ antrag.astellerID.astellerName }}</td>
+                    <td>
+                        {% if antrag.istEilantrag %}
+                            <i class="fa-solid fa-check"></i>
+                        {% else %}
+                            <i class="fa-solid fa-xmark"></i>
+                        {% endif %}
+                    </td>
+                    
+            
+                    <td>
+                        <a href="" class="hover:cursor-pointer">
+                            <i class="fa-solid fa-eye"></i> Anzeigen
+                        </a>
+                    </td>
+                    <td>
+                        <a href="" class="hover:cursor-pointer">
+                            <i class="fa-regular fa-calendar-xmark"></i> Vertagen
+                        </a>
+                    </td>
+                    <td>
+                        <a href="" class="hover:cursor-pointer">
+                            <i class="fa-solid fa-check-double"></i> Beschließen
+                        </a>
+                    </td>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

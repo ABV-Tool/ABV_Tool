@@ -14,8 +14,14 @@
                 {% csrf_token %}
                 {{ form.as_div }}
                 <button type="submit">Anmelden</button>
-                <p class="login-feedback">{{ msg }}</p>
             </form>
+
+            <!--+ Form-Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen +-->
+            {% if feedback %}
+                <div id="feedback">
+                    {% include 'components/alert.html' with type=feedback.type text=feedback.text back_url=feedback.back_url %}
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
