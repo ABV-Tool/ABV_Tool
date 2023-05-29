@@ -1,0 +1,121 @@
+/* + Global Settings + */
+body {
+    background: gainsboro;
+    font-family: Verdana, sans-serif;
+}
+/* - Global Settings - */
+
+
+/* + Custom Global Classes + */
+.fixed-footer{
+    position: fixed !important;
+    width: 100%;
+    bottom: 0;
+}
+.btn {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    color: white;
+    background-color: #f2ac2e;
+}
+.btn-neutral {
+    background-color: blue !important;
+}
+.btn-success {
+    background-color: limegreen !important;
+}
+.btn-danger {
+    background-color: red !important;
+}
+/* - Custom Global Classes - */
+
+
+/* + Navbar + */
+.mainnav{
+    list-style-type: none;
+    margin-top: 5px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.lil{
+    float: left;
+}
+.lir{
+    float: right;
+}
+#active{
+    background-color: #F2AC2E;
+}
+.active{
+    background-color: #F2AC2E;
+}
+.mainnav a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.lil a:hover:not(.active){
+    background-color: #F2AC2E;
+}
+
+.lir a:hover:not(.active){
+    background-color: cornflowerblue;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    z-index: 1;
+}
+/* - Navbar - */
+
+
+/* + Login-Form + */
+.login-wrapper {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #333;
+    border: 0;
+    box-shadow: 10px 10px #777;
+    color: white;
+}
+.login-form input {
+    padding: 5px;
+    margin: 5px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 0;
+    color: black;
+}
+
+.login-form button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: #F2AC2E;
+    border: 0;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.login-feedback {
+    color: red;
+    text-align: center;
+    font-weight: 200;
+}
+/* - Login-Form - */

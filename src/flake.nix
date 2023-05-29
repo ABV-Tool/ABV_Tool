@@ -98,6 +98,7 @@
       devShells = forAllSystems (system: {
         default = pkgs.${system}.mkShellNoCC {
           packages = with pkgs.${system}; [
+			postgresql
             (python39.withPackages (p: [
               p.django 
               p.gunicorn 
@@ -105,6 +106,7 @@
               packages.${system}.martor 
               packages.${system}.djmoney 
               packages.${system}.python-markdown 
+              p.pip
             ]))
           ];
         };

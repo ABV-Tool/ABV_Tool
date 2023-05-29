@@ -1,9 +1,0 @@
-{% load static %}
-<div class = "navigation">
-    <ul class = "mainnav">
-        <li {% if request.get_full_path == "/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'index' %}">Home</a></li>
-        <li {% if request.get_full_path == "/referate/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'referate' %}">Referate</a></li>
-        <li {% if request.get_full_path == "/sitzungen/" %} id = "active"{% endif %} class = "lil"><a href="{%  url 'referate' %}">Referate</a></li>
-    </ul>
-</div>
-
