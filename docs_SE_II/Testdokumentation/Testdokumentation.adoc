@@ -30,7 +30,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Der Benutzer hat gültige Logindaten eingegeben. Der Login-Vorgang muss erfolgreich beendet werden.
 
 | Vorbedingung      
-| -
+| Dem Benutzer wurde bereits ein Login angelegt.
 
 | Nachbedingung     
 | Zeitstempel und Benutzerkennung müssen in ein Log gespeichert werden
