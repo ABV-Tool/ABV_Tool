@@ -1,18 +1,24 @@
-= Projektbericht
+= Projektbericht: {project-name}
+{localdatetime}
+include::../../docs_SE_I/_includes/default-attributes.inc.adoc[] 
+:imagesdir: ./images
 
 == Projektplanung
 
 === Aufgabenstellung und Auftraggeber
 
+Im Rahmen der Module Software Engineering (SE) I und II war unsere Aufgabe als Team I5 ein Antrags- und Beschlussverwaltungstool für den StuRa der HTW Dresden zu entwickeln. Der StuRa ist das zentrale Organ der Studierenden der HTW Dresden und vertritt diese gegenüber der Hochschule. Im Rahmen seiner Tätigkeit werden beim StuRa verschiedene Anträge gestellt und im Plenum beraten und beschlossen. Für diesen Vorgang war es unsere Aufgabe ein geeignetes Tool zu entwickeln, da dieser Prozess bisher händisch und damit sehr zeitaufwändig ablief. Mehr zur Problemstellung in der Anforderungsspezifikation.
 
-=== Ausgangssituation
+=== Ausgangssituation in SE II
+
+Mit Abgabe des Beleges am Ende von SE I endete die Elaboration Phase für unser Projekt. Die Anforderungen in Form mehrere Use Cases waren fertig ausgearbeitet und mit dem Auftraggeber abgestimmt. Der Entwurf für die Architektur des Projektes stand im Groben und bedurfte noch kleinerer Abstimmungen. Auch wurde ein erster Prototyp wurde implementiert und erste Test Cases beschrieben. Zu Beginn des SE II verkleinerte sich das Team, da unser Teamleiter als Wirtschaftsingenieurstudent SE II nicht belegte. Damit wurden Anpassungen in der Teamstruktur notwendig. Mehr dazu unter dem Punkt <<Rollenverteilung>>. Mit Beginn von SE II konnten wir also mit der Umsetzung der Use Cases beginnen. Nachzuarbeiten war lediglich das Projektmanagement. 
 
 === Projektorganisation
 //d.h. Team, Rollen/Verantwortlichkeiten, Kommunikation im Team und zum Auftraggeber, eingesetzte Tools in der Projektarbeit, z.B. für Planung, Kommunikation, Dokumentation
 
 ==== Rollenverteilung
 
-Zu Beginn des Projektes hat sich das Team auf folgende Rollenverteilung geeinigt: 
+Zu Beginn von SE I hat sich das Team auf folgende Rollenverteilung geeinigt: 
 
 
 * Göran Heinemann		*Programmierung*/Tester
@@ -36,9 +42,13 @@ Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studienga
 
 ==== Kommunikation und Dokumentation
 
-Zur Kommunikation nutzte das Team einen WhatsApp Gruppenchat sowie einen Discord Server. Über WhatsApp wurden Termine abgestimmt und kurze Infos mitgeteilt. Alles weitere wurde über den Discord Server geteilt. Die Meetings wurden in einem Google Doc dokumentiert. Dazu nutzte das Team eine feste Vorlage, durch die auch der Ablauf eines Teammeetings unterstützt wurde. Die Aufgaben wurden in diesem Google Docs aufgeschrieben und anschließend in das GitHub repository übertragen. 
+Zur Kommunikation nutzten wir einen WhatsApp Gruppenchat sowie einen Discord Server. Über WhatsApp wurden Termine abgestimmt und kurze Infos mitgeteilt. Auf unserem Discord Server wurden ausführlichere Infos ausgetauscht sowie unsere Meetings abgehalten (sofern sie online stattfanden). Auch unser Coach Manuaela Ziesche und unsere Ansprechpartnerin bei StuRa Theresa Minister waren Teil des Discord Servers um sich im Bedarfsfall schnell und unkompliziert treffen zu können. Die Kommunikation mit beiden zwecks Terminabstimmungen etc. lief ebenfalls über WhatsApp, alle anderen Dinge wurde in persönlichen Gesprächen besprochen. Unsere Meetings in SE II fanden im 14-tägigen Rhythmus statt und wir dokumentierten sie in einem Google Doc und nutzten dazu eine feste Vorlage, durch die auch der Ablauf eines Teammeetings unterstützt wurde. Alles Besprochene sowie die Aufgabenverteilung für die kommende Iteration wurden in dort aufgeschrieben. 
 
-#Screenshot Vorlage google docs#
+.Beispiel Vorlage Meeting Google Docs 
+image::Beispiel_Meeting_Dokumentation.jpg[]
+
+
+Nach Abschluss des Meetings wurden die Aufgaben unser GitHub repository als Issues übertragen und den verantwortlichen Personen zugewiesen. 
 
 
 === Techniken/Praktiken
