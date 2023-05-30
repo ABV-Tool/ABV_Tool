@@ -106,12 +106,105 @@ Dem gesamtem Projekt liegt das ein Use Case Model zugrunde welches in Zusammenar
 == Projektdurchführung
 // Kurze Beschreibung der Ziele, Aktivitäten und Ergebnisse in den OpenUP-Projektphasen / Iterationen, dabei Berücksichtigung des Zusammenspiels zwischen den einzelnen Rollen sowie Risiken
 
+=== SE I - Inception und Elaboration Phase
+
+Ziel der Inception Phase ist es sich als Team zu finden, Rollen und Verantwortlichkeiten zu verteilen. Tools sollen ausgewählt und eingerichtet werden. Es findet ein erstes Treffen mit dem Auftraggeber statt und es wird eine #erste grobe Analyse# erstellt.
+
+In der Elaboration Phase wird die Analyse konkretisiert und die Use Cases detailliert beschrieben. Es wird mit der Beschreibung der Architektur begonnen sowie erste Testfälle beschrieben. 
+
+*Iteration 1 (03.04. - 16.04.2023)*
+
+* Kennenlernen des Teams
+* Rollenverteilung 
+* GitHub einrichten
+* Kundenwünsche kennenlernen und verstehen
+* Vision erarbeiten
+* *Meilenstein: Inception Phase abgeschlossen*
+
+*Iteration 2 (03.04. - 16.04.2023)*
+
+* Use-Cases beschreiben
+* Vision beenden
+* system wide requirements bestimmen
+* Deployment
+* Projektdokumentation
+
+*Iteration 3 (03.04. - 16.04.2023)*
+
+* Analyse beenden
+* Architecture Notebook
+* Implementierung und Präsentation Prototyp
+* Termin mit Auftraggeber
+* Fertigstellung Dokumentation und Abgabe Beleg
+* *Meilenstein: Elaboration Phase abgeschlossen*
+
+=== Construction Phase
+
+Die Ziele dieser Phase sind die Verfeinerung und Finalisierung des Entwurfes, die Implementierung der Use Cases und die Durchführung von Tests. 
+
+*Iteration 4 (03.04. - 16.04.2023)*
+
+* Auswertung Beleg SE I
+* Nacharbeiten SE I (Projektmanagement)
+* Implementierung UC 5 (Begründung warum UC 5 zuerst, da bei Prio weiter unten)
+* Deployment vorbereiten
+
+*Iteration 5 (17.04. - 30.04.2023)*
+
+* Umstrukturierung Front End in Komponenten
+* UC 1 umsetzen
+* (vorab) Finalisierung Deployment
+* Bibliothek für Markdown raussuchen, einlesen und ggf. einbinden
+* #Datenbank anpassen#
+* #Risikoliste pflegen#
+
+Beschluss Treffen online durchzuführen
+
+*Iteration 6 (01.05. - 14.05.2023)* 
+
+* UC 1 beenden
+* Fachaustausch Projektmanagement
+* Entwicklerdoku mit Klassendiagramm
+
+
+
+*Iteration 7 (15.05. - 28.05.2023)*
+
+* UC 4 (optional)
+* UC 2
+* Diagramme überarbeiten
+* UC 1 - Eilantrag hinzufügen
+* Wireframes erstellen
+* Meeting StuRa Front End
+* Meeting Manuela
+* Implementierung Tests
+* Betriebsdoku beginnen
+
+*Iteration 8 (29.05. - 11.06.2023)*
+
+* Fachaustausch Architektur
+* Fachaustausch Testen
+* Betriebsdoku beenden
+* *Meilenstein Initial operational Capability erreicht*
+
+=== Transition Phase
+
+*Iteration 9 (12.06. - 23.06.2023)*
+
+
+* Anwenderdokumentation
+* Abnahme des Systems durch StuRa
+* Vorbereitung Präsentation 
+* *Meilenstein Product Release erreicht*
+
 
 == Ergebnisdokumentation
 
 === Ergebnisse
+//Projektergebnisse mit Bezug auf die Ziele / Aufgabenstellung: Was haben wir erreicht und was nicht? Was waren die Gründe für Abweichungen?
 
 === Reflexion der Teammitglieder
+//Was habe ich gelernt? Worauf bin ich stolz? Was hat gut funktioniert? Was würde ich beim nächsten Projekt anders machen?
 
 ==== Reflexion von Göran Heinemann
 ==== Reflexion von Alexander Minukow
