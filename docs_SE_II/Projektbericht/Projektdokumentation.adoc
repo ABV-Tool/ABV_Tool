@@ -31,7 +31,7 @@ Zu Beginn von SE I hat sich das Team auf folgende Rollenverteilung geeinigt:
 
 Die Rollenverteilung begründetet sich hauptsächlich auf die persönlichen Präferenzen der Teammitglieder in Verbindung mit den verschiedenen Vorkenntnissen und Kompetenzen. 
 
-Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studiengang Wirtschaftsingenieurwesen nur das Modul Software Engineering I Teil des Studiengangs ist. Dadurch ware eine Anpassung der Rollenverteilung notwendig. Im Zuge dessen wurde auch nochmal die generelle Verteilung der Aufgaben geprüft. Neben der Neuorganisation des Projektmanagements wurde auch die Rolle des Deployment-Engineers neu vergeben. 
+Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studiengang Wirtschaftsingenieurwesen nur das Modul Software Engineering I Teil des Studiengangs ist. Dadurch ware eine Anpassung der Rollenverteilung notwendig. Im Zuge dessen wurde auch nochmal die generelle Verteilung der Aufgaben geprüft. Neben der Neuorganisation des Projektmanagements wurde auch die Rolle des Deployment-Engineers neu vergeben. #Risikomanagement#
 
 * Göran Heinemann		*Programmierung/Deployment-Engineer*
 * Alexander Minukow	    *Analyse*/Entwurf
@@ -114,6 +114,8 @@ In der Elaboration Phase wird die Analyse konkretisiert und die Use Cases detail
 
 *Iteration 1 (03.04. - 16.04.2023)*
 
+Zu 
+
 * Kennenlernen des Teams
 * Rollenverteilung 
 * GitHub einrichten
@@ -138,20 +140,30 @@ In der Elaboration Phase wird die Analyse konkretisiert und die Use Cases detail
 * Fertigstellung Dokumentation und Abgabe Beleg
 * *Meilenstein: Elaboration Phase abgeschlossen*
 
-=== Construction Phase
+Präsentation des Prototyps beim StuRa
 
-Die Ziele dieser Phase sind die Verfeinerung und Finalisierung des Entwurfes, die Implementierung der Use Cases und die Durchführung von Tests. 
+=== Start von SE II und Construction Phase
 
-*Iteration 4 (03.04. - 16.04.2023)*
+Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unserem Coach an. Insgesamt erhielten wir hier gutes Feedback, hatten aber auch einige Punkte die unserseits nachgearbeitet werden mussten. Mit diesem Feedback starteten wir in unser Projekt.
+
+Die Ziele der Construction Phase sind die Verfeinerung und Finalisierung des Entwurfes, die Implementierung der Use Cases und die Durchführung von Tests. 
+
+*Iteration 4 - Nacharbeitung Beleg SE I und Start Implementierung (03.04. - 16.04.2023)*
 
 * Auswertung Beleg SE I
 * Nacharbeiten SE I (Projektmanagement)
 * Implementierung UC 5 (Begründung warum UC 5 zuerst, da bei Prio weiter unten)
 * Deployment vorbereiten
 
+Zunächst mussten wir uns als Team neu organisieren, da ein Mitglied aus dem Team ausschied und wir dadurch die Rollen neu verteilen mussten (siehe <<Rollenverteilung>>). Aus dem Feedbackgespräch zu SE I entstanden die ersten Aufgaben für die 4. Iteration. Besonders das Projektmanagement hatte hier viel Nachholbedarf, sodass zunächst die Iterationspläne und die Projektstruktur erarbeitet wurde. Gleichzeitig startete auch die Implementierung der UC 5 (Antragsverwalter anmelden). Dieser wurde trotz seiner niedrigeren Priorität für die erste Iteration in SE II gewählt, da seine Umsetzung sofort und unkompliziert möglich war. Auch startete unser (neuer) Deployment-Engineer mit der Vorbereitung des Deployments. Da er selbst Administrator im StuRa ist, war in diesem Rahmen wenig (extra) Abstimmung mit dem StuRa nötig, da er der Verantwortliche sowohl bei uns im Team als auch im StuRa selbst ist. Das erleichterte es für uns als Team die Arbeit enorm. #was wurde gemacht Deployment#
+#kein Treffen mit StuRa - warum und Problem erläutern#
+Das Team entschied sich zunächst kein Treffen mit dem StuRa anzusetzen, da wir selbst keine Funktionalität vorzuweisen hatten und es unsererseits keine Fragen gab. Gleichzeitig wussten wir durch unser Teammitglied beim StuRa, dass seitens des StuRa keine veränderten Anforderungen gab. 
+
+#Iteration 5 und 6 zusammenfassen?#
+
 *Iteration 5 (17.04. - 30.04.2023)*
 
-* Umstrukturierung Front End in Komponenten
+* Umstrukturierung Front End in Komponenten (warum nötig, Front End wollten wir doch übernehmen)
 * UC 1 umsetzen
 * (vorab) Finalisierung Deployment
 * Bibliothek für Markdown raussuchen, einlesen und ggf. einbinden
@@ -159,6 +171,8 @@ Die Ziele dieser Phase sind die Verfeinerung und Finalisierung des Entwurfes, di
 * #Risikoliste pflegen#
 
 Beschluss Treffen online durchzuführen
+
+Bibliothek für Markdown auf Python soll Martor sein
 
 *Iteration 6 (01.05. - 14.05.2023)* 
 
@@ -168,7 +182,11 @@ Beschluss Treffen online durchzuführen
 
 
 
+UC 1 wurde beendet
+
 *Iteration 7 (15.05. - 28.05.2023)*
+
+Wir beschlossen für das Front End nochmals verschiedene Wireframes zu erstellen. Zum Einen für uns selbst, sodass die Implementierung leichter ist und zum Anderen für das Treffen mit dem StuRa als Ergänzung. Die meisten der Wireframes wurden bis zum Treffen mit dem StuRa schon umgesetzt, sodass nur einzelne noch gezeigt werden mussten. 
 
 * UC 4 (optional)
 * UC 2
@@ -180,12 +198,20 @@ Beschluss Treffen online durchzuführen
 * Implementierung Tests
 * Betriebsdoku beginnen
 
+In Vorbe
+Am 23.05.2023 trafen wir uns mit dem StuRa um den aktuellen Stand zu präsentieren und insbesondere das Front End abzustimmen und kleinere Fragen dazu zu klären. Wir hatten eine gute Diskussion über kleine Features und Gestaltungsfragen, aber insgesamt entsprach das System den Erwartungen des StuRa und wir konnten guten Gewissens weiter an unserem Projekt arbeiten.
+
+Aktualisierung DB-Schema - steht soweit, Beschlüsse fehlen noch, sind aber generell noch nicht implementiert
+
 *Iteration 8 (29.05. - 11.06.2023)*
 
 * Fachaustausch Architektur
 * Fachaustausch Testen
 * Betriebsdoku beenden
+* Anpassung in der Anforderungsspezifikation
 * *Meilenstein Initial operational Capability erreicht*
+
+
 
 === Transition Phase
 
@@ -202,6 +228,8 @@ Beschluss Treffen online durchzuführen
 
 === Ergebnisse
 //Projektergebnisse mit Bezug auf die Ziele / Aufgabenstellung: Was haben wir erreicht und was nicht? Was waren die Gründe für Abweichungen?
+
+
 
 === Reflexion der Teammitglieder
 //Was habe ich gelernt? Worauf bin ich stolz? Was hat gut funktioniert? Was würde ich beim nächsten Projekt anders machen?
