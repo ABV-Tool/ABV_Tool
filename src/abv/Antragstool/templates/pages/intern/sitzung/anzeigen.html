@@ -63,7 +63,13 @@
                             <i class="fa-solid fa-check-double"></i> Beschließen
                         </a>
                     </td>
-                    <td></td>
+                    <td>
+                        {% if antrag.beschlussID.beschlussErgebnis %}
+                            {{ antrag.beschlussID.beschlussErgebnis }}
+                        {% else %}
+                            Unbehandelt
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

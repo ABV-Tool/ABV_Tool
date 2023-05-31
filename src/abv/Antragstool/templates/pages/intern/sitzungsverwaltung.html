@@ -23,6 +23,7 @@
                 <tr>
                     <th scope="col">Datum</th>
                     <th scope="col">Referat</th>
+                    <th scope="col">Anträge</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -34,6 +35,7 @@
                 <tr>
                     <td>{{ sitzung.sitzDate | date:"d.m.Y" }}</td>
                     <td>{{ sitzung.refID.refName }}</td>
+                    <td>{{ sitzung.anzAntraege }}</td>
                     <td>
                         <a href="{% url 'sitzung-anzeigen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer">
                             <i class="fa-solid fa-eye"></i> Anzeigen
@@ -49,7 +51,7 @@
                             <i class="fa-solid fa-trash-can"></i> Löschen
                         </a>
                     </td>
-                    <td></td>
+                    <td>{{ sitzung.sitzStatus }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
