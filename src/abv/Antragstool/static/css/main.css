@@ -12,6 +12,9 @@ body {
     width: 100%;
     bottom: 0;
 }
+.content {
+    min-height: calc(100vh - 25rem);
+}
 .btn {
     padding: 10px;
     border-radius: 5px;
