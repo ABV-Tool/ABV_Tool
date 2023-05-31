@@ -4,7 +4,8 @@
         "fields": {
             "refID": 1,
             "refName": "Finanzen",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "finanzen@stura.htw-dresden.de"
         }
     },
     {
@@ -12,7 +13,8 @@
         "fields": {
             "refID": 2,
             "refName": "Hochschulpolitik",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "hochschulpolitik@stura.htw-dresden.de"
         }
     },
     {
@@ -20,7 +22,8 @@
         "fields": {
             "refID": 3,
             "refName": "Internationales",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "internationales@stura.htw-dresden.de"
         }
     },
     {
@@ -28,7 +31,8 @@
         "fields": {
             "refID": 4,
             "refName": "Kultur",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "kultur@stura.htw-dresden.de"
         }
     },
     {
@@ -36,7 +40,8 @@
         "fields": {
             "refID": 5,
             "refName": "Öffentlichkeitsarbeit",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "öffentlichkeitsarbeit@stura.htw-dresden.de"
         }
     },
     {
@@ -44,7 +49,8 @@
         "fields": {
             "refID": 6,
             "refName": "Personal",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "personal@stura.htw-dresden.de"
         }
     },
     {
@@ -52,7 +58,8 @@
         "fields": {
             "refID": 7,
             "refName": "Qualitätsmanagement",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "qm@stura.htw-dresden.de"
         }
     },
     {
@@ -60,7 +67,8 @@
         "fields": {
             "refID": 8,
             "refName": "Soziales",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "soziales@stura.htw-dresden.de"
         }
     },
     {
@@ -68,7 +76,8 @@
         "fields": {
             "refID": 9,
             "refName": "Sport",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "sport@stura.htw-dresden.de"
         }
     },
     {
@@ -76,7 +85,8 @@
         "fields": {
             "refID": 10,
             "refName": "stud. Selbstverwaltung & Organisation",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "verwaltung@stura.htw-dresden.de"
         }
     },
     {
@@ -84,7 +94,8 @@
         "fields": {
             "refID": 11,
             "refName": "Studium",
-            "refZyklus": "2"
+            "refZyklus": "2",
+            "refEmail": "studium@stura.htw-dresden.de"
         }
     }
 ]
