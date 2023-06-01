@@ -1,5 +1,4 @@
 # production dependencies
-martor
 gunicorn
 Django
 psycopg2
