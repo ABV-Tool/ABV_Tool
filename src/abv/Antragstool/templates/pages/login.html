@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="login-wrapper shadow-card">
+        <div class="content w3-animate-opacity">
+            <h1 class="text-center"><b>ABV-Anmeldung</b></h1>
+            <form method="POST" class="login-form">
+                {% csrf_token %}
+                {{ form.as_div }}
+                <button type="submit">Anmelden</button>
+            </form>
+
+            <!--+ Form-Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen +-->
+            {% if feedback %}
+                <div id="feedback">
+                    {% include 'components/alert.html' with type=feedback.type text=feedback.text back_url=feedback.back_url %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

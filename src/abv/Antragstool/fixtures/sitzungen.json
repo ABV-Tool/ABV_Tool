@@ -1,0 +1,79 @@
+[
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 1,
+            "sitzDate": "2023-10-1"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 2,
+            "sitzDate": "2023-10-2"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 3,
+            "sitzDate": "2023-10-3"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 4,
+            "sitzDate": "2023-10-4"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 5,
+            "sitzDate": "2023-10-5"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 6,
+            "sitzDate": "2023-10-6"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 7,
+            "sitzDate": "2023-10-7"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 8,
+            "sitzDate": "2023-10-8"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 9,
+            "sitzDate": "2023-10-9"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 10,
+            "sitzDate": "2023-10-10"
+        }
+    },
+    {
+        "model": "Antragstool.Sitzung",
+        "fields": {
+            "refID": 11,
+            "sitzDate": "2023-10-11"
+        }
+    }
+]

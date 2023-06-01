@@ -1,0 +1,50 @@
+[
+    {
+        "model": "Antragstool.Antragstyp",
+        "fields": {
+            "typID": 1,
+            "typName": "Antrag ohne finanzielle Mittel",
+            "typSlug": "antrag-ohne-finanzielle-mittel"
+        }
+    },
+    {
+        "model": "Antragstool.Antragstyp",
+        "fields": {
+            "typID": 2,
+            "typName": "Antrag mit finanziellen Mitteln",
+            "typSlug": "antrag-mit-finanziellen-mitteln"
+        }
+    },
+    {
+        "model": "Antragstool.Antragstyp",
+        "fields": {
+            "typID": 3,
+            "typName": "Antrag für Veranstaltungen",
+            "typSlug": "antrag-fuer-veranstaltungen"
+        }
+    },
+    {
+        "model": "Antragstool.Antragstyp",
+        "fields": {
+            "typID": 4,
+            "typName": "Beratendes Mitglied",
+            "typSlug": "beratendes-mitglied"
+        }
+    },
+    {
+        "model": "Antragstool.Antragstyp",
+        "fields": {
+            "typID": 5,
+            "typName": "Wahl auf Stelle/Amt",
+            "typSlug": "wahl-auf-stelle-oder-amt"
+        }
+    },
+    {
+        "model": "Antragstool.Antragstyp",
+        "fields": {
+            "typID": 6,
+            "typName": "Herstellung des Benehmens",
+            "typSlug": "herstellung-des-benehmens"
+        }
+    }
+]
