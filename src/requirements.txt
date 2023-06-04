@@ -8,3 +8,7 @@ fontawesomefree
 # development dependencies
 django-tailwind
 django-browser-reload
+
+# testing dependencies
+flake8
+psycopg2
