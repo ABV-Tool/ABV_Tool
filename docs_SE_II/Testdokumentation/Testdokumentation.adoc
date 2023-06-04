@@ -3,6 +3,7 @@
 == Testkonzept
 // Was sind die wichtigsten Komponenten, die getestet wurden? (Testobjekte auf unterschiedlichen Teststufen, siehe Testpyramide)
 // Wie wurde die Erfüllung der Anforderungen an diese Testobjekte getestet? (Testmethoden)
+
 Es wurden die Komponenten Anträge, Referate, Sitzungen und Login getestet.
 Die Erste Testinstanz waren Manuelle Tests durch den Entwickler, die während der Entwicklung bzw. danach erfolgten.
 Dabei wurden diese Komponenten einzeln auf ihre Funktionalitäten/Methoden geprüft, via Unittests.
@@ -11,6 +12,7 @@ Nachdem die Komponententests erfolgreich waren, wurden auch kleine Integrationst
 Anschließend wurden nochmals End-To-End-Tests durch Personen aus dem Team, durchgeführt.
 // Wann führt wer welche Tests durch? (Testdurchführungsplanung)
 Sobald eine Funktionalität implementiert und durch den Entwickler zum Testen freigegeben wurde, hat der Test-Verantwortlicher einen Test für die Funktionalität geschrieben und anschließend durchgeführt.
+
 
 == Testfallbeschreibung
 // Vorbedingungen für den Test, z.B. bestimmter Systemzustand
@@ -28,6 +30,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 
 
 == Test Cases
+
 === TC01 [Initialisierung] - Erfolgreich Initialisiert
 
 [cols="18h,~"]
@@ -58,6 +61,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Nachbedingung     
 | Zeitstempel und Benutzerkennung müssen in ein Log gespeichert werden.
 
+
 | Benötigte Daten   
 | Logindaten (Benutzername, Passwort)
 |===
@@ -83,6 +87,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 
 === TC04 [Antrag] - Gültigen Antrag einreichen
 
+
 [cols="18h,~"]
 |===
 | Beschreibung      
@@ -99,7 +104,9 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 |===
 
 
+
 === TC05 [Antrag] - Anhänge werden überliefert
+
 
 [cols="18h,~"]
 |===
@@ -117,7 +124,9 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 |===
 
 
+
 === TC06 [Antrag] - Ungültigen Antrag ablehnen
+
 
 [cols="18h,~"]
 |===
@@ -136,6 +145,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 
 
 === TC07 [Antrag] - Antrag anzeigen
+
 
 [cols="18h,~"]
 |===
@@ -188,6 +198,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Sitzungsdaten
 |===
 
+
 === TC10 [Sitzung] - Sitzung vertagen
 
 [cols="18h,~"]
@@ -204,6 +215,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Benötigte Daten   
 | Sitzungsdaten
 |===
+
 
 === TC11 [Antrag] - Antrag einer anderen Sitzung zuweisen
 
@@ -239,6 +251,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Benötigte Daten   
 | Antragsdaten, Sitzungsdaten (aktuelle & nächste Sitzung)
 |===
+
 == Testergebnisse
 // Welche Ergebnisse sind bei der Testdurchführung entstanden?
 // Welche Konsequenzen ergeben sich aus erkannten Abweichungen?

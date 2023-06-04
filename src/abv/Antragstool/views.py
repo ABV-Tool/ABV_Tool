@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.core.mail import send_mail
 from datetime import date
+from .mails import mailAstellerEingangsbestaetigung
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp
 from .forms import ReferatForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
@@ -31,7 +31,7 @@ def ArchivPage(request):
 
 def ReferatsverwaltungPage(request):
     referate = Referat.objects.all().order_by('refID')
-    context = {'title': 'Referatsverwaltung', 'referate': referate, 'fixed_footer': True}
+    context = {'title': 'Referatsverwaltung', 'referate': referate}
     return render(request, 'pages/intern/referatsverwaltung.html', context=context)
 
 
@@ -59,8 +59,7 @@ def ReferatErstellenPage(request):
         'title': 'Referat erstellen', 
         'action':'CREATE',
         'form': form,
-        'feedback': feedback,
-        'fixed_footer': True
+        'feedback': feedback
     })
 
 
@@ -88,8 +87,7 @@ def ReferatBearbeitenPage(request, refID):
         'action':'EDIT', 
         'referat': referat,
         'form': form,
-        'feedback': feedback,
-        'fixed_footer': True
+        'feedback': feedback
     })
 
 
@@ -111,8 +109,7 @@ def ReferatLoeschenPage(request, refID):
         'action':'DELETE', 
         'referat': referat,
         'form': form,
-        'feedback': feedback,
-        'fixed_footer': True
+        'feedback': feedback
     })
 
 # ------ Referatsverwaltung ------ #
@@ -121,9 +118,18 @@ def ReferatLoeschenPage(request, refID):
 # ++++++ Sitzungsverwaltung ++++++ #
 
 def SitzungsverwaltungPage(request):
+    # Anzahl der Anträge pro Sitzung berechnen
+    for sitzung in Sitzung.objects.all():
+        anz_antraege = Antrag.objects.filter(sitzID=sitzung.sitzID).count()
+        sitzung.anzAntraege = anz_antraege
+        sitzung.save()
+    # Sitzungen nach Datum sortieren
     sitzungen = Sitzung.objects.all().order_by('sitzDate')
-    context = {'title': 'Sitzungsverwaltung', 'sitzungen': sitzungen, 'fixed_footer': True}
-    return render(request, 'pages/intern/sitzungsverwaltung.html', context=context)
+        
+    return render(request, 'pages/intern/sitzungsverwaltung.html', context={
+        'title': 'Sitzungsverwaltung', 
+        'sitzungen': sitzungen
+    })
 
 
 def SitzungAnlegenPage(request):
@@ -132,7 +138,7 @@ def SitzungAnlegenPage(request):
 
 def SitzungAnzeigenPage(request, sitzID):
     antraege = Antrag.objects.filter(sitzID=sitzID)
-    return render(request, 'pages/intern/sitzung.html', context={
+    return render(request, 'pages/intern/sitzung/anzeigen.html', context={
         'title': 'Sitzung anzeigen',
         'antraege': antraege
     })
@@ -176,8 +182,7 @@ def LoginPage(request):
     return render(request, 'pages/login.html', context={
         'title': 'Anmelden', 
         'form': form, 
-        'feedback': feedback, 
-        'fixed_footer': True
+        'feedback': feedback
     })
 
 
@@ -214,17 +219,6 @@ def checkSitzungen(form):
     sitzungen = Sitzung.objects.filter(refID=refID).filter(sitzDate__gt=date.today()).order_by('sitzDate')
     return sitzungen
 
-
-# Sende eine Bestätigungsmail an den Antragsteller
-def sendConfirmationMail(asteller, antrag):
-    send_mail(
-        f"Dein { antrag.typID.typName } ist eingegeangen!",
-        f"Hi { asteller.astellerVorname },\n\nDein Antrag ist bei uns eingegangen und wird in der nächsten Sitzung des Referats behandelt.\n\nViele Grüße,\nDein StuRa-Team",
-        "abv@stura.htw-dresden.de",
-        [asteller.astellerEmail],
-        fail_silently=False,
-    )   
-    
 
 # Kurzfassung der render-Funktion für Antragsseiten
 def renderAntrag(request, title, form, feedback):
@@ -269,7 +263,7 @@ def AntragAllgemein(request):
             feedback.type='SUCCESS'
             feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-            sendConfirmationMail(asteller, antrag)
+            mailAstellerEingangsbestaetigung(asteller, antrag)
     else:
         form = AntragAllgemeinForm()
 
@@ -308,7 +302,7 @@ def AntragFinanziell(request):
             feedback.type='SUCCESS'
             feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-            sendConfirmationMail(asteller, antrag)
+            mailAstellerEingangsbestaetigung(asteller, antrag)
     else:
         form = AntragFinanziellForm()
     
@@ -349,7 +343,7 @@ def AntragVeranstaltung(request):
             feedback.type='SUCCESS'
             feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-            sendConfirmationMail(asteller, antrag)
+            mailAstellerEingangsbestaetigung(asteller, antrag)
     else:
         form = AntragVeranstaltungForm()
     
@@ -385,7 +379,7 @@ def AntragMitglied(request):
             feedback.type='SUCCESS'
             feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-            sendConfirmationMail(asteller, antrag)
+            mailAstellerEingangsbestaetigung(asteller, antrag)
     else:
         form = AntragMitgliedForm()
     
@@ -424,7 +418,7 @@ def AntragAmt(request):
             feedback.type='SUCCESS'
             feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-            sendConfirmationMail(asteller, antrag)
+            mailAstellerEingangsbestaetigung(asteller, antrag)
     else:
         form = AntragAmtForm()
     
@@ -461,10 +455,10 @@ def AntragBenehmen(request):
             feedback.type='SUCCESS'
             feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
             
-            sendConfirmationMail(asteller, antrag)
+            mailAstellerEingangsbestaetigung(asteller, antrag)
     else:
-        form = AntragAmtForm()
+        form = AntragBenehmenForm()
     
-    return renderAntrag(request, 'Antrag zur Wahl für Stelle/Amt', form, feedback)
+    return renderAntrag(request, 'Antrag auf Herstellung des Benehmens', form, feedback)
 
 # ------ Anträge ------ #

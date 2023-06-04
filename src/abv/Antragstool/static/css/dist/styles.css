@@ -696,6 +696,10 @@ select {
   position: static;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -722,6 +726,42 @@ select {
 
 .top-full {
   top: 100%;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.bottom-\[-10\] {
+  bottom: -10;
+}
+
+.-bottom-px {
+  bottom: -1px;
+}
+
+.bottom-40 {
+  bottom: 10rem;
+}
+
+.-bottom-10 {
+  bottom: -2.5rem;
+}
+
+.-bottom-20 {
+  bottom: -5rem;
+}
+
+.-bottom-32 {
+  bottom: -8rem;
+}
+
+.-bottom-28 {
+  bottom: -7rem;
 }
 
 .z-10 {
@@ -824,12 +864,69 @@ select {
   height: 0.5rem;
 }
 
+.h-32 {
+  height: 8rem;
+}
+
+.h-28 {
+  height: 7rem;
+}
+
+.h-60 {
+  height: 15rem;
+}
+
+.h-px {
+  height: 1px;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
+.h-\[100px\] {
+  height: 100px;
+}
+
+.h-\[120px\] {
+  height: 120px;
+}
+
+.h-\[110px\] {
+  height: 110px;
+}
+
+.h-\[105px\] {
+  height: 105px;
+}
+
+.h-\[1112px\] {
+  height: 1112px;
+}
+
+.h-\[112px\] {
+  height: 112px;
+}
+
+.h-\[115px\] {
+  height: 115px;
+}
+
 .h-\[113px\] {
   height: 113px;
 }
 
 .max-h-20 {
   max-height: 5rem;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.min-h-fit {
+  min-height: -moz-fit-content;
+  min-height: fit-content;
 }
 
 .w-1\/2 {
@@ -870,6 +967,11 @@ select {
 
 .table-auto {
   table-layout: auto;
+}
+
+.translate-y-full {
+  --tw-translate-y: 100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .cursor-default {
@@ -1083,6 +1185,26 @@ select {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pb-11 {
+  padding-bottom: 2.75rem;
+}
+
+.pb-16 {
+  padding-bottom: 4rem;
+}
+
+.pb-3\.5 {
+  padding-bottom: 0.875rem;
+}
+
+.pb-32 {
+  padding-bottom: 8rem;
+}
+
+.pb-28 {
+  padding-bottom: 7rem;
 }
 
 .text-left {

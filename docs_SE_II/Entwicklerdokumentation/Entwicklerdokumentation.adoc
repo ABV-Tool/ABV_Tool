@@ -1,3 +1,5 @@
+:imagesdir: images
+
 = Entwicklerdokumentation
 
 == Entwurfsdokumentation
@@ -17,8 +19,6 @@ interface ABVT <<Interface>> {
   +SitzungenVonRefarat
   +AntraegeVonSitzung
   +Antrag verschiedene
-  +checkAntragsteller()
-  +checkSitzung()
 }
 
 class Refarat{
@@ -66,12 +66,17 @@ class Antrag{
     +antragVerantwortlichkeit
 }
 
+Refarat "m" *-- "n" Sitzung
+Antragstyp "1" *-- "n" Antrag
+Antragssteller "1" *-- "n" Antrag
+Sitzung "1" *-- "n" Antrag
+ABVT -> Antrag
+ABVT -> Sitzung
+ABVT -> Refarat
+ABVT -> Antragssteller
+ABVT -> Antragstyp
+ABVT -> Datenbank
 
-Refarat - Antragstyp
-Antragstyp - Antrag
-Antragssteller - Antrag
-Sitzung - Antrag
-Antrag -> ABVT
 
 ....
 
@@ -98,13 +103,27 @@ Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu hab
 image::Datenbankschema.png[title="Datenbankschema"]
 === Schnittstellen
 
-Martor ist die Schnittstelle zu Markdown.
 
 
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
 
+[plantuml, "{diagramsdir}/sequenzdiagramm", svg]
+....
+actor Antragssteller
+boundary Foo2
+control Foo3
+entity Foo4
+database Foo5
+collections Foo6
+Foo1 -> Foo2 : To boundary
+Foo1 -> Foo3 : To control
+Foo1 -> Foo4 : To entity
+Foo1 -> Foo5 : To database
+Foo1 -> Foo6 : To collections
 
+....
 
 == Softwaredokumentation
 // Namen und Beschreibung aller Klassen
-// Namen, Kurzbeschreibung sowie Parameter aller Funktionen
+// Namen, Kurzbeschreibung sowie Parameter aller Funktionenen
+

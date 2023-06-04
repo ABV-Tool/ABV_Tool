@@ -19,13 +19,13 @@
 
     <body>
         
-        <div class = "logo w3-animate-top">
+        <div class="logo w3-animate-top">
             <img src="{% static 'img/logo.png' %}" class="w3-hover-grayscale m-3" alt="StuRa HTW Dresden"/>
         </div>
         
         {% include 'components/header.html' %}
 
-        <div class = "content w3-animate-opacity m-10">
+        <div class="content w3-animate-opacity m-10">
             {% block content %}
                 <!-- extended blocks will be placed here -->
             {% endblock %}
