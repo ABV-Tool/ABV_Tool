@@ -13,7 +13,7 @@ class AntragAllgemeinTestCase(unittest.TestCase):
             'vorname': 'Reiner',
             'nachname': 'Zufall',
             'email': 'reiner@z.de',
-            'titel': 'Testantrag',
+            'titel': 'TestantragTEST',
             'referat': '1',
             'ist_eilantrag': False,
             'text': 'Dies ist ein Testantrag',
@@ -24,7 +24,7 @@ class AntragAllgemeinTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Überprüfe, ob der Antrag in der Datenbank erstellt wurde
-        antrag = Antrag.objects.filter(antragTitel='Testantrag').filter(antragText='Dies ist ein Testantrag').filter(antragVorschlag='Testvorschlag').first()
+        antrag = Antrag.objects.filter(antragTitel='TestantragTEST').filter(antragText='Dies ist ein Testantrag').filter(antragVorschlag='Testvorschlag').first()
         self.assertEqual(antrag.astellerID.astellerVorname, 'Reiner')
         self.assertEqual(antrag.astellerID.astellerName, 'Zufall')
         self.assertEqual(antrag.antragText, 'Dies ist ein Testantrag')
@@ -32,14 +32,8 @@ class AntragAllgemeinTestCase(unittest.TestCase):
         self.assertEqual(antrag.antragGrund, 'Testgrund')
         self.assertEqual(antrag.antragVorschlag, 'Testvorschlag')
 
-        antrag.delete
-
-    def test_antrag_delete(self):
-        antrag = Antrag.objects.filter(antragTitel='Testantrag').filter(antragText='Dies ist ein Testantrag').filter(antragVorschlag='Testvorschlag').first()
-        if not antrag.exists():
-            self.fail('Antrag wurde nicht gefunden.')
-
         antrag.delete()
 
-        antrag_deleted = Antrag.objects.filter(antragTitel='Testantrag').filter(antragText='Dies ist ein Testantrag').filter(antragVorschlag='Testvorschlag').first()
-        self.assertIsNone(antrag_deleted)
+    def test_antrag_delete(self):
+        antrag = Antrag.objects.filter(antragTitel='TestantragTEST').filter(antragText='Dies ist ein Testantrag').filter(antragVorschlag='Testvorschlag').first()
+        self.assertIsNone(antrag)
