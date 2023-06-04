@@ -231,10 +231,10 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Die DB wird abgeschaltet und somit ein Verbindungsverlust provoziert.
 
 | Vorbedingung      
-| 
+| System muss vollständig eingerichtet und funktional sein.
 
 | Nachbedingung     
-| Der Antrag wird einer anderen Sitzung zugewiesen und kann in die nächste Tagesordnung übernommen werden.
+| System 
 
 | Benötigte Daten   
 | Antragsdaten, Sitzungsdaten (aktuelle & nächste Sitzung)
