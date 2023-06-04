@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djmoney',
-    'martor',
     'fontawesomefree',
     'tailwind',
     'django_browser_reload',
