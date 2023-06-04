@@ -1,17 +1,7 @@
-import mailbox
-from django.test import TestCase
-from ..models import Antrag, Antragstyp
-from django.urls import reverse
-import requests
-from django.core.files.uploadedfile import SimpleUploadedFile
-from django.contrib.auth.models import User
-from django.urls import path
-from .. import views
-from django.shortcuts import render
-
+from Antragstool.models import Antrag
 import unittest
 from django.test import Client
-from ..models import Referat, Sitzung, Antrag, Antragstyp, Antragssteller
+
 
 
 class AntragAllgemeinTestCase(unittest.TestCase):
@@ -20,9 +10,9 @@ class AntragAllgemeinTestCase(unittest.TestCase):
     
     def test_antrag_allgemein(self):
         response = self.client.post('/antrag/allgemein/', {
-            'vorname': 'Max',
-            'nachname': 'Patecky',
-            'email': 'maxpatecky@outlook.com',
+            'vorname': 'Reiner',
+            'nachname': 'Zufall',
+            'email': 'reiner@z.de',
             'titel': 'Testantrag',
             'referat': '1',
             'ist_eilantrag': False,
@@ -34,10 +24,22 @@ class AntragAllgemeinTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
         # Überprüfe, ob der Antrag in der Datenbank erstellt wurde
-        antrag = Antrag.objects.filter(antragTitel='Testantrag').first()
-        self.assertEqual(antrag.astellerID.astellerVorname, 'Max')
-        self.assertEqual(antrag.astellerID.astellerName, 'Patecky')
+        antrag = Antrag.objects.filter(antragTitel='Testantrag').filter(antragText='Dies ist ein Testantrag').filter(antragVorschlag='Testvorschlag').first()
+        self.assertEqual(antrag.astellerID.astellerVorname, 'Reiner')
+        self.assertEqual(antrag.astellerID.astellerName, 'Zufall')
         self.assertEqual(antrag.antragText, 'Dies ist ein Testantrag')
         self.assertEqual(antrag.istEilantrag, False)
         self.assertEqual(antrag.antragGrund, 'Testgrund')
         self.assertEqual(antrag.antragVorschlag, 'Testvorschlag')
+
+        antrag.delete
+
+    def test_antrag_delete(self):
+        antrag = Antrag.objects.filter(antragTitel='Testantrag').filter(antragText='Dies ist ein Testantrag').filter(antragVorschlag='Testvorschlag').first()
+        if not antrag.exists():
+            self.fail('Antrag wurde nicht gefunden.')
+
+        antrag.delete()
+
+        antrag_deleted = Antrag.objects.filter(antragTitel='Testantrag').filter(antragText='Dies ist ein Testantrag').filter(antragVorschlag='Testvorschlag').first()
+        self.assertIsNone(antrag_deleted)
