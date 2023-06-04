@@ -1,21 +1,27 @@
 from django.contrib import admin
 from .models import Antrag, Sitzung, Referat, Antragssteller, Antragstyp, Beschluss
 
+
 # Register your models here.
 class AntragAdmin(admin.ModelAdmin):
     list_display = ('antragTitel', 'get_antragstyp', 'get_referat', 'get_sitzung_date', 'get_antragsteller', )
+    
     @admin.display(description='Referat')
     def get_referat(self, obj):
         return obj.sitzID.refID.refName
+    
     @admin.display(description='Sitzungsdatum')
     def get_sitzung_date(self, obj):
         return obj.sitzID.sitzDate
+    
     @admin.display(description='Antragstyp')
     def get_antragstyp(self, obj):
         return obj.typID.typName
+    
     @admin.display(description='Antragsteller')
     def get_antragsteller(self, obj):
         return obj.astellerID.astellerVorname + ' ' + obj.astellerID.astellerName
+    
 admin.site.register(Antrag, AntragAdmin)
 
 
