@@ -55,7 +55,7 @@ class Antragssteller(models.Model):
     astellerName = models.TextField(max_length=50, db_column='asteller_name')
     astellerVorname = models.TextField(max_length=50,
                                        db_column='asteller_vorname')
-    astellerEmail = models.EmailField(max_length=50, db_column='asteller_email')
+    astellerEmail = models.EmailField(max_length=50, db_column='asteller_email', null=True)
     astellerIstMitglied = models.BooleanField(db_column='asteller_ist_mitglied', default=False)
     
     def __str__(self):
@@ -134,6 +134,7 @@ class Antrag(models.Model):
                                     null=True)
     antragTitel = models.TextField(db_column='antrag_titel')
     antragText = models.TextField(db_column='antrag_text')
+
     antragAnlagen = models.FileField(db_column='antrag_anlagen', null=True)
     prioritaet = models.PositiveIntegerField(db_column='prioritaet', default=0)
     
