@@ -1,5 +1,4 @@
 # production dependencies
-martor
 gunicorn
 Django
 psycopg2
@@ -9,3 +8,7 @@ fontawesomefree
 # development dependencies
 django-tailwind
 django-browser-reload
+
+# testing dependencies
+flake8
+psycopg2
