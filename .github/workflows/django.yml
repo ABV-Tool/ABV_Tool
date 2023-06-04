@@ -3,8 +3,8 @@ name: ABV-Tool
 on:
   push:
     branches:
-      - 'dev/*'
-      - 'test-branch'
+      - '*'
+      - '!master'
 
 jobs:
   build:
