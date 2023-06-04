@@ -36,5 +36,5 @@ urlpatterns = [
     path('antrag/veranstaltung/', AntragVeranstaltung, name='antrag-veranstaltung'),
     path('antrag/mitglied/', AntragMitglied, name='antrag-mitglied'),
     path('antrag/amt/', AntragAmt, name='antrag-amt'),
-    path('antrag/benehmen/', AntragBenehmen, name='antrag-benehmen'),
+    path('antrag/benehmen/', AntragBenehmen, name='antrag-benehmen')
 ]
