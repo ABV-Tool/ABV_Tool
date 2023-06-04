@@ -41,7 +41,7 @@ class Antragssteller(models.Model):
     astellerName = models.TextField(max_length=50, db_column='asteller_name')
     astellerVorname = models.TextField(max_length=50,
                                        db_column='asteller_vorname')
-    astellerEmail = models.EmailField(max_length=50, db_column='asteller_email')
+    astellerEmail = models.EmailField(max_length=50, db_column='asteller_email', null=True)
     astellerIstMitglied = models.BooleanField(db_column='asteller_ist_mitglied', default=False)
 
 
@@ -52,7 +52,7 @@ class Antragstyp(models.Model):
                                         default=int,
                                         db_column='typ_id')
     typName = models.TextField(max_length=200, db_column='typ_name')
-    typSlug = models.TextField(max_length=200, db_column='typ_slug')
+    typSlug = models.TextField(max_length=200, db_column='typ_slug', null=True)
 
 
 class Antrag(models.Model):
@@ -73,8 +73,8 @@ class Antrag(models.Model):
     astellerID = models.ForeignKey(Antragssteller,
                                    on_delete=models.CASCADE,
                                    db_column='asteller_id')
-    antragTitel = models.TextField(db_column='antrag_titel')
-    antragText = models.TextField(db_column='antrag_text')
+    antragTitel = models.TextField(db_column='antrag_titel', null=True)
+    antragText = models.TextField(db_column='antrag_text', null=True)
     antragAnlagen = models.FileField(db_column='antrag_anlagen', null=True)
     
     istEilantrag = models.BooleanField(db_column='ist_eilantrag', default=False)

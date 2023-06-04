@@ -2,7 +2,10 @@ from django.test import TestCase, RequestFactory
 from django.contrib.auth.models import User
 from Antragstool.models import Antragssteller, Antragstyp, Referat, Sitzung, Antrag
 from django.contrib.auth import authenticate, login, logout
-from .views import LoginPage, LogoutPage
+from ..views import LoginPage, LogoutPage
+from django.test import TestCase
+from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Test Model init
 class ModelInitializationTest(TestCase):
@@ -38,51 +41,45 @@ class ModelInitializationTest(TestCase):
         self.assertIsNotNone(Antrag._meta.get_field('sitzID'))
         self.assertIsNotNone(Antrag._meta.get_field('typID'))
 
-# Test Login Successful
+# Test Login 
 class LoginPageTest(TestCase):
     def setUp(self):
-        self.factory = RequestFactory()
-        self.user = User.objects.create_user(username='testuser', password='testpassword')
+        self.login_url = reverse('login')
+        self.index_url = reverse('index')
+        self.username = 'testuser'
+        self.password = 'testpassword'
+        self.user = User.objects.create_user(username=self.username, password=self.password)
 
-    def test_login_successful(self):
-        request = self.factory.post('/login/', {
-            'username': 'testuser',
-            'password': 'testpassword'
+    def test_login_page_get(self):
+        response = self.client.get(self.login_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'pages/login.html')
+        self.assertContains(response, 'Anmelden')
+
+    def test_login_page_post_valid_credentials(self):
+        response = self.client.post(self.login_url, {
+            'username': self.username,
+            'password': self.password,
         })
-
-        response = LoginPage(request)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/index/')  # Adjust the redirect URL if necessary
-
-        # Check if the user is logged in
+        self.assertRedirects(response, self.index_url)
         self.assertTrue(response.wsgi_request.user.is_authenticated)
 
-    def test_login_invalid_credentials(self):
-        request = self.factory.post('/login/', {
-            'username': 'invaliduser',
-            'password': 'invalidpassword'
+    def test_login_page_post_invalid_credentials(self):
+        response = self.client.post(self.login_url, {
+            'username': self.username,
+            'password': 'wrongpassword',
         })
-
-        response = LoginPage(request)
         self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'pages/login.html')
+        self.assertContains(response, 'Die eingegebenen Daten sind ungültig!')
 
-        # Check if the user is not logged in
-        self.assertFalse(response.wsgi_request.user.is_authenticated)
+    def test_login_page_post_authenticated_user(self):
+        self.client.force_login(self.user)
+        response = self.client.post(self.login_url)
+        self.assertRedirects(response, self.index_url)
 
-        # Check the error message
-        self.assertEqual(response.context['feedback'].type, 'ERROR')
-        self.assertEqual(response.context['feedback'].text, 'Die eingegebenen Daten sind ungültig! Versuche es erneut.')
-
-    def test_logout(self):
-        request = self.factory.get('/logout/')
-
-        # Log in the user to perform the logout
-        user = authenticate(username='testuser', password='testpassword')
-        login(request, user)
-
-        response = LogoutPage(request)
-        self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/index/')  # Adjust the redirect URL if necessary
-
-        # Check if the user is logged out
+    def test_logout_page(self):
+        self.client.force_login(self.user)
+        response = self.client.get(reverse('logout'))
+        self.assertRedirects(response, self.index_url)
         self.assertFalse(response.wsgi_request.user.is_authenticated)
