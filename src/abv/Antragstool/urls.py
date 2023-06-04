@@ -37,6 +37,4 @@ urlpatterns = [
     path('antrag/mitglied/', AntragMitglied, name='antrag-mitglied'),
     path('antrag/amt/', AntragAmt, name='antrag-amt'),
     path('antrag/benehmen/', AntragBenehmen, name='antrag-benehmen'),
-
-    path('martor/', include('martor.urls')),
 ]
