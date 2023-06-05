@@ -44,7 +44,8 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'background-primary': '#dcdcdc'
+                'background-primary': '#dcdcdc',
+                'stura-orange': '#f2982e'
             },
             boxShadow: {
                 'card': '0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19)'
