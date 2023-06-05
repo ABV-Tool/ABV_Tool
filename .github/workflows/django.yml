@@ -37,5 +37,15 @@ jobs:
         pip install -r src/requirements.txt
     - name: Run migrations
       run: python src/abv/manage.py migrate
-    - name: Run tests
-      run: python src/abv/manage.py test
+    - name: Run Antrag-tests
+      run: python src/abv/manage.py test Antragstool.tests.test_antrag
+    - name: Run Login-tests
+      run: python src/abv/manage.py test Antragstool.tests.test_login
+    - name: Run Model-tests
+      run: python src/abv/manage.py test Antragstool.tests.test_models
+    - name: Run Referat-tests
+      run: python src/abv/manage.py test Antragstool.tests.test_referat
+    - name: Run Sitzung-tests
+      run: python src/abv/manage.py test Antragstool.tests.test_sitzung
+    - name: Run Tagesordnung-tests
+      run: python src/abv/manage.py test Antragstool.tests.test_tagesordnung
