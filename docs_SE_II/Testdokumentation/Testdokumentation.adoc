@@ -3,7 +3,16 @@
 == Testkonzept
 // Was sind die wichtigsten Komponenten, die getestet wurden? (Testobjekte auf unterschiedlichen Teststufen, siehe Testpyramide)
 // Wie wurde die Erfüllung der Anforderungen an diese Testobjekte getestet? (Testmethoden)
+
+Es wurden die Komponenten Anträge, Referate, Sitzungen und Login getestet.
+Die Erste Testinstanz waren Manuelle Tests durch den Entwickler, die während der Entwicklung bzw. danach erfolgten.
+Dabei wurden diese Komponenten einzeln auf ihre Funktionalitäten/Methoden geprüft, via Unittests.
+
+Nachdem die Komponententests erfolgreich waren, wurden auch kleine Integrationstests durchgeführt wie z.Bsp. Login + Anträge aber auch Anträge + Sitzungen. 
+Anschließend wurden nochmals End-To-End-Tests durch Personen aus dem Team, durchgeführt.
 // Wann führt wer welche Tests durch? (Testdurchführungsplanung)
+Sobald eine Funktionalität implementiert und durch den Entwickler zum Testen freigegeben wurde, hat der Test-Verantwortlicher einen Test für die Funktionalität geschrieben und anschließend durchgeführt.
+
 
 == Testfallbeschreibung
 // Vorbedingungen für den Test, z.B. bestimmter Systemzustand
@@ -22,7 +31,24 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 
 == Test Cases
 
-=== TC01 [Login] - Gültige Eingaben akzeptiert
+=== TC01 [Initialisierung] - Erfolgreich Initialisiert
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Das System wird gestartet und das Datenbankmodell wird erfolgreich initialisiert.
+
+| Vorbedingung      
+| Das System wurde startbereit auf dem Server eingerichtet.
+
+| Nachbedingung     
+| Modeldaten sind in der Datenbank gespeichert.
+
+| Benötigte Daten   
+| ?
+|===
+
+=== TC02 [Login] - Gültige Eingaben akzeptiert
 
 [cols="18h,~"]
 |===
@@ -30,17 +56,18 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Der Benutzer hat gültige Logindaten eingegeben. Der Login-Vorgang muss erfolgreich beendet werden.
 
 | Vorbedingung      
-| -
+| Dem Benutzer wurde bereits ein Login angelegt.
 
 | Nachbedingung     
-| Zeitstempel und Benutzerkennung müssen in ein Log gespeichert werden
+| Zeitstempel und Benutzerkennung müssen in ein Log gespeichert werden.
+
 
 | Benötigte Daten   
 | Logindaten (Benutzername, Passwort)
 |===
 
 
-=== TC02 [Login] - Ungültige Eingaben abgelehnt
+=== TC03 [Login] - Ungültige Eingaben abgelehnt
 
 [cols="18h,~"]
 |===
@@ -58,7 +85,8 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 |===
 
 
-=== TC03 [Antrag] - Gültigen Antrag einreichen
+=== TC04 [Antrag] - Gültigen Antrag einreichen
+
 
 [cols="18h,~"]
 |===
@@ -76,7 +104,9 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 |===
 
 
-=== TC04 [Antrag] - Anhänge werden überliefert
+
+=== TC05 [Antrag] - Anhänge werden überliefert
+
 
 [cols="18h,~"]
 |===
@@ -94,7 +124,9 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 |===
 
 
-=== TC05 [Antrag] - Ungültigen Antrag ablehnen
+
+=== TC06 [Antrag] - Ungültigen Antrag ablehnen
+
 
 [cols="18h,~"]
 |===
@@ -112,7 +144,8 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 |===
 
 
-=== TC06 [Antrag] - Antrag anzeigen
+=== TC07 [Antrag] - Antrag anzeigen
+
 
 [cols="18h,~"]
 |===
@@ -130,7 +163,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 |===
 
 
-=== TC07 [Antrag] - Antrag bearbeiten
+=== TC08 [Antrag] - Antrag bearbeiten
 
 [cols="18h,~"]
 |===
@@ -148,7 +181,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 |===
 
 
-=== TC08 [Tagesordnung] - Erfolgreiches Generieren
+=== TC09 [Tagesordnung] - Erfolgreiches Generieren
 
 [cols="18h,~"]
 |===
@@ -165,7 +198,8 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Sitzungsdaten
 |===
 
-=== TC09 [Sitzung] - Sitzung vertagen
+
+=== TC10 [Sitzung] - Sitzung vertagen
 
 [cols="18h,~"]
 |===
@@ -182,7 +216,8 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Sitzungsdaten
 |===
 
-=== TC10 [Antrag] - Antrag einer anderen Sitzung zuweisen
+
+=== TC11 [Antrag] - Antrag einer anderen Sitzung zuweisen
 
 [cols="18h,~"]
 |===
@@ -198,6 +233,25 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Benötigte Daten   
 | Antragsdaten, Sitzungsdaten (aktuelle & nächste Sitzung)
 |===
+
+
+=== TC12 [DB] - Verlust der Verbindung zur DB
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Die DB wird abgeschaltet und somit ein Verbindungsverlust provoziert.
+
+| Vorbedingung      
+| System muss vollständig eingerichtet und funktional sein.
+
+| Nachbedingung     
+| System 
+
+| Benötigte Daten   
+| Antragsdaten, Sitzungsdaten (aktuelle & nächste Sitzung)
+|===
+
 == Testergebnisse
 // Welche Ergebnisse sind bei der Testdurchführung entstanden?
 // Welche Konsequenzen ergeben sich aus erkannten Abweichungen?

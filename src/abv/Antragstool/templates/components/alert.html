@@ -1,0 +1,51 @@
+<!--+
+
+Die Komponente kann am Ende einer Seite eingebunden werden, um dem Nutzer ein Feedback zu einer Aktion zu geben.
+Diese muss mit den Parametern "type" und "text" aufgerufen werden, die "back_url" ist optional.
+Eine beispielhafte Einbindung ist in der antrag.html zu finden.
+
++-->
+
+<!--+ Komponente +-->
+
+{% if type == "INFO" %}
+
+<div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mt-5 mb-5" role="alert" id="feedback">
+    <p class="font-bold">Hinweis</p>
+    <p>{{ text }}</p>
+    {% if back_url %}
+        <a href="{{ back_url }}" class="mt-5 text-sm hover:cursor-pointer"><i class="fa-solid fa-arrow-rotate-left"></i> Zurück</a>
+    {% endif %}
+</div>
+
+{% elif type == "SUCCESS" %}
+
+<div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mt-5 mb-5" role="alert" id="feedback">
+    <p class="font-bold">Erfolgreich</p>
+    <p>{{ text }}</p>
+    {% if back_url %}
+        <a href="{{ back_url }}" class="mt-5 text-sm hover:cursor-pointer"><i class="fa-solid fa-arrow-rotate-left"></i> Zurück</a>
+    {% endif %}
+</div>
+
+{% elif type == "ERROR" %}
+
+<div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-5 mb-5" role="alert" id="feedback">
+    <p class="font-bold">Fehler</p>
+    <p>{{ text }}</p>
+    {% if back_url %}
+        <a href="{{ back_url }}" class="mt-5 text-sm hover:cursor-pointer"><i class="fa-solid fa-arrow-rotate-left"></i> Zurück</a>
+    {% endif %}
+</div>
+
+{% elif type == "WARNING" %}
+
+<div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 mt-5 mb-5" role="alert" id="feedback">
+    <p class="font-bold">Warnung</p>
+    <p>{{ text }}</p>
+    {% if back_url %}
+        <a href="{{ back_url }}" class="mt-5 text-sm hover:cursor-pointer"><i class="fa-solid fa-arrow-rotate-left"></i> Zurück</a>
+    {% endif %}
+</div>
+
+{% endif %}

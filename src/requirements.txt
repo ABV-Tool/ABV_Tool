@@ -1,5 +1,14 @@
-martor
+# production dependencies
 gunicorn
 Django
 psycopg2
 django-money
+fontawesomefree
+
+# development dependencies
+django-tailwind
+django-browser-reload
+
+# testing dependencies
+flake8
+psycopg2

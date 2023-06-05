@@ -1,4 +1,5 @@
 :imagesdir: images
+
 = Entwicklerdokumentation
 
 == Entwurfsdokumentation
@@ -65,7 +66,6 @@ class Antrag{
     +antragVerantwortlichkeit
 }
 
-
 Refarat "m" *-- "n" Sitzung
 Antragstyp "1" *-- "n" Antrag
 Antragssteller "1" *-- "n" Antrag
@@ -105,7 +105,6 @@ image::Datenbankschema.png[title="Datenbankschema"]
 
 
 
-
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
 
 [plantuml, "{diagramsdir}/sequenzdiagramm", svg]
@@ -127,3 +126,4 @@ Foo1 -> Foo6 : To collections
 == Softwaredokumentation
 // Namen und Beschreibung aller Klassen
 // Namen, Kurzbeschreibung sowie Parameter aller Funktionenen
+

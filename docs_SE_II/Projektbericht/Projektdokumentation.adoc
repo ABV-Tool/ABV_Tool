@@ -3,6 +3,7 @@
 include::../../docs_SE_I/_includes/default-attributes.inc.adoc[] 
 :imagesdir: ./images
 
+
 == Projektplanung
 
 === Aufgabenstellung und Auftraggeber
@@ -12,6 +13,7 @@ Im Rahmen der Module Software Engineering (SE) I und II war unsere Aufgabe als T
 === Ausgangssituation in SE II
 
 Mit Abgabe des Beleges am Ende von SE I endete die Elaboration Phase für unser Projekt. Die Anforderungen in Form mehrere Use Cases waren fertig ausgearbeitet und mit dem Auftraggeber abgestimmt. Der Entwurf für die Architektur des Projektes stand im Groben und bedurfte noch kleinerer Abstimmungen. Auch wurde ein erster Prototyp wurde implementiert und erste Test Cases beschrieben. Zu Beginn des SE II verkleinerte sich das Team, da unser Teamleiter als Wirtschaftsingenieurstudent SE II nicht belegte. Damit wurden Anpassungen in der Teamstruktur notwendig. Mehr dazu unter dem Punkt <<Rollenverteilung>>. Mit Beginn von SE II konnten wir also mit der Umsetzung der Use Cases beginnen. Nachzuarbeiten war lediglich das Projektmanagement. 
+
 
 === Projektorganisation
 //d.h. Team, Rollen/Verantwortlichkeiten, Kommunikation im Team und zum Auftraggeber, eingesetzte Tools in der Projektarbeit, z.B. für Planung, Kommunikation, Dokumentation
@@ -227,6 +229,7 @@ Aktualisierung DB-Schema - steht soweit, Beschlüsse fehlen noch, sind aber gene
 == Ergebnisdokumentation
 
 === Ergebnisse
+
 //Projektergebnisse mit Bezug auf die Ziele / Aufgabenstellung: Was haben wir erreicht und was nicht? Was waren die Gründe für Abweichungen?
 
 

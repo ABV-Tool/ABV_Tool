@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+    <!-- insert custom header elements -->
+{% endblock %}
+
+{% block content %}
+    <!-- insert content -->
+
+    <div class="ml-80 mr-80">
+
+        <div class="w-full">
+            <a href="{% url 'referat-erstellen' %}" class="btn btn-success w-full hover:cursor-pointer">
+                <i class="fa-solid fa-circle-plus"></i> Referat erstellen
+            </a>
+        </div>
+
+        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-1">
+            <caption class="text-left">
+                <h2><b>Alle aktuellen Referate/Stellen</b></h2>
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Ref Name</th>
+                    <th scope="col">Zyklus</th>
+                    <th scope="col">Kontakt E-Mail</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for referat in referate %}
+                <tr>
+                    <td>{{ referat.refID }}</td>
+                    <td>{{ referat.refName }}</td>
+                    <td>{{ referat.refZyklus }}</td>
+                    <td>{{ referat.refEmail }}</td>
+                    <td>
+                        <a href="{% url 'referat-bearbeiten' refID=referat.refID %}" class="hover:cursor-pointer">
+                            <i class="fa-solid fa-pen-to-square"></i> Bearbeiten
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'referat-loeschen' refID=referat.refID %}" class="hover:cursor-pointer">
+                            <i class="fa-solid fa-trash-can"></i> Löschen
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

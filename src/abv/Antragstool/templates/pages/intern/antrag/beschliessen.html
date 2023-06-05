@@ -1,0 +1,145 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+    <!-- insert custom header elements -->
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action="" class="ml-96 mr-96">
+        {% csrf_token %}
+
+        <h1 class="text-center"><b>{{ title }}</b></h1>
+
+        <!-- Anzeigen des Antragtitels -->
+        <div class="relative mt-5">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-b border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#dcdcdc] px-4 text-3xl text-black text-center">{{ antrag.antragTitel }}</span>
+            </div>
+        </div>
+
+
+        <!-- Anzeigen des Antragstellers -->
+        <div class="relative mt-5 mb-4">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-b border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#dcdcdc] px-4 text-2xl text-black text-center">{{ antrag.astellerID }}</span>
+            </div>
+        </div>
+
+        
+       
+        
+        <div class="flex flex-row mb-3">
+        
+            <!-- Beschlussdaten Behandlung -->
+            <div class="w-3/4 mr-5">
+                <label class="block" for="{{ form.beschluss_behandlung.id_for_label }}"><b>{{ form.beschluss_behandlung.label }}</b></label>
+                <input class="w-full" type="text" placeholder="1. Sitzung Plenum 2022/2023, Tagesordnungspunkt 1.1" 
+                    id="{{ form.beschluss_behandlung.id_for_label }}" name="{{ form.beschluss_behandlung.name }}" 
+                    {% if form.beschluss_behandlung.field.required %}required{% endif %} 
+                    {% if form.beschluss_behandlung.field.max_length %}maxlength="{{ form.beschluss_behandlung.field.max_length }}"{% endif %}
+                    value="{{ sitzung }}, Tagesordnungspunkt 1.x"
+                >
+            </div>
+
+            <!-- Beschlussdaten Beschlussfähigkeit -->
+            <div class="w-1/4">
+                <label class="block" for="{{ form.beschluss_faehigkeit.id_for_label }}">
+                    <b>{% include 'components/tooltip.html' with display_text=form.beschluss_faehigkeit.label tooltip_text="Gibt an, ob die anwesenden StuRa-Mitglieder in der Lage sind, über diesen Antrag abzustimmen und diesen zu beschließen." %}</b>
+                </label>
+                <input class="w-10 h-10 text-[#f2ac2e] focus:ring-[#f2ac2e] bg-gray-100 border-gray-300 rounded dark:focus:ring-[#f2ac2e] focus:ring-2" 
+                    type="checkbox" 
+                    id="{{ form.beschluss_faehigkeit.id_for_label }}" 
+                    name="{{ form.beschluss_faehigkeit.name }}"
+                >
+            </div>
+
+        </div>
+
+        
+        <div class="flex flex-row mb-3">
+
+            <!-- Beschlussdaten Stimmen Ja -->
+            <div class="w-1/6 mr-3">
+                <label class="block" for="{{ form.stimmen_ja.id_for_label }}"><b>{{ form.stimmen_ja.label }}</b></label>
+                <input class="w-full" type="text" id="{{ form.stimmen_ja.id_for_label }}" name="{{ form.stimmen_ja.name }}" placeholder="4"
+                    {% if form.stimmen_ja.field.required %}required{% endif %} 
+                    {% if form.stimmen_ja.field.max_length %}maxlength="{{ form.stimmen_ja.field.max_length }}"{% endif %}
+                >
+            </div>
+
+            <!-- Beschlussdaten Stimmen Nein -->
+            <div class="w-1/6 mr-3">
+                <label class="block" for="{{ form.stimmen_nein.id_for_label }}"><b>{{ form.stimmen_nein.label }}</b></label>
+                <input class="w-full" type="text" id="{{ form.stimmen_nein.id_for_label }}" name="{{ form.stimmen_nein.name }}" placeholder="2"
+                    {% if form.stimmen_nein.field.required %}required{% endif %} 
+                    {% if form.stimmen_nein.field.max_length %}maxlength="{{ form.stimmen_nein.field.max_length }}"{% endif %}
+                >
+            </div>
+
+            <!-- Beschlussdaten Stimmen Enthalten -->
+            <div class="w-1/6 mr-5">
+                <label class="block" for="{{ form.stimmen_enthaltung.id_for_label }}"><b>{{ form.stimmen_enthaltung.label }}</b></label>
+                <input class="w-full" type="text" id="{{ form.stimmen_enthaltung.id_for_label }}" name="{{ form.stimmen_enthaltung.name }}" placeholder="0"
+                    {% if form.stimmen_enthaltung.field.required %}required{% endif %} 
+                    {% if form.stimmen_enthaltung.field.max_length %}maxlength="{{ form.stimmen_enthaltung.field.max_length }}"{% endif %}
+                >
+            </div>
+
+            <!-- Beschlussdaten Ergebnis -->
+            <div class="w-3/6">
+                <label class="block" for="{{ form.beschluss_ergebnis.id_for_label }}">
+                    <b>{{ form.beschluss_ergebnis.label }}</b>
+                </label>
+                <select name="{{ form.beschluss_ergebnis.name }}" class="w-full" {% if form.beschluss_ergebnis.field.required %}required{% endif %}>
+                    {% for choice in form.beschluss_ergebnis.field.choices %}
+                        <option class="p-2" value="{{ choice.0 }}">{{ choice.1 }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+
+
+        <!-- Beschlussdaten Beschlusstext -->
+        <div class="mb-3">
+            <label class="block" for="{{ form.beschluss_text.id_for_label }}"><b>{{ form.beschluss_text.label }}</b></label>
+            <textarea class="w-full" rows="7" id="{{ form.text.id_for_label }}" name="{{ form.beschluss_text.name }}" 
+                {% if form.beschluss_text.field.required %}required{% endif %} 
+                {% if form.beschluss_text.field.max_length %} maxlength="{{ form.beschluss_text.field.max_length }}"{% endif %}
+            >Der StuRa beschloss durch Wahl, dass </textarea>
+        </div>
+
+
+        <!-- Beschlussdaten Ausfertigung -->
+        <div class="w-full mb-5">
+            <label class="block" for="{{ form.beschluss_ausfertigung.id_for_label }}"><b>{{ form.beschluss_ausfertigung.label }}</b></label>
+            <input class="w-full" type="text" placeholder="Mitglied, Präsidium, Datum" 
+                id="{{ form.beschluss_ausfertigung.id_for_label }}" name="{{ form.beschluss_ausfertigung.name }}" 
+                {% if form.beschluss_ausfertigung.field.required %}required{% endif %} 
+                {% if form.beschluss_ausfertigung.field.max_length %}maxlength="{{ form.beschluss_ausfertigung.field.max_length }}"{% endif %}
+                value="{{ user.first_name }} {{ user.last_name }}, Präsidium, {% now "d.m.Y, H:i" %}"
+            >
+        </div>
+
+
+        <button type="submit" class="btn btn-success w-full hover:cursor-pointer"><i class="fa-solid fa-check-double"></i> Beschließen</button>
+
+
+        <!-- Form-Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if feedback %}
+            <div id="feedback">
+                {% include 'components/alert.html' with type=feedback.type text=feedback.text back_url=feedback.back_url %}
+            </div>
+        {% endif %}
+
+    <form>
+{% endblock %}
