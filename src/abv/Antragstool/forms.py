@@ -1,5 +1,5 @@
 from django import forms
-from Antragstool.models import Referat
+from Antragstool.models import Referat, Beschluss
 
 
 # template for custom login form
@@ -15,7 +15,7 @@ class StammdatenForm(forms.Form):
     nachname = forms.CharField(label="Nachname", max_length=100, required=True, widget=forms.TextInput())
     email = forms.EmailField(label="E-Mail Adresse", max_length=200, required=True, widget=forms.EmailInput())
     
-    titel = forms.CharField(label="Antragstitel", max_length=200, required=True, widget=forms.TextInput())
+    titel = forms.CharField(label="Antragstitel", max_length=100, required=True, widget=forms.TextInput())
     text = forms.CharField(label="Antragstext", max_length=2000, required=True, widget=forms.Textarea())
     
     ist_eilantrag = forms.BooleanField(label="Eilantrag", required=False)
@@ -75,3 +75,16 @@ class AntragBenehmenForm(StammdatenForm):
 class ReferatForm(forms.Form):
     referat_name = forms.CharField(label="Referats-Name:", max_length=100, required=True, widget=forms.TextInput())
     referat_zyklus = forms.CharField(label="Referats-Zyklus:", max_length=100, required=True, widget=forms.NumberInput())
+    referat_email = forms.EmailField(label="Referats-E-Mail:", max_length=200, required=True, widget=forms.EmailInput())
+    
+
+# Beschluss
+class BeschlussForm(forms.Form):
+    beschluss_behandlung = forms.CharField(label="Behandlung:", max_length=100, required=True, widget=forms.TextInput())
+    beschluss_faehigkeit = forms.BooleanField(label="Beschluss-Fähigkeit:", required=True, widget=forms.CheckboxInput())
+    stimmen_ja = forms.IntegerField(label="Ja-Stimmen:", required=True, widget=forms.NumberInput())
+    stimmen_nein = forms.IntegerField(label="Nein-Stimmen:", required=True, widget=forms.NumberInput())
+    stimmen_enthaltung = forms.IntegerField(label="Enthaltene Stimmen:", required=True, widget=forms.NumberInput())
+    beschluss_ergebnis = forms.ChoiceField(label="Beschluss-Ergebnis:", choices=Beschluss.BeschlussErgebnis.choices, required=True, widget=forms.Select())
+    beschluss_text = forms.CharField(label="Beschluss-Text:", max_length=2000, required=True, widget=forms.Textarea())
+    beschluss_ausfertigung = forms.CharField(label="Ausfertigung:", max_length=200, required=True, widget=forms.TextInput())

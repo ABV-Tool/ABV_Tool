@@ -2,11 +2,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from datetime import date
 from .mails import mailAstellerEingangsbestaetigung
-from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp
-from .forms import ReferatForm
+from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss
+from .forms import ReferatForm, BeschlussForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
 
-
+# Kann bei einer render()-Funktion mitgeliefert werden, um entsprechendes Feedback anzuzeigen
+# Hinweis: Komponente muss am Ende der Seite eingebunden sein
+# => type: SUCCESS, ERROR, WARNING, INFO (siehe templates/components/alert.html)
+# => text: Text, der angezeigt werden soll
+# => back_url: URL, auf welche der 'Zurück'-Button verweist
 class FrontendFeedback:
     type = ''
     text = ''
@@ -16,10 +20,6 @@ class FrontendFeedback:
 
 def HomePage(request):
     return render(request, 'pages/home.html', context={'title': 'Home'})
-
-
-def AboutPage(request):
-    return render(request, 'pages/about.html', context={'title': 'Über Uns'})
 
 
 def ArchivPage(request):
@@ -57,7 +57,7 @@ def ReferatErstellenPage(request):
         form = ReferatForm()
     return render(request, 'pages/intern/referat.html', context={
         'title': 'Referat erstellen', 
-        'action':'CREATE',
+        'aktion':'ERSTELLEN',
         'form': form,
         'feedback': feedback
     })
@@ -84,7 +84,7 @@ def ReferatBearbeitenPage(request, refID):
     
     return render(request, 'pages/intern/referat.html', context={
         'title': 'Referat bearbeiten', 
-        'action':'EDIT', 
+        'aktion':'BEARBEITEN', 
         'referat': referat,
         'form': form,
         'feedback': feedback
@@ -106,7 +106,7 @@ def ReferatLoeschenPage(request, refID):
 
     return render(request, 'pages/intern/referat.html', context={
         'title': 'Referat löschen', 
-        'action':'DELETE', 
+        'aktion':'LOESCHEN', 
         'referat': referat,
         'form': form,
         'feedback': feedback
@@ -138,9 +138,11 @@ def SitzungAnlegenPage(request):
 
 def SitzungAnzeigenPage(request, sitzID):
     antraege = Antrag.objects.filter(sitzID=sitzID)
+    sitzung = Sitzung.objects.get(sitzID=sitzID)
     return render(request, 'pages/intern/sitzung/anzeigen.html', context={
         'title': 'Sitzung anzeigen',
-        'antraege': antraege
+        'antraege': antraege,
+        'sitzung': sitzung
     })
 
 
@@ -152,6 +154,117 @@ def SitzungLoeschenPage(request, sitzID):
     return render(request, 'pages/intern/sitzung.html', context={'title': 'Sitzung löschen'})
 
 # ------ Sitzungsverwaltung ------ #
+
+
+
+# ++++++ Antragsverwaltung ++++++ #
+
+def getFormVonAntragstyp(antrag):
+    # TODO: Überlegung für Erweiterbarkeit machen, sollte ein neuer Antragstyp hinzukommen
+    form = None
+    typ_id = antrag.typID.typID
+    if typ_id == 1:
+        form = AntragAllgemeinForm()
+    elif typ_id == 2:
+        form = AntragFinanziellForm()
+    elif typ_id == 3:
+        form = AntragVeranstaltungForm()
+    elif typ_id == 4:
+        form = AntragMitgliedForm()
+    elif typ_id == 5:
+        form = AntragAmtForm()
+    elif typ_id== 6:
+        form = AntragBenehmenForm()
+    return form
+
+def renderAntragPage(request, url, antrag, title, aktion):
+    return render(request, url, context={
+        'title': title,
+        'antrag': antrag,
+        'form': getFormVonAntragstyp(antrag),
+        'aktion': aktion
+    })
+    
+
+def AntragsverwaltungPage(request):
+    antraege = Antrag.objects.all()
+    return render(request, 'pages/intern/antragsverwaltung.html', context={
+        'title': 'Antragsverwaltung',
+        'antraege': antraege
+    })
+        
+
+def AntragAnzeigenPage(request, antragID):
+    antrag = Antrag.objects.get(antragID=antragID)
+    return renderAntragPage(request, 'pages/antrag.html', antrag, 'Antrag anzeigen', 'ANZEIGEN')
+
+
+def AntragBearbeitenPage(request, antragID):
+    # TODO: Logik für Antrag bearbeiten einbauen
+    antrag = Antrag.objects.get(antragID=antragID)
+    return renderAntragPage(request, 'pages/antrag.html', antrag, 'Antrag bearbeiten', 'BEARBEITEN')
+
+
+def AntragLoeschenPage(request, antragID):
+    antrag = Antrag.objects.get(antragID=antragID)
+    return renderAntragPage(request, 'pages/intern/antrag/loeschen.html', antrag, 'Antrag löschen', 'ANZEIGEN')
+    
+
+def AntragVertagenPage(request, antragID):
+    antrag = Antrag.objects.get(antragID=antragID)
+    sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
+    return render(request, 'pages/intern/antrag/vertagen.html', context={
+        'title': 'Antrag vertagen',
+        'antrag': antrag,
+        'sitzung': sitzung,
+        'aktion': 'VERTAGEN'
+    })
+    
+    
+def AntragBeschliessenPage(request, antragID):
+    feedback = FrontendFeedback()
+    antrag = Antrag.objects.get(antragID=antragID)
+    sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
+    
+    print(sitzung.sitzID)
+    
+    if request.method == 'POST':
+        form = BeschlussForm(request.POST)
+        if form.is_valid():
+            
+            beschluss = Beschluss()
+            beschluss.sitzID = sitzung
+                        
+            beschluss.beschlussFaehigkeit = form.cleaned_data['beschluss_faehigkeit']
+            beschluss.stimmenJa = form.cleaned_data['stimmen_ja']
+            beschluss.stimmenNein = form.cleaned_data['stimmen_nein']
+            beschluss.stimmenEnthaltung = form.cleaned_data['stimmen_enthaltung']
+            beschluss.beschlussErgebnis = form.cleaned_data['beschluss_ergebnis']
+            beschluss.beschlussText = form.cleaned_data['beschluss_text']
+            beschluss.beschlussAusfertigung = form.cleaned_data['beschluss_ausfertigung']
+            beschluss.save()
+            
+            antrag.beschlussID = beschluss
+            antrag.save()
+            
+            feedback.type = "SUCCESS"
+            feedback.text = 'Beschluss erfolgreich eingepflegt!'
+            feedback.back_url = f'/intern/sitzung/{{sitzung.sitzID}}/anzeigen'
+        else:
+            feedback.type = "ERROR"
+            feedback.text = 'Fehler beim Einpflegen des Beschlusses! Bitte aktualisiere die Seite und versuche es erneut.'
+    else:
+        form = BeschlussForm()
+    
+    return render(request, 'pages/intern/antrag/beschliessen.html', context={
+        'title': 'Antrag beschließen',
+        'antrag': antrag,
+        'sitzung': sitzung,
+        'form': form,
+        'aktion': 'VERTAGEN'
+    })
+    
+# ------ Antragsverwaltung ------ #
 
 
 # ++++++ Benutzerauthentifizierung ++++++ #

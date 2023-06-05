@@ -9,7 +9,7 @@
 
 {% block content %}
     <!-- insert content -->
-    <div class="ml-96 mr-96">
+    <div class="ml-40 mr-40">
         <div class="w-full">
             <!-- TODO: URL-Referenzen einfügen -->
             <a href="" class="btn btn-success hover:cursor-pointer mr-5">
@@ -20,7 +20,10 @@
             </a>
         </div>
 
-        <table class="table-auto w-full text-left overflow-x-auto mt-5">
+        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-1">
+            <caption class="text-left">
+                <h2><b>Anträge der {{ sitzung }}</b></h2>
+            </caption>
             <thead>
                 <tr>
                     <th scope="col">Antragstyp</th>
@@ -49,29 +52,31 @@
                     
             
                     <td>
-                        <a href="" class="hover:cursor-pointer">
+                        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer">
                             <i class="fa-solid fa-eye"></i> Anzeigen
                         </a>
                     </td>
                     <td>
-                        <a href="" class="hover:cursor-pointer">
+                        <a href="{% url 'antrag-vertagen' antragID=antrag.antragID %}" class="hover:cursor-pointer">
                             <i class="fa-regular fa-calendar-xmark"></i> Vertagen
                         </a>
                     </td>
                     <td>
-                        <a href="" class="hover:cursor-pointer">
+                        <a href="{% url 'antrag-beschliessen' antragID=antrag.antragID %}" class="hover:cursor-pointer">
                             <i class="fa-solid fa-check-double"></i> Beschließen
                         </a>
                     </td>
                     <td>
-                        {% if antrag.beschlussID.beschlussErgebnis %}
-                            {{ antrag.beschlussID.beschlussErgebnis }}
-                        {% else %}
-                            Unbehandelt
-                        {% endif %}
+                        {% include 'components/beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}
                     </td>
                 </tr>
                 {% endfor %}
+
+                {% if not antraege %}
+                <tr>
+                    <td colspan="8" class="text-left text-stura-orange"><b>Dieser Sitzung wurden bislang keine Anträge zugewiesen!</b></td>
+                </tr>
+                {% endif %}
             </tbody>
         </table>
     </div>

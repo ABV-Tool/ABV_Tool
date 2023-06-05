@@ -10,9 +10,11 @@
                 <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/" %} active{% endif %}" onClick="location.href='{%  url 'index' %}'">
                     <i class="fa-solid fa-house"></i> Home
                 </li>
-                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/about/" %} active{% endif %}" onClick="location.href='{%  url 'about' %}'">
-                    <i class="fa-solid fa-circle-info"></i> Über Uns
-                </li>
+                <a href="https://www.stura.htw-dresden.de/stura" target="_blank">
+                    <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e]">
+                        <i class="fa-solid fa-circle-info"></i> Über Uns
+                    </li>
+                </a>
                 <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/archiv/" %} active{% endif %}" onClick="location.href='{%  url 'archiv' %}'">
                     <i class="fa-solid fa-box-archive"></i> Archiv
                 </li>
@@ -23,11 +25,17 @@
         <div class="w-1/3">
             {% if user.is_authenticated %}
             <ul class="flex flex-row justify-center">
-                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/referatsverwaltung/" %} active{% endif %}" onClick="location.href='{%  url 'referatsverwaltung' %}'">
-                    <i class="fa-solid fa-rectangle-list"></i> Referatsverwaltung
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/referatsverwaltung/" %}active{% endif %}" 
+                    onClick="location.href='{%  url 'referatsverwaltung' %}'">
+                    <i class="fa-solid fa-rectangle-list"></i> Referate
                 </li>
-                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/sitzungsverwaltung/" %} active{% endif %}" onClick="location.href='{%  url 'sitzungsverwaltung' %}'">
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/sitzungsverwaltung/" %}active{% endif %}" 
+                    onClick="location.href='{%  url 'sitzungsverwaltung' %}'">
                     <i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung
+                </li>
+                <li class="float-left p-4 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/antragsverwaltung/" %}active{% endif %}"
+                    onClick="location.href='{%  url 'antragsverwaltung' %}'">
+                    <i class="fa-sharp fa-solid fa-file"></i> Anträge
                 </li>
             </ul>
             {% endif %}

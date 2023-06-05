@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.utils import timezone
 from djmoney.models.fields import MoneyField
 from djmoney.money import Currency
 
@@ -12,8 +13,8 @@ class Referat(models.Model):
                                         unique=True,
                                         db_column='ref_id')
     refName = models.TextField(db_column='ref_name', max_length=200)
-    refZyklus = models.IntegerField(db_column='zyklus')
-    refEmail = models.EmailField(db_column='ref_email', max_length=100)
+    refZyklus = models.IntegerField(db_column='zyklus', blank=True)
+    refEmail = models.EmailField(db_column='ref_email', max_length=100, blank=True)
     
     def __str__(self):
         return self.refName
@@ -41,6 +42,7 @@ class Sitzung(models.Model):
     anzAntraege = models.PositiveIntegerField(db_column='anz_antraege', default=0)
     
     def __str__(self):
+        # TODO: Sollte eine Sitzung vorverlegt werden, so stimmt die Reihenfolge der Sitzungen nicht mehr
         anzahl_sitz_jahr = Sitzung.objects.filter(sitzDate__year=self.sitzDate.year).filter(refID=self.refID).count()
         return str(anzahl_sitz_jahr) + ". Sitzung " + self.refID.refName + " " + str(self.sitzDate.year)
 
@@ -70,7 +72,9 @@ class Beschluss(models.Model):
         UNBEHANDELT = 'Unbehandelt'
         ANGENOMMEN = 'Angenommen'
         ABGELEHNT = 'Abgelehnt'
-        VERTAGT = 'Vertagt'
+        
+    def get_beschluss_ergebnisse(self):
+        return list(self.BeschlussErgebnis)
         
     beschlussID = models.UUIDField(primary_key=True,
                                    default=uuid.uuid4,
@@ -79,7 +83,7 @@ class Beschluss(models.Model):
     sitzID = models.ForeignKey(Sitzung,
                                on_delete=models.CASCADE,
                                db_column='sitz_id')
-    beschlussDate = models.DateField(db_column='beschluss_date')
+    beschlussDate = models.DateField(db_column='beschluss_date', default=timezone.now)
     beschlussFaehigkeit = models.BooleanField(db_column='beschluss_faehigkeit', default=False)
     
     stimmenJa = models.PositiveIntegerField(db_column='stimmen_ja', default=0)
@@ -103,8 +107,8 @@ class Antragstyp(models.Model):
     typID = models.PositiveIntegerField(primary_key=True,
                                         default=int,
                                         db_column='typ_id')
-    typName = models.TextField(max_length=200, db_column='typ_name')
-    typSlug = models.TextField(max_length=200, db_column='typ_slug')
+    typName = models.TextField(max_length=200, db_column='typ_name', default="", blank=False)
+    typSlug = models.TextField(max_length=200, db_column='typ_slug', default="", blank=False)
     
     def __str__(self):
         return self.typName
@@ -131,29 +135,33 @@ class Antrag(models.Model):
     beschlussID = models.ForeignKey(Beschluss,
                                     on_delete=models.CASCADE,
                                     db_column='beschluss_id',
-                                    null=True)
-    antragTitel = models.TextField(db_column='antrag_titel')
-    antragText = models.TextField(db_column='antrag_text')
+                                    null=True,
+                                    blank=True)
+    antragTitel = models.TextField(db_column='antrag_titel', default="", max_length=200, blank=False)
+    antragText = models.TextField(db_column='antrag_text', default="", max_length=2000, blank=False)
 
-    antragAnlagen = models.FileField(db_column='antrag_anlagen', null=True)
+    antragAnlagen = models.FileField(db_column='antrag_anlagen', blank=True)
     prioritaet = models.PositiveIntegerField(db_column='prioritaet', default=0)
     
-    istEilantrag = models.BooleanField(db_column='ist_eilantrag', default=False)
+    istEilantrag = models.BooleanField(db_column='ist_eilantrag', default=False, blank=False)
     
     # Antragsspezifische Daten
     # TODO: Überlegung zu besserer Strukturierung in DB
-    antragGrund = models.TextField(db_column='antrag_grund', null=True)
-    antragVorschlag = models.TextField(db_column='antrag_vorschlag', null=True)
-    antragKostenposition = models.TextField(db_column='antrag_kostenposition', null=True)
+    antragGrund = models.TextField(db_column='antrag_grund', blank=True)
+    antragVorschlag = models.TextField(db_column='antrag_vorschlag', blank=True)
+    antragKostenposition = models.TextField(db_column='antrag_kostenposition', blank=True)
     antragSumme = MoneyField(db_column='antrag_summe',
                              max_digits=10,
                              decimal_places=2,
                              default_currency=Currency('EUR'),
                              default=0) # type: ignore
-    antragVorstellungPerson = models.TextField(db_column='antrag_vorstellung_person', null=True)
-    antragFragenZumAmt = models.TextField(db_column='antrag_fragen_zum_amt', null=True)
-    antragZeitraum = models.TextField(db_column='antrag_zeitraum', null=True)
-    antragVerantwortlichkeit = models.TextField(db_column='antrag_verantwortlichkeit', null=True)
+    antragVorstellungPerson = models.TextField(db_column='antrag_vorstellung_person', blank=True)
+    antragFragenZumAmt = models.TextField(db_column='antrag_fragen_zum_amt', blank=True)
+    antragZeitraum = models.TextField(db_column='antrag_zeitraum', blank=True)
+    antragVerantwortlichkeit = models.TextField(db_column='antrag_verantwortlichkeit', blank=True)
+    
+    erstelltDate = models.DateField(db_column='erstellt_date', auto_now_add=True)
+    bearbeitetDate = models.DateField(db_column='bearbeitet_date', auto_now=True)
     
     def __str__(self):
         return str(self.antragTitel) + " von " + self.astellerID.astellerVorname + " " + self.astellerID.astellerName

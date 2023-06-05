@@ -18,12 +18,16 @@
             </a>
         </div>
 
-        <table class="table-auto w-full text-left overflow-x-auto mt-5">
+        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-1">
+            <caption class="text-left">
+                <h2><b>Alle aktuellen Referate/Stellen</b></h2>
+            </caption>
             <thead>
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Ref Name</th>
                     <th scope="col">Zyklus</th>
+                    <th scope="col">Kontakt E-Mail</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -34,14 +38,15 @@
                     <td>{{ referat.refID }}</td>
                     <td>{{ referat.refName }}</td>
                     <td>{{ referat.refZyklus }}</td>
+                    <td>{{ referat.refEmail }}</td>
                     <td>
                         <a href="{% url 'referat-bearbeiten' refID=referat.refID %}" class="hover:cursor-pointer">
-                            <i class="fa-solid fa-pen-to-square"></i>
+                            <i class="fa-solid fa-pen-to-square"></i> Bearbeiten
                         </a>
                     </td>
                     <td>
                         <a href="{% url 'referat-loeschen' refID=referat.refID %}" class="hover:cursor-pointer">
-                            <i class="fa-solid fa-trash-can"></i>
+                            <i class="fa-solid fa-trash-can"></i> Löschen
                         </a>
                     </td>
                 </tr>

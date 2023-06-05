@@ -26,34 +26,57 @@
 
         <!-- Form-Input: refName -->
         <div class="mb-3">
-            <label class="block" for="{{ form.referat_name.name }}"><b>Referatsname:</b></label>
-            <input class="w-full" type="text" value="{{ referat.refName }}" placeholder="Verwaltung X" id="{{ form.referat_name.name }}" name="{{ form.referat_name.name }}" maxlength="{{ form.referat_name.field.max_length }}" {% if action == "DELETE" %}disabled{% else %}required{% endif %}>
+            <label class="block" for="{{ form.referat_name.name }}"><b>{{ form.referat_name.label }}</b></label>
+            <input class="w-full" type="text" value="{{ referat.refName }}" placeholder="Verwaltung X" 
+                id="{{ form.referat_name.name }}" name="{{ form.referat_name.name }}" 
+                maxlength="{{ form.referat_name.field.max_length }}" 
+                {% if aktion == "LOESCHEN" %}
+                    disabled
+                {% else %}
+                    required
+                {% endif %}>
         </div>
 
         <!-- Form-Input: refZyklus mit Tooltip zur Information -->
-        <div class="mb-5">
+        <div class="mb-3">
             <label class="block" for="{{ form.referat_zyklus.name }}" >
-                <b>{% include 'components/tooltip.html' with display_text="Wochen-Zyklus der Sitzungen:" tooltip_text="Beschreibt, nach wie vielen Wochen die nächste Sitzung dieses Referates stattfindet." %}</b>
+                <b>{% include 'components/tooltip.html' with display_text=form.referat_zyklus.label tooltip_text="Beschreibt, nach wie vielen Wochen die nächste Sitzung dieses Referates stattfindet." %}</b>
             </label>
-            <input class="w-full" type="number" value="{{ referat.refZyklus }}" placeholder="2" id="{{ form.referat_zyklus.name }}" name="{{ form.referat_zyklus.name }}" maxlength="{{ form.referat_zyklus.field.max_length }}" {% if action == "DELETE" %}disabled{% else %}required{% endif %}>
+            <input class="w-full" type="number" value="{{ referat.refZyklus }}" placeholder="2" 
+                id="{{ form.referat_zyklus.name }}" 
+                name="{{ form.referat_zyklus.name }}" 
+                maxlength="{{ form.referat_zyklus.field.max_length }}" 
+                {% if aktion == "LOESCHEN" %}
+                    disabled
+                {% else %}
+                    required
+                {% endif %}
+            >
+        </div>
+
+        <!-- Form-Input: refEmail -->
+        <div class="mb-5">
+            <label class="block" for="{{ form.referat_email.name }}"><b>{{ form.referat_email.label }}</b></label>
+            <input class="w-full" type="text" value="{{ referat.refEmail }}" placeholder="verwaltung@stura.htw-dresden.de" 
+                id="{{ form.referat_email.name }}" 
+                name="{{ form.referat_email.name }}" 
+                maxlength="{{ form.referat_email.field.max_length }}" 
+                {% if aktion == "LOESCHEN" %}
+                    disabled
+                {% else %}
+                    required
+                {% endif %}>
         </div>
 
 
-        <!-- Form-Submit: Anderer Button, je nach momentaner action (definiert in views.py) -->
-        {% if action == "CREATE" %}
-
+        <!-- Form-Submit: Anderer Button, je nach momentaner aktion (definiert in views.py) -->
+        {% if aktion == "ERSTELLEN" %}
             <button type="submit" class="btn btn-success w-full hover:cursor-pointer"><i class="fa-solid fa-circle-plus"></i> Erstellen</button>
-
-        {% elif action == "EDIT" %}
-
+        {% elif aktion == "BEARBEITEN" %}
             <button type="submit" class="btn btn-neutral w-full hover:cursor-pointer"><i class="fa-solid fa-floppy-disk"></i> Bearbeiten</button>
-
-        {% elif action == "DELETE" %}
-
+        {% elif aktion == "LOESCHEN" %}
             {% include 'components/alert.html' with type="WARNING" text="Du bist dabei, das Referat "|add:referat.refName|add:" zu löschen. Damit werden auch alle Sitzungen dieses Referates entfernt!" %}
-            
             <button type="submit" class="btn btn-danger w-full hover:cursor-pointer"><i class="fa-solid fa-trash-can"></i> Löschen</button>
-
         {% endif %}
 
 
