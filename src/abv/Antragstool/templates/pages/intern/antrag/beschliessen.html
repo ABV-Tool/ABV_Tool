@@ -70,7 +70,7 @@
             <!-- Beschlussdaten Stimmen Ja -->
             <div class="w-1/6 mr-3">
                 <label class="block" for="{{ form.stimmen_ja.id_for_label }}"><b>{{ form.stimmen_ja.label }}</b></label>
-                <input class="w-full" type="text" id="{{ form.stimmen_ja.id_for_label }}" name="{{ form.stimmen_ja.name }}" 
+                <input class="w-full" type="text" id="{{ form.stimmen_ja.id_for_label }}" name="{{ form.stimmen_ja.name }}" placeholder="4"
                     {% if form.stimmen_ja.field.required %}required{% endif %} 
                     {% if form.stimmen_ja.field.max_length %}maxlength="{{ form.stimmen_ja.field.max_length }}"{% endif %}
                 >
@@ -79,7 +79,7 @@
             <!-- Beschlussdaten Stimmen Nein -->
             <div class="w-1/6 mr-3">
                 <label class="block" for="{{ form.stimmen_nein.id_for_label }}"><b>{{ form.stimmen_nein.label }}</b></label>
-                <input class="w-full" type="text" id="{{ form.stimmen_nein.id_for_label }}" name="{{ form.stimmen_nein.name }}" 
+                <input class="w-full" type="text" id="{{ form.stimmen_nein.id_for_label }}" name="{{ form.stimmen_nein.name }}" placeholder="2"
                     {% if form.stimmen_nein.field.required %}required{% endif %} 
                     {% if form.stimmen_nein.field.max_length %}maxlength="{{ form.stimmen_nein.field.max_length }}"{% endif %}
                 >
@@ -88,7 +88,7 @@
             <!-- Beschlussdaten Stimmen Enthalten -->
             <div class="w-1/6 mr-5">
                 <label class="block" for="{{ form.stimmen_enthaltung.id_for_label }}"><b>{{ form.stimmen_enthaltung.label }}</b></label>
-                <input class="w-full" type="text" id="{{ form.stimmen_enthaltung.id_for_label }}" name="{{ form.stimmen_enthaltung.name }}" 
+                <input class="w-full" type="text" id="{{ form.stimmen_enthaltung.id_for_label }}" name="{{ form.stimmen_enthaltung.name }}" placeholder="0"
                     {% if form.stimmen_enthaltung.field.required %}required{% endif %} 
                     {% if form.stimmen_enthaltung.field.max_length %}maxlength="{{ form.stimmen_enthaltung.field.max_length }}"{% endif %}
                 >

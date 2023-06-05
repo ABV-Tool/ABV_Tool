@@ -81,7 +81,7 @@ class ReferatForm(forms.Form):
 # Beschluss
 class BeschlussForm(forms.Form):
     beschluss_behandlung = forms.CharField(label="Behandlung:", max_length=100, required=True, widget=forms.TextInput())
-    beschluss_faehigkeit = forms.BooleanField(label="Beschluss-Fähigkeit:", required=True, widget=forms.CheckboxInput())
+    beschluss_faehigkeit = forms.BooleanField(label="Beschluss-Fähigkeit:", required=False, widget=forms.CheckboxInput())
     stimmen_ja = forms.IntegerField(label="Ja-Stimmen:", required=True, widget=forms.NumberInput())
     stimmen_nein = forms.IntegerField(label="Nein-Stimmen:", required=True, widget=forms.NumberInput())
     stimmen_enthaltung = forms.IntegerField(label="Enthaltene Stimmen:", required=True, widget=forms.NumberInput())

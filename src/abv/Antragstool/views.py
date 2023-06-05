@@ -147,11 +147,11 @@ def SitzungAnzeigenPage(request, sitzID):
 
 
 def SitzungVertagenPage(request, sitzID):
-    return render(request, 'pages/intern/sitzung.html', context={'title': 'Sitzung vertagen'})
+    return render(request, 'pages/intern/sitzung/vertagen.html', context={'title': 'Sitzung vertagen'})
 
 
 def SitzungLoeschenPage(request, sitzID):
-    return render(request, 'pages/intern/sitzung.html', context={'title': 'Sitzung löschen'})
+    return render(request, 'pages/intern/sitzung/loeschen.html', context={'title': 'Sitzung löschen'})
 
 # ------ Sitzungsverwaltung ------ #
 
@@ -244,12 +244,13 @@ def AntragBeschliessenPage(request, antragID):
             beschluss.beschlussAusfertigung = form.cleaned_data['beschluss_ausfertigung']
             beschluss.save()
             
+            # TODO: Prüfung, ob ein Beschluss für diesen Antrag bereits existiert
             antrag.beschlussID = beschluss
             antrag.save()
             
             feedback.type = "SUCCESS"
             feedback.text = 'Beschluss erfolgreich eingepflegt!'
-            feedback.back_url = f'/intern/sitzung/{{sitzung.sitzID}}/anzeigen'
+            feedback.back_url = '/intern/sitzung/' + str(sitzung.sitzID) + '/anzeigen'
         else:
             feedback.type = "ERROR"
             feedback.text = 'Fehler beim Einpflegen des Beschlusses! Bitte aktualisiere die Seite und versuche es erneut.'
@@ -261,7 +262,8 @@ def AntragBeschliessenPage(request, antragID):
         'antrag': antrag,
         'sitzung': sitzung,
         'form': form,
-        'aktion': 'VERTAGEN'
+        'aktion': 'VERTAGEN',
+        'feedback': feedback
     })
     
 # ------ Antragsverwaltung ------ #
