@@ -1,0 +1,64 @@
+//Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
+
+== UC03 => Tagesordnung abschließen
+
+=== Kurzbeschreibung
+//<Kurze Beschreibung des Use Case>
+Der Use Case beschreibt die Fertigstellung der Tagesordnung.
+
+=== Kurzbeschreibung der Akteure
+
+==== Antragsverwalter
+Ist zuständig für die jeweilige Plenumssitzung.
+
+=== Vorbedingungen
+//Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
+
+- Der Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+
+- Der Antragsverwalter muss angemeldet sein.
+
+- Die Sitzung muss angelegt sein.
+
+- Die Tagesordnung muss bereits generiert worden sein.
+
+- Die Sitzung muss stattgefunden haben.
+
+- Alle Beschlüsse müssen eingepflegt worden sein.
+
+=== Standardablauf (Basic Flow)
+//Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
+
+. Der Use Case beginnt, wenn der Antragsverwalter die aktuelle Sitzung auswählt. Dabei wird ihm die Markdown-Tagesordnung angezeigt.
+. Der Antragsverwalter sieht alle Beschlüsse aus der Sitzung.
+. Der Antragsverwalter klickt auf "Tagesordnung exportieren".
+. Das System übergibt die Tagesordnung als PDF.
+. Er klickt auf "Tagesordnung abschließen".
+. Sitzung wird als Abgeschlossen makiert.
+. Der Use Case ist beendet.
+
+////
+
+=> Platzhalter für Beleg entfernt
+
+=== Wesentliche Szenarios
+//Szenarios sind konkrete Instanzen eines Use Case, d.h. mit einem konkreten Akteur und einem konkreten Durchlauf der o.g. Flows. Szenarios können als Vorstufe für die Entwicklung von Flows und/oder zu deren Validierung verwendet werden.
+
+==== <Szenario 1>
+. <Szenario 1, Schritt 1>
+. …
+. <Szenario 1, Schritt n>
+
+=== Nachbedingungen
+//Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
+
+==== <Nachbedingung 1>
+
+- Abspeicherung der generierten PDF in einem Archiv
+
+=== Besondere Anforderungen
+//Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
+
+==== <Besondere Anforderung 1>
+
+////

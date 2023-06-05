@@ -1,0 +1,14 @@
+= Domain Model: {project-name}
+Simon Voges <simon.voges@htw-dresden.de>; 
+{localdatetime}
+include::../../docs_SE_I/_includes/default-attributes.inc.adoc[]
+// Platzhalter für weitere Dokumenten-Attribute
+
+
+== Domain Diagramm
+
+Wir haben uns auf folgenden Entwurf für unser Domain-Model festgelegt:
+
+image::domainmodel_2.png[Entwurf Domain Diagramm]
+
+Dieser Entwurf wird noch stetig im Laufe des Projektes weiterentwickelt, spiegelt aber im Moment bereits den Geschäftsprozess unserer Anwendung wieder.

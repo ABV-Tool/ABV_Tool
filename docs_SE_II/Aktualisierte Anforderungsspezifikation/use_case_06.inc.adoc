@@ -1,0 +1,87 @@
+//Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
+
+== UC06 => Beschlüsse einpflegen
+
+=== Kurzbeschreibung
+//<Kurze Beschreibung des Use Case>
+Der Use Case beschreibt wie der Antragsverwalter die Anträge beschließt.
+
+=== Kurzbeschreibung der Akteure
+
+==== Antragsverwalter
+Ist zuständig für die jeweilige Plenumssitzung.
+
+=== Vorbedingungen
+//Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
+
+- Der Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+
+- Der Antragsverwalter muss angemeldet sein.
+
+- Die Sitzung muss angelegt sein.
+
+- Die Tagesordnung muss bereits generiert worden sein.
+
+- Es muss mindestens ein Antrag gestellt worden sein.
+
+- Die Sitzung muss stattgefunden haben.
+
+=== Standardablauf (Basic Flow)
+//Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
+
+. Der Use Case beginnt, wenn der Antragsverwalter die aktuelle Sitzung ausgewählt hat.
+. Das System zeigt die Markdown-Tagesordnung samt aller gestellten Anträge an.
+. Der Antragsverwalter markiert die gestellten Anträge als angenommen oder abgelehnt.
+. Das System vermerkt die angenommenen und abgelehnten Anträge.
+. Er klickt auf "speichern".
+. Der Use Case ist beendet.
+
+=== Alternative Abläufe
+//Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
+
+==== Antrag vertagen
+Wenn der Antragsverwalter in Schritt 3 des Standardablaufes statt auf angenommen/abgelehnt auf vertagen klickt, dann wird der Antrag in die nächste Sitzung verschoben.
+
+Dabei fügt das System den Antrag zur nächsten Sitzung hinzu. 
+
+Der Use Case wird in Schritt 4 fortgesetzt.
+
+=== Wireframe
+
+image::wireframe_beschluss.png[title="Entwurf Beschluss einpflegen"]
+
+_Erklärung:_
+
+Über die Sitzungsverwaltung können alle Anträge betrachtet werden und eine Tagesordnung für die kommende Plenumssitzung erstellt werden. Anträge die in der Sitzung besprochen werden sollen können ausgewählt werden. Tagesordnungen für kommende Sitzungen können schon im voraus entschieden werden.
+
+////
+
+=> Platzhalter für Beleg entfernt
+
+=== Unterabläufe (subflows)
+//Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
+
+==== <Unterablauf 1>
+. <Unterablauf 1, Schritt 1>
+. …
+. <Unterablauf 1, Schritt n>
+
+=== Wesentliche Szenarios
+//Szenarios sind konkrete Instanzen eines Use Case, d.h. mit einem konkreten Akteur und einem konkreten Durchlauf der o.g. Flows. Szenarios können als Vorstufe für die Entwicklung von Flows und/oder zu deren Validierung verwendet werden.
+
+==== <Szenario 1>
+. <Szenario 1, Schritt 1>
+. …
+. <Szenario 1, Schritt n>
+
+=== Nachbedingungen
+//Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
+
+==== <Nachbedingung 1>
+
+=== Besondere Anforderungen
+//Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
+
+==== <Besondere Anforderung 1>
+
+////

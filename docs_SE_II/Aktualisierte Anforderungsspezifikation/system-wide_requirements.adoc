@@ -1,0 +1,81 @@
+= System-Wide Requirements
+Alexander Minukow <alexander.minukow@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>
+{localdatetime}
+include::../../docs_SE_I/_includes/default-attributes.inc.adoc[]
+// Platzhalter für weitere Dokumenten-Attribute
+
+
+== Einführung
+In diesem Dokument werden die systemweiten Anforderungen für das Projekt <Thema> spezifiziert. Die Gliederung erfolgt nach der FURPS+ Anforderungsklassifikation:
+
+* Systemweite funktionale Anforderungen (F),
+* Qualitätsanforderungen für Benutzbarkeit, Zuverlässigkeit, Effizienz und Wartbarkeit (URPS) sowie
+* zusätzliche Anforderungen (+) für technische, rechtliche, organisatorische Randbedingungen
+
+NOTE: Die funktionalen Anforderungen, die sich aus der Interaktion von Nutzern mit dem System ergeben, sind als Use Cases in einem separaten <<#use-cases, Dokument>> festgehalten.
+
+
+== Systemweite funktionale Anforderungen
+//Angabe von system-weiten funktionalen Anforderungen, die nicht als Use Cases ausgedrückt werden können. Beispiele sind Drucken, Berichte, Authentifizierung, Änderungsverfolgung (Auditing), zeitgesteuerte Aktivitäten (Scheduling), Sicherheit / Maßnahmen zum Datenschutz
+=== SWFA-1: Das System muss alle Anträge und Tagesordnungen persistent speichern.
+Zur Überprüfung wird die Datenbank mit Testdaten gefüllt. Anschließend wird das System ausgeschaltet. Die Daten müssen nach dem Neustart des Systems vollständig vorhanden sein.
+
+=== SWFA-2: Das System muss sicherstellen, dass nur berechtigte Benutzer die Tagesordnung bearbeiten können.
+Zur Überprüfung werden Konten ohne die nötigen Berechtigungen angelegt und es wird versucht, die Daten in der Tagesordnung zu ändern.
+
+
+== Qualitätsanforderungen für das Gesamtsystem
+//Qualitätsanforderungen repräsentieren das "URPS" im FURPS+ zu Klassifikation von Anforderungen
+
+=== Benutzbarkeit (Usability)
+//Beschreiben Sie Anforderungen für Eigenschaften wie einfache Bedienung, einfaches Erlernen, Standards für die Benutzerfreundlichkeit, Lokalisierung (landesspezifische Anpassungen von Sprache, Datumsformaten, Währungen usw.)
+==== NFAU-1: Der Antragsteller sollte maximal 3 Klicks bis zur Antragseingabe benötigen.
+Zur Überprüfung werden die benötigten Klicks gezählt.
+
+==== NFAU-2: Der Antragsteller erhält aussagekräftige Fehlermeldungen bei ungültigen/ausgelassenen Eingaben.
+Zur Überprüfung werden ungültige Eingaben (z.B. falsch formatierte E-Mail Adresse) getätigt und Eingaben bewusst leer gelassen.
+
+==== NFAU-3: Der Antragsteller erhält für seinen ausgewählen Antrag Hilfetexte, die Ihm beim korrekten Ausfüllen des Antrag helfen sollen.
+Es wird geprüft, ob die Hilfetexte des ausgewählten Antrags korrekt angezeigt werden.
+
+=== Zuverlässigkeit (Reliability)
+// Zuverlässigkeit beinhaltet die Fähigkeit des Produkts und/oder des Systems unter Stress und ungünstigen Bedingungen am laufen zu bleiben. Spezifizieren Sie Anforderungen für zuverlässige Akzeptanzstufen, und wie diese gemessen und evaluiert werden. Vorgeschlagene Themen sind Verfügbarkeit, Häufigkeit und Schwere von Fehlern und Wiederherstellbarkeit.
+==== NFAR-1: Bei einem Absturz des Systems darf kein Datenverlust enstehen.
+Zur Überprüfung wird das System unerwartet heruntergefahren und anschließend werden die Daten abgeglichen.
+
+=== Effizienz (Performance)
+// Die Performanz Charakteristiken des Systems sollten in diesem Bereich ausgeführt werden. Beispiele sind Antwortzeit, Durchsatz, Kapazität und Zeiten zum Starten oder Beenden.
+==== NFAP-1: Das Sofwaresystem soll einen Wechsel von Seite zu Seite in maximal 4 Sekunden ermöglichen.
+Zur Überprüfung wird die Ladezeit der jeweiligen Seite innerhalb der gesamten Anwendung gemessen (Client- und Serverzeit).
+
+=== Wartbarkeit (Supportability)
+// Dieser Bereich beschreibt sämtliche Anforderungen welche die Supportfähigkeit oder Wartbarkeit des zu entwickelnden Systems verbessern, einschließlich Anpassungsfähigkeit und Erweiterbarkeit, Kompatibilität, Skalierbarkeit und Anforderungen bezüglich der System Installation sowie Maß an Support und Wartbarkeit.
+==== NFAS-1: Das System soll es ermöglichen, auch ohne GUI neue Datensätze (bspw. Referate) einzufügen.
+Zur Überprüfung wird ein neues Referat in die Datenbank eingefügt und geschaut, ob dies korrekt in der Anwendung angezeigt wird.
+
+==== NFAS-2: Das System soll es ermöglichen, in der Zukunft weitere gundlegende Funktionen einzubauen.
+Zur Überprüfung werden neue Module eingebaut, welche bei dem Aufruf einer Testseite geladen werden. Dies kann bspw. ein Widget oder ähnliches sein.
+
+== Zusätzliche Anforderungen
+
+=== Einschränkungen
+//Angaben ergänzen, nicht relevante Unterpunkte streichen oder auskommentieren
+//* zu nutzende Komponenten / Bibliotheken / Frameworks
+//* Vorgaben für die Programmiersprache
+- Java in jeglicher Form darf nicht verwendet werden.
+//* zu unterstützende Plattformen / Betriebssysteme
+- Das System muss auf einer Linux/Unix-Distribution funktional sein.
+//* Physische Begrenzungen für Hardware, auf der das System betrieben werden soll
+
+=== Organisatorische Randbedingungen
+//Angaben ergänzen, nicht relevante Unterpunkte streichen oder auskommentieren
+//* Anforderungen an Betrieb, Management und Wartung der Anwendung
+//* zu beachtende Standards, Normen und Regeln
+- Das System muss unbefugte Einsichtnahme sowie die Bearbeitung von Daten verhindern.
+
+=== Rechtliche Anforderungen
+//Angaben ergänzen, nicht relevante Unterpunkte streichen oder auskommentieren
+//* Lizensierung der Anwendung
+//* Datenschutz
+- *BR1:* Das System muss den Datenschutzanforderungen der HTW Dresden und der DSGVO entsprechen.
+- *BR2:* Das System muss gültige Anträge nach der Hochschulordnung generieren.

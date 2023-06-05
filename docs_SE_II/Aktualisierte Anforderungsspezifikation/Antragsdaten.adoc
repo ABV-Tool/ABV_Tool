@@ -1,0 +1,193 @@
+//Mirjam Müller <mirjam.mueller@htw-dresden.de>; Vorname2 Nachname2 <email2@domain.org>
+{localdatetime}
+include::../../docs_SE_I/_includes/default-attributes.inc.adoc[]
+// Platzhalter für weitere Dokumenten-Attribute
+
+
+
+Es erfolgt zu besseren Übersicht eine Auflistung aller Antragsarten mit den jeweiligen Antragsdaten.
+
+=== Antragsdaten - Stammdaten
+
+Diese Antragsdaten sind in jedem Antrag vorhanden und deshalb einmal hier zusammengefasst aufgeführt. 
+
+[%header]
+|===
+| Bezeichnung | Definition | Format | Gültigkeitsregeln | Aliase
+
+| Antragstitel 
+| Thematische Überschrift des Antrages
+| String
+| Pflichtfeld
+| Antragsname
+
+| zuständige Stelle 
+| Abteilung die für einen bestimmten Bereich verantwortlich ist
+| Auswahlliste
+| nur Auswahl aus Liste zulässig
+| 
+
+| Name 
+| Name und Vorname des Antragstellers bzw. Bezeichnungs des Referates
+| String
+| Pflichtfeld
+| Antragsteller
+
+| E-Mail Adresse 
+| Kontaktmöglichkeit des Anstragstellers
+| String, Pflichfeld
+| Emailadresse muss @-Zeichen und . Punkt enthalten; Pflichtfeld
+| 
+
+| Antragstext
+| Text mit dem Anliegen an den StuRa: "Der StuRa möge beschließen ..."
+| String
+| Pflichtfeld
+| Antragsbeschreibung
+
+| Anlagen
+| zusätzliche Informationen zu einem Antrag z. B. ein Finanzplan
+| keine Einschränkungen auf bestimmte Dateiformate
+| max. Dateigröße von 1 MB
+| 
+|===
+
+=== Antrag ohne finanzielle Mittel
+
+Alle Anträge, bei denen der StuRa keine Gelder bereitstellen soll und die nicht zu Personalentscheidungen gehören. 
+
+[%header]
+|===
+| Bezeichnung  | Format | Gültigkeitsregeln 
+
+| Begründung zum Antrag
+| String
+| Plichtfeld
+
+| Vorschlag zum weiteren Verfahren
+| String
+| Pflichtfeld
+
+|===
+
+=== Antrag mit finanziellen Mitteln
+
+Alle Anträge bei denen der StuRa Geld bereitstellen soll. 
+
+[%header]
+|===
+| Bezeichnung  | Format | Gültigkeitsregeln 
+
+| Begründung zum Antrag
+| String
+| Pflichtfeld
+
+| Kostenposition im Haushaltsplan
+| String
+| Pflichtfeld
+
+| Vorschlag zum weiteren Verfahren
+| String
+| Pflichtfeld
+|===
+
+=== Antrag zu Veranstaltung
+
+Antrag auf Ausrichtung einer Veranstaltung wo insbesondere verantwortliche Personen und der Zeitraum für die Nachbereitung benannt werden. 
+
+[%header]
+|===
+| Bezeichnung  | Format | Gültigkeitsregeln 
+
+| Begründung zum Antrag
+| String
+| Pflichfeld
+
+| Kostenposition im Haushaltsplan
+| String
+| Pflichtfeld
+
+| Verantwortlichkeit für Nachbereitung
+| String
+| Pflichtfeld
+
+| Zeitraum für Nachbereitung
+| String
+| Pflichtfeld
+
+| Vorschlag zum weiteren Verfahren
+| String
+| Pflichtfeld
+
+|===
+
+=== Antrag zu beratendes Mitglied
+
+Jede Person, die im StuRa mitwirken möchte, kann Beratendes Mitglied werden. 
+
+//Strukturierung
+[%header, cols="20,50,~,~"]
+|===
+| Bezeichnung | Details |  Format | Gültigkeitsregeln
+
+| *Vorstellung der Person* 
+
+a| 
+- Mitgliedschaften in weiteren Organisationen +
+- Umfang der Funktionsausübung +
+- Bereitschaft zu weiterem Engagement +
+- Unterstützungs-bereitschaft 
+| String
+| Pflichtfelder
+|===
+
+=== Antrag zu Stelle/Amt
+
+Wer auf ein konkretes Amt im StuRa kandidieren möchte, kann hier einen Antrag stellen. Eine vorherige Wahl zum Beratenden Mitglied ist nicht notwendig. 
+
+[%header, cols="20,50,~,~"]
+|===
+| Bezeichnung | Details | Format | Gültigkeitsregeln
+
+| *StuRa Mitglied* (Ja/Nein)
+| Ist der Antragssteller bereits Mitglied im StuRa?
+| boolean
+| Pflichtfeld
+
+|*Vorstellung der Person*
+a|
+- Mitgliedschaften in weiteren Organisationen
+- Umfang der Funktionsausübung
+- Bereitschaft zu weiterem Engagement
+- Unterstützungs-bereitschaft 
+| String
+| Pflichtfelder
+
+
+| *Allgemeine Fragen zum speziellen Amt*
+a| 
+- Wie bewertest du die Ausschreibung für das Amt? 
+- Wie bewertest du die Arbeit deiner VorgängerInnen? 
+- Welche Themen würdest du in der Amtszeit in den Fordergrund stellen? 
+| String
+| Pflichtfelder
+
+|===
+
+=== Antrag zu Herstellung des Benehmens
+
+Dieses Antragsformular richtet sich vor allem an die Dekan:innen und Studiendekan:innen der HTW. Soll nach §91 SächsHSFG das Benehmen für eine odere mehrere Personen hergestellt werden, die Studiendekan:in oder Mitglied einer Studienkommission werden sollen, kann dies hier beantragt werden.
+
+[%header]
+|===
+| Bezeichnung  | Format | Gültigkeitsregeln 
+
+| Begründung zum Antrag
+| String
+| Pflichtfeld
+
+| Vorschlag zum weiteren Verfahren
+| String
+| Pflichtfeld
+|===
+

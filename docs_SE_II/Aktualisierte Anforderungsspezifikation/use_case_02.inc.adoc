@@ -1,0 +1,80 @@
+//Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
+
+:data-uri:
+
+== UC02 => Tagesordnung erstellen
+
+=== Kurzbeschreibung
+//<Kurze Beschreibung des Use Case>
+Der Antragsverwalter kann hier über das Sitzungsmenü alle Anträge nach Kategorien für die kommende Sitzung einsehen und in der gewünschten Reihenfolge in die Tagesordnung einsortieren. 
+
+=== Kurzbeschreibung der Akteure
+
+==== Antragsverwalter
+Leitet die Sitzung und ist verantwortlich für die Tagesordnung.
+
+=== Vorbedingungen
+//Vorbedingungen müssen erfüllt, damit der Use Case beginnen kann, z.B. Benutzer ist angemeldet, Warenkorb ist nicht leer...
+
+- Der Antragsverwalter muss mit dem internen HTW VPN (eduroam) verbunden sein bzw. sich im HTW Netz befinden.
+
+- Der Antragsverwalter muss angemeldet sein.
+
+- Die Sitzung muss angelegt sein.
+
+- Anträge müssen eingegangen sein. 
+
+=== Standardablauf (Basic Flow)
+//Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
+
+. Der Use Case beginnt, wenn der Antragsverwalter in der Sitzungsverwaltung auf "Tagesordnung generieren" klickt.
+
+. Es wird ein ein Markdown-Dokument zum Ausfüllen erstellt und es erfolgt eine Auflistung aller bereits eingegangenen Anträge nach Kategorie und Datum.
+//siehe Wireframe - Tagesordnung 
+. Der Antragsverwalter trägt manuell via markup unter Top 0 - Formalia sowie unter ITOP weitere Tagesordnungspunkte ein. (unabhängig vom ABV-Tool)
+. Es wird eine Tagesordnung generiert, die als Datei exportiert werden kann. 
+. Der Use Case ist abgeschlossen.
+
+//nochmal genauer zum Abschluss des UC was schreiben
+
+=== Alternative Abläufe
+//Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
+
+==== Alternativer Ablauf Tagesordnung bereits vorhanden
+Wenn die Tagesordnung bereits generiert wurde, dann kann der Antragsverwalter auf Tagesordnung bearbeiten klicken.
+
+Der Use Case wird in Schritt 3 fortgesetzt.
+
+//=== Unterabläufe (Subflows)
+//Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
+
+
+=== Wesentliche Szenarios
+//Szenarios sind konkrete Instanzen eines Use Case, d.h. mit einem konkreten Akteur und einem konkreten Durchlauf der o.g. Flows. Szenarios können als Vorstufe für die Entwicklung von Flows und/oder zu deren Validierung verwendet werden.
+
+==== Erfolgreiche generierung der Tagesordnung
+- *SC1:* Frau Y möchte die nächste Plenumssitzung vorbereiten. Sie wählt die gewünschte Sitzung aus und klickt auf Tagesordnung generieren. Es wird erfolgreich eine Tagesordnung mit mehreren Finanzanträgen sowie sonstigen Anträgen generiert.
+
+=== Wireframe
+
+image::wireframe-sitzungsverwaltung.png[title="Entwurf Sitzungsverwaltung"]
+
+_Erklärung:_
+
+Über die Sitzungsverwaltung können alle Anträge betrachtet werden und eine Tagesordnung für die kommende Plenumssitzung erstellt werden. Anträge die in der Sitzung besprochen werden sollen können ausgewählt werden. Tagesordnungen für kommende Sitzungen können schon im voraus entschieden werden.
+
+////
+
+=> Platzhalter für Beleg entfernt
+
+=== Nachbedingungen
+//Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
+
+==== <Nachbedingung 1>
+
+=== Besondere Anforderungen
+//Besondere Anforderungen können sich auf nicht-funktionale Anforderungen wie z.B. einzuhaltende Standards, Qualitätsanforderungen oder Anforderungen an die Benutzeroberfläche beziehen.
+
+==== <Besondere Anforderung 1>
+
+////
