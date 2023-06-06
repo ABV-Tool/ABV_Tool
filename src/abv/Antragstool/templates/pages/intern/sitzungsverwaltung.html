@@ -18,7 +18,7 @@
             </a>
         </div>
 
-        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-1">
+        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-2">
             <caption class="text-left">
                 <h2><b>Alle aktuellen Sitzungen</b></h2>
             </caption>
@@ -40,17 +40,17 @@
                     <td>{{ sitzung.refID.refName }}</td>
                     <td>{{ sitzung.anzAntraege }}</td>
                     <td>
-                        <a href="{% url 'sitzung-anzeigen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer">
+                        <a href="{% url 'sitzung-anzeigen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
                             <i class="fa-solid fa-eye"></i> Anzeigen
                         </a>
                     </td>
                     <td>
-                        <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer">
+                        <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
                             <i class="fa-regular fa-calendar-check"></i> Vertagen
                         </a>
                     </td>
                     <td>
-                        <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer">
+                        <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
                             <i class="fa-solid fa-trash-can"></i> Löschen
                         </a>
                     </td>
