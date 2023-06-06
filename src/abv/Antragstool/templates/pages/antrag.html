@@ -98,8 +98,8 @@
                 </label>
                 <select name="{{ form.referat.name }}" class="w-full" {% if form.referat.field.required %}required{% endif %}>
                     {% for choice in form.referat.field.choices %}
-                        <option class="p-2" value="{{ choice.0 }}"
-                            {% if antrag.sitzID.refID.refID == choice.0 %}selected{% endif %}
+                        <option class="p-2" value="{{ choice.0 }}" 
+                            {% if antrag.sitzID.refID.refID == choice.0 %} selected {% endif %}
                         >{{ choice.1 }}</option>
                     {% endfor %}
                 </select>

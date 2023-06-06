@@ -232,24 +232,28 @@ def AntragBeschliessenPage(request, antragID):
         form = BeschlussForm(request.POST)
         if form.is_valid():
             
-            beschluss = Beschluss()
-            beschluss.sitzID = sitzung
-                        
-            beschluss.beschlussFaehigkeit = form.cleaned_data['beschluss_faehigkeit']
-            beschluss.stimmenJa = form.cleaned_data['stimmen_ja']
-            beschluss.stimmenNein = form.cleaned_data['stimmen_nein']
-            beschluss.stimmenEnthaltung = form.cleaned_data['stimmen_enthaltung']
-            beschluss.beschlussErgebnis = form.cleaned_data['beschluss_ergebnis']
-            beschluss.beschlussText = form.cleaned_data['beschluss_text']
-            beschluss.beschlussAusfertigung = form.cleaned_data['beschluss_ausfertigung']
-            beschluss.save()
+            beschluss, status = Beschluss.objects.update_or_create(
+                sitzID = sitzung,
+                
+                defaults={
+                    "beschlussFaehigkeit" : form.cleaned_data['beschluss_faehigkeit'],
+                
+                    "stimmenJa" : form.cleaned_data['stimmen_ja'],
+                    "stimmenNein" : form.cleaned_data['stimmen_nein'],
+                    "stimmenEnthaltung" : form.cleaned_data['stimmen_enthaltung'],
+                    "beschlussErgebnis" : form.cleaned_data['beschluss_ergebnis'],
+                    
+                    "beschlussText" : form.cleaned_data['beschluss_text'],
+                    "beschlussAusfertigung" : form.cleaned_data['beschluss_ausfertigung'],
+                }
+                
+            )
             
-            # TODO: Prüfung, ob ein Beschluss für diesen Antrag bereits existiert
             antrag.beschlussID = beschluss
             antrag.save()
             
             feedback.type = "SUCCESS"
-            feedback.text = 'Beschluss erfolgreich eingepflegt!'
+            feedback.text = 'Beschluss erfolgreich eingepflegt! Der Antragsteller wird per E-Mail über das Ergebnis informiert.'
             feedback.back_url = '/intern/sitzung/' + str(sitzung.sitzID) + '/anzeigen'
         else:
             feedback.type = "ERROR"
