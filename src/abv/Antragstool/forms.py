@@ -88,3 +88,12 @@ class BeschlussForm(forms.Form):
     beschluss_ergebnis = forms.ChoiceField(label="Beschluss-Ergebnis:", choices=Beschluss.BeschlussErgebnis.choices, required=True, widget=forms.Select())
     beschluss_text = forms.CharField(label="Beschluss-Text:", max_length=2000, required=True, widget=forms.Textarea())
     beschluss_ausfertigung = forms.CharField(label="Ausfertigung:", max_length=200, required=True, widget=forms.TextInput())
+    
+    
+# Vertagung Sitzung/Antrag
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class VertagenForm(forms.Form):
+    datum_aktuell = forms.DateField(label="Aktuelles Datum:", required=True, widget=forms.DateInput())
+    datum_neu = forms.DateField(label="Neues Datum:", required=True, widget=forms.DateInput())
