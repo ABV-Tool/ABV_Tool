@@ -33,6 +33,7 @@
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
                     <th scope="col">Beschluss</th>
                 </tr>
             </thead>
@@ -64,6 +65,11 @@
                     <td>
                         <a href="{% url 'antrag-loeschen' antragID=antrag.antragID %}" class="hover:cursor-pointer">
                             <i class="fa-solid fa-trash-can"></i> Löschen
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'sitzung-anzeigen' sitzID=antrag.sitzID.sitzID %}" class="hover:cursor-pointer">
+                            <i class="fa-solid fa-diamond-turn-right"></i> Sitzung
                         </a>
                     </td>
                     <td>

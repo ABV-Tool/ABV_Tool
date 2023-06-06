@@ -40,7 +40,7 @@
                 {% for antrag in antraege %}
                 <tr>
                     <td>{{ antrag.typID.typName }}</td>
-                    <td>{{ antrag.antragTitel }}</td>
+                    <td>{{ antrag.antragTitel | truncatechars:50 }}</td>
                     <td>{{ antrag.astellerID.astellerVorname }} {{ antrag.astellerID.astellerName }}</td>
                     <td>
                         {% if antrag.istEilantrag %}
