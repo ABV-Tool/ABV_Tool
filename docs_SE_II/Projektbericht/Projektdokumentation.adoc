@@ -8,11 +8,11 @@ include::../../docs_SE_I/_includes/default-attributes.inc.adoc[]
 
 === Aufgabenstellung und Auftraggeber
 
-Im Rahmen der Module Software Engineering (SE) I und II war unsere Aufgabe als Team I5 ein Antrags- und Beschlussverwaltungstool für den StuRa der HTW Dresden zu entwickeln. Der StuRa ist das zentrale Organ der Studierenden der HTW Dresden und vertritt diese gegenüber der Hochschule. Im Rahmen seiner Tätigkeit werden beim StuRa verschiedene Anträge gestellt und im Plenum beraten und beschlossen. Für diesen Vorgang war es unsere Aufgabe ein geeignetes Tool zu entwickeln, da dieser Prozess bisher händisch und damit sehr zeitaufwändig ablief. Mehr zur Problemstellung in der Anforderungsspezifikation.
+Im Rahmen der Module Software Engineering (SE) I und II war unsere Aufgabe als Team I5 ein Antrags- und Beschlussverwaltungstool für den StuRa der HTW Dresden zu entwickeln. Der StuRa ist das zentrale Organ der Studierenden der HTW Dresden und vertritt diese gegenüber der Hochschule. Im Rahmen seiner Tätigkeit werden beim StuRa verschiedene Anträge gestellt und durch Gremien beraten und beschlossen. Für diesen Vorgang war es unsere Aufgabe ein geeignetes Tool zu entwickeln, da dieser Prozess bisher manuell und damit sehr zeitaufwändig ablief. Mehr zur Problemstellung in der Anforderungsspezifikation.
 
 === Ausgangssituation in SE II
 
-Mit Abgabe des Beleges am Ende von SE I endete die Elaboration Phase für unser Projekt. Die Anforderungen in Form mehrere Use Cases waren fertig ausgearbeitet und mit dem Auftraggeber abgestimmt. Der Entwurf für die Architektur des Projektes stand im Groben und bedurfte noch kleinerer Abstimmungen. Auch wurde ein erster Prototyp wurde implementiert und erste Test Cases beschrieben. Zu Beginn des SE II verkleinerte sich das Team, da unser Teamleiter als Wirtschaftsingenieurstudent SE II nicht belegte. Damit wurden Anpassungen in der Teamstruktur notwendig. Mehr dazu unter dem Punkt <<Rollenverteilung>>. Mit Beginn von SE II konnten wir also mit der Umsetzung der Use Cases beginnen. Nachzuarbeiten war lediglich das Projektmanagement. 
+Mit Abgabe des Beleges am Ende von SE I endete die Elaboration Phase für unser Projekt. Die Anforderungen in Form mehrere Use Cases waren fertig ausgearbeitet und mit dem Auftraggeber abgestimmt. Der Entwurf für die Architektur des Projektes stand im Groben und bedurfte noch kleinerer Abstimmungen. Auch wurde ein erster Prototyp implementiert und erste Test Cases beschrieben. Zu Beginn des SE II verkleinerte sich das Team, da unser Teamleiter als Wirtschaftsingenieurstudent SE II nicht belegte. Damit wurden Anpassungen in der Teamstruktur notwendig. Mehr dazu unter dem Punkt <<Rollenverteilung>>. #Mit Beginn von SE II konnten wir also mit der Umsetzung der Use Cases beginnen. Nachzuarbeiten war lediglich das Projektmanagement.# 
 
 
 === Projektorganisation
@@ -24,33 +24,33 @@ Zu Beginn von SE I hat sich das Team auf folgende Rollenverteilung geeinigt:
 
 
 * Göran Heinemann		*Programmierung*/Tester
-* Alexander Minukow	    *Analyse*/Entwurf
+* Alexander Minukow     *Analyse*/Entwurf
 * Mirjam Müller         *Analyse*/Teamleitung
 * Xuan Huy Nguyen		*Entwurf*/Programmierung
 * Max Patecky			*Tester*/Technical-Writer
-* Marten Petters	    *Teamleitung*
+* Marten Petters 	    *Teamleitung*
 * Simon Voges			*Deployment-Engineer*
 
 Die Rollenverteilung begründetet sich hauptsächlich auf die persönlichen Präferenzen der Teammitglieder in Verbindung mit den verschiedenen Vorkenntnissen und Kompetenzen. 
 
 Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studiengang Wirtschaftsingenieurwesen nur das Modul Software Engineering I Teil des Studiengangs ist. Dadurch ware eine Anpassung der Rollenverteilung notwendig. Im Zuge dessen wurde auch nochmal die generelle Verteilung der Aufgaben geprüft. Neben der Neuorganisation des Projektmanagements wurde auch die Rolle des Deployment-Engineers neu vergeben. #Risikomanagement#
 
-* Göran Heinemann		*Programmierung/Deployment-Engineer*
-* Alexander Minukow	    *Analyse*/Entwurf
-* Mirjam Müller         *Teamleitung*/Analyse
-* Xuan Huy Nguyen		*Entwurf*/Programmierung
-* Max Patecky			*Tester*/Technical-Writer
-* Simon Voges			*stellv. Teamleitung*/#Diagramm-Verantwortlicher#
+* Göran Heinemann (GH)		*Programmierung/Deployment-Engineer*
+* Alexander Minukow	(AM)    *Analyse*/Entwurf
+* Mirjam Müller (MM)         *Teamleitung*/Analyse
+* Xuan Huy Nguyen (HN)		*Entwurf*/Programmierung
+* Max Patecky (MP)			*Tester*/Technical-Writer
+* Simon Voges (SV)			*stellv. Teamleitung*/#Diagramm-Verantwortlicher#
 
 ==== Kommunikation und Dokumentation
 
-Zur Kommunikation nutzten wir einen WhatsApp Gruppenchat sowie einen Discord Server. Über WhatsApp wurden Termine abgestimmt und kurze Infos mitgeteilt. Auf unserem Discord Server wurden ausführlichere Infos ausgetauscht sowie unsere Meetings abgehalten (sofern sie online stattfanden). Auch unser Coach Manuaela Ziesche und unsere Ansprechpartnerin bei StuRa Theresa Minister waren Teil des Discord Servers um sich im Bedarfsfall schnell und unkompliziert treffen zu können. Die Kommunikation mit beiden zwecks Terminabstimmungen etc. lief ebenfalls über WhatsApp, alle anderen Dinge wurde in persönlichen Gesprächen besprochen. Unsere Meetings in SE II fanden im 14-tägigen Rhythmus statt und wir dokumentierten sie in einem Google Doc und nutzten dazu eine feste Vorlage, durch die auch der Ablauf eines Teammeetings unterstützt wurde. Alles Besprochene sowie die Aufgabenverteilung für die kommende Iteration wurden in dort aufgeschrieben. 
+Zur Kommunikation nutzten wir einen WhatsApp Gruppenchat sowie einen Discord Server. Über WhatsApp wurden Termine abgestimmt und kurze Infos mitgeteilt. Auf unserem Discord Server wurden ausführlichere Infos ausgetauscht sowie unsere Meetings abgehalten (sofern sie online stattfanden). Auch unser Coach Manuela Ziesche und unsere Ansprechpartnerin bei StuRa Theresa Minister waren Teil des Discord Servers um sich im Bedarfsfall schnell und unkompliziert treffen zu können. Die Kommunikation mit beiden zwecks Terminabstimmungen etc. lief ebenfalls über WhatsApp, alle anderen Dinge wurde in persönlichen Gesprächen besprochen. Für die Kommunikation mit unserem Coach war die Teamleitung zuständig, die Terminabsprachen mit dem StuRa übernahm eines unserer Teammitglieder aufgrund seiner Tätigkeit im StuRa. Unsere Meetings in SE II fanden im 14-tägigen Rhythmus statt. Zu Beginn des Semesters trafen wir immer Diensttags 15 Uhr in der HTW. Im Laufe des Semesters entschieden wir uns die Meetings wieder online zu machen und verlegten dafür den Termin auf 18 Uhr. Die Meetings dokumentierten wir in einem Google Doc und nutzten dazu eine feste Vorlage, durch die auch der Ablauf eines Teammeetings unterstützt wurde. Alles Besprochene sowie die Aufgabenverteilung für die kommende Iteration wurden in dort aufgeschrieben. 
 
 .Beispiel Vorlage Meeting Google Docs 
 image::Beispiel_Meeting_Dokumentation.jpg[]
 
 
-Nach Abschluss des Meetings wurden die Aufgaben unser GitHub repository als Issues übertragen und den verantwortlichen Personen zugewiesen. 
+Nach Abschluss des Meetings wurden die Aufgaben unser GitHub repository als Issues übertragen und den verantwortlichen Personen zugewiesen. Auch Meetings mit dem StuRa oder unserem Coach wurden hier dokumentiert. So hatten wir ein zentrales Dokument in dem wir sehr gut den gesamten Projektverlauf nachvollziehen konnten. Das war auch sehr hilfreich um z. B. Absprachen mit dem StuRa später noch einmal nachzuvollziehen und in die Umsetzung des Projektes mit einfließen zu lassen. 
 
 
 === Techniken/Praktiken
@@ -110,20 +110,23 @@ Dem gesamtem Projekt liegt das ein Use Case Model zugrunde welches in Zusammenar
 
 === SE I - Inception und Elaboration Phase
 
-Ziel der Inception Phase ist es sich als Team zu finden, Rollen und Verantwortlichkeiten zu verteilen. Tools sollen ausgewählt und eingerichtet werden. Es findet ein erstes Treffen mit dem Auftraggeber statt und es wird eine #erste grobe Analyse# erstellt.
+.Inception Phase (12.12.2022 - 21.12.2022)
 
-In der Elaboration Phase wird die Analyse konkretisiert und die Use Cases detailliert beschrieben. Es wird mit der Beschreibung der Architektur begonnen sowie erste Testfälle beschrieben. 
+Ziel der Inception Phase und der ersten Iteration war es sich als Team zu finden, Rollen und Verantwortlichkeiten zu verteilen und sich mit der Aufgabenstellung vertraut zu machen. Auch unseren Coach lernten wir kennen. Wir haben den Einsatz verschiedener Tools diskutiert und schließlich die passenden ausgewählt und eingerichtet. Auch fand ein erstes Treffen mit unseren Ansprechpartnern beim StuRa statt um sich gegenseitig kennenzulernen und über die Wünsche und Anforderungen zu sprechen. Da wir nicht die erste Gruppe waren, die an diesem Projekt arbeitete war es für uns natürlich auch interessant noch ein paar mehr Hintergrundinformationen zu bekommen. Die erste zentrale Frage für uns war, was und wie viel wir von dem Vorgängerprojekt übernommen wollen oder ob wir komplett neu anfangen wollen. Dies wurde uns vom StuRa freigestellt. Wir entschieden schließlich das Front End des Vorgängerprojektes zu übernehmen und das Back End neu zu entwickeln. Dazu besprachen wir verschiedene Möglichkeiten der Umsetzung und der Machbarkeit dieser. Nach dieser Entscheidung und dem Input durch den StuRa erarbeiteten wir die Vision und erste Ideen für die Use Cases. Die Inception Phase endete mit dem Erreichen des Meilenstein Lifecycle Objective.
+ 
+.Elaboration Phase (04.01.2023 - 27.01.2023)
 
-*Iteration 1 (03.04. - 16.04.2023)*
+In der Elaboration Phase hatten wir zwei Iterationen in der unsere Analyse konkretisiert und die Use Cases detailliert ausgearbeitet und beschrieben wurden. Wir
+Auch wurden 
+Es wird mit der Beschreibung der Architektur begonnen sowie erste Testfälle beschrieben. 
 
-Zu 
+Gleichzeitig legten wir uns auch auf 
+Dazu arbeiteten sich die Teammitglieder, die nicht primär mit der Analyse beschäftigt waren und auch Verantwortlich für den eher technischen Aspekt waren in das Framework Django ein und erarbeiteten ein erstes Datenbankschema.
 
-* Kennenlernen des Teams
-* Rollenverteilung 
-* GitHub einrichten
-* Kundenwünsche kennenlernen und verstehen
-* Vision erarbeiten
-* *Meilenstein: Inception Phase abgeschlossen*
+In der letzten Vorlesungswoche und auch der letzten Woche der Elaboration Phase fand eine Präsentation der Prototypen statt. Bevor mit der Implementierung begonnen werden konnte, musste sich jedoch in das Vorgängerprojekt eingearbeitet werden, da wir das Front End von diesen übernehmen wollten. 
+Am selben Tag präsentierten wir den Prototypen sowie unseren Stand zur Analyse auch dem StuRa um unsere formulierten Anforderungen nochmals abzugleichen und uns Feedback einzuholen.
+
+Diese Phase endete mit dem Erreichen des Meilenstein Lifecycle Architecture und der Belegabgabe am Ende von SE I.
 
 *Iteration 2 (03.04. - 16.04.2023)*
 
@@ -146,7 +149,9 @@ Präsentation des Prototyps beim StuRa
 
 === Start von SE II und Construction Phase
 
-Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unserem Coach an. Insgesamt erhielten wir hier gutes Feedback, hatten aber auch einige Punkte die unserseits nachgearbeitet werden mussten. Mit diesem Feedback starteten wir in unser Projekt.
+Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unserem Coach an. Dazu trafen wir uns in der HTW und gingen den Beleg Schritt für Schritt durch und besprachen die einzelnen Teile. Insgesamt erhielten wir aber gutes Feedback, hatten aber auch einige Punkte die unserseits nachgearbeitet werden mussten. Diese übernahmen wir gleich als erste Aufgaben in der kommenden Iteration. 
+
+.Construction Phase (03.04.2023 - 11.06.2023)
 
 Die Ziele der Construction Phase sind die Verfeinerung und Finalisierung des Entwurfes, die Implementierung der Use Cases und die Durchführung von Tests. 
 
@@ -159,7 +164,7 @@ Die Ziele der Construction Phase sind die Verfeinerung und Finalisierung des Ent
 
 Zunächst mussten wir uns als Team neu organisieren, da ein Mitglied aus dem Team ausschied und wir dadurch die Rollen neu verteilen mussten (siehe <<Rollenverteilung>>). Aus dem Feedbackgespräch zu SE I entstanden die ersten Aufgaben für die 4. Iteration. Besonders das Projektmanagement hatte hier viel Nachholbedarf, sodass zunächst die Iterationspläne und die Projektstruktur erarbeitet wurde. Gleichzeitig startete auch die Implementierung der UC 5 (Antragsverwalter anmelden). Dieser wurde trotz seiner niedrigeren Priorität für die erste Iteration in SE II gewählt, da seine Umsetzung sofort und unkompliziert möglich war. Auch startete unser (neuer) Deployment-Engineer mit der Vorbereitung des Deployments. Da er selbst Administrator im StuRa ist, war in diesem Rahmen wenig (extra) Abstimmung mit dem StuRa nötig, da er der Verantwortliche sowohl bei uns im Team als auch im StuRa selbst ist. Das erleichterte es für uns als Team die Arbeit enorm. #was wurde gemacht Deployment#
 #kein Treffen mit StuRa - warum und Problem erläutern#
-Das Team entschied sich zunächst kein Treffen mit dem StuRa anzusetzen, da wir selbst keine Funktionalität vorzuweisen hatten und es unsererseits keine Fragen gab. Gleichzeitig wussten wir durch unser Teammitglied beim StuRa, dass seitens des StuRa keine veränderten Anforderungen gab. 
+Das Team entschied sich zunächst kein Treffen mit dem StuRa anzusetzen, da wir seit dem letzten Treffen am Ende von SE I keine weitere Funktionalität vorzuweisen hatten und es unsererseits keine Fragen gab. Gleichzeitig wussten wir durch unser Teammitglied beim StuRa, dass seitens des StuRa keine veränderten Anforderungen gab. 
 
 #Iteration 5 und 6 zusammenfassen?#
 
@@ -176,19 +181,21 @@ Beschluss Treffen online durchzuführen
 
 Bibliothek für Markdown auf Python soll Martor sein
 
+Wir stellten fest der das der Code für das Front End sehr schlecht strukturiert war und man sich kaum zurecht fand. Da man damit schlecht arbeiten konnte, beschlossen wir zunächst hier den Code umzustrukturieren und in Komponenten aufzuteilen. 
+
+
 *Iteration 6 (01.05. - 14.05.2023)* 
 
 * UC 1 beenden
 * Fachaustausch Projektmanagement
 * Entwicklerdoku mit Klassendiagramm
 
+In dieser Iteration fand der erste Fachaustausch im Rahmen von SE II statt. Dazu erklärte die Teamleitung wie wir unsere Aufgaben sammeln und verteilen. Auch sprachen wir darüber was bei uns im Team gut läuft und wo es noch Probleme oder Verbesserungsbedarf gibt. Es war sehr interessant 
 
-
-UC 1 wurde beendet
+In dieser Iteration wurde der Use Case 1 - Antrag stellen fertig implementiert. Das ist einer der wichtigsten und zentralsten Use Cases. Man konnte 
 
 *Iteration 7 (15.05. - 28.05.2023)*
 
-Wir beschlossen für das Front End nochmals verschiedene Wireframes zu erstellen. Zum Einen für uns selbst, sodass die Implementierung leichter ist und zum Anderen für das Treffen mit dem StuRa als Ergänzung. Die meisten der Wireframes wurden bis zum Treffen mit dem StuRa schon umgesetzt, sodass nur einzelne noch gezeigt werden mussten. 
 
 * UC 4 (optional)
 * UC 2
@@ -200,10 +207,13 @@ Wir beschlossen für das Front End nochmals verschiedene Wireframes zu erstellen
 * Implementierung Tests
 * Betriebsdoku beginnen
 
-In Vorbe
-Am 23.05.2023 trafen wir uns mit dem StuRa um den aktuellen Stand zu präsentieren und insbesondere das Front End abzustimmen und kleinere Fragen dazu zu klären. Wir hatten eine gute Diskussion über kleine Features und Gestaltungsfragen, aber insgesamt entsprach das System den Erwartungen des StuRa und wir konnten guten Gewissens weiter an unserem Projekt arbeiten.
+Wir beschlossen für das Front End nochmals verschiedene Wireframes zu erstellen. Zum Einen für die Implementierung, sodass diese schneller geht und nicht noch darüber nachgedacht werden muss, wo welches Feld hin muss und wie die Aufteilung sein soll. Auch wollten wir die Wireframes bei unserem anstehenden Treffen mit dem StuRa nutzen, um auch über die Teile des Front Ends zu sprechen die noch nicht entsprechend angepasst wurden. So erstellten zwei Teammitglieder Wireframes aus Sicht der Analyse und besprachen sie anschließend mit dem Entwickler.
 
-Aktualisierung DB-Schema - steht soweit, Beschlüsse fehlen noch, sind aber generell noch nicht implementiert
+Am 23.05.2023 trafen wir uns mit dem StuRa um den aktuellen Stand zu präsentieren und insbesondere das Front End abzustimmen und kleinere Fragen dazu zu klären. So hatten beispielsweise alle Sitzungen einen festen Zyklus hinterlegt in dem die Sitzungen stattfinden sollen. Im Gespräch ergab sich dann, dass viele Sitzungen (besonders der Referate) doch sehr unregelmäßig stattfinden und man beim Anlegen einer Sitzung das Datum manuell festlegt. Wir hatten eine gute Diskussion über kleine Features und Gestaltungsfragen, aber insgesamt entsprach das System den Erwartungen des StuRa und wir konnten guten Gewissens weiter an unserem Projekt arbeiten. In Vorbereitung dessen hatten wir zusätzlich einige Wireframes erstellt bzw. bestehende aktualisiert um noch nicht implementierte Features präsentieren und absprechen zu können. 
+
+In der gleichen Woche traf sich MM mit unserem Coach Manuela Ziesche um den aktuellen Projektstand zu besprechen und Fragen zur Dokumentation zu klären. 
+
+Auch die Aktualisierung unseres Datenbank-Schemas stand für diese Iteration auf dem Plan. Es wurde nochmals auf Änderungen angepasst. - steht soweit, Beschlüsse fehlen noch, sind aber generell noch nicht implementiert
 
 *Iteration 8 (29.05. - 11.06.2023)*
 
@@ -213,7 +223,10 @@ Aktualisierung DB-Schema - steht soweit, Beschlüsse fehlen noch, sind aber gene
 * Anpassung in der Anforderungsspezifikation
 * *Meilenstein Initial operational Capability erreicht*
 
+UC 4 abgeschlossen - Pull Request
 
+Zu Beginn der 8. Iteration fand der Fachaustausch zum Thema Architektur statt. Da bei stellte unser Architekt unser Projekt vor erklärte unser Vorgehen und welche Probleme dabei auftraten. Wir bekamen dabei auch einen guten Einblick in die Entwürfe der anderen Teams und deren individuellen Herausforderungen.
+In der folgenden Woche fand der letzte Fachaustausch zum Thema Testen statt. Zwei unserer Teammitglieder erklärten wie das Testen in unserem Projekt organisiert ist und welche Methoden wir dabei einsetzen. Auch konnten wir noch offene Fragen zum Testen mit Ruben-David Kraus klären, der uns als Ansprechpartner für unsere Projekte zur Verfügung steht. 
 
 === Transition Phase
 
@@ -232,7 +245,13 @@ Aktualisierung DB-Schema - steht soweit, Beschlüsse fehlen noch, sind aber gene
 
 //Projektergebnisse mit Bezug auf die Ziele / Aufgabenstellung: Was haben wir erreicht und was nicht? Was waren die Gründe für Abweichungen?
 
+.Ziel des Projektes
 
+Ziel des Projektes war es ein funktionierendes Tool zur Antrags- und Beschlussverwaltung zu entwickeln. 
+
+*Antrag stellen*
+
+Dieses Ziel wurde erreicht. Es ist möglich über das Tool verschiedene Anträge zu stellen sowie sie automatisch der nächsten Sitzung zuzuordnen. Sie werden in der Datenbank gespeichert und sind in einer Gesamtübersicht aller Anträge sowie über die Sitzung einsehbar. Sie bekommen eine eindeutige, fortlaufende Antragsnummer zugewiesen. Der Antragsteller bekommt nach Absenden des Antrages eine Bestätigung per Mail mit einem Link über den er den Antrag ändern kann.
 
 === Reflexion der Teammitglieder
 //Was habe ich gelernt? Worauf bin ich stolz? Was hat gut funktioniert? Was würde ich beim nächsten Projekt anders machen?
