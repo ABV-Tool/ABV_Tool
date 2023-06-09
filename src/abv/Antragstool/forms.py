@@ -1,4 +1,5 @@
 from django import forms
+from django.utils import timezone
 from Antragstool.models import Referat, Beschluss
 
 
@@ -9,7 +10,7 @@ class LoginForm(forms.Form):
 
 
 class StammdatenForm(forms.Form):
-    referat = forms.ModelChoiceField(label="Referat", queryset=Referat.objects.all().order_by('refID'), required=True, empty_label="Bitte wählen")
+    referat = forms.ModelChoiceField(label="Referat", queryset=Referat.objects.all().order_by('refID'), required=True, empty_label="Bitte wählen...")
     
     vorname = forms.CharField(label="Vorname", max_length=100, required=True, widget=forms.TextInput())
     nachname = forms.CharField(label="Nachname", max_length=100, required=True, widget=forms.TextInput())
@@ -90,10 +91,24 @@ class BeschlussForm(forms.Form):
     beschluss_ausfertigung = forms.CharField(label="Ausfertigung:", max_length=200, required=True, widget=forms.TextInput())
     
     
-# Vertagung Sitzung/Antrag
-class DateInput(forms.DateInput):
-    input_type = 'date'
-
-class VertagenForm(forms.Form):
+# Vertagung Sitzung
+class SitzungVertagenForm(forms.Form):
     datum_aktuell = forms.DateField(label="Aktuelles Datum:", required=True, widget=forms.DateInput())
     datum_neu = forms.DateField(label="Neues Datum:", required=True, widget=forms.DateInput())
+    
+
+# Vertagung eines Antrags
+class AntragVertagenForm(forms.Form):
+    pass
+
+
+# Anlegen einer Sitzung
+class SitzungAnlegenForm(forms.Form):
+    referat = forms.ModelChoiceField(label="Referat", queryset=Referat.objects.all().order_by('refID'), required=True, empty_label="Bitte wählen...")
+    datum_sitzung = forms.DateField(label="Datum der Sitzung", required=True, widget=forms.DateInput())
+    
+    def clean_datum_sitzung(self):
+        datum_sitzung = self.cleaned_data['datum_sitzung']
+        if datum_sitzung <= timezone.now().date():
+            raise forms.ValidationError("Das Datum muss in der Zukunft liegen und im Format TT.MM.JJJJ angegeben sein.")
+        return datum_sitzung

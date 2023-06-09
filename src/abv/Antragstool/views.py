@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.utils.html import strip_tags
 from datetime import date
 from .mails import mailAstellerEingangsbestaetigung
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss
-from .forms import ReferatForm, BeschlussForm, VertagenForm
+from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertagenForm, SitzungAnlegenForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
 
 # Kann bei einer render()-Funktion mitgeliefert werden, um entsprechendes Feedback anzuzeigen
@@ -133,7 +134,32 @@ def SitzungsverwaltungPage(request):
 
 
 def SitzungAnlegenPage(request):
-    return render(request, 'pages/intern/sitzung.html', context={'title': 'Sitzung anlegen'})
+    feedback = FrontendFeedback()
+    referate = Referat.objects.all().order_by('refID')
+    
+    if request.method == 'POST':
+        form = SitzungAnlegenForm(request.POST)
+        if form.is_valid():
+            sitzung = Sitzung()
+            sitzung.sitzDate = form.cleaned_data['datum_sitzung']
+            sitzung.refID = form.cleaned_data['referat']
+            sitzung.save()
+
+            feedback.type = "SUCCESS"
+            feedback.text = 'Die Sitzung wurde wurde für den ' + sitzung.sitzDate.strftime("%d.%m.%Y") + ' angelegt!'
+            feedback.back_url = '/intern/sitzungsverwaltung/'
+        else:
+            feedback.type = "ERROR"
+            feedback.text = 'Die Sitzung konnte nicht angelegt werden. ' + strip_tags(str(form.errors.get('datum_sitzung')))
+    else:
+        form = SitzungAnlegenForm()
+    
+    return render(request, 'pages/intern/sitzung/anlegen.html', context={
+        'title': 'Sitzung anlegen',
+        'referate': referate,
+        'form': form,
+        'feedback': feedback
+    })
 
 
 def SitzungAnzeigenPage(request, sitzID):
@@ -151,7 +177,7 @@ def SitzungVertagenPage(request, sitzID):
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     
     if request.method == 'POST':
-        form = VertagenForm(request.POST)
+        form = SitzungVertagenForm(request.POST)
         if form.is_valid():
             sitzung.sitzDate = form.cleaned_data['datum_neu']
             sitzung.save()
@@ -159,8 +185,11 @@ def SitzungVertagenPage(request, sitzID):
             feedback.type = "SUCCESS"
             feedback.text = 'Die Sitzung wurde auf den ' + sitzung.sitzDate.strftime("%d.%m.%Y") + ' vertagt!'
             feedback.back_url = '/intern/sitzungsverwaltung/'
+        else:
+            feedback.type = "ERROR"
+            feedback.text = 'Die Sitzung konnte nicht vertagt werden. Achte darauf, dass das Datum in der Zukunft liegt & das Datum im Format TT.MM.JJJJ angegeben ist.'
     else:
-        form = VertagenForm()
+        form = SitzungVertagenForm()
     
     return render(request, 'pages/intern/sitzung/vertagen.html', context={
         'title': 'Sitzung vertagen',
