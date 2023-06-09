@@ -40,7 +40,7 @@
                 {% for antrag in antraege %}
                 <tr>
                     <td>{{ antrag.typID.typName }}</td>
-                    <td>{{ antrag.antragTitel }}</td>
+                    <td>{{ antrag.antragTitel | truncatechars:50 }}</td>
                     <td>{{ antrag.astellerID.astellerVorname }} {{ antrag.astellerID.astellerName }}</td>
                     <td>
                         {% if antrag.istEilantrag %}
@@ -52,19 +52,25 @@
                     
             
                     <td>
-                        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer">
+                        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
                             <i class="fa-solid fa-eye"></i> Anzeigen
                         </a>
                     </td>
                     <td>
-                        <a href="{% url 'antrag-vertagen' antragID=antrag.antragID %}" class="hover:cursor-pointer">
+                        <a href="{% url 'antrag-vertagen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
                             <i class="fa-regular fa-calendar-xmark"></i> Vertagen
                         </a>
                     </td>
                     <td>
-                        <a href="{% url 'antrag-beschliessen' antragID=antrag.antragID %}" class="hover:cursor-pointer">
-                            <i class="fa-solid fa-check-double"></i> Beschließen
-                        </a>
+                        {% if antrag.beschlussID %}
+                            <a href="{% url 'antrag-beschliessen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                                <i class="fa-solid fa-pen-to-square"></i> Beschluss bearbeiten
+                            </a>
+                        {% else %}
+                            <a href="{% url 'antrag-beschliessen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                                <i class="fa-solid fa-check-double"></i> Beschließen
+                            </a>
+                        {% endif %}
                     </td>
                     <td>
                         {% include 'components/beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}

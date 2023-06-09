@@ -9,4 +9,66 @@
 
 {% block content %}
     <!-- insert content -->
+    <form method="POST" action="" class="ml-96 mr-96">
+        {% csrf_token %}
+
+        <h1 class="text-center"><b>{{ title }}</b></h1>
+
+        <!-- Anzeigen des Referates bei Bearbeiten/Löschen -->
+        <div class="relative py-4 mt-5 mb-2">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-b border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#dcdcdc] px-4 text-3xl text-black">{{ sitzung }}</span>
+            </div>
+        </div>
+
+
+        <a href="/admin/Antragstool/sitzung/{{ sitzung.sitzID }}/change/" target="_blank">
+            <div class="btn w-full hover:cursor-pointer text-center"><i class="fa-solid fa-diamond-turn-right"></i> Änderung im Bereich Admninistration (Datum-Wähler)</div>
+        </a>
+
+
+        {% include 'components/alert.html' with type="INFO" text="Die Sitzung kann sowohl im Bereich Administration ↑ als auch mit den sich unterhalb befindenden Datums-Feldern ↓ vertagt werden." %}
+        
+        {% include 'components/alert.html' with type="WARNING" text="Wird die nachfolgende Option genutzt, ist streng auf die Formatierung des Datums zu achten! ⇒ 01.01.2000" %}
+       
+        
+        <div class="flex flex-row mb-5 mt-5">
+
+            <div class="w-1/2 mr-3">
+                <label class="block" for="{{ form.datum_aktuell.id_for_label }}"><b>{{ form.datum_aktuell.label }}</b></label>
+                <input class="w-full" type="text" id="{{ form.datum_aktuell.id_for_label }}" name="{{ form.datum_aktuell.name }}" placeholder="2"
+                    {% if form.datum_aktuell.field.required %}required{% endif %} 
+                    {% if form.datum_aktuell.field.max_length %}maxlength="{{ form.datum_aktuell.field.max_length }}"{% endif %}
+                    value="{{ sitzung.sitzDate | date:"d.m.Y" }}"
+                >
+            </div>
+
+            <div class="w-1/2 mr-3">
+                <label class="block" for="{{ form.datum_neu.id_for_label }}"><b>{{ form.datum_neu.label }}</b></label>
+                <input class="w-full" type="text" id="{{ form.datum_neu.id_for_label }}" name="{{ form.datum_neu.name }}" placeholder="2"
+                    {% if form.datum_neu.field.required %}required{% endif %} 
+                    {% if form.datum_neu.field.max_length %}maxlength="{{ form.datum_neu.field.max_length }}"{% endif %}
+                    value="{% now "d.m.Y" %}"
+                >
+            </div>
+        
+        </div>
+
+
+        <button class="btn btn-success w-full hover:cursor-pointer"><i class="fa-regular fa-calendar-check"></i> Sitzung vertagen</button>
+
+
+        <!-- Form-Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if feedback %}
+            <div id="feedback">
+                {% include 'components/alert.html' with type=feedback.type text=feedback.text back_url=feedback.back_url %}
+            </div>
+        {% endif %}
+
+       
+
+    </form>
 {% endblock %}
