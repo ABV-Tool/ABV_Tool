@@ -41,11 +41,13 @@ def ReferatErstellenPage(request):
     if request.method == 'POST':
         form = ReferatForm(request.POST)
         if form.is_valid():
-            refID = Referat.objects.latest('refID').refID + 1
+            referat_id = Referat.objects.latest('refID').refID + 1
+            print(referat_id)
             referat = Referat(
-                refID=refID,
+                refID=referat_id,
                 refName=form.cleaned_data['referat_name'],
-                refZyklus=form.cleaned_data['referat_zyklus']
+                refZyklus=form.cleaned_data['referat_zyklus'],
+                refEmail=form.cleaned_data['referat_email']
             )
             referat.save()
             feedback.type = "SUCCESS"
@@ -53,9 +55,11 @@ def ReferatErstellenPage(request):
             feedback.back_url = '/intern/referatsverwaltung/'
         else:
             feedback.type = "ERROR"
-            feedback.text = 'Fehler beim Erstellen des Referats! Bitte aktualisieren die Seite und versuche es erneut.'
+            feedback.text = 'Fehler beim Erstellen des Referats! Bitte aktualisiere die Seite und versuche es erneut.'
+            print(form.errors)
     else:
         form = ReferatForm()
+        
     return render(request, 'pages/intern/referat.html', context={
         'title': 'Referat erstellen', 
         'aktion':'ERSTELLEN',
@@ -73,6 +77,7 @@ def ReferatBearbeitenPage(request, refID):
         if form.is_valid():
             referat.refName = form.cleaned_data['referat_name']
             referat.refZyklus = form.cleaned_data['referat_zyklus']
+            referat.refEmail = form.cleaned_data['referat_email']
             referat.save()
             feedback.type = "SUCCESS"
             feedback.text = 'Referat ' + referat.refName + ' erfolgreich bearbeitet!'
