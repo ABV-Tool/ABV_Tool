@@ -431,6 +431,8 @@ def renderAntrag(request, title, form, feedback):
 
 # ++++++ Anträge ++++++ #
 
+FEEDBACK_ANTRAG_SUCCESS = 'Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine E-Mail mit der Bestätigung.'
+
 def AntragAllgemein(request):
     feedback = FrontendFeedback()
     feedback.back_url = '/'
@@ -459,9 +461,7 @@ def AntragAllgemein(request):
             antrag.save()
             
             feedback.type='SUCCESS'
-            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
-            
-            mailAstellerEingangsbestaetigung(asteller, antrag)
+            feedback.text=FEEDBACK_ANTRAG_SUCCESS
     else:
         form = AntragAllgemeinForm()
 
@@ -498,9 +498,7 @@ def AntragFinanziell(request):
             antrag.save()
             
             feedback.type='SUCCESS'
-            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
-            
-            mailAstellerEingangsbestaetigung(asteller, antrag)
+            feedback.text=FEEDBACK_ANTRAG_SUCCESS
     else:
         form = AntragFinanziellForm()
     
@@ -539,9 +537,7 @@ def AntragVeranstaltung(request):
             antrag.save()
             
             feedback.type='SUCCESS'
-            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
-            
-            mailAstellerEingangsbestaetigung(asteller, antrag)
+            feedback.text=FEEDBACK_ANTRAG_SUCCESS
     else:
         form = AntragVeranstaltungForm()
     
@@ -575,9 +571,7 @@ def AntragMitglied(request):
             antrag.save()
                         
             feedback.type='SUCCESS'
-            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
-            
-            mailAstellerEingangsbestaetigung(asteller, antrag)
+            feedback.text=FEEDBACK_ANTRAG_SUCCESS
     else:
         form = AntragMitgliedForm()
     
@@ -614,9 +608,7 @@ def AntragAmt(request):
             antrag.save()
                         
             feedback.type='SUCCESS'
-            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
-            
-            mailAstellerEingangsbestaetigung(asteller, antrag)
+            feedback.text=FEEDBACK_ANTRAG_SUCCESS
     else:
         form = AntragAmtForm()
     
@@ -647,13 +639,11 @@ def AntragBenehmen(request):
             
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
-            
+
             antrag.save()
                         
             feedback.type='SUCCESS'
-            feedback.text='Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine Bestätigungsmail.'
-            
-            mailAstellerEingangsbestaetigung(asteller, antrag)
+            feedback.text=FEEDBACK_ANTRAG_SUCCESS
     else:
         form = AntragBenehmenForm()
     
