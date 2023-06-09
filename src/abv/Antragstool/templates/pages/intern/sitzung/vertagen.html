@@ -51,7 +51,7 @@
                 <input class="w-full" type="text" id="{{ form.datum_neu.id_for_label }}" name="{{ form.datum_neu.name }}" placeholder="2"
                     {% if form.datum_neu.field.required %}required{% endif %} 
                     {% if form.datum_neu.field.max_length %}maxlength="{{ form.datum_neu.field.max_length }}"{% endif %}
-                    value="{% now "d.m.Y" %}"
+                    value="{{ date | date:"d.m.Y" }}"
                 >
             </div>
         

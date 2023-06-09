@@ -43,6 +43,7 @@
             <input class="w-full" type="text" id="{{ form.datum_sitzung.id_for_label }}" name="{{ form.datum_sitzung.name }}" placeholder="01.01.2000"
                 {% if form.datum_sitzung.field.required %}required{% endif %} 
                 {% if form.datum_sitzung.field.max_length %}maxlength="{{ form.datum_sitzung.field.max_length }}"{% endif %}
+                value="{{ date | date:"d.m.Y" }}"
             >
         </div>
 

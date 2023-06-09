@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.utils.html import strip_tags
-from datetime import date
+from datetime import date, datetime, timedelta
 from .mails import mailAstellerEingangsbestaetigung
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss
 from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertagenForm, SitzungAnlegenForm
@@ -136,6 +136,7 @@ def SitzungsverwaltungPage(request):
 def SitzungAnlegenPage(request):
     feedback = FrontendFeedback()
     referate = Referat.objects.all().order_by('refID')
+    date = datetime.now().date() + timedelta(days=7)
     
     if request.method == 'POST':
         form = SitzungAnlegenForm(request.POST)
@@ -158,6 +159,7 @@ def SitzungAnlegenPage(request):
         'title': 'Sitzung anlegen',
         'referate': referate,
         'form': form,
+        'date': date,
         'feedback': feedback
     })
 
@@ -175,6 +177,7 @@ def SitzungAnzeigenPage(request, sitzID):
 def SitzungVertagenPage(request, sitzID):
     feedback = FrontendFeedback()
     sitzung = Sitzung.objects.get(sitzID=sitzID)
+    date = datetime.now().date() + timedelta(days=7)
     
     if request.method == 'POST':
         form = SitzungVertagenForm(request.POST)
@@ -195,6 +198,7 @@ def SitzungVertagenPage(request, sitzID):
         'title': 'Sitzung vertagen',
         'sitzung': sitzung,
         'form': form,
+        'date': date,
         'feedback': feedback
     })
 
