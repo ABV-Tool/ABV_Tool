@@ -187,7 +187,7 @@ def SitzungVertagenPage(request, sitzID):
             feedback.back_url = '/intern/sitzungsverwaltung/'
         else:
             feedback.type = "ERROR"
-            feedback.text = 'Die Sitzung konnte nicht vertagt werden. Achte darauf, dass das Datum in der Zukunft liegt & das Datum im Format TT.MM.JJJJ angegeben ist.'
+            feedback.text = 'Die Sitzung konnte nicht vertagt werden. ' + strip_tags(str(form.errors.get('datum_neu')))
     else:
         form = SitzungVertagenForm()
     
