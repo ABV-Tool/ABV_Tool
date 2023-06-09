@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="DE">
+    <head>
+        <meta charset="UTF-8">
+        <title>Eingangsbestätigung deines Antrags</title>
+    </head>
+    <body style="font-family: Arial, sans-serif;">
+        
+        Hi {{ antrag.astellerID.astellerVorname }},<br><br>
+
+        dein Antrag ist bei uns eingegangen und wird in der nächsten Sitzung des Referats {{ antrag.sitzID.refID.refName }} behandelt.<br>
+        Diese wird vorraussichtlich am {{ antrag.sitzID.sitzDate }} stattfinden.<br><br>
+
+        Sollte es Änderungen am Datum der Sitzung oder an deinem Antrag selbst geben, informieren wir dich über deine E-Mail-Adresse.<br>
+        Wenn dein Antrag beschlossen wurde, erhälst du ebenfalls eine E-Mail mit dem Ergebnis.<br><br>
+
+        Bei Fragen kannst du dich gerne an uns wenden.<br><br>
+
+        Viele Grüße,<br>
+        Dein StuRa-Team!
+        
+    </body>
+</html>

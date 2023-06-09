@@ -144,3 +144,4 @@ NPM_BIN_PATH=r"C:\Program Files\nodejs\npm.cmd"
 # TODO Production: Mailserver anpassen
 EMAIL_HOST = '127.0.0.1'
 EMAIL_PORT = 1025
+EMAIL_TOOL = 'abv@stura.htw-dresden.de'
