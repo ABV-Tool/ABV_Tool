@@ -200,7 +200,28 @@ def SitzungVertagenPage(request, sitzID):
 
 
 def SitzungLoeschenPage(request, sitzID):
-    return render(request, 'pages/intern/sitzung/loeschen.html', context={'title': 'Sitzung löschen'})
+    feedback = FrontendFeedback()
+    sitzung = Sitzung.objects.get(sitzID=sitzID)
+    
+    if request.method == 'POST':
+        # Prüfe, ob ein Antrag immer noch die zu löschende Sitzung referenziert
+        antraege_sitzung = Antrag.objects.filter(sitzID=sitzID).count()
+        if antraege_sitzung == 0:
+            sitzung.delete()
+
+            feedback.type = "SUCCESS"
+            feedback.text = 'Die Sitzung wurde erfolgreich gelöscht!'
+            feedback.back_url = '/intern/sitzungsverwaltung/'
+        else:
+            feedback.type = "ERROR"
+            feedback.text = 'Die Sitzung konnte nicht gelöscht werden, da noch Anträge dieser Sitzung zugeordnet sind!'
+            feedback.back_url = '/intern/sitzung/' + str(sitzung.sitzID) + '/anzeigen'
+    
+    return render(request, 'pages/intern/sitzung/loeschen.html', context={
+        'title': 'Sitzung löschen',
+        'sitzung': sitzung,
+        'feedback': feedback
+    })
 
 # ------ Sitzungsverwaltung ------ #
 
