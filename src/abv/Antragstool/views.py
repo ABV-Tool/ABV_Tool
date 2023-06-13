@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.db.models import Q
 from django.utils.html import strip_tags
 from datetime import date, datetime, timedelta
 from .mails import mailAstellerEingangsbestaetigung
@@ -124,9 +125,9 @@ def ReferatLoeschenPage(request, refID):
 # ++++++ Sitzungsverwaltung ++++++ #
 
 def SitzungsverwaltungPage(request):
-    # Anzahl der Anträge pro Sitzung berechnen
+    # Anzahl der Anträge pro Sitzung berechnen | Filtere Anträge, die vertagt wurden
     for sitzung in Sitzung.objects.all():
-        anz_antraege = Antrag.objects.filter(sitzID=sitzung.sitzID).count()
+        anz_antraege = Antrag.objects.filter(sitzID=sitzung.sitzID).filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).count()
         sitzung.anzAntraege = anz_antraege
         sitzung.save()
     # Sitzungen nach Datum sortieren
@@ -297,7 +298,22 @@ def AntragVertagenPage(request, antragID):
     if request.method == 'POST':
         form = AntragVertagenForm(request.POST)
         if form.is_valid():
+            # Erstelle leeren Beschluss, um Vertagung zu kennzeichnen 
+            beschluss = Beschluss()
+            beschluss.sitzID = antrag.sitzID
+            beschluss.beschlussText = 'Der Antrag wurde vertagt. Die ursprüngliche Sitzung war: ' + str(antrag.sitzID)
+            beschluss.beschlussErgebnis = 'Vertagt'
+            beschluss.beschlussAusfertigung = "Alte Sitzungs-ID: " + str(antrag.sitzID.sitzID) + "\nVertagt durch: " + str(request.user.username)
+            beschluss.save()
+            
+            # Setze den leeren Beschluss als Beschluss für den Antrag
+            antrag.beschlussID = beschluss
+            antrag.save()
+            
+            # Setzte antragID auf None, damit das Objekt in der neuen Sitzung neu erstellt wird
             antrag.sitzID = form.cleaned_data['sitzung']
+            antrag.antragID = None
+            antrag.beschlussID = None
             antrag.save()
 
             feedback.type = "SUCCESS"
@@ -330,7 +346,7 @@ def AntragBeschliessenPage(request, antragID):
         form = BeschlussForm(request.POST)
         if form.is_valid():
             
-            beschluss, status = Beschluss.objects.update_or_create(
+            beschluss, __ = Beschluss.objects.update_or_create(
                 sitzID = sitzung,
                 
                 defaults={
@@ -344,7 +360,6 @@ def AntragBeschliessenPage(request, antragID):
                     "beschlussText" : form.cleaned_data['beschluss_text'],
                     "beschlussAusfertigung" : form.cleaned_data['beschluss_ausfertigung'],
                 }
-                
             )
             
             antrag.beschlussID = beschluss

@@ -109,7 +109,7 @@ def mailAstellerErgebnis(sender, instance, **kwargs):
     Sende dem Antragssteller eine Information über das Ergebnis seines Antrags
     Signal wird ausgelöst, wenn der Antrag eine BeschlussID zugewiesen bekommt
     """
-    if instance.beschlussID:
+    if instance.beschlussID and instance.beschlussID.beschlussErgebnis != 'Vertagt':
         # TODO: E-Mail Nachricht anpassen
         message = get_template("emails/asteller/ergebnis_antrag.html").render({
             'antrag': instance

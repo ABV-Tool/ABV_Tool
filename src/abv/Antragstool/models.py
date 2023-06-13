@@ -69,6 +69,7 @@ class Beschluss(models.Model):
         UNBEHANDELT = 'Unbehandelt'
         ANGENOMMEN = 'Angenommen'
         ABGELEHNT = 'Abgelehnt'
+        VERTAGT = 'Vertagt'
         
     def get_beschluss_ergebnisse(self):
         return list(self.BeschlussErgebnis)
