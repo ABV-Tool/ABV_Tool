@@ -22,6 +22,7 @@ class StammdatenForm(forms.Form):
     
     # TODO: Unterstützung für mehrere Dateien einbinden
     anlagen = forms.FileField(label="Anlagen:", required=False)
+
     
 
 # Wiederholende Felder
@@ -42,6 +43,12 @@ class AntragFinanziellForm(StammdatenForm):
     position = positions_feld
     summe = summe_feld
     vorschlag = vorschlag_feld
+    
+    # Unterstützung für Komma in Summe
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['summe'].localize = True
+        self.fields['summe'].widget.is_localized = True
 
 
 class AntragVeranstaltungForm(StammdatenForm):
@@ -51,6 +58,12 @@ class AntragVeranstaltungForm(StammdatenForm):
     verantwortlichkeit = forms.CharField(label="Verantwortlichkeit für Nachbearbeitung:", max_length=100, required=True, widget=forms.TextInput())
     zeitraum = forms.CharField(label="Zeitraum für Nachbearbeitung:", max_length=100, required=True, widget=forms.TextInput())
     vorschlag = vorschlag_feld
+    
+    # Unterstützung für Komma in Summe
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['summe'].localize = True
+        self.fields['summe'].widget.is_localized = True
 
 
 # TODO: Vorstellung der Person: Details über benötigte Punkte anzeigen lassen

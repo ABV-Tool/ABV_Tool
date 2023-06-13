@@ -162,4 +162,4 @@ class Antrag(models.Model):
     bearbeitetDate = models.DateField(db_column='bearbeitet_date', auto_now=True)
     
     def __str__(self):
-        return str(self.antragTitel) + " von " + self.astellerID.astellerVorname + " " + self.astellerID.astellerName
+        return str(self.antragTitel) + " von " + self.astellerID.astellerName
