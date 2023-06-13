@@ -124,7 +124,11 @@
                 id="{{ form.beschluss_ausfertigung.id_for_label }}" name="{{ form.beschluss_ausfertigung.name }}" 
                 {% if form.beschluss_ausfertigung.field.required %}required{% endif %} 
                 {% if form.beschluss_ausfertigung.field.max_length %}maxlength="{{ form.beschluss_ausfertigung.field.max_length }}"{% endif %}
-                value="{{ user.first_name }} {{ user.last_name }}, Präsidium, {% now "d.m.Y, H:i" %}"
+                {% if user.first_name  %}
+                    value="{{ user.first_name }} {{ user.last_name }}, Präsidium, {% now "d.m.Y, H:i" %}"
+                {% else %}
+                    value="{{ user.username }}, Präsidium, {% now "d.m.Y, H:i" %}"
+                {% endif %}
             >
         </div>
 
