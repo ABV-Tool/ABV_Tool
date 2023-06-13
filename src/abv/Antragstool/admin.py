@@ -15,7 +15,7 @@ class AntragAdmin(admin.ModelAdmin):
         return obj.typID.typName
     @admin.display(description='Antragsteller')
     def get_antragsteller(self, obj):
-        return obj.astellerID.astellerVorname + ' ' + obj.astellerID.astellerName
+        return obj.astellerID.astellerName
 admin.site.register(Antrag, AntragAdmin)
 
 
@@ -42,7 +42,7 @@ admin.site.register(Antragstyp, AntragstypAdmin)
 
 
 class AntragsstellerAdmin(admin.ModelAdmin):
-    list_display = ('astellerID', 'astellerName', 'astellerVorname')
+    list_display = ('astellerID', 'astellerName')
 admin.site.register(Antragssteller, AntragsstellerAdmin)
 
 class BeschlussAdmin(admin.ModelAdmin):

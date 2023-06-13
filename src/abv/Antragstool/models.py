@@ -55,13 +55,11 @@ class Antragssteller(models.Model):
                                   editable=False,
                                   db_column='asteller_id')
     astellerName = models.TextField(max_length=50, db_column='asteller_name')
-    astellerVorname = models.TextField(max_length=50,
-                                       db_column='asteller_vorname')
     astellerEmail = models.EmailField(max_length=50, db_column='asteller_email', null=True)
     astellerIstMitglied = models.BooleanField(db_column='asteller_ist_mitglied', default=False)
     
     def __str__(self):
-        return self.astellerVorname + " " + self.astellerName
+        return self.astellerName
 
 
 class Beschluss(models.Model):

@@ -182,7 +182,7 @@ def SitzungAnzeigenPage(request, sitzID):
 def SitzungVertagenPage(request, sitzID):
     feedback = FrontendFeedback()
     sitzung = Sitzung.objects.get(sitzID=sitzID)
-    date = datetime.now().date() + timedelta(days=7)
+    date = sitzung.sitzDate + timedelta(days=7)
     
     if request.method == 'POST':
         form = SitzungVertagenForm(request.POST)
@@ -223,7 +223,7 @@ def SitzungLoeschenPage(request, sitzID):
             feedback.back_url = '/intern/sitzungsverwaltung/'
         else:
             feedback.type = "ERROR"
-            feedback.text = 'Die Sitzung konnte nicht gelöscht werden, da noch Anträge dieser Sitzung zugeordnet sind!'
+            feedback.text = 'Die Sitzung konnte nicht gelöscht werden, da es noch Anträge gibt, welche dieser Sitzung zugeordnet sind!'
             feedback.back_url = '/intern/sitzung/' + str(sitzung.sitzID) + '/anzeigen'
     
     return render(request, 'pages/intern/sitzung/loeschen.html', context={
@@ -403,8 +403,7 @@ def checkAntragsteller(form):
         asteller = Antragssteller.objects.get(astellerEmail=astellerEmail)
     else:
         asteller = Antragssteller()
-        asteller.astellerVorname = form.cleaned_data['vorname']
-        asteller.astellerName = form.cleaned_data['nachname']
+        asteller.astellerName = form.cleaned_data['name']
         asteller.astellerEmail = astellerEmail
         asteller.save() 
     return asteller
@@ -420,10 +419,13 @@ def checkSitzungen(form):
 
 # Kurzfassung der render-Funktion für Antragsseiten
 def renderAntrag(request, title, form, feedback):
+    # Frage die nächsten 2 Sitzungen jedes Referates ab und gibt diese an die Seite weiter
+    sitzungen = Sitzung.objects.filter(sitzDate__gt=date.today()).order_by('sitzDate')
     return render(request, 'pages/antrag.html', context={
         'title': title, 
         'form': form,
-        'feedback': feedback
+        'feedback': feedback,
+        'sitzungen': sitzungen
     })
 
 # ------ Funktionen ------ #
@@ -612,7 +614,7 @@ def AntragAmt(request):
     else:
         form = AntragAmtForm()
     
-    return renderAntrag(request, 'Antrag zur Wahl für Stelle/Amt', form, feedback)
+    return renderAntrag(request, 'Antrag zur Wahl auf Stelle/Amt', form, feedback)
 
 
 def AntragBenehmen(request):

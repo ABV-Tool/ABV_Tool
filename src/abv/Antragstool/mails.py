@@ -75,7 +75,12 @@ def mailAstellerVertagungSitzung(sender, instance, **kwargs):
     Signal wird ausgelöst, wenn die angegebene Sitzung vertagt wird
     """
     
-    sitzung_prev = Sitzung.objects.get(sitzID=instance.sitzID)
+    # Prüfe, ob die Sitzung bereits existiert (wenn nicht, dann ist es eine neue Sitzung)
+    if Sitzung.objects.filter(sitzID=instance.sitzID).exists():
+        sitzung_prev = Sitzung.objects.get(sitzID=instance.sitzID)
+    else:
+        return
+    
     antraege_sitzung = Antrag.objects.filter(sitzID=instance.sitzID)
 
     # Prüfe, ob die Sitzung vertagt wurde
