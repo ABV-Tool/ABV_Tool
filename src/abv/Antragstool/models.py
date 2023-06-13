@@ -39,12 +39,11 @@ class Sitzung(models.Model):
                               db_column='ref_id',
                               on_delete=models.CASCADE)
     sitzDate = models.DateField(db_column='sitz_date')
-    anzAntraege = models.PositiveIntegerField(db_column='anz_antraege', default=0)
+    sitzNummerJahr = models.PositiveIntegerField(db_column='sitz_nummer_jahr', default=0)
+    anzAntraege = models.PositiveIntegerField(db_column='anz_antraege', default=0) 
     
     def __str__(self):
-        # TODO: Sollte eine Sitzung vorverlegt werden, so stimmt die Reihenfolge der Sitzungen nicht mehr
-        anzahl_sitz_jahr = Sitzung.objects.filter(sitzDate__year=self.sitzDate.year).filter(refID=self.refID).count()
-        return str(anzahl_sitz_jahr) + ". Sitzung " + self.refID.refName + " " + str(self.sitzDate.year)
+        return str(self.sitzDate.strftime("%Y.%m.%d")) + " - Sitzung " + self.refID.refName
 
 
 class Antragssteller(models.Model):

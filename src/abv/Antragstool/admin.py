@@ -21,7 +21,7 @@ admin.site.register(Antrag, AntragAdmin)
 
 # https://stackoverflow.com/questions/163823/can-list-display-in-a-django-modeladmin-display-attributes-of-foreignkey-field
 class SitzungAdmin(admin.ModelAdmin):
-    list_display = ('sitzID', 'get_referat', 'sitzDate')
+    list_display = ('sitzID', 'get_referat', 'sitzDate', 'sitzNummerJahr')
     ordering=('sitzDate', 'refID')
     @admin.display(description='Referat')
     def get_referat(self, obj):

@@ -22,7 +22,7 @@
 
         <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-1">
             <caption class="text-left">
-                <h2><b>Anträge der {{ sitzung }}</b></h2>
+                <h2><b>{{ sitzung }} - Alle Anträge</b></h2>
             </caption>
             <thead>
                 <tr>
@@ -41,7 +41,7 @@
                 <tr>
                     <td>{{ antrag.typID.typName }}</td>
                     <td>{{ antrag.antragTitel | truncatechars:50 }}</td>
-                    <td>{{ antrag.astellerID.astellerVorname }} {{ antrag.astellerID.astellerName }}</td>
+                    <td>{{ antrag.astellerID.astellerName }}</td>
                     <td>
                         {% if antrag.istEilantrag %}
                             <i class="fa-solid fa-check"></i>

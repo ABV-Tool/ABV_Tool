@@ -1,12 +1,13 @@
 from django import forms
 from django.utils import timezone
-from Antragstool.models import Referat, Beschluss
+from Antragstool.models import Referat, Beschluss, Sitzung
 
 
 # template for custom login form
 class LoginForm(forms.Form):
     username = forms.CharField(label="Benutzername", max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'mb-3'}))
     password = forms.CharField(label="Passwort", max_length=100, required=True, widget=forms.PasswordInput)
+
 
 
 class StammdatenForm(forms.Form):
@@ -24,7 +25,6 @@ class StammdatenForm(forms.Form):
     anlagen = forms.FileField(label="Anlagen:", required=False)
 
     
-
 # Wiederholende Felder
 grund_feld = forms.CharField(label="Begründung zum Antrag:", max_length=1000, required=True, widget=forms.Textarea())
 vorschlag_feld = forms.CharField(label="Vorschlag zum weiteren Verfahren:", max_length=1000, required=True, widget=forms.Textarea())
@@ -91,6 +91,7 @@ class ReferatForm(forms.Form):
     referat_email = forms.EmailField(label="Referats-E-Mail:", max_length=200, required=True, widget=forms.EmailInput())
     
 
+
 # Beschluss
 class BeschlussForm(forms.Form):
     beschluss_behandlung = forms.CharField(label="Behandlung:", max_length=100, required=True, widget=forms.TextInput())
@@ -101,6 +102,7 @@ class BeschlussForm(forms.Form):
     beschluss_ergebnis = forms.ChoiceField(label="Beschluss-Ergebnis:", choices=Beschluss.BeschlussErgebnis.choices, required=True, widget=forms.Select())
     beschluss_text = forms.CharField(label="Beschluss-Text:", max_length=2000, required=True, widget=forms.Textarea())
     beschluss_ausfertigung = forms.CharField(label="Ausfertigung:", max_length=200, required=True, widget=forms.TextInput())
+    
     
     
 # Vertagung Sitzung
@@ -118,9 +120,11 @@ class SitzungVertagenForm(forms.Form):
         return datum_neu
     
 
+
 # Vertagung eines Antrags
 class AntragVertagenForm(forms.Form):
-    pass
+    sitzung = forms.ModelChoiceField(label="Sitzung", queryset=Sitzung.objects.all().order_by('sitzDate'), required=True, empty_label="Bitte wählen...")
+
 
 
 # Anlegen einer Sitzung

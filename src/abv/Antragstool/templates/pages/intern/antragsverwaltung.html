@@ -42,7 +42,7 @@
                 <tr>
                     <td>{{ antrag.typID.typName }}</td>
                     <td>{{ antrag.antragTitel | truncatechars:50 }}</td>
-                    <td>{{ antrag.astellerID.astellerVorname | truncatechars:20 }} {{ antrag.astellerID.astellerName | truncatechars:20 }}</td>
+                    <td>{{ antrag.astellerID.astellerName | truncatechars:40 }}</td>
                     <td>
                         {% if antrag.istEilantrag %}
                             <i class="fa-solid fa-check"></i>

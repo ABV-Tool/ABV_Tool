@@ -159,7 +159,7 @@ def SitzungAnlegenPage(request):
             feedback.text = 'Die Sitzung konnte nicht angelegt werden. ' + strip_tags(str(form.errors.get('datum_sitzung')))
     else:
         form = SitzungAnlegenForm()
-    
+        
     return render(request, 'pages/intern/sitzung/anlegen.html', context={
         'title': 'Sitzung anlegen',
         'referate': referate,
@@ -290,13 +290,32 @@ def AntragLoeschenPage(request, antragID):
     
 
 def AntragVertagenPage(request, antragID):
+    feedback = FrontendFeedback()
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
+    
+    if request.method == 'POST':
+        form = AntragVertagenForm(request.POST)
+        if form.is_valid():
+            antrag.sitzID = form.cleaned_data['sitzung']
+            antrag.save()
+
+            feedback.type = "SUCCESS"
+            feedback.text = 'Der Antrag wurde in die Sitzung ' + str(antrag.sitzID.refID.refName) +  ' am ' + antrag.sitzID.sitzDate.strftime("%d.%m.%Y") + ' vertagt!'
+            feedback.back_url = '/intern/sitzungsverwaltung/'
+        else:
+            feedback.type = "ERROR"
+            feedback.text = 'Der Antrag konnte nicht vertagt werden! Bitte aktualisiere die Seite und versuche es erneut.'
+    else:
+        form = AntragVertagenForm()
+    
     return render(request, 'pages/intern/antrag/vertagen.html', context={
         'title': 'Antrag vertagen',
         'antrag': antrag,
         'sitzung': sitzung,
-        'aktion': 'VERTAGEN'
+        'aktion': 'VERTAGEN',
+        'form': form,
+        'feedback': feedback
     })
     
     

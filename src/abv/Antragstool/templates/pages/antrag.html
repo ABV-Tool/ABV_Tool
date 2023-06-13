@@ -158,8 +158,9 @@
 
 
         <!-- Anzeigen der nächsten Sitzung -->
-        {% include 'components/alert.html' with type="INFO" text="Bitte wähle die zuständige Stelle aus, damit wir dir den Termin der nächsten Sitzung anzeigen können..." text_element_id="info_sitzungsdatum" %}
-    
+        {% if not aktion %}
+            {% include 'components/alert.html' with type="INFO" text="Bitte wähle die zuständige Stelle aus, damit wir dir den Termin der nächsten Sitzung anzeigen können..." text_element_id="info_sitzungsdatum" %}
+        {% endif %}
 
         <!-- Antragsdaten Antragstext -->
         <div class="mb-3">
