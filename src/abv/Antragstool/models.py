@@ -43,7 +43,7 @@ class Sitzung(models.Model):
     anzAntraege = models.PositiveIntegerField(db_column='anz_antraege', default=0) 
     
     def __str__(self):
-        return str(self.sitzDate.strftime("%Y.%m.%d")) + " - Sitzung " + self.refID.refName
+        return str(self.sitzDate.strftime("%d.%m.%Y")) + " - Sitzung " + self.refID.refName
 
 
 class Antragssteller(models.Model):
@@ -165,6 +165,7 @@ class Antrag(models.Model):
 
 class Anlage(models.Model):
     anlage = models.FileField(db_column='anlage', blank=True, null=True, upload_to='anlagen/')
+    anlageName = models.TextField(db_column='anlage_name', blank=True)
     antragID = models.ForeignKey(Antrag,
                                  on_delete=models.CASCADE,
                                  db_column='antrag_id',

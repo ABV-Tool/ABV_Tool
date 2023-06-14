@@ -174,11 +174,11 @@ def SitzungAnlegenPage(request):
     })
 
 
-def SitzungAnzeigenPage(request, sitzID):
+def SitzungVerwaltenPage(request, sitzID):
     antraege = Antrag.objects.filter(sitzID=sitzID)
     sitzung = Sitzung.objects.get(sitzID=sitzID)
-    return render(request, 'pages/intern/sitzung/anzeigen.html', context={
-        'title': 'Sitzung anzeigen',
+    return render(request, 'pages/intern/sitzung/verwalten.html', context={
+        'title': 'Sitzung verwalten',
         'antraege': antraege,
         'sitzung': sitzung
     })
@@ -261,14 +261,6 @@ def getFormVonAntragstyp(antrag):
         form = AntragBenehmenForm()
     return form
 
-def renderAntragPage(request, url, antrag, title, aktion):
-    return render(request, url, context={
-        'title': title,
-        'antrag': antrag,
-        'form': getFormVonAntragstyp(antrag),
-        'aktion': aktion
-    })
-    
 
 def AntragsverwaltungPage(request):
     antraege = Antrag.objects.all()
@@ -280,44 +272,76 @@ def AntragsverwaltungPage(request):
 
 def AntragAnzeigenPage(request, antragID):
     antrag = Antrag.objects.get(antragID=antragID)
-    return renderAntragPage(request, 'pages/antrag.html', antrag, 'Antrag anzeigen', 'ANZEIGEN')
+    anlagen = Anlage.objects.filter(antragID=antragID)
+    return render(request, 'pages/antrag.html', context={
+        'title': 'Antrag anzeigen',
+        'antrag': antrag,
+        'form': getFormVonAntragstyp(antrag),
+        'aktion': 'ANZEIGEN',
+        'anlagen': anlagen
+    })
 
 
 def AntragBearbeitenPage(request, antragID):
     # TODO: Logik für Antrag bearbeiten einbauen
     antrag = Antrag.objects.get(antragID=antragID)
-    return renderAntragPage(request, 'pages/antrag.html', antrag, 'Antrag bearbeiten', 'BEARBEITEN')
+    return render(request, 'pages/antrag.html', context={
+        'title': 'Antrag bearbeiten',
+        'antrag': antrag,
+        'form': getFormVonAntragstyp(antrag),
+        'aktion': 'BEARBEITEN'
+    })
 
 
 def AntragLoeschenPage(request, antragID):
     antrag = Antrag.objects.get(antragID=antragID)
-    return renderAntragPage(request, 'pages/intern/antrag/loeschen.html', antrag, 'Antrag löschen', 'ANZEIGEN')
+    return render(request, 'pages/intern/antrag/loeschen.html', context={
+        'title': 'Antrag löschen',
+        'antrag': antrag,
+        'form': getFormVonAntragstyp(antrag),
+        'aktion': 'LOESCHEN'
+    })
     
 
 def AntragVertagenPage(request, antragID):
+    """
+    Vertage den Antrag in eine andere Sitzung
+    Dabei 
+    """
     feedback = FrontendFeedback()
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
     
     if request.method == 'POST':
         form = AntragVertagenForm(request.POST)
-        if form.is_valid():
-            # Erstelle leeren Beschluss, um Vertagung zu kennzeichnen 
-            beschluss = Beschluss()
-            beschluss.sitzID = antrag.sitzID
-            beschluss.beschlussText = 'Der Antrag wurde vertagt. Die ursprüngliche Sitzung war: ' + str(antrag.sitzID)
-            beschluss.beschlussErgebnis = 'Vertagt'
-            beschluss.beschlussAusfertigung = "Alte Sitzungs-ID: " + str(antrag.sitzID.sitzID) + "\nVertagt durch: " + str(request.user.username)
-            beschluss.save()
+        # Prüfe, on der Antrag bereits einen Beschluss hat
+        if antrag.beschlussID is not None:
+            feedback.type = "ERROR"
+            feedback.text = 'Der Antrag konnte nicht vertagt werden, da er bereits einen Beschluss hat!'
+            feedback.back_url = '/intern/sitzungsverwaltung/'
+        elif form.is_valid():
+            alte_sitzID = antrag.sitzID
+            neue_sitzID = form.cleaned_data['sitzung']
             
-            # Setze den leeren Beschluss als Beschluss für den Antrag
-            antrag.beschlussID = beschluss
+            print(alte_sitzID)
+            print(neue_sitzID)
+            
+            # Ürsprünglicher Antrag wird in neue Sitzung verschoben
+            antrag.sitzID = neue_sitzID
             antrag.save()
             
-            # Setzte antragID auf None, damit das Objekt in der neuen Sitzung neu erstellt wird
-            antrag.sitzID = form.cleaned_data['sitzung']
+            # Erstelle leeren Beschluss in aktueller Sitzung, um Vertagung zu kennzeichnen 
+            beschluss = Beschluss()
+            beschluss.sitzID = alte_sitzID
+            beschluss.beschlussText = 'Der Antrag wurde vertagt. Die neue Sitzung ist: ' + str(neue_sitzID) + "\nVertagt durch: " + str(request.user.username)
+            beschluss.beschlussErgebnis = 'Vertagt'
+            beschluss.beschlussAusfertigung = "Vertagt durch: " + str(request.user.username)
+            beschluss.save()
+            
+            # Erstelle Kopie des Antrags mit und speichere ihn in der alten Sitzung zur Dokumentation
             antrag.antragID = None
-            antrag.beschlussID = None
+            antrag.sitzID = alte_sitzID
+            antrag.beschlussID = beschluss
             antrag.save()
 
             feedback.type = "SUCCESS"
@@ -479,6 +503,8 @@ def anlagenSpeichern(request, antrag):
         anlage.anlage.name = str(antrag.antragID) + '/' + datei.name
         # Referenziere die Anlage auf den Antrag
         anlage.antragID = antrag
+        # Dateiname extra für Anzeige speichern
+        anlage.anlageName = datei.name
         
         anlagen_liste.append(anlage)
         
@@ -519,9 +545,9 @@ def AntragAllgemein(request):
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
             
-            anlagenSpeichern(request, antrag)
-            
             antrag.save()
+            
+            anlagenSpeichern(request, antrag)
             
             feedback.type='SUCCESS'
             feedback.text=FEEDBACK_ANTRAG_SUCCESS
@@ -558,9 +584,9 @@ def AntragFinanziell(request):
             antrag.antragSumme = form.cleaned_data['summe']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
             
-            anlagenSpeichern(request, antrag)
-                        
             antrag.save()
+            
+            anlagenSpeichern(request, antrag)
             
             feedback.type='SUCCESS'
             feedback.text=FEEDBACK_ANTRAG_SUCCESS
@@ -599,9 +625,9 @@ def AntragVeranstaltung(request):
             antrag.antragZeitraum = form.cleaned_data['zeitraum']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
                   
-            anlagenSpeichern(request, antrag)
-                        
             antrag.save()
+            
+            anlagenSpeichern(request, antrag)
             
             feedback.type='SUCCESS'
             feedback.text=FEEDBACK_ANTRAG_SUCCESS
@@ -635,9 +661,9 @@ def AntragMitglied(request):
             
             antrag.antragVorstellungPerson = form.cleaned_data['vorstellung_person']
             
-            anlagenSpeichern(request, antrag)
-            
             antrag.save()
+            
+            anlagenSpeichern(request, antrag)
                         
             feedback.type='SUCCESS'
             feedback.text=FEEDBACK_ANTRAG_SUCCESS
@@ -674,9 +700,9 @@ def AntragAmt(request):
             antrag.antragVorstellungPerson = form.cleaned_data['vorstellung_person']
             antrag.antragFragenZumAmt = form.cleaned_data['fragen_amt']
                         
-            anlagenSpeichern(request, antrag)
-                        
             antrag.save()
+            
+            anlagenSpeichern(request, antrag)
                         
             feedback.type='SUCCESS'
             feedback.text=FEEDBACK_ANTRAG_SUCCESS
@@ -711,9 +737,9 @@ def AntragBenehmen(request):
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
 
-            anlagenSpeichern(request, antrag)
-
             antrag.save()
+            
+            anlagenSpeichern(request, antrag)
                         
             feedback.type='SUCCESS'
             feedback.text=FEEDBACK_ANTRAG_SUCCESS

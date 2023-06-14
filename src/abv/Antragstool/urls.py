@@ -3,7 +3,7 @@ from django.urls import path, re_path, include
 from .views import  LoginPage, LogoutPage
 from .views import HomePage, ArchivPage
 from .views import ReferatsverwaltungPage, ReferatErstellenPage, ReferatBearbeitenPage, ReferatLoeschenPage
-from .views import SitzungsverwaltungPage, SitzungAnlegenPage, SitzungAnzeigenPage, SitzungVertagenPage, SitzungLoeschenPage
+from .views import SitzungsverwaltungPage, SitzungAnlegenPage, SitzungVerwaltenPage, SitzungVertagenPage, SitzungLoeschenPage
 from .views import AntragsverwaltungPage, AntragAnzeigenPage, AntragBearbeitenPage, AntragLoeschenPage, AntragBeschliessenPage, AntragVertagenPage
 from .views import AntragAllgemein, AntragFinanziell, AntragVeranstaltung, AntragMitglied, AntragAmt, AntragBenehmen
 
@@ -22,7 +22,7 @@ urlpatterns = [
     
     path('intern/sitzungsverwaltung/', SitzungsverwaltungPage, name='sitzungsverwaltung'),
     path('intern/sitzung/anlegen', SitzungAnlegenPage, name='sitzung-anlegen'),
-    path('intern/sitzung/<uuid:sitzID>/anzeigen', SitzungAnzeigenPage, name='sitzung-anzeigen'),
+    path('intern/sitzung/<uuid:sitzID>/anzeigen', SitzungVerwaltenPage, name='sitzung-verwalten'),
     path('intern/sitzung/<uuid:sitzID>/vertagen', SitzungVertagenPage, name='sitzung-vertagen'),
     path('intern/sitzung/<uuid:sitzID>/loeschen', SitzungLoeschenPage, name='sitzung-loeschen'),
     

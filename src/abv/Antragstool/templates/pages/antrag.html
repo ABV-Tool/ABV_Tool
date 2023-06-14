@@ -311,7 +311,7 @@
 
         <div class="mb-3">
             <label class="block" for="{{ form.fragen_amt.id_for_label }}"><b>{{ form.fragen_amt.label }}</b></label>
-            <textarea class="w-full" rows="13" placeholder="Ich will diese Amt übernehmen, weil ..." 
+            <textarea class="w-full" rows="13" placeholder="Ich will dieses Amt übernehmen, weil ..." 
                 id="{{ form.fragen_amt.id_for_label }}" name="{{ form.fragen_amt.name }}" 
                 {% if form.fragen_amt.field.required %}required{% endif %} 
                 {% if form.fragen_amt.field.max_length %} maxlength="{{ form.fragen_amt.field.max_length }}"{% endif %}
@@ -321,17 +321,26 @@
 
 
         <!-- Antragsdaten Alagen -->
+        {% if not aktion %}
         <div class="mb-5">
             <label class="block" for="{{ form.anlagen.id_for_label }}"><b>{{ form.anlagen.label }}</b></label>
             <input type="file" name="{{ form.anlagen.name }}" id="{{ form.anlagen.id_for_label }}" multiple />
         </div>
+        {% else %}
+        <div class="mb-7">
+            <label class="block mb-3"><b>Anlagen:</b></label>
+            {% for anlage in anlagen %}
+                <a class="btn p-3 mr-2" href="/media/{{ anlage.anlage }}" target="_blank">{{ anlage.anlageName }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
 
 
         <!--+ Form-Actions +-->
         {% if aktion == "BEARBEITEN" %}
             <button type="submit" class="btn btn-neutral w-full hover:cursor-pointer"><i class="fa-solid fa-floppy-disk"></i> Bearbeiten</button>
         {% elif aktion == "ANZEIGEN" %}
-            {% include 'components/alert.html' with type="INFO" text="Der Antrag wird lediglich angezeigt. Änderungen an den Daten hier hat keine Auswirkungen auf die Datenbank!" %}
+            {% include 'components/alert.html' with type="INFO" text="Der Antrag wird lediglich angezeigt. Die Änderung der Daten hat keine Auswirkungen auf die Datenbank!" %}
         {% else %}
             <button type="submit" class="btn btn-success w-full hover:cursor-pointer"><i class="fa-solid fa-paper-plane"></i> Abschicken</button>
         {% endif %}
