@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <form method="POST" action="#feedback" class="ml-80 mr-80">
+    <form method="POST" action="#feedback" class="ml-80 mr-80" enctype="multipart/form-data">
         {% csrf_token %}
 
         <h1 class="text-center"><b>{{ title }}</b></h1>
@@ -323,7 +323,7 @@
         <!-- Antragsdaten Alagen -->
         <div class="mb-5">
             <label class="block" for="{{ form.anlagen.id_for_label }}"><b>{{ form.anlagen.label }}</b></label>
-            {{ form.anlagen }}
+            <input type="file" name="{{ form.anlagen.name }}" id="{{ form.anlagen.id_for_label }}" multiple />
         </div>
 
 

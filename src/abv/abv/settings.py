@@ -66,6 +66,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -128,6 +129,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, '../static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '../Antragstool/static'),
 )
+
+# File-Upload Settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
+DATA_UPLOAD_MAX_MEMORY_SIZE=10240000 # 10MB
+FILE_UPLOAD_MAX_MEMORY_SIZE=10240000 # 10MB
 
 
 # Default primary key field type

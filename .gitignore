@@ -13,3 +13,8 @@ src/result
 src/node_modules
 
 migrations/
+migrations/*
+
+media/
+media/anlagen
+

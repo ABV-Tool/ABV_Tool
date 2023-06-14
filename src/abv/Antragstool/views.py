@@ -2,9 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.db.models import Q
 from django.utils.html import strip_tags
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+
 from datetime import date, datetime, timedelta
+
 from .mails import mailAstellerEingangsbestaetigung
-from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss
+from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss, Anlage
 from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertagenForm, SitzungAnlegenForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
 
@@ -462,6 +466,22 @@ def renderAntrag(request, title, form, feedback):
         'sitzungen': sitzungen
     })
 
+
+def anlagenSpeichern(request, antrag):
+    dateien = request.FILES.getlist('anlagen')
+
+    anlagen_liste = []
+    for datei in dateien:
+        anlage = Anlage()
+        anlage.anlage = datei
+        anlage.anlage.name = str(antrag.antragID) + '/' + datei.name
+        anlagen_liste.append(anlage)
+        
+    if anlagen_liste:
+        Anlage.objects.bulk_create(anlagen_liste)
+        
+    return anlagen_liste
+
 # ------ Funktionen ------ #
 
 
@@ -493,6 +513,10 @@ def AntragAllgemein(request):
             
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
+            
+            # File-Upload
+            anlagen = anlagenSpeichern(request, antrag)
+            print(anlagen)
             
             antrag.save()
             
@@ -569,6 +593,8 @@ def AntragVeranstaltung(request):
             antrag.antragVerantwortlichkeit = form.cleaned_data['verantwortlichkeit']
             antrag.antragZeitraum = form.cleaned_data['zeitraum']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
+                  
+            print(form.cleaned_data['anlagen'])
                         
             antrag.save()
             

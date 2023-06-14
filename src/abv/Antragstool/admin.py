@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Antrag, Sitzung, Referat, Antragssteller, Antragstyp, Beschluss
+from .models import Antrag, Sitzung, Referat, Antragssteller, Antragstyp, Beschluss, Anlage
 
 # Register your models here.
 class AntragAdmin(admin.ModelAdmin):
@@ -45,7 +45,14 @@ class AntragsstellerAdmin(admin.ModelAdmin):
     list_display = ('astellerID', 'astellerName')
 admin.site.register(Antragssteller, AntragsstellerAdmin)
 
+
 class BeschlussAdmin(admin.ModelAdmin):
     list_display = ('sitzID', 'beschlussDate', 'beschlussFaehigkeit', 'get_ergebnis')
 admin.site.register(Beschluss, BeschlussAdmin)
+
+
+class AnlageAdmin(admin.ModelAdmin):
+    list_display = ('anlage', 'antragID')
+admin.site.register(Anlage, AnlageAdmin)
+
 

@@ -3,6 +3,25 @@ from django.utils import timezone
 from Antragstool.models import Referat, Beschluss, Sitzung
 
 
+# Datei-Upload-Handler
+# https://docs.djangoproject.com/en/4.2/topics/http/file-uploads/#uploading-multiple-files
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
+
+class MultipleFileField(forms.FileField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("widget", MultipleFileInput())
+        super().__init__(*args, **kwargs)
+
+    def clean(self, data, initial=None):
+        single_file_clean = super().clean
+        if isinstance(data, (list, tuple)):
+            result = [single_file_clean(d, initial) for d in data]
+        else:
+            result = single_file_clean(data, initial)
+        return result
+
+
 # template for custom login form
 class LoginForm(forms.Form):
     username = forms.CharField(label="Benutzername", max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'mb-3'}))
@@ -22,7 +41,8 @@ class StammdatenForm(forms.Form):
     ist_eilantrag = forms.BooleanField(label="Ist dies ein Eilantrag?", required=False)
     
     # TODO: Unterstützung für mehrere Dateien einbinden
-    anlagen = forms.FileField(label="Anlagen:", required=False)
+    anlagen = MultipleFileField(label="Anlagen:", required=False)
+
 
     
 # Wiederholende Felder
@@ -137,3 +157,4 @@ class SitzungAnlegenForm(forms.Form):
         if datum_sitzung <= timezone.now().date():
             raise forms.ValidationError("Das Datum muss in der Zukunft liegen und im Format TT.MM.JJJJ angegeben sein.")
         return datum_sitzung
+    
