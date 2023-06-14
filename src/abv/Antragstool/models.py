@@ -137,7 +137,6 @@ class Antrag(models.Model):
                                     blank=True)
     antragTitel = models.TextField(db_column='antrag_titel', default="", max_length=200, blank=False)
     antragText = models.TextField(db_column='antrag_text', default="", max_length=2000, blank=False)
-    antragAnlagen = models.TextField(db_column='antrag_anlagen', default="[]", max_length=2000, blank=True)
     
     prioritaet = models.PositiveIntegerField(db_column='prioritaet', default=0)
     istEilantrag = models.BooleanField(db_column='ist_eilantrag', default=False, blank=False)

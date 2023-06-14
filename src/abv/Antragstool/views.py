@@ -469,12 +469,17 @@ def renderAntrag(request, title, form, feedback):
 
 def anlagenSpeichern(request, antrag):
     dateien = request.FILES.getlist('anlagen')
-
     anlagen_liste = []
+    
     for datei in dateien:
         anlage = Anlage()
+        # Füge Datei als Anlage hinzu
         anlage.anlage = datei
+        # Überschreibe den Pfad, sodass die Anlage im Format <AntragsID>/<Dateiname> gespeichert wird
         anlage.anlage.name = str(antrag.antragID) + '/' + datei.name
+        # Referenziere die Anlage auf den Antrag
+        anlage.antragID = antrag
+        
         anlagen_liste.append(anlage)
         
     if anlagen_liste:
@@ -514,9 +519,7 @@ def AntragAllgemein(request):
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
             
-            # File-Upload
-            anlagen = anlagenSpeichern(request, antrag)
-            print(anlagen)
+            anlagenSpeichern(request, antrag)
             
             antrag.save()
             
@@ -554,6 +557,8 @@ def AntragFinanziell(request):
             antrag.antragKostenposition = form.cleaned_data['position']
             antrag.antragSumme = form.cleaned_data['summe']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
+            
+            anlagenSpeichern(request, antrag)
                         
             antrag.save()
             
@@ -594,7 +599,7 @@ def AntragVeranstaltung(request):
             antrag.antragZeitraum = form.cleaned_data['zeitraum']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
                   
-            print(form.cleaned_data['anlagen'])
+            anlagenSpeichern(request, antrag)
                         
             antrag.save()
             
@@ -629,6 +634,8 @@ def AntragMitglied(request):
             antrag.istEilantrag = form.cleaned_data['ist_eilantrag']
             
             antrag.antragVorstellungPerson = form.cleaned_data['vorstellung_person']
+            
+            anlagenSpeichern(request, antrag)
             
             antrag.save()
                         
@@ -667,6 +674,8 @@ def AntragAmt(request):
             antrag.antragVorstellungPerson = form.cleaned_data['vorstellung_person']
             antrag.antragFragenZumAmt = form.cleaned_data['fragen_amt']
                         
+            anlagenSpeichern(request, antrag)
+                        
             antrag.save()
                         
             feedback.type='SUCCESS'
@@ -701,6 +710,8 @@ def AntragBenehmen(request):
             
             antrag.antragGrund = form.cleaned_data['grund']
             antrag.antragVorschlag = form.cleaned_data['vorschlag']
+
+            anlagenSpeichern(request, antrag)
 
             antrag.save()
                         
