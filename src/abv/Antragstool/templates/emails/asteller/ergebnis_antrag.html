@@ -5,13 +5,12 @@
         <title>Ergebnis deines Antrags</title>
     </head>
     <body style="font-family: Arial, sans-serif;">
-        
-        Hi {{ antrag.astellerID.astellerName }},<br><br>
 
-
+        Hallo {{ antrag.astellerID.astellerName }},<br><br>
+        dein Antrag {{ antrag.antragTitel}} wurde mit {{ antrag.beschlussID.stimmenJa }} Stimmen dafür, {{ antrag.beschlussID.stimmenNein }} Stimmen dagegen und {{ antrag.beschlussID.stimmenEnthaltung }} Stimmen Enthaltungen {{ antrag.beschlussID.beschlussErgebnis }}.<br><br>
 
         Viele Grüße,<br>
         Dein StuRa-Team!
-        
+
     </body>
 </html>
