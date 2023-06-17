@@ -1,1 +1,83 @@
-<>
+<b>Antragsteller&#x3A;in</b><br />
+
+    {{ antragssteller.astellerName }}
+
+<br>
+
+<b>Antragsdatum</b><br />
+
+    {{ antrag.erstelltDate }}
+
+<br>
+
+<b>Antragstext</b>
+
+{{ antrag.antragText }}
+
+<br>
+
+<b>Begr&#xFC;ndung zum Antrag</b><br />
+
+    {{ antrag.antragGrund }}
+
+<br>
+
+<b>Kostenposition im Haushaltsplan</b><br />
+
+<ul>{% if antrag.antragSumme == 0.00 %}
+
+    ohne finanzielle Mittel<br />
+
+    {% else %}
+
+    {{ antrag.antragKostenposition }}<br />
+    
+    {{ antrag.antragSumme }} Euro<br />
+
+    {% endif %}
+
+</ul><br />
+
+<b>Vorschlag zum weiteren Verfahren</b><br />
+
+<br>
+
+<b>Anlagen</b><br />
+
+<br>
+<b class="font-size:30">Abstimmung<b><br />
+
+    <b>erforderlicher Mehrheit<b><br />
+
+    {% if antrag.beschlussID %}
+    <b>Behandlung<b><br />
+
+    <b>Beschlussdatum<b><br />
+
+    <b>Beschlussfähigkeit<b><br />
+
+    <b>Ergebnis<b><br />
+
+    <ul>
+        Ja&#x3A; {{ antrag.beschlussID.stimmenJa }}<br />
+
+        Nein&#x3A; {{ antrag.beschlussID.stimmenNein }}<br />
+
+        Enthaltung&#x3A; {{ antrag.beschlussID.stimmenEnthaltung }}<br />
+
+        {{ antrag.beschlussID.beschlussErgebnis }}
+    <ul><br>
+
+<b class="font-size:30">Beschluss<b><br />
+    <b>Beschlusstext<b><br />
+    {{ antrag.beschlussID.beschlussText }}<br>
+
+    <b>Ausfertigung<b><br />
+    {{ antrag.beschlussID.beschlussAusfertigung }}
+
+
+    {%endif%}
+<br>
+<br>
+<br>
+<ul>Unterschrift<ul>
