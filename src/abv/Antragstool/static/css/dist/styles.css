@@ -824,6 +824,14 @@ select {
   margin-top: 1.25rem;
 }
 
+.ml-20 {
+  margin-left: 5rem;
+}
+
+.mr-20 {
+  margin-right: 5rem;
+}
+
 .block {
   display: block;
 }

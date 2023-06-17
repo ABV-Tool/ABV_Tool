@@ -4,8 +4,9 @@ from .views import  LoginPage, LogoutPage
 from .views import HomePage, ArchivPage
 from .views import ReferatsverwaltungPage, ReferatErstellenPage, ReferatBearbeitenPage, ReferatLoeschenPage
 from .views import SitzungsverwaltungPage, SitzungAnlegenPage, SitzungVerwaltenPage, SitzungVertagenPage, SitzungLoeschenPage
-from .views import AntragsverwaltungPage, AntragAnzeigenPage, AntragBearbeitenPage, AntragLoeschenPage, AntragBeschliessenPage, AntragVertagenPage
+from .views import AntragsverwaltungPage, AntragAnzeigenPage, AntragBearbeitenPage, AntragLoeschenPage, AntragBeschliessenPage, AntragVertagenPage, AntragPriorisierenPage
 from .views import AntragAllgemein, AntragFinanziell, AntragVeranstaltung, AntragMitglied, AntragAmt, AntragBenehmen
+from .views import TagesordnungErstellenPage
 
 #TODO: Internen Bereich nur für superuser freigeben
 
@@ -25,9 +26,11 @@ urlpatterns = [
     
     path('intern/sitzungsverwaltung/', login_required(user_passes_test(is_admin)(SitzungsverwaltungPage)), name='sitzungsverwaltung'),
     path('intern/sitzung/anlegen', login_required(user_passes_test(is_admin)(SitzungAnlegenPage)), name='sitzung-anlegen'),
-    path('intern/sitzung/<uuid:sitzID>/anzeigen', login_required(user_passes_test(is_admin)(SitzungVerwaltenPage)), name='sitzung-verwalten'),
+    path('intern/sitzung/<uuid:sitzID>/verwalten', login_required(user_passes_test(is_admin)(SitzungVerwaltenPage)), name='sitzung-verwalten'),
     path('intern/sitzung/<uuid:sitzID>/vertagen', login_required(user_passes_test(is_admin)(SitzungVertagenPage)), name='sitzung-vertagen'),
     path('intern/sitzung/<uuid:sitzID>/loeschen', login_required(user_passes_test(is_admin)(SitzungLoeschenPage)), name='sitzung-loeschen'),
+    
+    path('intern/sitzung/<uuid:sitzID>/tagesordnung/erstellen', login_required(user_passes_test(is_admin)(TagesordnungErstellenPage)), name='tagesordnung-erstellen'),
     
     path('intern/antragsverwaltung/', login_required(user_passes_test(is_admin)(AntragsverwaltungPage)), name='antragsverwaltung'),
     path('intern/antrag/<uuid:antragID>/anzeigen', login_required(user_passes_test(is_admin)(AntragAnzeigenPage)), name='antrag-anzeigen'),
@@ -35,6 +38,7 @@ urlpatterns = [
     path('intern/antrag/<uuid:antragID>/loeschen', login_required(user_passes_test(is_admin)(AntragLoeschenPage)), name='antrag-loeschen'),
     path('intern/antrag/<uuid:antragID>/beschliessen', login_required(user_passes_test(is_admin)(AntragBeschliessenPage)), name='antrag-beschliessen'),
     path('intern/antrag/<uuid:antragID>/vertagen', login_required(user_passes_test(is_admin)(AntragVertagenPage)), name='antrag-vertagen'),
+    path('intern/antrag/<uuid:antragID>/priorisieren', login_required(user_passes_test(is_admin)(AntragPriorisierenPage)), name='antrag-priorisieren'),
     
     # Benutzerverwaltung
     path('accounts/login/', LoginPage, name='login'),

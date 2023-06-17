@@ -117,10 +117,3 @@ def make_request(command, params):
                 raise requests.exceptions.RequestException(f'Error creating new pad: {error_message}')
             else:
                 raise requests.exceptions.RequestException('Error creating new pad')
-
-
-
-list_pads()
-ID = '22_23-002-01'
-#create_pad(ID)
-set_html(ID, open('templates/etherpad/tagesordnung.html', 'r').read())

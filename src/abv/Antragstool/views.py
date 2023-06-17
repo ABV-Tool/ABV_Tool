@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from django.db.models import Q
+from django.db.models import Q, Max
 from django.utils.html import strip_tags
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from django.template.loader import render_to_string
 
 from datetime import date, datetime, timedelta
 
@@ -11,6 +12,8 @@ from .mails import mailAstellerEingangsbestaetigung
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss, Anlage
 from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertagenForm, SitzungAnlegenForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
+
+from .api import set_html
 
 # Kann bei einer render()-Funktion mitgeliefert werden, um entsprechendes Feedback anzuzeigen
 # Hinweis: Komponente muss am Ende der Seite eingebunden sein
@@ -175,7 +178,12 @@ def SitzungAnlegenPage(request):
 
 
 def SitzungVerwaltenPage(request, sitzID):
-    antraege = Antrag.objects.filter(sitzID=sitzID)
+    # Anzahl der Anlagen pro Antrag in Sitzung berechnen
+    antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
+    for antrag in antraege:
+        antrag.anzAnlagen = Anlage.objects.filter(antragID=antrag.antragID).count()
+        antrag.save
+        
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     return render(request, 'pages/intern/sitzung/verwalten.html', context={
         'title': 'Sitzung verwalten',
@@ -339,7 +347,7 @@ def AntragVertagenPage(request, antragID):
             beschluss.save()
             
             # Erstelle Kopie des Antrags mit und speichere ihn in der alten Sitzung zur Dokumentation
-            antrag.antragID = None
+            antrag.antragID = None # type: ignore
             antrag.sitzID = alte_sitzID
             antrag.beschlussID = beschluss
             antrag.save()
@@ -410,6 +418,17 @@ def AntragBeschliessenPage(request, antragID):
         'aktion': 'BESCHLIESSEN',
         'feedback': feedback
     })
+    
+def AntragPriorisierenPage(request, antragID):
+    antrag = Antrag.objects.get(antragID=antragID)
+    sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
+    
+    hoechste_prioritaet = Antrag.objects.filter(sitzID=sitzung).aggregate(Max('prioritaet'))['prioritaet__max']
+    print(hoechste_prioritaet)
+    antrag.prioritaet = hoechste_prioritaet + 1
+    antrag.save()
+        
+    return redirect('sitzung-verwalten', sitzID=sitzung.sitzID)
     
 # ------ Antragsverwaltung ------ #
 
@@ -749,3 +768,24 @@ def AntragBenehmen(request):
     return renderAntrag(request, 'Antrag auf Herstellung des Benehmens', form, feedback)
 
 # ------ Anträge ------ #
+
+
+
+# ++++++ Tagesordnung ++++++ #
+
+def TagesordnungErstellenPage(request, sitzID):
+    sitzung = Sitzung.objects.get(sitzID=sitzID)
+    antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
+    
+
+    rendered_template = render_to_string('etherpad/tagesordnung.html', context={
+        'sitzung': sitzung,
+    })
+    
+    set_html('22_23-002-01', rendered_template)
+    
+    return render(request, 'etherpad/antrag.html', context={
+        'title': 'Tagesordnung erstellen',
+    })
+
+# ------ Tagesordnung ------ #
