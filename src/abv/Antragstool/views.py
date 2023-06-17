@@ -13,7 +13,7 @@ from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschl
 from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertagenForm, SitzungAnlegenForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
 
-from .api import set_html
+from .api import set_html, get_html
 
 # Kann bei einer render()-Funktion mitgeliefert werden, um entsprechendes Feedback anzuzeigen
 # Hinweis: Komponente muss am Ende der Seite eingebunden sein
@@ -376,16 +376,16 @@ def AntragBeschliessenPage(request, antragID):
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
     
-    print(sitzung.sitzID)
-    
     if request.method == 'POST':
         form = BeschlussForm(request.POST)
         if form.is_valid():
             
             beschluss, __ = Beschluss.objects.update_or_create(
                 sitzID = sitzung,
+                beschlussAusfertigung = form.cleaned_data['beschluss_ausfertigung'],
                 
                 defaults={
+                    "beschlussBehandlung": form.cleaned_data['beschluss_behandlung'],
                     "beschlussFaehigkeit" : form.cleaned_data['beschluss_faehigkeit'],
                 
                     "stimmenJa" : form.cleaned_data['stimmen_ja'],
@@ -403,7 +403,7 @@ def AntragBeschliessenPage(request, antragID):
             
             feedback.type = "SUCCESS"
             feedback.text = 'Beschluss erfolgreich eingepflegt! Der Antragsteller wird per E-Mail über das Ergebnis informiert.'
-            feedback.back_url = '/intern/sitzung/' + str(sitzung.sitzID) + '/anzeigen'
+            feedback.back_url = '/intern/sitzung/' + str(sitzung.sitzID) + '/verwalten'
         else:
             feedback.type = "ERROR"
             feedback.text = 'Fehler beim Einpflegen des Beschlusses! Bitte aktualisiere die Seite und versuche es erneut.'
@@ -777,15 +777,28 @@ def TagesordnungErstellenPage(request, sitzID):
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
     
+    antraege_liste = []
+    counter = 3
+    for antrag in antraege:
+        anlagen = Anlage.objects.filter(antragID=antrag.antragID)
+        antraege_liste.append([counter, antrag, anlagen])
+        counter +=1
+    
 
-    rendered_template = render_to_string('etherpad/tagesordnung.html', context={
+    template_rendered = render_to_string('etherpad/tagesordnung.html', context={
         'sitzung': sitzung,
+        'antraege': antraege_liste,
+        'request': request,
     })
     
-    set_html('22_23-002-01', rendered_template)
+    set_html('22_23-002-01', template_rendered)
     
-    return render(request, 'etherpad/antrag.html', context={
+    
+    return render(request, 'etherpad/vorschau.html', context={
         'title': 'Tagesordnung erstellen',
+        'template_rendered': template_rendered,
+        'sitzung': sitzung,
+        'antraege': antraege,
     })
 
 # ------ Tagesordnung ------ #

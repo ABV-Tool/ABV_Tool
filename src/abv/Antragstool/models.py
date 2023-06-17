@@ -82,6 +82,7 @@ class Beschluss(models.Model):
                                on_delete=models.CASCADE,
                                db_column='sitz_id')
     beschlussDate = models.DateField(db_column='beschluss_date', default=timezone.now)
+    beschlussBehandlung = models.TextField(db_column='beschluss_behandlung', max_length=1000)
     beschlussFaehigkeit = models.BooleanField(db_column='beschluss_faehigkeit', default=False)
     
     stimmenJa = models.PositiveIntegerField(db_column='stimmen_ja', default=0)

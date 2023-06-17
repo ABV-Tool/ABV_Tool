@@ -106,7 +106,7 @@ def make_request(command, params):
         print(f"Something went wrong: {err}")
     else:
         if response.status_code == 200:
-            print_pretty_json(response.content)
+            #print_pretty_json(response.content)
             return json.loads(response.content)
         else:
             try:
