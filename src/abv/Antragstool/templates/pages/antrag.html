@@ -332,6 +332,9 @@
             {% for anlage in anlagen %}
                 <a class="btn p-3 mr-2" href="/media/{{ anlage.anlage }}" target="_blank">{{ anlage.anlageName }}</a>
             {% endfor %}
+            {% if not anlagen %}
+                <p class="text-stura-orange">Keine Anlagen vorhanden!</p>
+            {% endif %}
         </div>
         {% endif %}
 
