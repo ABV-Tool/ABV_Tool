@@ -123,7 +123,7 @@
                     if (selectedSitzung) {
                         $('#info_sitzungsdatum').html("Die nächste Sitzung, in welcher dein jetzt gestellter Antrag behandelt wird, findet am <b>" + selectedSitzung[1] + "</b> statt.")
                     } else {
-                        $('#info_sitzungsdatum').html("Bitte wähle die zuständige Stelle aus, damit wir dir den Termin der nächsten Sitzung anzeigen können...")
+                        $('#info_sitzungsdatum').html("Bitte wähle die zuständige Stelle aus, damit wir dir den Termin der nächsten Sitzung anzeigen können. Sollte kein Termin angezeigt werden, hat die ausgewählte Stelle noch keine Sitzung geplant.")
                     }
                 }
             </script>
@@ -349,13 +349,13 @@
         {% endif %}
 
 
-        <!--+ Form-Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen +-->
-        {% if feedback %}
-            <div id="feedback">
-                {% include 'components/alert.html' with type=feedback.type text=feedback.text back_url=feedback.back_url %}
-            </div>
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
         {% endif %}
-
-        {{ form.errors }}
     </form>
 {% endblock %}

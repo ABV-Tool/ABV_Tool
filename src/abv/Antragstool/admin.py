@@ -30,7 +30,7 @@ admin.site.register(Sitzung, SitzungAdmin)
 
 
 class ReferatAdmin(admin.ModelAdmin):
-    list_display = ('refID','refName', 'refZyklus', 'refEmail')
+    list_display = ('refID','refName', 'refEmail')
     ordering = ('refID',)
 admin.site.register(Referat, ReferatAdmin)
 

@@ -13,6 +13,18 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 
+
+# Development-Umgebung
+ENVIRONMENT ='DEVELOPMENT'
+MESSAGE_LEVEL = 10 # DEBUG
+DEBUG = True
+
+# Production-Umgebung
+#ENVIRONMENT ='PRODUCTION'
+#MESSAGE_LEVEL = 20 # INFO
+#DEBUG = False
+#ALLOWED_HOSTS = []
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -23,13 +35,7 @@ BASE_DIR = Path(__file__).resolve().parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-r^g0%e^t*_v+h!xcg97!os*_+83!xmpg6&^&9gv7e-!8f@2aq8'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = []
-
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -141,16 +147,19 @@ FILE_UPLOAD_MAX_MEMORY_SIZE=10240000 # 10MB
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# set default login/logout redirect
+
+# Standard Login/Logout-Redirect
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-# tailwind settings
+
+# Development: Tailwind settings
 TAILWIND_APP_NAME = 'Antragstool'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 NPM_BIN_PATH=r"C:\Program Files\nodejs\npm.cmd"
+
 
 # E-Mail Settings
 # TODO Production: Mailserver anpassen
@@ -160,5 +169,8 @@ EMAIL_TOOL = 'abv@stura.htw-dresden.de'
 
 
 # Etherpad Settings
+# TODO Production: Etherpad-Server & API-Key anpassen
 ETHERPAD_API_KEY = '323412ced5824bdffcd11460036dd4df8274f6b15734e3667402e887b205375a'
-ETHERPAD_API_ENDPOINT = 'http://10.0.1.30:9001/api/1.2.15/'
+ETHERPAD_HOST = 'http://10.0.1.30:9001'
+ETHERPAD_API_ENDPOINT = ETHERPAD_HOST + '/api/1.2.15/'
+ETHERPAD_PAD_ENDPOINT = ETHERPAD_HOST + '/p/'

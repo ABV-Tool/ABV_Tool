@@ -13,7 +13,6 @@ class Referat(models.Model):
                                         unique=True,
                                         db_column='ref_id')
     refName = models.TextField(db_column='ref_name', max_length=200)
-    refZyklus = models.IntegerField(db_column='zyklus', blank=True)
     refEmail = models.EmailField(db_column='ref_email', max_length=100, blank=True)
     
     def __str__(self):
@@ -40,7 +39,8 @@ class Sitzung(models.Model):
                               on_delete=models.CASCADE)
     sitzDate = models.DateField(db_column='sitz_date')
     sitzNummerJahr = models.PositiveIntegerField(db_column='sitz_nummer_jahr', default=0)
-    anzAntraege = models.PositiveIntegerField(db_column='anz_antraege', default=0) 
+    anzAntraege = models.PositiveIntegerField(db_column='anz_antraege', default=0)
+    etherpadLink = models.URLField(db_column='etherpad_link', max_length=200, blank=True)
     
     def __str__(self):
         return str(self.sitzDate.strftime("%d.%m.%Y")) + " - Sitzung " + self.refID.refName
@@ -161,6 +161,9 @@ class Antrag(models.Model):
     
     erstelltDate = models.DateField(db_column='erstellt_date', auto_now_add=True)
     bearbeitetDate = models.DateField(db_column='bearbeitet_date', auto_now=True)
+    
+    # Flag um zu Verhindern, dass E-Mail an Asteller/Referat mehrfach versendet wird
+    wurdeVertagt = models.BooleanField(db_column='wurde_vertagt', default=False)
     
     def __str__(self):
         return str(self.antragTitel) + " von " + self.astellerID.astellerName

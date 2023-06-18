@@ -60,5 +60,16 @@
             </tbody>
         </table>
 
+
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        
     </div>
 {% endblock %}

@@ -1,19 +1,19 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.db.models import Q, Max
+from django.db import IntegrityError
 from django.utils.html import strip_tags
 from django.conf import settings
-from django.core.files.storage import FileSystemStorage
 from django.template.loader import render_to_string
 
 from datetime import date, datetime, timedelta
 
-from .mails import mailAstellerEingangsbestaetigung
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss, Anlage
 from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertagenForm, SitzungAnlegenForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
 
-from .api import set_html, get_html
+from .api import list_pads, create_pad, set_html
 
 # Kann bei einer render()-Funktion mitgeliefert werden, um entsprechendes Feedback anzuzeigen
 # Hinweis: Komponente muss am Ende der Seite eingebunden sein
@@ -24,6 +24,14 @@ class FrontendFeedback:
     type = ''
     text = ''
     back_url = ''
+    
+
+def formFehlerAusgeben(request, form):
+    for field_name, errors in form.errors.items():
+        field = form.fields[field_name]
+        error_messages = [f"{field.label} {error}" for error in errors]
+        messages.warning(request, "\n".join(error_messages))
+
 
 # ========== Hauptseiten ========== #
 
@@ -45,54 +53,50 @@ def ReferatsverwaltungPage(request):
 
 
 def ReferatErstellenPage(request):
-    feedback = FrontendFeedback()
-    if request.method == 'POST':
+    if request.method == 'POST':  
         form = ReferatForm(request.POST)
         if form.is_valid():
             referat_id = Referat.objects.latest('refID').refID + 1
-            print(referat_id)
-            referat = Referat(
-                refID=referat_id,
-                refName=form.cleaned_data['referat_name'],
-                refZyklus=form.cleaned_data['referat_zyklus'],
-                refEmail=form.cleaned_data['referat_email']
-            )
-            referat.save()
-            feedback.type = "SUCCESS"
-            feedback.text = 'Referat ' + referat.refName + ' erfolgreich erstellt!'
-            feedback.back_url = '/intern/referatsverwaltung/'
+            referat_name = form.cleaned_data['referat_name']
+            referat_email = form.cleaned_data['referat_email']
+            
+            try:
+                referat = Referat.objects.get(refName=referat_name, refEmail=referat_email)
+                messages.error(request, 'Das Referat ' + referat.refName + ' existiert bereits!')
+            except Referat.DoesNotExist:
+                referat = Referat(refID=referat_id, refName=referat_name, refEmail=referat_email)
+                referat.save()
+                messages.success(request, 'Das Referat ' + referat.refName + ' erfolgreich erstellt!')
+                return redirect('referat-erstellen')
+            
         else:
-            feedback.type = "ERROR"
-            feedback.text = 'Fehler beim Erstellen des Referats! Bitte aktualisiere die Seite und versuche es erneut.'
-            print(form.errors)
+            messages.error(request, 'Fehler beim Erstellen des Referats! Bitte aktualisiere die Seite und versuche es erneut.')
+            return redirect('referat-erstellen')
     else:
         form = ReferatForm()
         
     return render(request, 'pages/intern/referat.html', context={
         'title': 'Referat erstellen', 
         'aktion':'ERSTELLEN',
-        'form': form,
-        'feedback': feedback
+        'form': form
     })
 
 
 def ReferatBearbeitenPage(request, refID):
-    feedback = FrontendFeedback()
     referat = Referat.objects.get(refID=refID)
     
     if request.method == 'POST':
         form = ReferatForm(request.POST)
         if form.is_valid():
             referat.refName = form.cleaned_data['referat_name']
-            referat.refZyklus = form.cleaned_data['referat_zyklus']
             referat.refEmail = form.cleaned_data['referat_email']
             referat.save()
-            feedback.type = "SUCCESS"
-            feedback.text = 'Referat ' + referat.refName + ' erfolgreich bearbeitet!'
-            feedback.back_url = '/intern/referatsverwaltung/'
+            
+            messages.success(request, 'Das Referat ' + referat.refName + ' wurde erfolgreich bearbeitet!')
+            return redirect('referat-bearbeiten', refID=refID)
         else:
-            feedback.type = "ERROR"
-            feedback.text = 'Fehler beim Bearbeiten des Referats! Bitte aktualisieren die Seite und versuche es erneut.'
+            messages.error(request, 'Fehler beim Bearbeiten des Referats! Bitte aktualisieren die Seite und versuche es erneut.')
+            return redirect('referat-bearbeiten', refID=refID)
     else:
         form = ReferatForm()
     
@@ -100,21 +104,17 @@ def ReferatBearbeitenPage(request, refID):
         'title': 'Referat bearbeiten', 
         'aktion':'BEARBEITEN', 
         'referat': referat,
-        'form': form,
-        'feedback': feedback
+        'form': form
     })
 
 
 def ReferatLoeschenPage(request, refID):
-    feedback = FrontendFeedback()
     referat = Referat.objects.get(refID=refID)
-    form = ReferatForm()
 
     if request.method == 'POST':
         referat.delete()
-        feedback.type = "SUCCESS"
-        feedback.text = 'Referat ' + referat.refName + ' erfolgreich gelöscht!'
-        feedback.back_url = '/intern/referatsverwaltung/'
+        messages.success(request, 'Das Referat ' + referat.refName + ' wurde erfolgreich gelöscht!')
+        return redirect('referatsverwaltung')
     else:
         form = ReferatForm()
 
@@ -122,8 +122,7 @@ def ReferatLoeschenPage(request, refID):
         'title': 'Referat löschen', 
         'aktion':'LOESCHEN', 
         'referat': referat,
-        'form': form,
-        'feedback': feedback
+        'form': form
     })
 
 # ------ Referatsverwaltung ------ #
@@ -147,7 +146,6 @@ def SitzungsverwaltungPage(request):
 
 
 def SitzungAnlegenPage(request):
-    feedback = FrontendFeedback()
     referate = Referat.objects.all().order_by('refID')
     date = datetime.now().date() + timedelta(days=7)
     
@@ -159,12 +157,12 @@ def SitzungAnlegenPage(request):
             sitzung.refID = form.cleaned_data['referat']
             sitzung.save()
 
-            feedback.type = "SUCCESS"
-            feedback.text = 'Die Sitzung wurde wurde für den ' + sitzung.sitzDate.strftime("%d.%m.%Y") + ' angelegt!'
-            feedback.back_url = '/intern/sitzungsverwaltung/'
+            messages.success(request, 'Die Sitzung wurde wurde für den ' + sitzung.sitzDate.strftime("%d.%m.%Y") + ' angelegt!')
+            return redirect('sitzung-anlegen')
         else:
-            feedback.type = "ERROR"
-            feedback.text = 'Die Sitzung konnte nicht angelegt werden. ' + strip_tags(str(form.errors.get('datum_sitzung')))
+            messages.error(request, 'Die Sitzung konnte nicht angelegt werden. Bitte beachte die nachfolgenden Fehler.')
+            formFehlerAusgeben(request, form)
+            return redirect('sitzung-anlegen')
     else:
         form = SitzungAnlegenForm()
         
@@ -172,8 +170,7 @@ def SitzungAnlegenPage(request):
         'title': 'Sitzung anlegen',
         'referate': referate,
         'form': form,
-        'date': date,
-        'feedback': feedback
+        'date': date
     })
 
 
@@ -192,8 +189,7 @@ def SitzungVerwaltenPage(request, sitzID):
     })
 
 
-def SitzungVertagenPage(request, sitzID):
-    feedback = FrontendFeedback()
+def SitzungVertagenPage(request, sitzID): 
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     date = sitzung.sitzDate + timedelta(days=7)
     
@@ -203,12 +199,12 @@ def SitzungVertagenPage(request, sitzID):
             sitzung.sitzDate = form.cleaned_data['datum_neu']
             sitzung.save()
 
-            feedback.type = "SUCCESS"
-            feedback.text = 'Die Sitzung wurde auf den ' + sitzung.sitzDate.strftime("%d.%m.%Y") + ' vertagt!'
-            feedback.back_url = '/intern/sitzungsverwaltung/'
+            messages.success(request, 'Die Sitzung wurde auf den ' + sitzung.sitzDate.strftime("%d.%m.%Y") + ' vertagt!')
+            return redirect('sitzung-vertagen', sitzID=sitzID)
         else:
-            feedback.type = "ERROR"
-            feedback.text = 'Die Sitzung konnte nicht vertagt werden. ' + strip_tags(str(form.errors.get('datum_neu')))
+            messages.error(request, 'Die Sitzung konnte nicht vertagt werden. Bitte beachte die nachfolgenden Fehler.')
+            formFehlerAusgeben(request, form)
+            return redirect('sitzung-vertagen', sitzID=sitzID)
     else:
         form = SitzungVertagenForm()
     
@@ -216,13 +212,11 @@ def SitzungVertagenPage(request, sitzID):
         'title': 'Sitzung vertagen',
         'sitzung': sitzung,
         'form': form,
-        'date': date,
-        'feedback': feedback
+        'date': date
     })
 
 
 def SitzungLoeschenPage(request, sitzID):
-    feedback = FrontendFeedback()
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     
     if request.method == 'POST':
@@ -231,18 +225,15 @@ def SitzungLoeschenPage(request, sitzID):
         if antraege_sitzung == 0:
             sitzung.delete()
 
-            feedback.type = "SUCCESS"
-            feedback.text = 'Die Sitzung wurde erfolgreich gelöscht!'
-            feedback.back_url = '/intern/sitzungsverwaltung/'
+            messages.success(request, 'Die Sitzung wurde erfolgreich gelöscht!')
+            return redirect('sitzungsverwaltung')
         else:
-            feedback.type = "ERROR"
-            feedback.text = 'Die Sitzung konnte nicht gelöscht werden, da es noch Anträge gibt, welche dieser Sitzung zugeordnet sind!'
-            feedback.back_url = '/intern/sitzung/' + str(sitzung.sitzID) + '/anzeigen'
+            messages.error(request, 'Die Sitzung konnte nicht gelöscht werden, da es noch Anträge gibt, welche dieser Sitzung zugeordnet sind!')
+            return redirect('sitzungsverwaltung')
     
     return render(request, 'pages/intern/sitzung/loeschen.html', context={
         'title': 'Sitzung löschen',
-        'sitzung': sitzung,
-        'feedback': feedback
+        'sitzung': sitzung
     })
     
 
@@ -325,9 +316,7 @@ def AntragLoeschenPage(request, antragID):
 def AntragVertagenPage(request, antragID):
     """
     Vertage den Antrag in eine andere Sitzung
-    Dabei 
     """
-    feedback = FrontendFeedback()
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
     
@@ -335,9 +324,8 @@ def AntragVertagenPage(request, antragID):
         form = AntragVertagenForm(request.POST)
         # Prüfe, on der Antrag bereits einen Beschluss hat
         if antrag.beschlussID is not None:
-            feedback.type = "ERROR"
-            feedback.text = 'Der Antrag konnte nicht vertagt werden, da er bereits einen Beschluss hat!'
-            feedback.back_url = '/intern/sitzungsverwaltung/'
+            messages.error(request, 'Der Antrag konnte nicht vertagt werden, da er bereits einen Beschluss hat!')
+            return redirect('antrag-vertagen', antragID=antragID)
         elif form.is_valid():
             alte_sitzID = antrag.sitzID
             neue_sitzID = form.cleaned_data['sitzung']
@@ -362,13 +350,12 @@ def AntragVertagenPage(request, antragID):
             antrag.sitzID = alte_sitzID
             antrag.beschlussID = beschluss
             antrag.save()
-
-            feedback.type = "SUCCESS"
-            feedback.text = 'Der Antrag wurde in die Sitzung ' + str(antrag.sitzID.refID.refName) +  ' am ' + antrag.sitzID.sitzDate.strftime("%d.%m.%Y") + ' vertagt!'
-            feedback.back_url = '/intern/sitzungsverwaltung/'
+            
+            messages.success(request, 'Der Antrag wurde in die Sitzung ' + str(antrag.sitzID.refID.refName) +  ' am ' + antrag.sitzID.sitzDate.strftime("%d.%m.%Y") + ' vertagt!')
+            return redirect('antrag-vertagen', antragID=antragID)
         else:
-            feedback.type = "ERROR"
-            feedback.text = 'Der Antrag konnte nicht vertagt werden! Bitte aktualisiere die Seite und versuche es erneut.'
+            messages.error(request, 'Der Antrag konnte nicht vertagt werden! Bitte aktualisiere die Seite und versuche es erneut.')
+            return redirect('antrag-vertagen', antragID=antragID)
     else:
         form = AntragVertagenForm()
     
@@ -377,13 +364,11 @@ def AntragVertagenPage(request, antragID):
         'antrag': antrag,
         'sitzung': sitzung,
         'aktion': 'VERTAGEN',
-        'form': form,
-        'feedback': feedback
+        'form': form
     })
     
     
 def AntragBeschliessenPage(request, antragID):
-    feedback = FrontendFeedback()
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
     
@@ -412,12 +397,11 @@ def AntragBeschliessenPage(request, antragID):
             antrag.beschlussID = beschluss
             antrag.save()
             
-            feedback.type = "SUCCESS"
-            feedback.text = 'Beschluss erfolgreich eingepflegt! Der Antragsteller wird per E-Mail über das Ergebnis informiert.'
-            feedback.back_url = '/intern/sitzung/' + str(sitzung.sitzID) + '/verwalten'
+            messages.success(request, 'Der Beschluss wurde erfolgreich eingepflegt! Der Antragsteller wird per E-Mail über das Ergebnis informiert.')
+            return redirect('antrag-beschliessen', antragID=antragID)
         else:
-            feedback.type = "ERROR"
-            feedback.text = 'Fehler beim Einpflegen des Beschlusses! Bitte aktualisiere die Seite und versuche es erneut.'
+            messages.error(request, 'Der Beschluss konnte nicht eingepflegt werden! Bitte aktualisiere die Seite und versuche es erneut.')
+            return redirect('antrag-beschliessen', antragID=antragID)
     else:
         form = BeschlussForm()
     
@@ -426,8 +410,7 @@ def AntragBeschliessenPage(request, antragID):
         'antrag': antrag,
         'sitzung': sitzung,
         'form': form,
-        'aktion': 'BESCHLIESSEN',
-        'feedback': feedback
+        'aktion': 'BESCHLIESSEN'
     })
     
 def AntragPriorisierenPage(request, antragID):
@@ -464,15 +447,15 @@ def LoginPage(request):
                 login(request, user)
                 return redirect('index')
             else:
-                feedback.type = "ERROR"
-                feedback.text = 'Die eingegebenen Daten sind ungültig! Versuche es erneut.'
+                messages.error(request, 'Der Benutzername oder das Passwort ist falsch!')
+                formFehlerAusgeben(request, form)
+                return redirect('login')
     else: 
         form = LoginForm()
               
     return render(request, 'pages/login.html', context={
         'title': 'Anmelden', 
-        'form': form, 
-        'feedback': feedback
+        'form': form
     })
 
 
@@ -489,7 +472,7 @@ def LogoutPage(request):
 # ++++++ Funktionen ++++++ #
 
 # Prüfe, ob der Antragsteller bereits in der Datenbank existiert und gib diesen zurück
-def checkAntragsteller(form):
+def astellerAbfragenOderErstellen(form):
     astellerEmail = form.cleaned_data['email']
     if Antragssteller.objects.filter(astellerEmail=astellerEmail).exists():
         asteller = Antragssteller.objects.get(astellerEmail=astellerEmail)
@@ -503,7 +486,7 @@ def checkAntragsteller(form):
 
 # Prüfe, wann die nächste Sitzung des Referats stattfindet und gib diese zurück
 # TODO: Prüfung auf Eilantrag einbauen & E-Mail an Referat senden
-def checkSitzungen(form):
+def sitzungenAbfragen(form):
     refID = form.cleaned_data['referat']
     sitzungen = Sitzung.objects.filter(refID=refID).filter(sitzDate__gt=date.today()).order_by('sitzDate')
     return sitzungen
@@ -557,11 +540,11 @@ def AntragAllgemein(request):
         form = AntragAllgemeinForm(request.POST, request.FILES)
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
-            sitzungen = checkSitzungen(form)
+            sitzungen = sitzungenAbfragen(form)
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='antrag-ohne-finanzielle-mittel')
             # Prüfe, ob Antragsteller bereits existiert
-            asteller = checkAntragsteller(form)
+            asteller = astellerAbfragenOderErstellen(form)
             
             # Erstelle den Antrag
             antrag = Antrag()
@@ -579,8 +562,12 @@ def AntragAllgemein(request):
             
             anlagenSpeichern(request, antrag)
             
-            feedback.type='SUCCESS'
-            feedback.text=FEEDBACK_ANTRAG_SUCCESS
+            messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
+            return redirect('antrag-allgemein')
+        else:
+            messages.error(request, 'Dein Antrag konnte nicht abgeschickt werden. Bitte beachte die nachfolgenden Fehler.')
+            formFehlerAusgeben(request, form)
+            return redirect('antrag-allgemein')
     else:
         form = AntragAllgemeinForm()
 
@@ -594,11 +581,11 @@ def AntragFinanziell(request):
         form = AntragFinanziellForm(request.POST, request.FILES)
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
-            sitzungen = checkSitzungen(form)
+            sitzungen = sitzungenAbfragen(form)
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='antrag-mit-finanziellen-mitteln')
             # Prüfe, ob Antragsteller bereits existiert
-            asteller = checkAntragsteller(form)
+            asteller = astellerAbfragenOderErstellen(form)
             
             # Erstelle den Antrag
             antrag = Antrag()
@@ -618,8 +605,12 @@ def AntragFinanziell(request):
             
             anlagenSpeichern(request, antrag)
             
-            feedback.type='SUCCESS'
-            feedback.text=FEEDBACK_ANTRAG_SUCCESS
+            messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
+            return redirect('antrag-finanziell')
+        else:
+            messages.error(request, 'Dein Antrag konnte nicht abgeschickt werden. Bitte beachte die nachfolgenden Fehler.')
+            formFehlerAusgeben(request, form)
+            return redirect('antrag-finanziell')
     else:
         form = AntragFinanziellForm()
     
@@ -633,11 +624,11 @@ def AntragVeranstaltung(request):
         form = AntragVeranstaltungForm(request.POST, request.FILES)
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
-            sitzungen = checkSitzungen(form)
+            sitzungen = sitzungenAbfragen(form)
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='antrag-fuer-veranstaltungen')
             # Prüfe, ob Antragsteller bereits existiert
-            asteller = checkAntragsteller(form)
+            asteller = astellerAbfragenOderErstellen(form)
             
             # Erstelle den Antrag
             antrag = Antrag()
@@ -659,8 +650,12 @@ def AntragVeranstaltung(request):
             
             anlagenSpeichern(request, antrag)
             
-            feedback.type='SUCCESS'
-            feedback.text=FEEDBACK_ANTRAG_SUCCESS
+            messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
+            return redirect('antrag-veranstaltung')
+        else:
+            messages.error(request, 'Dein Antrag konnte nicht abgeschickt werden. Bitte beachte die nachfolgenden Fehler.')
+            formFehlerAusgeben(request, form)
+            return redirect('antrag-veranstaltung')
     else:
         form = AntragVeranstaltungForm()
     
@@ -674,11 +669,11 @@ def AntragMitglied(request):
         form = AntragMitgliedForm(request.POST, request.FILES)
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
-            sitzungen = checkSitzungen(form)
+            sitzungen = sitzungenAbfragen(form)
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='beratendes-mitglied')
             # Prüfe, ob Antragsteller bereits existiert
-            asteller = checkAntragsteller(form)
+            asteller = astellerAbfragenOderErstellen(form)
             
             # Erstelle den Antrag
             antrag = Antrag()
@@ -695,8 +690,12 @@ def AntragMitglied(request):
             
             anlagenSpeichern(request, antrag)
                         
-            feedback.type='SUCCESS'
-            feedback.text=FEEDBACK_ANTRAG_SUCCESS
+            messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
+            return redirect('antrag-mitglied')
+        else:
+            messages.error(request, 'Dein Antrag konnte nicht abgeschickt werden. Bitte beachte die nachfolgenden Fehler.')
+            formFehlerAusgeben(request, form)
+            return redirect('antrag-mitglied')
     else:
         form = AntragMitgliedForm()
     
@@ -710,11 +709,11 @@ def AntragAmt(request):
         form = AntragAmtForm(request.POST, request.FILES)
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
-            sitzungen = checkSitzungen(form)
+            sitzungen = sitzungenAbfragen(form)
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='wahl-auf-stelle-oder-amt')
             # Prüfe, ob Antragsteller bereits existiert & Mitglied ist
-            asteller = checkAntragsteller(form)
+            asteller = astellerAbfragenOderErstellen(form)
             asteller.astellerIstMitglied = form.cleaned_data['ist_mitglied']
             asteller.save()
             
@@ -734,8 +733,12 @@ def AntragAmt(request):
             
             anlagenSpeichern(request, antrag)
                         
-            feedback.type='SUCCESS'
-            feedback.text=FEEDBACK_ANTRAG_SUCCESS
+            messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
+            return redirect('antrag-amt')
+        else:
+            messages.error(request, 'Dein Antrag konnte nicht abgeschickt werden. Bitte beachte die nachfolgenden Fehler.')
+            formFehlerAusgeben(request, form)
+            return redirect('antrag-amt')
     else:
         form = AntragAmtForm()
     
@@ -749,11 +752,11 @@ def AntragBenehmen(request):
         form = AntragBenehmenForm(request.POST, request.FILES)
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
-            sitzungen = checkSitzungen(form)
+            sitzungen = sitzungenAbfragen(form)
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='herstellung-des-benehmens')
             # Prüfe, ob Antragsteller bereits existiert
-            asteller = checkAntragsteller(form)
+            asteller = astellerAbfragenOderErstellen(form)
             
             # Erstelle den Antrag
             antrag = Antrag()
@@ -771,8 +774,12 @@ def AntragBenehmen(request):
             
             anlagenSpeichern(request, antrag)
                         
-            feedback.type='SUCCESS'
-            feedback.text=FEEDBACK_ANTRAG_SUCCESS
+            messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
+            return redirect('antrag-benehmen')
+        else:
+            messages.error(request, 'Dein Antrag konnte nicht abgeschickt werden. Bitte beachte die nachfolgenden Fehler.')
+            formFehlerAusgeben(request, form)
+            return redirect('antrag-benehmen')
     else:
         form = AntragBenehmenForm()
     
@@ -806,28 +813,60 @@ def TagesordnungErstellenPage(request, sitzID):
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
     
+    # TODO: Sitzungsnummer automatisch generieren lassen
+    sitzung_nummer = '22_23-003-01'
+    
+    # Anträge mit Anlagen & TOP-Nummer in Liste schreiben
     antraege_liste = []
-    counter = 3
+    top_counter = 3
     for antrag in antraege:
         anlagen = Anlage.objects.filter(antragID=antrag.antragID)
-        antraege_liste.append([counter, antrag, anlagen])
-        counter +=1
+        antraege_liste.append([top_counter, antrag, anlagen])
+        top_counter +=1
     
-
+    # Template mit Daten rendern
     template_rendered = render_to_string('etherpad/tagesordnung.html', context={
         'sitzung': sitzung,
         'antraege': antraege_liste,
         'request': request,
     })
     
-    set_html('22_23-002-01', template_rendered)
     
-    
-    return render(request, 'etherpad/vorschau.html', context={
-        'title': 'Tagesordnung erstellen',
-        'template_rendered': template_rendered,
-        'sitzung': sitzung,
-        'antraege': antraege,
-    })
+    # Prüfe, ob die Sitzung bereits ein Etherpad hat
+    pads = []
+    result = list_pads()
+    if result['message'] != 'ok':
+        messages.error(request, "Die Verbindung mit dem Etherpad konnte nicht hergestellt werden. Bitte kontaktiere einen Administrator.")
+        messages.debug(request, str(result))
+        return redirect('tagesordnung-vorschau', sitzID=sitzID)
+    else:
+        pads = result['data']['padIDs']
+      
+        
+    # Wenn nicht, erstelle ein neues Etherpad
+    if sitzung_nummer not in pads:
+        result = create_pad(sitzung_nummer)
+        if result['message'] != 'ok':
+            messages.error(request, "Das Etherpad für die Sitzung konnte nicht erstellt werden. Bitte kontaktiere einen Administrator.")
+            messages.debug(request, str(result))
+            return redirect('tagesordnung-vorschau', sitzID=sitzID)
+        else:
+            messages.debug(request, str(result))
+          
+            
+    # Gerendertes Template in Etherpad schreiben
+    result = set_html(sitzung_nummer, template_rendered)
+    if result['message'] != 'ok':
+        messages.error(request, "Die Tagesordnung konnte nicht im Etherpad gespeichert werden. Bitte kontaktiere einen Administrator.")
+        messages.debug(request, str(result))
+        return redirect('tagesordnung-vorschau', sitzID=sitzID)
+    else:
+        messages.success(request, "Die Tagesordnung wurde erfolgreich erstellt und im Etherpad eingefügt.")
+
+        # Etherpad-Link in Sitzung speichern
+        sitzung.etherpadLink = settings.ETHERPAD_PAD_ENDPOINT + sitzung_nummer
+        sitzung.save()
+ 
+    return redirect('tagesordnung-vorschau', sitzID=sitzID)
 
 # ------ Tagesordnung ------ #

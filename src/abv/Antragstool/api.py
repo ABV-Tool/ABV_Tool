@@ -96,22 +96,18 @@ def make_request(command, params):
         response.raise_for_status()
     except requests.exceptions.HTTPError as errh:
         print(f"HTTP Error: {errh}")
+        return {'message': 'error', 'type': 'HTTP Error', 'error': errh}
     except requests.exceptions.ConnectionError as errc:
         print(f"Error Connecting: {errc}")
+        return {'message': 'error', 'type': 'Connection Error', 'error': errc}
     except requests.exceptions.Timeout as errt:
         print(f"Timeout Error: {errt}")
+        return {'message': 'error', 'type': 'Timeout Error', 'error': errt}
     except requests.exceptions.RequestException as err:
         print(f"Something went wrong: {err}")
+        return {'message': 'error', 'type': 'Unknown Error', 'error': err}
     else:
         if response.status_code == 200:
-            #print_pretty_json(response.content)
             return json.loads(response.content)
         else:
-            try:
-                error_message = response.json()['message']
-            except (KeyError, ValueError):
-                error_message = response.content.decode('utf-8')
-            if error_message:
-                raise requests.exceptions.RequestException(f'Error creating new pad: {error_message}')
-            else:
-                raise requests.exceptions.RequestException('Error creating new pad')
+            return {'message': 'error', 'type': 'Pentapad Error', 'error': json.loads(response.content)}
