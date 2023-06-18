@@ -12,10 +12,10 @@
     <div class="ml-40 mr-40">
         <div class="w-full">
             <!-- TODO: URL-Referenzen einfügen -->
-            <a href="{% url 'tagesordnung-erstellen' sitzID=sitzung.sitzID %}" class="btn btn-success hover:cursor-pointer mr-5">
+            <a href="{% url 'tagesordnung-vorschau' sitzID=sitzung.sitzID %}" class="btn btn-success hover:cursor-pointer mr-5">
                 <i class="fa-solid fa-circle-plus"></i> Tagesordnung erstellen
             </a>
-            <a href="" class="btn btn-success hover:cursor-pointer">
+            <a href="{% url 'sitzung-abschliessen' sitzID=sitzung.sitzID %}" class="btn btn-success hover:cursor-pointer">
                 <i class="fa-solid fa-circle-check"></i> Sitzung abschließen
             </a>
         </div>

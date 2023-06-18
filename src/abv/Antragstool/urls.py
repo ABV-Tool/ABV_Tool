@@ -3,10 +3,10 @@ from django.urls import path, re_path, include
 from .views import  LoginPage, LogoutPage
 from .views import HomePage, ArchivPage
 from .views import ReferatsverwaltungPage, ReferatErstellenPage, ReferatBearbeitenPage, ReferatLoeschenPage
-from .views import SitzungsverwaltungPage, SitzungAnlegenPage, SitzungVerwaltenPage, SitzungVertagenPage, SitzungLoeschenPage
+from .views import SitzungsverwaltungPage, SitzungAnlegenPage, SitzungVerwaltenPage, SitzungVertagenPage, SitzungLoeschenPage, SitzungAbschliessenPage
 from .views import AntragsverwaltungPage, AntragAnzeigenPage, AntragBearbeitenPage, AntragLoeschenPage, AntragBeschliessenPage, AntragVertagenPage, AntragPriorisierenPage
 from .views import AntragAllgemein, AntragFinanziell, AntragVeranstaltung, AntragMitglied, AntragAmt, AntragBenehmen
-from .views import TagesordnungErstellenPage
+from .views import TagesordnungVorschauPage, TagesordnungErstellenPage
 
 #TODO: Internen Bereich nur für superuser freigeben
 
@@ -29,7 +29,9 @@ urlpatterns = [
     path('intern/sitzung/<uuid:sitzID>/verwalten', login_required(user_passes_test(is_admin)(SitzungVerwaltenPage)), name='sitzung-verwalten'),
     path('intern/sitzung/<uuid:sitzID>/vertagen', login_required(user_passes_test(is_admin)(SitzungVertagenPage)), name='sitzung-vertagen'),
     path('intern/sitzung/<uuid:sitzID>/loeschen', login_required(user_passes_test(is_admin)(SitzungLoeschenPage)), name='sitzung-loeschen'),
+    path('intern/sitzung/<uuid:sitzID>/abschliessen', login_required(user_passes_test(is_admin)(SitzungAbschliessenPage)), name='sitzung-abschliessen'),
     
+    path('intern/sitzung/<uuid:sitzID>/tagesordnung/vorschau', login_required(user_passes_test(is_admin)(TagesordnungVorschauPage)), name='tagesordnung-vorschau'),
     path('intern/sitzung/<uuid:sitzID>/tagesordnung/erstellen', login_required(user_passes_test(is_admin)(TagesordnungErstellenPage)), name='tagesordnung-erstellen'),
     
     path('intern/antragsverwaltung/', login_required(user_passes_test(is_admin)(AntragsverwaltungPage)), name='antragsverwaltung'),

@@ -244,6 +244,17 @@ def SitzungLoeschenPage(request, sitzID):
         'sitzung': sitzung,
         'feedback': feedback
     })
+    
+
+def SitzungAbschliessenPage(request, sitzID):
+    feedback = FrontendFeedback()
+    sitzung = Sitzung.objects.get(sitzID=sitzID)
+    
+    return render(request, 'pages/intern/sitzung/abschliessen.html', context={
+        'title': 'Sitzung abschließen',
+        'sitzung': sitzung,
+        'feedback': feedback
+    })
 
 # ------ Sitzungsverwaltung ------ #
 
@@ -772,6 +783,24 @@ def AntragBenehmen(request):
 
 
 # ++++++ Tagesordnung ++++++ #
+
+def TagesordnungVorschauPage(request, sitzID):
+    sitzung = Sitzung.objects.get(sitzID=sitzID)
+    antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
+    
+    antraege_liste = []
+    counter = 3
+    for antrag in antraege:
+        anlagen = Anlage.objects.filter(antragID=antrag.antragID)
+        antraege_liste.append([counter, antrag, anlagen])
+        counter +=1
+    
+    return render(request, 'pages/intern/tagesordnung.html', context={
+        'title': 'Vorschau der Tagesordnung',
+        'sitzung': sitzung,
+        'antraege': antraege,
+    })
+
 
 def TagesordnungErstellenPage(request, sitzID):
     sitzung = Sitzung.objects.get(sitzID=sitzID)
