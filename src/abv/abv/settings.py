@@ -157,3 +157,8 @@ NPM_BIN_PATH=r"C:\Program Files\nodejs\npm.cmd"
 EMAIL_HOST = '127.0.0.1'
 EMAIL_PORT = 1025
 EMAIL_TOOL = 'abv@stura.htw-dresden.de'
+
+
+# Etherpad Settings
+ETHERPAD_API_KEY = '323412ced5824bdffcd11460036dd4df8274f6b15734e3667402e887b205375a'
+ETHERPAD_API_ENDPOINT = 'http://10.0.1.30:9001/api/1.2.15/'

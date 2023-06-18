@@ -1,9 +1,7 @@
 import requests
 import json
 
-    
-API_KEY = '323412ced5824bdffcd11460036dd4df8274f6b15734e3667402e887b205375a'
-API_ENDPOINT = 'http://10.0.1.30:9001/api/1.2.15/'
+from django.conf import settings
 
 
 def create_pad(pad_id):
@@ -11,7 +9,7 @@ def create_pad(pad_id):
     Creates a new etherpad with the given id and initial text
     """
     params = {
-        'apikey': API_KEY,
+        'apikey': settings.ETHERPAD_API_KEY,
         'padID': pad_id,
         'text': ''
     }
@@ -22,7 +20,7 @@ def delete_pad(pad_id):
     Deletes a etherpad with the given id
     """
     params = {
-        'apikey': API_KEY,
+        'apikey': settings.ETHERPAD_API_KEY,
         'padID': pad_id
     }
     return make_request('deletePad', params)
@@ -32,7 +30,7 @@ def list_pads():
     Lists all created pads
     """
     params = {
-        'apikey': API_KEY
+        'apikey': settings.ETHERPAD_API_KEY
     }
     return make_request('listAllPads', params)
     
@@ -41,7 +39,7 @@ def get_text(pad_id):
     Retrieves the text of the given pad
     """
     params = {
-        'apikey': API_KEY,
+        'apikey': settings.ETHERPAD_API_KEY,
         'padID': pad_id,
     }
     return make_request('getText', params)
@@ -51,7 +49,7 @@ def append_text(pad_id, text):
     Appends text to the given pad
     """
     params = {
-        'apikey': API_KEY,
+        'apikey': settings.ETHERPAD_API_KEY,
         'padID': pad_id,
         'text': text
     }
@@ -62,7 +60,7 @@ def get_html(pad_id):
     Retrieves the html of the given pad
     """
     params = {
-        'apikey': API_KEY,
+        'apikey': settings.ETHERPAD_API_KEY,
         'padID': pad_id,
     }
     return make_request('getHTML', params)
@@ -72,7 +70,7 @@ def set_html(pad_id, html):
     Retrieves the html of the given pad
     """
     params = {
-        'apikey': API_KEY,
+        'apikey': settings.ETHERPAD_API_KEY,
         'padID': pad_id,
         'html': html
     }
@@ -94,7 +92,7 @@ def make_request(command, params):
     Makes a request to the etherpad-lite API
     """
     try:
-        response = requests.post(API_ENDPOINT + str(command), data=params)
+        response = requests.post(settings.ETHERPAD_API_ENDPOINT + str(command), data=params)
         response.raise_for_status()
     except requests.exceptions.HTTPError as errh:
         print(f"HTTP Error: {errh}")
