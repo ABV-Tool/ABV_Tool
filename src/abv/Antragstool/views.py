@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from datetime import date
 from .mails import mailAstellerEingangsbestaetigung
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss
-from .forms import ReferatForm, BeschlussForm
+from .forms import ReferatForm, BeschlussForm, VertagenForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
 
 # Kann bei einer render()-Funktion mitgeliefert werden, um entsprechendes Feedback anzuzeigen
@@ -147,7 +147,27 @@ def SitzungAnzeigenPage(request, sitzID):
 
 
 def SitzungVertagenPage(request, sitzID):
-    return render(request, 'pages/intern/sitzung/vertagen.html', context={'title': 'Sitzung vertagen'})
+    feedback = FrontendFeedback()
+    sitzung = Sitzung.objects.get(sitzID=sitzID)
+    
+    if request.method == 'POST':
+        form = VertagenForm(request.POST)
+        if form.is_valid():
+            sitzung.sitzDate = form.cleaned_data['datum_neu']
+            sitzung.save()
+
+            feedback.type = "SUCCESS"
+            feedback.text = 'Die Sitzung wurde auf den ' + sitzung.sitzDate.strftime("%d.%m.%Y") + ' vertagt!'
+            feedback.back_url = '/intern/sitzungsverwaltung/'
+    else:
+        form = VertagenForm()
+    
+    return render(request, 'pages/intern/sitzung/vertagen.html', context={
+        'title': 'Sitzung vertagen',
+        'sitzung': sitzung,
+        'form': form,
+        'feedback': feedback
+    })
 
 
 def SitzungLoeschenPage(request, sitzID):
@@ -232,24 +252,28 @@ def AntragBeschliessenPage(request, antragID):
         form = BeschlussForm(request.POST)
         if form.is_valid():
             
-            beschluss = Beschluss()
-            beschluss.sitzID = sitzung
-                        
-            beschluss.beschlussFaehigkeit = form.cleaned_data['beschluss_faehigkeit']
-            beschluss.stimmenJa = form.cleaned_data['stimmen_ja']
-            beschluss.stimmenNein = form.cleaned_data['stimmen_nein']
-            beschluss.stimmenEnthaltung = form.cleaned_data['stimmen_enthaltung']
-            beschluss.beschlussErgebnis = form.cleaned_data['beschluss_ergebnis']
-            beschluss.beschlussText = form.cleaned_data['beschluss_text']
-            beschluss.beschlussAusfertigung = form.cleaned_data['beschluss_ausfertigung']
-            beschluss.save()
+            beschluss, status = Beschluss.objects.update_or_create(
+                sitzID = sitzung,
+                
+                defaults={
+                    "beschlussFaehigkeit" : form.cleaned_data['beschluss_faehigkeit'],
+                
+                    "stimmenJa" : form.cleaned_data['stimmen_ja'],
+                    "stimmenNein" : form.cleaned_data['stimmen_nein'],
+                    "stimmenEnthaltung" : form.cleaned_data['stimmen_enthaltung'],
+                    "beschlussErgebnis" : form.cleaned_data['beschluss_ergebnis'],
+                    
+                    "beschlussText" : form.cleaned_data['beschluss_text'],
+                    "beschlussAusfertigung" : form.cleaned_data['beschluss_ausfertigung'],
+                }
+                
+            )
             
-            # TODO: Prüfung, ob ein Beschluss für diesen Antrag bereits existiert
             antrag.beschlussID = beschluss
             antrag.save()
             
             feedback.type = "SUCCESS"
-            feedback.text = 'Beschluss erfolgreich eingepflegt!'
+            feedback.text = 'Beschluss erfolgreich eingepflegt! Der Antragsteller wird per E-Mail über das Ergebnis informiert.'
             feedback.back_url = '/intern/sitzung/' + str(sitzung.sitzID) + '/anzeigen'
         else:
             feedback.type = "ERROR"
@@ -262,7 +286,7 @@ def AntragBeschliessenPage(request, antragID):
         'antrag': antrag,
         'sitzung': sitzung,
         'form': form,
-        'aktion': 'VERTAGEN',
+        'aktion': 'BESCHLIESSEN',
         'feedback': feedback
     })
     

@@ -708,10 +708,6 @@ select {
   inset: 0px;
 }
 
-.inset-2 {
-  inset: 0.5rem;
-}
-
 .-left-1\/2 {
   left: -50%;
 }
@@ -860,8 +856,20 @@ select {
   width: 25%;
 }
 
+.w-1\/6 {
+  width: 16.666667%;
+}
+
 .w-10 {
   width: 2.5rem;
+}
+
+.w-3\/4 {
+  width: 75%;
+}
+
+.w-3\/6 {
+  width: 50%;
 }
 
 .w-96 {
@@ -870,34 +878,6 @@ select {
 
 .w-full {
   width: 100%;
-}
-
-.w-1\/12 {
-  width: 8.333333%;
-}
-
-.w-2\/12 {
-  width: 16.666667%;
-}
-
-.w-4\/12 {
-  width: 33.333333%;
-}
-
-.w-5\/12 {
-  width: 41.666667%;
-}
-
-.w-3\/4 {
-  width: 75%;
-}
-
-.w-1\/6 {
-  width: 16.666667%;
-}
-
-.w-3\/6 {
-  width: 50%;
 }
 
 .basis-1\/3 {
@@ -914,10 +894,6 @@ select {
 
 .table-auto {
   table-layout: auto;
-}
-
-.table-fixed {
-  table-layout: fixed;
 }
 
 .border-separate {
@@ -988,34 +964,12 @@ select {
   border-radius: 0.5rem;
 }
 
-.border-x-2 {
-  border-left-width: 2px;
-  border-right-width: 2px;
-}
-
 .border-b {
   border-bottom-width: 1px;
 }
 
-.border-b-2 {
-  border-bottom-width: 2px;
-}
-
 .border-l-4 {
   border-left-width: 4px;
-}
-
-.border-b-4 {
-  border-bottom-width: 4px;
-}
-
-.border-solid {
-  border-style: solid;
-}
-
-.border-\[\#f2982e\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(242 152 46 / var(--tw-border-opacity));
 }
 
 .border-blue-500 {
@@ -1051,11 +1005,6 @@ select {
 .border-red-500 {
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
-}
-
-.border-stura-orange {
-  --tw-border-opacity: 1;
-  border-color: rgb(242 152 46 / var(--tw-border-opacity));
 }
 
 .bg-\[\#333333\] {
@@ -1158,6 +1107,10 @@ select {
   padding-bottom: 1rem;
 }
 
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
 }
@@ -1170,10 +1123,6 @@ select {
   padding-top: 0.5rem;
 }
 
-.pb-3 {
-  padding-bottom: 0.75rem;
-}
-
 .pt-5 {
   padding-top: 1.25rem;
 }
@@ -1184,6 +1133,11 @@ select {
 
 .text-center {
   text-align: center;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
@@ -1199,16 +1153,6 @@ select {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
 }
 
 .font-bold {
@@ -1238,6 +1182,11 @@ select {
   color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
+.text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
+}
+
 .text-green-700 {
   --tw-text-opacity: 1;
   color: rgb(21 128 61 / var(--tw-text-opacity));
@@ -1248,24 +1197,14 @@ select {
   color: rgb(194 65 12 / var(--tw-text-opacity));
 }
 
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
 .text-red-700 {
   --tw-text-opacity: 1;
   color: rgb(185 28 28 / var(--tw-text-opacity));
-}
-
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-orange-500 {
-  --tw-text-opacity: 1;
-  color: rgb(249 115 22 / var(--tw-text-opacity));
-}
-
-.text-orange-900 {
-  --tw-text-opacity: 1;
-  color: rgb(124 45 18 / var(--tw-text-opacity));
 }
 
 .text-stura-orange {
@@ -1273,24 +1212,9 @@ select {
   color: rgb(242 152 46 / var(--tw-text-opacity));
 }
 
-.text-green-500 {
+.text-white {
   --tw-text-opacity: 1;
-  color: rgb(34 197 94 / var(--tw-text-opacity));
-}
-
-.text-red-500 {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
-}
-
-.text-green-600 {
-  --tw-text-opacity: 1;
-  color: rgb(22 163 74 / var(--tw-text-opacity));
-}
-
-.text-red-600 {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .opacity-0 {
@@ -1315,6 +1239,30 @@ select {
 .hover\:bg-\[\#f2982e\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(242 152 46 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-black:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-stura-orange:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(242 152 46 / var(--tw-bg-opacity));
+}
+
+.hover\:text-stura-orange:hover {
+  --tw-text-opacity: 1;
+  color: rgb(242 152 46 / var(--tw-text-opacity));
+}
+
+.hover\:accent-stura-orange:hover {
+  accent-color: #f2982e;
 }
 
 .focus\:ring-2:focus {
