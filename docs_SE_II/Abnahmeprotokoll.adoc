@@ -19,17 +19,15 @@
 
 == Lieferumfang
 
-* Software in folgender Form
+* Software in folgender Form: Antrags- und Beschlussverwaltungstool bestehend aus ###
 
 * Benutzeranleitung
-
 * Betriebsanleitung
-
 * Anforderungsspezifikation
-
 * Entwicklerdokumentation
-
 * Testdokumentation
+
+Die Dokumentationen werden bis #26.06.2023# als PDF per E-Mail an #p@stura.htw-dresden.de# gesendet.
 
 == Funktionalität
 
@@ -68,6 +66,8 @@
 
 == Systemweite Anforderungen
 
+#gelb = Vorschlag was man präsentieren könnte#
+
 [%header, cols="3,1,2"]
 |===
 
@@ -83,15 +83,15 @@
 |
 |
 
-|NFAU-1: Der Antragsteller sollte maximal 3 Klicks bis zur Antragseingabe benötigen.
+|NFAU-1: #Der Antragsteller sollte maximal 3 Klicks bis zur Antragseingabe benötigen.#
 |
 |
 
-|NFAU-2: Der Antragsteller erhält aussagekräftige Fehlermeldungen bei ungültigen/ausgelassenen Eingaben.
+|NFAU-2: #Der Antragsteller erhält aussagekräftige Fehlermeldungen bei ungültigen/ausgelassenen Eingaben.#
 |
 |
 
-|NFAU-3: Der Antragsteller erhält für seinen ausgewählen Antrag Hilfetexte, die Ihm beim korrekten Ausfüllen des Antrag helfen sollen.
+|NFAU-3: #Der Antragsteller erhält für seinen ausgewählen Antrag Hilfetexte, die Ihm beim korrekten Ausfüllen des Antrag helfen sollen.#
 |
 |
 
