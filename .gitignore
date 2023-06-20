@@ -16,3 +16,8 @@ media/
 media/anlagen
 
 migrations/
+migrations/*
+
+media/
+media/anlagen
+

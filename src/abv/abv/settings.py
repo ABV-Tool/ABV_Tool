@@ -13,6 +13,18 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 
+
+# Development-Umgebung
+ENVIRONMENT ='DEVELOPMENT'
+MESSAGE_LEVEL = 10 # DEBUG
+DEBUG = True
+
+# Production-Umgebung
+#ENVIRONMENT ='PRODUCTION'
+#MESSAGE_LEVEL = 20 # INFO
+#DEBUG = False
+#ALLOWED_HOSTS = []
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -23,13 +35,7 @@ BASE_DIR = Path(__file__).resolve().parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-r^g0%e^t*_v+h!xcg97!os*_+83!xmpg6&^&9gv7e-!8f@2aq8'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = []
-
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,6 +72,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -112,8 +119,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 LANGUAGE_CODE = 'de-DE'
 TIME_ZONE = 'Europe/Berlin'
-USE_I18N = True
 USE_TZ = True
+USE_L10N = True
+USE_I18N = True
+DECIMAL_SEPARATOR = ','
+DATETIME_FORMAT = 'd.m.Y H:i'
+DATE_FORMAT = 'd.m.Y'
+TIME_FORMAT = 'H:i'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -124,23 +136,41 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '../Antragstool/static'),
 )
 
+# File-Upload Settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
+DATA_UPLOAD_MAX_MEMORY_SIZE=10240000 # 10MB
+FILE_UPLOAD_MAX_MEMORY_SIZE=10240000 # 10MB
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# set default login/logout redirect
+
+# Standard Login/Logout-Redirect
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-# tailwind settings
+
+# Development: Tailwind settings
 TAILWIND_APP_NAME = 'Antragstool'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 NPM_BIN_PATH=r"C:\Program Files\nodejs\npm.cmd"
 
+
 # E-Mail Settings
 # TODO Production: Mailserver anpassen
 EMAIL_HOST = '127.0.0.1'
 EMAIL_PORT = 1025
+EMAIL_TOOL = 'abv@stura.htw-dresden.de'
+
+
+# Etherpad Settings
+# TODO Production: Etherpad-Server & API-Key anpassen
+ETHERPAD_API_KEY = '323412ced5824bdffcd11460036dd4df8274f6b15734e3667402e887b205375a'
+ETHERPAD_HOST = 'http://10.0.1.30:9001'
+ETHERPAD_API_ENDPOINT = ETHERPAD_HOST + '/api/1.2.15/'
+ETHERPAD_PAD_ENDPOINT = ETHERPAD_HOST + '/p/'

@@ -1,35 +1,56 @@
 from django import forms
-from Antragstool.models import Referat, Beschluss
+from django.utils import timezone
+from Antragstool.models import Referat, Beschluss, Sitzung
+
+
+# Datei-Upload-Handler
+# https://docs.djangoproject.com/en/4.2/topics/http/file-uploads/#uploading-multiple-files
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
+
+class MultipleFileField(forms.FileField):
+    def __init__(self, *args, **kwargs):
+        kwargs.setdefault("widget", MultipleFileInput())
+        super().__init__(*args, **kwargs)
+
+    def clean(self, data, initial=None):
+        single_file_clean = super().clean
+        if isinstance(data, (list, tuple)):
+            result = [single_file_clean(d, initial) for d in data]
+        else:
+            result = single_file_clean(data, initial)
+        return result
 
 
 # template for custom login form
 class LoginForm(forms.Form):
-    username = forms.CharField(label="Benutzername", max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'mb-3'}))
-    password = forms.CharField(label="Passwort", max_length=100, required=True, widget=forms.PasswordInput)
+    username = forms.CharField(label="Benutzername:", max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'mb-3'}))
+    password = forms.CharField(label="Passwort:", max_length=100, required=True, widget=forms.PasswordInput)
+
 
 
 class StammdatenForm(forms.Form):
-    referat = forms.ModelChoiceField(label="Referat", queryset=Referat.objects.all().order_by('refID'), required=True, empty_label="Bitte wählen")
+    referat = forms.ModelChoiceField(label="An wen ist der Antrag gerichtet?:", queryset=Referat.objects.all().order_by('refID'), required=True, empty_label="Bitte wählen...")
     
-    vorname = forms.CharField(label="Vorname", max_length=100, required=True, widget=forms.TextInput())
-    nachname = forms.CharField(label="Nachname", max_length=100, required=True, widget=forms.TextInput())
-    email = forms.EmailField(label="E-Mail Adresse", max_length=200, required=True, widget=forms.EmailInput())
+    name = forms.CharField(label="Name / Stelle:", max_length=100, required=True, widget=forms.TextInput())
+    email = forms.EmailField(label="Kontakt E-Mail-Adresse:", max_length=200, required=True, widget=forms.EmailInput())
     
-    titel = forms.CharField(label="Antragstitel", max_length=100, required=True, widget=forms.TextInput())
-    text = forms.CharField(label="Antragstext", max_length=2000, required=True, widget=forms.Textarea())
+    titel = forms.CharField(label="Antragstitel:", max_length=100, required=True, widget=forms.TextInput())
+    text = forms.CharField(label="Antragstext:", max_length=5000, required=True, widget=forms.Textarea())
     
-    ist_eilantrag = forms.BooleanField(label="Eilantrag", required=False)
+    ist_eilantrag = forms.BooleanField(label="Ist dies ein Eilantrag?:", required=False)
     
     # TODO: Unterstützung für mehrere Dateien einbinden
-    anlagen = forms.FileField(label="Anlagen", required=False)
-    
+    anlagen = MultipleFileField(label="Anlagen:", required=False)
 
+
+    
 # Wiederholende Felder
-grund_feld = forms.CharField(label="Begründung zum Antrag", max_length=1000, required=True, widget=forms.Textarea())
-vorschlag_feld = forms.CharField(label="Vorschlag zum weiteren Verfahren", max_length=1000, required=True, widget=forms.Textarea())
-positions_feld = forms.CharField(label="Kostenposition im Haushaltsplan", max_length=100, required=True, widget=forms.TextInput())
-summe_feld = forms.DecimalField(label="Summe", max_digits=10, decimal_places=2, required=True, widget=forms.NumberInput())
-vorstellung_person_feld = forms.CharField(label="Vorstellung der Person", max_length=2000, required=True, widget=forms.Textarea())
+grund_feld = forms.CharField(label="Begründung zum Antrag:", max_length=1000, required=True, widget=forms.Textarea())
+vorschlag_feld = forms.CharField(label="Vorschlag zum weiteren Verfahren:", max_length=1000, required=True, widget=forms.Textarea())
+positions_feld = forms.CharField(label="Kostenposition im Haushaltsplan:", max_length=100, required=True, widget=forms.TextInput())
+summe_feld = forms.DecimalField(label="Summe [€]:", max_digits=10, decimal_places=2, required=True, widget=forms.NumberInput())
+vorstellung_person_feld = forms.CharField(label="Vorstellung der Person:", max_length=5000, required=True, widget=forms.Textarea())
     
     
 class AntragAllgemeinForm(StammdatenForm):
@@ -42,15 +63,27 @@ class AntragFinanziellForm(StammdatenForm):
     position = positions_feld
     summe = summe_feld
     vorschlag = vorschlag_feld
+    
+    # Unterstützung für Komma in Summe
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['summe'].localize = True
+        self.fields['summe'].widget.is_localized = True
 
 
 class AntragVeranstaltungForm(StammdatenForm):
     grund = grund_feld
     position = positions_feld
     summe = summe_feld
-    verantwortlichkeit = forms.CharField(label="Verantwortlichkeit für Nachbearbeitung", max_length=100, required=True, widget=forms.TextInput())
-    zeitraum = forms.CharField(label="Zeitraum für Nachbearbeitung", max_length=100, required=True, widget=forms.TextInput())
+    verantwortlichkeit = forms.CharField(label="Verantwortlichkeit für Nachbearbeitung:", max_length=100, required=True, widget=forms.TextInput())
+    zeitraum = forms.CharField(label="Zeitraum für Nachbearbeitung:", max_length=100, required=True, widget=forms.TextInput())
     vorschlag = vorschlag_feld
+    
+    # Unterstützung für Komma in Summe
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['summe'].localize = True
+        self.fields['summe'].widget.is_localized = True
 
 
 # TODO: Vorstellung der Person: Details über benötigte Punkte anzeigen lassen
@@ -60,9 +93,9 @@ class AntragMitgliedForm(StammdatenForm):
 
 # TODO: Vorstellung der Person/Allgemeine Fragen: Details über benötigte Punkte anzeigen lassen
 class AntragAmtForm(StammdatenForm):
-    ist_mitglied = forms.BooleanField(label="Bist du bereits ein StuRa Mitglied? (Leer für Nein)", required=False, widget=forms.CheckboxInput())
+    ist_mitglied = forms.BooleanField(label="Bist du bereits ein StuRa Mitglied? (Leer für Nein):", required=False, widget=forms.CheckboxInput())
     vorstellung_person = vorstellung_person_feld
-    fragen_amt = forms.CharField(label="Allgemeine Fragen zum beworbenen Amt", max_length=1000, required=True, widget=forms.Textarea())
+    fragen_amt = forms.CharField(label="Allgemeine Fragen zum Amt:", max_length=5000, required=True, widget=forms.Textarea())
 
 
 class AntragBenehmenForm(StammdatenForm):
@@ -74,9 +107,9 @@ class AntragBenehmenForm(StammdatenForm):
 # Referate
 class ReferatForm(forms.Form):
     referat_name = forms.CharField(label="Referats-Name:", max_length=100, required=True, widget=forms.TextInput())
-    referat_zyklus = forms.CharField(label="Referats-Zyklus:", max_length=100, required=True, widget=forms.NumberInput())
     referat_email = forms.EmailField(label="Referats-E-Mail:", max_length=200, required=True, widget=forms.EmailInput())
     
+
 
 # Beschluss
 class BeschlussForm(forms.Form):
@@ -90,10 +123,37 @@ class BeschlussForm(forms.Form):
     beschluss_ausfertigung = forms.CharField(label="Ausfertigung:", max_length=200, required=True, widget=forms.TextInput())
     
     
-# Vertagung Sitzung/Antrag
-class DateInput(forms.DateInput):
-    input_type = 'date'
-
-class VertagenForm(forms.Form):
+    
+# Vertagung Sitzung
+class SitzungVertagenForm(forms.Form):
     datum_aktuell = forms.DateField(label="Aktuelles Datum:", required=True, widget=forms.DateInput())
     datum_neu = forms.DateField(label="Neues Datum:", required=True, widget=forms.DateInput())
+    
+    def clean_datum_neu(self):
+        datum_neu = self.cleaned_data['datum_neu']
+        datum_aktuell = self.cleaned_data['datum_aktuell']
+        if datum_neu <= timezone.now().date():
+            raise forms.ValidationError("Das Datum muss in der Zukunft liegen und im Format TT.MM.JJJJ angegeben sein.")
+        elif datum_neu == datum_aktuell:
+            raise forms.ValidationError("Das neue Datum muss nach dem aktuellen Datum liegen.")
+        return datum_neu
+    
+
+
+# Vertagung eines Antrags
+class AntragVertagenForm(forms.Form):
+    sitzung = forms.ModelChoiceField(label="Sitzung:", queryset=Sitzung.objects.all().order_by('sitzDate'), required=True, empty_label="Bitte wählen...")
+
+
+
+# Anlegen einer Sitzung
+class SitzungAnlegenForm(forms.Form):
+    referat = forms.ModelChoiceField(label="Referat:", queryset=Referat.objects.all().order_by('refID'), required=True, empty_label="Bitte wählen...")
+    datum_sitzung = forms.DateField(label="Datum der Sitzung:", required=True, widget=forms.DateInput(), help_text="Format: TT.MM.JJJJ")
+    
+    def clean_datum_sitzung(self):
+        datum_sitzung = self.cleaned_data['datum_sitzung']
+        if datum_sitzung <= timezone.now().date():
+            raise forms.ValidationError("Das Datum muss in der Zukunft liegen und im Format TT.MM.JJJJ angegeben sein.")
+        return datum_sitzung
+    

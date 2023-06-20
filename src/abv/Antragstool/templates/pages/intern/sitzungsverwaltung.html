@@ -40,13 +40,13 @@
                     <td>{{ sitzung.refID.refName }}</td>
                     <td>{{ sitzung.anzAntraege }}</td>
                     <td>
-                        <a href="{% url 'sitzung-anzeigen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                            <i class="fa-solid fa-eye"></i> Anzeigen
+                        <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                            <i class="fa-solid fa-list-check"></i> Verwalten
                         </a>
                     </td>
                     <td>
                         <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                            <i class="fa-regular fa-calendar-check"></i> Vertagen
+                            <i class="fa-regular fa-calendar-xmark"></i> Vertagen
                         </a>
                     </td>
                     <td>
@@ -60,5 +60,16 @@
             </tbody>
         </table>
 
+
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        
     </div>
 {% endblock %}

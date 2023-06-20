@@ -20,8 +20,7 @@ class AntragAllgemeinTestCase(unittest.TestCase):
     
     def test_antrag_allgemein(self):
         response = self.client.post('/antrag/allgemein/', {
-            'vorname': 'Max',
-            'nachname': 'Patecky',
+            'name': 'Patecky',
             'email': 'maxpatecky@outlook.com',
             'titel': 'Testantrag',
             'referat': '1',
@@ -35,7 +34,6 @@ class AntragAllgemeinTestCase(unittest.TestCase):
 
         # Überprüfe, ob der Antrag in der Datenbank erstellt wurde
         antrag = Antrag.objects.filter(antragTitel='Testantrag').first()
-        self.assertEqual(antrag.astellerID.astellerVorname, 'Max')
         self.assertEqual(antrag.astellerID.astellerName, 'Patecky')
         self.assertEqual(antrag.antragText, 'Dies ist ein Testantrag')
         self.assertEqual(antrag.istEilantrag, False)
