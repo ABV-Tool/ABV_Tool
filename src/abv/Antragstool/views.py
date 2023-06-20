@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.db.models import Q, Max
-from django.db import IntegrityError
-from django.utils.html import strip_tags
 from django.conf import settings
 from django.template.loader import render_to_string
 
@@ -273,7 +271,7 @@ def getFormVonAntragstyp(antrag):
 
 
 def AntragsverwaltungPage(request):
-    antraege = Antrag.objects.all()
+    antraege = Antrag.objects.all().order_by('-erstelltDate')
     return render(request, 'pages/intern/antragsverwaltung.html', context={
         'title': 'Antragsverwaltung',
         'antraege': antraege
@@ -349,6 +347,7 @@ def AntragVertagenPage(request, antragID):
             antrag.antragID = None # type: ignore
             antrag.sitzID = alte_sitzID
             antrag.beschlussID = beschluss
+            antrag.wurdeVertagt = True
             antrag.save()
             
             messages.success(request, 'Der Antrag wurde in die Sitzung ' + str(antrag.sitzID.refID.refName) +  ' am ' + antrag.sitzID.sitzDate.strftime("%d.%m.%Y") + ' vertagt!')

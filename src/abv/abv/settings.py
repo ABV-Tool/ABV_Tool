@@ -23,7 +23,7 @@ DEBUG = True
 #ENVIRONMENT ='PRODUCTION'
 #MESSAGE_LEVEL = 20 # INFO
 #DEBUG = False
-#ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['localhost']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
@@ -164,7 +164,10 @@ NPM_BIN_PATH=r"C:\Program Files\nodejs\npm.cmd"
 # E-Mail Settings
 # TODO Production: Mailserver anpassen
 EMAIL_HOST = '127.0.0.1'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 1025
+EMAIL_USE_TLS = False
 EMAIL_TOOL = 'abv@stura.htw-dresden.de'
 
 

@@ -320,21 +320,22 @@
         {% endif %}
 
 
-        <!-- Antragsdaten Alagen -->
+        <!-- Antragsdaten Anlagen -->
         {% if not aktion %}
+        <!-- Anzeigen des Datei-Uploads, wenn über Hauptseite aufgerufen -->
         <div class="mb-5">
             <label class="block" for="{{ form.anlagen.id_for_label }}"><b>{{ form.anlagen.label }}</b></label>
             <input type="file" name="{{ form.anlagen.name }}" id="{{ form.anlagen.id_for_label }}" multiple />
         </div>
-        {% else %}
+        {% elif aktion == 'ANZEIGEN' %}
+        <!-- Anzeigen der hochgeladenen Dateien, wenn über Intern aufgerufen -->
         <div class="mb-7">
             <label class="block mb-3"><b>Anlagen:</b></label>
             {% for anlage in anlagen %}
                 <a class="btn p-3 mr-2" href="/media/{{ anlage.anlage }}" target="_blank">{{ anlage.anlageName }}</a>
-            {% endfor %}
-            {% if not anlagen %}
+            {% empty %}
                 <p class="text-stura-orange">Keine Anlagen vorhanden!</p>
-            {% endif %}
+            {% endfor %}
         </div>
         {% endif %}
 
