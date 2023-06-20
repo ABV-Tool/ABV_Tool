@@ -133,7 +133,7 @@ def mailAstellerErgebnis(sender, instance: Antrag, **kwargs):
 
 # TODO: Prüfe, ob der Antrag ein Eilantrag ist und verschicke eine andere E-Mail
 @receiver(post_save, sender=Antrag)
-def mailReferatAntragEingegangen(sender, instance: Antrag, **kwargs):
+def mailReferatAntragEingegangen(sender, instance: Antrag, created, **kwargs):
     """
     Sende dem Referat eine Information über den Eingang eines neuen Antrags
     """

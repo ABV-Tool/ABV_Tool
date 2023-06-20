@@ -20,7 +20,7 @@
             </a>
         </div>
 
-        <div class="w-full">
+        <div class="w-full pt-4">
             {% include 'components/alert.html' with type="INFO" text="Die Reihefolge der Anträge bestimmt, wie die TOP's in die TO eingespeißt werden. Sollte ein Antrag eine erhöhte Priorität haben, nutze den Button links beim Antrag; dieser wird anschließend nach ganz Oben geschoben." %}
         </div>
 
@@ -91,7 +91,7 @@
                         {% endif %}
                     </td>
                     <td>
-                        {% include 'components/beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}
+                        {% include 'components/table_column_beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}
                     </td>
                 </tr>
                 {% endfor %}

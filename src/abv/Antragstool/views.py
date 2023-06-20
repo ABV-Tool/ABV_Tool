@@ -38,7 +38,7 @@ def HomePage(request):
 
 
 def ArchivPage(request):
-    return render(request, 'pages/archive.html', context={'title': 'Archiv'})
+    return render(request, 'pages/archiv.html', context={'title': 'Archiv'})
 
 # ========== Interner Bereich ========== #
 
@@ -236,13 +236,26 @@ def SitzungLoeschenPage(request, sitzID):
     
 
 def SitzungAbschliessenPage(request, sitzID):
-    feedback = FrontendFeedback()
     sitzung = Sitzung.objects.get(sitzID=sitzID)
+    
+    if request.method == 'POST':
+        # Prüfe, ob alle Anträge der Sitzung einen Beschluss haben oder vertagt wurden
+        nicht_beschlossene_antraege = Antrag.objects.filter(sitzID=sitzID).filter(beschlussID__isnull=True).filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).count()
+        print(nicht_beschlossene_antraege)
+        
+        if nicht_beschlossene_antraege == 0:
+            sitzung.sitzStatus = 'Stattgefunden'
+            sitzung.save()
+
+            messages.success(request, 'Die Sitzung wurde erfolgreich abgeschlossen!')
+            return redirect('sitzung-abschliessen', sitzID=sitzID)
+        else:
+            messages.error(request, 'Die Sitzung konnte nicht abgeschlossen werden, da es noch Anträge gibt, welche keinen Beschluss haben!')
+            return redirect('sitzung-abschliessen', sitzID=sitzID)
     
     return render(request, 'pages/intern/sitzung/abschliessen.html', context={
         'title': 'Sitzung abschließen',
-        'sitzung': sitzung,
-        'feedback': feedback
+        'sitzung': sitzung
     })
 
 # ------ Sitzungsverwaltung ------ #
@@ -338,7 +351,7 @@ def AntragVertagenPage(request, antragID):
             # Erstelle leeren Beschluss in aktueller Sitzung, um Vertagung zu kennzeichnen 
             beschluss = Beschluss()
             beschluss.sitzID = alte_sitzID
-            beschluss.beschlussText = 'Der Antrag wurde vertagt. Die neue Sitzung ist: ' + str(neue_sitzID) + "\nVertagt durch: " + str(request.user.username)
+            beschluss.beschlussText = 'Der Antrag wurde vertagt. Die neue Sitzung ist: ' + str(neue_sitzID)
             beschluss.beschlussErgebnis = 'Vertagt'
             beschluss.beschlussAusfertigung = "Vertagt durch: " + str(request.user.username)
             beschluss.save()

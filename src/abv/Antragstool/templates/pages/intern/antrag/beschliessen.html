@@ -29,21 +29,9 @@
 
         
         <div class="flex flex-row mb-3">
-        
-            <!-- Beschlussdaten Behandlung -->
-            <div class="w-3/4 mr-5">
-                <label class="block" for="{{ form.beschluss_behandlung.id_for_label }}"><b>{{ form.beschluss_behandlung.label }}</b></label>
-                <input class="w-full" type="text" placeholder="1. Sitzung Plenum 2022/2023, Tagesordnungspunkt 1.1" 
-                    id="{{ form.beschluss_behandlung.id_for_label }}" name="{{ form.beschluss_behandlung.name }}" 
-                    {% if form.beschluss_behandlung.field.required %}required{% endif %} 
-                    {% if form.beschluss_behandlung.field.max_length %}maxlength="{{ form.beschluss_behandlung.field.max_length }}"{% endif %}
-                    value="{{ sitzung }}, Tagesordnungspunkt 1.x"
-                    {% if antrag.beschlussID %}value="antrag.beschlussID.beschlussBehandlung"{% endif %}
-                >
-            </div>
 
             <!-- Beschlussdaten Beschlussfähigkeit -->
-            <div class="w-1/4">
+            <div class="w-1/4 mr-5">
                 <label class="block" for="{{ form.beschluss_faehigkeit.id_for_label }}">
                     <b>{% include 'components/tooltip.html' with display_text=form.beschluss_faehigkeit.label tooltip_text="Gibt an, ob die anwesenden StuRa-Mitglieder in der Lage sind, über diesen Antrag abzustimmen und diesen zu beschließen." %}</b>
                 </label>
@@ -52,6 +40,18 @@
                     id="{{ form.beschluss_faehigkeit.id_for_label }}" 
                     name="{{ form.beschluss_faehigkeit.name }}"
                     {% if antrag.beschlussID.beschlussFaehigkeit %}checked{% endif %}
+                >
+            </div>
+        
+            <!-- Beschlussdaten Behandlung -->
+            <div class="w-3/4">
+                <label class="block" for="{{ form.beschluss_behandlung.id_for_label }}"><b>{{ form.beschluss_behandlung.label }}</b></label>
+                <input class="w-full" type="text" placeholder="1. Sitzung Plenum 2022/2023, Tagesordnungspunkt 1.1" 
+                    id="{{ form.beschluss_behandlung.id_for_label }}" name="{{ form.beschluss_behandlung.name }}" 
+                    {% if form.beschluss_behandlung.field.required %}required{% endif %} 
+                    {% if form.beschluss_behandlung.field.max_length %}maxlength="{{ form.beschluss_behandlung.field.max_length }}"{% endif %}
+                    value="{{ sitzung }}, Tagesordnungspunkt 1.x"
+                    {% if antrag.beschlussID %}value="antrag.beschlussID.beschlussBehandlung"{% endif %}
                 >
             </div>
 

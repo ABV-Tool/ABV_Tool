@@ -132,7 +132,7 @@ class Antrag(models.Model):
                                    on_delete=models.CASCADE,
                                    db_column='asteller_id')
     beschlussID = models.ForeignKey(Beschluss,
-                                    on_delete=models.SET_NULL,
+                                    on_delete=models.CASCADE,
                                     db_column='beschluss_id',
                                     null=True,
                                     blank=True)

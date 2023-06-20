@@ -8,5 +8,44 @@
 {% endblock %}
 
 {% block content %}
-    <!-- insert content -->
+
+    <div class="mr-80 ml-80">
+
+        <div class="relative py-4 mt-5 mb-4">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-b border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#dcdcdc] px-4 text-3xl text-black">{{ title }}</span>
+            </div>
+        </div>
+
+
+        {% include 'components/alert.html' with type="WARNING" text="Die Sitzung kann erst abgeschlossen werden, sobald <b>alle Anträge einen Beschluss haben</b> oder in eine <b>andere Sitzung vertagt</b> worden sind." %}
+
+
+        {% include 'components/alert.html' with type="INFO" text="Nach Abschluss der Sitzung werden sowohl die Sitzung als auch die behandelten Anträge archiviert. Diese sind dann innerhalb des <b>Archivs</b> zu finden." %}
+
+
+
+        <form method="POST" action="#feedback">
+            {% csrf_token %}
+            <div class="flex flex-row">
+                <button type="submit" class="btn btn-success w-full hover:cursor-pointer"><i class="fa-solid fa-box-archive"></i> Sitzung abschließen</button>
+            </div>
+        </form>
+
+
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+    </div>
+
 {% endblock %}

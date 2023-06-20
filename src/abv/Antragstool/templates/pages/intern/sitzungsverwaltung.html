@@ -54,7 +54,9 @@
                             <i class="fa-solid fa-trash-can"></i> Löschen
                         </a>
                     </td>
-                    <td>{{ sitzung.sitzStatus }}</td>
+                    <td>
+                        {% include 'components/table_column_sitzung.html' with status=sitzung.sitzStatus %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
