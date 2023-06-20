@@ -27,9 +27,7 @@
                     <th scope="col">Datum</th>
                     <th scope="col">Referat</th>
                     <th scope="col">Anträge</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col">Aktionen</th>
                     <th scope="col">Status</th>
                 </tr>
             </thead>
@@ -40,20 +38,31 @@
                     <td>{{ sitzung.refID.refName }}</td>
                     <td>{{ sitzung.anzAntraege }}</td>
                     <td>
-                        <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
+
+                        <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
                             <i class="fa-solid fa-list-check"></i> Verwalten
                         </a>
-                    </td>
-                    <td>
-                        <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                            <i class="fa-regular fa-calendar-xmark"></i> Vertagen
+
+                        <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
+                            <i class="fa-regular fa-calendar-xmark"></i>
+                            {% if sitzung.sitzStatus|lower != "offen" %}
+                                <s>Vertagen</s>
+                            {% else %}
+                                Vertagen
+                            {% endif %}
                         </a>
-                    </td>
-                    <td>
+
                         <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                            <i class="fa-solid fa-trash-can"></i> Löschen
+                            <i class="fa-solid fa-trash-can"></i>
+                            {% if sitzung.sitzStatus|lower != "offen" %}
+                                <s>Löschen</s>
+                            {% else %}
+                                Löschen
+                            {% endif %}
                         </a>
+
                     </td>
+                    
                     <td>
                         {% include 'components/table_column_sitzung.html' with status=sitzung.sitzStatus %}
                     </td>

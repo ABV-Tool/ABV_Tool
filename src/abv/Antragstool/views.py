@@ -31,7 +31,7 @@ def HomePage(request):
 def ArchivPage(request):
     form = ArchivSuchenForm()
     
-    if request.method == 'GET':
+    if request.method == 'GET' and form.is_valid():
         suchbegriff = request.GET.get("q")
         antrags_typ = request.GET.get("atyp")
         datum_von = request.GET.get("dv")
@@ -43,7 +43,7 @@ def ArchivPage(request):
         # Filtere Texte nach Suchbegriff
         if suchbegriff:
             gefilterte_antraege = gefilterte_antraege.filter(
-                Q(antragTitel__icontains=suchbegriff) | Q(antragText__icontains=suchbegriff) | Q(antragGrund__icontains=suchbegriff) | Q(antragVorschlag__icontains=suchbegriff)
+                Q(antragTitel__icontains=suchbegriff) | Q(antragText__icontains=suchbegriff) | Q(antragGrund__icontains=suchbegriff) | Q(antragVorschlag__icontains=suchbegriff) | Q(antragVorstellungPerson__icontains=suchbegriff) | Q(antragFragenZumAmt__icontains=suchbegriff)
             )
         
         # Filtere nach Antragstyp, falls antrags_typ nicht None ist
@@ -59,12 +59,12 @@ def ArchivPage(request):
         if datum_bis:
             datum_bis = datetime.strptime(datum_bis, '%d.%m.%Y').date()
             gefilterte_antraege = gefilterte_antraege.filter(erstelltDate__lte=datum_bis)
-        
+    else:
+        gefilterte_antraege = Antrag.objects.filter(beschlussID__isnull=False).filter(~Q(beschlussID__beschlussErgebnis="Vertagt"))
 
-        
     return render(request, 'pages/archiv.html', context={
         'title': 'Archiv',
-        'antraege': gefilterte_antraege, #type: ignore
+        'antraege': gefilterte_antraege,
         'aktion': 'ANZEIGEN',
         'form': form
     })
@@ -223,6 +223,10 @@ def SitzungVertagenPage(request, sitzID):
     if request.method == 'POST':
         form = SitzungVertagenForm(request.POST)
         if form.is_valid():
+            if sitzung.sitzStatus == 'Stattgefunden':
+                messages.error(request, 'Die Sitzung hat bereits stattgefunden und kann nicht mehr bearbeitet werden!')
+                return redirect('sitzung-abschliessen', sitzID=sitzID)
+            
             sitzung.sitzDate = form.cleaned_data['datum_neu']
             sitzung.save()
 
@@ -247,6 +251,11 @@ def SitzungLoeschenPage(request, sitzID):
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     
     if request.method == 'POST':
+        # Prüfe, ob die Sitzung bereits stattgefunden hat
+        if sitzung.sitzStatus == 'Stattgefunden':
+            messages.error(request, 'Die Sitzung hat bereits stattgefunden und kann nicht mehr gelöscht werden!')
+            return redirect('sitzungsverwaltung')
+        
         # Prüfe, ob ein Antrag immer noch die zu löschende Sitzung referenziert
         antraege_sitzung = Antrag.objects.filter(sitzID=sitzID).count()
         if antraege_sitzung == 0:
@@ -268,7 +277,7 @@ def SitzungAbschliessenPage(request, sitzID):
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     
     if request.method == 'POST':
-        
+        # Prüfe, ob die Sitzung bereits abgeschlossen wurde
         if sitzung.sitzStatus == 'Stattgefunden':
             messages.error(request, 'Die Sitzung wurde bereits abgeschlossen und kann nicht mehr bearbeitet werden!')
             return redirect('sitzung-abschliessen', sitzID=sitzID)
@@ -870,6 +879,11 @@ def TagesordnungVorschauPage(request, sitzID):
 def TagesordnungErstellenPage(request, sitzID):
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
+    
+    # Prüfe, ob die Sitzung bereits stattgefunden hat
+    if sitzung.sitzStatus == 'Stattgefunden':
+        messages.error(request, 'Die Sitzung hat bereits stattgefunden. Die Tagesordnung kann nicht mehr bearbeitet werden.')
+        return redirect('tagesordnung-vorschau', sitzID=sitzID)
     
     # TODO: Sitzungsnummer automatisch generieren lassen
     sitzung_nummer = '22_23-003-01'

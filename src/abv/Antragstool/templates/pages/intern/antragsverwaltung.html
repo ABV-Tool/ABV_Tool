@@ -21,10 +21,7 @@
                     <th scope="col">Titel</th>
                     <th scope="col">Antragsteller</th>
                     <th scope="col">Eilantrag?</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col">Aktionen</th>
                     <th scope="col">Beschluss</th>
                 </tr>
             </thead>
@@ -41,24 +38,13 @@
                             <i class="fa-solid fa-xmark"></i>
                         {% endif %}
                     </td>
-                    
-            
                     <td>
-                        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
                             <i class="fa-solid fa-eye"></i> Anzeigen
                         </a>
-                    </td>
-                    <td>
-                        <a href="{% url 'antrag-bearbeiten' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                        <a href="{% url 'antrag-bearbeiten' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
                             <i class="fa-solid fa-pen-to-square"></i> Bearbeiten
                         </a>
-                    </td>
-                    <td>
-                        <a href="{% url 'antrag-loeschen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                            <i class="fa-solid fa-trash-can"></i> Löschen
-                        </a>
-                    </td>
-                    <td>
                         <a href="{% url 'sitzung-verwalten' sitzID=antrag.sitzID.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
                             <i class="fa-solid fa-diamond-turn-right"></i> Sitzung
                         </a>

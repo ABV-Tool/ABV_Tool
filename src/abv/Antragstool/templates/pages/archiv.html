@@ -52,15 +52,16 @@
                         <input class="w-full" type="text" placeholder="01.01.2023" id="{{ form.dv.id_for_label }}" 
                             name="{{ form.dv.name }}" maxlength="{{ form.dv.field.max_length }}"
                             {% if form.dv.field.required %}required{% endif %} 
+                            {% if request.GET.dv %}value="{{ request.GET.dv }}"{% endif %}
                         >
                     </div>
 
                     <!-- Datum Bis -->
                     <div class="w-1/3 mr-6">
                         <label class="block" for="{{ form.db.id_for_label }}"><b>{{ form.db.label }}</b></label>
-                        <input class="w-full" type="text" value="{% now "d.m.Y" %}" id="{{ form.db.id_for_label }}" 
-                            name="{{ form.db.name }}" maxlength="{{ form.db.field.max_length }}"
+                        <input class="w-full" type="text" id="{{ form.db.id_for_label }}" name="{{ form.db.name }}" maxlength="{{ form.db.field.max_length }}"
                             {% if form.db.field.required %}required{% endif %} 
+                            {% if request.GET.db %}value="{{ request.GET.db }}"{% else %}value="{% now "d.m.Y" %}"{% endif %}
                         >
                     </div>
                     
@@ -100,7 +101,7 @@
                         {% include 'components/table_column_beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}
                     </td>
                     <td>
-                        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                        <a href="{% url 'archiv-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
                             <i class="fa-solid fa-eye"></i> Anzeigen
                         </a>
                     </td>

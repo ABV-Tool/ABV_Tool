@@ -38,9 +38,7 @@
                     <th scope="col">Antragsteller</th>
                     <th scope="col">Eilantrag?</th>
                     <th scope="col">Anlagen</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col">Aktionen</th>
                     <th scope="col">Beschluss</th>
                 </tr>
             </thead>
@@ -70,20 +68,18 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
                             <i class="fa-solid fa-eye"></i> Anzeigen
                         </a>
-                    </td>
-                    <td>
-                        <a href="{% url 'antrag-vertagen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+
+                        <a href="{% url 'antrag-vertagen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
                             {% if antrag.beschlussID %}
                                 <s><i class="fa-regular fa-calendar-xmark"></i> Vertagen</s>
                             {% else %}
                                 <i class="fa-regular fa-calendar-xmark"></i> Vertagen
                             {% endif %}
                         </a>
-                    </td>
-                    <td>
+
                         {% if antrag.beschlussID %}
                             <a href="{% url 'antrag-beschliessen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
                                 <i class="fa-solid fa-pen-to-square"></i> Beschluss bearbeiten
@@ -102,7 +98,7 @@
 
                 {% if not antraege %}
                 <tr>
-                    <td colspan="8" class="text-left text-stura-orange"><b>Dieser Sitzung wurden bislang keine Anträge zugewiesen!</b></td>
+                    <td colspan="8" class="text-center pt-5"><b><u>Dieser Sitzung wurden bislang keine Anträge zugewiesen!</u></b></td>
                 </tr>
                 {% endif %}
             </tbody>
