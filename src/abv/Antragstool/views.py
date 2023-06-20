@@ -28,7 +28,13 @@ def HomePage(request):
 
 
 def ArchivPage(request):
-    return render(request, 'pages/archiv.html', context={'title': 'Archiv'})
+    archivierte_antraege =  Antrag.objects.filter(beschlussID__isnull=False).filter(~Q(beschlussID__beschlussErgebnis="Vertagt"))
+    
+    return render(request, 'pages/archiv.html', context={
+        'title': 'Archiv',
+        'antraege': archivierte_antraege,
+        'aktion': 'ANZEIGEN'
+    })
 
 # ========== Interner Bereich ========== #
 
@@ -323,8 +329,8 @@ def AntragVertagenPage(request, antragID):
     if request.method == 'POST':
         form = AntragVertagenForm(request.POST)
         # Prüfe, on der Antrag bereits einen Beschluss hat
-        if antrag.beschlussID is not None:
-            messages.error(request, 'Der Antrag konnte nicht vertagt werden, da er bereits einen Beschluss hat!')
+        if antrag.beschlussID is not None or antrag.wurdeVertagt is True:
+            messages.error(request, 'Der Antrag konnte nicht vertagt werden, da er bereits einen Beschluss hat oder bereits vertagt wurde!')
             return redirect('antrag-vertagen', antragID=antragID)
         elif form.is_valid():
             alte_sitzID = antrag.sitzID
@@ -377,23 +383,21 @@ def AntragBeschliessenPage(request, antragID):
         form = BeschlussForm(request.POST)
         if form.is_valid():
             
-            beschluss, __ = Beschluss.objects.update_or_create(
+            beschluss = Beschluss(
                 sitzID = sitzung,
+                
+                beschlussFaehigkeit = form.cleaned_data['beschluss_faehigkeit'],
+                beschlussBehandlung = form.cleaned_data['beschluss_behandlung'],
+                
+                stimmenJa = form.cleaned_data['stimmen_ja'],
+                stimmenNein = form.cleaned_data['stimmen_nein'],
+                stimmenEnthaltung = form.cleaned_data['stimmen_enthaltung'],
+                beschlussErgebnis = form.cleaned_data['beschluss_ergebnis'],
+                
+                beschlussText = form.cleaned_data['beschluss_text'],
                 beschlussAusfertigung = form.cleaned_data['beschluss_ausfertigung'],
-                
-                defaults={
-                    "beschlussBehandlung": form.cleaned_data['beschluss_behandlung'],
-                    "beschlussFaehigkeit" : form.cleaned_data['beschluss_faehigkeit'],
-                
-                    "stimmenJa" : form.cleaned_data['stimmen_ja'],
-                    "stimmenNein" : form.cleaned_data['stimmen_nein'],
-                    "stimmenEnthaltung" : form.cleaned_data['stimmen_enthaltung'],
-                    "beschlussErgebnis" : form.cleaned_data['beschluss_ergebnis'],
-                    
-                    "beschlussText" : form.cleaned_data['beschluss_text'],
-                    "beschlussAusfertigung" : form.cleaned_data['beschluss_ausfertigung'],
-                }
             )
+            beschluss.save()
             
             antrag.beschlussID = beschluss
             antrag.save()

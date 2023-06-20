@@ -98,6 +98,9 @@ class Beschluss(models.Model):
     
     def get_ergebnis(self):
         return self.beschlussErgebnis
+    
+    def __str__(self):
+        return str(self.stimmenJa) + " Ja | " + str(self.stimmenNein) + " Nein | " + str(self.stimmenEnthaltung) + " Enthalten => " + self.beschlussErgebnis
 
 
 class Antragstyp(models.Model):

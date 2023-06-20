@@ -15,6 +15,17 @@
         <h1 class="text-center"><b>{{ title }}</b></h1>
 
 
+        <!-- Anzeigen der Sitzung / des Beschlussses, wenn man über das Archiv darauf zugreift -->
+        {% if aktion|lower == "anzeigen" %}
+        <div class="mb-8">
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+            <h2 class="text-center">Behandelt in: <b>{{ antrag.sitzID }}</b></h2>
+            <h4 class="text-center italic">Beschluss: <b>{{ antrag.beschlussID }}</b></h4>
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+        </div>
+        {% endif %}
+
+
         <!-- Separator -->
         <div class="relative py-4 mt-3 mb-3">
             <div class="absolute inset-0 flex items-center">
