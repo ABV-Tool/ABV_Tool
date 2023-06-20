@@ -19,29 +19,14 @@
         {% endif %}
 
 
-        <!-- Anzeigen des Antragtitels -->
-        <div class="relative mt-5">
-            <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-b border-gray-700"></div>
-            </div>
-            <div class="relative flex justify-center">
-                <span class="bg-[#dcdcdc] px-4 text-3xl text-black text-center">{{ antrag.antragTitel }}</span>
-            </div>
+        <!-- Anzeigen des Antragtitels / Antragstellers -->
+        <div class="mb-8">
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+            <h2 class="text-center">{{ antrag.antragTitel }}</h2>
+            <h4 class="text-center italic">{{ antrag.astellerID }}</h4>
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
         </div>
 
-
-        <!-- Anzeigen des Antragstellers -->
-        <div class="relative mt-5 mb-4">
-            <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-b border-gray-700"></div>
-            </div>
-            <div class="relative flex justify-center">
-                <span class="bg-[#dcdcdc] px-4 text-2xl text-black text-center">{{ antrag.astellerID }}</span>
-            </div>
-        </div>
-
-        
-       
         
         <div class="flex flex-row mb-3">
         
@@ -139,7 +124,11 @@
                 id="{{ form.beschluss_ausfertigung.id_for_label }}" name="{{ form.beschluss_ausfertigung.name }}" 
                 {% if form.beschluss_ausfertigung.field.required %}required{% endif %} 
                 {% if form.beschluss_ausfertigung.field.max_length %}maxlength="{{ form.beschluss_ausfertigung.field.max_length }}"{% endif %}
-                value="{{ user.first_name }} {{ user.last_name }}, Präsidium, {% now "d.m.Y, H:i" %}"
+                {% if user.first_name  %}
+                    value="{{ user.first_name }} {{ user.last_name }}, Präsidium, {% now "d.m.Y, H:i" %}"
+                {% else %}
+                    value="{{ user.username }}, Präsidium, {% now "d.m.Y, H:i" %}"
+                {% endif %}
             >
         </div>
 

@@ -8,5 +8,33 @@
 {% endblock %}
 
 {% block content %}
-    <!-- insert content -->
+    <form method="POST" action="#feedback" class="ml-96 mr-96">
+        {% csrf_token %}
+
+        <h1 class="text-center"><b>{{ title }}</b></h1>
+
+
+        <div class="relative py-4 mt-5 mb-4">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-b border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#dcdcdc] px-4 text-3xl text-black">{{ sitzung }}</span>
+            </div>
+        </div>
+
+
+        {% include 'components/alert.html' with type="WARNING" text="Du bist dabei, die Sitzung zu löschen! Beachte dabei, dass der Sitzung keine Anträge zugewiesen sind. <br> Sollte dies dennoch der Fall sein, vertage diese auf die nächste Sitzung des Referats." %}
+ 
+        <button type="submit" class="btn btn-danger w-full hover:cursor-pointer"><i class="fa-solid fa-trash-can"></i> Löschen</button>
+
+
+        <!-- Form-Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if feedback %}
+            <div id="feedback">
+                {% include 'components/alert.html' with type=feedback.type text=feedback.text back_url=feedback.back_url %}
+            </div>
+        {% endif %}
+
+    <form>
 {% endblock %}

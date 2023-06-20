@@ -12,4 +12,12 @@ __pycache__
 src/result
 src/node_modules
 
+media/
+media/anlagen
+
 migrations/
+migrations/*
+
+media/
+media/anlagen
+

@@ -25,7 +25,7 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Ref Name</th>
+                    <th scope="col">Referats-Name</th>
                     <th scope="col">Zyklus</th>
                     <th scope="col">Kontakt E-Mail</th>
                     <th></th>
@@ -53,6 +53,16 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
 
     </div>
 {% endblock %}
