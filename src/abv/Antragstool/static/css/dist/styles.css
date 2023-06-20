@@ -824,6 +824,14 @@ select {
   margin-top: 1.25rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mr-6 {
+  margin-right: 1.5rem;
+}
+
 .block {
   display: block;
 }
@@ -858,6 +866,23 @@ select {
 
 .h-\[113px\] {
   height: 113px;
+}
+
+.h-5 {
+  height: 1.25rem;
+}
+
+.h-min {
+  height: -moz-min-content;
+  height: min-content;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.h-11 {
+  height: 2.75rem;
 }
 
 .max-h-20 {
@@ -902,6 +927,10 @@ select {
 
 .w-5\/6 {
   width: 83.333333%;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
 }
 
 .basis-1\/3 {

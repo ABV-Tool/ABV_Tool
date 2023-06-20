@@ -91,7 +91,7 @@ class Beschluss(models.Model):
     
     beschlussErgebnis = models.CharField(max_length=20, 
                                          choices=BeschlussErgebnis.choices, 
-                                         default=BeschlussErgebnis.UNBEHANDELT)
+                                         default=BeschlussErgebnis.ANGENOMMEN)
     
     beschlussText = models.TextField(db_column='beschluss_text', max_length=1000)
     beschlussAusfertigung = models.TextField(db_column='beschluss_ausfertigung', max_length=200)

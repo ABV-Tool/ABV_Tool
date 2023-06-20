@@ -1,6 +1,6 @@
 from django import forms
 from django.utils import timezone
-from Antragstool.models import Referat, Beschluss, Sitzung
+from Antragstool.models import Referat, Beschluss, Sitzung, Antragstyp
 
 
 # Datei-Upload-Handler
@@ -156,4 +156,17 @@ class SitzungAnlegenForm(forms.Form):
         if datum_sitzung <= timezone.now().date():
             raise forms.ValidationError("Das Datum muss in der Zukunft liegen und im Format TT.MM.JJJJ angegeben sein.")
         return datum_sitzung
+    
+
+class ArchivSuchenForm(forms.Form):
+    # Suchbegriff
+    q = forms.CharField(label="Suchbegriff:", max_length=300, required=False, widget=forms.TextInput())
+    
+    # Antragstyp
+    atyp = forms.ModelChoiceField(label="Antragstyp:", queryset=Antragstyp.objects.all().order_by('typID'), required=False, empty_label="Kein Filter")
+
+    # Datum Von
+    dv = forms.DateField(label="Datum von:", required=False, widget=forms.DateInput(format="%d.%m.%Y"), input_formats=["%d.%m.%Y"], help_text="Format: TT.MM.JJJJ")
+    # Datum Bis
+    db = forms.DateField(label="Datum bis:", required=False, widget=forms.DateInput(format="%d.%m.%Y"), input_formats=["%d.%m.%Y"], help_text="Format: TT.MM.JJJJ")
     

@@ -10,6 +10,7 @@ from datetime import date, datetime, timedelta
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss, Anlage
 from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertagenForm, SitzungAnlegenForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
+from .forms import ArchivSuchenForm
 
 from .api import list_pads, create_pad, set_html
 
@@ -28,12 +29,44 @@ def HomePage(request):
 
 
 def ArchivPage(request):
-    archivierte_antraege =  Antrag.objects.filter(beschlussID__isnull=False).filter(~Q(beschlussID__beschlussErgebnis="Vertagt"))
+    form = ArchivSuchenForm()
     
+    if request.method == 'GET':
+        suchbegriff = request.GET.get("q")
+        antrags_typ = request.GET.get("atyp")
+        datum_von = request.GET.get("dv")
+        datum_bis = request.GET.get("db")
+        
+        # Filtere Anträge, sodass nur welche angezeigt werden, die einen Beschluss haben oder nicht vertagt wurden
+        gefilterte_antraege = Antrag.objects.filter(beschlussID__isnull=False).filter(~Q(beschlussID__beschlussErgebnis="Vertagt"))
+        
+        # Filtere Texte nach Suchbegriff
+        if suchbegriff:
+            gefilterte_antraege = gefilterte_antraege.filter(
+                Q(antragTitel__icontains=suchbegriff) | Q(antragText__icontains=suchbegriff) | Q(antragGrund__icontains=suchbegriff) | Q(antragVorschlag__icontains=suchbegriff)
+            )
+        
+        # Filtere nach Antragstyp, falls antrags_typ nicht None ist
+        if antrags_typ:
+            gefilterte_antraege = gefilterte_antraege.filter(typID=antrags_typ)
+        
+        # Filtere nach Datum, falls datum_von und/oder datum_bis nicht None sind
+        if datum_von:
+            # Konvertiere String in Date-Objekt
+            datum_von = datetime.strptime(datum_von, '%d.%m.%Y').date()
+            gefilterte_antraege = gefilterte_antraege.filter(erstelltDate__gte=datum_von)
+            
+        if datum_bis:
+            datum_bis = datetime.strptime(datum_bis, '%d.%m.%Y').date()
+            gefilterte_antraege = gefilterte_antraege.filter(erstelltDate__lte=datum_bis)
+        
+
+        
     return render(request, 'pages/archiv.html', context={
         'title': 'Archiv',
-        'antraege': archivierte_antraege,
-        'aktion': 'ANZEIGEN'
+        'antraege': gefilterte_antraege,
+        'aktion': 'ANZEIGEN',
+        'form': form
     })
 
 # ========== Interner Bereich ========== #
@@ -235,6 +268,11 @@ def SitzungAbschliessenPage(request, sitzID):
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     
     if request.method == 'POST':
+        
+        if sitzung.sitzStatus == 'Stattgefunden':
+            messages.error(request, 'Die Sitzung wurde bereits abgeschlossen und kann nicht mehr bearbeitet werden!')
+            return redirect('sitzung-abschliessen', sitzID=sitzID)
+        
         # Prüfe, ob alle Anträge der Sitzung einen Beschluss haben oder vertagt wurden
         nicht_beschlossene_antraege = Antrag.objects.filter(sitzID=sitzID).filter(beschlussID__isnull=True).filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).count()
         
