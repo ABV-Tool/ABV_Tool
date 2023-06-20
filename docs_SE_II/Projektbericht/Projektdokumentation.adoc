@@ -33,7 +33,7 @@ Zu Beginn von SE I hat sich das Team auf folgende Rollenverteilung geeinigt:
 
 Die Rollenverteilung begründetet sich hauptsächlich auf die persönlichen Präferenzen der Teammitglieder in Verbindung mit den verschiedenen Vorkenntnissen und Kompetenzen. 
 
-Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studiengang Wirtschaftsingenieurwesen nur das Modul Software Engineering I Teil des Studiengangs ist. Dadurch ware eine Anpassung der Rollenverteilung notwendig. Im Zuge dessen wurde auch nochmal die generelle Verteilung der Aufgaben geprüft. Neben der Neuorganisation des Projektmanagements wurde auch die Rolle des Deployment-Engineers neu vergeben. #Risikomanagement#
+Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studiengang Wirtschaftsingenieurwesen nur das Modul Software Engineering I Teil des Studiengangs ist. Dadurch ware eine Anpassung der Rollenverteilung notwendig. Im Zuge dessen wurde auch nochmal die generelle Verteilung der Aufgaben geprüft. Neben der Neuorganisation des Projektmanagements wurde auch die Rolle des Deployment-Engineers neu vergeben, da diese Rolle für ein Teammitglied naheliegender war, weil er selbst im StuRa Administrator ist. So hatten wir in SE II folgende Rollenverteilung:
 
 * Göran Heinemann (GH)		*Programmierung/Deployment-Engineer*
 * Alexander Minukow	(AM)    *Analyse*/Entwurf
@@ -53,8 +53,14 @@ image::Beispiel_Meeting_Dokumentation.jpg[]
 Nach Abschluss des Meetings wurden die Aufgaben unser GitHub repository als Issues übertragen und den verantwortlichen Personen zugewiesen. Auch Meetings mit dem StuRa oder unserem Coach wurden hier dokumentiert. So hatten wir ein zentrales Dokument in dem wir sehr gut den gesamten Projektverlauf nachvollziehen konnten. Das war auch sehr hilfreich um z. B. Absprachen mit dem StuRa später noch einmal nachzuvollziehen und in die Umsetzung des Projektes mit einfließen zu lassen. 
 
 
-=== Techniken/Praktiken
-//Techniken/Praktiken: Welche wurden warum eingesetzt und wie genutzt? → „Way of Working“
+=== Way of Working
+//Techniken/Praktiken: Welche wurden warum eingesetzt und wie genutzt? → „Way of Working“ Way of Working: ausgewählte Praktiken und Werkzeuge, die vom Team benutzt werden, um ihre Arbeit zu leiten und zu unterstützen
+
+*Ablauf einer Iteration*
+
+Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder Iteration trafen wir uns als Team und werteten zunächst die vergangene Iteration aus und besprachen dabei was wir geschafft haben, wo es Probleme gab und was wir nicht geschafft haben. Anschließend starteten wir mit der Planung der nächsten Iteration. Dazu bereitete die Teamleitung die Punkte vor die aus Sicht des Projektmanagements für die kommende Iteration wichtig sind. Die anderen Aufgaben wurden während des Meetings von den Verantwortlichen für ihren Aufgabenbereich benannt und anschließend verteilt.Anschließend haben wir gemeinsam die Aufgaben priorisiert und Aufgaben die nicht sofort erledigt werden müssen als optional gekennzeichnet. Diese Aufgaben wurden dann meist in den Iterationen nur angefangen oder gar nicht bearbeitet und dann in der darauffolgenden Iteration als feste Aufgabe aufgenommen. Das half bei der längerfristigen Planung der Iterationen, da man so schon einen Blick auf den weiteren Projektverlauf hatte. Am Ende des Meetings übertrugen wir die Aufgaben in unser GitHub Repository und wiesen sie den verantwortlichen Teammitgliedern zu. Während der Iteration gab es kleine Meetings die je nach Bedarf optional angesetzt wurden. Das konnte z. B. die Vorbereitung eines Treffens mit dem StuRa sein oder es trafen sich Teile des Team um gemeinsam am Projekt zu arbeiten.
+
+*Techniken und Praktiken*
 
 [%header, cols="2,3"]
 |===
@@ -63,20 +69,28 @@ Nach Abschluss des Meetings wurden die Aufgaben unser GitHub repository als Issu
 |Umsetzung
 
 |Iterative Developement
-|Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um die vergangene Iteration auszuwerten und alle anstehenden Aufgaben zu besprechen und zu verteilen. Die daraus resultierenden Issues werden in unserem gemeinsamen GitHub Repository erfasst und den verantwortlichen Personen zugewiesen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. Je nach Bedarf werden kurze Besprechungen während der Iteration durchgeführt z. B. um ein Meeting mit dem Coach oder dem StuRa vorzubereiten. Ein Teammitglied wird als Schriftführer benannt, welches dafür zuständig ist alle besprochenen Punkte zu dokumentieren.
+|Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um die vergangene Iteration auszuwerten und alle anstehenden Aufgaben zu besprechen und zu verteilen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. Je nach Bedarf werden kurze Besprechungen während der Iteration durchgeführt.
 
 |Team Change Management
 |Am Anfang von SE I haben wir Verantwortlichkeiten und Backup Rollen festgelegt, aus diesen Verantwortlichkeiten bilden sich Aufgaben, die selbstständig aber auch in Absprache mit dem Team abzuarbeiten sind. Bei Bedarf kann innerhalb des Teams auch eine Aufgabenumverteilung oder Unterstützung angefragt werden.
-Durch das Ausscheiden unseres Projektmanagers nach SE 1, mussten wir Rollen und Verantwortlichkeiten umverteilen, dies geschah unter Berücksichtigung von Kompetenzen und Wünschen der einzelnen Teammitglieder. Die Aufgabensammlung geschieht nach wie vor, wie in SE I, durch die Verantwortlichen in den jeweiligen Bereichen, jedoch werden Aufgaben nun konkret nach Kompetenzen und nicht mehr nach Rollen bzw. Verantwortlichkeiten verteilt.
 
 |Evolutionary Architecture
 |Das Architecture Notebook wird schrittweise bearbeitet. Es wird sich hierbei am Projektfortschritt orientiert.
 
 |Shared Vision
-|Die erarbeitet Vision mit Zweck und Problembeschreibung wurde in Zusammenarbeit mit dem Auftraggeber erarbeitet und mit diesem abgestimmt. Auch nach der finalen Abstimmung wird der Projektfortschritt regelmäßig mit der Vision und dem Auftraggeber abgeglichen und ggf. auf neue oder geänderte Anforderungen abgestimmt. 
+|Die erarbeitet Vision mit Zweck und Problembeschreibung wurde in Zusammenarbeit mit dem Auftraggeber erarbeitet und mit diesem abgestimmt. Auch nach der finalen Abstimmung wird der Projektfortschritt regelmäßig mit der Vision und dem Auftraggeber abgeglichen und ggf. auf neue oder geänderte Anforderungen angepasst. 
 
 |Use Case Driven Developement
-|Dem gesamtem Projekt liegt das ein Use Case Model zugrunde welches in Zusammenarbeit mit dem Auftraggeber entwickelt wurde. Aus diesem ergeben sich auch die System Wide Requirements wo system-weite funktionale Anforderungen angegeben werden, die nicht als Use Cases ausgedrückt werden können. Auch Anforderungen zur Benutzbarkeit werden hier beschrieben.
+|Dem gesamtem Projekt liegt das ein Use Case Model zugrunde welches in Zusammenarbeit mit dem Auftraggeber entwickelt wurde. Aus diesem ergeben sich auch system-weite funktionale Anforderungen, die nicht als Use Cases ausgedrückt werden können. Auch Anforderungen zur Benutzbarkeit werden beschrieben.
+
+|Meeting Template
+|Für die Meetings wurde ein festes Template zur Dokumentation genutzt. So entwickelte sich schnell ein fester Ablauf, da man sich gut an der Vorlage orientieren konnte und der Ablauf quasi 
+
+|#Art des Testens#
+|#blablabla#
+
+|Risikomanagement
+|
 
 |===
 
@@ -84,7 +98,9 @@ Durch das Ausscheiden unseres Projektmanagers nach SE 1, mussten wir Rollen und 
 * #Release Planning#
 
 * *Whole Team*
-Das Team ist über die gesamte Projektlaufzeit immer mehr zusammengewachsen.Schon von Beginn an war unser Team sehr eigenverantwortlich organisiert. Jeder hat seinen eigenen Verantwortlich- und Kompetenzbereich worin selbstständig Aufgaben erkannt, benannt und im Team besprochen und verteilt werden. Zu Beginn des Projektes führte dies zu einem sehr unterschiedlichen Workload, auch bedingt durch die Rollenverteilung. Im Laufe des Projektes glich sich der workload der einzelnen Teammitglieder immer mehr an. Zum einen war dies bedingt durch eine bessere Aufgabenverteilung bedingt, aber auch das Team ist über die Zeit besser zusammengewachsen. Durch das steigende Zugehörigkeitsgefühl stieg auch die Bereitschaft andere Aufgaben zu übernehmen und nicht nur auf seinem Bereich zu schauen. So glich sich der workload über die Projektlaufzeit immer mehr an, sodass zum Ende des Projektes jeder einen ähnlichen workload hatte. Besonders wichtig war es hierbei, dass auch Aufgaben übernommen wurden, die weniger den eigenen Kompetenzen oder Wünschen entsprachen, aber zum Wohle des Teams bzw. des Projektes übernommen wurden. 
+Das Team ist über die gesamte Projektlaufzeit immer mehr zusammengewachsen. Schon von Beginn an war unser Team sehr eigenverantwortlich organisiert. Jeder hat seinen eigenen Verantwortlich- und Kompetenzbereich worin selbstständig Aufgaben erkannt, benannt und im Team besprochen und verteilt werden. 
+
+Zu Beginn des Projektes führte dies zu einem sehr unterschiedlichen Workload, auch bedingt durch die Rollenverteilung. Im Laufe des Projektes glich sich der workload der einzelnen Teammitglieder immer mehr an. Zum einen war dies bedingt durch eine bessere Aufgabenverteilung bedingt, aber auch das Team ist über die Zeit besser zusammengewachsen. Durch das steigende Zugehörigkeitsgefühl stieg auch die Bereitschaft andere Aufgaben zu übernehmen und nicht nur auf seinem Bereich zu schauen. So glich sich der workload über die Projektlaufzeit immer mehr an, sodass zum Ende des Projektes jeder einen ähnlichen workload hatte. Besonders wichtig war es hierbei, dass auch Aufgaben übernommen wurden, die weniger den eigenen Kompetenzen oder Wünschen entsprachen, aber zum Wohle des Teams bzw. des Projektes übernommen wurden. 
 
 
 * #Project Process Tailoring#
@@ -209,14 +225,17 @@ UC 4 abgeschlossen - Pull Request
 GitHub Actions einrichten
 
 Zu Beginn der 8. Iteration fand der Fachaustausch zum Thema Architektur statt. Da bei stellte unser Architekt unser Projekt vor erklärte unser Vorgehen und welche Probleme dabei auftraten. Wir bekamen dabei auch einen guten Einblick in die Entwürfe der anderen Teams und deren individuellen Herausforderungen.
-In der folgenden Woche fand der letzte Fachaustausch zum Thema Testen statt. Zwei unserer Teammitglieder erklärten wie das Testen in unserem Projekt organisiert ist und welche Methoden wir dabei einsetzen. Auch konnten wir noch offene Fragen zum Testen mit Ruben-David Kraus klären, der uns als Ansprechpartner für unsere Projekte zur Verfügung steht. 
+In der folgenden Woche fand der letzte Fachaustausch zum Thema Testen statt. Zwei unserer Teammitglieder erklärten wie das Testen in unserem Projekt organisiert ist und welche Methoden wir dabei einsetzen. Auch hier half es zu sehen, auf welche Konzepte die anderen Team setzten und welche Probleme die anderen Teams bei der Umsetzung hatten. Auch konnten wir noch offene Fragen zum Testen mit Ruben-David Kraus klären, der uns als Ansprechpartner für unsere Projekte zur Verfügung steht. 
 
 === Transition Phase
 
 *Iteration 9 (12.06. - 23.06.2023)*
 
+Die neunte und letzte Iteration sollte gleichzeitig die Transistion Phase des Projektes sein. Leider hat sich die Umsetzung der Use Cases verzögert bzw. kam zu unerwarteten Herausforderungen, sodass sich das Projekt nach hinten verschob und wir die Transition Phase nicht wirklich durchführen konnten. 
 
-* Anwenderdokumentation
+
+
+* Anwenderdokumentation erstellen
 * Abnahmeprotokoll schreiben und abstimmen
 * Domänenmodell finalisieren
 * systemwide requirements aktualisieren
@@ -233,7 +252,13 @@ In der folgenden Woche fand der letzte Fachaustausch zum Thema Testen statt. Zwe
 
 In der letzten Iteration stand immer noch die Umsetzung der Generierung der Tagesordnung auf dem Programm. Auch wenn es zeitlich eng wurde, wollten wir den UC gern noch umsetzen. Außerdem gabe es noch weitere Funktionen die bisher nicht implementiert wurden. 
 
-* *Meilenstein Product Release erreicht*
+Zum Abschluss glichen wir nochmals die Anforderungsspezifikation mit dem tatsächlichen System ab und prüften abschließend ob alles zusammenpasste. Hierbei mussten wir zwar kleine Änderungen vornehmen, aber größtenteils stimmte beides überein. 
+
+Die Projektleitung bereitete das Protokoll für die Abnahme mit dem StuRa vor und sendete dies vorab zu Abstimmung an unsere Ansprechpartnerin. Der eigentliche Abnahmetermin sollte eigentlich am 21.06.2023 stattfinden. Jedoch konnten hier einige Teammitglieder von vorneherein nicht und als schließlich noch ein weiteres Teammitglied krankheitsbedingt ausfiel, verschoben wir den Termin in Abstimmung mir Prof. Anke auf den #.06.2023#.
+
+
+
+* *Meilenstein Product Release erreicht?*
 
 
 == Ergebnisdokumentation
@@ -242,13 +267,36 @@ In der letzten Iteration stand immer noch die Umsetzung der Generierung der Tage
 
 //Projektergebnisse mit Bezug auf die Ziele / Aufgabenstellung: Was haben wir erreicht und was nicht? Was waren die Gründe für Abweichungen?
 
-.Ziel des Projektes
+==== Ziel des Projektes
 
-Ziel des Projektes war es ein funktionierendes und anwenderfreundliches Tool zur Antrags- und Beschlussverwaltung zu entwickeln. 
+Ziel des Projektes war es ein funktionierendes und anwenderfreundliches Tool zur Antrags- und Beschlussverwaltung zu entwickeln. Dabei war es uns besonders wichtig, das Tool gut in den bestehenden Ablauf zu integrieren.
+
+==== Ergebnisse und Bewertung 
 
 *Antrag stellen*
 
 Dieses Ziel wurde erreicht. Es ist möglich über das Tool verschiedene Anträge zu stellen sowie sie automatisch der nächsten Sitzung zuzuordnen. Sie werden in der Datenbank gespeichert und sind in einer Gesamtübersicht aller Anträge sowie über die Sitzung einsehbar. Sie bekommen eine eindeutige, fortlaufende Antragsnummer zugewiesen. Der Antragsteller bekommt nach Absenden des Antrages eine Bestätigung per Mail mit einem Link über den er den Antrag ändern kann.
+
+*Tagesordnung erstellen*
+
+*Tagesordnung abschließen*
+
+*Plenumssitzung vertagen*
+
+*Antragsverwalter anmelden*
+
+Diesen Use Case haben wir als einen der ersten umgesetzt. Abgesehen vom stellen einen Antrages werden alle anderen Use Cases vom Antragsverwalter ausgeführt. Antragsverwalter sind berechtigte Personen beim StuRa selbst 
+
+
+*Beschlüsse einpflegen*
+
+*Umsetzung der systemweiten Anforderungen*
+
+*Umsetzung weiterer Anforderungen*
+
+==== Fazit
+
+Insgesamt konnte dem StuRa der HTW Dresden ein funktionierendes System übergeben werden. 
 
 <<<
 === Reflexion der Teammitglieder
