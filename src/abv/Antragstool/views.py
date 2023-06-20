@@ -13,16 +13,6 @@ from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragV
 
 from .api import list_pads, create_pad, set_html
 
-# Kann bei einer render()-Funktion mitgeliefert werden, um entsprechendes Feedback anzuzeigen
-# Hinweis: Komponente muss am Ende der Seite eingebunden sein
-# => type: SUCCESS, ERROR, WARNING, INFO (siehe templates/components/alert.html)
-# => text: Text, der angezeigt werden soll
-# => back_url: URL, auf welche der 'Zurück'-Button verweist
-class FrontendFeedback:
-    type = ''
-    text = ''
-    back_url = ''
-    
 
 def formFehlerAusgeben(request, form):
     for field_name, errors in form.errors.items():
@@ -241,7 +231,6 @@ def SitzungAbschliessenPage(request, sitzID):
     if request.method == 'POST':
         # Prüfe, ob alle Anträge der Sitzung einen Beschluss haben oder vertagt wurden
         nicht_beschlossene_antraege = Antrag.objects.filter(sitzID=sitzID).filter(beschlussID__isnull=True).filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).count()
-        print(nicht_beschlossene_antraege)
         
         if nicht_beschlossene_antraege == 0:
             sitzung.sitzStatus = 'Stattgefunden'
@@ -409,7 +398,7 @@ def AntragBeschliessenPage(request, antragID):
             antrag.beschlussID = beschluss
             antrag.save()
             
-            messages.success(request, 'Der Beschluss wurde erfolgreich eingepflegt! Der Antragsteller wird per E-Mail über das Ergebnis informiert.')
+            messages.success(request, 'Der Beschluss wurde erfolgreich eingepflegt! Der Antragsteller wird nach Abschluss der Sitzung per E-Mail über das Ergebnis informiert.')
             return redirect('antrag-beschliessen', antragID=antragID)
         else:
             messages.error(request, 'Der Beschluss konnte nicht eingepflegt werden! Bitte aktualisiere die Seite und versuche es erneut.')
@@ -442,8 +431,6 @@ def AntragPriorisierenPage(request, antragID):
 # ++++++ Benutzerauthentifizierung ++++++ #
 
 def LoginPage(request):
-    feedback = FrontendFeedback()
-    
     # redirect if user is already logged in
     if request.user.is_authenticated:
         return redirect('index')
@@ -505,13 +492,12 @@ def sitzungenAbfragen(form):
 
 
 # Kurzfassung der render-Funktion für Antragsseiten
-def renderAntrag(request, title, form, feedback):
+def renderAntrag(request, title, form):
     # Frage die nächsten 2 Sitzungen jedes Referates ab und gibt diese an die Seite weiter
     sitzungen = Sitzung.objects.filter(sitzDate__gt=date.today()).order_by('sitzDate')
     return render(request, 'pages/antrag.html', context={
         'title': title, 
         'form': form,
-        'feedback': feedback,
         'sitzungen': sitzungen
     })
 
@@ -546,8 +532,6 @@ def anlagenSpeichern(request, antrag):
 FEEDBACK_ANTRAG_SUCCESS = 'Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine E-Mail mit der Bestätigung.'
 
 def AntragAllgemein(request):
-    feedback = FrontendFeedback()
-    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragAllgemeinForm(request.POST, request.FILES)
         if form.is_valid():
@@ -583,12 +567,10 @@ def AntragAllgemein(request):
     else:
         form = AntragAllgemeinForm()
 
-    return renderAntrag(request, 'Allgemeiner Antrag', form, feedback)
+    return renderAntrag(request, 'Allgemeiner Antrag', form)
 
 
 def AntragFinanziell(request):
-    feedback = FrontendFeedback()
-    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragFinanziellForm(request.POST, request.FILES)
         if form.is_valid():
@@ -626,12 +608,10 @@ def AntragFinanziell(request):
     else:
         form = AntragFinanziellForm()
     
-    return renderAntrag(request, 'Antrag mit finanziellen Mitteln', form, feedback)
+    return renderAntrag(request, 'Antrag mit finanziellen Mitteln', form)
 
 
 def AntragVeranstaltung(request):
-    feedback = FrontendFeedback()
-    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragVeranstaltungForm(request.POST, request.FILES)
         if form.is_valid():
@@ -671,12 +651,10 @@ def AntragVeranstaltung(request):
     else:
         form = AntragVeranstaltungForm()
     
-    return renderAntrag(request, 'Antrag für Veranstaltungen', form, feedback)
+    return renderAntrag(request, 'Antrag für Veranstaltungen', form)
 
 
 def AntragMitglied(request):
-    feedback = FrontendFeedback()
-    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragMitgliedForm(request.POST, request.FILES)
         if form.is_valid():
@@ -711,12 +689,10 @@ def AntragMitglied(request):
     else:
         form = AntragMitgliedForm()
     
-    return renderAntrag(request, 'Antrag zum beratenden MItglied', form, feedback)
+    return renderAntrag(request, 'Antrag zum beratenden MItglied', form)
 
 
 def AntragAmt(request):
-    feedback = FrontendFeedback()
-    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragAmtForm(request.POST, request.FILES)
         if form.is_valid():
@@ -754,12 +730,10 @@ def AntragAmt(request):
     else:
         form = AntragAmtForm()
     
-    return renderAntrag(request, 'Antrag zur Wahl auf Stelle/Amt', form, feedback)
+    return renderAntrag(request, 'Antrag zur Wahl auf Stelle/Amt', form)
 
 
 def AntragBenehmen(request):
-    feedback = FrontendFeedback()
-    feedback.back_url = '/'
     if request.method == 'POST':
         form = AntragBenehmenForm(request.POST, request.FILES)
         if form.is_valid():
@@ -795,7 +769,7 @@ def AntragBenehmen(request):
     else:
         form = AntragBenehmenForm()
     
-    return renderAntrag(request, 'Antrag auf Herstellung des Benehmens', form, feedback)
+    return renderAntrag(request, 'Antrag auf Herstellung des Benehmens', form)
 
 # ------ Anträge ------ #
 

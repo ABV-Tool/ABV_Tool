@@ -76,7 +76,11 @@
                     </td>
                     <td>
                         <a href="{% url 'antrag-vertagen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                            <i class="fa-regular fa-calendar-xmark"></i> Vertagen
+                            {% if antrag.beschlussID %}
+                                <s><i class="fa-regular fa-calendar-xmark"></i> Vertagen</s>
+                            {% else %}
+                                <i class="fa-regular fa-calendar-xmark"></i> Vertagen
+                            {% endif %}
                         </a>
                     </td>
                     <td>

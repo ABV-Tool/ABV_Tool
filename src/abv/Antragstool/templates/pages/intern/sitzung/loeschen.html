@@ -29,11 +29,13 @@
         <button type="submit" class="btn btn-danger w-full hover:cursor-pointer"><i class="fa-solid fa-trash-can"></i> Löschen</button>
 
 
-        <!-- Form-Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
-        {% if feedback %}
-            <div id="feedback">
-                {% include 'components/alert.html' with type=feedback.type text=feedback.text back_url=feedback.back_url %}
-            </div>
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
         {% endif %}
 
     <form>
