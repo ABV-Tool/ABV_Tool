@@ -195,7 +195,7 @@ Person(sa, Systemadmin, "Betreut das System")
 
 System_Boundary(c0, "StuRa Server") {
 
-    System(avbt, "AVB-Tool", "Speichert Anträge und Beschlüsse und lässt bestimmte Nutzer verwalten.")
+    System(avbt, "ABV-Tool", "Speichert Anträge und Beschlüsse und lässt bestimmte Nutzer verwalten.")
     System(mail_system, "E-Mail System", "Das interne E-Mailsystem.")
     ContainerDb(db,"Datenbank","Archiv","Speichert alle gestellten und bearbeiteten Anträge, Beschlüsse und Tagesordnungen")
 

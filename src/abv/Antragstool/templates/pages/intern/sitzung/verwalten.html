@@ -12,24 +12,32 @@
     <div class="ml-40 mr-40">
         <div class="w-full">
             <!-- TODO: URL-Referenzen einfügen -->
-            <a href="" class="btn btn-success hover:cursor-pointer mr-5">
+            <a href="{% url 'tagesordnung-vorschau' sitzID=sitzung.sitzID %}" class="btn btn-success hover:cursor-pointer mr-5">
                 <i class="fa-solid fa-circle-plus"></i> Tagesordnung erstellen
             </a>
-            <a href="" class="btn btn-success hover:cursor-pointer">
+            <a href="{% url 'sitzung-abschliessen' sitzID=sitzung.sitzID %}" class="btn btn-success hover:cursor-pointer">
                 <i class="fa-solid fa-circle-check"></i> Sitzung abschließen
             </a>
         </div>
 
+        <div class="w-full">
+            {% include 'components/alert.html' with type="INFO" text="Die Reihefolge der Anträge bestimmt, wie die TOP's in die TO eingespeißt werden. Sollte ein Antrag eine erhöhte Priorität haben, nutze den Button links beim Antrag; dieser wird anschließend nach ganz Oben geschoben." %}
+        </div>
+
         <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-1">
             <caption class="text-left">
-                <h2><b>Anträge der {{ sitzung }}</b></h2>
+                <h2><b>{{ sitzung }} - Alle Anträge</b></h2>
             </caption>
             <thead>
                 <tr>
+                    <th scope="col">
+                        {% include 'components/tooltip.html' with display_text="Priorität" tooltip_text="Priorisiert den Antrag, sodass er in der Tagesodnung ganz oben steht." %}
+                    </th>
                     <th scope="col">Antragstyp</th>
                     <th scope="col">Titel</th>
                     <th scope="col">Antragsteller</th>
                     <th scope="col">Eilantrag?</th>
+                    <th scope="col">Anlagen</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -39,9 +47,14 @@
             <tbody>
                 {% for antrag in antraege %}
                 <tr>
+                    <td>
+                        <a href="{% url 'antrag-priorisieren' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                            <i class="fa-solid fa-arrow-up-wide-short"></i>
+                        </a>
+                    </td>
                     <td>{{ antrag.typID.typName }}</td>
                     <td>{{ antrag.antragTitel | truncatechars:50 }}</td>
-                    <td>{{ antrag.astellerID.astellerVorname }} {{ antrag.astellerID.astellerName }}</td>
+                    <td>{{ antrag.astellerID.astellerName }}</td>
                     <td>
                         {% if antrag.istEilantrag %}
                             <i class="fa-solid fa-check"></i>
@@ -49,8 +62,13 @@
                             <i class="fa-solid fa-xmark"></i>
                         {% endif %}
                     </td>
-                    
-            
+                    <td>
+                        {% if antrag.antragAnlagen == 0 %}
+                            <i class="fa-solid fa-xmark"></i>
+                        {% else %}
+                            {{ antrag.anzAnlagen }}
+                        {% endif %}
+                    </td>
                     <td>
                         <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
                             <i class="fa-solid fa-eye"></i> Anzeigen

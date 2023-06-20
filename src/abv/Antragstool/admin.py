@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Antrag, Sitzung, Referat, Antragssteller, Antragstyp, Beschluss
+from .models import Antrag, Sitzung, Referat, Antragssteller, Antragstyp, Beschluss, Anlage
 
 # Register your models here.
 class AntragAdmin(admin.ModelAdmin):
@@ -15,13 +15,13 @@ class AntragAdmin(admin.ModelAdmin):
         return obj.typID.typName
     @admin.display(description='Antragsteller')
     def get_antragsteller(self, obj):
-        return obj.astellerID.astellerVorname + ' ' + obj.astellerID.astellerName
+        return obj.astellerID.astellerName
 admin.site.register(Antrag, AntragAdmin)
 
 
 # https://stackoverflow.com/questions/163823/can-list-display-in-a-django-modeladmin-display-attributes-of-foreignkey-field
 class SitzungAdmin(admin.ModelAdmin):
-    list_display = ('sitzID', 'get_referat', 'sitzDate')
+    list_display = ('sitzID', 'get_referat', 'sitzDate', 'sitzNummerJahr')
     ordering=('sitzDate', 'refID')
     @admin.display(description='Referat')
     def get_referat(self, obj):
@@ -30,7 +30,7 @@ admin.site.register(Sitzung, SitzungAdmin)
 
 
 class ReferatAdmin(admin.ModelAdmin):
-    list_display = ('refID','refName', 'refZyklus', 'refEmail')
+    list_display = ('refID','refName', 'refEmail')
     ordering = ('refID',)
 admin.site.register(Referat, ReferatAdmin)
 
@@ -42,10 +42,17 @@ admin.site.register(Antragstyp, AntragstypAdmin)
 
 
 class AntragsstellerAdmin(admin.ModelAdmin):
-    list_display = ('astellerID', 'astellerName', 'astellerVorname')
+    list_display = ('astellerID', 'astellerName')
 admin.site.register(Antragssteller, AntragsstellerAdmin)
+
 
 class BeschlussAdmin(admin.ModelAdmin):
     list_display = ('sitzID', 'beschlussDate', 'beschlussFaehigkeit', 'get_ergebnis')
 admin.site.register(Beschluss, BeschlussAdmin)
+
+
+class AnlageAdmin(admin.ModelAdmin):
+    list_display = ('anlage', 'antragID')
+admin.site.register(Anlage, AnlageAdmin)
+
 

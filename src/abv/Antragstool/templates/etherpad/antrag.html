@@ -1,0 +1,114 @@
+<b>Antragsteller&#x3A;in:</b> {{ antrag.astellerID.astellerName }}
+<br>
+
+
+<b>Antragsdatum:</b> {{ antrag.erstelltDate }}
+<br>
+
+
+<b>Antragstyp:</b> {{ antrag.typID.typName }}
+<br><br>
+
+
+<b>Antragstext</b><br>
+    {{ antrag.antragText }}
+<br><br>
+
+
+{% if antrag.antragGrund %}
+    <b>Begr&#xFC;ndung zum Antrag</b><br>
+        {{ antrag.antragGrund }}
+    <br><br>
+{% endif %}
+
+
+{% if antrag.antragVorschlag %}
+    <b>Vorschlag zum weiteren Verfahren</b><br>
+        {{ antrag.antragVorschlag }}
+    <br><br>
+{% endif %}
+
+
+{% if antrag.antragKostenposition and antrag.antragSumme %}
+    <b>Kostenposition im Haushaltsplan</b><br>
+    <ul>
+        {% if antrag.antragSumme is null %}
+            <li>ohne finanzielle Mittel</li>
+        {% else %}
+            <li>{{ antrag.antragKostenposition }}</li>
+            <li>{{ antrag.antragSumme }}</li>
+        {% endif %}
+    </ul><br>
+{% endif %}
+
+
+{% if antrag.antragVerantwortlichkeit and antrag.antragZeitraum %}
+    <b>Verantwortlichkeit für Veranstaltung</b><br>
+        {{ antrag.antragVerantwortlichkeit }}
+    <br><br>
+    <b>Zeitraum für Nachbearbeitung</b><br>
+        {{ antrag.antragZeitraum }}
+    <br><br>
+{% endif %}
+
+
+{% if antrag.antragFragenZumAmt %}
+    <b>Fragen zum Amt</b><br>
+        {{ antrag.antragFragenZumAmt }}
+    <br><br>
+{% endif %}
+
+
+{% if antrag.antragVorstellungPerson %}
+    <b>Vorstellung der Person</b><br>
+    {{ antrag.antragVorstellungPerson }}
+    <br><br>
+{% endif %}
+
+
+<b>Anlagen</b><br>
+{% for anlage in anlagen %}
+    <a href="google.de">{{ anlage.anlageName }}</a><br>
+{% empty %}
+    <p>Keine Anlagen vorhanden.</p>
+{% endfor %}
+<br>
+
+
+<b class="font-size:22"><i>Abstimmung</i></b><br>
+
+<b>Erforderliche Mehrheit: X</b><br>
+
+
+{% if antrag.beschlussID %}
+    <b>Behandlung</b><br>
+    <p>{{ antrag.beschlussID.beschlussBehandlung }}</p>
+
+    <p><b>Beschlussdatum:</b> {{ antrag.beschlussID.beschlussDate }}</p>
+
+    <p><b>Beschlussfähigkeit:</b>
+        {% if antrag.beschlussID.beschlussFaehigkeit %}
+            Ja
+        {% else %}
+            Nein
+        {% endif %}
+    </p>
+
+    <b>Ergebnis:</b> {{ antrag.beschlussID.beschlussErgebnis }}<br />
+    <ul>
+        <li>Ja&#x3A; {{ antrag.beschlussID.stimmenJa }}</li>
+        <li>Nein&#x3A; {{ antrag.beschlussID.stimmenNein }}</li>
+        <li>Enthaltung&#x3A; {{ antrag.beschlussID.stimmenEnthaltung }}</li>
+    </ul><br>
+
+    <b class="font-size:22"><i>Beschluss</i></b><br />
+    <b>Beschlusstext</b><br />
+    {{ antrag.beschlussID.beschlussText }}<br>
+
+    <b>Ausfertigung</b><br />
+    {{ antrag.beschlussID.beschlussAusfertigung }}<br>
+{%endif%}
+
+<br>
+
+<p><b>Unterschrift</b></p><br><br>

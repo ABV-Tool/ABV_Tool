@@ -4,12 +4,11 @@
 
 {% block head %}
     {{ block.super }}
-    <!-- insert custom header elements -->
 {% endblock %}
 
 {% block content %}
 
-    <form method="POST" action="" class="ml-96 mr-96">
+    <form method="POST" action="#feedback" class="ml-96 mr-96">
         {% csrf_token %}
 
         <h1 class="text-center"><b>{{ title }}</b></h1>
@@ -37,27 +36,11 @@
                 {% endif %}>
         </div>
 
-        <!-- Form-Input: refZyklus mit Tooltip zur Information -->
-        <div class="mb-3">
-            <label class="block" for="{{ form.referat_zyklus.name }}" >
-                <b>{% include 'components/tooltip.html' with display_text=form.referat_zyklus.label tooltip_text="Beschreibt, nach wie vielen Wochen die nächste Sitzung dieses Referates stattfindet." %}</b>
-            </label>
-            <input class="w-full" type="number" value="{{ referat.refZyklus }}" placeholder="2" 
-                id="{{ form.referat_zyklus.name }}" 
-                name="{{ form.referat_zyklus.name }}" 
-                maxlength="{{ form.referat_zyklus.field.max_length }}" 
-                {% if aktion == "LOESCHEN" %}
-                    disabled
-                {% else %}
-                    required
-                {% endif %}
-            >
-        </div>
 
         <!-- Form-Input: refEmail -->
         <div class="mb-5">
             <label class="block" for="{{ form.referat_email.name }}"><b>{{ form.referat_email.label }}</b></label>
-            <input class="w-full" type="text" value="{{ referat.refEmail }}" placeholder="verwaltung@stura.htw-dresden.de" 
+            <input class="w-full" type="email" value="{{ referat.refEmail }}" placeholder="verwaltung@stura.htw-dresden.de" 
                 id="{{ form.referat_email.name }}" 
                 name="{{ form.referat_email.name }}" 
                 maxlength="{{ form.referat_email.field.max_length }}" 
@@ -80,11 +63,13 @@
         {% endif %}
 
 
-        <!-- Form-Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
-        {% if feedback %}
-            <div id="feedback">
-                {% include 'components/alert.html' with type=feedback.type text=feedback.text back_url=feedback.back_url %}
-            </div>
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
         {% endif %}
 
     <form>
