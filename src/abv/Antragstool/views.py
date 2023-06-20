@@ -64,7 +64,7 @@ def ArchivPage(request):
         
     return render(request, 'pages/archiv.html', context={
         'title': 'Archiv',
-        'antraege': gefilterte_antraege,
+        'antraege': gefilterte_antraege, #type: ignore
         'aktion': 'ANZEIGEN',
         'form': form
     })
@@ -456,7 +456,7 @@ def AntragBeschliessenPage(request, antragID):
         'aktion': 'BESCHLIESSEN'
     })
     
-def AntragPriorisierenPage(request, antragID):
+def AntragPriorisierenPage(antragID):
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
     
@@ -579,8 +579,13 @@ def AntragAllgemein(request):
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
             sitzungen = sitzungenAbfragen(form)
+            if sitzungen.count() == 0:
+                messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
+                return redirect('antrag-allgemein')
+           
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='antrag-ohne-finanzielle-mittel')
+            
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
             
@@ -607,7 +612,7 @@ def AntragAllgemein(request):
             formFehlerAusgeben(request, form)
             return redirect('antrag-allgemein')
     else:
-        form = AntragAllgemeinForm()
+        form = AntragAllgemeinForm(request.GET)
 
     return renderAntrag(request, 'Allgemeiner Antrag', form)
 
@@ -618,8 +623,13 @@ def AntragFinanziell(request):
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
             sitzungen = sitzungenAbfragen(form)
+            if sitzungen.count() == 0:
+                messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
+                return redirect('antrag-allgemein')
+            
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='antrag-mit-finanziellen-mitteln')
+            
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
             
@@ -659,8 +669,13 @@ def AntragVeranstaltung(request):
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
             sitzungen = sitzungenAbfragen(form)
+            if sitzungen.count() == 0:
+                messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
+                return redirect('antrag-allgemein')
+            
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='antrag-fuer-veranstaltungen')
+            
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
             
@@ -702,8 +717,13 @@ def AntragMitglied(request):
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
             sitzungen = sitzungenAbfragen(form)
+            if sitzungen.count() == 0:
+                messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
+                return redirect('antrag-allgemein')
+            
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='beratendes-mitglied')
+            
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
             
@@ -740,8 +760,13 @@ def AntragAmt(request):
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
             sitzungen = sitzungenAbfragen(form)
+            if sitzungen.count() == 0:
+                messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
+                return redirect('antrag-allgemein')
+            
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='wahl-auf-stelle-oder-amt')
+            
             # Prüfe, ob Antragsteller bereits existiert & Mitglied ist
             asteller = astellerAbfragenOderErstellen(form)
             asteller.astellerIstMitglied = form.cleaned_data['ist_mitglied']
@@ -781,8 +806,13 @@ def AntragBenehmen(request):
         if form.is_valid():
             # Prüfe, ob/wann die nächste Sitzung des Referats stattfindet
             sitzungen = sitzungenAbfragen(form)
+            if sitzungen.count() == 0:
+                messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
+                return redirect('antrag-allgemein')
+            
             # Definiere den Antragstyp anhand der Slug
             antragstyp = Antragstyp.objects.get(typSlug='herstellung-des-benehmens')
+            
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
             

@@ -132,9 +132,9 @@
                     
                     });
                     if (selectedSitzung) {
-                        $('#info_sitzungsdatum').html("Die nächste Sitzung, in welcher dein jetzt gestellter Antrag behandelt wird, findet am <b>" + selectedSitzung[1] + "</b> statt.")
+                        $('#info_sitzungsdatum').html("Die <b>nächste Sitzung</b>, in welcher dein jetzt gestellter Antrag behandelt wird, findet am <b>" + selectedSitzung[1] + "</b> statt.")
                     } else {
-                        $('#info_sitzungsdatum').html("Bitte wähle die zuständige Stelle aus, damit wir dir den Termin der nächsten Sitzung anzeigen können. Sollte kein Termin angezeigt werden, hat die ausgewählte Stelle noch keine Sitzung geplant.")
+                        $('#info_sitzungsdatum').html("Bitte wähle die <b>zuständige Stelle</b> aus, damit wir dir den <b>Termin der nächsten Sitzung</b> anzeigen können. Sollte <b>kein Termin</b> angezeigt werden, hat die <b>ausgewählte Stelle</b> noch <b>keine Sitzung geplant</b>. Wähle in diesem Fall eine andere Stelle aus.")
                     }
                 }
             </script>
@@ -170,7 +170,7 @@
 
         <!-- Anzeigen der nächsten Sitzung -->
         {% if not aktion %}
-            {% include 'components/alert.html' with type="INFO" text="Bitte wähle die zuständige Stelle aus, damit wir dir den Termin der nächsten Sitzung anzeigen können..." text_element_id="info_sitzungsdatum" %}
+            {% include 'components/alert.html' with type="INFO" text="Bitte wähle die <b>zuständige Stelle</b> aus, damit wir dir den <b>Termin der nächsten Sitzung</b> anzeigen können..." text_element_id="info_sitzungsdatum" %}
         {% endif %}
 
         <!-- Antragsdaten Antragstext -->
@@ -370,4 +370,14 @@
             {% endfor %}
         {% endif %}
     </form>
+
+    <script>
+        // Textarea-Höhe automatisch an Text anpassen
+        $("textarea").each(function () {
+            this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+          }).on("input", function () {
+            this.style.height = 0;
+            this.style.height = (this.scrollHeight) + "px";
+          });
+    </script>
 {% endblock %}
