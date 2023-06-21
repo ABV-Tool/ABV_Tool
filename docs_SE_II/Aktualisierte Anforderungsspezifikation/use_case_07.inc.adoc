@@ -1,10 +1,10 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== UC06 => Beschlüsse einpflegen
+== UC06 => Sitzung anlegen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
-Der Use Case beschreibt wie der Antragsverwalter die Anträge beschließt.
+Der Use Case beschreibt wie der Antragsverwalter eine Sitzung anlegt.
 
 === Kurzbeschreibung der Akteure
 
@@ -18,47 +18,27 @@ Ist zuständig für die jeweilige Plenumssitzung.
 
 - Der Antragsverwalter muss angemeldet sein.
 
-- Die Sitzung muss angelegt sein.
-
-- Die Tagesordnung muss bereits generiert worden sein.
-
-- Es muss ein Antrag gestellt worden sein.
-
-- Der Antrag muss beschlossen worden sein.
-
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der Antragsverwalter die aktuelle Sitzung ausgewählt hat.
-. Das System zeigt alle gestellten Anträge der Sitzung an.
-. Der Antragsverwalter klickt auf "Beschließen".
-. Der Antragsverwalter pflegt den Beschluss ein und klickt auf "Beschließen".
-. Das System vermerkt den Beschluss des Antrages.
+. Der Use Case beginnt, wenn der Antragsverwalter in der Sitzungsverwaltung auf "Sitzung anlegen" klickt.
+. Der Antragsverwalter wählt die zuständige Stelle aus und gibt das Datum der Sitzung ein.
+. Der Antragsverwalter klickt auf "Anlegen".
+. Die Sitzung wird im System angelegt und in der Sitzungsverwaltung angezeigt. 
 . Der Use Case ist beendet.
 
 === Alternative Abläufe
 //Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
 
-==== Antrag vertagen
-Wenn der Antragsverwalter in Schritt 2 des Standardablaufes statt auf "Beschließen" auf "Vertagen" klickt, dann öffnet sich ein Fenster wo der Antragsverwalter auswählen kann zu welcher Sitzung der Antrag zugeordnet werden soll. 
+==== Sitzung existiert bereits
+Wenn der Antragsverwalter in Schritt 2 des Standardablaufes ein Datum eingibt an dem bereits eine Sitzung der ausgewählten zuständigen Stelle stattfindet, dann gibt das System eine entsprechende Fehlermeldung aus. 
 
-Dabei fügt das System den Antrag zur ausgewählten Sitzung hinzu. In der alten Sitzung wird ein Duplikat des Antrages angelegt mit dem Beschluss, dass er vertagt wurde.
+Der Use Case bleibt in Schritt 2.
 
-Der Use Case wird in Schritt 2 fortgesetzt.
+=== Nachbedingung
 
-=== Wireframe
+Mit Anlegen der Sitzung ist es möglich Anträge zu stellen. 
 
-image::wireframe_beschluss.png[title="Entwurf Beschluss einpflegen"]
-
-_Erklärung:_
-
-Über die Sitzungsverwaltung können alle Anträge betrachtet werden und eine Tagesordnung für die kommende Plenumssitzung erstellt werden. Anträge die in der Sitzung besprochen werden sollen können ausgewählt werden. Tagesordnungen für kommende Sitzungen können schon im voraus entschieden werden. 
-
-
-=== Nachbedingungen
-//Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
-
-==== <Nachbedingung 1>
 
 ////
 
