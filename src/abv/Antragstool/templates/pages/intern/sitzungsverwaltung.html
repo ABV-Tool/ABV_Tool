@@ -18,6 +18,15 @@
             </a>
         </div>
 
+
+        <!-- Ausgabe der Referate ohne Sitzung -->
+        {% if referate_ohne_sitzung|length > 0 %}
+            {% with referate_ohne_sitzung|join:", " as referate %}
+                {% include 'components/alert.html' with type="WARNING" text="Folgende <b>Referate</b> haben derzeit <b>keine Sitzungen</b> vorgemerkt: "|add:referate %}
+            {% endwith %}
+        {% endif %}
+
+
         <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-2">
             <caption class="text-left">
                 <h2><b>Alle aktuellen Sitzungen</b></h2>
@@ -82,5 +91,15 @@
         {% endif %}
 
         
+        <script>
+            // Wenn der Nutzer über den Browser zurück navigiert, wird die Seite neu geladen
+            // Dadurch werden die Daten wieder aktuell geladen
+            var perfEntries = performance.getEntriesByType("navigation");
+
+            if (perfEntries[0].type === "back_forward") {
+                location.reload(true);
+            }
+        </script>
+
     </div>
 {% endblock %}

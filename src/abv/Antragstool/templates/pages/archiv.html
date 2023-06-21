@@ -115,5 +115,24 @@
 
         </table>
 
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <script>
+            // Wenn der Nutzer über den Browser zurück navigiert, wird die Seite neu geladen
+            // Dadurch werden die Daten wieder aktuell geladen
+            var perfEntries = performance.getEntriesByType("navigation");
+
+            if (perfEntries[0].type === "back_forward") {
+                location.reload(true);
+            }
+        </script>
+
     </div>
 {% endblock %}

@@ -29,7 +29,7 @@ def HomePage(request):
 
 
 def ArchivPage(request):
-    form = ArchivSuchenForm()
+    form = ArchivSuchenForm(request.GET)
     
     if request.method == 'GET' and form.is_valid():
         suchbegriff = request.GET.get("q")
@@ -61,6 +61,8 @@ def ArchivPage(request):
             gefilterte_antraege = gefilterte_antraege.filter(erstelltDate__lte=datum_bis)
     else:
         gefilterte_antraege = Antrag.objects.filter(beschlussID__isnull=False).filter(~Q(beschlussID__beschlussErgebnis="Vertagt"))
+        messages.debug(request, str([form.errors[field_name] for field_name in form.errors]))
+            
 
     return render(request, 'pages/archiv.html', context={
         'title': 'Archiv',
@@ -158,17 +160,25 @@ def ReferatLoeschenPage(request, refID):
 # ++++++ Sitzungsverwaltung ++++++ #
 
 def SitzungsverwaltungPage(request):
+    referate = Referat.objects.all().order_by('refID')
+    sitzungen = Sitzung.objects.all().order_by('sitzDate')
+    referate_ohne_sitzung = []
+    
     # Anzahl der Anträge pro Sitzung berechnen | Filtere Anträge, die vertagt wurden
-    for sitzung in Sitzung.objects.all():
+    for sitzung in sitzungen:
         anz_antraege = Antrag.objects.filter(sitzID=sitzung.sitzID).filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).count()
         sitzung.anzAntraege = anz_antraege
         sitzung.save()
-    # Sitzungen nach Datum sortieren
-    sitzungen = Sitzung.objects.all().order_by('sitzDate')
+    
+    # Prüfe, ob es Referate gibt, die keine Sitzung haben
+    for referat in referate:
+        if referat.refID not in sitzungen.values_list('refID', flat=True):
+            referate_ohne_sitzung.append(referat)
         
     return render(request, 'pages/intern/sitzungsverwaltung.html', context={
         'title': 'Sitzungsverwaltung', 
-        'sitzungen': sitzungen
+        'sitzungen': sitzungen,
+        'referate_ohne_sitzung': referate_ohne_sitzung
     })
 
 
@@ -179,10 +189,16 @@ def SitzungAnlegenPage(request):
     if request.method == 'POST':
         form = SitzungAnlegenForm(request.POST)
         if form.is_valid():
-            sitzung = Sitzung()
-            sitzung.sitzDate = form.cleaned_data['datum_sitzung']
-            sitzung.refID = form.cleaned_data['referat']
-            sitzung.save()
+            sitzDate = form.cleaned_data['datum_sitzung']
+            refID = form.cleaned_data['referat']
+            
+            # Prüfe, ob es bereits eine Sitzung vom gleichen Referat mit dem Datum gibt
+            if Sitzung.objects.filter(sitzDate=sitzDate, refID=refID).exists():
+                messages.error(request, 'Es gibt bereits eine Sitzung vom ' + sitzDate.strftime("%d.%m.%Y") + ' für das Referat ' + Referat.objects.get(refID=refID.refID).refName + '!')
+                return redirect('sitzung-anlegen')
+            else:
+                sitzung = Sitzung(sitzDate=sitzDate, refID=refID)
+                sitzung.save()
 
             messages.success(request, 'Die Sitzung wurde wurde für den ' + sitzung.sitzDate.strftime("%d.%m.%Y") + ' angelegt!')
             return redirect('sitzung-anlegen')
@@ -225,7 +241,7 @@ def SitzungVertagenPage(request, sitzID):
         if form.is_valid():
             if sitzung.sitzStatus == 'Stattgefunden':
                 messages.error(request, 'Die Sitzung hat bereits stattgefunden und kann nicht mehr bearbeitet werden!')
-                return redirect('sitzung-abschliessen', sitzID=sitzID)
+                return redirect('sitzung-vertagen', sitzID=sitzID)
             
             sitzung.sitzDate = form.cleaned_data['datum_neu']
             sitzung.save()
@@ -248,7 +264,11 @@ def SitzungVertagenPage(request, sitzID):
 
 
 def SitzungLoeschenPage(request, sitzID):
-    sitzung = Sitzung.objects.get(sitzID=sitzID)
+    # Prüfe, ob die Sitzung existiert
+    if not Sitzung.objects.filter(sitzID=sitzID).exists():
+        return redirect('sitzungsverwaltung')
+    else:
+        sitzung = Sitzung.objects.get(sitzID=sitzID)
     
     if request.method == 'POST':
         # Prüfe, ob die Sitzung bereits stattgefunden hat
@@ -465,12 +485,11 @@ def AntragBeschliessenPage(request, antragID):
         'aktion': 'BESCHLIESSEN'
     })
     
-def AntragPriorisierenPage(antragID):
+def AntragPriorisierenPage(request, antragID):
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
     
     hoechste_prioritaet = Antrag.objects.filter(sitzID=sitzung).aggregate(Max('prioritaet'))['prioritaet__max']
-    print(hoechste_prioritaet)
     antrag.prioritaet = hoechste_prioritaet + 1
     antrag.save()
         
