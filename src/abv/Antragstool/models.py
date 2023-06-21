@@ -167,6 +167,7 @@ class Antrag(models.Model):
     
     # Flag um zu Verhindern, dass E-Mail an Asteller/Referat mehrfach versendet wird
     wurdeVertagt = models.BooleanField(db_column='wurde_vertagt', default=False)
+    neueSitzID = models.UUIDField(db_column='neue_antrag_id', null=True, blank=True)
     
     def __str__(self):
         return str(self.antragTitel) + " von " + self.astellerID.astellerName

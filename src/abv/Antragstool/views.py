@@ -12,6 +12,9 @@ from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertag
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
 from .forms import ArchivSuchenForm
 
+from .mails import mailAstellerEingangsbestaetigung, mailAstellerVertagungAntrag, mailAstellerVertagungSitzung, mailAstellerErgebnisAntrag
+from .mails import mailReferatAntragEingegangen
+
 from .api import list_pads, create_pad, set_html
 
 
@@ -141,7 +144,13 @@ def ReferatLoeschenPage(request, refID):
     referat = Referat.objects.get(refID=refID)
 
     if request.method == 'POST':
-        referat.delete()
+        # Prüfe, ob das Referat noch Anträge oder Sitzungen hat
+        if Sitzung.objects.filter(refID=refID).exists():
+            messages.error(request, 'Das Referat ' + referat.refName + ' kann nicht gelöscht werden, da ihm Sitzungen mit Anträgen zugewiesen sind!')
+            return redirect('referat-loeschen', refID=refID)
+        else:
+            referat.delete()
+            
         messages.success(request, 'Das Referat ' + referat.refName + ' wurde erfolgreich gelöscht!')
         return redirect('referatsverwaltung')
     else:
@@ -295,6 +304,7 @@ def SitzungLoeschenPage(request, sitzID):
 
 def SitzungAbschliessenPage(request, sitzID):
     sitzung = Sitzung.objects.get(sitzID=sitzID)
+    antraege_sitzung = Antrag.objects.filter(sitzID=sitzID)
     
     if request.method == 'POST':
         # Prüfe, ob die Sitzung bereits abgeschlossen wurde
@@ -308,7 +318,17 @@ def SitzungAbschliessenPage(request, sitzID):
         if nicht_beschlossene_antraege == 0:
             sitzung.sitzStatus = 'Stattgefunden'
             sitzung.save()
-
+            
+            # Schicke E-Mail an alle Antragsteller, ob ihr Antrag beschlossen oder vertagt wurde
+            for antrag in antraege_sitzung:
+                if antrag.beschlussID is not None and antrag.beschlussID.beschlussErgebnis == 'Vertagt':
+                    # Hole den vertagten Antrag über die neueSitzID
+                    print(antrag.neueSitzID)
+                    antrag_vertagt = Antrag.objects.get(sitzID=antrag.neueSitzID)
+                    mailAstellerVertagungAntrag(antrag_vertagt)
+                else:
+                    mailAstellerErgebnisAntrag(antrag)
+            
             messages.success(request, 'Die Sitzung wurde erfolgreich abgeschlossen!')
             return redirect('sitzung-abschliessen', sitzID=sitzID)
         else:
@@ -346,7 +366,7 @@ def getFormVonAntragstyp(antrag):
 
 
 def AntragsverwaltungPage(request):
-    antraege = Antrag.objects.all().order_by('-erstelltDate')
+    antraege = Antrag.objects.filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).order_by('-erstelltDate')
     return render(request, 'pages/intern/antragsverwaltung.html', context={
         'title': 'Antragsverwaltung',
         'antraege': antraege
@@ -403,9 +423,6 @@ def AntragVertagenPage(request, antragID):
             alte_sitzID = antrag.sitzID
             neue_sitzID = form.cleaned_data['sitzung']
             
-            print(alte_sitzID)
-            print(neue_sitzID)
-            
             # Ürsprünglicher Antrag wird in neue Sitzung verschoben
             antrag.sitzID = neue_sitzID
             antrag.save()
@@ -423,6 +440,7 @@ def AntragVertagenPage(request, antragID):
             antrag.sitzID = alte_sitzID
             antrag.beschlussID = beschluss
             antrag.wurdeVertagt = True
+            antrag.neueSitzID = neue_sitzID.sitzID
             antrag.save()
             
             messages.success(request, 'Der Antrag wurde in die Sitzung ' + str(antrag.sitzID.refID.refName) +  ' am ' + antrag.sitzID.sitzDate.strftime("%d.%m.%Y") + ' vertagt!')
@@ -633,6 +651,9 @@ def AntragAllgemein(request):
             
             anlagenSpeichern(request, antrag)
             
+            mailAstellerEingangsbestaetigung(antrag)
+            mailReferatAntragEingegangen(antrag)
+            
             messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
             return redirect('antrag-allgemein')
         else:
@@ -678,6 +699,9 @@ def AntragFinanziell(request):
             antrag.save()
             
             anlagenSpeichern(request, antrag)
+            
+            mailAstellerEingangsbestaetigung(antrag)
+            mailReferatAntragEingegangen(antrag)
             
             messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
             return redirect('antrag-finanziell')
@@ -727,6 +751,9 @@ def AntragVeranstaltung(request):
             
             anlagenSpeichern(request, antrag)
             
+            mailAstellerEingangsbestaetigung(antrag)
+            mailReferatAntragEingegangen(antrag)
+            
             messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
             return redirect('antrag-veranstaltung')
         else:
@@ -769,6 +796,9 @@ def AntragMitglied(request):
             antrag.save()
             
             anlagenSpeichern(request, antrag)
+            
+            mailAstellerEingangsbestaetigung(antrag)
+            mailReferatAntragEingegangen(antrag)
                         
             messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
             return redirect('antrag-mitglied')
@@ -815,6 +845,9 @@ def AntragAmt(request):
             antrag.save()
             
             anlagenSpeichern(request, antrag)
+            
+            mailAstellerEingangsbestaetigung(antrag)
+            mailReferatAntragEingegangen(antrag)
                         
             messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
             return redirect('antrag-amt')
@@ -859,6 +892,9 @@ def AntragBenehmen(request):
             antrag.save()
             
             anlagenSpeichern(request, antrag)
+            
+            mailAstellerEingangsbestaetigung(antrag)
+            mailReferatAntragEingegangen(antrag)
                         
             messages.success(request, FEEDBACK_ANTRAG_SUCCESS)
             return redirect('antrag-benehmen')
