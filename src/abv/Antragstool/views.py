@@ -243,6 +243,7 @@ def SitzungVerwaltenPage(request, sitzID):
 
 def SitzungVertagenPage(request, sitzID): 
     sitzung = Sitzung.objects.get(sitzID=sitzID)
+    antraege_sitzung = Antrag.objects.filter(sitzID=sitzID)
     date = sitzung.sitzDate + timedelta(days=7)
     
     if request.method == 'POST':
@@ -254,6 +255,9 @@ def SitzungVertagenPage(request, sitzID):
             
             sitzung.sitzDate = form.cleaned_data['datum_neu']
             sitzung.save()
+            
+            # Sende eine E-Mail an alle Antragsteller, dass die Sitzung vertagt wurde
+            mailAstellerVertagungSitzung(sitzung=sitzung)
 
             messages.success(request, 'Die Sitzung wurde auf den ' + sitzung.sitzDate.strftime("%d.%m.%Y") + ' vertagt!')
             return redirect('sitzung-vertagen', sitzID=sitzID)
@@ -422,6 +426,11 @@ def AntragVertagenPage(request, antragID):
         elif form.is_valid():
             alte_sitzID = antrag.sitzID
             neue_sitzID = form.cleaned_data['sitzung']
+            
+            # Prüfe, ob die Sitzung die Gleiche ist
+            if alte_sitzID == neue_sitzID:
+                messages.error(request, 'Der Antrag konnte nicht vertagt werden, da die Sitzung die gleiche ist!')
+                return redirect('antrag-vertagen', antragID=antragID)
             
             # Ürsprünglicher Antrag wird in neue Sitzung verschoben
             antrag.sitzID = neue_sitzID
