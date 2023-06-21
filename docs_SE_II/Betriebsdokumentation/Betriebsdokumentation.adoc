@@ -6,13 +6,27 @@
 // Mindestanforderungen für Hardware: CPU, RAM, Festplatte, Netz 
 // Softwareanforderungen: Name und Version von Betriebssystem, Datenbank, Webserver, Browser
 
+* PostgreSQL
+* WSGI-kompatibler Webserver (Apache, Nginx)
+* Betriebssystem (idealerweise NixOS)
+* Python 3.9
+* CertBot
+
+Mindestanforderungen der Hardware sind die gleichen wie die vom WSGI-kompatiblen Webserver und die vom Betriebssystem.
+
 == Systemeinrichtung
 // Aus welchen Komponenten (EXE, JAR, JS, HTML, CSS, …) besteht die Software? 
 // Wie müssen diese installiert (… kopiert, registriert, …) werden? Verzeichnisstruktur?
 // Wie müssen die Bestandteile ihres Systems konfiguriert werden? IP-Adressen, Passwörter, Berechtigungen, …
 
+
+Alles im Ordner src muss auf den Server kopiert werden. Anschließend muss die Datendank eingerichtet werden. Diese soll leer sein und einen Nutzer haben. Die Datei settings.py muss an die neu erstellte Datenbank angepasst, ein secret Key generiert und Debug auf false gesetzt werden. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen. Ein TLS Zertifikat muss zuletzt erstellt werden, damit die Verschlüsselung der Verbindungen möglich ist.
+
 == Systembetreuung
 // FAQ für Benutzersupport 
 // Fehlerdiagnose, z.B. anhand von Logfile-Einträgen
 // Datensicherung und –wiederherstellung
+Bei der Installation können automatische Updates aktiviert werden. Außerdem sollte in regelmäßigen Abständen Updates von Python Paketen installiert werden. hierbei muss allerdings beachtet werden, dass hierbei keine Kompatibilitätsprobleme auftreten. Ggf. muss in solchen Fällen der Anwendungscode angepasst werden.
+
+Sonst:
 Frag am Besten Göran Kappa
