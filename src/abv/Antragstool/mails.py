@@ -1,24 +1,125 @@
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+from django.dispatch import receiver
+from django.template.loader import get_template
+from django.db.models.signals import pre_save, post_save
 
-# Sendet eine Mail an den Antragssteller, dass sein Antrag eingegangen ist
-def mailAstellerEingangsbestaetigung(asteller, antrag):
-    send_mail(
-        f"Dein { antrag.typID.typName } ist eingegeangen!",
-        f"Hi { asteller.astellerVorname },\n\nDein Antrag ist bei uns eingegangen und wird in der nächsten Sitzung des Referats behandelt.\n\nViele Grüße,\nDein StuRa-Team",
-        "abv@stura.htw-dresden.de",
-        [asteller.astellerEmail],
-        fail_silently=False,
-    )
+from abv.settings import EMAIL_TOOL
 
-# Sendet eine Mail an den Antragssteller, dass sein Antrag vertagt wurde und in der nächsten Sitzung behandelt wird
-def mailAstellerAntragVertagt(asteller, antrag):
-    pass
+from .models import Antrag, Referat, Sitzung
 
-# Sendet eine Mail an das Referat, dass ein neuer Antrag eingegangen ist
-def mailReferatAntragEingegangen(referat, antrag):
-    pass
 
-# Sendet eine Mail an das Referat, dass ein neuer Eilantrag eingegangen ist
-def mailReferatEilantragEingegangen(referat, antrag):
-    pass
+# TODO: Überlegungen zu weiteren E-Mails machen & StuRa fragen, ob die E-Mails so in Ordnung sind
+
+#----------{ E-Mails an Antragssteller }----------#
+
+# TODO: Binde Option ein, dass der Antragsteller seinen Antrag mit einem Token im Nachhinein bearbeiten kann
+def mailAstellerEingangsbestaetigung(antrag: Antrag):
+    """
+    Sende dem Antragssteller eine Eingangsbestätigung für seinen Antrag
+    """
+    print("Mail => Eingangsbestätigung an Antragsteller: ", antrag.astellerID.astellerName)
     
+    message = get_template("emails/asteller/eingangsbestaetigung_antrag.html").render({
+        'antrag': antrag
+    })
+    mail = EmailMessage(
+        subject="Dein Antrag ist bei uns eingegangen!",
+        body=message,
+        from_email=EMAIL_TOOL,
+        to=[antrag.astellerID.astellerEmail], # type: ignore
+        reply_to=[EMAIL_TOOL, antrag.sitzID.refID.refEmail],
+    )
+    mail.content_subtype = "html"
+    return mail.send()
+
+
+def mailAstellerVertagungAntrag(antrag: Antrag):
+    """
+    Sende dem Antragssteller eine Information über die Vertagung seines Antrags in eine andere Sitzung
+    Signal wird ausgelöst, wenn der Antrag in eine andere Sitzung vertagt wird
+    """
+    print("Mail => Vertagung Antrag an Antragsteller: ", antrag.astellerID.astellerName)
+    
+    # TODO: E-Mail Nachricht anpassen
+    message = get_template("emails/asteller/vertagung_antrag.html").render({
+        'antrag': antrag
+    })
+    mail = EmailMessage(
+        subject="Dein Antrag wurde in eine andere Sitzung vertagt!",
+        body=message,
+        from_email=EMAIL_TOOL,
+        to=[antrag.astellerID.astellerEmail], # type: ignore
+        reply_to=[EMAIL_TOOL, antrag.sitzID.refID.refEmail],
+    )
+    mail.content_subtype = "html"
+    return mail.send()
+
+
+def mailAstellerVertagungSitzung(sitzung: Sitzung):
+    """
+    Sende dem Antragssteller eine Information über die Vertagung der Sitzung, in welcher sein Antrag ursprünglich behandelt werden sollte.
+    """
+    antraege_sitzung = Antrag.objects.filter(sitzID=sitzung.sitzID)
+    print("Mail => Vertagung Sitzung an alle Antragsteller: ", [antrag.astellerID.astellerEmail for antrag in antraege_sitzung])
+    
+    # TODO: E-Mail Nachricht anpassen
+    message = get_template("emails/asteller/vertagung_sitzung.html").render({
+        'sitzung': sitzung,
+        'antraege': antraege_sitzung
+    })
+    mail = EmailMessage(
+        subject="Die Sitzung deines Antrages wurde vertagt!",
+        body=message,
+        from_email=EMAIL_TOOL,
+        # Sende eine E-Mail an alle Antragssteller, deren Anträge in der vertagten Sitzung behandelt werden sollten
+        to=[antrag.astellerID.astellerEmail for antrag in antraege_sitzung], # type: ignore
+        reply_to=[EMAIL_TOOL, sitzung.refID.refEmail],
+    )
+    mail.content_subtype = "html"
+    return mail.send()
+
+
+def mailAstellerErgebnisAntrag(antrag: Antrag):
+    """
+    Sende dem Antragssteller eine Information über das Ergebnis seines Antrags
+    Signal wird ausgelöst, wenn der Antrag eine BeschlussID zugewiesen bekommt
+    """
+    print("Mail => Ergebnis Beschluss an Antragsteller: ", antrag.astellerID.astellerName)
+    
+    # TODO: E-Mail Nachricht anpassen
+    message = get_template("emails/asteller/ergebnis_antrag.html").render({
+        'antrag': antrag
+    })
+    mail = EmailMessage(
+        subject="Dein Antrag wurde beschlossen!",
+        body=message,
+        from_email=EMAIL_TOOL,
+        to=[antrag.astellerID.astellerEmail], # type: ignore
+        reply_to=[EMAIL_TOOL, antrag.sitzID.refID.refEmail],
+    )
+    mail.content_subtype = "html"
+    return mail.send()
+
+
+#----------{ E-Mails an Referate }----------#
+
+# TODO: Prüfe, ob der Antrag ein Eilantrag ist und verschicke eine andere E-Mail
+def mailReferatAntragEingegangen(antrag: Antrag):
+    """
+    Sende dem Referat eine Information über den Eingang eines neuen Antrags
+    """
+    print("Mail => Eingangsbestätigung an Referat: ", antrag.sitzID.refID.refName)
+        
+    # TODO: E-Mail Nachricht anpassen
+    message = get_template("emails/referat/antrag_eingegangen.html").render({
+        'antrag': antrag
+    })
+    mail = EmailMessage(
+        subject="Ein neuer Antrag ist eingegangen!",
+        body=message,
+        from_email=EMAIL_TOOL,
+        to=[antrag.sitzID.refID.refEmail],
+        reply_to=[EMAIL_TOOL]
+    )
+    mail.content_subtype = "html"
+    return mail.send()

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="DE">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vertagung deines Antrags</title>
+    </head>
+    <body style="font-family: Arial, sans-serif;">
+
+        Hallo {{ antrag.astellerID.astellerName }},<br><br>
+
+        dein Antrag {{ antrag.antragTitel }} wurde in eine andere Sitzung des Referats {{ antrag.sitzID.refID.refName }} vertagt.<br><br>
+
+        Diese findet vorraussichtlich am {{ antrag.sitzID.sitzDate | date:"d.m.Y" }} statt.<br><br>
+
+        Viele Grüße,<br>
+        Dein StuRa-Team!
+
+    </body>
+</html>

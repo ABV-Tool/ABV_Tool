@@ -8,8 +8,17 @@ __pycache__
 .idea
 .vscode
 .venv
+.env
 
 src/result
 src/node_modules
 
+media/
+media/anlagen
+
 migrations/
+migrations/*
+
+media/
+media/anlagen
+

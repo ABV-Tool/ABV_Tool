@@ -8,5 +8,51 @@
 {% endblock %}
 
 {% block content %}
-    <!-- insert content -->
+
+    <div class="mr-80 ml-80">
+
+        <div class="relative py-4 mt-5 mb-4">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-b border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#dcdcdc] px-4 text-3xl text-black">{{ title }}</span>
+            </div>
+        </div>
+
+
+        {% include 'components/alert.html' with type="INFO" text="Die TO wird aus einer gespeicherten Vorlage erstellt und mit den Anträgen der Sitzung ergänzt. Die Priorität der Anträge muss im vorigen Schritt definiert worden sein!" %}
+
+
+        {% include 'components/alert.html' with type="WARNING" text="Nach Generierung der Tagesordnung wird der Inhalt des Etherpad's mit dieser <b>überschrieben</b>! Daher sollte diese nur zu Beginn der Sitzung generiert werden. Eine Wiederherstellung der Daten nach Änderung im Etherpad ist <b>nicht</b> möglich!" %}
+
+
+        <div class="flex flex-row">
+            {% if sitzung.etherpadLink %}
+                <a href="{% url 'tagesordnung-erstellen' sitzID=sitzung.sitzID %}" class="w-1/2 text-center btn bg-stura-orange hover:cursor-pointer mr-5">
+                    <i class="fa-solid fa-arrows-rotate"></i> Tagesordnung überschreiben
+                </a>
+                <a href="{{ sitzung.etherpadLink }}" class="w-1/2 text-center btn btn-success hover:cursor-pointer" target="_blank">
+                    <i class="fa-solid fa-link"></i> Etherpad der Sitzung öffnen
+                </a>
+            {% else %}
+                <a href="{% url 'tagesordnung-erstellen' sitzID=sitzung.sitzID %}" class="w-full text-center btn bg-stura-orange hover:cursor-pointer mr-5">
+                    <i class="fa-solid fa-circle-plus"></i> Tagesordnung erstellen
+                </a>
+            {% endif %}
+        </div>
+
+
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+    </div>
+
 {% endblock %}

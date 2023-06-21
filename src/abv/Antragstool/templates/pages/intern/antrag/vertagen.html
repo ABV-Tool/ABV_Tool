@@ -9,4 +9,60 @@
 
 {% block content %}
     <!-- insert content -->
+    <form method="POST" action="" class="ml-96 mr-96">
+        {% csrf_token %}
+
+        <h1 class="text-center"><b>{{ title }}</b></h1>
+
+
+        <!-- Anzeigen des Referates bei Bearbeiten/Löschen -->
+        <div class="mb-8">
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+            <h2 class="text-center">{{ antrag.antragTitel }}</h2>
+            <h4 class="text-center italic">{{ antrag.astellerID }}</h4>
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+        </div>
+
+
+        <div class="flex flex-row mt-3">
+            <a class="w-1/2 mr-3" href="/admin/Antragstool/antrag/{{ antrag.antragID }}/change/" target="_blank">
+                <div class="btn w-full hover:cursor-pointer text-center"><i class="fa-solid fa-diamond-turn-right"></i> Änderung im Bereich Administration</div>
+            </a>
+
+            <a class="w-1/2" href="/intern/antrag/{{ antrag.antragID }}/bearbeiten">
+                <div class="btn w-full hover:cursor-pointer text-center"><i class="fa-solid fa-diamond-turn-right"></i> Änderung des Referates [ABV]</div>
+            </a>
+        </div>
+
+
+        {% include 'components/alert.html' with type="INFO" text="Die Antragsnummer bleibt trotz der Vertagung in eine andere Sitzung weitergehend bestehen." %}
+
+        
+        <div class="w-full mb-5">
+            <label class="block" for="{{ form.sitzung.id_for_label }}">
+                <b>{{ form.sitzung.label }}</b>
+            </label>
+            <select name="{{ form.sitzung.name }}" class="w-full" {% if form.sitzung.field.required %}required{% endif %}>
+                {% for choice in form.sitzung.field.choices %}
+                    <option class="p-2" value="{{ choice.0 }}" 
+                        {% if antrag.sitzID.sitzID == choice.0 %} selected {% endif %}
+                    >{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <button class="btn btn-success w-full hover:cursor-pointer"><i class="fa-regular fa-calendar-check"></i> Antrag vertagen</button>
+
+
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </form>
 {% endblock %}

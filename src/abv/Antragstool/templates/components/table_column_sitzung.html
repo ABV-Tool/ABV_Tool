@@ -1,0 +1,7 @@
+{% if status|lower == 'stattgefunden' %}
+    <p class="text-green-600"><i class="fa-regular fa-calendar-check"></i> Stattgefunden</p>
+{% elif status|lower == 'vertagt' %}
+    <p class="text-red-600"><i class="fa-solid fa-calendar-xmark"></i> Vertagt</p>
+{% else %}
+    <p class="text-stura-orange"><i class="fa-solid fa-question"></i> Offen</p>
+{% endif %}

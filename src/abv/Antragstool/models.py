@@ -13,7 +13,6 @@ class Referat(models.Model):
                                         unique=True,
                                         db_column='ref_id')
     refName = models.TextField(db_column='ref_name', max_length=200)
-    refZyklus = models.IntegerField(db_column='zyklus', blank=True)
     refEmail = models.EmailField(db_column='ref_email', max_length=100, blank=True)
     
     def __str__(self):
@@ -39,12 +38,12 @@ class Sitzung(models.Model):
                               db_column='ref_id',
                               on_delete=models.CASCADE)
     sitzDate = models.DateField(db_column='sitz_date')
+    sitzNummerJahr = models.PositiveIntegerField(db_column='sitz_nummer_jahr', default=0)
     anzAntraege = models.PositiveIntegerField(db_column='anz_antraege', default=0)
+    etherpadLink = models.URLField(db_column='etherpad_link', max_length=200, blank=True)
     
     def __str__(self):
-        # TODO: Sollte eine Sitzung vorverlegt werden, so stimmt die Reihenfolge der Sitzungen nicht mehr
-        anzahl_sitz_jahr = Sitzung.objects.filter(sitzDate__year=self.sitzDate.year).filter(refID=self.refID).count()
-        return str(anzahl_sitz_jahr) + ". Sitzung " + self.refID.refName + " " + str(self.sitzDate.year)
+        return str(self.sitzDate.strftime("%d.%m.%Y")) + " - Sitzung " + self.refID.refName
 
 
 class Antragssteller(models.Model):
@@ -55,13 +54,11 @@ class Antragssteller(models.Model):
                                   editable=False,
                                   db_column='asteller_id')
     astellerName = models.TextField(max_length=50, db_column='asteller_name')
-    astellerVorname = models.TextField(max_length=50,
-                                       db_column='asteller_vorname')
     astellerEmail = models.EmailField(max_length=50, db_column='asteller_email', null=True)
     astellerIstMitglied = models.BooleanField(db_column='asteller_ist_mitglied', default=False)
     
     def __str__(self):
-        return self.astellerVorname + " " + self.astellerName
+        return self.astellerName
 
 
 class Beschluss(models.Model):
@@ -72,6 +69,7 @@ class Beschluss(models.Model):
         UNBEHANDELT = 'Unbehandelt'
         ANGENOMMEN = 'Angenommen'
         ABGELEHNT = 'Abgelehnt'
+        VERTAGT = 'Vertagt'
         
     def get_beschluss_ergebnisse(self):
         return list(self.BeschlussErgebnis)
@@ -84,6 +82,7 @@ class Beschluss(models.Model):
                                on_delete=models.CASCADE,
                                db_column='sitz_id')
     beschlussDate = models.DateField(db_column='beschluss_date', default=timezone.now)
+    beschlussBehandlung = models.TextField(db_column='beschluss_behandlung', max_length=1000)
     beschlussFaehigkeit = models.BooleanField(db_column='beschluss_faehigkeit', default=False)
     
     stimmenJa = models.PositiveIntegerField(db_column='stimmen_ja', default=0)
@@ -92,13 +91,16 @@ class Beschluss(models.Model):
     
     beschlussErgebnis = models.CharField(max_length=20, 
                                          choices=BeschlussErgebnis.choices, 
-                                         default=BeschlussErgebnis.UNBEHANDELT)
+                                         default=BeschlussErgebnis.ANGENOMMEN)
     
     beschlussText = models.TextField(db_column='beschluss_text', max_length=1000)
     beschlussAusfertigung = models.TextField(db_column='beschluss_ausfertigung', max_length=200)
     
     def get_ergebnis(self):
         return self.beschlussErgebnis
+    
+    def __str__(self):
+        return str(self.stimmenJa) + " Ja | " + str(self.stimmenNein) + " Nein | " + str(self.stimmenEnthaltung) + " Enthalten => " + self.beschlussErgebnis
 
 
 class Antragstyp(models.Model):
@@ -133,16 +135,16 @@ class Antrag(models.Model):
                                    on_delete=models.CASCADE,
                                    db_column='asteller_id')
     beschlussID = models.ForeignKey(Beschluss,
-                                    on_delete=models.SET_NULL,
+                                    on_delete=models.CASCADE,
                                     db_column='beschluss_id',
                                     null=True,
                                     blank=True)
     antragTitel = models.TextField(db_column='antrag_titel', default="", max_length=200, blank=False)
     antragText = models.TextField(db_column='antrag_text', default="", max_length=2000, blank=False)
-
-    antragAnlagen = models.FileField(db_column='antrag_anlagen', blank=True)
-    prioritaet = models.PositiveIntegerField(db_column='prioritaet', default=0)
     
+    anzAnlagen = models.PositiveIntegerField(db_column='anz_anlagen', default=0)
+    
+    prioritaet = models.PositiveIntegerField(db_column='prioritaet', default=0)
     istEilantrag = models.BooleanField(db_column='ist_eilantrag', default=False, blank=False)
     
     # Antragsspezifische Daten
@@ -163,5 +165,19 @@ class Antrag(models.Model):
     erstelltDate = models.DateField(db_column='erstellt_date', auto_now_add=True)
     bearbeitetDate = models.DateField(db_column='bearbeitet_date', auto_now=True)
     
+    # Flag um zu Verhindern, dass E-Mail an Asteller/Referat mehrfach versendet wird
+    wurdeVertagt = models.BooleanField(db_column='wurde_vertagt', default=False)
+    neueSitzID = models.UUIDField(db_column='neue_antrag_id', null=True, blank=True)
+    
     def __str__(self):
-        return str(self.antragTitel) + " von " + self.astellerID.astellerVorname + " " + self.astellerID.astellerName
+        return str(self.antragTitel) + " von " + self.astellerID.astellerName
+
+
+class Anlage(models.Model):
+    anlage = models.FileField(db_column='anlage', blank=True, null=True, upload_to='anlagen/')
+    anlageName = models.TextField(db_column='anlage_name', blank=True)
+    antragID = models.ForeignKey(Antrag,
+                                 on_delete=models.CASCADE,
+                                 db_column='antrag_id',
+                                 null=True,
+                                 blank=True) 

@@ -11,25 +11,37 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
+
+# Umgebungsvariablen laden
+dotenv_path = os.path.join(BASE_DIR, '../../.env')
+load_dotenv(dotenv_path)
+
+
+# Development-Umgebung
+ENVIRONMENT ='DEVELOPMENT'
+MESSAGE_LEVEL = 10 # DEBUG
+DEBUG = True
+
+# Production-Umgebung
+#ENVIRONMENT ='PRODUCTION'
+#MESSAGE_LEVEL = 20 # INFO
+#DEBUG = False
+#ALLOWED_HOSTS = ['localhost']
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r^g0%e^t*_v+h!xcg97!os*_+83!xmpg6&^&9gv7e-!8f@2aq8'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = []
-
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -66,6 +78,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -81,11 +94,11 @@ WSGI_APPLICATION = 'abv.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'abv',
-        'USER': 'abv',
-        'PASSWORD': 'abv',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT')
     }
 }
 
@@ -112,8 +125,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 LANGUAGE_CODE = 'de-DE'
 TIME_ZONE = 'Europe/Berlin'
-USE_I18N = True
 USE_TZ = True
+USE_L10N = True
+USE_I18N = True
+DECIMAL_SEPARATOR = ','
+DATETIME_FORMAT = 'd.m.Y H:i'
+DATE_FORMAT = 'd.m.Y'
+TIME_FORMAT = 'H:i'
 
 
 # Static files (CSS, JavaScript, Images)
@@ -124,23 +142,44 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '../Antragstool/static'),
 )
 
+# File-Upload Settings
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
+DATA_UPLOAD_MAX_MEMORY_SIZE=10240000 # 10MB
+FILE_UPLOAD_MAX_MEMORY_SIZE=10240000 # 10MB
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# set default login/logout redirect
+
+# Standard Login/Logout-Redirect
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-# tailwind settings
+
+# Development: Tailwind settings
 TAILWIND_APP_NAME = 'Antragstool'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
 NPM_BIN_PATH=r"C:\Program Files\nodejs\npm.cmd"
 
+
 # E-Mail Settings
 # TODO Production: Mailserver anpassen
-EMAIL_HOST = '127.0.0.1'
-EMAIL_PORT = 1025
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = False
+EMAIL_TOOL = 'abv@stura.htw-dresden.de'
+
+
+# Etherpad Settings
+# TODO Production: Etherpad-Server & API-Key anpassen
+ETHERPAD_API_KEY = os.environ.get('ETHERPAD_API_KEY')
+ETHERPAD_HOST = 'http://10.0.1.30:9001'
+ETHERPAD_API_ENDPOINT = ETHERPAD_HOST + '/api/1.2.15/'
+ETHERPAD_PAD_ENDPOINT = ETHERPAD_HOST + '/p/'

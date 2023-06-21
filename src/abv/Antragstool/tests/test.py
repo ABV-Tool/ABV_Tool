@@ -14,7 +14,6 @@ class ModelInitializationTest(TestCase):
         self.assertIsNotNone(Antragssteller._meta.db_table)
         self.assertIsNotNone(Antragssteller._meta.get_field('astellerID'))
         self.assertIsNotNone(Antragssteller._meta.get_field('astellerName'))
-        self.assertIsNotNone(Antragssteller._meta.get_field('astellerVorname'))
 
         # Check if Antragstyp model is initialized
         self.assertIsNotNone(Antragstyp._meta.db_table)

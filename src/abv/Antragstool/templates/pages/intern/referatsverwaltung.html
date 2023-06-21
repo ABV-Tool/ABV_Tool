@@ -25,10 +25,9 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Ref Name</th>
-                    <th scope="col">Zyklus</th>
+                    <th scope="col">Referats-Name</th>
                     <th scope="col">Kontakt E-Mail</th>
-                    <th></th>
+                    <th scope="col">Aktionen</th>
                     <th></th>
                 </tr>
             </thead>
@@ -37,14 +36,12 @@
                 <tr>
                     <td>{{ referat.refID }}</td>
                     <td>{{ referat.refName }}</td>
-                    <td>{{ referat.refZyklus }}</td>
                     <td>{{ referat.refEmail }}</td>
                     <td>
-                        <a href="{% url 'referat-bearbeiten' refID=referat.refID %}" class="hover:cursor-pointer">
+                        <a href="{% url 'referat-bearbeiten' refID=referat.refID %}" class="hover:cursor-pointer mr-5">
                             <i class="fa-solid fa-pen-to-square"></i> Bearbeiten
                         </a>
-                    </td>
-                    <td>
+
                         <a href="{% url 'referat-loeschen' refID=referat.refID %}" class="hover:cursor-pointer">
                             <i class="fa-solid fa-trash-can"></i> Löschen
                         </a>
@@ -53,6 +50,16 @@
                 {% endfor %}
             </tbody>
         </table>
+
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
 
     </div>
 {% endblock %}

@@ -5,13 +5,25 @@
 {% block head %}
     {{ block.super }}
     <!-- insert custom header elements -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 {% endblock %}
 
 {% block content %}
-    <form method="POST" action="#feedback" class="ml-80 mr-80">
+    <form method="POST" action="#feedback" class="ml-80 mr-80" enctype="multipart/form-data">
         {% csrf_token %}
 
         <h1 class="text-center"><b>{{ title }}</b></h1>
+
+
+        <!-- Anzeigen der Sitzung / des Beschlussses, wenn man über das Archiv darauf zugreift -->
+        {% if aktion|lower == "anzeigen" %}
+        <div class="mb-8">
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+            <h2 class="text-center">Behandelt in: <b>{{ antrag.sitzID }}</b></h2>
+            <h4 class="text-center italic">Beschluss: <b>{{ antrag.beschlussID }}</b></h4>
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+        </div>
+        {% endif %}
 
 
         <!-- Separator -->
@@ -23,7 +35,7 @@
                 <span class="bg-[#dcdcdc] px-4 text-3xl text-black">Stammdaten</span>
             </div>
         </div>
-        
+    
         
         <!-- Blende Hilfetext aus, sofern der Antrag angezeigt/bearbeitet wird -->
         {% if not aktion %}
@@ -32,32 +44,22 @@
         {% endif %}
 
 
-         <!--+ Stammdaten Antragsteller +-->
+        <!--+ Stammdaten Antragsteller +-->
         <div class="flex flex-row mt-3">
 
-            <!-- Antragsteller Vorname -->
-            <div class="w-1/4 mr-3">
-                <label class="block" for="{{ form.vorname.id_for_label }}"><b>Vorname:</b></label>
-                <input class="w-full" type="text" placeholder="Reiner" id="{{ form.vorname.id_for_label }}" name="{{ form.vorname.name }}" 
-                    {% if form.vorname.field.required %}required{% endif %} 
-                    {% if form.vorname.field.max_length %}maxlength="{{ form.vorname.field.max_length }}"{% endif %}
-                    {% if antrag.astellerID.astellerVorname %}value="{{ antrag.astellerID.astellerVorname }}"{% endif %}
-                >
-            </div>
-
-            <!-- Antragsteller Nachname -->
-            <div class="w-1/4 mr-3">
-                <label class="block" for="{{ form.nachname.id_for_label }}"><b>Nachname:</b></label>
-                <input class="w-full" type="text" placeholder="Zufall" id="{{ form.nachname.id_for_label }}" name="{{ form.nachname.name }}" 
-                    {% if form.nachname.field.required %}required{% endif %} 
-                    {% if form.nachname.field.max_length %}maxlength="{{ form.nachname.field.max_length }}"{% endif %}
+            <!-- Antragsteller Name -->
+            <div class="w-1/2 mr-3">
+                <label class="block" for="{{ form.name.id_for_label }}"><b>{{ form.name.label }}</b></label>
+                <input class="w-full" type="text" placeholder="Reiner Zufall / Referat Finanzen" id="{{ form.name.id_for_label }}" name="{{ form.name.name }}" 
+                    {% if form.name.field.required %}required{% endif %} 
+                    {% if form.name.field.max_length %}maxlength="{{ form.name.field.max_length }}"{% endif %}
                     {% if antrag.astellerID.astellerName %}value="{{ antrag.astellerID.astellerName }}"{% endif %}
                 >
             </div>
 
             <!-- Antragsteller E-Mail -->
             <div class="w-1/2">
-                <label class="block" for="{{ form.email.id_for_label }}"><b>E-Mail Adresse:</b></label>
+                <label class="block" for="{{ form.email.id_for_label }}"><b>{{ form.email.label }}</b></label>
                 <input class="w-full" type="email" placeholder="reiner@zufall.de" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" 
                     {% if form.email.field.required %}required{% endif %} 
                     {% if form.email.field.max_length %}maxlength="{{ form.email.field.max_length }}"{% endif %}
@@ -78,16 +80,17 @@
             </div>
         </div>
 
-
+        
         <!-- Antragsdaten Antragstitel -->
         <div class="mb-3">
-            <label class="block" for="{{ form.titel.id_for_label }}"><b>Antragstitel:</b></label>
+            <label class="block" for="{{ form.titel.id_for_label }}"><b>{{ form.titel.label }}</b></label>
             <input class="w-full" type="text" placeholder="Antrag auf/für/zum ..." id="{{ form.titel.id_for_label }}" name="{{ form.titel.name }}" 
                 {% if form.titel.field.required %}required{% endif %} 
                 {% if form.titel.field.max_length %}maxlength="{{ form.titel.field.max_length }}"{% endif %}
                 {% if antrag.antragTitel %}value="{{ antrag.antragTitel }}"{% endif %}
             >
         </div>
+
 
         <div class="flex flex-row mb-3">
 
@@ -105,9 +108,41 @@
                 </select>
             </div>
 
+            <!-- Zeige das Datum der nächsten Sitzung an, sobald ein Referat ausgewählt wurde -->
+            <script>
+                $(document).ready(function() {
+                    let referatSelect = $('select[name="{{ form.referat.name }}"]');
+                    
+                    // Wenn die Seite neu gelanden wird, zeige das Datum der nächsten Sitzung an
+                    updateDatum(referatSelect.val());
+
+                    // Wenn ein Referat ausgewählt wurde, zeige das Datum der nächsten Sitzung an
+                    referatSelect.change(function() {
+                        updateDatum($(this).val());
+                    });
+                });
+
+                function updateDatum(refID) {
+                    // Array mit allen Sitzungen, die in der Datenbank gespeichert sind
+                    let sitzungen = [ {% for sitzung in sitzungen %} [{{ sitzung.refID.refID }}, "{{ sitzung.sitzDate | date:"d.m.Y" }}"], {% endfor %}];
+                    
+                    // Prüfe, ob die ausgewählte Referat-ID in der Liste der Sitzungen vorhanden ist
+                    let selectedSitzung = sitzungen.find(function(sitzung) {
+                        return sitzung[0] == refID;
+                    
+                    });
+                    if (selectedSitzung) {
+                        $('#info_sitzungsdatum').html("Die <b>nächste Sitzung</b>, in welcher dein jetzt gestellter Antrag behandelt wird, findet am <b>" + selectedSitzung[1] + "</b> statt.")
+                    } else {
+                        $('#info_sitzungsdatum').html("Bitte wähle die <b>zuständige Stelle</b> aus, damit wir dir den <b>Termin der nächsten Sitzung</b> anzeigen können. Sollte <b>kein Termin</b> angezeigt werden, hat die <b>ausgewählte Stelle</b> noch <b>keine Sitzung geplant</b>. Wähle in diesem Fall eine andere Stelle aus.")
+                    }
+                }
+            </script>
+
+
             <!-- Antragsdaten IstEilantrag -->
             <div class="w-1/4">
-                <label class="block" for="{{ form.ist_eilantrag.id_for_label }}"><b>Ist dies ein Eilantrag?</b></label>
+                <label class="block" for="{{ form.ist_eilantrag.id_for_label }}"><b>{{ form.ist_eilantrag.label }}</b></label>
                 <input class="w-10 h-10 text-[#f2ac2e] focus:ring-[#f2ac2e] bg-gray-100 border-gray-300 rounded dark:focus:ring-[#f2ac2e] focus:ring-2" 
                     type="checkbox" 
                     id="{{ form.ist_eilantrag.id_for_label }}" 
@@ -116,10 +151,11 @@
                 >
             </div>
 
+            
             <!-- Antragsdaten IstStuRaMitglied -->
             {% if form.ist_mitglied %}
             <div class="w-1/2">
-                <label class="block" for="{{ form.ist_mitglied.id_for_label }}"><b>Bist du bereits ein Miglied im StuRa?</b></label>
+                <label class="block" for="{{ form.ist_mitglied.id_for_label }}"><b>{{ form.ist_mitglied.label }}</b></label>
                 <input class="w-10 h-10 text-[#f2ac2e] focus:ring-[#f2ac2e] bg-gray-100 border-gray-300 rounded dark:focus:ring-[#f2ac2e] focus:ring-2" 
                     type="checkbox" 
                     id="{{ form.ist_mitglied.id_for_label }}" 
@@ -131,9 +167,15 @@
 
         </div>
 
+
+        <!-- Anzeigen der nächsten Sitzung -->
+        {% if not aktion %}
+            {% include 'components/alert.html' with type="INFO" text="Bitte wähle die <b>zuständige Stelle</b> aus, damit wir dir den <b>Termin der nächsten Sitzung</b> anzeigen können..." text_element_id="info_sitzungsdatum" %}
+        {% endif %}
+
         <!-- Antragsdaten Antragstext -->
         <div class="mb-3">
-            <label class="block" for="{{ form.text.id_for_label }}"><b>Antragstext:</b></label>
+            <label class="block" for="{{ form.text.id_for_label }}"><b>{{ form.text.label }}</b></label>
             <textarea class="w-full" rows="7" placeholder="Der StuRa möge beschließen, dass ..." id="{{ form.text.id_for_label }}" name="{{ form.text.name }}" 
                 {% if form.text.field.required %}required{% endif %} 
                 {% if form.text.field.max_length %} maxlength="{{ form.text.field.max_length }}"{% endif %}
@@ -143,7 +185,7 @@
         <!-- Antragsdaten Grund -->
         {% if form.grund  %}
         <div class="mb-3">
-            <label class="block" for="{{ form.grund.id_for_label }}"><b>Begründung zum Antrag:</b></label>
+            <label class="block" for="{{ form.grund.id_for_label }}"><b>{{ form.grund.label }}</b></label>
             <textarea class="w-full" rows="3" placeholder="Der Grund für diesen Antrag ist ..." id="{{ form.grund.id_for_label }}" name="{{ form.grund.name }}" 
                 {% if form.grund.field.required %}required{% endif %} 
                 {% if form.grund.field.max_length %} maxlength="{{ form.grund.field.max_length }}"{% endif %}
@@ -154,7 +196,7 @@
         <!-- Antragsdaten Vorschlag -->
         {% if form.vorschlag  %}
         <div class="mb-3">
-            <label class="block" for="{{ form.vorschlag.id_for_label }}"><b>Vorschlag zum weiteren Verfahren:</b></label>
+            <label class="block" for="{{ form.vorschlag.id_for_label }}"><b>{{ form.vorschlag.label }}</b></label>
             <textarea class="w-full" rows="3" placeholder="Der StuRa soll in dieser Angelegenheit folgendermaßen verfahren: ..." id="{{ form.vorschlag.id_for_label }}" name="{{ form.vorschlag.name }}" 
                 {% if form.vorschlag.field.required %}required{% endif %} 
                 {% if form.vorschlag.field.max_length %} maxlength="{{ form.vorschlag.field.max_length }}"{% endif %}
@@ -167,7 +209,7 @@
         <div class="flex flex-row mb-3">
 
             <div class="w-1/2 mr-3">
-                <label class="block" for="{{ form.position.id_for_label }}"><b>Kostenposition:</b></label>
+                <label class="block" for="{{ form.position.id_for_label }}"><b>{{ form.position.label }}</b></label>
                 <input class="w-full" type="text" placeholder="9000 " id="{{ form.position.id_for_label }}" name="{{ form.position.name }}" 
                     {% if form.position.field.required %}required{% endif %} 
                     {% if form.position.field.max_length %}maxlength="{{ form.position.field.max_length }}"{% endif %}
@@ -176,7 +218,7 @@
             </div>
 
             <div class="w-1/2 mr-3">
-                <label class="block" for="{{ form.summe.id_for_label }}"><b>Summe [€]:</b></label>
+                <label class="block" for="{{ form.summe.id_for_label }}"><b>{{ form.summe.label }}</b></label>
                 <input class="w-full" type="text" placeholder="100,00" id="{{ form.summe.id_for_label }}" name="{{ form.summe.name }}" 
                     {% if form.summe.field.required %}required{% endif %}
                     {% if form.summe.field.max_length %}maxlength="{{ form.summe.field.max_length }}"{% endif %}
@@ -192,7 +234,7 @@
         <div class="flex flex-row mb-3">
 
             <div class="w-1/2 mr-3">
-                <label class="block" for="{{ form.verantwortlichkeit.id_for_label }}"><b>Verantwortlichkeit für die Nachbearbeitung:</b></label>
+                <label class="block" for="{{ form.verantwortlichkeit.id_for_label }}"><b>{{ form.verantwortlichkeit.label }}</b></label>
                 <input class="w-full" type="text" placeholder="Max Mustermann" id="{{ form.verantwortlichkeit.id_for_label }}" name="{{ form.verantwortlichkeit.name }}" 
                     {% if form.verantwortlichkeit.field.required %}required{% endif %} 
                     {% if form.verantwortlichkeit.field.max_length %}maxlength="{{ form.verantwortlichkeit.field.max_length }}"{% endif %}
@@ -201,7 +243,7 @@
             </div>
 
             <div class="w-1/2 mr-3">
-                <label class="block" for="{{ form.zeitraum.id_for_label }}"><b>Zeitraum der Nachbearbeitung:</b></label>
+                <label class="block" for="{{ form.zeitraum.id_for_label }}"><b>{{ form.zeitraum.label }}</b></label>
                 <input class="w-full" type="text" placeholder="01.10.2023-05.10.2023" id="{{ form.zeitraum.id_for_label }}" name="{{ form.zeitraum.name }}" 
                     {% if form.zeitraum.field.required %}required{% endif %} 
                     {% if form.zeitraum.field.max_length %}maxlength="{{ form.zeitraum.field.max_length }}"{% endif %}
@@ -212,11 +254,38 @@
         </div>
         {% endif %}
 
+
         <!-- Antragsdaten Vorstellung der Person -->
         {% if form.vorstellung_person  %}
+
+        <div class="hidden">
+            <p class="fragen_vorstellung_person">1. In welchen anderen - insbesondere politischen - Organisationen bist du Mitglied? Als solche Organisationen gelten mindestens Parteien, Vereine (mit Anspruch auf Veränderung und Bewahrung) oder auch sogenannte studentische Verbindungen?</p>
+            <p class="fragen_vorstellung_person">2. Wie viel kannst und willst du in die Ausübung der Funktion im StuRa investieren, insbesondere im Hinblick auf Studienleistungen und andere Verbindlichkeiten?</p>
+            <p class="fragen_vorstellung_person">3. Es gibt Themen mit denen der StuRa konfrontiert wird, die keinem speziellen Referat zugeordnet werden können oder den gesamten StuRa betreffen (zuletzt PEGIDA oder Ärztliches Attest). In welchem Umfang bist du bereit, dich über das spezielle Aufgabenfeld des Amtes hinaus zu engagieren?</p>
+            <p class="fragen_vorstellung_person">4. Inwiefern kannst du den StuRa, oder auch die HTW Dresden, im Falle einer Zombie-Apokalypse unterstützen?</p>
+        </div>
+
+        <!-- Fragen nicht in Textarea kopieren, sollte der Antrag bearbeitet/angezeigt werden -->
+        {% if not aktion %}
+            <script>
+                $(document).ready(function() {
+                    let fragenVorstellungPerson = $('.fragen_vorstellung_person')
+                    let textareaVorstellungPerson = $('#{{ form.vorstellung_person.id_for_label }}');
+                    let textareaVorstellungPersonContent = ""
+
+                    fragenVorstellungPerson.each(function(index, element) {
+                        textareaVorstellungPersonContent += $(element).html() + '\n\n\n\n';
+                    });
+
+                    $(textareaVorstellungPerson).val(textareaVorstellungPersonContent);
+                });
+            </script>
+            {% include 'components/alert.html' with type="INFO" text="Um schonmal ein Bild von dir zu bekommen, beantworte bitte die unten stehenden Fragen für deinen Antrag ehrlich." %}
+        {% endif %}
+
         <div class="mb-3">
-            <label class="block" for="{{ form.vorstellung_person.id_for_label }}"><b>Vorstellung deiner Person:</b></label>
-            <textarea class="w-full" rows="6"  placeholder="Ich bin ... / Ich mag ..." 
+            <label class="block" for="{{ form.vorstellung_person.id_for_label }}"><b>{{ form.vorstellung_person.label }}</b></label>
+            <textarea class="w-full" rows="19"  placeholder="Ich bin ... / Ich mag ..." 
                 id="{{ form.vorstellung_person.id_for_label }}" name="{{ form.vorstellung_person.name }}" 
                 {% if form.vorstellung_person.field.required %}required{% endif %} 
                 {% if form.vorstellung_person.field.max_length %} maxlength="{{ form.vorstellung_person.field.max_length }}"{% endif %}
@@ -224,11 +293,36 @@
         </div>
         {% endif %}
 
+
         <!-- Antragsdaten Fragen zum Amt -->
-        {% if form.fragen_amt  %}
+        {% if form.fragen_amt %}
+
+        <div class="hidden">
+            <p class="fragen_amt">1. Wie bewertest du die Ausschreibung für das Amt?</p>
+            <p class="fragen_amt">2. Wie bewertest du die Arbeit deiner VorgängerInnen?</p>
+            <p class="fragen_amt">3. Welche Themen würdest du in der Amtszeit in den Fordergrund stellen??</p>
+        </div>
+
+        <!-- Fragen nicht in Textarea kopieren, sollte der Antrag bearbeitet/angezeigt werden -->
+        {% if not aktion %}
+            <script>
+                $(document).ready(function() {
+                    let fragenAmt = $('.fragen_amt')
+                    let textareaFragenAmt = $('#{{ form.fragen_amt.id_for_label }}');
+                    let textareaFragenAmtContent = ""
+
+                    fragenAmt.each(function(index, element) {
+                        textareaFragenAmtContent += $(element).html() + '\n\n\n\n';
+                    });
+
+                    $(textareaFragenAmt).val(textareaFragenAmtContent);
+                });
+            </script>
+        {% endif %}
+
         <div class="mb-3">
-            <label class="block" for="{{ form.fragen_amt.id_for_label }}"><b>Fragen zum Amt:</b></label>
-            <textarea class="w-full" rows="6" placeholder="Ich will diese Amt übernehmen, weil ..." 
+            <label class="block" for="{{ form.fragen_amt.id_for_label }}"><b>{{ form.fragen_amt.label }}</b></label>
+            <textarea class="w-full" rows="13" placeholder="Ich will dieses Amt übernehmen, weil ..." 
                 id="{{ form.fragen_amt.id_for_label }}" name="{{ form.fragen_amt.name }}" 
                 {% if form.fragen_amt.field.required %}required{% endif %} 
                 {% if form.fragen_amt.field.max_length %} maxlength="{{ form.fragen_amt.field.max_length }}"{% endif %}
@@ -237,29 +331,53 @@
         {% endif %}
 
 
-        <!-- Antragsdaten Alagen -->
+        <!-- Antragsdaten Anlagen -->
+        {% if not aktion %}
+        <!-- Anzeigen des Datei-Uploads, wenn über Hauptseite aufgerufen -->
         <div class="mb-5">
-            <label class="block" for="{{ form.anlagen.id_for_label }}"><b>Anlagen:</b></label>
-            {{ form.anlagen }}
+            <label class="block" for="{{ form.anlagen.id_for_label }}"><b>{{ form.anlagen.label }}</b></label>
+            <input type="file" name="{{ form.anlagen.name }}" id="{{ form.anlagen.id_for_label }}" multiple />
         </div>
+        {% elif aktion == 'ANZEIGEN' %}
+        <!-- Anzeigen der hochgeladenen Dateien, wenn über Intern aufgerufen -->
+        <div class="mb-7">
+            <label class="block mb-3"><b>Anlagen:</b></label>
+            {% for anlage in anlagen %}
+                <a class="btn p-3 mr-2" href="/media/{{ anlage.anlage }}" target="_blank">{{ anlage.anlageName }}</a>
+            {% empty %}
+                <p class="text-stura-orange">Keine Anlagen vorhanden!</p>
+            {% endfor %}
+        </div>
+        {% endif %}
 
 
         <!--+ Form-Actions +-->
         {% if aktion == "BEARBEITEN" %}
             <button type="submit" class="btn btn-neutral w-full hover:cursor-pointer"><i class="fa-solid fa-floppy-disk"></i> Bearbeiten</button>
         {% elif aktion == "ANZEIGEN" %}
-            {% include 'components/alert.html' with type="INFO" text="Der Antrag wird lediglich angezeigt. Änderungen an den Daten hier hat keine Auswirkungen auf die Datenbank!" %}
+            {% include 'components/alert.html' with type="INFO" text="Der Antrag wird lediglich angezeigt. Die Änderung der Daten hat keine Auswirkungen auf die Datenbank!" %}
         {% else %}
             <button type="submit" class="btn btn-success w-full hover:cursor-pointer"><i class="fa-solid fa-paper-plane"></i> Abschicken</button>
         {% endif %}
 
 
-        <!--+ Form-Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen +-->
-        {% if feedback %}
-            <div id="feedback">
-                {% include 'components/alert.html' with type=feedback.type text=feedback.text back_url=feedback.back_url %}
-            </div>
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
         {% endif %}
-
     </form>
+
+    <script>
+        // Textarea-Höhe automatisch an Text anpassen
+        $("textarea").each(function () {
+            this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+          }).on("input", function () {
+            this.style.height = 0;
+            this.style.height = (this.scrollHeight) + "px";
+          });
+    </script>
 {% endblock %}

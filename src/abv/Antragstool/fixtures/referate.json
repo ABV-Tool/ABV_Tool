@@ -3,98 +3,95 @@
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 1,
-            "refName": "Finanzen",
-            "refZyklus": "2",
-            "refEmail": "finanzen@stura.htw-dresden.de"
+            "refName": "Präsidium",
+            "refEmail": "p@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 2,
-            "refName": "Hochschulpolitik",
-            "refZyklus": "2",
-            "refEmail": "hochschulpolitik@stura.htw-dresden.de"
+            "refName": "Finanzen",
+            "refEmail": "finanzen@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 3,
-            "refName": "Internationales",
-            "refZyklus": "2",
-            "refEmail": "internationales@stura.htw-dresden.de"
+            "refName": "Hochschulpolitik",
+            "refEmail": "hochschulpolitik@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 4,
-            "refName": "Kultur",
-            "refZyklus": "2",
-            "refEmail": "kultur@stura.htw-dresden.de"
+            "refName": "Internationales",
+            "refEmail": "internationales@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 5,
-            "refName": "Öffentlichkeitsarbeit",
-            "refZyklus": "2",
-            "refEmail": "öffentlichkeitsarbeit@stura.htw-dresden.de"
+            "refName": "Kultur",
+            "refEmail": "kultur@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 6,
-            "refName": "Personal",
-            "refZyklus": "2",
-            "refEmail": "personal@stura.htw-dresden.de"
+            "refName": "Öffentlichkeitsarbeit",
+            "refEmail": "oeffentlichkeitsarbeit@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 7,
-            "refName": "Qualitätsmanagement",
-            "refZyklus": "2",
-            "refEmail": "qm@stura.htw-dresden.de"
+            "refName": "Personal",
+            "refEmail": "personal@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 8,
-            "refName": "Soziales",
-            "refZyklus": "2",
-            "refEmail": "soziales@stura.htw-dresden.de"
+            "refName": "Qualitätsmanagement",
+            "refEmail": "qm@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 9,
-            "refName": "Sport",
-            "refZyklus": "2",
-            "refEmail": "sport@stura.htw-dresden.de"
+            "refName": "Soziales",
+            "refEmail": "soziales@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 10,
-            "refName": "stud. Selbstverwaltung & Organisation",
-            "refZyklus": "2",
-            "refEmail": "verwaltung@stura.htw-dresden.de"
+            "refName": "Sport",
+            "refEmail": "sport@stura.htw-dresden.de"
         }
     },
     {
         "model": "Antragstool.Referat",
         "fields": {
             "refID": 11,
+            "refName": "stud. Selbstverwaltung & Organisation",
+            "refEmail": "verwaltung@stura.htw-dresden.de"
+        }
+    },
+    {
+        "model": "Antragstool.Referat",
+        "fields": {
+            "refID": 12,
             "refName": "Studium",
-            "refZyklus": "2",
             "refEmail": "studium@stura.htw-dresden.de"
         }
     }

@@ -1,0 +1,128 @@
+= Abnahmeprotokoll Antrags- und Beschlussverwaltungstool
+
+
+== Projektangaben
+
+*Thema:* Entwicklung eines Antrags- und Beschlussverwaltungstools für den StuRa der HTW Dresden
+
+*Zeitraum:* November 2022 - Juni 2023 
+
+*GitHub Repository:* https://github.com/ABV-Tool/ABV_Tool
+
+== Abnahmedokumentation
+
+*Datum:* #21.06.2023#
+
+*Zeit:* 
+
+*Abnahmeumgebung:*
+
+== Lieferumfang
+
+* Software in folgender Form: Antrags- und Beschlussverwaltungstool bestehend aus ###
+
+* Benutzeranleitung
+* Betriebsanleitung
+* Anforderungsspezifikation
+* Entwicklerdokumentation
+* Testdokumentation
+
+Die Dokumentationen werden bis #26.06.2023# als PDF per E-Mail an #p@stura.htw-dresden.de# gesendet.
+
+== Funktionalität
+
+[%header, cols="3,1,2"]
+|===
+
+|Use Case
+|erfüllt
+|Anmerkung
+
+|UC 1 - Antrag stellen
+|
+|
+
+|UC 2 - Tagesordnung erstellen
+|
+|
+
+|UC 3 - Tagesordnung abschließen
+|
+|
+
+|UC 4 - Plenumssitzung vertagen
+|
+|
+
+|UC 5 - Antragsverwalter anmelden
+|
+|
+
+|UC 6 - Beschlüsse einpflegen
+|
+|
+
+|===
+
+== Systemweite Anforderungen
+
+#gelb = Vorschlag was man präsentieren könnte#
+
+[%header, cols="3,1,2"]
+|===
+
+|Anforderung
+|erfüllt
+|Anmerkung
+
+|SWFA-1: Das System muss alle Anträge und Tagesordnungen persistent speichern.
+|
+|
+
+|SWFA-2: Das System muss sicherstellen, dass nur berechtigte Benutzer die Tagesordnung bearbeiten können.
+|
+|
+
+|NFAU-1: #Der Antragsteller sollte maximal 3 Klicks bis zur Antragseingabe benötigen.#
+|
+|
+
+|NFAU-2: #Der Antragsteller erhält aussagekräftige Fehlermeldungen bei ungültigen/ausgelassenen Eingaben.#
+|
+|
+
+|NFAU-3: #Der Antragsteller erhält für seinen ausgewählen Antrag Hilfetexte, die Ihm beim korrekten Ausfüllen des Antrag helfen sollen.#
+|
+|
+
+|NFAR-1: Bei einem Absturz des Systems darf kein Datenverlust enstehen.
+|
+|
+
+|NFAP-1: Das Sofwaresystem soll einen Wechsel von Seite zu Seite in maximal 4 Sekunden ermöglichen.
+|
+|
+
+|NFAS-1: Das System soll es ermöglichen, auch ohne GUI neue Datensätze (bspw. Referate) einzufügen.
+|
+|
+
+|NFAS-2: Das System soll es ermöglichen, in der Zukunft weitere gundlegende Funktionen einzubauen.
+|
+|
+
+|===
+
+== Unterschriften
+
+Hiermit wird die Abnahme vollständig/mit Mängeln bestätigt.
+
+Bemerkungen:
+
+[%header, cols="3,3"]
+|===
+|>
+|>
+|Unterschrift StuRa HTW Dresden
+|Unterschrift Projektleitung Team I5
+|===

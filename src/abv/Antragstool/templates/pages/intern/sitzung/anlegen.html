@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+    <!-- insert custom header elements -->
+{% endblock %}
+
+{% block content %}
+    <form method="POST" action="" class="ml-96 mr-96">
+        {% csrf_token %}
+
+        <h1 class="text-center"><b>{{ title }}</b></h1>
+
+
+        <div class="relative py-4 mt-5 mb-4">
+            <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-b border-gray-700"></div>
+            </div>
+            <div class="relative flex justify-center">
+                <span class="bg-[#dcdcdc] px-4 text-3xl text-black"></span>
+            </div>
+        </div>
+
+
+        <!-- Referat -->
+        <div class="w-full mb-3">
+            <label class="block" for="{{ form.referat.id_for_label }}">
+                <b>Zuständige Stelle:</b>
+            </label>
+            <select name="{{ form.referat.name }}" class="w-full" {% if form.referat.field.required %}required{% endif %}>
+                {% for choice in form.referat.field.choices %}
+                    <option class="p-2" value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <!-- Datum der Sitzung -->
+        <div class="w-full mb-5">
+            <label class="block" for="{{ form.datum_sitzung.id_for_label }}"><b>{{ form.datum_sitzung.label }}</b></label>
+            <input class="w-full" type="text" id="{{ form.datum_sitzung.id_for_label }}" name="{{ form.datum_sitzung.name }}" placeholder="01.01.2000"
+                {% if form.datum_sitzung.field.required %}required{% endif %} 
+                {% if form.datum_sitzung.field.max_length %}maxlength="{{ form.datum_sitzung.field.max_length }}"{% endif %}
+                value="{{ date | date:"d.m.Y" }}"
+            >
+        </div>
+
+
+        <button type="submit" class="btn btn-success w-full hover:cursor-pointer"><i class="fa-solid fa-circle-plus"></i> Anlegen</button>
+
+
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    <form>
+{% endblock %}

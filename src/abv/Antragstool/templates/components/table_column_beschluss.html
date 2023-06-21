@@ -1,9 +1,9 @@
-{#  #}
-
 {% if ergebnis == 'Angenommen' %}
     <p class="text-green-600"><i class="fa-solid fa-check"></i> Angenommen</p>
 {% elif ergebnis == 'Abgelehnt' %}
     <p class="text-red-600"><i class="fa-solid fa-xmark"></i> Abgelehnt</p>
+{% elif ergebnis == 'Vertagt' %}
+    <p class="text-red-600"><i class="fa-solid fa-calendar-xmark"></i> Vertagt</p>
 {% else %}
     <p class="text-stura-orange"><i class="fa-solid fa-question"></i> Unbehandelt</p>
 {% endif %}

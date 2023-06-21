@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="DE">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vertagung deines Antrags</title>
+    </head>
+    <body style="font-family: Arial, sans-serif;">
+        
+        Hallo zusammen,<br><br>
+
+        die Sitzung des Referats {{ sitzung.refID.refName }}, für welche ihr eure Anträge eingereicht habt, wurde vertagt.<br><br>
+
+        Darunter zählen folgende Anträge:
+        
+        <br>
+        
+        <ul>
+        {% for antrag in antraege %}
+            <li>{{ antrag.antragTitel }}</li>
+        {% endfor %}
+        </ul>
+        
+        <br>
+
+        Die nächste Sitzung findet voraussichtlich am {{ sitzung.sitzDate }} statt.<br><br>
+
+        Viele Grüße,<br>
+        Dein StuRa-Team!
+        
+    </body>
+</html>
