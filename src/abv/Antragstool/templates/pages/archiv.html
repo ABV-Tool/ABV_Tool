@@ -1,0 +1,138 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block head %}
+    {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="ml-80 mr-80">
+
+
+        {% include 'components/alert.html' with type="INFO" text="Hier können archivierte Anträge nach Suchkriterien <b>gefiltert und betrachtet</b> werden. Dabei müssen nicht alle Kriterien gegeben sein. Das <b>Datum referenziert</b> hierbei, wann der <b>Antrag gestellt</b> wurde." %}
+
+
+        <div class="mb-8">
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+            <form action="" method="GET">
+
+                <div class="flex flex-row mt-3">
+
+                    <!-- Suchbegriff -->
+                    <div class="w-2/3 mr-5">
+                        <label class="block" for="{{ form.q.id_for_label }}"><b>{{ form.q.label }}</b></label>
+                        <input class="w-full" type="text" placeholder="Antragstitel, Antragstext, ..." id="{{ form.q.id_for_label }}" 
+                            name="{{ form.q.name }}" maxlength="{{ form.q.field.max_length }}"
+                            {% if form.q.field.required %}required{% endif %} 
+                        >
+                    </div>
+
+                    <!-- Antragstyp -->
+                    <div class="w-1/3">
+                        <label class="block" for="{{ form.atyp.id_for_label }}">
+                            <b>{{ form.atyp.label }}</b>
+                        </label>
+                        <select name="{{ form.atyp.name }}" class="w-full" {% if form.atyp.field.required %}required{% endif %}>
+                            {% for choice in form.atyp.field.choices %}
+                                <option class="p-2" value="{{ choice.0 }}">{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+
+                </div>
+
+                <div class="flex flex-row mt-3">
+
+                     <!-- Datum Von -->
+                     <div class="w-1/3 mr-3">
+                        <label class="block" for="{{ form.dv.id_for_label }}"><b>{{ form.dv.label }}</b></label>
+                        <input class="w-full" type="text" placeholder="01.01.2023" id="{{ form.dv.id_for_label }}" 
+                            name="{{ form.dv.name }}" maxlength="{{ form.dv.field.max_length }}"
+                            {% if form.dv.field.required %}required{% endif %} 
+                            {% if request.GET.dv %}value="{{ request.GET.dv }}"{% endif %}
+                        >
+                    </div>
+
+                    <!-- Datum Bis -->
+                    <div class="w-1/3 mr-6">
+                        <label class="block" for="{{ form.db.id_for_label }}"><b>{{ form.db.label }}</b></label>
+                        <input class="w-full" type="text" id="{{ form.db.id_for_label }}" name="{{ form.db.name }}" maxlength="{{ form.db.field.max_length }}"
+                            {% if form.db.field.required %}required{% endif %} 
+                            {% if request.GET.db %}value="{{ request.GET.db }}"{% else %}value="{% now "d.m.Y" %}"{% endif %}
+                        >
+                    </div>
+                    
+
+                    <button type="submit" class="btn btn-success w-1/3 hover:cursor-pointer h-11 mt-6"><i class="fa-solid fa-magnifying-glass"></i> Suchen</button>
+    
+
+                </div>
+            </form>
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+        </div>
+
+
+        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-2">
+
+            <caption class="text-left">
+                <h2><b>Alle gestellten Anträge</b></h2>
+            </caption>
+
+            <thead>
+                <tr>
+                    <th scope="col">Titel</th>
+                    <th scope="col">Antragstyp</th>
+                    <th scope="col">Antragsteller</th>
+                    <th scope="col">Beschluss</th>
+                    <th scope="col">Aktionen</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for antrag in antraege %}
+                <tr>
+                    <td>{{ antrag.antragTitel | truncatechars:50 }}</td>
+                    <td>{{ antrag.typID.typName }}</td>
+                    <td>{{ antrag.astellerID.astellerName | truncatechars:40 }}</td>
+                    <td>
+                        {% include 'components/table_column_beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}
+                    </td>
+                    <td>
+                        <a href="{% url 'archiv-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                            <i class="fa-solid fa-eye"></i> Anzeigen
+                        </a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center mt-5 pt-5">Es konnten keine Anträge nach diesen Kriterien gefunden werden!</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+        <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message">
+                    {% include 'components/alert.html' with type=message.tags text=message %}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <script>
+            // Wenn der Nutzer über den Browser zurück navigiert, wird die Seite neu geladen
+            // Dadurch werden die Daten wieder aktuell geladen
+            var perfEntries = performance.getEntriesByType("navigation");
+
+            if (perfEntries[0].type === "back_forward") {
+                location.reload(true);
+            }
+        </script>
+
+    </div>
+{% endblock %}

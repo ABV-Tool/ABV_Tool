@@ -15,6 +15,17 @@
         <h1 class="text-center"><b>{{ title }}</b></h1>
 
 
+        <!-- Anzeigen der Sitzung / des Beschlussses, wenn man über das Archiv darauf zugreift -->
+        {% if aktion|lower == "anzeigen" %}
+        <div class="mb-8">
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+            <h2 class="text-center">Behandelt in: <b>{{ antrag.sitzID }}</b></h2>
+            <h4 class="text-center italic">Beschluss: <b>{{ antrag.beschlussID }}</b></h4>
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+        </div>
+        {% endif %}
+
+
         <!-- Separator -->
         <div class="relative py-4 mt-3 mb-3">
             <div class="absolute inset-0 flex items-center">
@@ -33,7 +44,7 @@
         {% endif %}
 
 
-         <!--+ Stammdaten Antragsteller +-->
+        <!--+ Stammdaten Antragsteller +-->
         <div class="flex flex-row mt-3">
 
             <!-- Antragsteller Name -->
@@ -121,9 +132,9 @@
                     
                     });
                     if (selectedSitzung) {
-                        $('#info_sitzungsdatum').html("Die nächste Sitzung, in welcher dein jetzt gestellter Antrag behandelt wird, findet am <b>" + selectedSitzung[1] + "</b> statt.")
+                        $('#info_sitzungsdatum').html("Die <b>nächste Sitzung</b>, in welcher dein jetzt gestellter Antrag behandelt wird, findet am <b>" + selectedSitzung[1] + "</b> statt.")
                     } else {
-                        $('#info_sitzungsdatum').html("Bitte wähle die zuständige Stelle aus, damit wir dir den Termin der nächsten Sitzung anzeigen können. Sollte kein Termin angezeigt werden, hat die ausgewählte Stelle noch keine Sitzung geplant.")
+                        $('#info_sitzungsdatum').html("Bitte wähle die <b>zuständige Stelle</b> aus, damit wir dir den <b>Termin der nächsten Sitzung</b> anzeigen können. Sollte <b>kein Termin</b> angezeigt werden, hat die <b>ausgewählte Stelle</b> noch <b>keine Sitzung geplant</b>. Wähle in diesem Fall eine andere Stelle aus.")
                     }
                 }
             </script>
@@ -159,7 +170,7 @@
 
         <!-- Anzeigen der nächsten Sitzung -->
         {% if not aktion %}
-            {% include 'components/alert.html' with type="INFO" text="Bitte wähle die zuständige Stelle aus, damit wir dir den Termin der nächsten Sitzung anzeigen können..." text_element_id="info_sitzungsdatum" %}
+            {% include 'components/alert.html' with type="INFO" text="Bitte wähle die <b>zuständige Stelle</b> aus, damit wir dir den <b>Termin der nächsten Sitzung</b> anzeigen können..." text_element_id="info_sitzungsdatum" %}
         {% endif %}
 
         <!-- Antragsdaten Antragstext -->
@@ -320,21 +331,22 @@
         {% endif %}
 
 
-        <!-- Antragsdaten Alagen -->
+        <!-- Antragsdaten Anlagen -->
         {% if not aktion %}
+        <!-- Anzeigen des Datei-Uploads, wenn über Hauptseite aufgerufen -->
         <div class="mb-5">
             <label class="block" for="{{ form.anlagen.id_for_label }}"><b>{{ form.anlagen.label }}</b></label>
             <input type="file" name="{{ form.anlagen.name }}" id="{{ form.anlagen.id_for_label }}" multiple />
         </div>
-        {% else %}
+        {% elif aktion == 'ANZEIGEN' %}
+        <!-- Anzeigen der hochgeladenen Dateien, wenn über Intern aufgerufen -->
         <div class="mb-7">
             <label class="block mb-3"><b>Anlagen:</b></label>
             {% for anlage in anlagen %}
                 <a class="btn p-3 mr-2" href="/media/{{ anlage.anlage }}" target="_blank">{{ anlage.anlageName }}</a>
-            {% endfor %}
-            {% if not anlagen %}
+            {% empty %}
                 <p class="text-stura-orange">Keine Anlagen vorhanden!</p>
-            {% endif %}
+            {% endfor %}
         </div>
         {% endif %}
 
@@ -358,4 +370,14 @@
             {% endfor %}
         {% endif %}
     </form>
+
+    <script>
+        // Textarea-Höhe automatisch an Text anpassen
+        $("textarea").each(function () {
+            this.setAttribute("style", "height:" + (this.scrollHeight) + "px;overflow-y:hidden;");
+          }).on("input", function () {
+            this.style.height = 0;
+            this.style.height = (this.scrollHeight) + "px";
+          });
+    </script>
 {% endblock %}
