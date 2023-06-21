@@ -1,6 +1,6 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== UC06 => Sitzung anlegen
+== UC07 => Sitzung anlegen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>

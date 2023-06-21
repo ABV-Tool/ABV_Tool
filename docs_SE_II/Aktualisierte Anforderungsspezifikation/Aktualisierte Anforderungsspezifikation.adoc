@@ -5,6 +5,7 @@ ifndef::plantumlsdir[:plantumlsdir: plantuml]
 ifndef::diagramsdir[:diagramsdir: diagrams]
 include::../../docs_SE_I/_includes/default-attributes.inc.adoc[]
 
+<<<
 //Vision
 include::Vision.adoc[lines=1..1;4..-1,leveloffset=+1]
 
