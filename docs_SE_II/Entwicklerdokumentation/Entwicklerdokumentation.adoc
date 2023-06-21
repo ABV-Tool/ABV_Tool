@@ -84,17 +84,13 @@ ABVT -> Datenbank
 
 Wir verwenden als Framework verwenden wir Django, welches auf der Programmiersprache Python basiert, da wir das Projekt der vorangehenden Grupppe als Grundlage nutzen. Wir nehmen die Version 3 oder höher, da es sonst zu Kompatibilitätsproblemen mit verschiedenen Funktionen von Django selbst kommt. Tailwind ist die Frameworkgrundlage für das Frontend, da wir dadurch mehr . Zusätzlich werden folgende Erweiterungen von Python und Django benötigt:
 
-* martor
-* gunicorn
-* psycopg2
 * django-money
-* fontawesomefree
-
-Für die Entwicklung benötigten wir noch:
-
 * django-tailwind
 * django-browser-reload
-
+* flake8
+* fontawesomefree
+* gunicorn
+* psycopg2
 
 === Datenbankschema
 
