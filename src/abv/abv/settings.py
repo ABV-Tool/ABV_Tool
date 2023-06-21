@@ -11,7 +11,16 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
 import os
+
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent
+
+# Umgebungsvariablen laden
+dotenv_path = os.path.join(BASE_DIR, '../../.env')
+load_dotenv(dotenv_path)
 
 
 # Development-Umgebung
@@ -25,15 +34,12 @@ DEBUG = True
 #DEBUG = False
 #ALLOWED_HOSTS = ['localhost']
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-r^g0%e^t*_v+h!xcg97!os*_+83!xmpg6&^&9gv7e-!8f@2aq8'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # Application definition
 INSTALLED_APPS = [
@@ -88,11 +94,11 @@ WSGI_APPLICATION = 'abv.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'abv',
-        'USER': 'abv',
-        'PASSWORD': 'abv',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT')
     }
 }
 
@@ -163,17 +169,17 @@ NPM_BIN_PATH=r"C:\Program Files\nodejs\npm.cmd"
 
 # E-Mail Settings
 # TODO Production: Mailserver anpassen
-EMAIL_HOST = '127.0.0.1'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_PORT = 1025
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = False
 EMAIL_TOOL = 'abv@stura.htw-dresden.de'
 
 
 # Etherpad Settings
 # TODO Production: Etherpad-Server & API-Key anpassen
-ETHERPAD_API_KEY = '323412ced5824bdffcd11460036dd4df8274f6b15734e3667402e887b205375a'
+ETHERPAD_API_KEY = os.environ.get('ETHERPAD_API_KEY')
 ETHERPAD_HOST = 'http://10.0.1.30:9001'
 ETHERPAD_API_ENDPOINT = ETHERPAD_HOST + '/api/1.2.15/'
 ETHERPAD_PAD_ENDPOINT = ETHERPAD_HOST + '/p/'

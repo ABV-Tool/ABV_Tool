@@ -8,6 +8,7 @@ __pycache__
 .idea
 .vscode
 .venv
+.env
 
 src/result
 src/node_modules

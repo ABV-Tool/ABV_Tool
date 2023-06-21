@@ -4,6 +4,7 @@ Django
 psycopg2
 django-money
 fontawesomefree
+python-dotenv
 
 # development dependencies
 django-tailwind

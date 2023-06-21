@@ -64,7 +64,7 @@ def ArchivPage(request):
 
     return render(request, 'pages/archiv.html', context={
         'title': 'Archiv',
-        'antraege': gefilterte_antraege,
+        'antraege': gefilterte_antraege, #type: ignore
         'aktion': 'ANZEIGEN',
         'form': form
     })
