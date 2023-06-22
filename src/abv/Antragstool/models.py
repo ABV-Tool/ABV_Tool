@@ -91,13 +91,16 @@ class Beschluss(models.Model):
     
     beschlussErgebnis = models.CharField(max_length=20, 
                                          choices=BeschlussErgebnis.choices, 
-                                         default=BeschlussErgebnis.UNBEHANDELT)
+                                         default=BeschlussErgebnis.ANGENOMMEN)
     
     beschlussText = models.TextField(db_column='beschluss_text', max_length=1000)
     beschlussAusfertigung = models.TextField(db_column='beschluss_ausfertigung', max_length=200)
     
     def get_ergebnis(self):
         return self.beschlussErgebnis
+    
+    def __str__(self):
+        return str(self.stimmenJa) + " Ja | " + str(self.stimmenNein) + " Nein | " + str(self.stimmenEnthaltung) + " Enthalten => " + self.beschlussErgebnis
 
 
 class Antragstyp(models.Model):
@@ -132,7 +135,7 @@ class Antrag(models.Model):
                                    on_delete=models.CASCADE,
                                    db_column='asteller_id')
     beschlussID = models.ForeignKey(Beschluss,
-                                    on_delete=models.SET_NULL,
+                                    on_delete=models.CASCADE,
                                     db_column='beschluss_id',
                                     null=True,
                                     blank=True)
@@ -164,6 +167,7 @@ class Antrag(models.Model):
     
     # Flag um zu Verhindern, dass E-Mail an Asteller/Referat mehrfach versendet wird
     wurdeVertagt = models.BooleanField(db_column='wurde_vertagt', default=False)
+    neueSitzID = models.UUIDField(db_column='neue_antrag_id', null=True, blank=True)
     
     def __str__(self):
         return str(self.antragTitel) + " von " + self.astellerID.astellerName

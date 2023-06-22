@@ -16,7 +16,9 @@ def is_admin(user):
 urlpatterns = [
     # Hauptseiten
     path('', HomePage, name='index'),
+    
     path('archiv/', ArchivPage, name='archiv'),
+    path('archiv/<uuid:antragID>/anzeigen', AntragAnzeigenPage, name='archiv-anzeigen'),
     
     # Interner Bereich
     path('intern/referatsverwaltung/', login_required(user_passes_test(is_admin)(ReferatsverwaltungPage)), name='referatsverwaltung'),

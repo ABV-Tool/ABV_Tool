@@ -3,7 +3,7 @@ from .models import Antrag, Sitzung, Referat, Antragssteller, Antragstyp, Beschl
 
 # Register your models here.
 class AntragAdmin(admin.ModelAdmin):
-    list_display = ('antragTitel', 'get_antragstyp', 'get_referat', 'get_sitzung_date', 'get_antragsteller', )
+    list_display = ('antragTitel', 'get_antragstyp', 'get_referat', 'get_sitzung_date', 'get_antragsteller', 'get_beschluss')
     @admin.display(description='Referat')
     def get_referat(self, obj):
         return obj.sitzID.refID.refName
@@ -16,6 +16,12 @@ class AntragAdmin(admin.ModelAdmin):
     @admin.display(description='Antragsteller')
     def get_antragsteller(self, obj):
         return obj.astellerID.astellerName
+    @admin.display(description='Beschluss')
+    def get_beschluss(self, obj):
+        if obj.beschlussID == None:
+            return "Offen"
+        else:
+            return obj.beschlussID.beschlussErgebnis
 admin.site.register(Antrag, AntragAdmin)
 
 

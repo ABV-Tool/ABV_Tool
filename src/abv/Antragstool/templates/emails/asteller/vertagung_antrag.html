@@ -8,7 +8,9 @@
 
         Hallo {{ antrag.astellerID.astellerName }},<br><br>
 
-        dein Antrag {{ antrag.antragTitel }} wurde vertagt. {{antrag.beschlussID.beschlussText}}.<br><br>
+        dein Antrag {{ antrag.antragTitel }} wurde in eine andere Sitzung des Referats {{ antrag.sitzID.refID.refName }} vertagt.<br><br>
+
+        Diese findet vorraussichtlich am {{ antrag.sitzID.sitzDate | date:"d.m.Y" }} statt.<br><br>
 
         Viele Grüße,<br>
         Dein StuRa-Team!

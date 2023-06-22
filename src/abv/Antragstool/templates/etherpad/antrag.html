@@ -11,20 +11,20 @@
 
 
 <b>Antragstext</b><br>
-    {{ antrag.antragText }}
+    {{ antrag.antragText | linebreaksbr }}
 <br><br>
 
 
 {% if antrag.antragGrund %}
     <b>Begr&#xFC;ndung zum Antrag</b><br>
-        {{ antrag.antragGrund }}
+        {{ antrag.antragGrund | linebreaksbr }}
     <br><br>
 {% endif %}
 
 
 {% if antrag.antragVorschlag %}
     <b>Vorschlag zum weiteren Verfahren</b><br>
-        {{ antrag.antragVorschlag }}
+        {{ antrag.antragVorschlag | linebreaksbr }}
     <br><br>
 {% endif %}
 
@@ -54,14 +54,14 @@
 
 {% if antrag.antragFragenZumAmt %}
     <b>Fragen zum Amt</b><br>
-        {{ antrag.antragFragenZumAmt }}
+        {{ antrag.antragFragenZumAmt | linebreaksbr }}
     <br><br>
 {% endif %}
 
 
 {% if antrag.antragVorstellungPerson %}
     <b>Vorstellung der Person</b><br>
-    {{ antrag.antragVorstellungPerson }}
+    {{ antrag.antragVorstellungPerson | linebreaksbr }}
     <br><br>
 {% endif %}
 
