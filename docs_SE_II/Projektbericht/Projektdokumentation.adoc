@@ -42,23 +42,29 @@ Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studienga
 * Max Patecky (MP)			*Tester*/Technical-Writer
 * Simon Voges (SV)			*stellv. Teamleitung*/Verantwortlich für das Erstellen von Diagrammen und Wireframes
 
-==== Kommunikation und Dokumentation
+==== Kommunikation, Dokumentation und eingesetzte Tools
 
 Zur Kommunikation nutzten wir einen WhatsApp Gruppenchat sowie einen Discord Server. Über WhatsApp wurden Termine abgestimmt und kurze Infos mitgeteilt. Auf unserem Discord Server wurden ausführlichere Infos ausgetauscht sowie unsere Meetings abgehalten (sofern sie online stattfanden). Auch unser Coach Manuela Ziesche und unsere Ansprechpartnerin beim StuRa Theresa Minister waren Teil des Discord Servers um sich im Bedarfsfall schnell und unkompliziert treffen zu können. Die Kommunikation mit beiden zwecks Terminabstimmungen etc. lief ebenfalls über WhatsApp, alle anderen Dinge wurde in persönlichen Gesprächen besprochen. Für die Kommunikation mit unserem Coach war die Teamleitung zuständig, die Terminabsprachen mit dem StuRa übernahm eines unserer Teammitglieder aufgrund seiner Tätigkeit im StuRa. Unsere Meetings in SE II fanden im 14-tägigen Rhythmus statt. Zu Beginn des Semesters trafen wir uns immer Dienstags 15 Uhr in der HTW. Im Laufe des Semesters entschieden wir uns die Meetings wieder online zu machen und verlegten dafür den Termin auf 18 Uhr. Die Meetings dokumentierten wir in einem Google Doc und nutzten dazu eine feste Vorlage, durch die auch der Ablauf eines Teammeetings unterstützt wurde. Alles Besprochene sowie die Aufgabenverteilung für die kommende Iteration wurde dort aufgeschrieben. 
+
+//essence navigator
 
 .Beispiel Vorlage Meeting Google Docs 
 image::Beispiel_Meeting_Dokumentation.jpg[]
 
+Auch Meetings mit dem StuRa oder unserem Coach wurden hier dokumentiert. So hatten wir ein zentrales Dokument in dem wir sehr gut den gesamten Projektverlauf nachvollziehen konnten. Das war auch sehr hilfreich um z. B. Absprachen mit dem StuRa später noch einmal nachzuvollziehen und in die Umsetzung des Projektes mit einfließen zu lassen. Für unsere Dokumentation und für die Codeverwaltung nutzten wir GitHub. Hierzu haben wir eine Organisation mit allen Teammitgliedern erstellt in der unser Repository angelegt wurde. Für anstehende Aufgaben erstellten wir entsprechende Issues, sowohl für den technischen Teil als auch für die Dokumentation. Außerdem legten wir für jede Phase des Open UP ein Projekt an dem die verschiedenen Issues zugeordnet wurden. Um in unserem Repository gut an verschiedenen Aufgaben arbeiten zu können, erstellten wir außerdem verschiedene Branches z. B. für die Umsetzung eines Use Cases oder das Deployment.
 
-Nach Abschluss des Meetings wurden die Aufgaben unser GitHub repository als Issues übertragen und den verantwortlichen Personen zugewiesen. Auch Meetings mit dem StuRa oder unserem Coach wurden hier dokumentiert. So hatten wir ein zentrales Dokument in dem wir sehr gut den gesamten Projektverlauf nachvollziehen konnten. Das war auch sehr hilfreich um z. B. Absprachen mit dem StuRa später noch einmal nachzuvollziehen und in die Umsetzung des Projektes mit einfließen zu lassen. 
+=== Ablauf einer Iteration
 
+Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder Iteration trafen wir uns als Team und werteten zunächst die vergangene Iteration aus und besprachen dabei was wir geschafft haben, wo es Probleme gab und was wir nicht geschafft haben. Dafür bereitete die Teamleitung aus dem letzten Meeting eine Liste mit den Aufgaben der letzten Iteration vor, die dann schrittweise durchgearbeitet wurde. Beendete Issues wurden in GitHub geschlossen. Anschließend starteten wir mit der Planung der nächsten Iteration. Dazu bereitete die Teamleitung ebenfalls Punkte vor die aus Sicht des Projektmanagements für die kommende Iteration wichtig sind. Die anderen Aufgaben wurden während des Meetings von den Verantwortlichen für ihren Aufgabenbereich benannt und anschließend verteilt. Anschließend haben wir gemeinsam die Aufgaben priorisiert und Aufgaben die nicht sofort erledigt werden müssen als optional gekennzeichnet. Diese Aufgaben wurden dann meist in den Iterationen nur angefangen oder gar nicht bearbeitet und dann in der darauffolgenden Iteration als feste Aufgabe aufgenommen. Das half bei der längerfristigen Planung der Iterationen, da man so schon einen Blick auf den weiteren Projektverlauf und kommende Aufgaben hatte. Am Ende des Meetings übertrugen wir die Aufgaben in unser GitHub Repository und wiesen sie den verantwortlichen Teammitgliedern zu. Während der Iteration gab es kleine Meetings die je nach Bedarf optional angesetzt wurden. Das konnte z. B. die Vorbereitung eines Treffens mit dem StuRa sein oder es trafen sich Teile des Team um gemeinsam am Projekt zu arbeiten. 
 
+//nach umgesetzten Use Cases prüften wir ob unsere Doku noch aktuell war
+
+////
 === Way of Working
 //Techniken/Praktiken: Welche wurden warum eingesetzt und wie genutzt? → „Way of Working“ Way of Working: ausgewählte Praktiken und Werkzeuge, die vom Team benutzt werden, um ihre Arbeit zu leiten und zu unterstützen
 
-*Ablauf einer Iteration*
+//Das Projekt orientiert sich am Open Unified Process.
 
-Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder Iteration trafen wir uns als Team und werteten zunächst die vergangene Iteration aus und besprachen dabei was wir geschafft haben, wo es Probleme gab und was wir nicht geschafft haben. Anschließend starteten wir mit der Planung der nächsten Iteration. Dazu bereitete die Teamleitung die Punkte vor die aus Sicht des Projektmanagements für die kommende Iteration wichtig sind. Die anderen Aufgaben wurden während des Meetings von den Verantwortlichen für ihren Aufgabenbereich benannt und anschließend verteilt.Anschließend haben wir gemeinsam die Aufgaben priorisiert und Aufgaben die nicht sofort erledigt werden müssen als optional gekennzeichnet. Diese Aufgaben wurden dann meist in den Iterationen nur angefangen oder gar nicht bearbeitet und dann in der darauffolgenden Iteration als feste Aufgabe aufgenommen. Das half bei der längerfristigen Planung der Iterationen, da man so schon einen Blick auf den weiteren Projektverlauf hatte. Am Ende des Meetings übertrugen wir die Aufgaben in unser GitHub Repository und wiesen sie den verantwortlichen Teammitgliedern zu. Während der Iteration gab es kleine Meetings die je nach Bedarf optional angesetzt wurden. Das konnte z. B. die Vorbereitung eines Treffens mit dem StuRa sein oder es trafen sich Teile des Team um gemeinsam am Projekt zu arbeiten.
 
 *Techniken und Praktiken*
 
@@ -92,6 +98,9 @@ Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder 
 |Risikomanagement
 |
 
+|Fachaustausch
+|
+
 |===
 
 * #Risk-Value Lifecycle#
@@ -119,6 +128,7 @@ Zu Beginn des Projektes führte dies zu einem sehr unterschiedlichen Workload, a
 
 * Docuemtenation and Training
 * Production Realease
+////
 
 == Projektdurchführung
 // Kurze Beschreibung der Ziele, Aktivitäten und Ergebnisse in den OpenUP-Projektphasen / Iterationen, dabei Berücksichtigung des Zusammenspiels zwischen den einzelnen Rollen sowie Risiken
@@ -139,7 +149,7 @@ Am selben Tag präsentierten wir den Prototypen sowie unseren Stand zur Analyse 
 
 === Start von SE II und Construction Phase
 
-Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unserem Coach an. Dazu trafen wir uns in der HTW und gingen den Beleg Schritt für Schritt durch und besprachen die einzelnen Teile. Insgesamt erhielten wir aber gutes Feedback, hatten aber auch einige Punkte die unserseits nachgearbeitet werden mussten. Diese übernahmen wir gleich als erste Aufgaben in der kommenden Iteration. 
+Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unserem Coach an. Dazu trafen wir uns in der HTW und gingen den Beleg Schritt für Schritt durch und besprachen die einzelnen Teile. Insgesamt erhielten wir hier gutes Feedback, hatten aber auch einige Punkte die unserseits nachgearbeitet werden mussten. Diese übernahmen wir gleich als erste Aufgaben in der kommenden Iteration. 
 
 .Construction Phase (03.04.2023 - 11.06.2023)
 
@@ -152,10 +162,9 @@ Die Ziele der Construction Phase sind die Verfeinerung und Finalisierung des Ent
 * Implementierung UC 5 (Begründung warum UC 5 zuerst, da bei Prio weiter unten)
 * Deployment vorbereiten
 
-Das Projekt startete zuächst mit dem Finden einen geeignetes Termin für die Meetings. Im Gegensatz zu SE I legten wir einen festen Termin fest, an dem wir uns alle zwei Wochen trafen. Wir einigten uns darauf uns alle zwei Wochen Dienstag in der HTW zu treffen. Als Erstes mussten wir uns als Team neu organisieren, da ein Mitglied aus dem Team ausschied und wir dadurch die Rollen neu verteilen mussten (siehe <<Rollenverteilung>>). Aus dem Feedbackgespräch zu SE I entstanden die ersten Aufgaben für die 4. Iteration. Besonders das Projektmanagement hatte hier viel Nachholbedarf, sodass zunächst die Iterationspläne und die Projektstruktur nachgearbeitet wurde. Gleichzeitig startete auch die Implementierung des UC 5 (Antragsverwalter anmelden). Dieser wurde trotz seiner #niedrigeren Priorität# für die erste Iteration in SE II gewählt, da seine Umsetzung sofort und unkompliziert möglich war. #Umsetzung UC 5 ggf. Probleme Abschluss UC5# Auch startete unser (neuer) Deployment-Engineer mit der Vorbereitung des Deployments. Da er selbst Administrator im StuRa ist, war in diesem Rahmen wenig (extra) Abstimmung mit dem StuRa nötig, da er der Verantwortliche sowohl bei uns im Team als auch im StuRa selbst ist. Das erleichterte es für uns als Team die Arbeit enorm. #was wurde gemacht Deployment#
+Das Projekt startete zunächst mit dem Finden einen geeignetes Termin für die Meetings. Im Gegensatz zu SE I legten wir einen festen Termin fest, an dem wir uns alle zwei Wochen trafen. Wir einigten uns darauf uns alle zwei Wochen Dienstag in der HTW zu treffen. Als Erstes mussten wir uns als Team neu organisieren, da ein Mitglied aus dem Team ausschied und wir dadurch die Rollen neu verteilen mussten (siehe <<Rollenverteilung>>). Aus dem Feedbackgespräch zu SE I entstanden die ersten Aufgaben für die 4. Iteration. Besonders das Projektmanagement hatte hier viel Nachholbedarf, sodass zunächst die Iterationspläne und die Projektstruktur nachgearbeitet wurde. Gleichzeitig startete auch die Implementierung des UC 5 (Antragsverwalter anmelden). Dieser war in der Umsetzung sofort und unkompliziert möglich und stellte außerdem eine wichtige Grundvoraussetzung für unser System dar. Zwar wäre die Nutzung des Tools auch ohne Anmeldung möglich, allerdings wenige sinnvoll da nur ein begrenzter Personenkreis Zugang zu dem Tool erhalten sollte. #Umsetzung UC 5 ggf. Probleme Abschluss UC5#. Der Use Case konnte in dieser Iteration abgeschlossen werden. Auch startete unser (neuer) Deployment-Engineer mit der Vorbereitung des Deployments. Da er selbst Administrator im StuRa ist, war in diesem Rahmen wenig (extra) Abstimmung mit dem StuRa nötig, da er der Verantwortliche sowohl bei uns im Team als auch im StuRa selbst ist. Das erleichterte für uns als Team die Arbeit, da so ein geringeres Risiko bestand, dass es hier Fehler in der Kommunikation gab. #was wurde gemacht Deployment, Probleme#
 Das Team entschied sich zunächst kein Treffen mit dem StuRa anzusetzen, da wir seit dem letzten Treffen am Ende von SE I keine weitere Funktionalität vorzuweisen hatten und es unsererseits keine Fragen gab. Gleichzeitig wussten wir durch unser Teammitglied beim StuRa, dass seitens des StuRa keine veränderten Anforderungen gab. 
-
-#Iteration 5 und 6 zusammenfassen?#
+#Risikomanagement#
 
 *Iteration 5 (17.04. - 30.04.2023)*
 
@@ -167,6 +176,7 @@ Das Team entschied sich zunächst kein Treffen mit dem StuRa anzusetzen, da wir 
 * #Risikoliste pflegen#
 
 
+In dieser Iteration sollte mit der Umsetzung des Use Case 1 begonnen werden. Während der Implementierung des Use Case 5 stellten wir jedoch fest, dass wir uns zunächst besser mit dem Aufbau des Front End unserer Vorgängergruppe beschäftigen sollten. 
 
 Bibliothek für Markdown auf Python soll Martor sein
 
@@ -185,7 +195,7 @@ In dieser Iteration fand der erste Fachaustausch im Rahmen von SE II statt. Dazu
 
 In dieser Iteration wurde der Use Case 1 - Antrag stellen fertig implementiert. Das ist einer der wichtigsten und zentralsten Use Cases. Es war nun möglich einen Antrag (der verschiedenen Antragsarten) über das Tool zu stellen und sich diesen in der Datenbank anzeigen zu lassen. Darauf bauten alle folgenden Funktionalitäten auf und war ein wichtiger Meilenstein in unserem Projekt.
 
-Die Teamleitung erarbeitete die Struktur für den Beleg in SE II nachdem es dazu konkrete Vorgaben von Prof. Anke gab. Dazu wurde auch die Struktur des GitHub repositorys angepasst und die entsprechenden Dokumente für die Abgabe erstellt. 
+Die Teamleitung erarbeitete die Struktur für den Beleg in SE II nachdem es dazu konkrete Vorgaben von Prof. Anke gab. Dazu wurde auch die Struktur des GitHub Repositorys angepasst und die entsprechenden Dokumente für die Abgabe erstellt. 
 
 Da unser eigentlicher Testverantwortlicher doch sehr in der Implementierung mitarbeitete, entschieden wir uns unseren Analysten mit dem Testen zu betrauen.
 
@@ -204,7 +214,7 @@ Da unser eigentlicher Testverantwortlicher doch sehr in der Implementierung mita
 
 Wir beschlossen für das Front End nochmals verschiedene Wireframes zu erstellen. Zum Einen für die Implementierung, sodass diese schneller geht und nicht noch darüber nachgedacht werden muss, wo welches Feld hin muss und wie die Aufteilung sein soll. Auch wollten wir die Wireframes bei unserem anstehenden Treffen mit dem StuRa nutzen, um auch über die Teile des Front Ends zu sprechen die noch nicht entsprechend angepasst wurden. So erstellten zwei Teammitglieder Wireframes aus Sicht der Analyse und besprachen sie anschließend mit dem Entwickler.
 
-Am 23.05.2023 trafen wir uns mit dem StuRa um den aktuellen Stand zu präsentieren und insbesondere das Front End abzustimmen und kleinere Fragen dazu zu klären. So hatten beispielsweise alle Sitzungen einen festen Zyklus hinterlegt in dem die Sitzungen stattfinden sollen. Im Gespräch ergab sich dann, dass viele Sitzungen (besonders der Referate) doch sehr unregelmäßig stattfinden und man beim Anlegen einer Sitzung das Datum manuell festlegt. Wir hatten eine gute Diskussion über kleine Features und Gestaltungsfragen, aber insgesamt entsprach das System den Erwartungen des StuRa und wir konnten guten Gewissens weiter an unserem Projekt arbeiten. In Vorbereitung dessen hatten wir zusätzlich einige Wireframes erstellt bzw. bestehende aktualisiert um noch nicht implementierte Features präsentieren und absprechen zu können. 
+Am 23.05.2023 trafen wir uns mit dem StuRa um den aktuellen Stand zu präsentieren und insbesondere das Front End abzustimmen und kleinere Fragen dazu zu klären. So hatten bisher alle Sitzungen einen festen Zyklus hinterlegt in dem die Sitzungen stattfinden sollen. Im Gespräch ergab sich dann, dass viele Sitzungen (besonders der Referate) doch sehr unregelmäßig stattfinden und es besser wäre, wenn beim Anlegen einer Sitzung das Datum manuell festgelegt werden kann. Wir hatten eine gute Diskussion über kleine Features und Gestaltungsfragen, aber insgesamt entsprach das System den Erwartungen des StuRa und wir konnten guten Gewissens weiter an unserem Projekt arbeiten. In Vorbereitung dessen hatten wir zusätzlich einige Wireframes erstellt bzw. bestehende aktualisiert um noch nicht implementierte Features präsentieren und absprechen zu können. Aus dem Wunsch Sitzungen manuell anlegen zu können entstand schließlich der Use Case 7 => Sitzung anlegen. 
 
 In der gleichen Woche traf sich MM mit unserem Coach Manuela Ziesche um den aktuellen Projektstand zu besprechen und Fragen zur Dokumentation zu klären. 
 
@@ -232,7 +242,6 @@ In der folgenden Woche fand der letzte Fachaustausch zum Thema Testen statt. Zwe
 *Iteration 9 (12.06. - 23.06.2023)*
 
 Die neunte und letzte Iteration sollte gleichzeitig die Transistion Phase des Projektes sein. Leider hat sich die Umsetzung der Use Cases verzögert bzw. kam zu unerwarteten Herausforderungen, sodass sich das Projekt nach hinten verschob und wir die Transition Phase nicht wirklich durchführen konnten. 
-
 
 
 * Anwenderdokumentation erstellen
