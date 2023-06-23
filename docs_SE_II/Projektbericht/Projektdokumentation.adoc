@@ -37,7 +37,7 @@ Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studienga
 
 * Göran Heinemann (GH)		*Programmierung/Deployment-Engineer*
 * Alexander Minukow	(AM)    *Analyse*/Entwurf
-* Mirjam Müller (MM)         *Teamleitung*/Analyse
+* Mirjam Müller (MM)        *Teamleitung*/Analyse
 * Xuan Huy Nguyen (HN)		*Entwurf*/Programmierung
 * Max Patecky (MP)			*Tester*/Technical-Writer
 * Simon Voges (SV)			*stellv. Teamleitung*/Verantwortlich für das Erstellen von Diagrammen und Wireframes
@@ -55,7 +55,7 @@ Auch Meetings mit dem StuRa oder unserem Coach wurden hier dokumentiert. So hatt
 
 === Ablauf einer Iteration
 
-Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder Iteration trafen wir uns als Team und werteten zunächst die vergangene Iteration aus und besprachen dabei was wir geschafft haben, wo es Probleme gab und was wir nicht geschafft haben. Dafür bereitete die Teamleitung aus dem letzten Meeting eine Liste mit den Aufgaben der letzten Iteration vor, die dann schrittweise durchgearbeitet wurde. Beendete Issues wurden in GitHub geschlossen. Anschließend starteten wir mit der Planung der nächsten Iteration. Dazu bereitete die Teamleitung ebenfalls Punkte vor die aus Sicht des Projektmanagements für die kommende Iteration wichtig sind. Die anderen Aufgaben wurden während des Meetings von den Verantwortlichen für ihren Aufgabenbereich benannt und anschließend verteilt. Anschließend haben wir gemeinsam die Aufgaben priorisiert und Aufgaben die nicht sofort erledigt werden müssen als optional gekennzeichnet. Diese Aufgaben wurden dann meist in den Iterationen nur angefangen oder gar nicht bearbeitet und dann in der darauffolgenden Iteration als feste Aufgabe aufgenommen. Das half bei der längerfristigen Planung der Iterationen, da man so schon einen Blick auf den weiteren Projektverlauf und kommende Aufgaben hatte. Am Ende des Meetings übertrugen wir die Aufgaben in unser GitHub Repository und wiesen sie den verantwortlichen Teammitgliedern zu. Während der Iteration gab es kleine Meetings die je nach Bedarf optional angesetzt wurden. Das konnte z. B. die Vorbereitung eines Treffens mit dem StuRa sein oder es trafen sich Teile des Team um gemeinsam am Projekt zu arbeiten. 
+Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder Iteration trafen wir uns als Team und werteten zunächst die vergangene Iteration aus und besprachen dabei unsere erreichten Fortschritte, die aufgetretenen Probleme sowie die unerfüllten Aufgaben. Dafür bereitete die Teamleitung aus dem letzten Meeting eine Liste mit den Aufgaben der letzten Iteration vor, die dann schrittweise durchgearbeitet wurde. Beendete Issues wurden in GitHub geschlossen. Anschließend starteten wir mit der Planung der nächsten Iteration. Dazu bereitete die Teamleitung ebenfalls Punkte vor die aus Sicht des Projektmanagements für die kommende Iteration wichtig sind. Die anderen Aufgaben wurden während des Meetings von den Verantwortlichen für ihren Aufgabenbereich benannt und anschließend verteilt. Anschließend haben wir gemeinsam die Aufgaben priorisiert und Aufgaben die nicht sofort erledigt werden müssen als optional gekennzeichnet. Diese Aufgaben wurden dann meist in den Iterationen nur angefangen oder gar nicht bearbeitet und dann in der darauffolgenden Iteration als feste Aufgabe aufgenommen. Das half bei der längerfristigen Planung der Iterationen, da man so schon einen Blick auf den weiteren Projektverlauf und kommende Aufgaben hatte. Am Ende des Meetings übertrugen wir die Aufgaben in unser GitHub Repository und wiesen sie den verantwortlichen Teammitgliedern zu. Während der Iteration gab es kleine Meetings die je nach Bedarf optional angesetzt wurden. Das konnte z. B. die Vorbereitung eines Treffens mit dem StuRa sein oder es trafen sich Teile des Team um gemeinsam am Projekt zu arbeiten. 
 
 //nach umgesetzten Use Cases prüften wir ob unsere Doku noch aktuell war
 
@@ -155,39 +155,29 @@ Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unse
 
 Die Ziele der Construction Phase sind die Verfeinerung und Finalisierung des Entwurfes, die Implementierung der Use Cases und die Durchführung von Tests. 
 
-*Iteration 4 - Nacharbeitung Beleg SE I und Start Implementierung (03.04. - 16.04.2023)*
+*Iteration 4 (03.04. - 16.04.2023)*
 
-* Auswertung Beleg SE I
-* Nacharbeiten SE I (Projektmanagement)
-* Implementierung UC 5 (Begründung warum UC 5 zuerst, da bei Prio weiter unten)
-* Deployment vorbereiten
-
-Das Projekt startete zunächst mit dem Finden einen geeignetes Termin für die Meetings. Im Gegensatz zu SE I legten wir einen festen Termin fest, an dem wir uns alle zwei Wochen trafen. Wir einigten uns darauf uns alle zwei Wochen Dienstag in der HTW zu treffen. Als Erstes mussten wir uns als Team neu organisieren, da ein Mitglied aus dem Team ausschied und wir dadurch die Rollen neu verteilen mussten (siehe <<Rollenverteilung>>). Aus dem Feedbackgespräch zu SE I entstanden die ersten Aufgaben für die 4. Iteration. Besonders das Projektmanagement hatte hier viel Nachholbedarf, sodass zunächst die Iterationspläne und die Projektstruktur nachgearbeitet wurde. Gleichzeitig startete auch die Implementierung des UC 5 (Antragsverwalter anmelden). Dieser war in der Umsetzung sofort und unkompliziert möglich und stellte außerdem eine wichtige Grundvoraussetzung für unser System dar. Zwar wäre die Nutzung des Tools auch ohne Anmeldung möglich, allerdings wenige sinnvoll da nur ein begrenzter Personenkreis Zugang zu dem Tool erhalten sollte. #Umsetzung UC 5 ggf. Probleme Abschluss UC5#. Der Use Case konnte in dieser Iteration abgeschlossen werden. Auch startete unser (neuer) Deployment-Engineer mit der Vorbereitung des Deployments. Da er selbst Administrator im StuRa ist, war in diesem Rahmen wenig (extra) Abstimmung mit dem StuRa nötig, da er der Verantwortliche sowohl bei uns im Team als auch im StuRa selbst ist. Das erleichterte für uns als Team die Arbeit, da so ein geringeres Risiko bestand, dass es hier Fehler in der Kommunikation gab. #was wurde gemacht Deployment, Probleme#
+Das Projekt startete zunächst mit dem Finden einen geeignetes Termin für die Meetings. Im Gegensatz zu SE I legten wir einen festen Termin fest, an dem wir uns alle zwei Wochen trafen. Wir einigten uns darauf uns alle zwei Wochen Dienstag in der HTW zu treffen. Als Erstes mussten wir uns als Team neu organisieren, da ein Mitglied aus dem Team ausschied und wir dadurch die Rollen neu verteilen mussten (siehe <<Rollenverteilung>>). Aus dem Feedbackgespräch zu SE I entstanden die ersten Aufgaben für die 4. Iteration. Besonders das Projektmanagement hatte hier viel Nachholbedarf, sodass zunächst die Iterationspläne und die Projektstruktur nachgearbeitet wurde. Gleichzeitig startete auch die Implementierung des UC 5 (Antragsverwalter anmelden). Dieser war in der Umsetzung sofort und unkompliziert möglich und stellte außerdem eine wichtige Grundvoraussetzung für unser System dar. Zwar wäre die Nutzung des Tools auch ohne Anmeldung möglich, allerdings weniger sinnvoll da nur ein begrenzter Personenkreis Zugang zu dem Tool erhalten sollte. #Umsetzung UC 5 ggf. Probleme Abschluss UC5#. Der Use Case konnte in dieser Iteration abgeschlossen werden. Auch startete unser (neuer) Deployment-Engineer mit der Vorbereitung des Deployments. Da er selbst Administrator im StuRa ist, war in diesem Rahmen wenig (extra) Abstimmung mit dem StuRa nötig, da er der Verantwortliche sowohl bei uns im Team als auch im StuRa selbst ist. Das erleichterte für uns als Team die Arbeit, da so ein geringeres Risiko bestand, dass es hier Fehler in der Kommunikation gab. #was wurde gemacht Deployment, wie beim StuRa geregelt, Probleme# Wir diskutierten die Möglichkeit unser Repository aufzuteilen und den Code und die Dokumentation zu trennen. Letztendlich entschieden wir uns dagegen, da wir mit der bisherigen Lösung gut klar kamen und so alle in dem selben Projekt arbeiteten. Die Dokumentation führten wir vorerst in den Dokumenten von SE I fort, wenn wir mehr Informationen zum Belegaufbau in SE II erfahren würden, sollte die Ordnerstruktur entsprechend angepasst werden. Weiterhin legten wir für die Implementierung eine Aufteilung der Verantwortlichkeiten in Frontend und Backend fest um so eine bessere Aufgabenverteilung zu ermöglichen. So übernahm Max Patecky die Verantwortung für das Frontend und Göran Heinemann für das Backend.
 Das Team entschied sich zunächst kein Treffen mit dem StuRa anzusetzen, da wir seit dem letzten Treffen am Ende von SE I keine weitere Funktionalität vorzuweisen hatten und es unsererseits keine Fragen gab. Gleichzeitig wussten wir durch unser Teammitglied beim StuRa, dass seitens des StuRa keine veränderten Anforderungen gab. 
 #Risikomanagement#
 
 *Iteration 5 (17.04. - 30.04.2023)*
 
-* Umstrukturierung Front End in Komponenten (warum nötig, Front End wollten wir doch übernehmen)
-* UC 1 umsetzen
+
 * (vorab) Finalisierung Deployment
-* Bibliothek für Markdown raussuchen, einlesen und ggf. einbinden
-* #Datenbank anpassen#
-* #Risikoliste pflegen#
 
+In dieser Iteration sollte mit der Umsetzung des Use Case 1 begonnen werden. Während der Implementierung des Use Case 5 hatten wir jedoch festgestellt, dass wir vor der Implementierung weiterer Use Cases das Frontend unserer Vorgänger überarbeiten mussten. Es wurde die gesamte Website komplett geladen und sollte deshalb in einzelne Komponenten umstrukturiert werden um den Code zu vereinfachen und eine bessere Übersichtlichkeit zu gewährleisten. Auch die potentielle Leistung sollte damit erhöht werden. Dafür sollte eine Trennung der Seiten in einzelne Ordner erfolgen und alle Templates überarbeitet werden. Unsere Verantwortlichen für die Implementierung sollten hierfür die Verwendung eines Frontend-Frameworks prüfen. #Entscheidung# Da wir eigentlich in dieser Iteration mit dem Use Case 1 starten wollten, legten wir diesen als optionale Aufgabe fest. Mit der Umsetzung konnte auch tatsächlich nicht begonnen werden, so verschoben wir die Implementierung auf die nächste Iteration. 
 
-In dieser Iteration sollte mit der Umsetzung des Use Case 1 begonnen werden. Während der Implementierung des Use Case 5 stellten wir jedoch fest, dass wir uns zunächst besser mit dem Aufbau des Front End unserer Vorgängergruppe beschäftigen sollten. 
+Während der letzten Iteration kümmerte sich unser Deployment-Engineer um eben dieses beim StuRa. Das sollte auf die internen Regelungen beim StuRa angepasst werden und unser System sollte dort eingegliedert werden. #Nginx-Proxy mittels NixOS-Deployment. Das Deployment wurde soweit fertiggestellt mit Nix Flake. Es war noch Django Translate vorhanden (nur in Version 2 verfügbar), wir wollten allerdings Version 3 oder höher verwenden. Hier waren also noch Anpassungen notwendig.#
 
-Bibliothek für Markdown auf Python soll Martor sein
-
-Bevor es weiter mit der Implementierung der Use Cases ging, musste sich das Team zunächst besser mit dem Aufbau des Front Ends der Vorgängergruppe vertraut machen. Dabei stellten wir fest, #dass der Code für das Front End sehr schlecht strukturiert war und man sich kaum zurecht fand. Da man damit schlecht arbeiten konnte, beschlossen wir zunächst hier den Code umzustrukturieren und in Komponenten aufzuteilen.# Als Ziel setzten wir uns zwar trotzdem die Umsetzung des Use Case 1, allerdings merkten wir das dieser in diesen zwei Wochen nicht umsetzbar war. Zwar starteten wir mit der Umsetzung jedoch konnten wir den Use Case nicht fertigstellen. Auch wurde weiterhin am Deployment gearbeitet. #Was#. Ein weiteres Ziel dieser Iteration war es sich mit Bibliotheken für markdown auseinanderzusetzen. Neben der Implementierung und den damit einhergehenden Aufgaben arbeitete die Teamleitung weiter an der Dokumentation und führte die Risikoliste fort. 
-
+Da wir uns entschieden hatten die Nutzung des Pentapads in unser Tool einzubinden, sollte in dieser Iteration eine passende Bibliothek dafür recherchiert und auf Funktionalität geprüft werden. #Bibliothek für Markdown auf Python soll Martor sein#. Auch eine Prüfung des Datenbankschemas wurde als Aufgabe aufgenommen, um dieses immer auf dem aktuellen Stand der Entwicklung zu halten.
 
 *Iteration 6 (01.05. - 14.05.2023)* 
 
 * UC 1 beenden
 * Fachaustausch Projektmanagement
 * Entwicklerdoku mit Klassendiagramm
+* Projektstruktur erarbeiten
 
 Mit Beginn dieser Iteration entschieden wir uns die Treffen wieder online stattfinden zu lassen, da das für die meisten Teammitglieder einfacher zu organisieren war. Die Meetings fanden weiterhin Dienstags statt, jedoch nun um 18 Uhr auf discord.
 
@@ -237,7 +227,7 @@ GitHub Actions einrichten
 Zu Beginn der 8. Iteration fand der Fachaustausch zum Thema Architektur statt. Da bei stellte unser Architekt unser Projekt vor erklärte unser Vorgehen und welche Probleme dabei auftraten. Wir bekamen dabei auch einen guten Einblick in die Entwürfe der anderen Teams und deren individuellen Herausforderungen.
 In der folgenden Woche fand der letzte Fachaustausch zum Thema Testen statt. Zwei unserer Teammitglieder erklärten wie das Testen in unserem Projekt organisiert ist und welche Methoden wir dabei einsetzen. Auch hier half es zu sehen, auf welche Konzepte die anderen Team setzten und welche Probleme die anderen Teams bei der Umsetzung hatten. Auch konnten wir noch offene Fragen zum Testen mit Ruben-David Kraus klären, der uns als Ansprechpartner für unsere Projekte zur Verfügung steht. 
 
-=== Transition Phase
+=== Ende des Projektes und Transition Phase
 
 *Iteration 9 (12.06. - 23.06.2023)*
 
@@ -303,7 +293,7 @@ Diesen Use Case haben wir als einen der ersten umgesetzt. Abgesehen vom stellen 
 
 *Umsetzung weiterer Anforderungen*
 
-==== Fazit
+==== Fazit & Lessons Learned 
 
 Insgesamt konnte dem StuRa der HTW Dresden ein funktionierendes System übergeben werden. 
 
