@@ -4,6 +4,7 @@ Django
 psycopg2
 django-money
 fontawesomefree
+requests
 python-dotenv
 
 # development dependencies
