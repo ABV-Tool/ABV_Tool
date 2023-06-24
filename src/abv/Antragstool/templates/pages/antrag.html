@@ -112,6 +112,7 @@
             <script>
                 $(document).ready(function() {
                     let referatSelect = $('select[name="{{ form.referat.name }}"]');
+                    let istEilantrag = $('input[name="{{ form.ist_eilantrag.name }}"]');
                     
                     // Wenn die Seite neu gelanden wird, zeige das Datum der nächsten Sitzung an
                     updateDatum(referatSelect.val());
@@ -120,17 +121,31 @@
                     referatSelect.change(function() {
                         updateDatum($(this).val());
                     });
+
+                    // Wenn der Eilantrag-Checkbox ausgewählt wurde, zeige das Datum der nächsten Sitzung an
+                    istEilantrag.change(function() {
+                        updateDatum(referatSelect.val());
+                    });
                 });
 
                 function updateDatum(refID) {
-                    // Array mit allen Sitzungen, die in der Datenbank gespeichert sind
-                    let sitzungen = [ {% for sitzung in sitzungen %} [{{ sitzung.refID.refID }}, "{{ sitzung.sitzDate | date:"d.m.Y" }}"], {% endfor %}];
-                    
-                    // Prüfe, ob die ausgewählte Referat-ID in der Liste der Sitzungen vorhanden ist
+                    // Array mit allen sitzungen_fristgerecht, die in der Datenbank gespeichert sind
+                    let sitzungen_fristgerecht = [ {% for sitzung in sitzungen_fristgerecht %} [{{ sitzung.refID.refID }}, "{{ sitzung.sitzDate | date:"d.m.Y" }}"], {% endfor %}];
+                    let sitzungen_eilantrag = [ {% for sitzung in sitzungen_eilantrag %} [{{ sitzung.refID.refID }}, "{{ sitzung.sitzDate | date:"d.m.Y" }}"], {% endfor %}];
+
+                    // Prüfe, ob es ein Eilantrag ist
+                    let sitzungen = []
+                    if ($('#{{ form.ist_eilantrag.id_for_label }}').prop('checked')) {
+                        sitzungen = sitzungen_eilantrag;
+                    } else {
+                        sitzungen = sitzungen_fristgerecht;
+                    }
+
+                    // Prüfe, ob die ausgewählte Referat-ID in der Liste der sitzungen_fristgerecht vorhanden ist
                     let selectedSitzung = sitzungen.find(function(sitzung) {
                         return sitzung[0] == refID;
-                    
                     });
+
                     if (selectedSitzung) {
                         $('#info_sitzungsdatum').html("Die <b>nächste Sitzung</b>, in welcher dein jetzt gestellter Antrag behandelt wird, findet am <b>" + selectedSitzung[1] + "</b> statt.")
                     } else {
@@ -328,6 +343,12 @@
                 {% if form.fragen_amt.field.max_length %} maxlength="{{ form.fragen_amt.field.max_length }}"{% endif %}
                 >{% if antrag.antragFragenZumAmt %}{{ antrag.antragFragenZumAmt }}{% endif %}</textarea>
         </div>
+        {% endif %}
+
+
+        <!-- Hinweis zu Antrag mit finanziellen Mitteln -->
+        {% if request.path == '/antrag/finanziell/' %}
+            {% include 'components/alert.html' with type="WARNING" text="Neben der Kostenposition sowie der Summe benötigen wir noch eine <b>Kostenaufstellung</b> für deinen Antrag. Füge diesen einfach als <b>Anlage</b> zu deinem Antrag bei." %}
         {% endif %}
 
 
