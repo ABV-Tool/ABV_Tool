@@ -36,7 +36,7 @@
                     <i class="fa-solid fa-link"></i> Etherpad der Sitzung öffnen
                 </a>
             {% else %}
-                <a href="{% url 'tagesordnung-erstellen' sitzID=sitzung.sitzID %}" class="w-full text-center btn bg-stura-orange hover:cursor-pointer mr-5">
+                <a href="{% url 'tagesordnung-erstellen' sitzID=sitzung.sitzID %}" class="w-full text-center btn bg-stura-orange hover:cursor-pointer">
                     <i class="fa-solid fa-circle-plus"></i> Tagesordnung erstellen
                 </a>
             {% endif %}
