@@ -180,6 +180,6 @@ EMAIL_TOOL = 'abv@stura.htw-dresden.de'
 # Etherpad Settings
 # TODO Production: Etherpad-Server & API-Key anpassen
 ETHERPAD_API_KEY = os.environ.get('ETHERPAD_API_KEY')
-ETHERPAD_HOST = 'http://10.0.1.30:9001'
+ETHERPAD_HOST = 'https://pad.htw.stura-dresden.de'
 ETHERPAD_API_ENDPOINT = ETHERPAD_HOST + '/api/1.2.15/'
 ETHERPAD_PAD_ENDPOINT = ETHERPAD_HOST + '/p/'
