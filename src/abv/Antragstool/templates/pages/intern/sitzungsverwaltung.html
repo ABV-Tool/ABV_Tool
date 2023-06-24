@@ -22,7 +22,7 @@
         <!-- Ausgabe der Referate ohne Sitzung -->
         {% if referate_ohne_sitzung|length > 0 %}
             {% with referate_ohne_sitzung|join:", " as referate %}
-                {% include 'components/alert.html' with type="WARNING" text="Folgende <b>Referate</b> haben derzeit <b>keine Sitzungen</b> vorgemerkt: "|add:referate %}
+                {% include 'components/alert.html' with type="WARNING" text="Folgende <b>Referate</b> haben derzeit <b>keine Sitzungen</b> für die nächsten <b>14 Tagen</b> vorgemerkt: <u>"|add:referate|add:"</u>" %}
             {% endwith %}
         {% endif %}
 
@@ -49,7 +49,12 @@
                     <td>
 
                         <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
-                            <i class="fa-solid fa-list-check"></i> Verwalten
+                            <i class="fa-solid fa-list-check"></i>
+                            {% if sitzung.sitzStatus|lower == "vertagt" %}
+                                <s>Verwalten</s>
+                            {% else %}
+                                Verwalten
+                            {% endif %}
                         </a>
 
                         <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
