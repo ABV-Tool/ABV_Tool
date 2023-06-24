@@ -169,8 +169,12 @@ def ReferatLoeschenPage(request, refID):
 # ++++++ Sitzungsverwaltung ++++++ #
 
 def SitzungsverwaltungPage(request):
+    # Alle Referate und Sitzugnen
     referate = Referat.objects.all().order_by('refID')
-    sitzungen = Sitzung.objects.all().order_by('sitzDate')
+    sitzungen = Sitzung.objects.all().filter(sitzDate__gt=date.today()).order_by('refID').order_by('sitzDate')
+    
+    # Alle Sitzungen, welche in 14+ Tagen stattfinden
+    sitzungen_14_tage = Sitzung.objects.all().filter(sitzDate__gt=date.today() + timedelta(days=7)).order_by('sitzDate')
     referate_ohne_sitzung = []
     
     # Anzahl der Anträge pro Sitzung berechnen | Filtere Anträge, die vertagt wurden
@@ -179,9 +183,9 @@ def SitzungsverwaltungPage(request):
         sitzung.anzAntraege = anz_antraege
         sitzung.save()
     
-    # Prüfe, ob es Referate gibt, die keine Sitzung haben
+    # Prüfe, ob es Referate gibt, die in den nächsten 14 Tagen keine Sitzung haben
     for referat in referate:
-        if referat.refID not in sitzungen.values_list('refID', flat=True):
+        if referat.refID not in sitzungen_14_tage.values_list('refID', flat=True):
             referate_ohne_sitzung.append(referat)
         
     return render(request, 'pages/intern/sitzungsverwaltung.html', context={
@@ -227,13 +231,25 @@ def SitzungAnlegenPage(request):
 
 
 def SitzungVerwaltenPage(request, sitzID):
+    sitzung = Sitzung.objects.get(sitzID=sitzID)
+    
+    # Leite Admin weiter, sollte die Sitzung vertagt worden sein
+    if sitzung.sitzStatus == 'Vertagt':
+        return redirect('sitzungsverwaltung')
+    
     # Anzahl der Anlagen pro Antrag in Sitzung berechnen
     antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
     for antrag in antraege:
         antrag.anzAnlagen = Anlage.objects.filter(antragID=antrag.antragID).count()
         antrag.save
         
-    sitzung = Sitzung.objects.get(sitzID=sitzID)
+
+    sitzungen = Sitzung.objects.all().filter(refID=sitzung.refID).order_by('sitzDate')
+    
+    for i, sitz in enumerate(sitzungen, 1):
+        if sitz.sitzID == sitzung.sitzID:
+            print(i)
+    
     return render(request, 'pages/intern/sitzung/verwalten.html', context={
         'title': 'Sitzung verwalten',
         'antraege': antraege,
@@ -243,8 +259,11 @@ def SitzungVerwaltenPage(request, sitzID):
 
 def SitzungVertagenPage(request, sitzID): 
     sitzung = Sitzung.objects.get(sitzID=sitzID)
-    antraege_sitzung = Antrag.objects.filter(sitzID=sitzID)
     date = sitzung.sitzDate + timedelta(days=7)
+    
+    # Leite Admin weiter, sollte die Sitzung nicht mehr offen sein
+    if sitzung.sitzStatus != 'Offen':
+        return redirect('sitzungsverwaltung')
     
     if request.method == 'POST':
         form = SitzungVertagenForm(request.POST)
@@ -253,7 +272,17 @@ def SitzungVertagenPage(request, sitzID):
                 messages.error(request, 'Die Sitzung hat bereits stattgefunden und kann nicht mehr bearbeitet werden!')
                 return redirect('sitzung-vertagen', sitzID=sitzID)
             
-            sitzung.sitzDate = form.cleaned_data['datum_neu']
+            altes_sitzDate = sitzung.sitzDate
+            neues_sitzDate = form.cleaned_data['datum_neu']
+            
+            # Vertage die Sitzung mitsamt aller Antraäge
+            sitzung.sitzDate = neues_sitzDate
+            sitzung.save()
+            
+            # Erstelle Kopie der Sitzung, um die Vertagung nachvollziehen zu können
+            sitzung.sitzID = None
+            sitzung.sitzStatus = 'Vertagt'
+            sitzung.sitzDate = altes_sitzDate
             sitzung.save()
             
             # Sende eine E-Mail an alle Antragsteller, dass die Sitzung vertagt wurde
@@ -282,6 +311,10 @@ def SitzungLoeschenPage(request, sitzID):
         return redirect('sitzungsverwaltung')
     else:
         sitzung = Sitzung.objects.get(sitzID=sitzID)
+        
+    # Leite Admin weiter, sollte die Sitzung nicht mehr offen sein
+    if sitzung.sitzStatus != 'Offen':
+        return redirect('sitzungsverwaltung')
     
     if request.method == 'POST':
         # Prüfe, ob die Sitzung bereits stattgefunden hat
@@ -328,7 +361,7 @@ def SitzungAbschliessenPage(request, sitzID):
                 if antrag.beschlussID is not None and antrag.beschlussID.beschlussErgebnis == 'Vertagt':
                     # Hole den vertagten Antrag über die neueSitzID
                     print(antrag.neueSitzID)
-                    antrag_vertagt = Antrag.objects.get(sitzID=antrag.neueSitzID)
+                    antrag_vertagt = Antrag.objects.filter(sitzID=antrag.neueSitzID)
                     mailAstellerVertagungAntrag(antrag_vertagt)
                 else:
                     mailAstellerErgebnisAntrag(antrag)
@@ -416,6 +449,10 @@ def AntragVertagenPage(request, antragID):
     """
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
+    
+    # Leite Admin weiter, sollte der Antrag vertagt worden sein
+    if antrag.wurdeVertagt or antrag.beschlussID is not None:
+        return redirect('sitzung-verwalten', sitzID=sitzung.sitzID)
     
     if request.method == 'POST':
         form = AntragVertagenForm(request.POST)
@@ -516,6 +553,10 @@ def AntragPriorisierenPage(request, antragID):
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
     
+    # Leite Admin weiter, sollte der Antrag vertagt worden sein oder bereits einen Beschluss haben
+    if antrag.wurdeVertagt or antrag.beschlussID is not None:
+        return redirect('sitzung-verwalten', sitzID=sitzung.sitzID)
+    
     hoechste_prioritaet = Antrag.objects.filter(sitzID=sitzung).aggregate(Max('prioritaet'))['prioritaet__max']
     antrag.prioritaet = hoechste_prioritaet + 1
     antrag.save()
@@ -581,21 +622,32 @@ def astellerAbfragenOderErstellen(form):
 
 
 # Prüfe, wann die nächste Sitzung des Referats stattfindet und gib diese zurück
-# TODO: Prüfung auf Eilantrag einbauen & E-Mail an Referat senden
 def sitzungenAbfragen(form):
     refID = form.cleaned_data['referat']
-    sitzungen = Sitzung.objects.filter(refID=refID).filter(sitzDate__gt=date.today()).order_by('sitzDate')
+    sitzungen = []
+    
+    # Prüfe, ob es sich um einen Eilantrag handelt und gebe entsprechende Sitzungen zurück
+    if form.cleaned_data['ist_eilantrag']:
+        sitzungen = Sitzung.objects.filter(refID=refID).filter(sitzDate__gt=date.today()).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')
+    else:
+        sitzungen = Sitzung.objects.filter(refID=refID).filter(sitzDate__gt=date.today() + timedelta(days=7)).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')
+        
     return sitzungen
 
 
 # Kurzfassung der render-Funktion für Antragsseiten
 def renderAntrag(request, title, form):
-    # Frage die nächsten 2 Sitzungen jedes Referates ab und gibt diese an die Seite weiter
-    sitzungen = Sitzung.objects.filter(sitzDate__gt=date.today()).order_by('sitzDate')
+    # Abfrage der nächsten Sitzungen, für die der Antrag fristgerecht eingereicht werden kann (< 7 Tage)
+    sitzungen_fristgerecht = Sitzung.objects.filter(sitzDate__gt=date.today() + timedelta(days=7)).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')
+    
+    # Abfrage der nächsten Sitzungen, für die der Antrag als Eilantrag eingereicht werden kann (>= 7 Tage)
+    sitzungen_eilantrag = Sitzung.objects.filter(sitzDate__gt=date.today()).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')
+    
     return render(request, 'pages/antrag.html', context={
         'title': title, 
         'form': form,
-        'sitzungen': sitzungen
+        'sitzungen_fristgerecht': sitzungen_fristgerecht,
+        'sitzungen_eilantrag': sitzungen_eilantrag
     })
 
 
@@ -626,7 +678,7 @@ def anlagenSpeichern(request, antrag):
 
 # ++++++ Anträge ++++++ #
 
-FEEDBACK_ANTRAG_SUCCESS = 'Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine E-Mail mit der Bestätigung.'
+FEEDBACK_ANTRAG_SUCCESS = 'Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine E-Mail mit der Eingangsbestätigung.'
 
 def AntragAllgemein(request):
     if request.method == 'POST':
@@ -707,7 +759,10 @@ def AntragFinanziell(request):
             
             antrag.save()
             
-            anlagenSpeichern(request, antrag)
+            anlagen = anlagenSpeichern(request, antrag)
+            if(len(anlagen) == 0):
+                messages.error(request, 'Bitte füge eine Kostenaufstellung als Anlage bei!')
+                return redirect('antrag-finanziell')
             
             mailAstellerEingangsbestaetigung(antrag)
             mailReferatAntragEingegangen(antrag)
@@ -950,7 +1005,7 @@ def TagesordnungErstellenPage(request, sitzID):
         return redirect('tagesordnung-vorschau', sitzID=sitzID)
     
     # TODO: Sitzungsnummer automatisch generieren lassen
-    sitzung_nummer = '22_23-003-01'
+    sitzung_nummer = str(sitzung.sitzID)
     
     # Anträge mit Anlagen & TOP-Nummer in Liste schreiben
     antraege_liste = []
