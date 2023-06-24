@@ -4,13 +4,13 @@ include::../../docs_SE_I/_includes/default-attributes.inc.adoc[]
 :imagesdir: ./images
 
 
-== Projektplanung
+== Projektplanung 
 
-=== Aufgabenstellung und Auftraggeber
+=== Aufgabenstellung und Auftraggeber (MM)
 
 Im Rahmen der Module Software Engineering (SE) I und II war unsere Aufgabe als Team I5 ein Antrags- und Beschlussverwaltungstool für den StuRa der HTW Dresden zu entwickeln. Der StuRa ist das zentrale Organ der Studierenden der HTW Dresden und vertritt diese gegenüber der Hochschule. Im Rahmen seiner Tätigkeit werden beim StuRa verschiedene Anträge gestellt und durch Gremien beraten und beschlossen. Für diesen Vorgang war es unsere Aufgabe ein geeignetes Tool zu entwickeln, da dieser Prozess bisher manuell und damit sehr zeitaufwändig ablief. Mehr zur Problemstellung in der Anforderungsspezifikation.
 
-=== Ausgangssituation in SE II
+=== Ausgangssituation in SE II (MM)
 
 Mit Abgabe des Beleges am Ende von SE I endete die Elaboration Phase für unser Projekt. Die Anforderungen in Form mehrere Use Cases waren fertig ausgearbeitet und mit dem Auftraggeber abgestimmt. Der Entwurf für die Architektur des Projektes stand im Groben und bedurfte noch kleinerer Abstimmungen. Auch wurde ein erster Prototyp implementiert und erste Test Cases beschrieben. Zu Beginn des SE II verkleinerte sich das Team, da unser Teamleiter als Wirtschaftsingenieurstudent SE II nicht belegte. Damit wurden Anpassungen in der Teamstruktur notwendig. Mehr dazu unter dem Punkt <<Rollenverteilung>>. Mit Beginn von SE II konnten wir also mit der Umsetzung der Use Cases beginnen.
 
@@ -18,7 +18,7 @@ Mit Abgabe des Beleges am Ende von SE I endete die Elaboration Phase für unser 
 === Projektorganisation
 //d.h. Team, Rollen/Verantwortlichkeiten, Kommunikation im Team und zum Auftraggeber, eingesetzte Tools in der Projektarbeit, z.B. für Planung, Kommunikation, Dokumentation
 
-==== Rollenverteilung
+==== Rollenverteilung (MM)
 
 Zu Beginn von SE I hat sich das Team auf folgende Rollenverteilung geeinigt: 
 
@@ -42,7 +42,7 @@ Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studienga
 * Max Patecky (MP)			*Tester*/Technical-Writer
 * Simon Voges (SV)			*stellv. Teamleitung*/Verantwortlich für das Erstellen von Diagrammen und Wireframes
 
-==== Kommunikation, Dokumentation und eingesetzte Tools
+==== Kommunikation, Dokumentation und eingesetzte Tools (MM)
 
 Zur Kommunikation nutzten wir einen WhatsApp Gruppenchat sowie einen Discord Server. Über WhatsApp wurden Termine abgestimmt und kurze Infos mitgeteilt. Auf unserem Discord Server wurden ausführlichere Infos ausgetauscht sowie unsere Meetings abgehalten (sofern sie online stattfanden). Auch unser Coach Manuela Ziesche und unsere Ansprechpartnerin beim StuRa Theresa Minister waren Teil des Discord Servers um sich im Bedarfsfall schnell und unkompliziert treffen zu können. Die Kommunikation mit beiden zwecks Terminabstimmungen etc. lief ebenfalls über WhatsApp, alle anderen Dinge wurde in persönlichen Gesprächen besprochen. Für die Kommunikation mit unserem Coach war die Teamleitung zuständig, die Terminabsprachen mit dem StuRa übernahm eines unserer Teammitglieder aufgrund seiner Tätigkeit im StuRa. Unsere Meetings in SE II fanden im 14-tägigen Rhythmus statt. Zu Beginn des Semesters trafen wir uns immer Dienstags 15 Uhr in der HTW. Im Laufe des Semesters entschieden wir uns die Meetings wieder online zu machen und verlegten dafür den Termin auf 18 Uhr. Die Meetings dokumentierten wir in einem Google Doc und nutzten dazu eine feste Vorlage, durch die auch der Ablauf eines Teammeetings unterstützt wurde. Alles Besprochene sowie die Aufgabenverteilung für die kommende Iteration wurde dort aufgeschrieben. 
 
@@ -53,7 +53,7 @@ image::Beispiel_Meeting_Dokumentation.jpg[]
 
 Auch Meetings mit dem StuRa oder unserem Coach wurden hier dokumentiert. So hatten wir ein zentrales Dokument in dem wir sehr gut den gesamten Projektverlauf nachvollziehen konnten. Das war auch sehr hilfreich um z. B. Absprachen mit dem StuRa später noch einmal nachzuvollziehen und in die Umsetzung des Projektes mit einfließen zu lassen. Für unsere Dokumentation und für die Codeverwaltung nutzten wir GitHub. Hierzu haben wir eine Organisation mit allen Teammitgliedern erstellt in der unser Repository angelegt wurde. Für anstehende Aufgaben erstellten wir entsprechende Issues, sowohl für den technischen Teil als auch für die Dokumentation. Außerdem legten wir für jede Phase des Open UP ein Projekt an dem die verschiedenen Issues zugeordnet wurden. Um in unserem Repository gut an verschiedenen Aufgaben arbeiten zu können, erstellten wir außerdem verschiedene Branches z. B. für die Umsetzung eines Use Cases oder das Deployment.
 
-=== Ablauf einer Iteration
+=== Ablauf einer Iteration (MM)
 
 Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder Iteration trafen wir uns als Team und werteten zunächst die vergangene Iteration aus und besprachen dabei unsere erreichten Fortschritte, die aufgetretenen Probleme sowie die unerfüllten Aufgaben. Dafür bereitete die Teamleitung aus dem letzten Meeting eine Liste mit den Aufgaben der letzten Iteration vor, die dann schrittweise durchgearbeitet wurde. Beendete Issues wurden in GitHub geschlossen. Anschließend starteten wir mit der Planung der nächsten Iteration. Dazu bereitete die Teamleitung ebenfalls Punkte vor die aus Sicht des Projektmanagements für die kommende Iteration wichtig sind. Die anderen Aufgaben wurden während des Meetings von den Verantwortlichen für ihren Aufgabenbereich benannt und anschließend verteilt. Anschließend haben wir gemeinsam die Aufgaben priorisiert und Aufgaben die nicht sofort erledigt werden müssen als optional gekennzeichnet. Diese Aufgaben wurden dann meist in den Iterationen nur angefangen oder gar nicht bearbeitet und dann in der darauffolgenden Iteration als feste Aufgabe aufgenommen. Das half bei der längerfristigen Planung der Iterationen, da man so schon einen Blick auf den weiteren Projektverlauf und kommende Aufgaben hatte. Am Ende des Meetings übertrugen wir die Aufgaben in unser GitHub Repository und wiesen sie den verantwortlichen Teammitgliedern zu. Während der Iteration gab es kleine Meetings die je nach Bedarf optional angesetzt wurden. Das konnte z. B. die Vorbereitung eines Treffens mit dem StuRa sein oder es trafen sich Teile des Team um gemeinsam am Projekt zu arbeiten. 
 
@@ -64,9 +64,11 @@ Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder 
 //Techniken/Praktiken: Welche wurden warum eingesetzt und wie genutzt? → „Way of Working“ Way of Working: ausgewählte Praktiken und Werkzeuge, die vom Team benutzt werden, um ihre Arbeit zu leiten und zu unterstützen
 
 //Das Projekt orientiert sich am Open Unified Process.
+////
 
+=== Techniken und Praktiken (AM, MM)
 
-*Techniken und Praktiken*
+Im folgenden sind die Techniken und Praktiken unseres Teams aufgelistet, die während der Projektdurchführung von uns angewendet wurden.
 
 [%header, cols="2,3"]
 |===
@@ -75,71 +77,47 @@ Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder 
 |Umsetzung
 
 |Iterative Developement
-|Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um die vergangene Iteration auszuwerten und alle anstehenden Aufgaben zu besprechen und zu verteilen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. Je nach Bedarf werden kurze Besprechungen während der Iteration durchgeführt.
-
-|Team Change Management
-|Am Anfang von SE I haben wir Verantwortlichkeiten und Backup Rollen festgelegt, aus diesen Verantwortlichkeiten bilden sich Aufgaben, die selbstständig aber auch in Absprache mit dem Team abzuarbeiten sind. Bei Bedarf kann innerhalb des Teams auch eine Aufgabenumverteilung oder Unterstützung angefragt werden.
-
-|Evolutionary Architecture
-|Das Architecture Notebook wird schrittweise bearbeitet. Es wird sich hierbei am Projektfortschritt orientiert.
+|Das Projekt wird in zweiwöchigen Iterationen organisiert. Dazu trifft sich das Team mindestens einmal in jeder Iteration um die vergangene Iteration auszuwerten und Ziele für die kommende Iteration festzulegen. Mehrere Iterationen werden den Meilensteinen aus dem OpenUp zugeordnet. 
 
 |Shared Vision
-|Die erarbeitet Vision mit Zweck und Problembeschreibung wurde in Zusammenarbeit mit dem Auftraggeber erarbeitet und mit diesem abgestimmt. Auch nach der finalen Abstimmung wird der Projektfortschritt regelmäßig mit der Vision und dem Auftraggeber abgeglichen und ggf. auf neue oder geänderte Anforderungen angepasst. 
+|Die Vision mit Zweck und Problembeschreibung wurde in Zusammenarbeit mit dem Auftraggeber erarbeitet und mit diesem abgestimmt. Auch nach der finalen Abstimmung am Ende von SE I wird der Projektfortschritt regelmäßig mit der Vision und dem Auftraggeber abgeglichen und ggf. auf neue oder geänderte Anforderungen angepasst. 
 
 |Use Case Driven Developement
-|Dem gesamtem Projekt liegt das ein Use Case Model zugrunde welches in Zusammenarbeit mit dem Auftraggeber entwickelt wurde. Aus diesem ergeben sich auch system-weite funktionale Anforderungen, die nicht als Use Cases ausgedrückt werden können. Auch Anforderungen zur Benutzbarkeit werden beschrieben.
+|Dem gesamtem Projekt liegt das ein Use Case Model zugrunde welches in Zusammenarbeit mit dem Auftraggeber entwickelt wurde. Weiterhin wurden system-weite funktionale Anforderungen beschrieben, die nicht als Use Cases ausgedrückt werden können. Auch Anforderungen zur Benutzbarkeit werden beschrieben.
+
+|Evolutionary Architecture
+|Das Architecture Notebook wird schrittweise bearbeitet. Es wird sich hierbei am Projektfortschritt orientiert. Neue Entwicklungen oder Probleme während der Implementierung werden in der Architektur berücksichtigt.
+
+|feste Termine für das Teammeeting
+|In SE I gab keinen festen Termin, wo das Teammeeting stattfand. In SE II wurde zu Beginn ein fester Termin in einem festen Zyklus ausgemacht, wo die Meetings stattfanden. So gab es eine bessere Planbarkeit für alle Teammitglieder und eine bessere Struktur im Projekt.
 
 |Meeting Template
-|Für die Meetings wurde ein festes Template zur Dokumentation genutzt. So entwickelte sich schnell ein fester Ablauf, da man sich gut an der Vorlage orientieren konnte und der Ablauf quasi 
+|Für die Meetings wurde ein festes Template zur Dokumentation genutzt. So entwickelte sich schnell ein fester Ablauf der Meetings, da man sich gut an der (vorbereiteten) Vorlage orientieren konnte so die Punkte effizient abgearbeitet werden konnten. 
 
-|#Art des Testens#
-|#blablabla#
+|klare Trennung der Verantwortlichkeiten
+|Die verteilten Rollen in unserem Projekt arbeiteten sehr stark in ihrem Aufgabenbereich. Die war mehr eine gewachsene Struktur als eine bewusste Entscheidung. So konnte jedes Teammitglied in seiner Funktion arbeiten und den Überblick behalten. Allerdings führte das auch zu einer unterschiedlichen Verteilung der Arbeitslast. 
 
 |Risikomanagement
-|
+|Über den Projektverlauf wurde eine Risikoliste geführt und jede Iteration ständig aktualisiert. Damit konnte man Risiken frühzeitig erkennen und entsprechende Gegenmaßnahmen ergreifen.
 
 |Fachaustausch
-|
+|Im Rahmen von SE II fand innerhalb der Praktikumszeiten ein Fachaustausch jeweils zu den Themen Projektmanagement, Architektur und Testen statt. Dadurch musste man als Team selbst die aktuelle Arbeitsweise bzw. den Projektstand reflektieren und bekam andererseits auch Input von anderen Teams und konnte sehen, dass auch andere Teams mit Herausforderungen zu kämpfen hatte.
 
 |===
 
-* #Risk-Value Lifecycle#
-* #Release Planning#
-
-* *Whole Team*
-Das Team ist über die gesamte Projektlaufzeit immer mehr zusammengewachsen. Schon von Beginn an war unser Team sehr eigenverantwortlich organisiert. Jeder hat seinen eigenen Verantwortlich- und Kompetenzbereich worin selbstständig Aufgaben erkannt, benannt und im Team besprochen und verteilt werden. 
-
-Zu Beginn des Projektes führte dies zu einem sehr unterschiedlichen Workload, auch bedingt durch die Rollenverteilung. Im Laufe des Projektes glich sich der workload der einzelnen Teammitglieder immer mehr an. Zum einen war dies bedingt durch eine bessere Aufgabenverteilung bedingt, aber auch das Team ist über die Zeit besser zusammengewachsen. Durch das steigende Zugehörigkeitsgefühl stieg auch die Bereitschaft andere Aufgaben zu übernehmen und nicht nur auf seinem Bereich zu schauen. So glich sich der workload über die Projektlaufzeit immer mehr an, sodass zum Ende des Projektes jeder einen ähnlichen workload hatte. Besonders wichtig war es hierbei, dass auch Aufgaben übernommen wurden, die weniger den eigenen Kompetenzen oder Wünschen entsprachen, aber zum Wohle des Teams bzw. des Projektes übernommen wurden. 
 
 
-* #Project Process Tailoring#
-
-*Technical Practices*
-
-* #Concurrent Testing#
-* #Continuous Integration#
-
-* #Ecolutionary Design#
-
-
-* #Test Driven Developement#
-
-*Deployment Practices*
-
-* Docuemtenation and Training
-* Production Realease
-////
 
 == Projektdurchführung
 // Kurze Beschreibung der Ziele, Aktivitäten und Ergebnisse in den OpenUP-Projektphasen / Iterationen, dabei Berücksichtigung des Zusammenspiels zwischen den einzelnen Rollen sowie Risiken
 
 === SE I - Inception und Elaboration Phase
 
-.Inception Phase (12.12.2022 - 21.12.2022)
+.Inception Phase (12.12.2022 - 21.12.2022) (MM)
 
 Ziel der Inception Phase und der ersten Iteration war es sich als Team zu finden, Rollen und Verantwortlichkeiten zu verteilen und sich mit der Aufgabenstellung vertraut zu machen. Auch unseren Coach lernten wir kennen. Wir haben den Einsatz verschiedener Tools diskutiert und schließlich die passenden ausgewählt und eingerichtet. Auch fand ein erstes Treffen mit unseren Ansprechpartnern beim StuRa statt um sich gegenseitig kennenzulernen und über die Wünsche und Anforderungen zu sprechen. Da wir nicht die erste Gruppe waren, die an diesem Projekt arbeitete war es für uns natürlich auch interessant noch ein paar mehr Hintergrundinformationen zu bekommen. Die erste zentrale Frage für uns war, was und wie viel wir von dem Vorgängerprojekt übernommen wollen oder ob wir komplett neu anfangen wollen. Dies wurde uns vom StuRa freigestellt. Wir entschieden schließlich das Front End bzw. das Design des Vorgängerprojektes zu übernehmen und das Back End neu zu entwickeln. Dazu besprachen wir verschiedene Möglichkeiten der Umsetzung und der Machbarkeit dieser. Nach dieser Entscheidung und dem Input durch den StuRa erarbeiteten wir die Vision und erste Ideen für die Use Cases. Die Inception Phase endete mit dem Erreichen des Meilenstein Lifecycle Objective.
  
-.Elaboration Phase (04.01.2023 - 27.01.2023)
+.Elaboration Phase (04.01.2023 - 27.01.2023) (MM)
 
 In der Elaboration Phase hatten wir zwei Iterationen in der unsere Analyse konkretisiert und die Use Cases detailliert ausgearbeitet und beschrieben wurden. Zu Beginn arbeiteten wir noch an Details der Vision und begannen uns in alle anderen Teile der Dokumentation einzuarbeiten. Wir entschieden für das Glossar die Antragsdaten sehr ausführlich dazustellen. Wir trafen uns zu Beginn erneut mit dem StuRa um den Ablauf der Antragstellung besser zu verstehen und eine bessere Vorstellung er bekommen. Ein Problem des StuRa war das z. T. in die Tagesordnung Punkte und Informationen aufgenommen werden sollten, die nicht als Anträge gestellt werden. Also mussten wir uns überlegen wie sowohl die Anträge aus dem Tool als auch zusätzliche Informationen in die Tagesordnung aufgenommen werden können. Der StuRa nutze bisher ein Pentapad für die Tagesordnung wo alle Anträge und weiteren Punkte aufgeschrieben wurden und auch während der Sitzung Protokoll geschrieben wurde. Wir diskutierten dazu verschiedene Möglichkeiten wie wir diese Flexibilität weiter gewährleisten konnten und entschieden uns schließlich dazu das Pentapad weiter zu nutzen und über eine API in unser Tool einzubinden. Damit fügte sich das Tool gut in den derzeitigen Ablauf beim StuRa ein und wir erhoffen uns dadurch eine höhere Akzeptanz. Wir erarbeiteten schließlich die Use Cases und formulierten die Systemwide Requirements. Gleichzeitig wurden erste Entscheidungen für die Architektur getroffen und ausformuliert. 
 Die Teammitglieder, die nicht primär mit der Analyse beschäftigt und auch Verantwortlich für Implementierung und Test waren, arbeiteten sich in das Framework Django ein und erstellten ein erstes Datenbankschema. 
@@ -223,6 +201,8 @@ Der Abnahmetermin für das ABV-Tool sollte eigentlich am 21.06.2023 stattfinden.
 === Ergebnisse
 
 //Projektergebnisse mit Bezug auf die Ziele / Aufgabenstellung: Was haben wir erreicht und was nicht? Was waren die Gründe für Abweichungen?
+
+//Bewertung Praktiken
 
 ==== Ziel des Projektes
 
