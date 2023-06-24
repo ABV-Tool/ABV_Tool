@@ -7,6 +7,14 @@
     <!-- insert custom header elements -->
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-lock"></i> Intern</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'sitzungsverwaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'sitzung-anlegen' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-circle-plus"></i> Anlegen</a>
+{% endblock %}
+
 {% block content %}
     <form method="POST" action="" class="ml-96 mr-96">
         {% csrf_token %}

@@ -6,6 +6,10 @@
     {{ block.super }}
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="{% url 'archiv' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-box-archive"></i> Archiv</a>
+{% endblock %}
+
 {% block content %}
 
     <div class="ml-80 mr-80">
@@ -83,9 +87,10 @@
 
             <thead>
                 <tr>
+                    <th scope="col">Datum</th>
                     <th scope="col">Titel</th>
                     <th scope="col">Antragstyp</th>
-                    <th scope="col">Antragsteller</th>
+                    <th scope="col">Referat</th>
                     <th scope="col">Beschluss</th>
                     <th scope="col">Aktionen</th>
                 </tr>
@@ -94,9 +99,10 @@
             <tbody>
                 {% for antrag in antraege %}
                 <tr>
+                    <td>{{ antrag.erstelltDate | date:"d.m.Y" }}</td>
                     <td>{{ antrag.antragTitel | truncatechars:50 }}</td>
                     <td>{{ antrag.typID.typName }}</td>
-                    <td>{{ antrag.astellerID.astellerName | truncatechars:40 }}</td>
+                    <td>{{ antrag.sitzID.refID.refName }}</td>
                     <td>
                         {% include 'components/table_column_beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}
                     </td>

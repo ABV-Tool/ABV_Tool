@@ -7,6 +7,12 @@
     <!-- insert custom header elements -->
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-lock"></i> Intern</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'sitzungsverwaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-regular fa-folder-open"></i> Anträge</a>
+{% endblock %}
+
 {% block content %}
     <!-- insert content -->
     <div class="ml-40 mr-40">
@@ -57,15 +63,6 @@
             </tbody>
         </table>
 
-        <script>
-            // Wenn der Nutzer über den Browser zurück navigiert, wird die Seite neu geladen
-            // Dadurch werden die Daten wieder aktuell geladen
-            var perfEntries = performance.getEntriesByType("navigation");
-
-            if (perfEntries[0].type === "back_forward") {
-                location.reload(true);
-            }
-        </script>
 
     </div>
 {% endblock %}

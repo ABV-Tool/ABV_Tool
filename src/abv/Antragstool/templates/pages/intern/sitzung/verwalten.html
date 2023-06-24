@@ -7,6 +7,14 @@
     <!-- insert custom header elements -->
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-lock"></i> Intern</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'sitzungsverwaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-list-check"></i> {{ sitzung }}</a>
+{% endblock %}
+
 {% block content %}
     <!-- insert content -->
     <div class="ml-40 mr-40">
@@ -21,7 +29,7 @@
         </div>
 
         <div class="w-full pt-4">
-            {% include 'components/alert.html' with type="INFO" text="Die Reihefolge der Anträge bestimmt, wie die TOP's in die TO eingespeißt werden. Sollte ein Antrag eine erhöhte Priorität haben, nutze den Button links beim Antrag; dieser wird anschließend nach ganz Oben geschoben." %}
+            {% include 'components/alert.html' with type="INFO" text="Die <b>Reihefolge</b> der <b>Anträge</b> bestimmt, wie die <b>Tagesordnungspunkte</b> in die <b>Etherpad-Tagesodnung</b> eingespeißt werden. Sollte ein <b>Antrag</b> eine <b>erhöhte Priorität</b> haben, nutze den <b>Button</b> links beim Antrag; dieser wird anschließend nach <b>ganz Oben geschoben</b>." %}
         </div>
 
         <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-1">
@@ -73,16 +81,22 @@
                         </a>
 
                         <a href="{% url 'antrag-vertagen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
+                            <i class="fa-regular fa-calendar-xmark"></i> 
                             {% if antrag.beschlussID %}
-                                <s><i class="fa-regular fa-calendar-xmark"></i> Vertagen</s>
+                                <s>Vertagen</s>
                             {% else %}
-                                <i class="fa-regular fa-calendar-xmark"></i> Vertagen
+                                Vertagen
                             {% endif %}
                         </a>
 
                         {% if antrag.beschlussID %}
                             <a href="{% url 'antrag-beschliessen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                                <i class="fa-solid fa-pen-to-square"></i> Beschluss bearbeiten
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                {% if antrag.beschlussID.beschlussErgebnis|lower == 'vertagt' %}
+                                    <s>Beschluss bearbeiten</s>
+                                {% else %}
+                                    Beschluss bearbeiten
+                                {% endif %}
                             </a>
                         {% else %}
                             <a href="{% url 'antrag-beschliessen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
