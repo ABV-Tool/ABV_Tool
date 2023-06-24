@@ -178,8 +178,8 @@ def SitzungsverwaltungPage(request):
     referate = Referat.objects.all().order_by('refID')
     sitzungen = Sitzung.objects.all().filter(sitzDate__gt=date.today()).order_by('refID').order_by('sitzDate')
     
-    # Alle Sitzungen, welche in 14+ Tagen stattfinden
-    sitzungen_14_tage = Sitzung.objects.all().filter(sitzDate__gt=date.today() + timedelta(days=7)).order_by('sitzDate')
+    # Alle Sitzungen, welche in 14+ Tagen stattfinden und nicht vertagt wurden
+    sitzungen_14_tage = Sitzung.objects.all().filter(sitzDate__gt=date.today() + timedelta(days=7)).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')
     referate_ohne_sitzung = []
     
     # Anzahl der Anträge pro Sitzung berechnen | Filtere Anträge, die vertagt wurden
