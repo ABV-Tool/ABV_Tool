@@ -18,44 +18,42 @@
 
     <div class="ml-80 mr-80">
 
-        <div class="w-full">
-            <a href="{% url 'referat-erstellen' %}" class="btn btn-success w-full hover:cursor-pointer">
+        <div class="flex flex-row mt-3 text-center">
+            <a href="{% url 'referat-erstellen' %}" class="btn btn-success p-5 w-full hover:cursor-pointer">
                 <i class="fa-solid fa-circle-plus"></i> Referat erstellen
             </a>
         </div>
 
-        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-1">
-            <caption class="text-left">
-                <h2><b>Alle aktuellen Referate/Stellen</b></h2>
-            </caption>
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Referats-Name</th>
-                    <th scope="col">Kontakt E-Mail</th>
-                    <th scope="col">Aktionen</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for referat in referate %}
-                <tr>
-                    <td>{{ referat.refID }}</td>
-                    <td>{{ referat.refName }}</td>
-                    <td>{{ referat.refEmail }}</td>
-                    <td>
-                        <a href="{% url 'referat-bearbeiten' refID=referat.refID %}" class="hover:cursor-pointer mr-5">
-                            <i class="fa-solid fa-pen-to-square"></i> Bearbeiten
-                        </a>
+        <div class="relative overflow-x-auto bg-[#b4b4b4] p-5 mt-10 rounded-lg">
+            <table class="table-auto w-full text-left overflow-x-auto border-collapse border-spacing-y-2">
+                <thead class="text-gray-700 uppercase">
+                    <tr class="border-b border-b-[#dcdcdc]">
+                        <th scope="col" class="px-2 py-3 text-center">ID</th>
+                        <th scope="col" class="px-2 py-3">Referats-Name</th>
+                        <th scope="col" class="px-2 py-3">Kontakt E-Mail</th>
+                        <th scope="col" class="px-2 py-3 text-center">Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for referat in referate %}
+                    <tr class="border-b border-b-[#dcdcdc]">
+                        <td class="px-2 py-3 text-center">{{ referat.refID }}</td>
+                        <td class="px-2 py-3">{{ referat.refName }}</td>
+                        <td class="px-2 py-3">{{ referat.refEmail }}</td>
+                        <td class="px-2 py-3 text-center">
+                            <a href="{% url 'referat-bearbeiten' refID=referat.refID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
+                                <i class="fa-solid fa-pen-to-square"></i> Bearbeiten
+                            </a>
 
-                        <a href="{% url 'referat-loeschen' refID=referat.refID %}" class="hover:cursor-pointer">
-                            <i class="fa-solid fa-trash-can"></i> Löschen
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                            <a href="{% url 'referat-loeschen' refID=referat.refID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                                <i class="fa-solid fa-trash-can"></i> Löschen
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
         <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
         {% if messages %}

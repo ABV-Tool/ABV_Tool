@@ -18,8 +18,8 @@
 
     <div class="ml-80 mr-80">
 
-        <div class="w-full">
-            <a href="{% url 'sitzung-anlegen' %}" class="btn btn-success w-full hover:cursor-pointer">
+        <div class="flex flex-row mt-3 text-center">
+            <a href="{% url 'sitzung-anlegen' %}" class="btn btn-success p-5 w-full hover:cursor-pointer">
                 <i class="fa-solid fa-circle-plus"></i> Sitzung anlegen
             </a>
         </div>
@@ -34,64 +34,62 @@
             </div>
         {% endif %}
 
+        <div class="relative overflow-x-auto bg-[#b4b4b4] p-5 mt-10 rounded-lg">
+            <table class="table-auto w-full text-left overflow-x-auto border-collapse border-spacing-y-2">
+                <thead class="text-gray-700 uppercase">
+                    <tr class="border-b border-b-[#dcdcdc]">
+                        <th scope="col" class="px-2 py-3">Datum</th>
+                        <th scope="col" class="px-2 py-3">Referat</th>
+                        <th scope="col" class="px-2 py-3 text-center">Anträge</th>
+                        <th scope="col" class="px-2 py-3 text-center">Aktionen</th>
+                        <th scope="col" class="px-2 py-3">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sitzung in sitzungen %}
+                    <tr class="border-b border-b-[#dcdcdc]">
+                        <td class="px-2 py-3">{{ sitzung.sitzDate | date:"d.m.Y" }}</td>
+                        <td class="px-2 py-3">{{ sitzung.refID.refName }}</td>
+                        <td class="px-2 py-3 text-center">{{ sitzung.anzAntraege }}</td>
+                        <td class="px-2 py-3 text-center">
 
-        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-2">
-            <caption class="text-left">
-                <h2><b>Alle aktuellen Sitzungen</b></h2>
-            </caption>
-            <thead>
-                <tr>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Referat</th>
-                    <th scope="col">Anträge</th>
-                    <th scope="col">Aktionen</th>
-                    <th scope="col">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for sitzung in sitzungen %}
-                <tr>
-                    <td>{{ sitzung.sitzDate | date:"d.m.Y" }}</td>
-                    <td>{{ sitzung.refID.refName }}</td>
-                    <td>{{ sitzung.anzAntraege }}</td>
-                    <td>
+                            <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
+                                <i class="fa-solid fa-list-check"></i>
+                                {% if sitzung.sitzStatus|lower == "vertagt" %}
+                                    <s>Verwalten</s>
+                                {% else %}
+                                    Verwalten
+                                {% endif %}
+                            </a>
 
-                        <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
-                            <i class="fa-solid fa-list-check"></i>
-                            {% if sitzung.sitzStatus|lower == "vertagt" %}
-                                <s>Verwalten</s>
-                            {% else %}
-                                Verwalten
-                            {% endif %}
-                        </a>
+                            <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
+                                <i class="fa-regular fa-calendar-xmark"></i>
+                                {% if sitzung.sitzStatus|lower != "offen" %}
+                                    <s>Vertagen</s>
+                                {% else %}
+                                    Vertagen
+                                {% endif %}
+                            </a>
 
-                        <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
-                            <i class="fa-regular fa-calendar-xmark"></i>
-                            {% if sitzung.sitzStatus|lower != "offen" %}
-                                <s>Vertagen</s>
-                            {% else %}
-                                Vertagen
-                            {% endif %}
-                        </a>
+                            <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                                <i class="fa-solid fa-trash-can"></i>
+                                {% if sitzung.sitzStatus|lower != "offen" %}
+                                    <s>Löschen</s>
+                                {% else %}
+                                    Löschen
+                                {% endif %}
+                            </a>
 
-                        <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                            <i class="fa-solid fa-trash-can"></i>
-                            {% if sitzung.sitzStatus|lower != "offen" %}
-                                <s>Löschen</s>
-                            {% else %}
-                                Löschen
-                            {% endif %}
-                        </a>
-
-                    </td>
-                    
-                    <td>
-                        {% include 'components/table_column_sitzung.html' with status=sitzung.sitzStatus %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        </td>
+                        
+                        <td class="px-2 py-3">
+                            {% include 'components/table_column_sitzung.html' with status=sitzung.sitzStatus %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
 
         <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->

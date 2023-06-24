@@ -19,15 +19,12 @@
     <form method="POST" action="" class="ml-96 mr-96">
         {% csrf_token %}
 
-        <h1 class="text-center"><b>{{ title }}</b></h1>
-
-
         <div class="relative py-4 mt-5 mb-4">
             <div class="absolute inset-0 flex items-center">
                 <div class="w-full border-b border-gray-700"></div>
             </div>
             <div class="relative flex justify-center">
-                <span class="bg-[#dcdcdc] px-4 text-3xl text-black"></span>
+                <span class="bg-[#dcdcdc] px-4 text-4xl text-black">{{ title }}</span>
             </div>
         </div>
 
