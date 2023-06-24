@@ -202,7 +202,7 @@ def SitzungsverwaltungPage(request):
 
 def SitzungAnlegenPage(request):
     referate = Referat.objects.all().order_by('refID')
-    date = datetime.now().date() + timedelta(days=7)
+    date = datetime.now().date() + timedelta(days=14)
     
     if request.method == 'POST':
         form = SitzungAnlegenForm(request.POST)
