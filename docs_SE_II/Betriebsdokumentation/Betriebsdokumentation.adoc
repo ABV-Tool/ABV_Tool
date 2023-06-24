@@ -10,6 +10,8 @@
 * WSGI-kompatibler Webserver (Apache, Nginx)
 * Betriebssystem (idealerweise NixOS)
 * Python 3.9
+* Docker
+* lokal laufendes Etherpad
 * CertBot
 
 Mindestanforderungen der Hardware sind die gleichen wie die vom WSGI-kompatiblen Webserver und die vom Betriebssystem.
@@ -20,13 +22,27 @@ Mindestanforderungen der Hardware sind die gleichen wie die vom WSGI-kompatiblen
 // Wie müssen die Bestandteile ihres Systems konfiguriert werden? IP-Adressen, Passwörter, Berechtigungen, …
 
 
-Alles im Ordner src muss auf den Server kopiert werden. Anschließend muss die Datendank eingerichtet werden. Diese soll leer sein und einen Nutzer haben. Die Datei settings.py muss an die neu erstellte Datenbank angepasst, ein secret Key generiert und Debug auf false gesetzt werden. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen. Ein TLS Zertifikat muss zuletzt erstellt werden, damit die Verschlüsselung der Verbindungen möglich ist.
+1. Alles im Ordner _.src_\ muss auf den Server kopiert werden.
+
+2. Mithilfe von _cd src_\ und dem Befehl _pip install -r requirements.txt_ werden die nötigen Bibliotheken installiert.
+
+3. Anschließend muss die Datendank eingerichtet werden. Diese soll leer sein und einen Nutzer haben. Die Datei _settings.py_ muss an die neu erstellte Datenbank angepasst, ein secret Key generiert und Debug auf false gesetzt werden.
+
+4. Sie wird anschließend mit _docker-compose up_ gestartet.
+
+5. Als Nächstes muss Django migriert werden. Mit _cd srv_\ _abv_\ und anschließend _python manage.py makemigrations_ und _python manage.py migrate_.
+
+6. Es ist wichtig die folgenden Befehle in der Reihenfolge einzugeben, damit die Daten ordentlich auf der Datenbank hinterlegt werden! Zuerst _python manage.py loaddata referate.json_, dann _python manage.py loaddata antragstyp.json_ und anschließend _python manage.py loaddata sitzungen.json_.
+
+7. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen. Ein TLS Zertifikat muss zuletzt erstellt werden, damit die Verschlüsselung der Verbindungen möglich ist.
+
+8. Zuletzt muss der Django Server gestartet werden mit _python manage.py runserver 127.0.0.1:8000_
 
 == Systembetreuung
 // FAQ für Benutzersupport 
 // Fehlerdiagnose, z.B. anhand von Logfile-Einträgen
 // Datensicherung und –wiederherstellung
-Bei der Installation können automatische Updates aktiviert werden. Außerdem sollte in regelmäßigen Abständen Updates von Python Paketen installiert werden. hierbei muss allerdings beachtet werden, dass hierbei keine Kompatibilitätsprobleme auftreten. Ggf. muss in solchen Fällen der Anwendungscode angepasst werden.
+Bei der Installation können automatische Updates aktiviert werden. Außerdem sollte in regelmäßigen Abständen Updates von Python Paketen installiert werden. Hierbei muss allerdings beachtet werden, dass hierbei keine Kompatibilitätsprobleme auftreten. Ggf. muss in solchen Fällen der Anwendungscode angepasst werden.
 
 Sonst:
 Frag am Besten Göran Kappa
