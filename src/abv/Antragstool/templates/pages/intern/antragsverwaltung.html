@@ -131,12 +131,17 @@
                                 <i class="fa-solid fa-xmark"></i>
                             {% endif %}
                         </td>
-                        <td class="px-2 py-3">
+                        <td class="px-2 py-3 text-center">
                             <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
                                 <i class="fa-solid fa-eye"></i> Anzeigen
                             </a>
                             <a href="{% url 'antrag-bearbeiten' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
-                                <i class="fa-solid fa-pen-to-square"></i> Bearbeiten
+                                <i class="fa-solid fa-pen-to-square"></i> 
+                                {% if antrag.beschlussID %}
+                                    <s>Bearbeiten</s>
+                                {% else %}
+                                    Bearbeiten
+                                {% endif %}
                             </a>
                             <a href="{% url 'sitzung-verwalten' sitzID=antrag.sitzID.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
                                 <i class="fa-solid fa-diamond-turn-right"></i> Sitzung

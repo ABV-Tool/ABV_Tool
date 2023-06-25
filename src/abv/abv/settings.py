@@ -169,7 +169,6 @@ NPM_BIN_PATH=r"C:\Program Files\nodejs\npm.cmd"
 
 
 # E-Mail Settings
-# TODO Production: Mailserver anpassen
 EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
@@ -179,7 +178,6 @@ EMAIL_TOOL = 'abv@stura.htw-dresden.de'
 
 
 # Etherpad Settings
-# TODO Production: Etherpad-Server & API-Key anpassen
 ETHERPAD_API_KEY = os.environ.get('ETHERPAD_API_KEY')
 ETHERPAD_HOST = 'https://pad.htw.stura-dresden.de'
 ETHERPAD_API_ENDPOINT = ETHERPAD_HOST + '/api/1.2.15/'
