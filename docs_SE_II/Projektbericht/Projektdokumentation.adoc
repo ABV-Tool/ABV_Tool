@@ -169,7 +169,9 @@ In dieser Iteration fand der erste Fachaustausch im Rahmen von SE II statt. Dazu
 
 #Entwicklerdoku und Betriebsdoku begonnen?#
 
-Da unser eigentlicher Testverantwortlicher doch hauptsächlich die Implementierung übernahm, entschieden wir uns unseren Analysten mit dem Testen zu betrauen. #Planung testen#
+#Planung testen#
+Da unser eigentlicher Testverantwortlicher hauptsächlich für die Implementierung zuständig war, haben wir beschlossen, unseren Analysten mit dem Testen zu beauftragen. In der Planungsphase wurden die Prioritäten der zu implementierenden Tests in Absprache mit dem Entwicklungsteam festgelegt. Dabei wurden Initialisierungstests erstellt, insbesondere Unittests für die Datenbankinitialisierung.
+
 
 In dieser Iteration haben wir einige potenzielle Risiken entdeckt. Zum ersten haben wir uns seit Beginn der SE II nicht mit der STURA getroffen.
 Wir wollen sie über den aktuellen Stand des Projekts informieren und auch erörtern, ob wir ihren Anforderungen gerecht werden. Um genau zu sein, gibt es noch einige Fragen zum Design und Layout des ABV-Tools. Zum Beispiel wissen wir noch nicht, wie genau die Beschlusseinpflege aussehen wird. Deshalb planen wir für die nächste Iteration ein Treffen mit dem STURA. Zusätzlich planen wir die Erstellung von
@@ -187,7 +189,7 @@ Am 23.05.2023 trafen wir uns mit dem StuRa um den aktuellen Stand zu präsentier
 
 In der gleichen Woche traf sich die Teamleitung mit unserem Coach Manuela Ziesche um den aktuellen Projektstand zu besprechen und Fragen zur Dokumentation zu klären. 
 
-In dieser Iteration begannen wir so richtig mit dem Testen. Dazu wurde zunächst das System bei einem Teammitglied auf dem privaten Rechner eingerichtet und geprüft ob die Einrichtung so funktioniert wie sie soll. #weitere Schritte testen#
+In dieser Iteration haben wir mit dem Testen begonnen. Zunächst haben wir das System bei einem Teammitglied auf dem privaten Rechner eingerichtet und überprüft, ob die Einrichtung wie vorgesehen funktioniert. Der Smoke-Test war erfolgreich, und das System konnte fehlerfrei auf dem Rechner eingerichtet werden. Anschließend haben wir einen Unittest für den Login und Logout implementiert und sowohl positive als auch negative Testfälle berücksichtigt. #weitere Schritte testen#
 
 Durch das gespräch mit dem Stura konnten wir einige potenzielle risiken klären und besprechen. Zum einem entsprach das Frontend der Webseite(bis auf ein paar ausnahmen) den wünschen des Sturas. Zum anderen konnten noch spezifische fragen wie das interne nummerieren der Sitzungen besprochen werden.  Es wurde auch entschlossen das man nur einen Antrag an den StuRa senden kann wenn man eine gültige HTW e-mail besitzt um sich besser von potenziellen spam, oder andere angriffen zuz schützen.
 
@@ -199,13 +201,15 @@ In der folgenden Woche fand der letzte Fachaustausch zum Thema Testen statt. Zwe
 In dieser Iteration wurde weiter an den Use Cases 2 und 4 gearbeitet. Nach den Problemen mit dem Etherpad in der letzten Iteration musste nun die Vorlage für die Tagesordnung erstellt werden. Die Formatierung, das Übertragen der Daten aus dem ABV-Tool und die richtige Darstellung nahm ebenfalls sehr viel Zeit in Anspruch. Am Ende war jedoch eine Generierung der Tagesordnung mit allen erforderlichen Daten möglich. +
 Außerdem wurde der neue Use Case 7 "Sitzung anlegen" umgesetzt, welcher sich aus dem Gespräch mit dem StuRa ergeben hatte. Dafür mussten die vorher in einem festen Zyklus stattfindenden Sitzungen so umgewandelt werden, dass der Antragsverwalter das Datum der Sitzung selbst bestimmen kann. Dies konnte problemlos geändert werden. Auch die Logik für das Stellen eines Eilantrages und des File Uploads wurde nun umgesetzt. Damit war nun der Use Case 1 endgültig abgeschlossen.
 
-Für das Testen wurde außerdem GitHub Actions eingerichtet. #testen, Differenzierung Unit- und End-to-End Tests#
+Für das Testen haben wir außerdem eine GitHub Actions Pipeline eingerichtet, die automatisch vorhandene Tests durchführt, sobald eine Änderung in den Master-Branch gemerged oder committet wird. Zusätzlich haben wir weitere Unittests für das Stellen eines Antrags implementiert. Des Weiteren haben wir begonnen, intensive manuelle End-to-End-Tests für die Standardprozesse durchzuführen. #testen, Differenzierung Unit- und End-to-End Tests#
 
 === Projektabschluss
 
 *Iteration 9 (12.06. - 23.06.2023)*
 
 Die neunte und letzte Iteration sollte gleichzeitig die Transition Phase des Projektes sein. Da die Umsetzung der verbliebenen Use Cases länger dauerte als ursprünglich gedacht, konnte der Projektabschluss nicht so ablaufen wie geplant. Wir wollten jedoch die Use Cases rund um die Sitzungsverwaltung gern noch abschließen, um das Projekt zu einem guten Abschluss zu bringen und dem StuRa kein halbfertiges System übergeben zu müssen. Damit implementierten wir auch in der letzten Iteration noch, und das Ende der Construction Phase und die Transition Phase fielen in den selben Zeitraum. Insbesondere mussten noch der Use Cases 3 "Sitzung abschließen" und der Use Case 6 "Beschlüsse einpflegen" abschließend implementiert werden.
+
+Gleichzeitig haben wir unsere Tests intensiviert und umfangreiche manuelle End-to-End-Tests durchgeführt. Dabei lag unser besonderer Fokus auf Negativtests, bei denen wir gezielt Fehler im System gesucht haben. Dadurch konnten wir einerseits die Fehlertoleranz ermitteln und andererseits kritische Bugs finden und beheben. 
 
 Zum Abschluss glichen wir nochmals die Anforderungsspezifikation mit dem tatsächlichen System ab und prüften ob die Abläufe richtig beschrieben waren. Hierbei gab es einige Anpassungen bei den Use Cases 2 und 3, da der Ablauf nun doch anders umgesetzt wurde als ursprünglich geplant. Auch die systemweiten Anforderungen und das Domänenmodell wurde nochmals mit dem Projektstand abgeglichen und kleine Anpassungen vorgenommen. Die Entwickler-, Benutzer und Testdokumentation wurde ebenfalls abschließend bearbeitet und im gesamten Team vorgestellt und besprochen. Als letzte Dokumention wurde schließlich noch die Anwenderdokumention erstellt. #Dazu wurden verschiedene Screenshots zu den wichtigsten Funktionalitäten erstellt# 
 
