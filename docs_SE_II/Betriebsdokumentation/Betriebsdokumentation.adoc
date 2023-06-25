@@ -29,9 +29,9 @@ Die Befehle sollen per Terminal eingegeben werden.
 
 3. `docker-compose up -d` um die Datenbank und Djangoanwendung zu starten.
 
-4. `docker exec -i src-abv-1 bash < dbinit.sh` befüllt die Datenbank mit den in `./src/abv/Antragstool/fixtures` festgelegten Default-Daten.
+4. `docker exec -i abv-tool bash < dbinit.sh` befüllt die Datenbank mit den in `./src/abv/Antragstool/fixtures` festgelegten Default-Daten.
 
-5. `docker exec -it src-abv-1 python3 abv/manage.py createsuperuser` kreiert einen Nutzer für den internen Bereich im Tool.
+5. `docker exec -it abv-tool python3 abv/manage.py createsuperuser` kreiert einen Nutzer für den internen Bereich im Tool.
 
 6. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen.
 
