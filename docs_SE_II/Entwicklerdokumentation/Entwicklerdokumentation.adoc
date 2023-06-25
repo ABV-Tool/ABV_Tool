@@ -73,6 +73,8 @@ image::Datenbankschema.png[title="Datenbankschema"]
 
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
 
+Zur Vereinfachten Darstellung nutzen wir keine expliziten Funktionen, da bei jedem Schritt zu viele Funktionen aufgerufen werden und es so zu unübersichtlich wird.
+
 [plantuml, "{diagramsdir}/sequenzdiagramm_antragsteller", svg, title="Sequenz Diagramm Antrag stellen"]
 ....
 actor Antragssteller
