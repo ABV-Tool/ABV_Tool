@@ -1,9 +1,10 @@
 = Testdokumentation
 
-== Teststragie
+== Teststrategie
 
-Unser Fokus beim Testen lag auf dem Stellen von Anträgen sowie der Generierung der Tagesordnung in Verbindung mit einer Sitzung, da diese die Grundfunktionalitäten abbilden. 
-Zudem handelt es sich um die meistgenutzten Funktionen, bei denen jedoch auch die meisten Fehler auftreten können, da es zu Inkonsistenzen bei den Anträgen kommen kann.
+Unser Fokus beim Testen lag auf dem Stellen von Anträgen sowie der Generierung der Tagesordnung in Verbindung mit einer Sitzung, da diese die Grundfunktionalitäten abbilden. +
+Zudem handelt es sich um die meistgenutzten Funktionen, bei denen jedoch auch die meisten Fehler auftreten können, da es zu Inkonsistenzen bei den Anträgen kommen kann. +
+Des Weiteren haben wir auch Tests der Datenbank sowie Login und Logout priorisiert, da der Stura besonderen Wert auf Konsistenz und Authentifizierung legt.
 
 == Testkonzept
 // Was sind die wichtigsten Komponenten, die getestet wurden? (Testobjekte auf unterschiedlichen Teststufen, siehe Testpyramide)
@@ -14,7 +15,8 @@ Die ersten Testinstanzen waren manuelle Tests, die vom Entwickler während der E
 Dabei wurden diese Komponenten einzeln auf ihre Funktionalitäten und Methoden überprüft, mithilfe von Unittests. 
 Es wurden Unittests für die Datenbankinitialisierung, den Login, Logout und die Antragstellung implementiert.
 
-Nachdem die Komponententests erfolgreich waren, wurden auch Integrationstests durchgeführt, wie zum Beispiel die Kombination von Login und Anträgen sowie von Anträgen und Sitzungen. Anschließend wurden Smoke-Tests und End-to-End-Tests von Teammitgliedern durchgeführt.
+Nachdem die Komponententests erfolgreich waren, wurden auch Integrationstests durchgeführt, wie zum Beispiel die Kombination von Login und Anträgen sowie von Anträgen und Sitzungen bis zur Generierung von Tagesordnungen. +
+Anschließend wurden Smoke-Tests und End-to-End-Tests von Teammitgliedern durchgeführt.
 // Wann führt wer welche Tests durch? (Testdurchführungsplanung)
 In Bezug auf die Testdurchführungsplanung wurde der jeweilige Test-Verantwortliche beauftragt, einen Test für eine implementierte Funktionalität zu erstellen, sobald diese vom Entwickler freigegeben wurde. Anschließend wurde der Test durchgeführt.
 
@@ -25,7 +27,7 @@ In Bezug auf die Testdurchführungsplanung wurde der jeweilige Test-Verantwortli
 // Ablaufbeschreibung des Tests (manuell oder automatisiert)
 // Erwartetes Ergebnis, z.B. bestimmter Systemzustand, Fehlermeldung, Ausgabedaten
 
-== Vorbedingungen
+=== Vorbedingungen
 
 Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 
@@ -34,7 +36,7 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 . Der Host-Server ist online und erreichbar
 
 
-== Test Cases
+=== Test Cases
 
 === TC01 [Initialisierung] - Erfolgreich Initialisiert
 
@@ -105,7 +107,7 @@ Die Software muss den Login-Vorgang abbrechen.
 | Der Login-Vorgang lehnt ungültige Logindaten ab und gibt eine Fehlermeldung aus.
 
 | Konsequenz
-| Prüfung von undgültigen Logins funktioniert.
+| Prüfung von ungültigen Logins funktioniert und es kommt eine entsprechende Fehlermeldung.
 |===
 
 
@@ -131,7 +133,7 @@ Der Antrag muss an die Datenbank gesendet und der Vorgang beendet werden.
 | Ein vollständig ausgefüllter Antrag wird erfolgreich an die Datenbank gesendet und der nächstfolgenden Sitzung des ausgewählten Referats zugewiesen.
 
 | Konsequenz
-| Das stellen eines Antrages mit gültigen Daten funktioniert.
+| Das Stellen eines Antrages mit gültigen Daten funktioniert.
 |===
 
 
@@ -234,7 +236,7 @@ Die Daten werden korrekt abgebildet.
 | Ein Administrator kann einen gültigen Antrag auswählen und dessen Daten erfolgreich bearbeiten, wobei die Daten in der Datenbank korrekt aktualisiert werden.
 
 | Konsequenz
-| Das bearbeiten von Anträgen funktioniert.
+| Das Bearbeiten von Anträgen funktioniert.
 |===
 
 
@@ -243,26 +245,26 @@ Die Daten werden korrekt abgebildet.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Systemadministrator klick auf Sitzungungsverwaltung und wählt eine Sitzung aus. + 
-Anschließend klickt er auf Tagesordnung erstellen, dabei wird ein EtherPad-Link mit allen Beschlossenen Antragen estellt.
+| Der Systemadministrator klickt auf Sitzungungsverwaltung und wählt eine Sitzung aus. + 
+Anschließend klickt er auf Tagesordnung erstellen, dabei wird ein EtherPad-Link mit Anträgen erstellt.
 
 | Vorbedingung      
 | System muss vollständig eingerichtet und funktional sein. +
-Es musst mindestens eine Sitzung angelegt sein. +
+Es muss mindestens eine Sitzung angelegt sein. +
 Es muss mindestens ein Referat vorhanden sein. +
 Es muss mindestens ein Antrag gestellt worden sein.
 
 | Nachbedingung     
-| Die Tagesordnung wird erfolgreich mit allen Beschlossenen Anträgen generiert und es öffnet sich eine EtherPad-Link.
+| Die Tagesordnung wird erfolgreich mit allen Anträgen generiert und es öffnet sich eine EtherPad-Link.
 
 | Benötigte Daten   
 | Referat, Sitzung, Anträge
 
 | Testergebnis
-| Die Tagesordnung wird erfolgreich mit allen Beschlossenen Anträgen generiert und es öffnet sich eine EtherPad-Link.
+| Die Tagesordnung wird erfolgreich mit allen Anträgen generiert und es öffnet sich ein EtherPad-Link.
 
 | Konsequenz
-| Das generieren von Tagesordnungen und das erstellen eines EtherPad-Dokumentes mit korrektem Inhalt funktioniert.
+| Das Generieren von Tagesordnungen und das Erstellen eines EtherPad-Dokumentes mit korrektem Inhalt funktioniert.
 |===
 
 
@@ -311,7 +313,7 @@ Anträge, die dieser Sitzung zugeordnet waren, werden mitverschoben.
 | Ein Administrator kann einen Antrag erfolgreich auf eine andere Sitzung vertagen, indem der Antrag der entsprechenden Sitzung zugewiesen wird.
 
 | Konsequenz
-| Das vertagen von Sitzungen funktioniert.
+| Das Vertagen von Sitzungen funktioniert.
 |===
 
 
@@ -352,16 +354,16 @@ Es muss noch eine Fehlermeldung implementiert werden.
 | System muss vollständig eingerichtet und funktional sein.
 
 | Nachbedingung     
-| Das neu estellte Referat wird in der Referatsübersicht angezeigt und ist in der DB abgespeichert.
+| Das neu erstellte Referat wird in der Referatsübersicht angezeigt und ist in der DB abgespeichert.
 
 | Benötigte Daten   
 | Referatsdaten (Name, E-Mail)
 
 | Testergebnis
-| Das neu estellte Referat wird in der Referatsübersicht angezeigt und ist in der DB abgespeichert.
+| Das neu erstellte Referat wird in der Referatsübersicht angezeigt und ist in der DB abgespeichert.
 
 | Konsequenz
-| Das erstellen von Referaten funktioniert.
+| Das Erstellen von Referaten funktioniert.
 |===
 
 === TC14 [Referat] - Referat Löschen
@@ -385,7 +387,7 @@ Es muss mindestens ein Referat vorhanden sein.
 | Das ausgewählte Referat wird nicht mehr in der Referatsübersicht angezeigt und wurde aus der DB gelöscht.
 
 | Konsequenz
-| Das löschen eines Referates funktioniert.
+| Das Löschen eines Referates funktioniert.
 |===
 
 === TC15 [Sitzung] - Sitzung erstellen
@@ -393,7 +395,7 @@ Es muss mindestens ein Referat vorhanden sein.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Systemadministrator klickt auf Sitzung anlegen und wählt die Zuständige Stelle und das Datum der Sitzung aus.
+| Der Systemadministrator klickt auf Sitzung anlegen und wählt die zuständige Stelle und das Datum der Sitzung aus.
 
 | Vorbedingung      
 | System muss vollständig eingerichtet und funktional sein. +
@@ -410,7 +412,7 @@ Es muss mindestens ein Referat vorhanden sein.
 | Die neu erstellte Sitzung wird in der Sitzungsverwaltung angezeigt und ist in der DB vorhanden.
 
 | Konsequenz
-| Das erstellen von Sitzungen funktioniert.
+| Das Erstellen von Sitzungen funktioniert.
 |===
 
 
@@ -419,26 +421,26 @@ Es muss mindestens ein Referat vorhanden sein.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Systemadministrator klick auf Sitzungungsverwaltung und wählt eine Sitzung aus. + 
+| Der Systemadministrator klick auf Sitzungsverwaltung und wählt eine Sitzung aus. + 
 Anschließend klickt er auf Sitzung abschließen.
 
 | Vorbedingung      
 | System muss vollständig eingerichtet und funktional sein. +
-Es musst mindestens eine Sitzung angelegt sein. +
+Es muss mindestens eine Sitzung angelegt sein. +
 Es muss mindestens ein Referat vorhanden sein. +
 Es muss mindestens ein Antrag gestellt worden sein.
 
 | Nachbedingung     
-| Die Sitzung wird erfolgreich abgeschlossen und in der Sitzungsverwaltung als "Stattgefunden" makiert.
+| Die Sitzung wird erfolgreich abgeschlossen und in der Sitzungsverwaltung als "Stattgefunden" markiert.
 
 | Benötigte Daten   
 | Referat, Sitzung, Anträge
 
 | Testergebnis
-| Die Sitzung wurde erfolgreich abgeschlossen und in der Sitzungsverwaltung als "Stattgefunden" makiert.
+| Die Sitzung wurde erfolgreich abgeschlossen und in der Sitzungsverwaltung als "Stattgefunden" markiert.
 
 | Konsequenz
-| Das Abschließen der Sitzung fuinktioniert.
+| Das Abschließen der Sitzung funktioniert.
 |===
 
 === TC17 [Sitzung] - Tagesordung/Sitzung mit nicht abgeschlossenen Anträgen abschließen 
@@ -459,13 +461,13 @@ Es ist mindestens ein Antrag noch nicht behandelt.
 | Sitzung, Anträge
 
 | Testergebnis
-| Das Abschließen der Sitzung ist nicht möglich, da noch nicht alle Anträge behandelt wurden. Es wird eine entsprechende Fehlermeldung angezeigt.
+| Das Abschließen der Sitzung ist möglich. Es wird keine Fehlermeldung angezeigt.
 
 | Konsequenz
 | Die Funktionalität muss überarbeitet werden, um eine Prüfung der Anträge einzubauen.
 |===
 
-=== TC18 [Sitzung] - in Zunkunft liegende Sitzung abschließen 
+=== TC18 [Sitzung] - in Zukunft liegende Sitzung abschließen 
 
 [cols="18h,~"]
 |===
@@ -483,14 +485,14 @@ Alle Anträge müssen behandelt worden sein.
 | Sitzung, Anträge
 
 | Testergebnis
-| Das Abschließen der Sitzung ist nicht möglich, da die Sitzung in der Zukunft liegt. Es wird eine entsprechende Meldung angezeigt.
+| Das Abschließen der Sitzung ist möglich. Es wird keine Fehlermeldung angezeigt.
 
 | Konsequenz
 | Die Funktionalität muss überarbeitet werden, um eine Prüfung des Datums einzufügen.
 |===
 
 
-==== Konzequenzen
+==== Konsequenzen
 
 Die identifizierten Fehler und Abweichungen müssen behoben werden, um die Software zu verbessern und sicherzustellen, dass sie ordnungsgemäß funktioniert.
 Es sollte eine erneute Durchführung der fehlgeschlagenen Testfälle erfolgen, um sicherzustellen, dass die Fehler behoben wurden und die gewünschten Ergebnisse erzielt werden.
