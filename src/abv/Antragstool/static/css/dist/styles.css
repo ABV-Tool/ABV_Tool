@@ -1380,6 +1380,16 @@ select {
   }
 }
 
+@media not all and (min-width: 1024px) {
+  .max-lg\:ml-5 {
+    margin-left: 1.25rem;
+  }
+
+  .max-lg\:mr-5 {
+    margin-right: 1.25rem;
+  }
+}
+
 @media not all and (min-width: 768px) {
   .max-md\:block {
     display: block;
@@ -1423,6 +1433,14 @@ select {
 
   .md\:mr-40 {
     margin-right: 10rem;
+  }
+
+  .md\:ml-5 {
+    margin-left: 1.25rem;
+  }
+
+  .md\:mr-5 {
+    margin-right: 1.25rem;
   }
 
   .md\:block {
@@ -1476,8 +1494,70 @@ select {
   }
 }
 
+@media (min-width: 640px) {
+  @media (min-width: 768px) {
+    @media (min-width: 1024px) {
+      @media (min-width: 1280px) {
+        .sm\:md\:lg\:xl\:mr-5 {
+          margin-right: 1.25rem;
+        }
+
+        .sm\:md\:lg\:xl\:ml-5 {
+          margin-left: 1.25rem;
+        }
+      }
+    }
+  }
+}
+
 @media (min-width: 1280px) {
   .xl\:mr-40 {
     margin-right: 10rem;
+  }
+
+  .xl\:ml-80 {
+    margin-left: 20rem;
+  }
+
+  .xl\:mr-80 {
+    margin-right: 20rem;
+  }
+
+  .xl\:ml-5 {
+    margin-left: 1.25rem;
+  }
+
+  .xl\:mr-5 {
+    margin-right: 1.25rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .\32xl\:ml-80 {
+    margin-left: 20rem;
+  }
+
+  .\32xl\:mr-80 {
+    margin-right: 20rem;
+  }
+
+  .\32xl\:ml-40 {
+    margin-left: 10rem;
+  }
+
+  .\32xl\:mr-40 {
+    margin-right: 10rem;
+  }
+
+  .\32xl\:ml-96 {
+    margin-left: 24rem;
+  }
+
+  .\32xl\:mr-96 {
+    margin-right: 24rem;
+  }
+
+  .\32xl\:hidden {
+    display: none;
   }
 }

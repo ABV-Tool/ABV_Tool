@@ -16,7 +16,7 @@
 {% block content %}
     <!-- insert content -->
 
-    <div class="sm:ml-5 sm:mr-5 lg:mr-80 lg:ml-80">
+    <div class="xl:mr-5 xl:ml-5 2xl:mr-40 2xl:ml-40">
 
         <div class="flex flex-row mt-3 text-center select-none">
             <a href="{% url 'sitzung-anlegen' %}" class="btn btn-success p-5 w-full hover:cursor-pointer">
@@ -135,7 +135,7 @@
                                     Verwalten
                                 {% endif %}
                             </a>
-                            <br class="lg:hidden">
+                            <br class="2xl:hidden">
                             <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange select-none mr-5">
                                 <i class="fa-regular fa-calendar-xmark"></i>
                                 {% if sitzung.sitzStatus|lower != "offen" %}
@@ -144,7 +144,7 @@
                                     Vertagen
                                 {% endif %}
                             </a>
-                            <br class="lg:hidden">
+                            <br class="2xl:hidden">
                             <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange select-none">
                                 <i class="fa-solid fa-trash-can"></i>
                                 {% if sitzung.sitzStatus|lower != "offen" %}

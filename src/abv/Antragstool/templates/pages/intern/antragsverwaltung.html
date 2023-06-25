@@ -15,7 +15,7 @@
 
 {% block content %}
     <!-- insert content -->
-    <div class="sm:ml-5 sm:mr-5 lg:mr-40 lg:ml-40">
+    <div class="xl:mr-5 xl:ml-5 2xl:mr-40 2xl:ml-40">
 
         <div class="mb-5">
             <hr class="bg-gray-600 opacity-80 border-none h-1">
@@ -135,7 +135,7 @@
                             <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
                                 <i class="fa-solid fa-eye"></i> Anzeigen
                             </a>
-                            <br class="lg:hidden">
+                            <br class="2xl:hidden">
                             <a href="{% url 'antrag-bearbeiten' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
                                 <i class="fa-solid fa-pen-to-square"></i> 
                                 {% if antrag.beschlussID %}
@@ -144,7 +144,7 @@
                                     Bearbeiten
                                 {% endif %}
                             </a>
-                            <br class="lg:hidden">
+                            <br class="2xl:hidden">
                             <a href="{% url 'sitzung-verwalten' sitzID=antrag.sitzID.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
                                 <i class="fa-solid fa-diamond-turn-right"></i> Sitzung
                             </a>
