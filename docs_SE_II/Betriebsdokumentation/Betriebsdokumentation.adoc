@@ -23,15 +23,15 @@ Mindestanforderungen der Hardware sind die gleichen wie die vom WSGI-kompatiblen
 
 Die Befehle sollen per Terminal eingegeben werden.
 
-1. Alles im Ordner _./src_ muss auf den Server bzw. dem dedizierten Speicherort kopiert werden.
+1. Alles im Ordner `./src` muss auf den Server bzw. dem dedizierten Speicherort kopiert werden.
 
-2. _cd src_
+2. `cd src`
 
-3. _docker-compose up -d_ 
+3. `docker-compose up -d` um die Datenbank und Djangoanwendung zu starten.
 
-4. _docker exec -i src-abv-1 bash < dbinit.sh_
+4. `docker exec -i src-abv-1 bash < dbinit.sh` befüllt die Datenbank mit den in `./src/abv/Antragstool/fixtures` festgelegten Default-Daten.
 
-5. _docker exec -it src-abv-1 python3 abv/manage.py createsuperuser_
+5. `docker exec -it src-abv-1 python3 abv/manage.py createsuperuser` kriert einen Nutzer für den internen Bereich im Tool.
 
 6. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen.
 
