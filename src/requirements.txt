@@ -6,6 +6,7 @@ django-money
 fontawesomefree
 requests
 python-dotenv
+django-extensions
 
 # development dependencies
 django-tailwind
