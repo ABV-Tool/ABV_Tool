@@ -119,7 +119,7 @@ class Antragstyp(models.Model):
 class Antrag(models.Model):
     class Meta:
         db_table = 'antrag'
-        
+
     # Stammdaten jedes Antrags
     antragID = models.UUIDField(primary_key=True,
                                 default=uuid.uuid4,
