@@ -1,4 +1,6 @@
-= Testdokumentation
+= Testdokumentation: {project-name}
+:chapter-signifier: Kapitel
+include::../../docs_SE_I/_includes/default-attributes.inc.adoc[] 
 
 == Teststrategie
 
