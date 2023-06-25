@@ -1,11 +1,53 @@
 {% extends "index.html" %}
 
 {% load static %}
+{% load l10n %}
 
 {% block head %}
     {{ block.super }}
     <!-- insert custom header elements -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+{% endblock %}
+
+{% block breadcrumbs %}
+    <!-- Home > Anträge -->
+    {% if 'intern' not in request.path and 'archiv' not in request.path %}
+        <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-house"></i> Home</a>
+        <i class="fa-solid fa-angle-right"></i>
+        {% if antragstyp.typSlug == 'antrag-ohne-finanzielle-mittel' %}
+            <a href="{% url 'antrag-allgemein' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-file"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'antrag-mit-finanziellen-mitteln' %}
+            <a href="{% url 'antrag-finanziell' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-money-bill-1-wave"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'antrag-fuer-veranstaltungen' %}
+            <a href="{% url 'antrag-veranstaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-calendar-plus"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'beratendes-mitglied' %}
+            <a href="{% url 'antrag-mitglied' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-user"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'wahl-auf-stelle-oder-amt' %}
+            <a href="{% url 'antrag-amt' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-building"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'herstellung-des-benehmens' %}
+            <a href="{% url 'antrag-benehmen' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-gavel"></i> {{ antragstyp.typName }}</a>
+        {% endif %}
+    <!-- Intern > Sitzungsverwaltung > {Sitzung} > {Antrag} > Anzeigen/Bearbeiten -->
+    {% elif 'intern' in request.path and 'sitzung' in request.path %}
+        <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-lock"></i> Intern</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'sitzungsverwaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'sitzung-verwalten' sitzID=antrag.sitzID.sitzID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-list-check"></i> {{ antrag.sitzID }}</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-sharp fa-solid fa-file"></i> {{ antrag|truncatechars:100 }}</a>
+        <i class="fa-solid fa-angle-right"></i>
+        {% if aktion|lower == "anzeigen" %}
+            <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-eye"></i> Anzeigen</a>
+        {% elif aktion|lower == "bearbeiten" %}
+            <a href="{% url 'antrag-bearbeiten' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-pen-to-square"></i> Bearbeiten</a>
+        {% endif %}
+    <!-- Archiv > {Antrag} > Anzeigen -->
+    {% elif 'archiv' in request.path%}
+        <a href="{% url 'archiv' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-box-archive"></i> Archiv</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'archiv-anzeigen' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-sharp fa-solid fa-file"></i> {{ antrag|truncatechars:100 }}</a>
+    {% endif %}
 {% endblock %}
 
 {% block content %}

@@ -24,7 +24,6 @@ def formFehlerAusgeben(request, form):
         error_messages = [f"{field.label} {error}" for error in errors]
         messages.warning(request, "\n".join(error_messages))
 
-
 # ========== Hauptseiten ========== #
 
 def HomePage(request):
@@ -43,7 +42,13 @@ def ArchivPage(request):
         datum_bis = request.GET.get("db")
         
         # Filtere Anträge, sodass nur welche angezeigt werden, die einen Beschluss haben oder nicht vertagt wurden
-        gefilterte_antraege = Antrag.objects.filter(beschlussID__isnull=False).filter(~Q(beschlussID__beschlussErgebnis="Vertagt"))
+        gefilterte_antraege = Antrag.objects.filter(
+            beschlussID__isnull=False
+            ).filter(
+                ~Q(beschlussID__beschlussErgebnis="Vertagt")
+            ).filter(
+                Q(sitzID__sitzStatus="Stattgefunden")
+            ).order_by('-erstelltDate')
         
         # Filtere Texte nach Suchbegriff
         if suchbegriff:
@@ -179,8 +184,8 @@ def SitzungsverwaltungPage(request):
     referate = Referat.objects.all().order_by('refID')
     sitzungen = Sitzung.objects.all().filter(sitzDate__gt=date.today()).order_by('refID').order_by('sitzDate')
     
-    # Alle Sitzungen, welche in 14+ Tagen stattfinden
-    sitzungen_14_tage = Sitzung.objects.all().filter(sitzDate__gt=date.today() + timedelta(days=7)).order_by('sitzDate')
+    # Alle Sitzungen, welche in 14+ Tagen stattfinden und nicht vertagt wurden
+    sitzungen_14_tage = Sitzung.objects.all().filter(sitzDate__gt=date.today() + timedelta(days=7)).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')
     referate_ohne_sitzung = []
     
     # Anzahl der Anträge pro Sitzung berechnen | Filtere Anträge, die vertagt wurden
@@ -203,7 +208,7 @@ def SitzungsverwaltungPage(request):
 
 def SitzungAnlegenPage(request):
     referate = Referat.objects.all().order_by('refID')
-    date = datetime.now().date() + timedelta(days=7)
+    date = datetime.now().date() + timedelta(days=14)
     
     if request.method == 'POST':
         form = SitzungAnlegenForm(request.POST)
@@ -355,6 +360,11 @@ def SitzungAbschliessenPage(request, sitzID):
             messages.error(request, 'Die Sitzung wurde bereits abgeschlossen und kann nicht mehr bearbeitet werden!')
             return redirect('sitzung-abschliessen', sitzID=sitzID)
         
+        # Prüfe, ob die Sitzung bereits stattgefunden hat (Datum)
+        if sitzung.sitzDate > datetime.now().date():
+            messages.error(request, 'Die Sitzung kann nicht abgeschlossen werden, da das Datum der Sitzung noch nicht vergangen ist!')
+            return redirect('sitzung-abschliessen', sitzID=sitzID)
+        
         # Prüfe, ob alle Anträge der Sitzung einen Beschluss haben oder vertagt wurden
         nicht_beschlossene_antraege = Antrag.objects.filter(sitzID=sitzID).filter(beschlussID__isnull=True).filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).count()
         
@@ -366,9 +376,8 @@ def SitzungAbschliessenPage(request, sitzID):
             for antrag in antraege_sitzung:
                 if antrag.beschlussID is not None and antrag.beschlussID.beschlussErgebnis == 'Vertagt':
                     # Hole den vertagten Antrag über die neueSitzID
-                    print(antrag.neueSitzID)
-                    antrag_vertagt = Antrag.objects.filter(sitzID=antrag.neueSitzID)
-                    mailAstellerVertagungAntrag(antrag_vertagt)
+                    antrag_original = Antrag.objects.get(antragID=antrag.originaleAntragID)
+                    mailAstellerVertagungAntrag(antrag_original)
                 else:
                     mailAstellerErgebnisAntrag(antrag)
             
@@ -389,22 +398,22 @@ def SitzungAbschliessenPage(request, sitzID):
 
 # ++++++ Antragsverwaltung ++++++ #
 
-def getFormVonAntragstyp(antrag):
+def getFormVonAntragstyp(antrag, request):
     # TODO: Überlegung für Erweiterbarkeit machen, sollte ein neuer Antragstyp hinzukommen
     form = None
     typ_id = antrag.typID.typID
     if typ_id == 1:
-        form = AntragAllgemeinForm()
+        form = AntragAllgemeinForm(request.POST or None)
     elif typ_id == 2:
-        form = AntragFinanziellForm()
+        form = AntragFinanziellForm(request.POST or None)
     elif typ_id == 3:
-        form = AntragVeranstaltungForm()
+        form = AntragVeranstaltungForm(request.POST or None)
     elif typ_id == 4:
-        form = AntragMitgliedForm()
+        form = AntragMitgliedForm(request.POST or None)
     elif typ_id == 5:
-        form = AntragAmtForm()
+        form = AntragAmtForm(request.POST or None)
     elif typ_id== 6:
-        form = AntragBenehmenForm()
+        form = AntragBenehmenForm(request.POST or None)
     return form
 
 
@@ -422,7 +431,7 @@ def AntragAnzeigenPage(request, antragID):
     return render(request, 'pages/antrag.html', context={
         'title': 'Antrag anzeigen',
         'antrag': antrag,
-        'form': getFormVonAntragstyp(antrag),
+        'form': getFormVonAntragstyp(antrag, request),
         'aktion': 'ANZEIGEN',
         'anlagen': anlagen
     })
@@ -431,10 +440,19 @@ def AntragAnzeigenPage(request, antragID):
 def AntragBearbeitenPage(request, antragID):
     # TODO: Logik für Antrag bearbeiten einbauen
     antrag = Antrag.objects.get(antragID=antragID)
+    form = getFormVonAntragstyp(antrag, request)
+    
+    if request.method == 'POST':
+        if form.is_valid():
+            print('Formular ist valide')
+        else:
+            print('Formular ist nicht valide')
+            formFehlerAusgeben(request, form)
+    
     return render(request, 'pages/antrag.html', context={
         'title': 'Antrag bearbeiten',
         'antrag': antrag,
-        'form': getFormVonAntragstyp(antrag),
+        'form': form,
         'aktion': 'BEARBEITEN'
     })
 
@@ -444,7 +462,7 @@ def AntragLoeschenPage(request, antragID):
     return render(request, 'pages/intern/antrag/loeschen.html', context={
         'title': 'Antrag löschen',
         'antrag': antrag,
-        'form': getFormVonAntragstyp(antrag),
+        'form': getFormVonAntragstyp(antrag, request),
         'aktion': 'LOESCHEN'
     })
     
@@ -469,6 +487,7 @@ def AntragVertagenPage(request, antragID):
         elif form.is_valid():
             alte_sitzID = antrag.sitzID
             neue_sitzID = form.cleaned_data['sitzung']
+            originale_antragID = antrag.antragID
             
             # Prüfe, ob die Sitzung die Gleiche ist
             if alte_sitzID == neue_sitzID:
@@ -492,7 +511,7 @@ def AntragVertagenPage(request, antragID):
             antrag.sitzID = alte_sitzID
             antrag.beschlussID = beschluss
             antrag.wurdeVertagt = True
-            antrag.neueSitzID = neue_sitzID.sitzID
+            antrag.originaleAntragID = originale_antragID
             antrag.save()
             
             messages.success(request, 'Der Antrag wurde in die Sitzung ' + str(antrag.sitzID.refID.refName) +  ' am ' + antrag.sitzID.sitzDate.strftime("%d.%m.%Y") + ' vertagt!')
@@ -515,6 +534,11 @@ def AntragVertagenPage(request, antragID):
 def AntragBeschliessenPage(request, antragID):
     antrag = Antrag.objects.get(antragID=antragID)
     sitzung = Sitzung.objects.get(sitzID=antrag.sitzID.sitzID)
+    
+    # Prüfe, ob der Antrag vertagt wurde; Dies soll verhindert werden, da der Beschluss für eine Vertagung automatisch erstellt wird
+    if antrag.beschlussID is not None and antrag.wurdeVertagt is True:
+        return redirect('sitzung-verwalten', sitzID=sitzung.sitzID)
+    
     
     if request.method == 'POST':
         form = BeschlussForm(request.POST)
@@ -570,6 +594,7 @@ def AntragPriorisierenPage(request, antragID):
     return redirect('sitzung-verwalten', sitzID=sitzung.sitzID)
     
 # ------ Antragsverwaltung ------ #
+
 
 
 # ++++++ Benutzerauthentifizierung ++++++ #
@@ -642,18 +667,19 @@ def sitzungenAbfragen(form):
 
 
 # Kurzfassung der render-Funktion für Antragsseiten
-def renderAntrag(request, title, form):
+def renderAntrag(request, title, form, antragstyp):
     # Abfrage der nächsten Sitzungen, für die der Antrag fristgerecht eingereicht werden kann (< 7 Tage)
     sitzungen_fristgerecht = Sitzung.objects.filter(sitzDate__gt=date.today() + timedelta(days=7)).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')
     
     # Abfrage der nächsten Sitzungen, für die der Antrag als Eilantrag eingereicht werden kann (>= 7 Tage)
-    sitzungen_eilantrag = Sitzung.objects.filter(sitzDate__gt=date.today()).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')
+    sitzungen_eilantrag = Sitzung.objects.filter(sitzDate__gt=date.today()).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')   
     
     return render(request, 'pages/antrag.html', context={
         'title': title, 
         'form': form,
         'sitzungen_fristgerecht': sitzungen_fristgerecht,
-        'sitzungen_eilantrag': sitzungen_eilantrag
+        'sitzungen_eilantrag': sitzungen_eilantrag,
+        'antragstyp': antragstyp
     })
 
 
@@ -687,6 +713,9 @@ def anlagenSpeichern(request, antrag):
 FEEDBACK_ANTRAG_SUCCESS = 'Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine E-Mail mit der Eingangsbestätigung.'
 
 def AntragAllgemein(request):
+    # Definiere den Antragstyp anhand der Slug
+    antragstyp = Antragstyp.objects.get(typSlug='antrag-ohne-finanzielle-mittel')
+            
     if request.method == 'POST':
         form = AntragAllgemeinForm(request.POST, request.FILES)
         if form.is_valid():
@@ -695,9 +724,6 @@ def AntragAllgemein(request):
             if sitzungen.count() == 0:
                 messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
                 return redirect('antrag-allgemein')
-           
-            # Definiere den Antragstyp anhand der Slug
-            antragstyp = Antragstyp.objects.get(typSlug='antrag-ohne-finanzielle-mittel')
             
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
@@ -730,10 +756,13 @@ def AntragAllgemein(request):
     else:
         form = AntragAllgemeinForm(request.GET)
 
-    return renderAntrag(request, 'Allgemeiner Antrag', form)
+    return renderAntrag(request, 'Allgemeiner Antrag', form, antragstyp)
 
 
 def AntragFinanziell(request):
+    # Definiere den Antragstyp anhand der Slug
+    antragstyp = Antragstyp.objects.get(typSlug='antrag-mit-finanziellen-mitteln')
+    
     if request.method == 'POST':
         form = AntragFinanziellForm(request.POST, request.FILES)
         if form.is_valid():
@@ -742,9 +771,6 @@ def AntragFinanziell(request):
             if sitzungen.count() == 0:
                 messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
                 return redirect('antrag-allgemein')
-            
-            # Definiere den Antragstyp anhand der Slug
-            antragstyp = Antragstyp.objects.get(typSlug='antrag-mit-finanziellen-mitteln')
             
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
@@ -782,10 +808,13 @@ def AntragFinanziell(request):
     else:
         form = AntragFinanziellForm()
     
-    return renderAntrag(request, 'Antrag mit finanziellen Mitteln', form)
+    return renderAntrag(request, 'Antrag mit finanziellen Mitteln', form, antragstyp)
 
 
 def AntragVeranstaltung(request):
+    # Definiere den Antragstyp anhand der Slug
+    antragstyp = Antragstyp.objects.get(typSlug='antrag-fuer-veranstaltungen')
+            
     if request.method == 'POST':
         form = AntragVeranstaltungForm(request.POST, request.FILES)
         if form.is_valid():
@@ -794,9 +823,6 @@ def AntragVeranstaltung(request):
             if sitzungen.count() == 0:
                 messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
                 return redirect('antrag-allgemein')
-            
-            # Definiere den Antragstyp anhand der Slug
-            antragstyp = Antragstyp.objects.get(typSlug='antrag-fuer-veranstaltungen')
             
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
@@ -833,10 +859,13 @@ def AntragVeranstaltung(request):
     else:
         form = AntragVeranstaltungForm()
     
-    return renderAntrag(request, 'Antrag für Veranstaltungen', form)
+    return renderAntrag(request, 'Antrag für Veranstaltungen', form, antragstyp)
 
 
 def AntragMitglied(request):
+    # Definiere den Antragstyp anhand der Slug
+    antragstyp = Antragstyp.objects.get(typSlug='beratendes-mitglied')
+    
     if request.method == 'POST':
         form = AntragMitgliedForm(request.POST, request.FILES)
         if form.is_valid():
@@ -845,9 +874,6 @@ def AntragMitglied(request):
             if sitzungen.count() == 0:
                 messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
                 return redirect('antrag-allgemein')
-            
-            # Definiere den Antragstyp anhand der Slug
-            antragstyp = Antragstyp.objects.get(typSlug='beratendes-mitglied')
             
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
@@ -879,10 +905,13 @@ def AntragMitglied(request):
     else:
         form = AntragMitgliedForm()
     
-    return renderAntrag(request, 'Antrag zum beratenden MItglied', form)
+    return renderAntrag(request, 'Antrag zum beratenden MItglied', form, antragstyp)
 
 
 def AntragAmt(request):
+    # Definiere den Antragstyp anhand der Slug
+    antragstyp = Antragstyp.objects.get(typSlug='wahl-auf-stelle-oder-amt')
+    
     if request.method == 'POST':
         form = AntragAmtForm(request.POST, request.FILES)
         if form.is_valid():
@@ -891,9 +920,6 @@ def AntragAmt(request):
             if sitzungen.count() == 0:
                 messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
                 return redirect('antrag-allgemein')
-            
-            # Definiere den Antragstyp anhand der Slug
-            antragstyp = Antragstyp.objects.get(typSlug='wahl-auf-stelle-oder-amt')
             
             # Prüfe, ob Antragsteller bereits existiert & Mitglied ist
             asteller = astellerAbfragenOderErstellen(form)
@@ -928,10 +954,13 @@ def AntragAmt(request):
     else:
         form = AntragAmtForm()
     
-    return renderAntrag(request, 'Antrag zur Wahl auf Stelle/Amt', form)
+    return renderAntrag(request, 'Antrag zur Wahl auf Stelle/Amt', form, antragstyp)
 
 
 def AntragBenehmen(request):
+    # Definiere den Antragstyp anhand der Slug
+    antragstyp = Antragstyp.objects.get(typSlug='herstellung-des-benehmens')
+    
     if request.method == 'POST':
         form = AntragBenehmenForm(request.POST, request.FILES)
         if form.is_valid():
@@ -940,9 +969,6 @@ def AntragBenehmen(request):
             if sitzungen.count() == 0:
                 messages.error(request, 'Es wurde keine Sitzung des Referates gefunden, zu der der Antrag eingereicht werden kann. Bitte wähle ein anderes Referat aus.')
                 return redirect('antrag-allgemein')
-            
-            # Definiere den Antragstyp anhand der Slug
-            antragstyp = Antragstyp.objects.get(typSlug='herstellung-des-benehmens')
             
             # Prüfe, ob Antragsteller bereits existiert
             asteller = astellerAbfragenOderErstellen(form)
@@ -975,7 +1001,7 @@ def AntragBenehmen(request):
     else:
         form = AntragBenehmenForm()
     
-    return renderAntrag(request, 'Antrag auf Herstellung des Benehmens', form)
+    return renderAntrag(request, 'Antrag auf Herstellung des Benehmens', form, antragstyp)
 
 # ------ Anträge ------ #
 

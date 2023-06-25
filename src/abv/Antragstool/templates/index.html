@@ -19,11 +19,18 @@
 
     <body>
         
-        <div class="logo w3-animate-top">
+        <div class="logo w3-animate-top select-none">
             <img src="{% static 'img/logo.png' %}" class="w3-hover-grayscale m-3" alt="StuRa HTW Dresden"/>
         </div>
         
         {% include 'components/header.html' %}
+
+        <div class="w3-animate-top flex flex-row justify-left bg-[#999] text-white select-none">
+            <div class="p-1">
+                {% block breadcrumbs %}
+                {% endblock %}
+            </div>
+        </div>
 
         <div class="content w3-animate-opacity m-10">
             {% block content %}

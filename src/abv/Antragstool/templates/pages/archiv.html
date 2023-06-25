@@ -6,6 +6,10 @@
     {{ block.super }}
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="{% url 'archiv' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-box-archive"></i> Archiv</a>
+{% endblock %}
+
 {% block content %}
 
     <div class="ml-80 mr-80">
@@ -14,7 +18,7 @@
         {% include 'components/alert.html' with type="INFO" text="Hier können archivierte Anträge nach Suchkriterien <b>gefiltert und betrachtet</b> werden. Dabei müssen nicht alle Kriterien gegeben sein. Das <b>Datum referenziert</b> hierbei, wann der <b>Antrag gestellt</b> wurde." %}
 
 
-        <div class="mb-8">
+        <div class="mb-5">
             <hr class="bg-gray-600 opacity-80 border-none h-1">
             <form action="" method="GET">
 
@@ -75,45 +79,44 @@
         </div>
 
 
-        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-2">
+        <div class="relative overflow-x-auto bg-[#b4b4b4] p-5 rounded-lg">
+            <table class="table-auto w-full text-left overflow-x-auto border-collapse border-spacing-y-2">
+                <thead class="text-gray-700 uppercase"> 
+                    <tr class="border-b border-b-[#dcdcdc]">
+                        <th scope="col" class="px-2 py-3">Datum</th>
+                        <th scope="col" class="px-2 py-3">Titel</th>
+                        <th scope="col" class="px-2 py-3">Antragstyp</th>
+                        <th scope="col" class="px-2 py-3">Referat</th>
+                        <th scope="col" class="px-2 py-3">Beschluss</th>
+                        <th scope="col" class="px-2 py-3 text-center">Aktionen</th>
+                    </tr>
+                </thead>
 
-            <caption class="text-left">
-                <h2><b>Alle gestellten Anträge</b></h2>
-            </caption>
+                <tbody>
+                    {% for antrag in antraege %}
+                    <tr class="border-b border-b-[#dcdcdc]">
+                        <td class="px-2 py-3">{{ antrag.erstelltDate | date:"d.m.Y" }}</td>
+                        <td class="px-2 py-3">{{ antrag.antragTitel | truncatechars:50 }}</td>
+                        <td class="px-2 py-3">{{ antrag.typID.typName }}</td>
+                        <td class="px-2 py-3">{{ antrag.sitzID.refID.refName }}</td>
+                        <td class="px-2 py-3">
+                            {% include 'components/table_column_beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}
+                        </td>
+                        <td class="px-2 py-3 text-center">
+                            <a href="{% url 'archiv-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                                <i class="fa-solid fa-eye"></i> Anzeigen
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center mt-5 pt-5">Es konnten keine Anträge nach diesen Kriterien gefunden werden!</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
 
-            <thead>
-                <tr>
-                    <th scope="col">Titel</th>
-                    <th scope="col">Antragstyp</th>
-                    <th scope="col">Antragsteller</th>
-                    <th scope="col">Beschluss</th>
-                    <th scope="col">Aktionen</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {% for antrag in antraege %}
-                <tr>
-                    <td>{{ antrag.antragTitel | truncatechars:50 }}</td>
-                    <td>{{ antrag.typID.typName }}</td>
-                    <td>{{ antrag.astellerID.astellerName | truncatechars:40 }}</td>
-                    <td>
-                        {% include 'components/table_column_beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}
-                    </td>
-                    <td>
-                        <a href="{% url 'archiv-anzeigen' antragID=antrag.antragID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                            <i class="fa-solid fa-eye"></i> Anzeigen
-                        </a>
-                    </td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="5" class="text-center mt-5 pt-5">Es konnten keine Anträge nach diesen Kriterien gefunden werden!</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-
-        </table>
+            </table>
+        </div>
 
         <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
         {% if messages %}
