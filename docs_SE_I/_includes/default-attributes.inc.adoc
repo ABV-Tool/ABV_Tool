@@ -1,9 +1,10 @@
 // Meta
 :project-name: Antrags- und Beschlussverwaltungstool
 // Settings:
+:doctype: book
 :toc:
 :toc-title: Inhaltsverzeichnis
-:toclevels: 2
+:toclevels: 3
 :sectnums:
 :icons: font
 //:source-highlighter: highlightjs
