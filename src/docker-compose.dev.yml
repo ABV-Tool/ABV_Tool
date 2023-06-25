@@ -1,0 +1,26 @@
+version: "3"
+services:
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - ${DB_PORT}:${DB_PORT}
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql
+
+  mailcatcher:
+    restart: on-failure
+    image: gitlab.goeranh.de/goeranh/mailcatcher:latest
+    environment:
+    - MDNS_HOSTNAME=mailcatcher
+    ports:
+    - "1080:1080"
+    - "${EMAIL_PORT}:${EMAIL_PORT}"
+
+volumes:
+  pg_data:
