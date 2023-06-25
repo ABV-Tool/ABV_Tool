@@ -57,15 +57,6 @@ Auch Meetings mit dem StuRa oder unserem Coach wurden hier dokumentiert. So hatt
 
 Unsere Iterationen in SE II waren immer genau zwei Wochen lang. Zu Beginn jeder Iteration trafen wir uns als Team und werteten zunächst die vergangene Iteration aus und besprachen dabei unsere erreichten Fortschritte, die aufgetretenen Probleme sowie die unerfüllten Aufgaben. Dafür bereitete die Teamleitung aus dem letzten Meeting eine Liste mit den Aufgaben der letzten Iteration vor, die dann schrittweise durchgearbeitet wurde. Beendete Issues wurden in GitHub geschlossen. Anschließend starteten wir mit der Planung der nächsten Iteration. Dazu bereitete die Teamleitung ebenfalls Punkte vor die aus Sicht des Projektmanagements für die kommende Iteration wichtig sind. Die anderen Aufgaben wurden während des Meetings von den Verantwortlichen für ihren Aufgabenbereich benannt und anschließend verteilt. Anschließend haben wir gemeinsam die Aufgaben priorisiert und Aufgaben die nicht sofort erledigt werden müssen als optional gekennzeichnet. Diese Aufgaben wurden dann meist in den Iterationen nur angefangen oder gar nicht bearbeitet und dann in der darauffolgenden Iteration als feste Aufgabe aufgenommen. Das half bei der längerfristigen Planung der Iterationen, da man so schon einen Blick auf den weiteren Projektverlauf und kommende Aufgaben hatte. Am Ende des Meetings übertrugen wir die Aufgaben in unser GitHub Repository und wiesen sie den verantwortlichen Teammitgliedern zu. Während der Iteration gab es kleine Meetings die je nach Bedarf optional angesetzt wurden. Das konnte z. B. die Vorbereitung eines Treffens mit dem StuRa sein oder es trafen sich Teile des Team um gemeinsam am Projekt zu arbeiten. 
 
-//nach umgesetzten Use Cases prüften wir ob unsere Doku noch aktuell war
-
-////
-=== Way of Working
-//Techniken/Praktiken: Welche wurden warum eingesetzt und wie genutzt? → „Way of Working“ Way of Working: ausgewählte Praktiken und Werkzeuge, die vom Team benutzt werden, um ihre Arbeit zu leiten und zu unterstützen
-
-//Das Projekt orientiert sich am Open Unified Process.
-////
-
 === Techniken und Praktiken (AM, MM)
 
 Im folgenden sind die Techniken und Praktiken unseres Teams aufgelistet, die während der Projektdurchführung von uns angewendet wurden.
@@ -109,75 +100,60 @@ Im folgenden sind die Techniken und Praktiken unseres Teams aufgelistet, die wä
 == Projektdurchführung (MM)
 // Kurze Beschreibung der Ziele, Aktivitäten und Ergebnisse in den OpenUP-Projektphasen / Iterationen, dabei Berücksichtigung des Zusammenspiels zwischen den einzelnen Rollen sowie Risiken
 
-=== SE I - Inception und Elaboration Phase
+=== SE I - Inception und Elaboration Phase 
 
-.Inception Phase (12.12.2022 - 21.12.2022) (MM)
+==== Inception Phase (12.12.2022 - 21.12.2022) (MM)
 
-Ziel der Inception Phase und der ersten Iteration war es sich als Team zu finden, Rollen und Verantwortlichkeiten zu verteilen und sich mit der Aufgabenstellung vertraut zu machen. Auch unseren Coach lernten wir kennen. Wir haben den Einsatz verschiedener Tools diskutiert und schließlich die passenden ausgewählt und eingerichtet. Auch fand ein erstes Treffen mit unseren Ansprechpartnern beim StuRa statt um sich gegenseitig kennenzulernen und über die Wünsche und Anforderungen zu sprechen. Da wir nicht die erste Gruppe waren, die an diesem Projekt arbeitete war es für uns natürlich auch interessant noch ein paar mehr Hintergrundinformationen zu bekommen. Die erste zentrale Frage für uns war, was und wie viel wir von dem Vorgängerprojekt übernommen wollen oder ob wir komplett neu anfangen wollen. Dies wurde uns vom StuRa freigestellt. Wir entschieden schließlich das Front End bzw. das Design des Vorgängerprojektes zu übernehmen und das Back End neu zu entwickeln. Dazu besprachen wir verschiedene Möglichkeiten der Umsetzung und der Machbarkeit dieser. Nach dieser Entscheidung und dem Input durch den StuRa erarbeiteten wir die Vision und erste Ideen für die Use Cases. Die Inception Phase endete mit dem Erreichen des Meilenstein Lifecycle Objective.
+Ziel der Inception Phase und der ersten Iteration war es sich als Team zu finden, Rollen und Verantwortlichkeiten zu verteilen und sich mit der Aufgabenstellung vertraut zu machen. Auch unseren Coach lernten wir kennen. Wir haben den Einsatz verschiedener Tools diskutiert und schließlich die passenden ausgewählt und eingerichtet. Auch fand ein erstes Treffen mit unseren Ansprechpartnern beim StuRa statt um sich gegenseitig kennenzulernen und über die Wünsche und Anforderungen zu sprechen. Da wir nicht die erste Gruppe waren, die an diesem Projekt arbeitete, war es für uns natürlich auch interessant noch ein paar mehr Hintergrundinformationen zu bekommen. Die erste zentrale Frage für uns war, was und wie viel wir von dem Vorgängerprojekt übernommen wollen oder ob wir komplett neu anfangen wollen. Dies wurde uns vom StuRa freigestellt. Wir entschieden schließlich das Front End bzw. das Design des Vorgängerprojektes zu übernehmen und das Back End neu zu entwickeln. Dazu besprachen wir verschiedene Möglichkeiten der Umsetzung und der Machbarkeit dieser. Nach dieser Entscheidung und dem Input durch den StuRa erarbeiteten wir die Vision und erste Ideen für die Use Cases. Die Inception Phase endete mit dem Erreichen des Meilenstein Lifecycle Objective.
  
-.Elaboration Phase (04.01.2023 - 27.01.2023) (MM)
+==== Elaboration Phase (04.01.2023 - 27.01.2023) (MM)
 
-In der Elaboration Phase hatten wir zwei Iterationen in der unsere Analyse konkretisiert und die Use Cases detailliert ausgearbeitet und beschrieben wurden. Zu Beginn arbeiteten wir noch an Details der Vision und begannen uns in alle anderen Teile der Dokumentation einzuarbeiten. Wir entschieden für das Glossar die Antragsdaten sehr ausführlich dazustellen. Wir trafen uns zu Beginn erneut mit dem StuRa um den Ablauf der Antragstellung besser zu verstehen und eine bessere Vorstellung er bekommen. Ein Problem des StuRa war das z. T. in die Tagesordnung Punkte und Informationen aufgenommen werden sollten, die nicht als Anträge gestellt werden. Also mussten wir uns überlegen wie sowohl die Anträge aus dem Tool als auch zusätzliche Informationen in die Tagesordnung aufgenommen werden können. Der StuRa nutze bisher ein Pentapad für die Tagesordnung wo alle Anträge und weiteren Punkte aufgeschrieben wurden und auch während der Sitzung Protokoll geschrieben wurde. Wir diskutierten dazu verschiedene Möglichkeiten wie wir diese Flexibilität weiter gewährleisten konnten und entschieden uns schließlich dazu das Pentapad weiter zu nutzen und über eine API in unser Tool einzubinden. Damit fügte sich das Tool gut in den derzeitigen Ablauf beim StuRa ein und wir erhoffen uns dadurch eine höhere Akzeptanz. Wir erarbeiteten schließlich die Use Cases und formulierten die Systemwide Requirements. Gleichzeitig wurden erste Entscheidungen für die Architektur getroffen und ausformuliert. 
-Die Teammitglieder, die nicht primär mit der Analyse beschäftigt und auch Verantwortlich für Implementierung und Test waren, arbeiteten sich in das Framework Django ein und erstellten ein erstes Datenbankschema. 
+In der Elaboration Phase hatten wir zwei Iterationen in der unsere Analyse konkretisiert und die Use Cases detailliert ausgearbeitet und beschrieben wurden. Zu Beginn arbeiteten wir noch an Details der Vision und begannen uns in alle anderen Teile der Dokumentation einzuarbeiten. Wir entschieden für das Glossar die Antragsdaten sehr ausführlich dazustellen. Wir trafen uns zu Beginn erneut mit dem StuRa um den Ablauf der Antragstellung besser zu verstehen und eine bessere Vorstellung er bekommen. Ein Problem des StuRa war das z. T. in die Tagesordnung Punkte und Informationen aufgenommen werden sollten, die nicht als Anträge gestellt werden. Also mussten wir uns überlegen wie sowohl die Anträge aus dem Tool als auch zusätzliche Informationen in die Tagesordnung aufgenommen werden können. Der StuRa nutze bisher ein Pentapad für die Tagesordnung wo alle Anträge und weiteren Punkte aufgeschrieben wurden und auch während der Sitzung Protokoll geschrieben wurde. Wir diskutierten dazu verschiedene Möglichkeiten wie wir diese Flexibilität weiter gewährleisten konnten und entschieden uns schließlich dazu das Pentapad weiter zu nutzen und über eine API in unser Tool einzubinden. Damit fügte sich das Tool gut in den derzeitigen Ablauf beim StuRa ein und wir erhoffen uns dadurch eine höhere Akzeptanz. Wir erarbeiteten schließlich die Use Cases und formulierten die systemweiten Anforderungen. Gleichzeitig wurden erste Entscheidungen für die Architektur getroffen und ausformuliert. +
+Die Teammitglieder, die nicht primär mit der Analyse beschäftigt und auch verantwortlich für Implementierung und Test waren, arbeiteten sich in das Framework Django ein und erstellten ein erstes Datenbankschema. 
 In der zweiten Iteration der Elaboration Phase besprachen wir nochmals abschließend alle Use Cases im gesamten Team und diskutierten einzelne Punkte nochmals abschließend wie z. B. die Benennung des Use Cases 5. Für die Use Cases 2 und 5 erstellten wir zusätzlich jeweils ein Wireframe um uns über den Aufbau der Seite klar zu werden und diesen auch mit unserem Auftraggeber anzustimmen. Auch starteten wir mit der Beschreibung erster Testfälle. der Test An einem Nachmittag trafen wir uns um gemeinsam das Domänenmodell zu entwickeln. Dazu zeichneten wir das Modell auf einem Whiteboard auf und diskutierten über den Aufbau. Das war sehr hilfreich da so nochmal für alle die Zusammenhänge klar wurden und alle auf dem gleichen Stand waren.
-In der letzten Vorlesungswoche und auch der letzten Woche der Elaboration Phase fand eine Präsentation der Projekte zum Semesterende statt. Dafür mussten wir auch einen ersten Prototypen implementieren. Bevor wir damit beginnen konnten, musste sich jedoch in das Vorgängerprojekt eingearbeitet werden, da wir das Design der Benutzeroberfläche von diesem übernehmen wollten.  
+In der letzten Vorlesungswoche und auch der letzten Woche der Elaboration Phase fand eine Präsentation der Projekte zum Semesterende statt. Dafür mussten wir auch einen ersten Prototyp implementieren. Bevor wir damit beginnen konnten, musste sich jedoch in das Vorgängerprojekt eingearbeitet werden, da wir das Design der Benutzeroberfläche von diesem übernehmen wollten. +
 Am selben Tag präsentierten wir den Prototypen sowie unseren Stand zur Analyse am Ende von SE I auch dem StuRa um unsere formulierten Anforderungen nochmals abzugleichen und uns Feedback einzuholen. Die restliche Woche beendeten wir die Dokumentation und schauten insbesondere, dass das Erzeugen der PDF funktionierte und alle Abbildungen und Diagramme richtig eingebunden und angezeigt wurden. Das kostete am Ende doch mehr Zeit als gedacht, aber die Arbeit hat sich gelohnt und wir konnten am Freitag den Beleg abgeben. Damit endete auch die Elaboration Phase mit dem Erreichen des Meilenstein Lifecycle Architecture. 
 
 === Start von SE II und Construction Phase (MM)
 
-Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unserem Coach an. Dazu trafen wir uns in der HTW und gingen den Beleg Schritt für Schritt durch und besprachen die einzelnen Teile. Insgesamt erhielten wir hier gutes Feedback, hatten aber auch einige Punkte die unserseits nachgearbeitet werden mussten. Diese übernahmen wir gleich als erste Aufgaben in der kommenden Iteration. 
+Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unserem Coach an. Dazu trafen wir uns in der HTW und gingen den Beleg Schritt für Schritt durch und besprachen die einzelnen Teile. Insgesamt erhielten wir hier gutes Feedback, hatten aber auch einige Punkte, die unserseits nachgearbeitet werden mussten. Diese übernahmen wir gleich als erste Aufgaben in der kommenden Iteration. 
 
-*Iteration 4 (03.04. - 16.04.2023)*
+==== Iteration 4 (03.04. - 16.04.2023)
 
-Das Projekt startete zunächst mit dem Finden eines geeigneten Termins für die Meetings. Im Gegensatz zu SE I legten wir einen festen Termin fest, an dem wir uns alle zwei Wochen trafen. Wir einigten uns darauf uns alle zwei Wochen Dienstag in der HTW zu treffen. Als Erstes mussten wir uns als Team neu organisieren, da ein Mitglied aus dem Team ausschied und wir dadurch die Rollen neu verteilen mussten (siehe <<Rollenverteilung>>). Aus dem Feedbackgespräch zu SE I entstanden die ersten Aufgaben für die 4. Iteration. Besonders das Projektmanagement hatte hier viel Nachholbedarf, sodass zunächst die Iterationspläne und die Projektstruktur aus SE I nachgearbeitet wurde. 
+Das Projekt startete zunächst mit dem Finden eines geeigneten Termins für die Meetings. Im Gegensatz zu SE I legten wir einen festen Termin fest, an dem wir uns alle zwei Wochen trafen. Wir einigten uns darauf uns alle zwei Wochen Dienstag 15:00 Uhr in der HTW zu treffen. Als erste Aufgabe mussten wir uns als Team neu organisieren, da ein Mitglied aus dem Team ausschied und wir dadurch die Rollen neu verteilen mussten (siehe <<Rollenverteilung>>). Dabei nahmen wir uns die Zeit die Rollen nochmals durchzusprechen und abzugrenzen, um das Risiko zu mindern, dass Verantwortlichkeiten unklar verteilt waren. Aus dem Feedbackgespräch zu SE I entstanden die ersten Aufgaben für die 4. Iteration. Besonders das Projektmanagement hatte hier viel Nachholbedarf, sodass zunächst die Iterationspläne und die Projektstruktur aus SE I nachgearbeitet wurde. Auch besprachen wir die Reihenfolge der Umsetzung der einzelnen Use Cases, um so einen groben Zeitplan für SE II zu haben.
 
 Gleichzeitig startete auch die Implementierung des UC 5 "Antragsverwalter anmelden". Dieser stellte eine wichtige Grundvoraussetzung für unser System dar. Zwar wäre die Nutzung des Tools auch ohne Anmeldung möglich, allerdings weniger sinnvoll da nur ein begrenzter Personenkreis Zugang zu den gestellten Anträgen und der Sitzungsverwaltung erhalten sollte. Für die Umsetzung wurden die mitgelieferten Tools von Django genutzt, wodurch eine unkomplizierte Umsetzung möglich war und der Use Case in dieser Iteration abgeschlossen werden konnte. 
 
 Auch startete unser (neuer) Deployment-Engineer mit der Vorbereitung des Deployments. Da er selbst Administrator im StuRa ist, war in diesem Rahmen wenig (extra) Abstimmung mit dem StuRa nötig, da er der Verantwortliche sowohl bei uns im Team als auch im StuRa selbst ist. Das erleichterte für uns als Team die Arbeit, da so ein geringeres Risiko bestand, dass es hier Fehler in der Kommunikation gab. #was wurde gemacht Deployment, wie beim StuRa geregelt, Probleme# 
 
-Wir diskutierten die Möglichkeit unser Repository aufzuteilen und den Code und die Dokumentation zu trennen. Letztendlich entschieden wir uns dagegen, da wir mit der bisherigen Lösung gut zurecht kamen und so alle in demselben Projekt arbeiteten. Die Dokumentation führten wir vorerst in den Dokumenten von SE I fort, wenn wir mehr Informationen zum Belegaufbau in SE II erfahren würden, sollte die Ordnerstruktur entsprechend angepasst werden. Weiterhin legten wir für die Implementierung eine Aufteilung der Verantwortlichkeiten in Frontend und Backend fest um so eine bessere Aufgabenverteilung zu ermöglichen. So übernahm MP die Verantwortung für das Frontend und GH für das Backend.
+Wir diskutierten die Möglichkeit unser Repository aufzuteilen und den Code und die Dokumentation zu trennen. Letztendlich entschieden wir uns dagegen, da wir mit der bisherigen Lösung gut zurechtkamen und so alle in demselben Projekt arbeiteten. Die Dokumentation führten wir vorerst in den Dokumenten von SE I fort, wenn wir mehr Informationen zum Belegaufbau in SE II erfahren würden, sollte die Ordnerstruktur entsprechend angepasst werden. Weiterhin legten wir für die Implementierung eine Aufteilung der Verantwortlichkeiten in Frontend und Backend fest um so eine bessere Aufgabenverteilung zu ermöglichen. So übernahm MP die Verantwortung für das Frontend und GH für das Backend.
 Das Team entschied sich zunächst kein Treffen mit dem StuRa anzusetzen, da wir seit dem letzten Treffen am Ende von SE I keine weitere Funktionalität vorzuweisen hatten und es unsererseits keine Fragen gab. Gleichzeitig wussten wir durch unser Teammitglied beim StuRa, dass seitens des StuRa keine veränderten Anforderungen gab. 
-#Risikomanagement#
 
-Einige Dinge, die wir als Risiken oder Probleme betrachten, die in der Zukunft auftreten können und die wir verhindern wollen, sind,
-dass die neue Team-Rollenverteilung nicht für Verwirrung sorgt oder den Arbeitsfluss des Teams stört. Um dem entgegenzuwirken,
-haben wir uns in der Sitzung etwas Zeit genommen, um alle Rollen noch einmal zu besprechen und zu klären, insbesondere Teamleitung und
-Einsatzleiter. Wir werden in den nächsten Wochen beobachten, wie sich die neuen Rollenänderungen das Team auswirken und wie effektiv wir zusammenarbeiten. Ein weiteres Risiko, das wir besprochen haben, war die Frage, ob wir genug Zeit haben, um das Projekt gemäß den Anforderungen der STURA abzuschließen. Um dies sicherzustellen, setzten wir die Priorität auf die Fertigstellung und Bereitstellung jedoch wollen wir auch eine "Nice-To-Have" liste pflegen, in der wir alle Funktionen notieren, die für die Fertigstellung der verschiedenen Anwendungsfälle nicht die höchste Priorität haben. Ein Beispiel dafür, das wir in dieser Implementierung diskutiert haben, wäre: ()()
+==== Iteration 5 (17.04. - 30.04.2023)
 
-*Iteration 5 (17.04. - 30.04.2023)*
+In dieser Iteration sollte mit der Umsetzung des Use Case 1 begonnen werden. Während der Implementierung des Use Case 5 hatten wir jedoch festgestellt, dass wir vor der Implementierung weiterer Use Cases das Frontend unserer Vorgänger überarbeiten mussten. Es wurde die gesamte Website komplett geladen und sollte deshalb in einzelne Komponenten umstrukturiert werden, um den Code zu vereinfachen und eine bessere Übersichtlichkeit zu gewährleisten. Auch die potenzielle Leistung sollte damit erhöht werden. Dafür sollte eine Trennung der Seiten in einzelne Ordner erfolgen und alle Templates überarbeitet werden. Dafür sollte die Verwendung eines Frontend-Frameworks geprüft werden. Letztendlich entschieden wir uns für Tailwind, da hiermit eine gute Ausgestaltungsmöglichkeit gab, ohne uns zu sehr einzuschränken und es deshalb als am praktikabelsten erachtet wurde. Die Umstrukturierung konnte in dieser Iteration abgeschlossen werden. Da wir eigentlich in dieser Iteration mit dem Use Case 1 starten wollten, legten wir diesen als optionale Aufgabe fest. Mit der Umsetzung konnte dann tatsächlich nicht begonnen werden, so verschoben wir die Implementierung auf die nächste Iteration. 
 
-In dieser Iteration sollte mit der Umsetzung des Use Case 1 begonnen werden. Während der Implementierung des Use Case 5 hatten wir jedoch festgestellt, dass wir vor der Implementierung weiterer Use Cases das Frontend unserer Vorgänger überarbeiten mussten. Es wurde die gesamte Website komplett geladen und sollte deshalb in einzelne Komponenten umstrukturiert werden, um den Code zu vereinfachen und eine bessere Übersichtlichkeit zu gewährleisten. Auch die potentielle Leistung sollte damit erhöht werden. Dafür sollte eine Trennung der Seiten in einzelne Ordner erfolgen und alle Templates überarbeitet werden. Dafür sollte die Verwendung eines Frontend-Frameworks geprüft werden. Letztendlich entschieden wir uns für Tailwind, da hiermit eine gute Ausgestaltung möglich war, ohne uns zu sehr einzuschränken und es deshalb als am praktikabelsten erachtet wurde. Die Umstrukturierung konnte in dieser Iteration abgeschlossen werden. Da wir eigentlich in dieser Iteration mit dem Use Case 1 starten wollten, legten wir diesen als optionale Aufgabe fest. Mit der Umsetzung konnte dann tatsächlich nicht begonnen werden, so verschoben wir die Implementierung auf die nächste Iteration. 
-
-Während der letzten Iteration kümmerte sich unser Deployment-Engineer um eben dieses beim StuRa. Das sollte auf die internen Regelungen beim StuRa angepasst werden und unser System sollte dort eingegliedert werden. #Nginx-Proxy mittels NixOS-Deployment. Das Deployment wurde so weit fertiggestellt mit Nix Flake. Es war noch Django Translate vorhanden (nur in Version 2 verfügbar), wir wollten allerdings Version 3 oder höher verwenden. Hier waren also noch Anpassungen notwendig.#
+Während der letzten Iteration kümmerte sich unser Deployment-Engineer um eben dieses beim StuRa. Das sollte auf die internen Regelungen beim StuRa angepasst werden und unser System sollte dort eingegliedert werden. #Nginx-Proxy mittels NixOS-Deployment. Das Deployment wurde soweit fertiggestellt mit Nix Flake. Es war noch Django Translate vorhanden (nur in Version 2 verfügbar), wir wollten allerdings Version 3 oder höher verwenden. Hier waren also noch Anpassungen notwendig.#
 
 Da wir uns entschieden hatten die Nutzung des Pentapads (bzw. Etherpad) in unser Tool einzubinden, sollte in dieser Iteration eine passende Bibliothek dafür recherchiert und auf Funktionalität geprüft werden. Als Bibliothek für das Markdown auf Python entschieden wir uns zunächst für Martor. Auch eine Prüfung des Datenbankschemas wurde als Aufgabe aufgenommen, um dieses immer auf dem aktuellen Stand der Entwicklung zu halten.
 
-Wir stellten fest, dass es noch einige Unklarheiten über die verschiedenen Frameworks und ToolsWerkzeuge gab, die wir benutzen werden
-um das Projekt abzuschließen. Wir haben zwar bereits eine gute vorstellung z.b:  Django für das frontend, Nix Flake für das deployment und die Martor-Bibliothek um die Markdowns in Python zu erstellen.Trotzdem waren wir uns immer noch nicht sicher, welche Bibliotheken wir für die Erstellung des Etherpads das die STURA-Sitzungsinformationen enthalten soll. Deswegen haben wir uns entschlossen das C4 model zu updaten, was zu mehr verständniss von den verschiedenen schichten führen soll.
-
-*Iteration 6 (01.05. - 14.05.2023)* 
+==== Iteration 6 (01.05. - 14.05.2023)
 
 Im Teammeeting zu Beginn dieser Iteration entschieden wir uns die kommenden Treffen wieder online stattfinden zu lassen, da das für die meisten Teammitglieder einfacher zu organisieren war. Die Meetings fanden weiterhin dienstags statt, jedoch nun um 18 Uhr auf discord.
 
 Die Teamleitung erarbeitete die finale Struktur für den Beleg in SE II nachdem es dazu konkrete Vorgaben von Prof. Anke gab. Dazu wurde auch die Ordnerstruktur des GitHub Repositorys angepasst und für die erforderlichen Dokumente in SE II ein extra Ordner erstellt. Dort wurden die Dokumente für die Abgabe erstellt und eine erste Strukturierung dieser erarbeitet. 
 
-In dieser Iteration sollte nun der Use Case 1 "Antrag stellen" umgesetzt werden. Das ist einer der wichtigsten und zentralsten Use Cases für unser Projekt. Der Standardablauf des Use Cases konnte grundsätzlich fertig implementiert werden und es war nun möglich einen Antrag (der verschiedenen Antragsarten) über das Tool zu stellen und sich diesen in der Datenbank anzeigen zu lassen. Es fehlte nur noch der File Upload, um z. B. eine Kostenaufstellung bei einem Finanzantrag mit einzureichen. Weiter kam die Frage auf, ob es sinnvoll ist das Datum der nächsten Sitzung des ausgewählten Referates in der Antragsmaske mit anzuzeigen. Insbesondere Hinblick auf die Möglichkeit einen Eilantrag stellen zu können wurde dies als sinnvoll betrachtet und sollte so umgesetzt werden. Der alternative Ablauf des Use Cases - Stellen eines Eilantrages - wurde noch nicht umgesetzt. 
+In dieser Iteration sollte nun der Use Case 1 "Antrag stellen" umgesetzt werden. Das ist einer der wichtigsten und zentralsten Use Cases für unser Projekt. Der Standardablauf des Use Cases konnte grundsätzlich fertig implementiert werden und es war nun möglich einen Antrag (der verschiedenen Antragsarten) über das Tool zu stellen und sich diesen in der Datenbank anzeigen zu lassen. Dabei übernahmen wir zu einem großen Teil den Aufbau und die Anordnung des Vorgängerprojektes. Es fehlte nur noch der File Upload, um z. B. eine Kostenaufstellung bei einem Finanzantrag mit einzureichen. Weiter kam die Frage auf, ob es sinnvoll ist das Datum der nächsten Sitzung des ausgewählten Referates in der Antragsmaske mit anzuzeigen. Insbesondere Hinblick auf die Möglichkeit einen Eilantrag stellen zu können wurde dies als sinnvoll betrachtet und sollte so umgesetzt werden. Der alternative Ablauf des Use Cases - Stellen eines Eilantrages - wurde noch nicht umgesetzt. 
 
 Durch die Implementierung des Use Cases 1 wurde erneut eine Anpassung des Datenbankschemas notwendig. Es kamen weitere Felder zum Antrag hinzu und andere Felder waren nicht mehr notwendig und wurden deshalb entfernt. Das wurde als Aufgabe für die kommende Iteration aufgenommen. 
 
 In dieser Iteration fand der erste Fachaustausch im Rahmen von SE II statt. Dazu erklärte die Teamleitung die Organisation unseres Projektes, wie wir unsere Aufgaben sammeln und verteilen. Auch sprachen wir darüber, was bei uns im Team gut läuft und wo es noch Probleme oder Verbesserungsbedarf gibt. Es war sehr interessant die Vorgehensweisen der anderen Teams zu hören und zu schauen mit welchen Problemen sie zu kämpfen hatten. 
 
-#Entwicklerdoku und Betriebsdoku begonnen?#
-
-Da unser eigentlicher Testverantwortlicher doch hauptsächlich die Implementierung übernahm, entschieden wir uns unseren Analysten mit dem Testen zu betrauen. #Planung testen#
-
-In dieser Iteration haben wir einige potenzielle Risiken entdeckt. Zum ersten haben wir uns seit Beginn der SE II nicht mit der STURA getroffen.
-Wir wollen sie über den aktuellen Stand des Projekts informieren und auch erörtern, ob wir ihren Anforderungen gerecht werden. Um genau zu sein, gibt es noch einige Fragen zum Design und Layout des ABV-Tools. Zum Beispiel wissen wir noch nicht, wie genau die Beschlusseinpflege aussehen wird. Deshalb planen wir für die nächste Iteration ein Treffen mit dem STURA. Zusätzlich planen wir die Erstellung von
-Wireframes, die wir dem STURA vorlegen können, damit sie uns mitteilen, ob wir Änderungen vornehmen sollten. Außerdem werden die Wireframes möglicherweise bei der Fertigstellung und Implementierung der use-caseshelfen, da sie einen Überblick darüber geben, wie das Frontend aussehen soll.
+#Planung testen#
+Da unser eigentlicher Testverantwortlicher hauptsächlich für die Implementierung zuständig war, haben wir beschlossen, unseren Analysten mit dem Testen zu beauftragen. In der Planungsphase wurden die Prioritäten der zu implementierenden Tests in Absprache mit dem Entwicklungsteam festgelegt. Dabei wurden Initialisierungstests erstellt, insbesondere Unittests für die Datenbankinitialisierung.
 
 
-
-*Iteration 7 (15.05. - 28.05.2023)*
+==== Iteration 7 (15.05. - 28.05.2023)
 
 In dieser Iteration planten wir ein Meeting mit dem StuRa, um den Projektfortschritt zu präsentieren und uns Feedback zur Gestaltung und zum Aufbau der Webanwendung einzuholen. Dazu vereinbarten wir einen Termin am 23.05.2023. In Vorbereitung dessen sollte das Frontend des ABV-Tools noch weiter angepasst werden. Wir beschlossen dafür nochmals verschiedene Wireframes zu erstellen. Zum Einen für die Implementierung, sodass diese schneller geht und nicht noch darüber nachgedacht werden muss, wo welches Feld hin muss und wie die Aufteilung sein soll. Auch wollten wir die Wireframes bei unserem anstehenden Treffen mit dem StuRa nutzen, um auch über die Teile des Front Ends zu sprechen die noch nicht entsprechend angepasst wurden. So erstellten zwei Teammitglieder Wireframes aus Sicht der Analyse und besprachen sie anschließend mit dem Entwickler.
 
@@ -187,27 +163,33 @@ Am 23.05.2023 trafen wir uns mit dem StuRa um den aktuellen Stand zu präsentier
 
 In der gleichen Woche traf sich die Teamleitung mit unserem Coach Manuela Ziesche um den aktuellen Projektstand zu besprechen und Fragen zur Dokumentation zu klären. 
 
-In dieser Iteration begannen wir so richtig mit dem Testen. Dazu wurde zunächst das System bei einem Teammitglied auf dem privaten Rechner eingerichtet und geprüft ob die Einrichtung so funktioniert wie sie soll. #weitere Schritte testen#
+In dieser Iteration haben wir mit dem Testen begonnen. Zunächst haben wir das System bei einem Teammitglied auf dem privaten Rechner eingerichtet und überprüft, ob die Einrichtung wie vorgesehen funktioniert. Der Smoke-Test war erfolgreich, und das System konnte fehlerfrei auf dem Rechner eingerichtet werden. Anschließend haben wir einen Unittest für den Login und Logout implementiert und sowohl positive als auch negative Testfälle berücksichtigt. #weitere Schritte testen#
 
-*Iteration 8 (29.05. - 11.06.2023)*
+Durch das gespräch mit dem Stura konnten wir einige potenzielle risiken klären und besprechen. Zum einem entsprach das Frontend der Webseite(bis auf ein paar ausnahmen) den wünschen des Sturas. Zum anderen konnten noch spezifische fragen wie das interne nummerieren der Sitzungen besprochen werden.  Es wurde auch entschlossen das man nur einen Antrag an den StuRa senden kann wenn man eine gültige HTW e-mail besitzt um sich besser von potenziellen spam, oder andere angriffen zuz schützen.
 
-Zu Beginn der 8. Iteration fand der Fachaustausch zum Thema Architektur statt. Dabei stellte unser Architekt den Aufbau unseres Projektes vor erklärte unser Vorgehen und welche Probleme dabei auftraten. Wir bekamen dabei auch einen guten Einblick in die Entwürfe der anderen Teams und deren individuellen Herausforderungen.
+==== Iteration 8 (29.05. - 11.06.2023)
+
+Zu Beginn der 8. Iteration fand der Fachaustausch zum Thema Architektur statt. Dabei stellte unser Architekt den Aufbau unseres Projektes vor erklärte unser Vorgehen und welche Probleme dabei auftraten. Wir bekamen dabei auch einen guten Einblick in die Entwürfe der anderen Teams und deren individuellen Herausforderungen. +
 In der folgenden Woche fand der letzte Fachaustausch zum Thema Testen statt. Zwei unserer Teammitglieder erklärten wie das Testen in unserem Projekt organisiert ist und welche Methoden wir dabei einsetzen. Auch hier half es zu sehen, auf welche Konzepte die anderen Team setzten und welche Probleme die anderen Teams bei der Umsetzung hatten. Auch konnten wir noch offene Fragen zum Testen mit Ruben-David Kraus klären, der uns als Ansprechpartner für unsere Projekte zur Verfügung steht. #was wurde besprochen#
 
-In dieser Iteration wurde weiter an den Use Cases 2 und 4 gearbeitet. Nach den Problemen mit dem Etherpad in der letzten Iteration musste nun die Vorlage für die Tagesordnung erstellt werden. Die Formatierung, das Übertragen der Daten aus dem ABV-Tool und die richtige Darstellung nahm ebenfalls sehr viel Zeit in Anspruch.
+In dieser Iteration wurde weiter an den Use Cases 2 und 4 gearbeitet. Nach den Problemen mit dem Etherpad in der letzten Iteration musste nun die Vorlage für die Tagesordnung erstellt werden. Die Formatierung, das Übertragen der Daten aus dem ABV-Tool und die richtige Darstellung nahm ebenfalls sehr viel Zeit in Anspruch. Am Ende war jedoch eine Generierung der Tagesordnung mit allen erforderlichen Daten möglich. +
 Außerdem wurde der neue Use Case 7 "Sitzung anlegen" umgesetzt, welcher sich aus dem Gespräch mit dem StuRa ergeben hatte. Dafür mussten die vorher in einem festen Zyklus stattfindenden Sitzungen so umgewandelt werden, dass der Antragsverwalter das Datum der Sitzung selbst bestimmen kann. Dies konnte problemlos geändert werden. Auch die Logik für das Stellen eines Eilantrages und des File Uploads wurde nun umgesetzt. Damit war nun der Use Case 1 endgültig abgeschlossen.
 
-Für das Testen wurde außerdem GitHub Actions eingerichtet. #testen, Differenzierung Unit- und End-to-End Tests#
+Für das Testen haben wir außerdem eine GitHub Actions Pipeline eingerichtet, die automatisch vorhandene Tests durchführt, sobald eine Änderung in den Master-Branch gemerged oder committet wird. Zusätzlich haben wir weitere Unittests für das Stellen eines Antrags implementiert. Des Weiteren haben wir begonnen, intensive manuelle End-to-End-Tests für die Standardprozesse durchzuführen. #testen, Differenzierung Unit- und End-to-End Tests#
 
 === Projektabschluss
 
-*Iteration 9 (12.06. - 23.06.2023)*
+==== Iteration 9 (12.06. - 23.06.2023)
 
-Die neunte und letzte Iteration sollte gleichzeitig die Transition Phase des Projektes sein. Da die Umsetzung der verbliebenen Use Cases länger dauerte als ursprünglich gedacht, konnte der Projektabschluss nicht so ablaufen wie geplant. Wir wollten jedoch die Use Cases rund um die Sitzungsverwaltung gern noch abschließen, um das Projekt zu einem guten Abschluss zu bringen und dem StuRa kein halbfertiges System übergeben zu müssen. Damit implementierten wir auch in der letzten Iteration noch, konnten jedoch die verbliebenen Use Cases 2, 3 und 4 abschließend und ohne weitere Probleme umsetzen.
+Die neunte und letzte Iteration sollte gleichzeitig die Transition Phase des Projektes sein. Da die Umsetzung der verbliebenen Use Cases länger dauerte als ursprünglich gedacht, konnte der Projektabschluss nicht so ablaufen wie geplant. Wir wollten jedoch die Use Cases rund um die Sitzungsverwaltung gern noch abschließen, um das Projekt zu einem guten Abschluss zu bringen und dem StuRa kein halbfertiges System übergeben zu müssen. Damit implementierten wir auch in der letzten Iteration noch, und das Ende der Construction Phase und die Transition Phase fielen in den selben Zeitraum. Insbesondere mussten noch der Use Cases 3 "Sitzung abschließen" und der Use Case 6 "Beschlüsse einpflegen" abschließend implementiert werden.
+
+Gleichzeitig haben wir unsere Tests intensiviert und umfangreiche manuelle End-to-End-Tests durchgeführt. Dabei lag unser besonderer Fokus auf Negativtests, bei denen wir gezielt Fehler im System gesucht haben. Dadurch konnten wir einerseits die Fehlertoleranz ermitteln und andererseits kritische Bugs finden und beheben. 
 
 Zum Abschluss glichen wir nochmals die Anforderungsspezifikation mit dem tatsächlichen System ab und prüften ob die Abläufe richtig beschrieben waren. Hierbei gab es einige Anpassungen bei den Use Cases 2 und 3, da der Ablauf nun doch anders umgesetzt wurde als ursprünglich geplant. Auch die systemweiten Anforderungen und das Domänenmodell wurde nochmals mit dem Projektstand abgeglichen und kleine Anpassungen vorgenommen. Die Entwickler-, Benutzer und Testdokumentation wurde ebenfalls abschließend bearbeitet und im gesamten Team vorgestellt und besprochen. Als letzte Dokumention wurde schließlich noch die Anwenderdokumention erstellt. #Dazu wurden verschiedene Screenshots zu den wichtigsten Funktionalitäten erstellt# 
 
-Der Abnahmetermin für das ABV-Tool sollte eigentlich am 21.06.2023 stattfinden. Jedoch konnten hier einige Teammitglieder von vorneherein nicht und als schließlich noch ein weiteres Teammitglied krankheitsbedingt ausfiel, verschoben wir den Termin in Abstimmung mir Prof. Anke auf den #.06.2023#.
+#Deployment#
+
+Der Abnahmetermin für das ABV-Tool sollte eigentlich am 21.06.2023 stattfinden. Jedoch konnten hier einige Teammitglieder von vorneherein nicht und als schließlich noch ein weiteres Teammitglied krankheitsbedingt ausfiel, verschoben wir den Termin in Abstimmung mit Prof. Anke auf den #.06.2023#.
 
 == Ergebnisdokumentation
 
@@ -219,34 +201,38 @@ Der Abnahmetermin für das ABV-Tool sollte eigentlich am 21.06.2023 stattfinden.
 
 ==== Ziel des Projektes
 
-Ziel des Projektes war es ein funktionierendes und anwenderfreundliches Tool zur Antrags- und Beschlussverwaltung zu entwickeln und so die Arbeit des StuRa der HTW Dresden zu erleichtern. Dabei war es uns besonders wichtig, das Tool gut in den bestehenden Ablauf zu integrieren.
+Ziel des Projektes war es ein funktionierendes und anwenderfreundliches Tool zur Antrags- und Beschlussverwaltung zu entwickeln und so die Arbeit des StuRa der HTW Dresden zu erleichtern. Dabei war es uns besonders wichtig, das Tool gut in den bestehenden Ablauf zu integrieren. 
 
 ==== Ergebnisse und Bewertung 
 
-*Antrag stellen*
+*UC 01 Antrag stellen*
 
-Dieses Ziel wurde erreicht. Es ist möglich über das Tool verschiedene Anträge zu stellen sowie sie automatisch der nächsten Sitzung zuzuordnen. Sie werden in der Datenbank gespeichert und sind in einer Gesamtübersicht aller Anträge sowie über die Sitzung einsehbar. Sie bekommen eine eindeutige, fortlaufende Antragsnummer zugewiesen. Der Antragsteller bekommt nach Absenden des Antrages eine Bestätigung per Mail mit einem Link über den er den Antrag ändern kann.
+Dieses Ziel wurde erreicht. Es ist möglich über das Tool verschiedene Anträge zu stellen sowie sie automatisch der nächsten Sitzung zuzuordnen. Sie werden in der Datenbank gespeichert und sind in einer Gesamtübersicht aller Anträge sowie über die Sitzung einsehbar. #Sie bekommen eine eindeutige, fortlaufende Antragsnummer zugewiesen.# Der Antragsteller bekommt nach Absenden des Antrages eine Bestätigung per Mail mit einem Link über den er den Antrag ändern kann.
 
-*Tagesordnung erstellen*
+*Sitzungsverwaltung - UC 02 Tagesordnung erstellen, UC 03 Sitzung abschließen und UC 04 Plenumssitzung vertagen*
 
-*Tagesordnung abschließen*
+Nach einigen Hürden konnten wir auch diesen Use Case umsetzen. Hier stießen wir während der Implementierung auf die größten Herausforderungen, da der ursprüngliche Plan nicht so umsetzbar war wie gedacht. Das Suchen nach einer Lösung und die anschließende Umsetzung kostete sehr viel Zeit. Am Ende ist es jedoch gelungen, die Use Cases rund um die Sitzungsverwaltung umzusetzen und ein sehr zufriedenstellendes Ergebnis zu erzielen. Es ist möglich für eine Sitzung eine Tagesordnung zu generieren und die benötigten Daten aus den Anträgen in das Pentapad zu überführen. Die Sitzung kann nach Abschluss aller Anträge als beschlossen markiert werden. Außerdem kann eine Sitzung vertagt werden, falls diese nicht wie geplant stattfindet. Für die Sitzung wird ein neues Datum festgelegt und zusammen mit allen Anträgen auf diesen Tag verschoben.
 
-*Plenumssitzung vertagen*
+*UC 05 Antragsverwalter anmelden*
 
-*Antragsverwalter anmelden*
+Diesen Use Case haben wir als erstes umgesetzt. Durch die Nutzung von mitgelieferten Tools von Django war eine unkomplizierte Umsetzung möglich.
+Durch die Anmeldung wird das Tool in einen öffentlichen und einen internen Bereich unterteilt. Nur berechtigte Mitglieder des StuRa haben Zugang zur Antrags- und Sitzungsverwaltung. 
 
-Diesen Use Case haben wir als einen der ersten umgesetzt. Abgesehen vom stellen einen Antrages werden alle anderen Use Cases vom Antragsverwalter ausgeführt. Antragsverwalter sind berechtigte Personen beim StuRa selbst 
+*UC 06 Beschlüsse einpflegen*
 
+Dieser Use Case wurde gemeinsam mit Use Case 3 implementiert, da abgeschlossene Anträge Voraussetzung für den Abschluss der Sitzung sind. In einem extra Fenster kann der Beschluss mit Beschlusstext und Abstimmungsergebnis erfasst und so der Antrag abgeschlossen werden. Er wird in der Übersicht anschließend als "abgeschlossen" markiert.
 
-*Beschlüsse einpflegen*
+*UC 07  Sitzung anlegen*
 
-*Umsetzung der systemweiten Anforderungen*
+Dieser Use Case entstand erst im weiteren Projektverlauf durch die Abstimmung mit dem Auftraggeber. Er konnte jedoch schnell und unkompliziert umgesetzt werden, so dass Sitzungen je nach Wunsch seitens des StuRa angelegt werden können. Dabei wird für ein ausgewähltes Referat ein Sitzungsdatum festgelegt. Falls an diesem Tag bereits eine Sitzung des Referates stattfindet wird der Nutzer mit einer entsprechenden Fehlermeldung gewarnt. So werden redundante Sitzungen vermieden.
 
 *Umsetzung weiterer Anforderungen*
 
-==== Fazit & Lessons Learned 
+Auch die systemweiten Anforderungen konnten gut umgesetzt werden. Mit der Antragsstellung kann sofort nach Aufruf der Seite und einem weiteren Klick begonnen werden. Überall werden Hilfstexte und Warnungen angezeigt, die es sowohl Antragsteller als auch Antragsverwalter erleichtern sollen. Auch die persistente und verlustlose Speicherung aller Daten konnte sichergestellt werden. Nur ein berechtigter Personenkreis hat Zugang zur Antrags- und Sitzungsverwaltung, was eine der wichtigsten Anforderungen für die Arbeitsweise des ABV-Tools ist.
 
-Insgesamt konnte dem StuRa der HTW Dresden ein funktionierendes System übergeben werden. 
+==== Fazit  
+
+Insgesamt konnte dem StuRa der HTW Dresden ein funktionierendes System übergeben werden. Wir haben hierbei versucht alle Wünsche und Anforderungen des StuRa so umzusetzen, dass das ABV-Tool akzeptiert und auch wirklich genutzt wird. Das erhoffen wir uns vor allem durch die flexibel gestaltete Tagesordnung, die sich sehr gut in den bisherigen Ablauf des StuRa integriert und die Nutzung des Pentapads bzw. Etherpads weiterhin möglich macht. 
 
 <<<
 === Reflexion der Teammitglieder
