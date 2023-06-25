@@ -1,10 +1,12 @@
 = Projektbericht: {project-name}
 {localdatetime}
+:chapter-signifier: Kapitel
+:author: Göran Heinemann, Alexander Minukow, Mirjam Müller, Xuan Huy Nguyen, Max Patecky, Simon Voges
 include::../../docs_SE_I/_includes/default-attributes.inc.adoc[] 
 :imagesdir: ./images
 
 
-== Projektplanung (MM)
+== Projektplanung
 
 === Aufgabenstellung und Auftraggeber (MM)
 
@@ -14,11 +16,10 @@ Im Rahmen der Module Software Engineering (SE) I und II war unsere Aufgabe als T
 
 Mit Abgabe des Beleges am Ende von SE I endete die Elaboration Phase für unser Projekt. Die Anforderungen in Form mehrere Use Cases waren fertig ausgearbeitet und mit dem Auftraggeber abgestimmt. Der Entwurf für die Architektur des Projektes stand im Groben und bedurfte noch kleinerer Abstimmungen. Auch wurde ein erster Prototyp implementiert und erste Test Cases beschrieben. Zu Beginn des SE II verkleinerte sich das Team, da unser Teamleiter als Wirtschaftsingenieurstudent SE II nicht belegte. Damit wurden Anpassungen in der Teamstruktur notwendig. Mehr dazu unter dem Punkt <<Rollenverteilung>>. Mit Beginn von SE II konnten wir also mit der Umsetzung der Use Cases beginnen.
 
-
 === Projektorganisation (MM)
 //d.h. Team, Rollen/Verantwortlichkeiten, Kommunikation im Team und zum Auftraggeber, eingesetzte Tools in der Projektarbeit, z.B. für Planung, Kommunikation, Dokumentation
 
-==== Rollenverteilung (MM)
+==== Rollenverteilung 
 
 Zu Beginn von SE I hat sich das Team auf folgende Rollenverteilung geeinigt: 
 
@@ -42,7 +43,7 @@ Nach dem Ende des 3. Semesters verließ Marten Petters das Team, da im Studienga
 * Max Patecky (MP)			*Tester*/Technical-Writer
 * Simon Voges (SV)			*stellv. Teamleitung*/Verantwortlich für das Erstellen von Diagrammen und Wireframes
 
-==== Kommunikation, Dokumentation und eingesetzte Tools (MM)
+==== Kommunikation, Dokumentation und eingesetzte Tools 
 
 Zur Kommunikation nutzten wir einen WhatsApp Gruppenchat sowie einen Discord Server. Über WhatsApp wurden Termine abgestimmt und kurze Infos mitgeteilt. Auf unserem Discord Server wurden ausführlichere Infos ausgetauscht sowie unsere Meetings abgehalten (sofern sie online stattfanden). Auch unser Coach Manuela Ziesche und unsere Ansprechpartnerin beim StuRa Theresa Minister waren Teil des Discord Servers um sich im Bedarfsfall schnell und unkompliziert treffen zu können. Die Kommunikation mit beiden zwecks Terminabstimmungen etc. lief ebenfalls über WhatsApp, alle anderen Dinge wurde in persönlichen Gesprächen besprochen. Für die Kommunikation mit unserem Coach war die Teamleitung zuständig, die Terminabsprachen mit dem StuRa übernahm eines unserer Teammitglieder aufgrund seiner Tätigkeit im StuRa. Unsere Meetings in SE II fanden im 14-tägigen Rhythmus statt. Zu Beginn des Semesters trafen wir uns immer Dienstags 15 Uhr in der HTW. Im Laufe des Semesters entschieden wir uns die Meetings wieder online zu machen und verlegten dafür den Termin auf 18 Uhr. Die Meetings dokumentierten wir in einem Google Doc und nutzten dazu eine feste Vorlage, durch die auch der Ablauf eines Teammeetings unterstützt wurde. Alles Besprochene sowie die Aufgabenverteilung für die kommende Iteration wurde dort aufgeschrieben. 
 
@@ -97,16 +98,16 @@ Im folgenden sind die Techniken und Praktiken unseres Teams aufgelistet, die wä
 |===
 
 
-== Projektdurchführung (MM)
+== Projektdurchführung 
 // Kurze Beschreibung der Ziele, Aktivitäten und Ergebnisse in den OpenUP-Projektphasen / Iterationen, dabei Berücksichtigung des Zusammenspiels zwischen den einzelnen Rollen sowie Risiken
 
-=== SE I - Inception und Elaboration Phase 
+=== SE I - Inception und Elaboration Phase (MM)
 
-==== Inception Phase (12.12.2022 - 21.12.2022) (MM)
+==== Inception Phase (12.12.2022 - 21.12.2022) 
 
 Ziel der Inception Phase und der ersten Iteration war es sich als Team zu finden, Rollen und Verantwortlichkeiten zu verteilen und sich mit der Aufgabenstellung vertraut zu machen. Auch unseren Coach lernten wir kennen. Wir haben den Einsatz verschiedener Tools diskutiert und schließlich die passenden ausgewählt und eingerichtet. Auch fand ein erstes Treffen mit unseren Ansprechpartnern beim StuRa statt um sich gegenseitig kennenzulernen und über die Wünsche und Anforderungen zu sprechen. Da wir nicht die erste Gruppe waren, die an diesem Projekt arbeitete, war es für uns natürlich auch interessant noch ein paar mehr Hintergrundinformationen zu bekommen. Die erste zentrale Frage für uns war, was und wie viel wir von dem Vorgängerprojekt übernommen wollen oder ob wir komplett neu anfangen wollen. Dies wurde uns vom StuRa freigestellt. Wir entschieden schließlich das Front End bzw. das Design des Vorgängerprojektes zu übernehmen und das Back End neu zu entwickeln. Dazu besprachen wir verschiedene Möglichkeiten der Umsetzung und der Machbarkeit dieser. Nach dieser Entscheidung und dem Input durch den StuRa erarbeiteten wir die Vision und erste Ideen für die Use Cases. Die Inception Phase endete mit dem Erreichen des Meilenstein Lifecycle Objective.
  
-==== Elaboration Phase (04.01.2023 - 27.01.2023) (MM)
+==== Elaboration Phase (04.01.2023 - 27.01.2023)
 
 In der Elaboration Phase hatten wir zwei Iterationen in der unsere Analyse konkretisiert und die Use Cases detailliert ausgearbeitet und beschrieben wurden. Zu Beginn arbeiteten wir noch an Details der Vision und begannen uns in alle anderen Teile der Dokumentation einzuarbeiten. Wir entschieden für das Glossar die Antragsdaten sehr ausführlich dazustellen. Wir trafen uns zu Beginn erneut mit dem StuRa um den Ablauf der Antragstellung besser zu verstehen und eine bessere Vorstellung er bekommen. Ein Problem des StuRa war das z. T. in die Tagesordnung Punkte und Informationen aufgenommen werden sollten, die nicht als Anträge gestellt werden. Also mussten wir uns überlegen wie sowohl die Anträge aus dem Tool als auch zusätzliche Informationen in die Tagesordnung aufgenommen werden können. Der StuRa nutze bisher ein Pentapad für die Tagesordnung wo alle Anträge und weiteren Punkte aufgeschrieben wurden und auch während der Sitzung Protokoll geschrieben wurde. Wir diskutierten dazu verschiedene Möglichkeiten wie wir diese Flexibilität weiter gewährleisten konnten und entschieden uns schließlich dazu das Pentapad weiter zu nutzen und über eine API in unser Tool einzubinden. Damit fügte sich das Tool gut in den derzeitigen Ablauf beim StuRa ein und wir erhoffen uns dadurch eine höhere Akzeptanz. Wir erarbeiteten schließlich die Use Cases und formulierten die systemweiten Anforderungen. Gleichzeitig wurden erste Entscheidungen für die Architektur getroffen und ausformuliert. +
 Die Teammitglieder, die nicht primär mit der Analyse beschäftigt und auch verantwortlich für Implementierung und Test waren, arbeiteten sich in das Framework Django ein und erstellten ein erstes Datenbankschema. 
@@ -114,7 +115,7 @@ In der zweiten Iteration der Elaboration Phase besprachen wir nochmals abschlie�
 In der letzten Vorlesungswoche und auch der letzten Woche der Elaboration Phase fand eine Präsentation der Projekte zum Semesterende statt. Dafür mussten wir auch einen ersten Prototyp implementieren. Bevor wir damit beginnen konnten, musste sich jedoch in das Vorgängerprojekt eingearbeitet werden, da wir das Design der Benutzeroberfläche von diesem übernehmen wollten. +
 Am selben Tag präsentierten wir den Prototypen sowie unseren Stand zur Analyse am Ende von SE I auch dem StuRa um unsere formulierten Anforderungen nochmals abzugleichen und uns Feedback einzuholen. Die restliche Woche beendeten wir die Dokumentation und schauten insbesondere, dass das Erzeugen der PDF funktionierte und alle Abbildungen und Diagramme richtig eingebunden und angezeigt wurden. Das kostete am Ende doch mehr Zeit als gedacht, aber die Arbeit hat sich gelohnt und wir konnten am Freitag den Beleg abgeben. Damit endete auch die Elaboration Phase mit dem Erreichen des Meilenstein Lifecycle Architecture. 
 
-=== Start von SE II und Construction Phase (MM)
+=== Start von SE II und Construction Phase (AM, SV, MM)
 
 Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unserem Coach an. Dazu trafen wir uns in der HTW und gingen den Beleg Schritt für Schritt durch und besprachen die einzelnen Teile. Insgesamt erhielten wir hier gutes Feedback, hatten aber auch einige Punkte, die unserseits nachgearbeitet werden mussten. Diese übernahmen wir gleich als erste Aufgaben in der kommenden Iteration. 
 
@@ -173,7 +174,7 @@ Außerdem wurde der neue Use Case 7 "Sitzung anlegen" umgesetzt, welcher sich au
 
 Für das Testen haben wir außerdem eine GitHub Actions Pipeline eingerichtet, die automatisch vorhandene Tests durchführt, sobald eine Änderung in den Master-Branch gemerged oder committet wird. Zusätzlich haben wir weitere Unittests für das Stellen eines Antrags implementiert. Des Weiteren haben wir begonnen, intensive manuelle End-to-End-Tests für die Standardprozesse durchzuführen.
 
-=== Projektabschluss
+=== Projektabschluss (MM)
 
 ==== Iteration 9 (12.06. - 23.06.2023)
 
@@ -187,9 +188,9 @@ Zum Abschluss glichen wir nochmals die Anforderungsspezifikation mit dem tatsäc
 
 Der Abnahmetermin für das ABV-Tool sollte eigentlich am 21.06.2023 stattfinden. Jedoch konnten hier einige Teammitglieder von vorneherein nicht und als schließlich noch ein weiteres Teammitglied krankheitsbedingt ausfiel, verschoben wir den Termin in Abstimmung mit Prof. Anke auf den #.06.2023#.
 
-== Ergebnisdokumentation
+== Ergebnisdokumentation 
 
-=== Ergebnisse
+=== Ergebnisse (MM)
 
 //Projektergebnisse mit Bezug auf die Ziele / Aufgabenstellung: Was haben wir erreicht und was nicht? Was waren die Gründe für Abweichungen?
 
