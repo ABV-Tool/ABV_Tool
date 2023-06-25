@@ -31,7 +31,7 @@ if ENV == 'DEVELOPMENT':
     DEBUG = True
 elif ENV == 'PRODUCTION':
     MESSAGE_LEVEL = 20 # INFO
-    DEBUG = False
+    DEBUG = True
     ALLOWED_HOSTS = [
         'localhost', 'localhost:8020', 'http://localhost:8020', 'https://localhost:8020'
         '127.0.0.1', '127.0.0.1:8020', 'http://127.0.0.1:8020', 'https://127.0.0.1:8020',
