@@ -1,4 +1,6 @@
-= Anwenderdokumentation
+= Anwenderdokumentation: {project-name}
+:chapter-signifier: Kapitel
+include::../../docs_SE_I/_includes/default-attributes.inc.adoc[] 
 //8-10 Seiten inkl. Screenshots
 
 == Einführung
