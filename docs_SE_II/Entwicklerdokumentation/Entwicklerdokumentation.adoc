@@ -8,8 +8,6 @@
 // r logisch und ggf. physisch, z.B. mittels Paket- / Komponenten- / Klassen- / Verteilungsdiagramm
 image::classdiagramm.png[title="Klassendiagramm (automatisch generiert)"]
 
-*Container*
-
 [plantuml, "{diagramsdir}/c4-model-container", svg, title="Container Diagramm"]
 ....
 @startuml example-c4-modell-diagram
@@ -75,7 +73,7 @@ image::Datenbankschema.png[title="Datenbankschema"]
 
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
 
-[plantuml, "{diagramsdir}/sequenzdiagramm_antragsteller", svg]
+[plantuml, "{diagramsdir}/sequenzdiagramm_antragsteller", svg, title="Sequenz Diagramm Antrag stellen"]
 ....
 actor Antragssteller
 boundary Frontend
@@ -83,16 +81,50 @@ boundary Backend
 database Datenbank
 entity Mailserver
 
-Antragssteller -> Frontend : stellt Antrag
-Frontend -> Backend : gibt Daten weiter
-Backend -> Datenbank : Speichert Daten am korrekten Platz
-Datenbank -> Mailserver : Gibt Mailadressen weiter
-Mailserver -> Antragssteller : Sendet Auftragsbestätigung
+Antragssteller -> Frontend  : klickt auf Antrag stellen
+Frontend -> Backend         : fordert Daten an
+Backend -> Datenbank        : fordert Daten aus Datenbank an
+Datenbank -> Backend        : Gibt Daten für "Antrag stellen"-Seite
+Backend -> Frontend         : gibt Daten an korrekten Platz
+Frontend -> Antragssteller  : Stellt "Antrag stellen"-Seite dar
+Antragssteller -> Frontend  : Gibt Antragsdaten ein
+Frontend -> Backend         : Gibt Daten weiter
+Backend -> Datenbank        : Speichert Daten an der korrekten Stelle
+Datenbank -> Mailserver     : Gibt Mailadressen weiter
+Mailserver -> Antragssteller: Sendet Auftragsbestätigung
 
 ....
 
-== Softwaredokumentation
-// Namen und Beschreibung aller Klassen
-// Namen, Kurzbeschreibung sowie Parameter aller
+[plantuml, "{diagramsdir}/sequenzdiagramm_beschluesse", svg, title="Sequenz Diagramm Beschlüsse einpflegen"]
+....
+actor Antragsverwalter
+boundary Frontend
+boundary Backend
+database Datenbank
+entity Mailserver
 
+Antragsverwalter -> Frontend    : Klickt auf Sitzungsverwaltung
+Frontend -> Backend             : Fordert Sitzungen an
+Backend -> Datenbank            : Fordert Daten aus Datenbank an
+Datenbank -> Backend            : Gibt Sitzungen
+Backend -> Frontend             : Gibt Daten an korrekten Platz
+Frontend -> Antragsverwalter    : Lädt Sitzungen
+Antragsverwalter -> Frontend    : Wählt Sitzung aus
+Frontend -> Backend             : Fordert Sitzungsdaten an
+Backend -> Datenbank            : Fordert Daten aus Datenbank an
+Datenbank -> Backend            : Gibt Sitzungsdaten
+Backend -> Frontend             : Gibt Daten an korrekten Platz
+Frontend -> Antragsverwalter    : Lädt alle Anträge der Sitzung
+Antragsverwalter -> Frontend    : Drückt auf Beschließen beim Antrag
+Frontend -> Backend             : Fordert Antragsdaten an
+Backend -> Datenbank            : Fordert Daten aus Datenbank an
+Datenbank -> Backend            : Gibt Antragsdaten
+Backend -> Frontend             : Gibt Daten an korrekten Platz
+Frontend -> Antragsverwalter    : Lädt Antragsdaten
+Antragsverwalter -> Frontend    : Gibt Beschlussdaten ein
+Frontend -> Backend             : Gibt Daten weiter
+Backend -> Datenbank            : Speichert Daten am korrekten Platz
+Datenbank -> Mailserver         : Gibt Mailadressen weiter
+Mailserver -> Antragsverwalter  : Sendet Auftragsbestätigung
 
+....
