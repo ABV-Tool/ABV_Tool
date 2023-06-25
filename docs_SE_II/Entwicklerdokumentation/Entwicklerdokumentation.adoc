@@ -27,9 +27,9 @@ Person(sa, Systemadmin, "Betreut das System")
 
 System(mail_system, "E-Mail System", "Das interne E-Mailsystem.")
 
-System_Boundary(c0, "StuRa Server") {
+Container_Boundary(c0, "Container im StuRa Server") {
 
-    System(avbt, "ABV-Tool", "Speichert Anträge und Beschlüsse und lässt bestimmte Nutzer verwalten.")
+    System(avbt, "ABV-Tool", "Speichert Anträge und Beschlüsse und lässt bestimmte Nutzer verwalten.", )
     ContainerDb(db,"Datenbank","Archiv","Speichert alle gestellten und bearbeiteten Anträge, Beschlüsse und Tagesordnungen")
 
     Rel(avbt,db, "speichert in")
