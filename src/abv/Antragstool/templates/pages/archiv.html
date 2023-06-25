@@ -30,6 +30,7 @@
                         <input class="w-full" type="text" placeholder="Antragstitel, Antragstext, ..." id="{{ form.q.id_for_label }}" 
                             name="{{ form.q.name }}" maxlength="{{ form.q.field.max_length }}"
                             {% if form.q.field.required %}required{% endif %} 
+                            {% if request.GET.q %}value="{{ request.GET.q }}"{% endif %}
                         >
                     </div>
 

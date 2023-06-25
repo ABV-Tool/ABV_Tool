@@ -12,6 +12,11 @@ services:
       - DB_HOST=db
       - DB_PORT=${DB_PORT:-5432}
       - DB_PASSWORD=${DB_PASSWORD:-abv}
+      - EMAIL_HOST=${EMAIL_HOST:-mailcatcher}
+      - EMAIL_PORT=${EMAIL_PORT:-1025}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER:-}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD:-}
+      - ETHERPAD_API_KEY="36432eb264ecb4c515c2d1f84b5469c7"
   db:
     image: postgres
     restart: unless-stopped

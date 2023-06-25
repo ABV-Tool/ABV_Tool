@@ -16,8 +16,97 @@
 {% block content %}
     <!-- insert content -->
     <div class="ml-40 mr-40">
+
+        <div class="mb-5">
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+            <form action="" method="GET">
+
+                <div class="flex flex-row mt-3">
+
+
+                    <!-- Suchbegriff -->
+                    <div class="w-1/2">
+                        <label class="block" for="{{ form.q.id_for_label }}"><b>{{ form.q.label }}</b></label>
+                        <input class="w-full" type="text" placeholder="Antragstitel, Antragstext, ..." id="{{ form.q.id_for_label }}" 
+                            name="{{ form.q.name }}" maxlength="{{ form.q.field.max_length }}"
+                            {% if form.q.field.required %}required{% endif %} 
+                            {% if request.GET.q %}value="{{ request.GET.q }}"{% endif %}
+                        >
+                    </div>
+
+
+                    <!-- Antragstyp -->
+                    <div class="w-1/4 ml-3 mr-5">
+                        <label class="block" for="{{ form.atyp.id_for_label }}">
+                            <b>{{ form.atyp.label }}</b>
+                        </label>
+                        <select name="{{ form.atyp.name }}" class="w-full" {% if form.atyp.field.required %}required{% endif %}>
+                            {% for choice in form.atyp.field.choices %}
+                                <option class="p-2" value="{{ choice.0 }}" {% if choice.0 == request.GET.atyp %}selected{% endif %}>{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+
+                    <a href="{% url 'antragsverwaltung' %}" class="btn btn-stura-orange w-1/4 hover:cursor-pointer h-11 mt-6 text-center">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> Filter zurücksetzen
+                    </a>
+
+
+                </div>
+
+
+                <div class="flex flex-row mt-3">
+
+
+                     <!-- Datum Von -->
+                     <div class="w-1/4 mr-3">
+                        <label class="block" for="{{ form.dv.id_for_label }}"><b>{{ form.dv.label }}</b></label>
+                        <input class="w-full" type="text" placeholder="01.01.2023" id="{{ form.dv.id_for_label }}" 
+                            name="{{ form.dv.name }}" maxlength="{{ form.dv.field.max_length }}"
+                            {% if form.dv.field.required %}required{% endif %} 
+                            {% if request.GET.dv %}value="{{ request.GET.dv }}"{% endif %}
+                        >
+                    </div>
+
+
+                    <!-- Datum Bis -->
+                    <div class="w-1/4 mr-3">
+                        <label class="block" for="{{ form.db.id_for_label }}"><b>{{ form.db.label }}</b></label>
+                        <input class="w-full" type="text" id="{{ form.db.id_for_label }}" placeholder="{% now 'd.m.Y' %}"
+                            name="{{ form.db.name }}" maxlength="{{ form.db.field.max_length }}"
+                            {% if form.db.field.required %}required{% endif %} 
+                            {% if request.GET.db %}value="{{ request.GET.db }}"{% endif %}
+                        >
+                    </div>
+
+
+                    <!-- Beschluss -->
+                    <div class="w-1/4 mr-5">
+                        <label class="block" for="{{ form.b.id_for_label }}">
+                            <b>{{ form.b.label }}</b>
+                        </label>
+                        <select name="{{ form.b.name }}" class="w-full" {% if form.b.field.required %}required{% endif %}>
+                            {% for choice in form.b.field.choices %}
+                                <option class="p-2" value="{{ choice.0 }}" {% if request.GET.b == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+
+                    <button type="submit" class="btn btn-success w-1/4 hover:cursor-pointer h-11 mt-6"><i class="fa-solid fa-magnifying-glass"></i> Suchen</button>
+
+                  
+                </div>
+            </form>
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+        </div>
+
+
         <div class="relative overflow-x-auto bg-[#b4b4b4] p-5 pt-3 rounded-lg">
+
             <table class="table-auto w-full text-left overflow-x-auto border-collapse border-spacing-y-2">
+
                 <thead class="text-gray-700 uppercase">
                     <tr class="border-b border-b-[#dcdcdc]">
                         <th scope="col" class="px-2 py-3">Antragstyp</th>
@@ -28,6 +117,7 @@
                         <th scope="col" class="px-2 py-3">Beschluss</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     {% for antrag in antraege %}
                     <tr class="border-b border-b-[#dcdcdc]">
@@ -56,9 +146,19 @@
                             {% include 'components/table_column_beschluss.html' with ergebnis=antrag.beschlussID.beschlussErgebnis %}
                         </td>
                     </tr>
+
+                    {% empty %}
+                    
+                    <tr>
+                        <td colspan="5" class="text-center mt-5 pt-5">Es konnten keine Anträge nach diesen Kriterien gefunden werden!</td>
+                    </tr>
+
                     {% endfor %}
+
                 </tbody>
+
             </table>
+
         </div>
 
     </div>

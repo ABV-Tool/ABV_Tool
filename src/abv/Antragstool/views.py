@@ -10,7 +10,7 @@ from datetime import date, datetime, timedelta
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss, Anlage
 from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertagenForm, SitzungAnlegenForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
-from .forms import ArchivSuchenForm
+from .forms import ArchivSuchenForm, SitzungsverwaltungSuchenForm, AntragsverwaltungSuchenForm
 
 from .mails import mailAstellerEingangsbestaetigung, mailAstellerVertagungAntrag, mailAstellerVertagungSitzung, mailAstellerErgebnisAntrag
 from .mails import mailReferatAntragEingegangen
@@ -201,14 +201,13 @@ def SitzungsverwaltungPage(request):
     """
     # Alle Referate und Sitzugnen
     referate = Referat.objects.all().order_by('refID')
-    sitzungen = Sitzung.objects.all().filter(sitzDate__gt=date.today()).order_by('refID').order_by('sitzDate')
     
     # Alle Sitzungen, welche in 14+ Tagen stattfinden und nicht vertagt wurden
     sitzungen_14_tage = Sitzung.objects.all().filter(sitzDate__gt=date.today() + timedelta(days=7)).filter(~Q(sitzStatus="Vertagt")).order_by('sitzDate')
     referate_ohne_sitzung = []
     
     # Anzahl der Anträge pro Sitzung berechnen | Filtere Anträge, die vertagt wurden
-    for sitzung in sitzungen:
+    for sitzung in Sitzung.objects.all():
         anz_antraege = Antrag.objects.filter(sitzID=sitzung.sitzID).filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).count()
         sitzung.anzAntraege = anz_antraege
         sitzung.save()
@@ -217,11 +216,46 @@ def SitzungsverwaltungPage(request):
     for referat in referate:
         if referat.refID not in sitzungen_14_tage.values_list('refID', flat=True):
             referate_ohne_sitzung.append(referat)
+           
+            
+    form = SitzungsverwaltungSuchenForm(request.GET)
+    
+    if request.method == 'GET' and form.is_valid():
+        referat_id = request.GET.get("ref")
+        sitzung_status = request.GET.get("s")
+        datum_von = request.GET.get("dv")
+        datum_bis = request.GET.get("db")
+        
+        # Alle Sitzungen
+        gefilterte_sitzungen = Sitzung.objects.all().order_by('refID').order_by('sitzDate')
+        
+        # Filtere nach Referat, falls referat_id nicht None ist
+        if referat_id and referat_id.isdigit():
+            gefilterte_sitzungen = gefilterte_sitzungen.filter(refID=referat_id)
+        
+        # Filtere nach Sitzungsstatus, falls sitzung_status nicht None ist
+        if sitzung_status:
+            gefilterte_sitzungen = gefilterte_sitzungen.filter(sitzStatus=sitzung_status)
+        
+        # Filtere nach Datum, falls datum_von und/oder datum_bis nicht None sind
+        if datum_von:
+            # Konvertiere String in Date-Objekt
+            datum_von = datetime.strptime(datum_von, '%d.%m.%Y').date()
+            gefilterte_sitzungen = gefilterte_sitzungen.filter(sitzDate__gte=datum_von)
+            
+        if datum_bis:
+            datum_bis = datetime.strptime(datum_bis, '%d.%m.%Y').date()
+            gefilterte_sitzungen = gefilterte_sitzungen.filter(sitzDate__lte=datum_bis)
+            
+    else:
+        gefilterte_sitzungen = Sitzung.objects.all().filter(sitzDate__gte=date.today()).order_by('refID').order_by('sitzDate')
+        messages.debug(request, str([form.errors[field_name] for field_name in form.errors]))
         
     return render(request, 'pages/intern/sitzungsverwaltung.html', context={
         'title': 'Sitzungsverwaltung', 
-        'sitzungen': sitzungen,
-        'referate_ohne_sitzung': referate_ohne_sitzung
+        'sitzungen': gefilterte_sitzungen,
+        'referate_ohne_sitzung': referate_ohne_sitzung,
+        'form': form
     })
 
 
@@ -465,10 +499,59 @@ def AntragsverwaltungPage(request):
     """ Gibt beim Aufruf die Antragsverwaltung-Seite zurück.
         Zeige die Antragsverwaltungsseite an.
     """
-    antraege = Antrag.objects.filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).order_by('-erstelltDate')
+    form = AntragsverwaltungSuchenForm(request.GET)
+    
+    if request.method == 'GET' and form.is_valid():
+        suchbegriff = request.GET.get("q")
+        beschluss = request.GET.get("b")
+        antrags_typ = request.GET.get("atyp")
+        datum_von = request.GET.get("dv")
+        datum_bis = request.GET.get("db")
+        
+        # Filtere Anträge, sodass nur welche angezeigt werden, die einen Beschluss haben oder nicht vertagt wurden
+        gefilterte_antraege = Antrag.objects.order_by('-erstelltDate')
+        
+        # Filtere Texte nach Suchbegriff
+        if suchbegriff:
+            gefilterte_antraege = gefilterte_antraege.filter(
+                Q(antragTitel__icontains=suchbegriff) | 
+                Q(antragText__icontains=suchbegriff) | 
+                Q(antragGrund__icontains=suchbegriff) | 
+                Q(antragVorschlag__icontains=suchbegriff) |
+                Q(antragVorstellungPerson__icontains=suchbegriff) | 
+                Q(antragFragenZumAmt__icontains=suchbegriff) | 
+                Q(astellerID__astellerName__icontains=suchbegriff)
+            )
+            
+        # Filtere nach Beschluss, falls beschluss nicht None ist
+        if beschluss:
+            if beschluss == 'Unbehandelt':
+                gefilterte_antraege = gefilterte_antraege.filter(Q(beschlussID__isnull=True))
+            else:
+                gefilterte_antraege = gefilterte_antraege.filter(beschlussID__beschlussErgebnis=beschluss)
+        
+        # Filtere nach Antragstyp, falls antrags_typ nicht None ist
+        if antrags_typ:
+            gefilterte_antraege = gefilterte_antraege.filter(typID=antrags_typ)
+        
+        # Filtere nach Datum, falls datum_von und/oder datum_bis nicht None sind
+        if datum_von:
+            # Konvertiere String in Date-Objekt
+            datum_von = datetime.strptime(datum_von, '%d.%m.%Y').date()
+            gefilterte_antraege = gefilterte_antraege.filter(erstelltDate__gte=datum_von)
+            
+        if datum_bis:
+            datum_bis = datetime.strptime(datum_bis, '%d.%m.%Y').date()
+            gefilterte_antraege = gefilterte_antraege.filter(erstelltDate__lte=datum_bis)
+    else:
+        gefilterte_antraege = Antrag.objects.filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).order_by('-erstelltDate')
+        messages.debug(request, str([form.errors[field_name] for field_name in form.errors]))
+    
+
     return render(request, 'pages/intern/antragsverwaltung.html', context={
         'title': 'Antragsverwaltung',
-        'antraege': antraege
+        'antraege': gefilterte_antraege,
+        'form': form
     })
         
 
