@@ -28,7 +28,7 @@
             <a href="{% url 'antrag-benehmen' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-gavel"></i> {{ antragstyp.typName }}</a>
         {% endif %}
     <!-- Intern > Sitzungsverwaltung > {Sitzung} > {Antrag} > Anzeigen/Bearbeiten -->
-    {% elif 'intern' in request.path and 'sitzung' in request.path %}
+    {% elif 'intern' in request.path and 'sitzung' in request.path or 'antrag' in request.path %}
         <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-lock"></i> Intern</a>
         <i class="fa-solid fa-angle-right"></i>
         <a href="{% url 'sitzungsverwaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung</a>
@@ -57,14 +57,17 @@
         <h1 class="text-center"><b>{{ title }}</b></h1>
 
 
-        <!-- Anzeigen der Sitzung / des Beschlussses, wenn man über das Archiv darauf zugreift -->
+        <!-- Anzeigen der Sitzung / des Beschlussses, wenn man über das Archiv/die Antragsverwaltung darauf zugreift -->
         {% if aktion|lower == "anzeigen" %}
         <div class="mb-8">
             <hr class="bg-gray-600 opacity-80 border-none h-1">
             <h2 class="text-center">Behandelt in: <b>{{ antrag.sitzID }}</b></h2>
-            <h4 class="text-center italic">Beschluss: <b>{{ antrag.beschlussID }}</b></h4>
+            <h4 class="text-center italic">Beschluss: <b>{{ antrag.beschlussID|default:"Beschluss nicht gefasst" }}</b></h4>
+            <h4 class="text-center italic">ABV-Nummer: <b>{{ antrag.abvNummer|default:"Sitzung nicht abgeschlossen" }}</b></h4>
             <hr class="bg-gray-600 opacity-80 border-none h-1">
         </div>
+        {% elif aktion|lower == "bearbeiten" %}
+            {% include 'components/alert.html' with type="INFO" text="In dieser Ansicht können lediglich die <b>Textfelder</b> sowie der <b>Titel</b> des Antrags zwecks Rechtschreibkorrektur o. ä. <b>bearbeitet</b> werden. <b>Stammdaten</b> sowie die <b>Stelle</b> oder das Häkchen bei <b>Eilantrag</b> können <b>nicht bearbeitet</b> werden!" %}
         {% endif %}
 
 

@@ -40,7 +40,6 @@ class StammdatenForm(forms.Form):
     
     ist_eilantrag = forms.BooleanField(label="Ist dies ein Eilantrag?:", required=False)
     
-    # TODO: Unterstützung für mehrere Dateien einbinden
     anlagen = MultipleFileField(label="Anlagen:", required=False)
 
 
@@ -86,12 +85,10 @@ class AntragVeranstaltungForm(StammdatenForm):
         self.fields['summe'].widget.is_localized = True
 
 
-# TODO: Vorstellung der Person: Details über benötigte Punkte anzeigen lassen
 class AntragMitgliedForm(StammdatenForm):
     vorstellung_person = vorstellung_person_feld
 
 
-# TODO: Vorstellung der Person/Allgemeine Fragen: Details über benötigte Punkte anzeigen lassen
 class AntragAmtForm(StammdatenForm):
     ist_mitglied = forms.BooleanField(label="Bist du bereits ein StuRa Mitglied? (Leer für Nein):", required=False, widget=forms.CheckboxInput())
     vorstellung_person = vorstellung_person_feld
