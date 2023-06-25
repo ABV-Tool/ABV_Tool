@@ -23,16 +23,28 @@ dotenv_path = os.path.join(BASE_DIR, '../../.env')
 load_dotenv(dotenv_path)
 
 
-# Development-Umgebung
-ENVIRONMENT ='DEVELOPMENT'
-MESSAGE_LEVEL = 10 # DEBUG
-DEBUG = True
+# ENV: DEVELOPMENT / PRODUCTION
+ENV ='PRODUCTION'
 
-# Production-Umgebung
-#ENVIRONMENT ='PRODUCTION'
-#MESSAGE_LEVEL = 20 # INFO
-#DEBUG = False
-#ALLOWED_HOSTS = ['localhost']
+if ENV == 'DEVELOPMENT':
+    MESSAGE_LEVEL = 10 # DEBUG
+    DEBUG = True
+elif ENV == 'PRODUCTION':
+    MESSAGE_LEVEL = 20 # INFO
+    DEBUG = True
+    ALLOWED_HOSTS = [
+        'localhost', 'localhost:8020', 'http://localhost:8020', 'https://localhost:8020'
+        '127.0.0.1', '127.0.0.1:8020', 'http://127.0.0.1:8020', 'https://127.0.0.1:8020',
+        '0.0.0.0', '0.0.0.0:8020', 'http://0.0.0.0:8020', 'https://0.0.0.0:8020',
+    ]
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:8010",
+        "http://localhost:8020"
+    ]
+    CSRF_TRUSTED_ORIGINS = [
+        "http://localhost:8010",
+        "http://localhost:8020"
+    ]
 
 
 # Quick-start development settings - unsuitable for production

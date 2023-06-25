@@ -3,6 +3,7 @@ services:
 
   abv:
     build: .
+    container_name: 'abv-tool'
     ports:
       - 8020:8020
     environment:
@@ -17,8 +18,10 @@ services:
       - EMAIL_HOST_USER=${EMAIL_HOST_USER:-}
       - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD:-}
       - ETHERPAD_API_KEY="36432eb264ecb4c515c2d1f84b5469c7"
+
   db:
     image: postgres
+    container_name: 'postgres-db'
     restart: unless-stopped
     ports:
       - ${DB_PORT:-5432}:${DB_PORT:-5432}
@@ -32,6 +35,7 @@ services:
   mailcatcher:
     restart: on-failure
     image: gitlab.goeranh.de/goeranh/mailcatcher:latest
+    container_name: 'mailcatcher'
     environment:
     - MDNS_HOSTNAME=mailcatcher
     ports:
