@@ -36,7 +36,9 @@ Mindestanforderungen der Hardware sind die gleichen wie die vom WSGI-kompatiblen
 
 7. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen. Ein TLS Zertifikat muss zuletzt erstellt werden, damit die Verschlüsselung der Verbindungen möglich ist.
 
-8. Zuletzt muss der Django Server gestartet werden mit _python manage.py runserver 127.0.0.1:8000_
+8. Nun muss man einen Superuser kreieren mit _python manage.py createsuperuser_
+
+9. Zuletzt muss der Django Server gestartet werden mit _python manage.py runserver 127.0.0.1:8000_
 
 == Systembetreuung
 // FAQ für Benutzersupport 

@@ -91,6 +91,8 @@ Wir verwenden als Framework verwenden wir Django, welches auf der Programmierspr
 * fontawesomefree
 * gunicorn
 * psycopg2
+* python-dotenv
+* requests
 
 === Datenbankschema
 
@@ -99,27 +101,48 @@ Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu hab
 image::Datenbankschema.png[title="Datenbankschema"]
 === Schnittstellen
 
-
+API-Schnittstelle zum Etherpad
 
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
 
-[plantuml, "{diagramsdir}/sequenzdiagramm", svg]
+[plantuml, "{diagramsdir}/sequenzdiagramm_antragsteller", svg]
 ....
 actor Antragssteller
-boundary Foo2
-control Foo3
-entity Foo4
-database Foo5
-collections Foo6
-Foo1 -> Foo2 : To boundary
-Foo1 -> Foo3 : To control
-Foo1 -> Foo4 : To entity
-Foo1 -> Foo5 : To database
-Foo1 -> Foo6 : To collections
+boundary WebUI
+database Datenbank
+entity Mailserver
+
+Antragssteller -> WebUI : Gibt Daten ein
+WebUI -> Datenbank : Pflegt Daten ein
+Datenbank -> WebUI : Gibt Mailadressen weiter
+WebUI -> Mailserver : Gibt Auftrag und Daten für E-Mail
+Mailserver -> Antragssteller : Sendet Auftragsbestätigung
+
+
 
 ....
 
 == Softwaredokumentation
 // Namen und Beschreibung aller Klassen
-// Namen, Kurzbeschreibung sowie Parameter aller Funktionenen
+// Namen, Kurzbeschreibung sowie Parameter aller
+
+=== Refarat
+
+
+=== Sitzung
+
+
+=== Antragsteller
+
+
+=== Beschluss
+
+
+=== Antragstyp
+
+
+=== Antrag
+
+
+=== Anlage
 
