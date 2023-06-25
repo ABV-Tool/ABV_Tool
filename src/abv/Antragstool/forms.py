@@ -180,3 +180,27 @@ class ArchivSuchenForm(forms.Form):
         
         return cleaned_data
     
+    
+class SitzungsverwaltungSuchenForm(forms.Form):
+    # Referat
+    ref = forms.ModelChoiceField(label="Referat:", queryset=Referat.objects.all().order_by('refID'), required=False, empty_label="Alle Referate")
+    
+    # Sitzungs-Status
+    s = forms.ChoiceField(label="Sitzungs-Status:", choices=Sitzung.SitzungStatus.choices, required=False, widget=forms.Select())
+
+    # Datum Von
+    dv = forms.DateField(label="Datum von:", required=False, widget=forms.DateInput(format="%d.%m.%Y"), input_formats=["%d.%m.%Y"], help_text="Format: TT.MM.JJJJ")
+    # Datum Bis
+    db = forms.DateField(label="Datum bis:", required=False, widget=forms.DateInput(format="%d.%m.%Y"), input_formats=["%d.%m.%Y"], help_text="Format: TT.MM.JJJJ")
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        dv = cleaned_data.get('dv')
+        db = cleaned_data.get('db')
+
+        if dv and db and dv > db:
+            raise forms.ValidationError('Datum von darf nicht größer als Datum bis sein.')
+        
+        return cleaned_data
+    
+    
