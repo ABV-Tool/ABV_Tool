@@ -2,12 +2,18 @@ server {
     listen 8020;
     server_name example.org;
 
+   location /static/ {
+        root /opt/app/abv;
+   }
     location / {
         proxy_pass http://127.0.0.1:8010;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Scheme $scheme;
     }
-    location /static {
-        root /opt/app/abv/Antragstool;
-    }
+   location /media/ {
+        root /opt/app/abv;
+   }
 }
