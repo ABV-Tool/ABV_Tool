@@ -6,79 +6,46 @@
 
 === Systemarchitektur
 // r logisch und ggf. physisch, z.B. mittels Paket- / Komponenten- / Klassen- / Verteilungsdiagramm
-[plantuml, "{diagramsdir}/klassendiagramm", svg]
+image::classdiagramm.png[title="Klassendiagramm (automatisch generiert)"]
+
+*Container*
+
+[plantuml, "{diagramsdir}/c4-model-container", svg, title="Container Diagramm"]
 ....
-database Datenbank{
+@startuml example-c4-modell-diagram
+' source: https://github.com/plantuml-stdlib/C4-PlantUML
+' C4 Model
+!include <c4/C4_Context.puml>
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-}
+' Images
+!include <office/Users/user.puml>
+!include <office/Users/mobile_user.puml>
 
-interface ABVT <<Interface>> {
-  +LoginPage
-  +LogoutPage
-  +RefaratListe
-  +SitzungenVonRefarat
-  +AntraegeVonSitzung
-  +Antrag verschiedene
-}
+' Diagram syntax
+Person(as, Antragsteller, "Stellt Antrag")
+Person(av, Antragverwalter, "Verwaltet Anträge")
+Person(sa, Systemadmin, "Betreut das System")
 
-class Refarat{
-    -db_table = referat
-    #refID : uuid
-    +refName
-    +refZyklus
-}
-class Sitzung{
-    -db_table = sitzung
-    #sitzID : uuid
-    #refID : id
-    +sitzDate
-}
-class Antragssteller{
-    -db_table = antragssteller
-    #astellerID : uuid
-    #astellerIstMitglied : Boolean
-    +astellerName
-    +astellerVorname
-    +astellerEmail
-}
-class Antragstyp{
-    -db_table = antragstyp
-    #typID : int
-    +typName
-    +typSlug
-}
-class Antrag{
-    -db_table = antrag
-    #antragID : uuid
-    #sitzID : uuid
-    #typID : id
-    #astellerID : uuid
-    +antragTitel
-    +antragText
-    +antragAnlagen
-    +antragGrund
-    +antragVorschlag
-    +antragKostenposition
-    +antragSumme
-    +antragVorstellungPerson
-    +antragFragenZumAmt
-    +antragZeitraum
-    +antragVerantwortlichkeit
-}
+System(mail_system, "E-Mail System", "Das interne E-Mailsystem.")
 
-Refarat "m" *-- "n" Sitzung
-Antragstyp "1" *-- "n" Antrag
-Antragssteller "1" *-- "n" Antrag
-Sitzung "1" *-- "n" Antrag
-ABVT -> Antrag
-ABVT -> Sitzung
-ABVT -> Refarat
-ABVT -> Antragssteller
-ABVT -> Antragstyp
-ABVT -> Datenbank
+System_Boundary(c0, "StuRa Server") {
 
+    System(avbt, "ABV-Tool", "Speichert Anträge und Beschlüsse und lässt bestimmte Nutzer verwalten.")
+    ContainerDb(db,"Datenbank","Archiv","Speichert alle gestellten und bearbeiteten Anträge, Beschlüsse und Tagesordnungen")
 
+    Rel(avbt,db, "speichert in")
+    Rel(as, avbt, "stellt Antrag in")
+    Rel(sa, av, "Erstellt/Löscht Nutzer")
+    Rel(sa, mail_system, Administriert)
+    Rel(avbt,mail_system,"sendet Informationen")
+    Rel(mail_system,as,"Informiert über Antragseingang")
+    Rel(av,avbt,"Verwaltet Sitzungen und Anträge")
+}
+SHOW_LEGEND()
+@enduml
 ....
+
 
 === Verwendete Bibliotheken/Frameworks...
 
@@ -101,24 +68,26 @@ Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu hab
 image::Datenbankschema.png[title="Datenbankschema"]
 === Schnittstellen
 
-API-Schnittstelle zum Etherpad
+* Django liefert selbst eine ORM Schnittstelle zur Datenbank sowie zu den Mailserver.
+
+* API-Schnittstelle zum Etherpad
+
 
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
 
 [plantuml, "{diagramsdir}/sequenzdiagramm_antragsteller", svg]
 ....
 actor Antragssteller
-boundary WebUI
+boundary Frontend
+boundary Backend
 database Datenbank
 entity Mailserver
 
-Antragssteller -> WebUI : Gibt Daten ein
-WebUI -> Datenbank : Pflegt Daten ein
-Datenbank -> WebUI : Gibt Mailadressen weiter
-WebUI -> Mailserver : Gibt Auftrag und Daten für E-Mail
+Antragssteller -> Frontend : stellt Antrag
+Frontend -> Datenbank : speichert Daten ein
+
+Datenbank -> Mailserver : Gibt Mailadressen weiter
 Mailserver -> Antragssteller : Sendet Auftragsbestätigung
-
-
 
 ....
 
@@ -126,23 +95,4 @@ Mailserver -> Antragssteller : Sendet Auftragsbestätigung
 // Namen und Beschreibung aller Klassen
 // Namen, Kurzbeschreibung sowie Parameter aller
 
-=== Refarat
-
-
-=== Sitzung
-
-
-=== Antragsteller
-
-
-=== Beschluss
-
-
-=== Antragstyp
-
-
-=== Antrag
-
-
-=== Anlage
 

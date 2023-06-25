@@ -18,6 +18,55 @@ from .mails import mailReferatAntragEingegangen
 from .api import list_pads, create_pad, set_html
 
 
+def generiere_abv_nummern_sitzung(sitzID):
+    
+    def berechne_legislatur_periode(date):
+        """
+        Berechnet die Legislaturperiode für ein gegebenes Datum. Gibt die Legislaturperiode sowie den Start- und Endzeitpunkt der Legislaturperiode zurück.
+        """
+        prev_year = date.year - 1
+        current_year = date.year
+        next_year = date.year + 1
+
+        import datetime
+        
+        if date >= datetime.date(current_year, 9, 1):
+            # Alles ab dem 1. September gehört zur nächsten Legislaturperiode
+            periode_start = datetime.date(current_year, 9, 1)
+            periode_ende = datetime.date(next_year, 8, 31)
+            legislatur_periode = str(current_year) + "/" + str(next_year)
+        else:
+            # Alles vor dem 1. September gehört zur vorherigen Legislaturperiode
+            periode_start = datetime.date(prev_year, 9, 1)
+            periode_ende = datetime.date(current_year, 8, 31)
+            legislatur_periode = str(prev_year) + "/" + str(current_year)
+
+        return periode_start, periode_ende, legislatur_periode
+    
+    # Hole Sitzung
+    sitzung = Sitzung.objects.get(sitzID=sitzID)
+    
+    # Berechne Legislaturperiode für Sitzung sowie Start- und Endzeitpunkt der Legislaturperiode
+    periode_start, periode_ende, legislatur_periode = berechne_legislatur_periode(sitzung.sitzDate)
+    
+    # Filtere alle Sitzungen der Legislaturperiode
+    sitzungen_referat = Sitzung.objects.filter(refID=sitzung.refID).filter(sitzDate__gte=periode_start).filter(sitzDate__lte=periode_ende).order_by('sitzDate')
+    
+    # Berechne die Sitzungsnummer
+    sitzung_nummer_legislatur = 0
+    for index, sitzung_referat in enumerate(sitzungen_referat, 1):
+        if sitzung_referat.sitzID == sitzung.sitzID:
+            sitzung_nummer_legislatur = index
+            
+    # Hole die Anträge der Sitzung
+    antraege_sitzung = Antrag.objects.filter(sitzID=sitzung.sitzID).order_by('-prioritaet','erstelltDate')
+    
+    # Berechne die ABV-Nummer für jeden Antrag
+    for index, antrag in enumerate(antraege_sitzung, 1):
+        antrag.abvNummer = str(legislatur_periode) + "-" + str(sitzung_nummer_legislatur) + "-" + str(index)
+        antrag.save()
+
+
 def formFehlerAusgeben(request, form):
     for field_name, errors in form.errors.items():
         field = form.fields[field_name]
@@ -313,15 +362,8 @@ def SitzungVerwaltenPage(request, sitzID):
     antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
     for antrag in antraege:
         antrag.anzAnlagen = Anlage.objects.filter(antragID=antrag.antragID).count()
-        antrag.save
-        
+        antrag.save    
 
-    sitzungen = Sitzung.objects.all().filter(refID=sitzung.refID).order_by('sitzDate')
-    
-    for i, sitz in enumerate(sitzungen, 1):
-        if sitz.sitzID == sitzung.sitzID:
-            print(i)
-    
     return render(request, 'pages/intern/sitzung/verwalten.html', context={
         'title': 'Sitzung verwalten',
         'antraege': antraege,
@@ -414,7 +456,7 @@ def SitzungLoeschenPage(request, sitzID):
         else:
             messages.error(request, 'Die Sitzung konnte nicht gelöscht werden, da es noch Anträge gibt, welche dieser Sitzung zugeordnet sind!')
             return redirect('sitzungsverwaltung')
-    
+        
     return render(request, 'pages/intern/sitzung/loeschen.html', context={
         'title': 'Sitzung löschen',
         'sitzung': sitzung
@@ -428,7 +470,7 @@ def SitzungAbschliessenPage(request, sitzID):
         sitzID:int
     """
     sitzung = Sitzung.objects.get(sitzID=sitzID)
-    antraege_sitzung = Antrag.objects.filter(sitzID=sitzID)
+    antraege_sitzung = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
     
     if request.method == 'POST':
         # Prüfe, ob die Sitzung bereits abgeschlossen wurde
@@ -449,13 +491,16 @@ def SitzungAbschliessenPage(request, sitzID):
             sitzung.save()
             
             # Schicke E-Mail an alle Antragsteller, ob ihr Antrag beschlossen oder vertagt wurde
-            for antrag in antraege_sitzung:
+            for i, antrag in enumerate(antraege_sitzung):
                 if antrag.beschlussID is not None and antrag.beschlussID.beschlussErgebnis == 'Vertagt':
                     # Hole den vertagten Antrag über die neueSitzID
                     antrag_original = Antrag.objects.get(antragID=antrag.originaleAntragID)
                     mailAstellerVertagungAntrag(antrag_original)
                 else:
                     mailAstellerErgebnisAntrag(antrag)
+                    
+                    # Generiere die ABV-Nummern für die Anträge
+                    generiere_abv_nummern_sitzung(sitzung.sitzID)
             
             messages.success(request, 'Die Sitzung wurde erfolgreich abgeschlossen!')
             return redirect('sitzung-abschliessen', sitzID=sitzID)
@@ -475,8 +520,8 @@ def SitzungAbschliessenPage(request, sitzID):
 # ++++++ Antragsverwaltung ++++++ #
 
 def getFormVonAntragstyp(antrag, request):
-    # TODO: Überlegung für Erweiterbarkeit machen, sollte ein neuer Antragstyp hinzukommen
-    """ Gibt auf Anfrage die TypID als Integer anhand des Antrag-Objekts zurück.
+    """ 
+    Gibt auf Anfrage die TypID als Integer anhand des Antrag-Objekts zurück.
     """
     form = None
     typ_id = antrag.typID.typID
@@ -582,9 +627,52 @@ def AntragBearbeitenPage(request, antragID):
     antrag = Antrag.objects.get(antragID=antragID)
     form = getFormVonAntragstyp(antrag, request)
     
+    if antrag.beschlussID:
+        return redirect('antragsverwaltung')
+    
     if request.method == 'POST':
         if form.is_valid():
-            print('Formular ist valide')
+            titel = form.cleaned_data.get('titel')
+            antrag.antragTitel = titel
+            text = form.cleaned_data.get('text')
+            antrag.antragText = text
+            
+            if form.cleaned_data.get('grund'):
+                grund = form.cleaned_data.get('grund')
+                antrag.antragGrund = grund
+                
+            if form.cleaned_data.get('vorschlag'):
+                vorschlag = form.cleaned_data.get('vorschlag')
+                antrag.antragVorschlag = vorschlag
+                
+            if form.cleaned_data.get('vorstellung_person'):
+                vorstellung_person = form.cleaned_data.get('vorstellung_person')
+                antrag.antragVorstellungPerson = vorstellung_person
+            
+            if form.cleaned_data.get('fragen_amt'):
+                fragen_amt = form.cleaned_data.get('fragen_amt')
+                antrag.antragFragenZumAmt = fragen_amt
+                
+            if form.cleaned_data.get('verantwortlichkeit'):
+                verantwortlichkeit = form.cleaned_data.get('verantwortlichkeit')
+                antrag.antragVerantwortlichkeit = verantwortlichkeit
+                
+            if form.cleaned_data.get('zeitraum'):
+                zeitraum = form.cleaned_data.get('zeitraum')
+                antrag.antragZeitraum = zeitraum
+                
+            if form.cleaned_data.get('position'):
+                position = form.cleaned_data.get('position')
+                antrag.antragKostenposition = position
+                
+            if form.cleaned_data.get('summe'):
+                summe = form.cleaned_data.get('summe')
+                antrag.antragSumme = summe
+                
+            antrag.save()
+            
+            messages.success(request, 'Der Antrag wurde erfolgreich bearbeitet.')
+            return redirect('antrag-bearbeiten', antragID=antragID)
         else:
             print('Formular ist nicht valide')
             formFehlerAusgeben(request, form)

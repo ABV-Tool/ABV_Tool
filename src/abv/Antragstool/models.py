@@ -119,7 +119,7 @@ class Antragstyp(models.Model):
 class Antrag(models.Model):
     class Meta:
         db_table = 'antrag'
-        
+
     # Stammdaten jedes Antrags
     antragID = models.UUIDField(primary_key=True,
                                 default=uuid.uuid4,
@@ -148,7 +148,6 @@ class Antrag(models.Model):
     istEilantrag = models.BooleanField(db_column='ist_eilantrag', default=False, blank=False)
     
     # Antragsspezifische Daten
-    # TODO: Überlegung zu besserer Strukturierung in DB
     antragGrund = models.TextField(db_column='antrag_grund', blank=True)
     antragVorschlag = models.TextField(db_column='antrag_vorschlag', blank=True)
     antragKostenposition = models.TextField(db_column='antrag_kostenposition', blank=True)
@@ -164,6 +163,8 @@ class Antrag(models.Model):
     
     erstelltDate = models.DateField(db_column='erstellt_date', auto_now_add=True)
     bearbeitetDate = models.DateField(db_column='bearbeitet_date', auto_now=True)
+    
+    abvNummer = models.CharField(db_column='abv_nummer', max_length=20, blank=True)
     
     # Flag um zu Verhindern, dass E-Mail an Asteller/Referat mehrfach versendet wird
     wurdeVertagt = models.BooleanField(db_column='wurde_vertagt', default=False)
