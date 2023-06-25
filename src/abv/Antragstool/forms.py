@@ -137,17 +137,7 @@ class BeschlussForm(forms.Form):
 # Vertagung Sitzung
 class SitzungVertagenForm(forms.Form):
     """Felder, die SitzungVertagen Seite besitzt"""
-    datum_aktuell = forms.DateField(label="Aktuelles Datum:", required=True, widget=forms.DateInput())
     datum_neu = forms.DateField(label="Neues Datum:", required=True, widget=forms.DateInput())
-    
-    def clean_datum_neu(self):
-        datum_neu = self.cleaned_data['datum_neu']
-        datum_aktuell = self.cleaned_data['datum_aktuell']
-        if datum_neu <= timezone.now().date():
-            raise forms.ValidationError("Das Datum muss in der Zukunft liegen und im Format TT.MM.JJJJ angegeben sein.")
-        elif datum_neu == datum_aktuell:
-            raise forms.ValidationError("Das neue Datum muss nach dem aktuellen Datum liegen.")
-        return datum_neu
     
 
 

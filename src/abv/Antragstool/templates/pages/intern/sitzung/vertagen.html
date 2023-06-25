@@ -47,16 +47,7 @@
         
         <div class="flex flex-row mb-5 mt-5">
 
-            <div class="w-1/2 mr-3">
-                <label class="block" for="{{ form.datum_aktuell.id_for_label }}"><b>{{ form.datum_aktuell.label }}</b></label>
-                <input class="w-full" type="text" id="{{ form.datum_aktuell.id_for_label }}" name="{{ form.datum_aktuell.name }}" placeholder="2"
-                    {% if form.datum_aktuell.field.required %}required{% endif %} 
-                    {% if form.datum_aktuell.field.max_length %}maxlength="{{ form.datum_aktuell.field.max_length }}"{% endif %}
-                    value="{{ sitzung.sitzDate | date:"d.m.Y" }}"
-                >
-            </div>
-
-            <div class="w-1/2 mr-3">
+            <div class="w-full mr-3">
                 <label class="block" for="{{ form.datum_neu.id_for_label }}"><b>{{ form.datum_neu.label }}</b></label>
                 <input class="w-full" type="text" id="{{ form.datum_neu.id_for_label }}" name="{{ form.datum_neu.name }}" placeholder="2"
                     {% if form.datum_neu.field.required %}required{% endif %} 

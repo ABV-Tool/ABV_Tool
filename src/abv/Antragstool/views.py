@@ -397,6 +397,11 @@ def SitzungVertagenPage(request, sitzID):
             altes_sitzDate = sitzung.sitzDate
             neues_sitzDate = form.cleaned_data['datum_neu']
             
+            # Prüfe, ob das neue Datum nach dem alten Datum liegt
+            if neues_sitzDate <= altes_sitzDate:
+                messages.error(request, 'Das neue Datum muss nach dem alten Datum liegen!')
+                return redirect('sitzung-vertagen', sitzID=sitzID)
+            
             # Vertage die Sitzung mitsamt aller Antraäge
             sitzung.sitzDate = neues_sitzDate
             sitzung.save()
