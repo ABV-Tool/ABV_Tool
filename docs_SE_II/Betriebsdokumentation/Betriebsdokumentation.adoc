@@ -9,8 +9,9 @@
 * PostgreSQL
 * WSGI-kompatibler Webserver (Apache, Nginx)
 * Betriebssystem (idealerweise NixOS)
-* Python 3.9
-* Docker
+* Python 3.11.1
+* Django 4.2.2
+* Docker Desktop
 * lokal laufendes Etherpad
 * CertBot
 
