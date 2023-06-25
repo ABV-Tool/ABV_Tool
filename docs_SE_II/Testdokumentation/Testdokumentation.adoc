@@ -1,17 +1,22 @@
 = Testdokumentation
 
+== Teststragie
+
+Unser Fokus beim Testen lag auf dem Stellen von Anträgen sowie der Generierung der Tagesordnung in Verbindung mit einer Sitzung, da diese die Grundfunktionalitäten abbilden. 
+Zudem handelt es sich um die meistgenutzten Funktionen, bei denen jedoch auch die meisten Fehler auftreten können, da es zu Inkonsistenzen bei den Anträgen kommen kann.
+
 == Testkonzept
 // Was sind die wichtigsten Komponenten, die getestet wurden? (Testobjekte auf unterschiedlichen Teststufen, siehe Testpyramide)
 // Wie wurde die Erfüllung der Anforderungen an diese Testobjekte getestet? (Testmethoden)
 
-Es wurden die Komponenten Anträge, Referate, Sitzungen und Login getestet.
-Die Erste Testinstanz waren Manuelle Tests durch den Entwickler, die während der Entwicklung bzw. danach erfolgten.
-Dabei wurden diese Komponenten einzeln auf ihre Funktionalitäten/Methoden geprüft, via Unittests.
+Es wurden die Komponenten Anträge, Referate, Sitzungen und Login getestet. 
+Die ersten Testinstanzen waren manuelle Tests, die vom Entwickler während der Entwicklung oder danach durchgeführt wurden. 
+Dabei wurden diese Komponenten einzeln auf ihre Funktionalitäten und Methoden überprüft, mithilfe von Unittests. 
+Es wurden Unittests für die Datenbankinitialisierung, den Login, Logout und die Antragstellung implementiert.
 
-Nachdem die Komponententests erfolgreich waren, wurden auch kleine Integrationstests durchgeführt wie z.Bsp. Login + Anträge aber auch Anträge + Sitzungen. 
-Anschließend wurden nochmals End-To-End-Tests durch Personen aus dem Team, durchgeführt.
+Nachdem die Komponententests erfolgreich waren, wurden auch Integrationstests durchgeführt, wie zum Beispiel die Kombination von Login und Anträgen sowie von Anträgen und Sitzungen. Anschließend wurden Smoke-Tests und End-to-End-Tests von Teammitgliedern durchgeführt.
 // Wann führt wer welche Tests durch? (Testdurchführungsplanung)
-Sobald eine Funktionalität implementiert und durch den Entwickler zum Testen freigegeben wurde, hat der Test-Verantwortlicher einen Test für die Funktionalität geschrieben und anschließend durchgeführt.
+In Bezug auf die Testdurchführungsplanung wurde der jeweilige Test-Verantwortliche beauftragt, einen Test für eine implementierte Funktionalität zu erstellen, sobald diese vom Entwickler freigegeben wurde. Anschließend wurde der Test durchgeführt.
 
 
 == Testfallbeschreibung
@@ -35,35 +40,47 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 
 [cols="18h,~"]
 |===
-| Beschreibung      
-| Das System wird gestartet und das Datenbankmodell wird erfolgreich initialisiert.
+| Beschreibung
+| Das System wird gestartet und das Datenbankmodell wird erfolgreich initialisiert. [Test Automatisiert]
 
-| Vorbedingung      
-| Das System wurde startbereit auf dem Server eingerichtet.
+| Vorbedingung
+| Das System ist startbereit auf dem Server eingerichtet.
 
-| Nachbedingung     
-| Modeldaten sind in der Datenbank gespeichert.
+| Nachbedingung
+| Modelldaten sind in der Datenbank gespeichert.
 
-| Benötigte Daten   
-| ?
+| Benötigte Daten
+| Antragsdaten, Referatsdaten, Sitzungsdaten
+
+| Testergebnis
+| Die Initialisierung des Systems und die Speicherung der Modelldaten in der Datenbank sind erfolgreich.
+
+| Konsequenz
+| Das Thema "Datenbankinitialisierung" wird abgeschlossen, und Ressourcen zur Bearbeitung von anderen Funktionen werden freigegeben.
 |===
 
 === TC02 [Login] - Gültige Eingaben akzeptiert
 
 [cols="18h,~"]
 |===
-| Beschreibung      
-| Der Benutzer hat gültige Logindaten eingegeben. Der Login-Vorgang muss erfolgreich beendet werden.
+| Beschreibung
+| Der Benutzer gibt gültige Logindaten ein.
 
-| Vorbedingung      
+| Vorbedingung
 | Dem Benutzer wurde bereits ein Login angelegt.
 
-| Nachbedingung     
+| Nachbedingung
 | Zeitstempel und Benutzerkennung müssen in ein Log gespeichert werden.
+Der Login-Vorgang muss erfolgreich beendet werden.
 
+| Benötigte Daten
+| Gültige Logindaten (Benutzername, Passwort)
 
-| Benötigte Daten   
-| Logindaten (Benutzername, Passwort)
+| Testergebnis
+| Der Login-Vorgang akzeptiert gültige Logindaten und speichert Zeitstempel und Benutzerkennung in einem Log.
+
+| Konsequenz
+| Login mit gültigen Logindaten funktioniert.
 |===
 
 
@@ -72,16 +89,23 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Benutzer hat ungültige Logindaten eingegeben. Die Software muss den Login-Vorgang abbrechen.
+| Der Benutzer gibt ungültige Logindaten ein. +
+Die Software muss den Login-Vorgang abbrechen.
 
 | Vorbedingung      
-| -
+| Es existiert ein gültiger Login.
 
 | Nachbedingung     
-| Ausgabe einer Fehlermeldung
+| Ausgabe einer Fehlermeldung.
 
 | Benötigte Daten   
 | Logindaten (Benutzername, Passwort)
+
+| Testergebnis
+| Der Login-Vorgang lehnt ungültige Logindaten ab und gibt eine Fehlermeldung aus.
+
+| Konsequenz
+| Prüfung von undgültigen Logins funktioniert.
 |===
 
 
@@ -91,16 +115,23 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Benutzer hat einen Antrag vollständig ausgefüllt und abgeschickt. Der Antrag muss an die Datenbank gesendet und der Vorgang beendet werden.
+| Der Benutzer hat einen Antrag vollständig ausgefüllt und abgeschickt. + 
+Der Antrag muss an die Datenbank gesendet und der Vorgang beendet werden.
 
 | Vorbedingung      
-| -
+| Es existiert mindestens ein Referat und eine Sitzung.
 
 | Nachbedingung     
-| Der Antrag muss in die Datenbank eingefügt und der korrekten nächsten Sitzung des ausgewählen Plenums zugewiesen werden.
+| Der Antrag muss in die Datenbank eingefügt und der korrekten nächsten Sitzung des ausgewählen Referats zugewiesen werden.
 
 | Benötigte Daten   
 | Antragsdaten
+
+| Testergebnis
+| Ein vollständig ausgefüllter Antrag wird erfolgreich an die Datenbank gesendet und der nächstfolgenden Sitzung des ausgewählten Referats zugewiesen.
+
+| Konsequenz
+| Das stellen eines Antrages mit gültigen Daten funktioniert.
 |===
 
 
@@ -114,13 +145,19 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Der Benutzer hat einen Antrag vollständig ausgefüllt und mit Anhängen (1x PDF, 1x DOCX & 2x PNG) abgeschickt.
 
 | Vorbedingung      
-| -
+| Es existiert mindestens ein Referat und eine Sitzung.
 
 | Nachbedingung     
 | Der Antrag muss in die Datenbank eingefügt und die Anhänge in einer separaten Tabelle, welche auf den Antrag verweist, abgespeichert werden.
 
 | Benötigte Daten   
 | Antragsdaten, Anhänge
+
+| Testergebnis
+| Ein Antrag mit Anhängen (PDF, DOCX und PNG) wird in die Datenbank eingefügt und die Anhänge werden in einer separaten Tabelle abgespeichert.
+
+| Konsequenz
+| Anhänge werden erfolgreich abgespeichert.
 |===
 
 
@@ -134,13 +171,19 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Der Benutzer hat einen unvollständigen Antrag abgeschickt. Der Vorgang muss abgebrochen werden.
 
 | Vorbedingung      
-| -
+| Es existiert mindestens ein Referat und eine Sitzung.
 
 | Nachbedingung     
 | Es wird eine Fehlermeldung ausgegeben, die dem Benutzer aufzeigt, welche Angaben fehlen/ungültig sind.
 
 | Benötigte Daten   
 | Antragsdaten
+
+| Testergebnis
+| Der Antrag wird nicht abgeschickt und es wird eine Fehlermeldung angezeigt.
+
+| Konsequenz
+| Prüfung der Antragsdaten auf Vollständigkeit funktioniert. 
 |===
 
 
@@ -153,13 +196,21 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Der Administrator kann sich einen Antrag auf der Weboberfläche der Anwendung anzeigen lassen.
 
 | Vorbedingung      
-| Der Antrag ist gültig und wurde erfolgreich eingereicht.
+| Es existiert mindestens ein Referat und eine Sitzung. + 
+Der Antrag ist gültig und wurde erfolgreich eingereicht.
 
 | Nachbedingung     
-| Die Daten werden korrekt abgebildet.
+| Es existiert mindestens ein Referat und eine Sitzung. +
+Die Daten werden korrekt abgebildet.
 
 | Benötigte Daten   
 | Antragsdaten
+
+| Testergebnis
+| Ein Administrator kann einen Antrag auf der Weboberfläche anzeigen lassen und die Daten werden korrekt abgebildet.
+
+| Konsequenz
+| Das Anzeigen von Anträgen funktioniert.
 |===
 
 
@@ -177,25 +228,41 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Die Daten werden korrekt abgefragt und im Nachhinein korrekt in der Datenbank aktualisiert.
 
 | Benötigte Daten   
-| Antragsdaten
+| Eingereichter Antrag, Antragsdaten
+
+| Testergebnis
+| Ein Administrator kann einen gültigen Antrag auswählen und dessen Daten erfolgreich bearbeiten, wobei die Daten in der Datenbank korrekt aktualisiert werden.
+
+| Konsequenz
+| Das bearbeiten von Anträgen funktioniert.
 |===
 
 
-=== TC09 [Tagesordnung] - Erfolgreiches Generieren
+=== TC09 [Tagesordnung] - Erfolgreiches Generieren der Tagesordnung
 
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Administrator generiert die Tagesordnung erfolgreich und erhält einen Link zu einem PentaPad-Dokument, in welchem die Tagesordnung korrekt dargestellt wird.
+| Der Systemadministrator klick auf Sitzungungsverwaltung und wählt eine Sitzung aus. + 
+Anschließend klickt er auf Tagesordnung erstellen, dabei wird ein EtherPad-Link mit allen Beschlossenen Antragen estellt.
 
 | Vorbedingung      
-| Alle zu besprechenden Anträge wurden zur Tagesordnung hinzugefügt.
+| System muss vollständig eingerichtet und funktional sein. +
+Es musst mindestens eine Sitzung angelegt sein. +
+Es muss mindestens ein Referat vorhanden sein. +
+Es muss mindestens ein Antrag gestellt worden sein.
 
 | Nachbedingung     
-| Generierung des PentaPad-Dokuments mit korrektem Inhalt.
+| Die Tagesordnung wird erfolgreich mit allen Beschlossenen Anträgen generiert und es öffnet sich eine EtherPad-Link.
 
 | Benötigte Daten   
-| Sitzungsdaten
+| Referat, Sitzung, Anträge
+
+| Testergebnis
+| Die Tagesordnung wird erfolgreich mit allen Beschlossenen Anträgen generiert und es öffnet sich eine EtherPad-Link.
+
+| Konsequenz
+| Das generieren von Tagesordnungen und das erstellen eines EtherPad-Dokumentes mit korrektem Inhalt funktioniert.
 |===
 
 
@@ -210,10 +277,17 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | Die Sitzung muss bereits in der Datenbank hinterlegt sein.
 
 | Nachbedingung     
-| Das Sitzungsdatum wird auf das eingegebene Datum verschoben.
+| Das Sitzungsdatum wird auf das eingegebene Datum verschoben. +
+Anträge, die dieser Sitzung zugeordnet waren, werden mitverschoben. 
 
 | Benötigte Daten   
-| Sitzungsdaten
+| Sitzungsdaten, eingereichte Anträge
+
+| Testergebnis
+| Eine Sitzung kann erfolgreich auf einen anderen Tag verschoben werden, indem das Sitzungsdatum in der Datenbank aktualisiert wird.
+
+| Konsequenz
+| Verschieben von Sitzungen funktioniert.
 |===
 
 
@@ -232,6 +306,12 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 
 | Benötigte Daten   
 | Antragsdaten, Sitzungsdaten (aktuelle & nächste Sitzung)
+
+| Testergebnis
+| Ein Administrator kann einen Antrag erfolgreich auf eine andere Sitzung vertagen, indem der Antrag der entsprechenden Sitzung zugewiesen wird.
+
+| Konsequenz
+| Das vertagen von Sitzungen funktioniert.
 |===
 
 
@@ -246,13 +326,173 @@ Um die Software nutzen zu können, müssen die folgenden Bedingungen gelten:
 | System muss vollständig eingerichtet und funktional sein.
 
 | Nachbedingung     
-| System 
+| Zuvor eingereichte Anträge sind in der Datenbank abgespeichert. +
+Es wird eine Fehlermeldung ausgegeben. 
 
 | Benötigte Daten   
 | Antragsdaten, Sitzungsdaten (aktuelle & nächste Sitzung)
+
+| Testergebnis
+| Zuvor eingereichte Anträge werden erfolgreich abgespeichert. +
+Es wird keine Fehlermeldung angezeigt.
+
+| Konsequenz
+| Anträge werden gesichert. +
+Es muss noch eine Fehlermeldung implementiert werden.
 |===
 
-== Testergebnisse
-// Welche Ergebnisse sind bei der Testdurchführung entstanden?
-// Welche Konsequenzen ergeben sich aus erkannten Abweichungen?
-// Wichtig: Abnahmetests bei der Übergabe nicht vergessen!
+=== TC13 [Referat] - neues Referat erstellen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Systemadministrator erstellt ein neues Referat.
+
+| Vorbedingung      
+| System muss vollständig eingerichtet und funktional sein.
+
+| Nachbedingung     
+| Das neu estellte Referat wird in der Referatsübersicht angezeigt und ist in der DB abgespeichert.
+
+| Benötigte Daten   
+| Referatsdaten (Name, E-Mail)
+
+| Testergebnis
+| Das neu estellte Referat wird in der Referatsübersicht angezeigt und ist in der DB abgespeichert.
+
+| Konsequenz
+| Das erstellen von Referaten funktioniert.
+|===
+
+=== TC14 [Referat] - Referat Löschen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Systemadministrator löscht Referat.
+
+| Vorbedingung      
+| System muss vollständig eingerichtet und funktional sein. +
+Es muss mindestens ein Referat vorhanden sein.
+
+| Nachbedingung     
+| Das ausgewählte Referat wird nicht mehr in der Referatsübersicht angezeigt und wird aus der DB gelöscht.
+
+| Benötigte Daten   
+| -
+
+| Testergebnis
+| Das ausgewählte Referat wird nicht mehr in der Referatsübersicht angezeigt und wurde aus der DB gelöscht.
+
+| Konsequenz
+| Das löschen eines Referates funktioniert.
+|===
+
+=== TC15 [Sitzung] - Sitzung erstellen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Systemadministrator klickt auf Sitzung anlegen und wählt die Zuständige Stelle und das Datum der Sitzung aus.
+
+| Vorbedingung      
+| System muss vollständig eingerichtet und funktional sein. +
+Es muss mindestens ein Referat vorhanden sein.
+
+| Nachbedingung     
+| Die neu erstellte Sitzung wird in der Sitzungsverwaltung angezeigt und ist in der DB vorhanden.
+
+
+| Benötigte Daten   
+| Zuständige Stelle (Referat), Datum der Sitzung
+
+| Testergebnis
+| Die neu erstellte Sitzung wird in der Sitzungsverwaltung angezeigt und ist in der DB vorhanden.
+
+| Konsequenz
+| Das erstellen von Sitzungen funktioniert.
+|===
+
+
+=== TC16 [Sitzung] - Tagesordung/Sitzung abschließen
+
+[cols="18h,~"]
+|===
+| Beschreibung      
+| Der Systemadministrator klick auf Sitzungungsverwaltung und wählt eine Sitzung aus. + 
+Anschließend klickt er auf Sitzung abschließen.
+
+| Vorbedingung      
+| System muss vollständig eingerichtet und funktional sein. +
+Es musst mindestens eine Sitzung angelegt sein. +
+Es muss mindestens ein Referat vorhanden sein. +
+Es muss mindestens ein Antrag gestellt worden sein.
+
+| Nachbedingung     
+| Die Sitzung wird erfolgreich abgeschlossen und in der Sitzungsverwaltung als "Stattgefunden" makiert.
+
+| Benötigte Daten   
+| Referat, Sitzung, Anträge
+
+| Testergebnis
+| Die Sitzung wurde erfolgreich abgeschlossen und in der Sitzungsverwaltung als "Stattgefunden" makiert.
+
+| Konsequenz
+| Das Abschließen der Sitzung fuinktioniert.
+|===
+
+=== TC17 [Sitzung] - Tagesordung/Sitzung mit nicht abgeschlossenen Anträgen abschließen 
+
+[cols="18h,~"]
+|===
+| Beschreibung
+| Der Systemadministrator wählt eine Sitzung aus der Sitzungsverwaltung aus und klickt auf "Sitzung abschließen".
+
+| Vorbedingung
+| Das System muss vollständig eingerichtet und funktionsfähig sein. +
+Es ist mindestens ein Antrag noch nicht behandelt.
+
+| Nachbedingung
+| Das Abschließen dieser Sitzung ist nicht möglich. Es wird eine Fehlermeldung angezeigt, die darauf hinweist, dass noch nicht alle Anträge behandelt wurden.
+
+| Benötigte Daten
+| Sitzung, Anträge
+
+| Testergebnis
+| Das Abschließen der Sitzung ist nicht möglich, da noch nicht alle Anträge behandelt wurden. Es wird eine entsprechende Fehlermeldung angezeigt.
+
+| Konsequenz
+| Die Funktionalität muss überarbeitet werden, um eine Prüfung der Anträge einzubauen.
+|===
+
+=== TC18 [Sitzung] - in Zunkunft liegende Sitzung abschließen 
+
+[cols="18h,~"]
+|===
+| Beschreibung
+| Der Systemadministrator wählt eine Sitzung aus der Sitzungsverwaltung aus, deren Datum in der Zukunft liegt, und klickt auf "Sitzung abschließen".
+
+| Vorbedingung
+| Das System muss vollständig eingerichtet und funktionsfähig sein. +
+Alle Anträge müssen behandelt worden sein.
+
+| Nachbedingung
+| Es wird eine Meldung angezeigt, die besagt, dass die Sitzung noch nicht abgeschlossen werden darf, da sie in der Zukunft liegt. Die Sitzung wird nicht abgeschlossen.
+
+| Benötigte Daten
+| Sitzung, Anträge
+
+| Testergebnis
+| Das Abschließen der Sitzung ist nicht möglich, da die Sitzung in der Zukunft liegt. Es wird eine entsprechende Meldung angezeigt.
+
+| Konsequenz
+| Die Funktionalität muss überarbeitet werden, um eine Prüfung des Datums einzufügen.
+|===
+
+
+==== Konzequenzen
+
+Die identifizierten Fehler und Abweichungen müssen behoben werden, um die Software zu verbessern und sicherzustellen, dass sie ordnungsgemäß funktioniert.
+Es sollte eine erneute Durchführung der fehlgeschlagenen Testfälle erfolgen, um sicherzustellen, dass die Fehler behoben wurden und die gewünschten Ergebnisse erzielt werden.
+Es sollte auch eine Überprüfung der Testabdeckung durchgeführt werden, um sicherzustellen, dass alle relevanten Testfälle abgedeckt sind und dass keine weiteren Fehler vorhanden sind.
+Bei der Übergabe der Software sollten Abnahmetests durchgeführt werden, um sicherzustellen, dass die Software den Anforderungen des Kunden entspricht und die erwarteten Ergebnisse liefert.

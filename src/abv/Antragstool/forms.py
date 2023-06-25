@@ -3,12 +3,16 @@ from django.utils import timezone
 from Antragstool.models import Referat, Beschluss, Sitzung, Antragstyp
 
 
-# Datei-Upload-Handler
-# https://docs.djangoproject.com/en/4.2/topics/http/file-uploads/#uploading-multiple-files
+
 class MultipleFileInput(forms.ClearableFileInput):
+    
     allow_multiple_selected = True
 
 class MultipleFileField(forms.FileField):
+    """ Datei-Upload-Handler
+    
+        https://docs.djangoproject.com/en/4.2/topics/http/file-uploads/#uploading-multiple-files
+    """
     def __init__(self, *args, **kwargs):
         kwargs.setdefault("widget", MultipleFileInput())
         super().__init__(*args, **kwargs)
@@ -22,14 +26,15 @@ class MultipleFileField(forms.FileField):
         return result
 
 
-# template for custom login form
 class LoginForm(forms.Form):
+    """Template for custom Login Form"""
     username = forms.CharField(label="Benutzername:", max_length=100, required=True, widget=forms.TextInput(attrs={'class': 'mb-3'}))
     password = forms.CharField(label="Passwort:", max_length=100, required=True, widget=forms.PasswordInput)
 
 
 
 class StammdatenForm(forms.Form):
+    """Felder, die jeder Antrag besitzt"""
     referat = forms.ModelChoiceField(label="An wen ist der Antrag gerichtet?:", queryset=Referat.objects.all().order_by('refID'), required=True, empty_label="Bitte wählen...")
     
     name = forms.CharField(label="Name / Stelle:", max_length=100, required=True, widget=forms.TextInput())
@@ -54,11 +59,13 @@ vorstellung_person_feld = forms.CharField(label="Vorstellung der Person:", max_l
     
     
 class AntragAllgemeinForm(StammdatenForm):
+    """Felder, die Antrag ohne finanzielle Mittel besitzt"""
     grund = grund_feld
     vorschlag = vorschlag_feld
 
 
 class AntragFinanziellForm(StammdatenForm):
+    """Felder, die Antrag mit finanziellen Mitteln besitzt"""
     grund = grund_feld
     position = positions_feld
     summe = summe_feld
@@ -72,6 +79,7 @@ class AntragFinanziellForm(StammdatenForm):
 
 
 class AntragVeranstaltungForm(StammdatenForm):
+    """Felder, die Antrag für Veranstaltungen besitzt"""
     grund = grund_feld
     position = positions_feld
     summe = summe_feld
@@ -88,17 +96,20 @@ class AntragVeranstaltungForm(StammdatenForm):
 
 # TODO: Vorstellung der Person: Details über benötigte Punkte anzeigen lassen
 class AntragMitgliedForm(StammdatenForm):
+    """Felder, die Antrag für Beratendes Mitglied besitzt"""
     vorstellung_person = vorstellung_person_feld
 
 
 # TODO: Vorstellung der Person/Allgemeine Fragen: Details über benötigte Punkte anzeigen lassen
 class AntragAmtForm(StammdatenForm):
+    """Felder, die Antrag für Wahl auf Amt besitzt"""
     ist_mitglied = forms.BooleanField(label="Bist du bereits ein StuRa Mitglied? (Leer für Nein):", required=False, widget=forms.CheckboxInput())
     vorstellung_person = vorstellung_person_feld
     fragen_amt = forms.CharField(label="Allgemeine Fragen zum Amt:", max_length=5000, required=True, widget=forms.Textarea())
 
 
 class AntragBenehmenForm(StammdatenForm):
+    """Felder, die Antrag für Herstellung des Benehmens besitzt"""
     grund = grund_feld
     vorschlag = vorschlag_feld
     
@@ -106,6 +117,7 @@ class AntragBenehmenForm(StammdatenForm):
     
 # Referate
 class ReferatForm(forms.Form):
+    """Felder, die Referate besitzt"""
     referat_name = forms.CharField(label="Referats-Name:", max_length=100, required=True, widget=forms.TextInput())
     referat_email = forms.EmailField(label="Referats-E-Mail:", max_length=200, required=True, widget=forms.EmailInput())
     
@@ -113,6 +125,7 @@ class ReferatForm(forms.Form):
 
 # Beschluss
 class BeschlussForm(forms.Form):
+    """Felder, die ein Beschluss besitzt"""
     beschluss_behandlung = forms.CharField(label="Behandlung:", max_length=100, required=True, widget=forms.TextInput())
     beschluss_faehigkeit = forms.BooleanField(label="Beschluss-Fähigkeit:", required=False, widget=forms.CheckboxInput())
     stimmen_ja = forms.IntegerField(label="Ja-Stimmen:", required=True, widget=forms.NumberInput())
@@ -126,6 +139,7 @@ class BeschlussForm(forms.Form):
     
 # Vertagung Sitzung
 class SitzungVertagenForm(forms.Form):
+    """Felder, die SitzungVertagen Seite besitzt"""
     datum_aktuell = forms.DateField(label="Aktuelles Datum:", required=True, widget=forms.DateInput())
     datum_neu = forms.DateField(label="Neues Datum:", required=True, widget=forms.DateInput())
     
@@ -142,12 +156,14 @@ class SitzungVertagenForm(forms.Form):
 
 # Vertagung eines Antrags
 class AntragVertagenForm(forms.Form):
+    """Felder, die AntragVertagen Seite besitzt"""
     sitzung = forms.ModelChoiceField(label="Sitzung:", queryset=Sitzung.objects.all().order_by('sitzDate'), required=True, empty_label="Bitte wählen...")
 
 
 
 # Anlegen einer Sitzung
 class SitzungAnlegenForm(forms.Form):
+    """Felder, die SitzungAnlegen Seite besitzt"""
     referat = forms.ModelChoiceField(label="Referat:", queryset=Referat.objects.all().order_by('refID'), required=True, empty_label="Bitte wählen...")
     datum_sitzung = forms.DateField(label="Datum der Sitzung:", required=True, widget=forms.DateInput(), help_text="Format: TT.MM.JJJJ")
     
@@ -159,6 +175,7 @@ class SitzungAnlegenForm(forms.Form):
     
 
 class ArchivSuchenForm(forms.Form):
+    """Felder, die ArchivSuchen Seite besitzt"""
     # Suchbegriff
     q = forms.CharField(label="Suchbegriff:", max_length=300, required=False, widget=forms.TextInput())
     
@@ -182,6 +199,7 @@ class ArchivSuchenForm(forms.Form):
     
     
 class AntragsverwaltungSuchenForm(ArchivSuchenForm):
+    """Felder, die AntragsverwaltungSuchen Seite besitzt"""
     # Beschluss
     choices = Beschluss.BeschlussErgebnis.choices
     choices.insert(0, ("", "Kein Filter"))
@@ -189,6 +207,7 @@ class AntragsverwaltungSuchenForm(ArchivSuchenForm):
     
     
 class SitzungsverwaltungSuchenForm(forms.Form):
+    """Felder, die SitzungsverwaltungSuchen Seite besitzt"""
     # Referat
     ref = forms.ModelChoiceField(label="Referat:", queryset=Referat.objects.all().order_by('refID'), required=False, empty_label="Alle Referate")
     
