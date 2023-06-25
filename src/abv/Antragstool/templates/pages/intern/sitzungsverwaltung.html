@@ -18,7 +18,7 @@
 
     <div class="ml-80 mr-80">
 
-        <div class="flex flex-row mt-3 text-center">
+        <div class="flex flex-row mt-3 text-center select-none">
             <a href="{% url 'sitzung-anlegen' %}" class="btn btn-success p-5 w-full hover:cursor-pointer">
                 <i class="fa-solid fa-circle-plus"></i> Sitzung anlegen
             </a>
@@ -38,11 +38,11 @@
             <table class="table-auto w-full text-left overflow-x-auto border-collapse border-spacing-y-2">
                 <thead class="text-gray-700 uppercase">
                     <tr class="border-b border-b-[#dcdcdc]">
-                        <th scope="col" class="px-2 py-3">Datum</th>
-                        <th scope="col" class="px-2 py-3">Referat</th>
-                        <th scope="col" class="px-2 py-3 text-center">Anträge</th>
-                        <th scope="col" class="px-2 py-3 text-center">Aktionen</th>
-                        <th scope="col" class="px-2 py-3">Status</th>
+                        <th scope="col" class="px-2 py-3 select-none">Datum</th>
+                        <th scope="col" class="px-2 py-3 select-none">Referat</th>
+                        <th scope="col" class="px-2 py-3 select-none text-center">Anträge</th>
+                        <th scope="col" class="px-2 py-3 select-none text-center">Aktionen</th>
+                        <th scope="col" class="px-2 py-3 select-none">Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +53,7 @@
                         <td class="px-2 py-3 text-center">{{ sitzung.anzAntraege }}</td>
                         <td class="px-2 py-3 text-center">
 
-                            <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
+                            <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange select-none mr-5">
                                 <i class="fa-solid fa-list-check"></i>
                                 {% if sitzung.sitzStatus|lower == "vertagt" %}
                                     <s>Verwalten</s>
@@ -62,7 +62,7 @@
                                 {% endif %}
                             </a>
 
-                            <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
+                            <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange select-none mr-5">
                                 <i class="fa-regular fa-calendar-xmark"></i>
                                 {% if sitzung.sitzStatus|lower != "offen" %}
                                     <s>Vertagen</s>
@@ -71,7 +71,7 @@
                                 {% endif %}
                             </a>
 
-                            <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
+                            <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange select-none">
                                 <i class="fa-solid fa-trash-can"></i>
                                 {% if sitzung.sitzStatus|lower != "offen" %}
                                     <s>Löschen</s>
@@ -82,7 +82,7 @@
 
                         </td>
                         
-                        <td class="px-2 py-3">
+                        <td class="px-2 py-3 select-none">
                             {% include 'components/table_column_sitzung.html' with status=sitzung.sitzStatus %}
                         </td>
                     </tr>
