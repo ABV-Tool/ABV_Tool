@@ -23,16 +23,24 @@ dotenv_path = os.path.join(BASE_DIR, '../../.env')
 load_dotenv(dotenv_path)
 
 
-# Development-Umgebung
-ENVIRONMENT ='DEVELOPMENT'
-MESSAGE_LEVEL = 10 # DEBUG
-DEBUG = True
+# ENV: DEVELOPMENT / PRODUCTION
+ENV ='PRODUCTION'
 
-# Production-Umgebung
-#ENVIRONMENT ='PRODUCTION'
-#MESSAGE_LEVEL = 20 # INFO
-#DEBUG = False
-#ALLOWED_HOSTS = ['localhost']
+if ENV == 'DEVELOPMENT':
+    MESSAGE_LEVEL = 10 # DEBUG
+    DEBUG = True
+elif ENV == 'PRODUCTION':
+    MESSAGE_LEVEL = 20 # INFO
+    DEBUG = False
+    ALLOWED_HOSTS = [
+        'localhost', 'localhost:8020', 'http://localhost:8020', 'https://localhost:8020'
+        '127.0.0.1', '127.0.0.1:8020', 'http://127.0.0.1:8020', 'https://127.0.0.1:8020',
+        '0.0.0.0', '0.0.0.0:8020', 'http://0.0.0.0:8020', 'https://0.0.0.0:8020'
+    ]
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:8020",
+        "https://localhost:8020"
+    ]
 
 
 # Quick-start development settings - unsuitable for production
@@ -138,14 +146,20 @@ TIME_FORMAT = 'H:i'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '../static')
+if ENV == 'DEVELOPMENT':
+    STATIC_ROOT = os.path.join(BASE_DIR, '../static')
+else:
+    STATIC_ROOT = '/opt/app/abv/static'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '../Antragstool/static'),
 )
 
 # File-Upload Settings
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
+if ENV == 'DEVELOPMENT':
+    MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
+else:
+    STATIC_ROOT = '/opt/app/abv/media'
 DATA_UPLOAD_MAX_MEMORY_SIZE=10240000 # 10MB
 FILE_UPLOAD_MAX_MEMORY_SIZE=10240000 # 10MB
 
