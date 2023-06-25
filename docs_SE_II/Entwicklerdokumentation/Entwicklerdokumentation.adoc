@@ -84,8 +84,8 @@ database Datenbank
 entity Mailserver
 
 Antragssteller -> Frontend : stellt Antrag
-Frontend -> Datenbank : speichert Daten ein
-
+Frontend -> Backend : gibt Daten weiter
+Backend -> Datenbank : Speichert Daten am korrekten Platz
 Datenbank -> Mailserver : Gibt Mailadressen weiter
 Mailserver -> Antragssteller : Sendet Auftragsbestätigung
 
