@@ -772,6 +772,10 @@ select {
   margin-left: 3.5rem;
 }
 
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
 .ml-4 {
   margin-left: 1rem;
 }
@@ -838,30 +842,6 @@ select {
 
 .mt-6 {
   margin-top: 1.5rem;
-}
-
-.ml-1 {
-  margin-left: 0.25rem;
-}
-
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
-.ml-3 {
-  margin-left: 0.75rem;
-}
-
-.ml-5 {
-  margin-left: 1.25rem;
-}
-
-.-mr-3 {
-  margin-right: -0.75rem;
-}
-
-.-mr-5 {
-  margin-right: -1.25rem;
 }
 
 .block {
@@ -1397,17 +1377,5 @@ select {
   .dark\:focus\:ring-\[\#f2ac2e\]:focus {
     --tw-ring-opacity: 1;
     --tw-ring-color: rgb(242 172 46 / var(--tw-ring-opacity));
-  }
-}
-
-@media (min-width: 640px) {
-  .sm\:flex-col {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:flex-col {
-    flex-direction: column;
   }
 }
