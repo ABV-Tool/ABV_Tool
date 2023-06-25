@@ -24,7 +24,7 @@ Grundsätzlich kann jede natürliche Person einen Antrag beim StuRa einreichen. 
 . Der Antragsteller wählt seine gewünschte Antragsart aus. 
 . Der Antragsteller füllt den entsprechenden Antrag mit korrekten Angaben aus.
 . Der Antragsteller klickt auf "Antrag abschicken".
-. Der Antrag bekommt eine Antragsnummer zugewiesen und eine Eingangsbestätigung per E-Mail zugesendet.
+. Der Antrag bekommt eine Antragsnummer zugewiesen und der Antragsteller eine Eingangsbestätigung per E-Mail zugesendet.
 . Der Use Case ist abgeschlossen.
 
 === Alternative Abläufe

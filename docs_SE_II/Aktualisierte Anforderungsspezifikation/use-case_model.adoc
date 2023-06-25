@@ -52,22 +52,24 @@ actor Systemadministrator as SA
 
 package Use-Cases {
     usecase "Antrag stellen" as UC1
-    usecase "Antragsverwalter anmelden" as UC5
     usecase "Sitzung anlegen" as UC7
     usecase "Tagesordnung erstellen" as UC2
     usecase "Beschlüsse einpflegen" as UC6
     usecase "Sitzung abschließen" as UC3
     usecase "Plenumssitzung vertagen" as UC4
+    usecase "Antragsverwalter anmelden" as UC5
     
     
 }
-AS --> UC1
-AV --> UC7
-AV --> UC2
-AV --> UC6
-AV --> UC3
-AV --> UC4
-SA --> UC5
+
+AS -- UC1
+AV -- UC7
+AV -- UC2
+AV -- UC6
+AV -- UC3
+AV -- UC4
+AV -- UC5
+SA -- UC5
 
 @enduml
 ....
