@@ -180,4 +180,4 @@ class Anlage(models.Model):
                                  on_delete=models.CASCADE,
                                  db_column='antrag_id',
                                  null=True,
-                                 blank=True) 
+                                 blank=True)
