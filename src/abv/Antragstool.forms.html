@@ -36,11 +36,17 @@
 <dl>
 <dt class="heading-text"><a href="Antragstool.forms.html#AntragVertagenForm">AntragVertagenForm</a>
 </dt><dt class="heading-text"><a href="Antragstool.forms.html#ArchivSuchenForm">ArchivSuchenForm</a>
-</dt><dt class="heading-text"><a href="Antragstool.forms.html#BeschlussForm">BeschlussForm</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="Antragstool.forms.html#AntragsverwaltungSuchenForm">AntragsverwaltungSuchenForm</a>
+</dt></dl>
+</dd>
+<dt class="heading-text"><a href="Antragstool.forms.html#BeschlussForm">BeschlussForm</a>
 </dt><dt class="heading-text"><a href="Antragstool.forms.html#LoginForm">LoginForm</a>
 </dt><dt class="heading-text"><a href="Antragstool.forms.html#ReferatForm">ReferatForm</a>
 </dt><dt class="heading-text"><a href="Antragstool.forms.html#SitzungAnlegenForm">SitzungAnlegenForm</a>
 </dt><dt class="heading-text"><a href="Antragstool.forms.html#SitzungVertagenForm">SitzungVertagenForm</a>
+</dt><dt class="heading-text"><a href="Antragstool.forms.html#SitzungsverwaltungSuchenForm">SitzungsverwaltungSuchenForm</a>
 </dt><dt class="heading-text"><a href="Antragstool.forms.html#StammdatenForm">StammdatenForm</a>
 </dt><dd>
 <dl>
@@ -69,7 +75,7 @@
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#AntragAllgemeinForm">AntragAllgemeinForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;Antrag&nbsp;ohne&nbsp;finanzielle&nbsp;Mittel&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#AntragAllgemeinForm">AntragAllgemeinForm</a></dd>
@@ -225,7 +231,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#AntragAmtForm">AntragAmtForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-#&nbsp;TODO:&nbsp;Vorstellung&nbsp;der&nbsp;Person/Allgemeine&nbsp;Fragen:&nbsp;Details&nbsp;über&nbsp;benötigte&nbsp;Punkte&nbsp;anzeigen&nbsp;lassen<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;Antrag&nbsp;für&nbsp;Wahl&nbsp;auf&nbsp;Amt&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#AntragAmtForm">AntragAmtForm</a></dd>
@@ -381,7 +387,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#AntragBenehmenForm">AntragBenehmenForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;Antrag&nbsp;für&nbsp;Herstellung&nbsp;des&nbsp;Benehmens&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#AntragBenehmenForm">AntragBenehmenForm</a></dd>
@@ -537,7 +543,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#AntragFinanziellForm">AntragFinanziellForm</a>(*args,&nbsp;**kwargs)<br>
 &nbsp;<br>
-<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;Antrag&nbsp;mit&nbsp;finanziellen&nbsp;Mitteln&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#AntragFinanziellForm">AntragFinanziellForm</a></dd>
@@ -695,7 +701,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#AntragMitgliedForm">AntragMitgliedForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-#&nbsp;TODO:&nbsp;Vorstellung&nbsp;der&nbsp;Person:&nbsp;Details&nbsp;über&nbsp;benötigte&nbsp;Punkte&nbsp;anzeigen&nbsp;lassen<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;Antrag&nbsp;für&nbsp;Beratendes&nbsp;Mitglied&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#AntragMitgliedForm">AntragMitgliedForm</a></dd>
@@ -851,7 +857,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#AntragVeranstaltungForm">AntragVeranstaltungForm</a>(*args,&nbsp;**kwargs)<br>
 &nbsp;<br>
-<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;Antrag&nbsp;für&nbsp;Veranstaltungen&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#AntragVeranstaltungForm">AntragVeranstaltungForm</a></dd>
@@ -1009,7 +1015,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#AntragVertagenForm">AntragVertagenForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-#&nbsp;Vertagung&nbsp;eines&nbsp;Antrags<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;AntragVertagen&nbsp;Seite&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#AntragVertagenForm">AntragVertagenForm</a></dd>
@@ -1159,12 +1165,172 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 </td></tr></table> <p>
 <table class="section">
 <tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="AntragsverwaltungSuchenForm">class <strong>AntragsverwaltungSuchenForm</strong></a>(<a href="Antragstool.forms.html#ArchivSuchenForm">ArchivSuchenForm</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#AntragsverwaltungSuchenForm">AntragsverwaltungSuchenForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
+&nbsp;<br>
+Felder,&nbsp;die&nbsp;AntragsverwaltungSuchen&nbsp;Seite&nbsp;besitzt<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="Antragstool.forms.html#AntragsverwaltungSuchenForm">AntragsverwaltungSuchenForm</a></dd>
+<dd><a href="Antragstool.forms.html#ArchivSuchenForm">ArchivSuchenForm</a></dd>
+<dd><a href="django.forms.forms.html#Form">django.forms.forms.Form</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>base_fields</strong> = {'atyp': &lt;django.forms.models.ModelChoiceField object&gt;, 'b': &lt;django.forms.fields.ChoiceField object&gt;, 'db': &lt;django.forms.fields.DateField object&gt;, 'dv': &lt;django.forms.fields.DateField object&gt;, 'q': &lt;django.forms.fields.CharField object&gt;}</dl>
+
+<dl><dt><strong>choices</strong> = [('', 'Kein Filter'), ('Unbehandelt', 'Unbehandelt'), ('Angenommen', 'Angenommen'), ('Abgelehnt', 'Abgelehnt'), ('Vertagt', 'Vertagt')]</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'atyp': &lt;django.forms.models.ModelChoiceField object&gt;, 'b': &lt;django.forms.fields.ChoiceField object&gt;, 'db': &lt;django.forms.fields.DateField object&gt;, 'dv': &lt;django.forms.fields.DateField object&gt;, 'q': &lt;django.forms.fields.CharField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="Antragstool.forms.html#ArchivSuchenForm">ArchivSuchenForm</a>:<br>
+<dl><dt><a name="AntragsverwaltungSuchenForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#AntragsverwaltungSuchenForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="AntragsverwaltungSuchenForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-__init__"><strong>__init__</strong></a>(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=&lt;class 'django.forms.utils.ErrorList'&gt;, label_suffix=None, empty_permitted=False, field_order=None, use_required_attribute=None, renderer=None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="AntragsverwaltungSuchenForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#AntragsverwaltungSuchenForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#AntragsverwaltungSuchenForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="AntragsverwaltungSuchenForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="AntragsverwaltungSuchenForm-__html__"><strong>__html__</strong></a> = <a href="#AntragsverwaltungSuchenForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-__str__"><strong>__str__</strong></a> = <a href="#AntragsverwaltungSuchenForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="AntragsverwaltungSuchenForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><a name="ArchivSuchenForm">class <strong>ArchivSuchenForm</strong></a>(<a href="django.forms.forms.html#Form">django.forms.forms.Form</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#ArchivSuchenForm">ArchivSuchenForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;ArchivSuchen&nbsp;Seite&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#ArchivSuchenForm">ArchivSuchenForm</a></dd>
@@ -1321,7 +1487,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#BeschlussForm">BeschlussForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-#&nbsp;Beschluss<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;ein&nbsp;Beschluss&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#BeschlussForm">BeschlussForm</a></dd>
@@ -1476,7 +1642,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#LoginForm">LoginForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-#&nbsp;template&nbsp;for&nbsp;custom&nbsp;login&nbsp;form<br>&nbsp;</span></td></tr>
+Template&nbsp;for&nbsp;custom&nbsp;Login&nbsp;<a href="django.forms.forms.html#Form">Form</a><br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#LoginForm">LoginForm</a></dd>
@@ -1631,7 +1797,9 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#MultipleFileField">MultipleFileField</a>(*args,&nbsp;**kwargs)<br>
 &nbsp;<br>
-<br>&nbsp;</span></td></tr>
+Datei-Upload-Handler<br>
+&nbsp;<br>
+<a href="https://docs.djangoproject.com/en/4.2/topics/http/file-uploads/#uploading-multiple-files">https://docs.djangoproject.com/en/4.2/topics/http/file-uploads/#uploading-multiple-files</a><br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#MultipleFileField">MultipleFileField</a></dd>
@@ -1706,8 +1874,7 @@ Data and other attributes inherited from <a href="django.forms.fields.html#Field
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#MultipleFileInput">MultipleFileInput</a>(attrs=None)<br>
 &nbsp;<br>
-#&nbsp;Datei-Upload-Handler<br>
-#&nbsp;<a href="https://docs.djangoproject.com/en/4.2/topics/http/file-uploads/#uploading-multiple-files">https://docs.djangoproject.com/en/4.2/topics/http/file-uploads/#uploading-multiple-files</a><br>&nbsp;</span></td></tr>
+<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#MultipleFileInput">MultipleFileInput</a></dd>
@@ -1814,7 +1981,7 @@ Data and other attributes inherited from <a href="django.forms.widgets.html#Widg
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#ReferatForm">ReferatForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-#&nbsp;Referate<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;Referate&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#ReferatForm">ReferatForm</a></dd>
@@ -1969,7 +2136,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#SitzungAnlegenForm">SitzungAnlegenForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-#&nbsp;Anlegen&nbsp;einer&nbsp;Sitzung<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;SitzungAnlegen&nbsp;Seite&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#SitzungAnlegenForm">SitzungAnlegenForm</a></dd>
@@ -2128,7 +2295,7 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#SitzungVertagenForm">SitzungVertagenForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-#&nbsp;Vertagung&nbsp;Sitzung<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;SitzungVertagen&nbsp;Seite&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#SitzungVertagenForm">SitzungVertagenForm</a></dd>
@@ -2282,12 +2449,171 @@ Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin
 </td></tr></table> <p>
 <table class="section">
 <tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="SitzungsverwaltungSuchenForm">class <strong>SitzungsverwaltungSuchenForm</strong></a>(<a href="django.forms.forms.html#Form">django.forms.forms.Form</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#SitzungsverwaltungSuchenForm">SitzungsverwaltungSuchenForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
+&nbsp;<br>
+Felder,&nbsp;die&nbsp;SitzungsverwaltungSuchen&nbsp;Seite&nbsp;besitzt<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="Antragstool.forms.html#SitzungsverwaltungSuchenForm">SitzungsverwaltungSuchenForm</a></dd>
+<dd><a href="django.forms.forms.html#Form">django.forms.forms.Form</a></dd>
+<dd><a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a></dd>
+<dd><a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a></dd>
+<dd><a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SitzungsverwaltungSuchenForm-clean"><strong>clean</strong></a>(self)</dt><dd><span class="code">Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;form-wide&nbsp;cleaning&nbsp;after&nbsp;Field.<a href="#SitzungsverwaltungSuchenForm-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field.&nbsp;Any&nbsp;ValidationError&nbsp;raised&nbsp;by&nbsp;this&nbsp;method&nbsp;will<br>
+not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will&nbsp;have&nbsp;a&nbsp;special-case<br>
+association&nbsp;with&nbsp;the&nbsp;field&nbsp;named&nbsp;'__all__'.</span></dd></dl>
+
+<hr>
+Readonly properties defined here:<br>
+<dl><dt><strong>media</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>base_fields</strong> = {'db': &lt;django.forms.fields.DateField object&gt;, 'dv': &lt;django.forms.fields.DateField object&gt;, 'ref': &lt;django.forms.models.ModelChoiceField object&gt;, 's': &lt;django.forms.fields.ChoiceField object&gt;}</dl>
+
+<dl><dt><strong>choices</strong> = [('', 'Kein Filter'), ('Offen', 'Offen'), ('Vertagt', 'Vertagt'), ('Stattgefunden', 'Stattgefunden')]</dl>
+
+<dl><dt><strong>declared_fields</strong> = {'db': &lt;django.forms.fields.DateField object&gt;, 'dv': &lt;django.forms.fields.DateField object&gt;, 'ref': &lt;django.forms.models.ModelChoiceField object&gt;, 's': &lt;django.forms.fields.ChoiceField object&gt;}</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><a name="SitzungsverwaltungSuchenForm-__getitem__"><strong>__getitem__</strong></a>(self, name)</dt><dd><span class="code">Return&nbsp;a&nbsp;BoundField&nbsp;with&nbsp;the&nbsp;given&nbsp;name.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-__init__"><strong>__init__</strong></a>(self, data=None, files=None, auto_id='id_%s', prefix=None, initial=None, error_class=&lt;class 'django.forms.utils.ErrorList'&gt;, label_suffix=None, empty_permitted=False, field_order=None, use_required_attribute=None, renderer=None)</dt><dd><span class="code">Initialize&nbsp;self.&nbsp;&nbsp;See&nbsp;help(type(self))&nbsp;for&nbsp;accurate&nbsp;signature.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><span class="code">Yield&nbsp;the&nbsp;form's&nbsp;fields&nbsp;as&nbsp;BoundField&nbsp;objects.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><span class="code">Return&nbsp;repr(self).</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-add_error"><strong>add_error</strong></a>(self, field, error)</dt><dd><span class="code">Update&nbsp;the&nbsp;content&nbsp;of&nbsp;`self.<strong>_errors</strong>`.<br>
+&nbsp;<br>
+The&nbsp;`field`&nbsp;argument&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;field&nbsp;to&nbsp;which&nbsp;the&nbsp;errors<br>
+should&nbsp;be&nbsp;added.&nbsp;If&nbsp;it's&nbsp;None,&nbsp;treat&nbsp;the&nbsp;errors&nbsp;as&nbsp;NON_FIELD_ERRORS.<br>
+&nbsp;<br>
+The&nbsp;`error`&nbsp;argument&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;error,&nbsp;a&nbsp;list&nbsp;of&nbsp;errors,&nbsp;or&nbsp;a<br>
+dictionary&nbsp;that&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;lists&nbsp;of&nbsp;errors.&nbsp;An&nbsp;"error"&nbsp;can&nbsp;be<br>
+either&nbsp;a&nbsp;simple&nbsp;string&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+message&nbsp;attribute&nbsp;set&nbsp;and&nbsp;a&nbsp;"list&nbsp;or&nbsp;dictionary"&nbsp;can&nbsp;be&nbsp;an&nbsp;actual<br>
+`list`&nbsp;or&nbsp;`dict`&nbsp;or&nbsp;an&nbsp;instance&nbsp;of&nbsp;ValidationError&nbsp;with&nbsp;its<br>
+`error_list`&nbsp;or&nbsp;`error_dict`&nbsp;attribute&nbsp;set.<br>
+&nbsp;<br>
+If&nbsp;`error`&nbsp;is&nbsp;a&nbsp;dictionary,&nbsp;the&nbsp;`field`&nbsp;argument&nbsp;*must*&nbsp;be&nbsp;None&nbsp;and<br>
+errors&nbsp;will&nbsp;be&nbsp;added&nbsp;to&nbsp;the&nbsp;fields&nbsp;that&nbsp;correspond&nbsp;to&nbsp;the&nbsp;keys&nbsp;of&nbsp;the<br>
+dictionary.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-add_initial_prefix"><strong>add_initial_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Add&nbsp;an&nbsp;'initial'&nbsp;prefix&nbsp;for&nbsp;checking&nbsp;dynamic&nbsp;initial&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-add_prefix"><strong>add_prefix</strong></a>(self, field_name)</dt><dd><span class="code">Return&nbsp;the&nbsp;field&nbsp;name&nbsp;with&nbsp;a&nbsp;prefix&nbsp;appended,&nbsp;if&nbsp;this&nbsp;<a href="django.forms.forms.html#Form">Form</a>&nbsp;has&nbsp;a<br>
+prefix&nbsp;set.<br>
+&nbsp;<br>
+Subclasses&nbsp;may&nbsp;wish&nbsp;to&nbsp;override.</span></dd></dl>
+
+<strong>changed_data</strong> = &lt;django.utils.functional.cached_property object&gt;
+<dl><dt><a name="SitzungsverwaltungSuchenForm-full_clean"><strong>full_clean</strong></a>(self)</dt><dd><span class="code">Clean&nbsp;all&nbsp;of&nbsp;self.<strong>data</strong>&nbsp;and&nbsp;populate&nbsp;self.<strong>_errors</strong>&nbsp;and&nbsp;self.<strong>cleaned_data</strong>.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-get_context"><strong>get_context</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-get_initial_for_field"><strong>get_initial_for_field</strong></a>(self, field, field_name)</dt><dd><span class="code">Return&nbsp;initial&nbsp;data&nbsp;for&nbsp;field&nbsp;on&nbsp;form.&nbsp;Use&nbsp;initial&nbsp;data&nbsp;from&nbsp;the&nbsp;form<br>
+or&nbsp;the&nbsp;field,&nbsp;in&nbsp;that&nbsp;order.&nbsp;Evaluate&nbsp;callable&nbsp;values.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-has_changed"><strong>has_changed</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;data&nbsp;differs&nbsp;from&nbsp;initial.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-has_error"><strong>has_error</strong></a>(self, field, code=None)</dt></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-hidden_fields"><strong>hidden_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;the&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;are&nbsp;hidden&nbsp;fields.<br>
+Useful&nbsp;for&nbsp;manual&nbsp;form&nbsp;layout&nbsp;in&nbsp;templates.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-is_multipart"><strong>is_multipart</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;needs&nbsp;to&nbsp;be&nbsp;multipart-encoded,&nbsp;i.e.&nbsp;it&nbsp;has<br>
+FileInput,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-is_valid"><strong>is_valid</strong></a>(self)</dt><dd><span class="code">Return&nbsp;True&nbsp;if&nbsp;the&nbsp;form&nbsp;has&nbsp;no&nbsp;errors,&nbsp;or&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-non_field_errors"><strong>non_field_errors</strong></a>(self)</dt><dd><span class="code">Return&nbsp;an&nbsp;ErrorList&nbsp;of&nbsp;errors&nbsp;that&nbsp;aren't&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular<br>
+field&nbsp;--&nbsp;i.e.,&nbsp;from&nbsp;<a href="django.forms.forms.html#Form">Form</a>.<a href="#SitzungsverwaltungSuchenForm-clean">clean</a>().&nbsp;Return&nbsp;an&nbsp;empty&nbsp;ErrorList&nbsp;if&nbsp;there<br>
+are&nbsp;none.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-order_fields"><strong>order_fields</strong></a>(self, field_order)</dt><dd><span class="code">Rearrange&nbsp;the&nbsp;fields&nbsp;according&nbsp;to&nbsp;field_order.<br>
+&nbsp;<br>
+field_order&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;specifying&nbsp;the&nbsp;order.&nbsp;Append&nbsp;fields<br>
+not&nbsp;included&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;the&nbsp;default&nbsp;order&nbsp;for&nbsp;backward&nbsp;compatibility<br>
+with&nbsp;subclasses&nbsp;not&nbsp;overriding&nbsp;field_order.&nbsp;If&nbsp;field_order&nbsp;is&nbsp;None,<br>
+keep&nbsp;all&nbsp;fields&nbsp;in&nbsp;the&nbsp;order&nbsp;defined&nbsp;in&nbsp;the&nbsp;class.&nbsp;Ignore&nbsp;unknown<br>
+fields&nbsp;in&nbsp;field_order&nbsp;to&nbsp;allow&nbsp;disabling&nbsp;fields&nbsp;in&nbsp;form&nbsp;subclasses<br>
+without&nbsp;redefining&nbsp;ordering.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-visible_fields"><strong>visible_fields</strong></a>(self)</dt><dd><span class="code">Return&nbsp;a&nbsp;list&nbsp;of&nbsp;BoundField&nbsp;objects&nbsp;that&nbsp;aren't&nbsp;hidden&nbsp;fields.<br>
+The&nbsp;opposite&nbsp;of&nbsp;the&nbsp;<a href="#SitzungsverwaltungSuchenForm-hidden_fields">hidden_fields</a>()&nbsp;method.</span></dd></dl>
+
+<hr>
+Readonly properties inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>errors</strong></dt>
+<dd><span class="code">Return&nbsp;an&nbsp;ErrorDict&nbsp;for&nbsp;the&nbsp;data&nbsp;provided&nbsp;for&nbsp;the&nbsp;form.</span></dd>
+</dl>
+<dl><dt><strong>template_name</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="django.forms.forms.html#BaseForm">django.forms.forms.BaseForm</a>:<br>
+<dl><dt><strong>default_renderer</strong> = None</dl>
+
+<dl><dt><strong>field_order</strong> = None</dl>
+
+<dl><dt><strong>prefix</strong> = None</dl>
+
+<dl><dt><strong>template_name_div</strong> = 'django/forms/div.html'</dl>
+
+<dl><dt><strong>template_name_label</strong> = 'django/forms/label.html'</dl>
+
+<dl><dt><strong>template_name_p</strong> = 'django/forms/p.html'</dl>
+
+<dl><dt><strong>template_name_table</strong> = 'django/forms/table.html'</dl>
+
+<dl><dt><strong>template_name_ul</strong> = 'django/forms/ul.html'</dl>
+
+<dl><dt><strong>use_required_attribute</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableFormMixin">django.forms.utils.RenderableFormMixin</a>:<br>
+<dl><dt><a name="SitzungsverwaltungSuchenForm-as_div"><strong>as_div</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;div&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-as_p"><strong>as_p</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;p&gt;&nbsp;elements.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-as_table"><strong>as_table</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;tr&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;table&gt;&nbsp;tag.</span></dd></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-as_ul"><strong>as_ul</strong></a>(self)</dt><dd><span class="code">Render&nbsp;as&nbsp;&lt;li&gt;&nbsp;elements&nbsp;excluding&nbsp;the&nbsp;surrounding&nbsp;&lt;ul&gt;&nbsp;tag.</span></dd></dl>
+
+<hr>
+Methods inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><a name="SitzungsverwaltungSuchenForm-__html__"><strong>__html__</strong></a> = <a href="#SitzungsverwaltungSuchenForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-__str__"><strong>__str__</strong></a> = <a href="#SitzungsverwaltungSuchenForm-render">render</a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<dl><dt><a name="SitzungsverwaltungSuchenForm-render"><strong>render</strong></a>(self, template_name=None, context=None, renderer=None)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.forms.utils.html#RenderableMixin">django.forms.utils.RenderableMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
 <td class="section-title" colspan=3>&nbsp;<br><a name="StammdatenForm">class <strong>StammdatenForm</strong></a>(<a href="django.forms.forms.html#Form">django.forms.forms.Form</a>)</td></tr>
     
 <tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
 <td class="decor title-decor" colspan=2><span class="code"><a href="#StammdatenForm">StammdatenForm</a>(data=None,&nbsp;files=None,&nbsp;auto_id='id_%s',&nbsp;prefix=None,&nbsp;initial=None,&nbsp;error_class=&amp;lt;class&nbsp;'django.forms.utils.ErrorList'&amp;gt;,&nbsp;label_suffix=None,&nbsp;empty_permitted=False,&nbsp;field_order=None,&nbsp;use_required_attribute=None,&nbsp;renderer=None)<br>
 &nbsp;<br>
-<br>&nbsp;</span></td></tr>
+Felder,&nbsp;die&nbsp;jeder&nbsp;Antrag&nbsp;besitzt<br>&nbsp;</span></td></tr>
 <tr><td>&nbsp;</td>
 <td class="singlecolumn"><dl><dt>Method resolution order:</dt>
 <dd><a href="Antragstool.forms.html#StammdatenForm">StammdatenForm</a></dd>
