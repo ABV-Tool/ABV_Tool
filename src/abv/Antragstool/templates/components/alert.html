@@ -12,35 +12,35 @@ Eine beispielhafte Einbindung ist in der antrag.html zu finden.
 {% if type|lower == "info" %}
 
     <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mt-5 mb-5" role="alert" id="feedback">
-        <p class="font-bold">Hinweis</p>
+        <p class="font-bold"><u>Hinweis</u></p>
         <p id="{{ text_element_id }}">{{ text }}</p>
     </div>
 
 {% elif type|lower == "success" %}
 
     <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mt-5 mb-5" role="alert" id="feedback">
-        <p class="font-bold">Erfolgreich</p>
+        <p class="font-bold"><u>Erfolgreich</u></p>
         <p id="{{ text_element_id }}">{{ text }}</p>
     </div>
 
 {% elif type|lower == "error" %}
 
     <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mt-5 mb-5" role="alert" id="feedback">
-        <p class="font-bold">Fehler</p>
+        <p class="font-bold"><u>Fehler</u></p>
         <p id="{{ text_element_id }}">{{ text }}</p>
     </div>
 
 {% elif type|lower == "warning" %}
 
     <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4 mt-5 mb-5" role="alert" id="feedback">
-        <p class="font-bold">Warnung</p>
+        <p class="font-bold"><u>Warnung</u></p>
         <p id="{{ text_element_id }}">{{ text }}</p>
     </div>
 
 {% elif type|lower == "debug" %}
 
     <div class="bg-gray-100 border-l-4 border-gray-500 text-gray-700 p-4 mt-5 mb-5" role="alert" id="feedback">
-        <p class="font-bold">Debug</p>
+        <p class="font-bold"><u>Debug</u></p>
         <p id="{{ text_element_id }}">{{ text }}</p>
     </div>
 

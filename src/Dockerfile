@@ -9,7 +9,9 @@ RUN mkdir -p /opt/app
 RUN mkdir -p /opt/app/pip_cache
 RUN mkdir -p /opt/app/abv
 COPY requirements.txt start-server.sh /opt/app/
-COPY .pip_cache /opt/app/pip_cache/
+#COPY .pip_cache /opt/app/pip_cache/
+WORKDIR /opt/app
+RUN pip install -r requirements.txt
 COPY abv /opt/app/abv/
 WORKDIR /opt/app
 RUN pip install -r requirements.txt --cache-dir /opt/app/pip_cache
@@ -18,4 +20,4 @@ RUN chown -R www-data:www-data /opt/app
 
 EXPOSE 8020
 STOPSIGNAL SIGTERM
-CMD ["/opt/app/start-server.sh"]
+CMD ["/bin/bash", "/opt/app/start-server.sh"]

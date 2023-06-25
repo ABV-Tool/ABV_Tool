@@ -6,6 +6,10 @@
     {{ block.super }}
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="{% url 'login' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-right-from-bracket"></i> Anmelden</a>
+{% endblock %}
+
 {% block content %}
     <div class="login-wrapper shadow-card bg-[#333]">
         <div class="w3-animate-opacity">
