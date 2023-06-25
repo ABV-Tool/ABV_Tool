@@ -28,10 +28,12 @@ def formFehlerAusgeben(request, form):
 # ========== Hauptseiten ========== #
 
 def HomePage(request):
+    """Gibt beim Aufruf die Home-Seite zurück."""
     return render(request, 'pages/home.html', context={'title': 'Home'})
 
 
 def ArchivPage(request):
+    """Gibt beim Aufruf die Archiv-Seite zurück."""
     form = ArchivSuchenForm(request.GET)
     
     if request.method == 'GET' and form.is_valid():
@@ -79,12 +81,14 @@ def ArchivPage(request):
 # ++++++ Referatsverwaltung ++++++ #
 
 def ReferatsverwaltungPage(request):
+    """Gibt beim Aufruf die Refaratsverwaltung-Seite zurück."""
     referate = Referat.objects.all().order_by('refID')
     context = {'title': 'Referatsverwaltung', 'referate': referate}
     return render(request, 'pages/intern/referatsverwaltung.html', context=context)
 
 
 def ReferatErstellenPage(request):
+    """Gibt beim Aufruf die ReferatErstellen-Seite zurück."""
     if request.method == 'POST':  
         form = ReferatForm(request.POST)
         if form.is_valid():
@@ -115,6 +119,7 @@ def ReferatErstellenPage(request):
 
 
 def ReferatBearbeitenPage(request, refID):
+    """Gibt beim Aufruf die ReferatBearbeiten-Seite zurück."""
     referat = Referat.objects.get(refID=refID)
     
     if request.method == 'POST':
@@ -141,6 +146,7 @@ def ReferatBearbeitenPage(request, refID):
 
 
 def ReferatLoeschenPage(request, refID):
+    """Gibt beim Aufruf die ReferatBearbeiten-Seite zurück."""
     referat = Referat.objects.get(refID=refID)
 
     if request.method == 'POST':
