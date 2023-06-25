@@ -13,7 +13,7 @@
                     </li>
                 </a>
                 <a href="{% url 'archiv' %}">
-                    <li class="float-left p-5 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/archiv/" %} active{% endif %}">
+                    <li class="float-left p-5 cursor-pointer hover:bg-[#f2982e] {% if "/archiv/" in request.path %} active{% endif %}">
                         <i class="fa-solid fa-box-archive"></i> Archiv
                     </li>
                 </a>
@@ -30,17 +30,17 @@
             {% if user.is_authenticated %}
             <ul class="flex flex-row justify-center">
                 <a href="{% url 'referatsverwaltung' %}">
-                    <li class="float-left p-5 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/referatsverwaltung/" %}active{% endif %}">
+                    <li class="float-left p-5 cursor-pointer hover:bg-[#f2982e] {% if "/intern/referatsverwaltung/" in request.path %}active{% endif %}">
                         <i class="fa-solid fa-rectangle-list"></i> Referate
                     </li>
                 </a>
                 <a href="{% url 'sitzungsverwaltung' %}">
-                    <li class="float-left p-5 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/sitzungsverwaltung/" %}active{% endif %}">
+                    <li class="float-left p-5 cursor-pointer hover:bg-[#f2982e] {% if "/intern/sitzungsverwaltung/" in request.path %}active{% endif %}">
                         <i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung
                     </li>
                 </a>
                 <a href="{% url 'antragsverwaltung' %}">
-                    <li class="float-left p-5 cursor-pointer hover:bg-[#f2982e] {% if request.get_full_path == "/intern/antragsverwaltung/" %}active{% endif %}">
+                    <li class="float-left p-5 cursor-pointer hover:bg-[#f2982e] {% if "/intern/antragsverwaltung/" in request.path %}active{% endif %}">
                         <i class="fa-regular fa-folder-open"></i> Anträge
                     </li>
                 </a>

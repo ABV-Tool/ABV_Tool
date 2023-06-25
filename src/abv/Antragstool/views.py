@@ -10,7 +10,7 @@ from datetime import date, datetime, timedelta
 from .models import Referat, Sitzung, Antrag, Antragssteller, Antragstyp, Beschluss, Anlage
 from .forms import ReferatForm, BeschlussForm, SitzungVertagenForm, AntragVertagenForm, SitzungAnlegenForm
 from .forms import LoginForm, AntragAllgemeinForm, AntragFinanziellForm, AntragVeranstaltungForm, AntragMitgliedForm, AntragAmtForm, AntragBenehmenForm
-from .forms import ArchivSuchenForm, SitzungsverwaltungSuchenForm
+from .forms import ArchivSuchenForm, SitzungsverwaltungSuchenForm, AntragsverwaltungSuchenForm
 
 from .mails import mailAstellerEingangsbestaetigung, mailAstellerVertagungAntrag, mailAstellerVertagungSitzung, mailAstellerErgebnisAntrag
 from .mails import mailReferatAntragEingegangen
@@ -446,10 +446,59 @@ def getFormVonAntragstyp(antrag, request):
 
 
 def AntragsverwaltungPage(request):
-    antraege = Antrag.objects.filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).order_by('-erstelltDate')
+    form = AntragsverwaltungSuchenForm(request.GET)
+    
+    if request.method == 'GET' and form.is_valid():
+        suchbegriff = request.GET.get("q")
+        beschluss = request.GET.get("b")
+        antrags_typ = request.GET.get("atyp")
+        datum_von = request.GET.get("dv")
+        datum_bis = request.GET.get("db")
+        
+        # Filtere Anträge, sodass nur welche angezeigt werden, die einen Beschluss haben oder nicht vertagt wurden
+        gefilterte_antraege = Antrag.objects.order_by('-erstelltDate')
+        
+        # Filtere Texte nach Suchbegriff
+        if suchbegriff:
+            gefilterte_antraege = gefilterte_antraege.filter(
+                Q(antragTitel__icontains=suchbegriff) | 
+                Q(antragText__icontains=suchbegriff) | 
+                Q(antragGrund__icontains=suchbegriff) | 
+                Q(antragVorschlag__icontains=suchbegriff) |
+                Q(antragVorstellungPerson__icontains=suchbegriff) | 
+                Q(antragFragenZumAmt__icontains=suchbegriff) | 
+                Q(astellerID__astellerName__icontains=suchbegriff)
+            )
+            
+        # Filtere nach Beschluss, falls beschluss nicht None ist
+        if beschluss:
+            if beschluss == 'Unbehandelt':
+                gefilterte_antraege = gefilterte_antraege.filter(Q(beschlussID__isnull=True))
+            else:
+                gefilterte_antraege = gefilterte_antraege.filter(beschlussID__beschlussErgebnis=beschluss)
+        
+        # Filtere nach Antragstyp, falls antrags_typ nicht None ist
+        if antrags_typ:
+            gefilterte_antraege = gefilterte_antraege.filter(typID=antrags_typ)
+        
+        # Filtere nach Datum, falls datum_von und/oder datum_bis nicht None sind
+        if datum_von:
+            # Konvertiere String in Date-Objekt
+            datum_von = datetime.strptime(datum_von, '%d.%m.%Y').date()
+            gefilterte_antraege = gefilterte_antraege.filter(erstelltDate__gte=datum_von)
+            
+        if datum_bis:
+            datum_bis = datetime.strptime(datum_bis, '%d.%m.%Y').date()
+            gefilterte_antraege = gefilterte_antraege.filter(erstelltDate__lte=datum_bis)
+    else:
+        gefilterte_antraege = Antrag.objects.filter(~Q(beschlussID__beschlussErgebnis="Vertagt")).order_by('-erstelltDate')
+        messages.debug(request, str([form.errors[field_name] for field_name in form.errors]))
+    
+
     return render(request, 'pages/intern/antragsverwaltung.html', context={
         'title': 'Antragsverwaltung',
-        'antraege': antraege
+        'antraege': gefilterte_antraege,
+        'form': form
     })
         
 

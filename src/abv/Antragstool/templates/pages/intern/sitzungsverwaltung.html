@@ -39,7 +39,7 @@
                         </label>
                         <select name="{{ form.ref.name }}" class="w-full" {% if form.ref.field.required %}required{% endif %}>
                             {% for choice in form.ref.field.choices %}
-                                <option class="p-2" value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                <option class="p-2" value="{{ choice.0 }}" {% if request.GET.ref == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -52,7 +52,7 @@
                         </label>
                         <select name="{{ form.s.name }}" class="w-full" {% if form.s.field.required %}required{% endif %}>
                             {% for choice in form.s.field.choices %}
-                                <option class="p-2" value="{{ choice.0 }}">{{ choice.1 }}</option>
+                                <option class="p-2" value="{{ choice.0 }}" {% if request.GET.s == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -160,7 +160,15 @@
                             {% include 'components/table_column_sitzung.html' with status=sitzung.sitzStatus %}
                         </td>
                     </tr>
+
+                    {% empty %}
+
+                    <tr>
+                        <td colspan="5" class="text-center mt-5 pt-5">Es konnten keine Sitzungen nach diesen Kriterien gefunden werden!</td>
+                    </tr>
+
                     {% endfor %}
+
                 </tbody>
             </table>
         </div>

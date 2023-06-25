@@ -181,12 +181,21 @@ class ArchivSuchenForm(forms.Form):
         return cleaned_data
     
     
+class AntragsverwaltungSuchenForm(ArchivSuchenForm):
+    # Beschluss
+    choices = Beschluss.BeschlussErgebnis.choices
+    choices.insert(0, ("", "Kein Filter"))
+    b = forms.ChoiceField(label="Beschluss:", choices=choices, required=False, widget=forms.Select())
+    
+    
 class SitzungsverwaltungSuchenForm(forms.Form):
     # Referat
     ref = forms.ModelChoiceField(label="Referat:", queryset=Referat.objects.all().order_by('refID'), required=False, empty_label="Alle Referate")
     
     # Sitzungs-Status
-    s = forms.ChoiceField(label="Sitzungs-Status:", choices=Sitzung.SitzungStatus.choices, required=False, widget=forms.Select())
+    choices = Sitzung.SitzungStatus.choices
+    choices.insert(0, ("", "Kein Filter"))
+    s = forms.ChoiceField(label="Sitzungs-Status:", choices=choices, required=False, widget=forms.Select())
 
     # Datum Von
     dv = forms.DateField(label="Datum von:", required=False, widget=forms.DateInput(format="%d.%m.%Y"), input_formats=["%d.%m.%Y"], help_text="Format: TT.MM.JJJJ")
