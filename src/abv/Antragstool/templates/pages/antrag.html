@@ -51,7 +51,7 @@
 {% endblock %}
 
 {% block content %}
-    <form method="POST" action="#feedback" class="ml-80 mr-80" enctype="multipart/form-data">
+    <form method="POST" action="#feedback" class="sm:ml-5 sm:mr-5 lg:mr-80 lg:ml-80" enctype="multipart/form-data">
         {% csrf_token %}
 
         <h1 class="text-center"><b>{{ title }}</b></h1>

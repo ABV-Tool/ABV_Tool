@@ -16,7 +16,7 @@
 {% block content %}
     <!-- insert content -->
 
-    <div class="ml-80 mr-80">
+    <div class="sm:ml-5 sm:mr-5 lg:mr-80 lg:ml-80">
 
         <div class="flex flex-row mt-3 text-center">
             <a href="{% url 'referat-erstellen' %}" class="btn btn-success p-5 w-full hover:cursor-pointer">
@@ -38,13 +38,13 @@
                     {% for referat in referate %}
                     <tr class="border-b border-b-[#dcdcdc]">
                         <td class="px-2 py-3 text-center">{{ referat.refID }}</td>
-                        <td class="px-2 py-3">{{ referat.refName }}</td>
+                        <td class="px-2 py-3">{{ referat.refName|truncatechars:40 }}</td>
                         <td class="px-2 py-3">{{ referat.refEmail }}</td>
                         <td class="px-2 py-3 text-center">
                             <a href="{% url 'referat-bearbeiten' refID=referat.refID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
                                 <i class="fa-solid fa-pen-to-square"></i> Bearbeiten
                             </a>
-
+                            <br class="lg:hidden">
                             <a href="{% url 'referat-loeschen' refID=referat.refID %}" class="hover:cursor-pointer hover:text-stura-orange">
                                 <i class="fa-solid fa-trash-can"></i> Löschen
                             </a>

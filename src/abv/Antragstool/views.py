@@ -285,6 +285,8 @@ def SitzungsverwaltungPage(request):
         # Filtere nach Sitzungsstatus, falls sitzung_status nicht None ist
         if sitzung_status:
             gefilterte_sitzungen = gefilterte_sitzungen.filter(sitzStatus=sitzung_status)
+        else:
+            gefilterte_sitzungen = gefilterte_sitzungen.filter(sitzStatus='Offen')
         
         # Filtere nach Datum, falls datum_von und/oder datum_bis nicht None sind
         if datum_von:
@@ -297,7 +299,8 @@ def SitzungsverwaltungPage(request):
             gefilterte_sitzungen = gefilterte_sitzungen.filter(sitzDate__lte=datum_bis)
             
     else:
-        gefilterte_sitzungen = Sitzung.objects.all().filter(sitzDate__gte=date.today()).order_by('refID').order_by('sitzDate')
+        # Alle offenen Sitzungen nach dem heutigen Datum
+        gefilterte_sitzungen = Sitzung.objects.all().filter(sitzDate__gte=date.today()).filter(sitzStatus="Offen").order_by('refID').order_by('sitzDate')
         messages.debug(request, str([form.errors[field_name] for field_name in form.errors]))
         
     return render(request, 'pages/intern/sitzungsverwaltung.html', context={
@@ -727,6 +730,12 @@ def AntragVertagenPage(request, antragID):
             # Prüfe, ob die Sitzung die Gleiche ist
             if alte_sitzID == neue_sitzID:
                 messages.error(request, 'Der Antrag konnte nicht vertagt werden, da die Sitzung die gleiche ist!')
+                return redirect('antrag-vertagen', antragID=antragID)
+            
+            # Prüfe, ob die Sitzung bereits stattgefunden hat oder vertagt wurde
+            neue_sitzung = Sitzung.objects.get(sitzID=neue_sitzID.sitzID)
+            if neue_sitzung.sitzStatus == 'Stattgefunden' or neue_sitzung.sitzStatus == 'Vertagt':
+                messages.error(request, 'Der Antrag konnte nicht vertagt werden, da die Sitzung bereits stattgefunden hat oder vertagt wurde!')
                 return redirect('antrag-vertagen', antragID=antragID)
             
             # Ürsprünglicher Antrag wird in neue Sitzung verschoben
