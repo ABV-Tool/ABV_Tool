@@ -161,7 +161,7 @@ Im Teammeeting zu Beginn dieser Iteration entschieden wir uns die kommenden Tref
 
 Die Teamleitung erarbeitete die finale Struktur für den Beleg in SE II nachdem es dazu konkrete Vorgaben von Prof. Anke gab. Dazu wurde auch die Ordnerstruktur des GitHub Repositorys angepasst und für die erforderlichen Dokumente in SE II ein extra Ordner erstellt. Dort wurden die Dokumente für die Abgabe erstellt und eine erste Strukturierung dieser erarbeitet. 
 
-In dieser Iteration sollte nun der Use Case 1 "Antrag stellen" umgesetzt werden. Das ist einer der wichtigsten und zentralsten Use Cases für unser Projekt. Der Standardablauf des Use Cases konnte grundsätzlich fertig implementiert werden und es war nun möglich einen Antrag (der verschiedenen Antragsarten) über das Tool zu stellen und sich diesen in der Datenbank anzeigen zu lassen. Es fehlte nur noch der File Upload, um z. B. eine Kostenaufstellung bei einem Finanzantrag mit einzureichen. Weiter kam die Frage auf, ob es sinnvoll ist das Datum der nächsten Sitzung des ausgewählten Referates in der Antragsmaske mit anzuzeigen. Insbesondere Hinblick auf die Möglichkeit einen Eilantrag stellen zu können wurde dies als sinnvoll betrachtet und sollte so umgesetzt werden. Der alternative Ablauf des Use Cases - Stellen eines Eilantrages - wurde noch nicht umgesetzt. 
+In dieser Iteration sollte nun der Use Case 1 "Antrag stellen" umgesetzt werden. Das ist einer der wichtigsten und zentralsten Use Cases für unser Projekt. Der Standardablauf des Use Cases konnte grundsätzlich fertig implementiert werden und es war nun möglich einen Antrag (der verschiedenen Antragsarten) über das Tool zu stellen und sich diesen in der Datenbank anzeigen zu lassen. Dabei übernahmen wir zu einem großen Teil den Aufbau und die Anordnung des Vorgängerprojektes. Es fehlte nur noch der File Upload, um z. B. eine Kostenaufstellung bei einem Finanzantrag mit einzureichen. Weiter kam die Frage auf, ob es sinnvoll ist das Datum der nächsten Sitzung des ausgewählten Referates in der Antragsmaske mit anzuzeigen. Insbesondere Hinblick auf die Möglichkeit einen Eilantrag stellen zu können wurde dies als sinnvoll betrachtet und sollte so umgesetzt werden. Der alternative Ablauf des Use Cases - Stellen eines Eilantrages - wurde noch nicht umgesetzt. 
 
 Durch die Implementierung des Use Cases 1 wurde erneut eine Anpassung des Datenbankschemas notwendig. Es kamen weitere Felder zum Antrag hinzu und andere Felder waren nicht mehr notwendig und wurden deshalb entfernt. Das wurde als Aufgabe für die kommende Iteration aufgenommen. 
 
@@ -191,10 +191,10 @@ In dieser Iteration begannen wir so richtig mit dem Testen. Dazu wurde zunächst
 
 *Iteration 8 (29.05. - 11.06.2023)*
 
-Zu Beginn der 8. Iteration fand der Fachaustausch zum Thema Architektur statt. Dabei stellte unser Architekt den Aufbau unseres Projektes vor erklärte unser Vorgehen und welche Probleme dabei auftraten. Wir bekamen dabei auch einen guten Einblick in die Entwürfe der anderen Teams und deren individuellen Herausforderungen.
+Zu Beginn der 8. Iteration fand der Fachaustausch zum Thema Architektur statt. Dabei stellte unser Architekt den Aufbau unseres Projektes vor erklärte unser Vorgehen und welche Probleme dabei auftraten. Wir bekamen dabei auch einen guten Einblick in die Entwürfe der anderen Teams und deren individuellen Herausforderungen. +
 In der folgenden Woche fand der letzte Fachaustausch zum Thema Testen statt. Zwei unserer Teammitglieder erklärten wie das Testen in unserem Projekt organisiert ist und welche Methoden wir dabei einsetzen. Auch hier half es zu sehen, auf welche Konzepte die anderen Team setzten und welche Probleme die anderen Teams bei der Umsetzung hatten. Auch konnten wir noch offene Fragen zum Testen mit Ruben-David Kraus klären, der uns als Ansprechpartner für unsere Projekte zur Verfügung steht. #was wurde besprochen#
 
-In dieser Iteration wurde weiter an den Use Cases 2 und 4 gearbeitet. Nach den Problemen mit dem Etherpad in der letzten Iteration musste nun die Vorlage für die Tagesordnung erstellt werden. Die Formatierung, das Übertragen der Daten aus dem ABV-Tool und die richtige Darstellung nahm ebenfalls sehr viel Zeit in Anspruch.
+In dieser Iteration wurde weiter an den Use Cases 2 und 4 gearbeitet. Nach den Problemen mit dem Etherpad in der letzten Iteration musste nun die Vorlage für die Tagesordnung erstellt werden. Die Formatierung, das Übertragen der Daten aus dem ABV-Tool und die richtige Darstellung nahm ebenfalls sehr viel Zeit in Anspruch. Am Ende war jedoch eine Generierung der Tagesordnung mit allen erforderlichen Daten möglich. +
 Außerdem wurde der neue Use Case 7 "Sitzung anlegen" umgesetzt, welcher sich aus dem Gespräch mit dem StuRa ergeben hatte. Dafür mussten die vorher in einem festen Zyklus stattfindenden Sitzungen so umgewandelt werden, dass der Antragsverwalter das Datum der Sitzung selbst bestimmen kann. Dies konnte problemlos geändert werden. Auch die Logik für das Stellen eines Eilantrages und des File Uploads wurde nun umgesetzt. Damit war nun der Use Case 1 endgültig abgeschlossen.
 
 Für das Testen wurde außerdem GitHub Actions eingerichtet. #testen, Differenzierung Unit- und End-to-End Tests#
@@ -203,9 +203,11 @@ Für das Testen wurde außerdem GitHub Actions eingerichtet. #testen, Differenzi
 
 *Iteration 9 (12.06. - 23.06.2023)*
 
-Die neunte und letzte Iteration sollte gleichzeitig die Transition Phase des Projektes sein. Da die Umsetzung der verbliebenen Use Cases länger dauerte als ursprünglich gedacht, konnte der Projektabschluss nicht so ablaufen wie geplant. Wir wollten jedoch die Use Cases rund um die Sitzungsverwaltung gern noch abschließen, um das Projekt zu einem guten Abschluss zu bringen und dem StuRa kein halbfertiges System übergeben zu müssen. Damit implementierten wir auch in der letzten Iteration noch, konnten jedoch die verbliebenen Use Cases 2, 3 und 4 abschließend und ohne weitere Probleme umsetzen.
+Die neunte und letzte Iteration sollte gleichzeitig die Transition Phase des Projektes sein. Da die Umsetzung der verbliebenen Use Cases länger dauerte als ursprünglich gedacht, konnte der Projektabschluss nicht so ablaufen wie geplant. Wir wollten jedoch die Use Cases rund um die Sitzungsverwaltung gern noch abschließen, um das Projekt zu einem guten Abschluss zu bringen und dem StuRa kein halbfertiges System übergeben zu müssen. Damit implementierten wir auch in der letzten Iteration noch, und das Ende der Construction Phase und die Transition Phase fielen in den selben Zeitraum. Insbesondere mussten noch der Use Cases 3 "Sitzung abschließen" und der Use Case 6 "Beschlüsse einpflegen" abschließend implementiert werden.
 
 Zum Abschluss glichen wir nochmals die Anforderungsspezifikation mit dem tatsächlichen System ab und prüften ob die Abläufe richtig beschrieben waren. Hierbei gab es einige Anpassungen bei den Use Cases 2 und 3, da der Ablauf nun doch anders umgesetzt wurde als ursprünglich geplant. Auch die systemweiten Anforderungen und das Domänenmodell wurde nochmals mit dem Projektstand abgeglichen und kleine Anpassungen vorgenommen. Die Entwickler-, Benutzer und Testdokumentation wurde ebenfalls abschließend bearbeitet und im gesamten Team vorgestellt und besprochen. Als letzte Dokumention wurde schließlich noch die Anwenderdokumention erstellt. #Dazu wurden verschiedene Screenshots zu den wichtigsten Funktionalitäten erstellt# 
+
+#Deployment#
 
 Der Abnahmetermin für das ABV-Tool sollte eigentlich am 21.06.2023 stattfinden. Jedoch konnten hier einige Teammitglieder von vorneherein nicht und als schließlich noch ein weiteres Teammitglied krankheitsbedingt ausfiel, verschoben wir den Termin in Abstimmung mir Prof. Anke auf den #.06.2023#.
 
@@ -219,34 +221,38 @@ Der Abnahmetermin für das ABV-Tool sollte eigentlich am 21.06.2023 stattfinden.
 
 ==== Ziel des Projektes
 
-Ziel des Projektes war es ein funktionierendes und anwenderfreundliches Tool zur Antrags- und Beschlussverwaltung zu entwickeln und so die Arbeit des StuRa der HTW Dresden zu erleichtern. Dabei war es uns besonders wichtig, das Tool gut in den bestehenden Ablauf zu integrieren.
+Ziel des Projektes war es ein funktionierendes und anwenderfreundliches Tool zur Antrags- und Beschlussverwaltung zu entwickeln und so die Arbeit des StuRa der HTW Dresden zu erleichtern. Dabei war es uns besonders wichtig, das Tool gut in den bestehenden Ablauf zu integrieren. 
 
 ==== Ergebnisse und Bewertung 
 
-*Antrag stellen*
+*UC 01 Antrag stellen*
 
-Dieses Ziel wurde erreicht. Es ist möglich über das Tool verschiedene Anträge zu stellen sowie sie automatisch der nächsten Sitzung zuzuordnen. Sie werden in der Datenbank gespeichert und sind in einer Gesamtübersicht aller Anträge sowie über die Sitzung einsehbar. Sie bekommen eine eindeutige, fortlaufende Antragsnummer zugewiesen. Der Antragsteller bekommt nach Absenden des Antrages eine Bestätigung per Mail mit einem Link über den er den Antrag ändern kann.
+Dieses Ziel wurde erreicht. Es ist möglich über das Tool verschiedene Anträge zu stellen sowie sie automatisch der nächsten Sitzung zuzuordnen. Sie werden in der Datenbank gespeichert und sind in einer Gesamtübersicht aller Anträge sowie über die Sitzung einsehbar. #Sie bekommen eine eindeutige, fortlaufende Antragsnummer zugewiesen.# Der Antragsteller bekommt nach Absenden des Antrages eine Bestätigung per Mail mit einem Link über den er den Antrag ändern kann.
 
-*Tagesordnung erstellen*
+*Sitzungsverwaltung - UC 02 Tagesordnung erstellen, UC 03 Sitzung abschließen und UC 04 Plenumssitzung vertagen*
 
-*Tagesordnung abschließen*
+Nach einigen Hürden konnten wir auch diesen Use Case umsetzen. Hier stießen wir während der Implementierung auf die größten Herausforderungen, da der ursprüngliche Plan nicht so umsetzbar war wie gedacht. Das Suchen nach einer Lösung und die anschließende Umsetzung kostete sehr viel Zeit. Am Ende ist es jedoch gelungen, die Use Cases rund um die Sitzungsverwaltung umzusetzen und ein sehr zufriedenstellendes Ergebnis zu erzielen. Es ist möglich für eine Sitzung eine Tagesordnung zu generieren und die benötigten Daten aus den Anträgen in das Pentapad zu überführen. Die Sitzung kann nach Abschluss aller Anträge als beschlossen markiert werden. Außerdem kann eine Sitzung vertagt werden, falls diese nicht wie geplant stattfindet. Für die Sitzung wird ein neues Datum festgelegt und zusammen mit allen Anträgen auf diesen Tag verschoben.
 
-*Plenumssitzung vertagen*
+*UC 05 Antragsverwalter anmelden*
 
-*Antragsverwalter anmelden*
+Diesen Use Case haben wir als erstes umgesetzt. Durch die Nutzung von mitgelieferten Tools von Django war eine unkomplizierte Umsetzung möglich.
+Durch die Anmeldung wird das Tool in einen öffentlichen und einen internen Bereich unterteilt. Nur berechtigte Mitglieder des StuRa haben Zugang zur Antrags- und Sitzungsverwaltung. 
 
-Diesen Use Case haben wir als einen der ersten umgesetzt. Abgesehen vom stellen einen Antrages werden alle anderen Use Cases vom Antragsverwalter ausgeführt. Antragsverwalter sind berechtigte Personen beim StuRa selbst 
+*UC 06 Beschlüsse einpflegen*
 
+Dieser Use Case wurde gemeinsam mit Use Case 3 implementiert, da abgeschlossene Anträge Voraussetzung für den Abschluss der Sitzung sind. In einem extra Fenster kann der Beschluss mit Beschlusstext und Abstimmungsergebnis erfasst und so der Antrag abgeschlossen werden. Er wird in der Übersicht anschließend als "abgeschlossen" markiert.
 
-*Beschlüsse einpflegen*
+*UC 07  Sitzung anlegen*
 
-*Umsetzung der systemweiten Anforderungen*
+Dieser Use Case entstand erst im weiteren Projektverlauf durch die Abstimmung mit dem Auftraggeber. Er konnte jedoch schnell und unkompliziert umgesetzt werden, so dass Sitzungen je nach Wunsch seitens des StuRa angelegt werden können. Dabei wird für ein ausgewähltes Referat ein Sitzungsdatum festgelegt. Falls an diesem Tag bereits eine Sitzung des Referates stattfindet wird der Nutzer mit einer entsprechenden Fehlermeldung gewarnt. So werden redundante Sitzungen vermieden.
 
 *Umsetzung weiterer Anforderungen*
 
-==== Fazit & Lessons Learned 
+Auch die systemweiten Anforderungen konnten gut umgesetzt werden. Mit der Antragsstellung kann sofort nach Aufruf der Seite und einem weiteren Klick begonnen werden. Überall werden Hilfstexte und Warnungen angezeigt, die es sowohl Antragsteller als auch Antragsverwalter erleichtern sollen. Auch die persistente und verlustlose Speicherung aller Daten konnte sichergestellt werden. Nur ein berechtigter Personenkreis hat Zugang zur Antrags- und Sitzungsverwaltung, was eine der wichtigsten Anforderungen für die Arbeitsweise des ABV-Tools ist.
 
-Insgesamt konnte dem StuRa der HTW Dresden ein funktionierendes System übergeben werden. 
+==== Fazit  
+
+Insgesamt konnte dem StuRa der HTW Dresden ein funktionierendes System übergeben werden. Wir haben hierbei versucht alle Wünsche und Anforderungen des StuRa so umzusetzen, dass das ABV-Tool akzeptiert und auch wirklich genutzt wird. Das erhoffen wir uns vor allem durch die flexibel gestaltete Tagesordnung, die sich sehr gut in den bisherigen Ablauf des StuRa integriert und die Nutzung des Pentapads bzw. Etherpads weiterhin möglich macht. 
 
 <<<
 === Reflexion der Teammitglieder
