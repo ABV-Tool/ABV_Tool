@@ -1,15 +1,26 @@
 version: "3"
 services:
 
+  abv:
+    build: .
+    ports:
+      - 8020:8020
+    environment:
+      - DJANGO_SECRET_KEY=testkey-plz-change
+      - DB_NAME=${DB_NAME:-abv}
+      - DB_USER=${DB_USER:-abv}
+      - DB_HOST=db
+      - DB_PORT=${DB_PORT:-5432}
+      - DB_PASSWORD=${DB_PASSWORD:-abv}
   db:
     image: postgres
     restart: unless-stopped
     ports:
-      - ${DB_PORT}:${DB_PORT}
+      - ${DB_PORT:-5432}:${DB_PORT:-5432}
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME:-abv}
+      - POSTGRES_USER=${DB_USER:-abv}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-abv}
     volumes:
       - pg_data:/var/lib/postgresql
 
