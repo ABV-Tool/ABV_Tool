@@ -877,6 +877,7 @@ def anlagenSpeichern(request, antrag):
 FEEDBACK_ANTRAG_SUCCESS = 'Dein Antrag wurde erfolgreich eingereicht! Du erhältst in Kürze eine E-Mail mit der Eingangsbestätigung.'
 
 def AntragAllgemein(request):
+    """Erstellt einen Antrag ohne finanzielle Mittel"""
     # Definiere den Antragstyp anhand der Slug
     antragstyp = Antragstyp.objects.get(typSlug='antrag-ohne-finanzielle-mittel')
             
@@ -1179,7 +1180,10 @@ def AntragBenehmen(request):
 # ++++++ Tagesordnung ++++++ #
 
 def TagesordnungVorschauPage(request, sitzID):
-    """Zeigt die Tagesordnungsvorschau Seite"""
+    """ Zeigt die Tagesordnungsvorschau Seite für die ausgewählt Sitzung
+        
+        sitzID:int
+    """
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
     
@@ -1198,8 +1202,10 @@ def TagesordnungVorschauPage(request, sitzID):
 
 
 def TagesordnungErstellenPage(request, sitzID):
-    """ Zeigt die TagesordnungErstellen Seite.
-        Erstellt die Tagesordnung in der Reihenfolge der Priorität.
+    """ Zeigt die TagesordnungErstellen Seite für die ausgewählt Sitzung.
+        Erstellt die Tagesordnung in der Reihenfolge der Priorität und das dazugehörtige Etherpad.
+        
+        sitzID:int
     """
     sitzung = Sitzung.objects.get(sitzID=sitzID)
     antraege = Antrag.objects.filter(sitzID=sitzID).order_by('-prioritaet','erstelltDate')
