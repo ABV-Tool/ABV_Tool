@@ -189,6 +189,8 @@ In der gleichen Woche traf sich die Teamleitung mit unserem Coach Manuela Ziesch
 
 In dieser Iteration begannen wir so richtig mit dem Testen. Dazu wurde zunächst das System bei einem Teammitglied auf dem privaten Rechner eingerichtet und geprüft ob die Einrichtung so funktioniert wie sie soll. #weitere Schritte testen#
 
+Durch das gespräch mit dem Stura konnten wir einige potenzielle risiken klären und besprechen. Zum einem entsprach das Frontend der Webseite(bis auf ein paar ausnahmen) den wünschen des Sturas. Zum anderen konnten noch spezifische fragen wie das interne nummerieren der Sitzungen besprochen werden.  Es wurde auch entschlossen das man nur einen Antrag an den StuRa senden kann wenn man eine gültige HTW e-mail besitzt um sich besser von potenziellen spam, oder andere angriffen zuz schützen.
+
 *Iteration 8 (29.05. - 11.06.2023)*
 
 Zu Beginn der 8. Iteration fand der Fachaustausch zum Thema Architektur statt. Dabei stellte unser Architekt den Aufbau unseres Projektes vor erklärte unser Vorgehen und welche Probleme dabei auftraten. Wir bekamen dabei auch einen guten Einblick in die Entwürfe der anderen Teams und deren individuellen Herausforderungen. +
