@@ -197,7 +197,7 @@ Der Antrag muss an die Datenbank gesendet und der Vorgang beendet werden.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Administrator kann sich einen Antrag auf der Weboberfläche der Anwendung anzeigen lassen.
+| Der Antragsverwalter kann sich einen Antrag auf der Weboberfläche der Anwendung anzeigen lassen.
 
 | Vorbedingung      
 | Es existiert mindestens ein Referat und eine Sitzung. + 
@@ -211,7 +211,7 @@ Die Daten werden korrekt abgebildet.
 | Antragsdaten
 
 | Testergebnis
-| Ein Administrator kann einen Antrag auf der Weboberfläche anzeigen lassen und die Daten werden korrekt abgebildet.
+| Ein Antragsverwalter kann einen Antrag auf der Weboberfläche anzeigen lassen und die Daten werden korrekt abgebildet.
 
 | Konsequenz
 | Das Anzeigen von Anträgen funktioniert.
@@ -223,7 +223,7 @@ Die Daten werden korrekt abgebildet.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Administrator kann einen Antrag auswählen und beliebig dessen Daten verändern.
+| Der Antragsverwalter kann einen Antrag auswählen und beliebig dessen Daten verändern.
 
 | Vorbedingung      
 | Der Antrag ist gültig und wurde erfolgreich eingereicht.
@@ -235,7 +235,7 @@ Die Daten werden korrekt abgebildet.
 | Eingereichter Antrag, Antragsdaten
 
 | Testergebnis
-| Ein Administrator kann einen gültigen Antrag auswählen und dessen Daten erfolgreich bearbeiten, wobei die Daten in der Datenbank korrekt aktualisiert werden.
+| Ein Antragsverwalter kann einen gültigen Antrag auswählen und dessen Daten erfolgreich bearbeiten, wobei die Daten in der Datenbank korrekt aktualisiert werden.
 
 | Konsequenz
 | Das Bearbeiten von Anträgen funktioniert.
@@ -275,7 +275,7 @@ Es muss mindestens ein Antrag gestellt worden sein.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Administrator wählt eine Sitzung aus und vertagt diese auf einen anderen Tag.
+| Der Antragsverwalter wählt eine Sitzung aus und vertagt diese auf einen anderen Tag.
 
 | Vorbedingung      
 | Die Sitzung muss bereits in der Datenbank hinterlegt sein.
@@ -300,7 +300,7 @@ Anträge, die dieser Sitzung zugeordnet waren, werden mitverschoben.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Administrator vertagt einen Antrag auf eine andere Sitzung.
+| Der Antragsverwalter vertagt einen Antrag auf eine andere Sitzung.
 
 | Vorbedingung      
 | Der Antrag muss gültig sein und die Sitzung muss bereits in der Datenbank hinterlegt sein.
@@ -312,7 +312,7 @@ Anträge, die dieser Sitzung zugeordnet waren, werden mitverschoben.
 | Antragsdaten, Sitzungsdaten (aktuelle & nächste Sitzung)
 
 | Testergebnis
-| Ein Administrator kann einen Antrag erfolgreich auf eine andere Sitzung vertagen, indem der Antrag der entsprechenden Sitzung zugewiesen wird.
+| Ein Antragsverwalter kann einen Antrag erfolgreich auf eine andere Sitzung vertagen, indem der Antrag der entsprechenden Sitzung zugewiesen wird.
 
 | Konsequenz
 | Das Vertagen von Sitzungen funktioniert.
@@ -350,7 +350,7 @@ Es muss noch eine Fehlermeldung implementiert werden.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Systemadministrator erstellt ein neues Referat.
+| a erstellt ein neues Referat.
 
 | Vorbedingung      
 | System muss vollständig eingerichtet und funktional sein.
@@ -373,7 +373,7 @@ Es muss noch eine Fehlermeldung implementiert werden.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Systemadministrator löscht Referat.
+| a löscht Referat.
 
 | Vorbedingung      
 | System muss vollständig eingerichtet und funktional sein. +
@@ -397,7 +397,7 @@ Es muss mindestens ein Referat vorhanden sein.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Systemadministrator klickt auf Sitzung anlegen und wählt die zuständige Stelle und das Datum der Sitzung aus.
+| Der a klickt auf Sitzung anlegen und wählt die zuständige Stelle und das Datum der Sitzung aus.
 
 | Vorbedingung      
 | System muss vollständig eingerichtet und funktional sein. +
@@ -423,7 +423,7 @@ Es muss mindestens ein Referat vorhanden sein.
 [cols="18h,~"]
 |===
 | Beschreibung      
-| Der Systemadministrator klick auf Sitzungsverwaltung und wählt eine Sitzung aus. + 
+| Der a klick auf Sitzungsverwaltung und wählt eine Sitzung aus. + 
 Anschließend klickt er auf Sitzung abschließen.
 
 | Vorbedingung      
@@ -450,7 +450,7 @@ Es muss mindestens ein Antrag gestellt worden sein.
 [cols="18h,~"]
 |===
 | Beschreibung
-| Der Systemadministrator wählt eine Sitzung aus der Sitzungsverwaltung aus und klickt auf "Sitzung abschließen".
+| Der a wählt eine Sitzung aus der Sitzungsverwaltung aus und klickt auf "Sitzung abschließen".
 
 | Vorbedingung
 | Das System muss vollständig eingerichtet und funktionsfähig sein. +
@@ -474,7 +474,7 @@ Es ist mindestens ein Antrag noch nicht behandelt.
 [cols="18h,~"]
 |===
 | Beschreibung
-| Der Systemadministrator wählt eine Sitzung aus der Sitzungsverwaltung aus, deren Datum in der Zukunft liegt, und klickt auf "Sitzung abschließen".
+| Der a wählt eine Sitzung aus der Sitzungsverwaltung aus, deren Datum in der Zukunft liegt, und klickt auf "Sitzung abschließen".
 
 | Vorbedingung
 | Das System muss vollständig eingerichtet und funktionsfähig sein. +
@@ -494,7 +494,7 @@ Alle Anträge müssen behandelt worden sein.
 |===
 
 
-==== Konsequenzen
+== Konsequenzen
 
 Die identifizierten Fehler und Abweichungen müssen behoben werden, um die Software zu verbessern und sicherzustellen, dass sie ordnungsgemäß funktioniert.
 Es sollte eine erneute Durchführung der fehlgeschlagenen Testfälle erfolgen, um sicherzustellen, dass die Fehler behoben wurden und die gewünschten Ergebnisse erzielt werden.
