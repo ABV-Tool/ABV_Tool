@@ -260,6 +260,7 @@ Für meine zukünftigen Softwareprojekte habe ich mir vorgenommen, die Aufgaben 
 
 Abschließend kann ich sagen, dass das Projekt ein Erfolg war und wir als Team stolz auf unsere umgesetzte Webseite sein können.
 
+<<<
 ==== Reflexion von Mirjam Müller
 
 Für mich war das ABV-Tool das erste Projekt, wo über einen längeren Zeitraum systematisch eine Software entwickelt werden sollte. Ich übernahm in diesem Zeitraum zwei Rollen. In SE I war ich Teil des Analyseteams und in SE II übernahm ich die Rolle der Teamleitung, da unser bisheriger Projektleiter aus dem Team ausschied. In beiden Rollen konnte ich eine gute Einsicht in die damit verbundenen Aufgaben erlangen und mir hierfür Wissen und Methoden aneignen. In der Analyse konnte ich lernen wie man aus einer Problemstellung und einem bestehenden Ablauf bei einem Auftraggeber Use Cases ableitet und Anforderungen formuliert. Das Denken in Use Cases und das Ausformulieren dieser musste ich erst lernen, bedeutete für mich jedoch eine große Bereicherung. Im Projektmanagement konnte ich lernen, Aufgaben herauszuarbeiten, zu priorisieren und ihren Aufwand einzuschätzen. Natürlich erhielt ich auch einen guten Einblick in die anderen Rollen, auch wenn ich hier nicht aktiv beteiligt war. Auch die Arbeit im Team mit Zuhilfenahme von Tools wie GitHub und Asciidoc waren mir zu Beginn von SE I neu. Hier habe ich viel dazu lernen können und die Möglichkeiten die insbesondere GitHub bietet werde ich auch weiterhin nutzen. 
