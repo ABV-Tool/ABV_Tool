@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module Antragstool.mails</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title"><a href="Antragstool.html" class="white">Antragstool</a>.mails</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:d%3A%5Cuniversit%C3%A4t%5Cinformatik%5C3.%20semester%5Csoftware%20engineering%201%5Cprojekt%20avb%20tool%5Cabv_tool%5Csrc%5Cabv%5Cantragstool%5Cmails.py">d:\universität\informatik\3. semester\software engineering 1\projekt avb tool\abv_tool\src\abv\antragstool\mails.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-mailAstellerEingangsbestaetigung"><strong>mailAstellerEingangsbestaetigung</strong></a>(antrag: Antragstool.models.Antrag)</dt><dd><span class="code">Sende&nbsp;dem&nbsp;Antragssteller&nbsp;eine&nbsp;Eingangsbestätigung&nbsp;für&nbsp;seinen&nbsp;Antrag</span></dd></dl>
+ <dl><dt><a name="-mailAstellerErgebnisAntrag"><strong>mailAstellerErgebnisAntrag</strong></a>(antrag: Antragstool.models.Antrag)</dt><dd><span class="code">Sende&nbsp;dem&nbsp;Antragssteller&nbsp;eine&nbsp;Information&nbsp;über&nbsp;das&nbsp;Ergebnis&nbsp;seines&nbsp;Antrags<br>
+Signal&nbsp;wird&nbsp;ausgelöst,&nbsp;wenn&nbsp;der&nbsp;Antrag&nbsp;eine&nbsp;BeschlussID&nbsp;zugewiesen&nbsp;bekommt</span></dd></dl>
+ <dl><dt><a name="-mailAstellerVertagungAntrag"><strong>mailAstellerVertagungAntrag</strong></a>(antrag: Antragstool.models.Antrag)</dt><dd><span class="code">Sende&nbsp;dem&nbsp;Antragssteller&nbsp;eine&nbsp;Information&nbsp;über&nbsp;die&nbsp;Vertagung&nbsp;seines&nbsp;Antrags&nbsp;in&nbsp;eine&nbsp;andere&nbsp;Sitzung<br>
+Signal&nbsp;wird&nbsp;ausgelöst,&nbsp;wenn&nbsp;der&nbsp;Antrag&nbsp;in&nbsp;eine&nbsp;andere&nbsp;Sitzung&nbsp;vertagt&nbsp;wird</span></dd></dl>
+ <dl><dt><a name="-mailAstellerVertagungSitzung"><strong>mailAstellerVertagungSitzung</strong></a>(sitzung: Antragstool.models.Sitzung)</dt><dd><span class="code">Sende&nbsp;dem&nbsp;Antragssteller&nbsp;eine&nbsp;Information&nbsp;über&nbsp;die&nbsp;Vertagung&nbsp;der&nbsp;Sitzung,&nbsp;in&nbsp;welcher&nbsp;sein&nbsp;Antrag&nbsp;ursprünglich&nbsp;behandelt&nbsp;werden&nbsp;sollte.</span></dd></dl>
+ <dl><dt><a name="-mailReferatAntragEingegangen"><strong>mailReferatAntragEingegangen</strong></a>(antrag: Antragstool.models.Antrag)</dt><dd><span class="code">Sende&nbsp;dem&nbsp;Referat&nbsp;eine&nbsp;Information&nbsp;über&nbsp;den&nbsp;Eingang&nbsp;eines&nbsp;neuen&nbsp;Antrags</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>EMAIL_TOOL</strong> = 'abv@stura.htw-dresden.de'<br>
+<strong>post_save</strong> = &lt;django.db.models.signals.ModelSignal object&gt;<br>
+<strong>pre_save</strong> = &lt;django.db.models.signals.ModelSignal object&gt;</td></tr></table>
+</body></html>
