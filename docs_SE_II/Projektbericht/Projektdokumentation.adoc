@@ -183,11 +183,11 @@ Die neunte und letzte Iteration sollte gleichzeitig die Transition Phase des Pro
 
 Gleichzeitig haben wir unsere Tests intensiviert und weiter umfangreiche manuelle End-to-End-Tests durchgeführt. Dabei lag unser besonderer Fokus auf Negativtests, bei denen wir gezielt Fehler im System gesucht haben. Dadurch konnten wir einerseits die Fehlertoleranz ermitteln und andererseits kritische Bugs finden und beheben. 
 
-Zum Abschluss glichen wir nochmals die Anforderungsspezifikation mit dem tatsächlichen System ab und prüften ob die Abläufe richtig beschrieben waren. Hierbei gab es einige Anpassungen bei den Use Cases 2 und 3, da der Ablauf nun doch anders umgesetzt wurde als ursprünglich geplant. Auch die systemweiten Anforderungen und das Domänenmodell wurde nochmals mit dem Projektstand abgeglichen und kleine Anpassungen vorgenommen. Die Entwickler-, Benutzer und Testdokumentation wurde ebenfalls abschließend bearbeitet und im gesamten Team vorgestellt und besprochen. Als letzte Dokumention wurde schließlich noch die Anwenderdokumention erstellt. #Dazu wurden verschiedene Screenshots zu den wichtigsten Funktionalitäten erstellt# 
+Zum Abschluss glichen wir nochmals die Anforderungsspezifikation mit dem tatsächlichen System ab und prüften ob die Abläufe richtig beschrieben waren. Hierbei gab es einige Anpassungen bei den Use Cases 2 und 3, da der Ablauf nun doch anders umgesetzt wurde als ursprünglich geplant. Auch die systemweiten Anforderungen und das Domänenmodell wurde nochmals mit dem Projektstand abgeglichen und kleine Anpassungen vorgenommen. Die Entwickler-, Benutzer und Testdokumentation wurde ebenfalls abschließend bearbeitet und im gesamten Team vorgestellt und besprochen. Als letzte Dokumention wurde schließlich noch die Anwenderdokumention erstellt. #Dazu wurden verschiedene Screenshots zu den wichtigsten Funktionalitäten erstellt und daran die wichtigsten Abläufe beschrieben.
 
 #finales Deployment, kurz warum was gemacht wurde, Probleme#
 
-Der Abnahmetermin für das ABV-Tool sollte eigentlich am 21.06.2023 stattfinden. Jedoch konnten hier einige Teammitglieder von vorneherein nicht und als schließlich noch ein weiteres Teammitglied krankheitsbedingt ausfiel, verschoben wir den Termin in Abstimmung mit Prof. Anke in die darauffolgende Woche.
+Der Abnahmetermin für das ABV-Tool sollte eigentlich am 21.06.2023 stattfinden. Jedoch konnten hier einige Teammitglieder von vorneherein nicht und als schließlich noch ein weiteres Teammitglied krankheitsbedingt ausfiel, verschoben wir den Termin in Abstimmung mit Prof. Anke auf den 27.06.2023.
 
 == Ergebnisdokumentation 
 
@@ -228,7 +228,7 @@ Auch die systemweiten Anforderungen konnten gut umgesetzt werden. Mit der Antrag
 
 ==== Fazit  
 
-Insgesamt konnte dem StuRa der HTW Dresden ein funktionierendes System übergeben werden. Wir haben hierbei versucht alle Wünsche und Anforderungen des StuRa so umzusetzen, dass das ABV-Tool akzeptiert und auch wirklich genutzt wird. Das erhoffen wir uns vor allem durch die flexibel gestaltete Tagesordnung, die sich sehr gut in den bisherigen Ablauf des StuRa integriert und die Nutzung des Pentapads bzw. Etherpads weiterhin möglich macht. 
+Insgesamt werden wir dem StuRa der HTW Dresden ein funktionierendes System übergeben können. Wir haben hierbei versucht alle Wünsche und Anforderungen des StuRa so umzusetzen, dass das ABV-Tool akzeptiert und auch wirklich genutzt wird. Das erhoffen wir uns vor allem durch die flexibel gestaltete Tagesordnung, die sich sehr gut in den bisherigen Ablauf des StuRa integriert und die Nutzung des Pentapads bzw. Etherpads weiterhin möglich macht. 
 
 //Link zum Projekt
 
@@ -254,6 +254,12 @@ Für meine zukünftigen Softwareprojekte habe ich mir vorgenommen, die Aufgaben 
 Abschließend kann ich sagen, dass das Projekt ein Erfolg war und wir als Team stolz auf unsere umgesetzte Webseite sein können.
 
 ==== Reflexion von Mirjam Müller
+
+Für mich war das ABV-Tool das erste Projekt, wo über einen längeren Zeitraum systematisch eine Software entwickelt werden sollte. Ich übernahm in diesem Zeitraum zwei Rollen. In SE I war ich Teil des Analyseteams und in SE II übernahm ich die Rolle der Teamleitung, da unser bisheriger Projektleiter aus dem Team ausschied. In beiden Rollen konnte ich eine gute Einsicht in die damit verbundenen Aufgaben erlangen und mir hierfür Wissen und Methoden aneignen. In der Analyse konnte ich lernen wie man aus einer Problemstellung und einem bestehenden Ablauf bei einem Auftraggeber Use Cases ableitet und Anforderungen formuliert. Das Denken in Use Cases und das Ausformulieren dieser musste ich erst lernen, bedeutete für mich jedoch eine große Bereicherung. Im Projektmanagement konnte ich lernen, Aufgaben herauszuarbeiten, zu priorisieren und ihren Aufwand einzuschätzen. Natürlich erhielt ich auch einen guten Einblick in die anderen Rollen, auch wenn ich hier nicht aktiv beteiligt war. Auch die Arbeit im Team mit Zuhilfenahme von Tools wie GitHub und Asciidoc waren mir zu Beginn von SE I neu. Hier habe ich viel dazu lernen können und die Möglichkeiten die insbesondere GitHub bietet werde ich auch weiterhin nutzen. 
+
+Als Team fiel es uns nicht so leicht die agile Entwicklung richtig umzusetzen. Besonders in SE I haben wir die Arbeitsweise weniger umgesetzt, sondern mehr nebeneinanderher und ohne wirklichen Plan gearbeitet. In SE II war es das Ziel als Team besser zusammenzuarbeiten und so effektiver zu sein. Das ist uns auch größtenteils gelungen. Das Projekt hatte mehr Struktur und die regelmäßigen Meetings halfen einen festen Ablauf zu integrieren. Rückblickend wäre es vielleicht besser gewesen die Meetings einmal pro Woche, statt alle zwei Wochen stattfinden zu lassen, da man so den Fortschritt besser überwachen und Aufgaben kleinteiliger verteilen kann. Trotzdem blieb eine starke Abgrenzung zwischen den Rollen, was zu einer unterschiedlichen Arbeitsbelastung führte. Auch die unterschiedlichen Wissensstände und Fähigkeiten, die jedes Teammitglied mitbrachte und die persönliche Motivation des Einzelnen führten zu der unterschiedlichen Arbeitsbelastung. Unsere Arbeitsweise war sicher nicht perfekt, aber aus den Dingen, die nicht so gut liefen, kann man gut lernen und sie bei anderen Projekten besser machen. 
+
+Am Ende können wir trotz einiger Schwierigkeiten dem StuRa ein gut funktionierendes System übergeben und stolz auf das Gesamtergebnis sein. Das ist nicht zuletzt auch dem Einsatz einiger weniger Teammitglieder zu verdanken, die in das Projekt sehr viel Zeit investiert haben. Ich konnte in diesem Projekt viel dazulernen, musste mich aber auch einigen Herausforderungen stellen. Generell habe ich einen guten Überblick über die Vielseitigkeit des Software Engineerings erhalten und viele Erfahrungen gemacht die man für zukünftige Projekte nutzen kann.
 
 <<<
 ==== Reflexion von Xuan Huy Nguyen
