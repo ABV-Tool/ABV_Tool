@@ -241,7 +241,18 @@ Insgesamt konnte dem StuRa der HTW Dresden ein funktionierendes System übergebe
 <<<
 ==== Reflexion von Alexander Minukow
 
-<<<
+Rückblickend war das Projekt ein wertvoller Einblick in das Software-Engineering, bei dem ich gezwungen wurde, mich mit allen Bereichen eines Softwareprojekts auseinanderzusetzen. Dabei traten natürlich viele Probleme und Herausforderungen auf, aber die Bewältigung dieser Schwierigkeiten war der beste Weg, aus Fehlern und Fehleinschätzungen zu lernen. Das Projekt ermöglichte mir umfangreiche Erfahrungen in Bereichen wie Analyse, Entwurf, Entwicklung und Testing zu sammeln. Doch eines hatten sie alle gemeinsam: Softskills. Denn um ein umfangreiches Softwareprojekt erfolgreich umzusetzen, reicht es nicht aus, nur in einem Bereich gut zu sein. Die Art und Weise, wie man kommuniziert, plant und zusammenarbeitet, prägt den Erfolg des Projektes maßgeblich. Dies betrifft nicht nur den Umgang innerhalb des Teams, sondern auch den Umgang mit dem Kunden. Die Fähigkeit, eine angemessene Beziehung zum Kunden aufzubauen, ist der Grundbaustein jedes Softwareprojekts und genauso wichtig wie die strukturelle Organisation des Projektablaufs und die regelmäßige Absprache innerhalb des Teams. Darüber hinaus habe ich erkannt, dass es von Vorteil ist, eng im Team zusammenzuarbeiten, um Wissen zu teilen und die Stärken der Teammitglieder optimal zu nutzen.
+
+Die Auseinandersetzung mit dem Thema DevOps mithilfe von GitHub war ebenfalls eine wichtige und wertvolle Erfahrung. Durch das Projekt konnte man grundlegende Konzepte wie den Umgang mit Issues und das Merging erlernen, aber auch fortgeschrittene Funktionen wie Actions/Pipelines von GitHub nutzen.
+
+Des Weiteren wurde mir vermittelt, wie wichtig es ist, gemeinsam mit dem Team Modelle zu erstellen und diese durchzusprechen. Regelmäßige konstruktive Diskussionen sind entscheidend, um wichtige Entscheidungen kritisch zu hinterfragen und Denkfehler eines Einzelnen zu vermeiden.
+
+Die Entwicklung des Antrags- und Beschlussverwaltungstools war sehr umfangreich, und wir mussten uns intensiv mit dem Workflow des Stura auseinandersetzen. Dadurch erhielt ich einen wertvollen Einblick in das Thema Analyse. Zudem mussten wir uns mit Programmiersprachen, Frameworks und anderen Technologien auseinandersetzen, mit denen wir zuvor keine Erfahrung hatten. Dadurch konnte ich wertvolle Fähigkeiten im Bereich Testing und Analyse erlernen.
+
+Für meine zukünftigen Softwareprojekte habe ich mir vorgenommen, die Aufgaben strukturierter zu planen und abzuarbeiten. Außerdem werde ich verstärkt Absprachen mit meinen Teammitgliedern treffen, um gemeinsame Vorgehensweisen zu besprechen.
+
+Abschließend kann ich sagen, dass das Projekt ein Erfolg war und wir als Team stolz auf unsere umgesetzte Webseite sein können.
+
 ==== Reflexion von Mirjam Müller
 
 <<<
