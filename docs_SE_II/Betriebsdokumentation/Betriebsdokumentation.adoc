@@ -36,7 +36,6 @@ Die Befehle sollen per Terminal eingegeben werden.
 
 6. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen.
 
-
 == Systembetreuung
 // FAQ für Benutzersupport 
 // Fehlerdiagnose, z.B. anhand von Logfile-Einträgen

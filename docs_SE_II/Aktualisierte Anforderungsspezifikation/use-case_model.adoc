@@ -1,4 +1,4 @@
-= Use-Case Model
+= Use-Case Model 
 Alexander Minukow <alexander.minukow@htw-dresden.de>; Mirjam Müller <mirjam.mueller@htw-dresden.de>; Simon Voges <simon.voges@htw-dresden.de> 
 {localdatetime}
 //include::../_includes/default-attributes.inc.adoc[]
@@ -16,10 +16,12 @@ Die Use Cases wollen wir in folgender Priorität umsetzen und implementieren:
 
 * *UC01*: Antrag stellen
 * *UC05*: Antragsverwalter anmelden
+* *UC07*: Sitzung anlegen 
 * *UC02*: Tagesordnung erstellen 
 * *UC06*: Beschlüsse einpflegen
 * *UC03*: Tagesordnung abschließen
-* *UC04*: Plenumssitzung vertagen 
+* *UC04*: Plenumssitzung vertagen
+
 
 // Antragsverwalter war niedrigste Priorität, --> geändert da ohne Anmeldung gesamte Applikation nicht sinnvoll --> Diskussionsbedarf ob an zweiter stelle oder nicht!!
 
@@ -28,11 +30,11 @@ Die Priorisierung ergibt sich aus folgenden Faktoren:
 * Wichtigkeit für den Kunden
 * Sinnvolle Grundfunktionalitäten
 * Schwierigkeit der Umsetzung
-* Vorhandensein des benötigten Know-how für die Umsetzung.
+* Vorhandensein des benötigtes Know-how für die Umsetzung.
 
 Da "UC01: Antrag stellen" die Kernfunktionalität der Webanwendung abbildet und es die wichtigste Funktionalität für den Kunden darstellt, ist es unsere höchste Priorität, diesen Use Case als Erstes zu implementieren. +
-Ohne "UC05: Antragsverwalter anmelden" kann die Webanwendung nicht sinnvoll verwendet werden, da sonst Authentifizierung als Admin möglich ist. Da es für die Verwaltung der Anträge nötig ist, ist es einer unserer hochpriorisierten Funktionalitäten. +
-UC02 und UC06 stellen wichtige Funktionalitäten für unseren Kunden dar, aufgrund des nötigen Know-hows und Komplexität sind sie von der Priorität mittig angesetzt. +
+Ohne "UC05: Antragsverwalter anmelden" kann die Webanwendung nicht sinnvoll verwendet werden, da sonst Authentifizierung als Antragsverwalter möglich ist. Da es für die Verwaltung der Anträge nötig ist, ist es einer unserer am höchsten priorisierten Use Cases. +
+UC07, UC02 und UC06 stellen wichtige Funktionalitäten für unseren Kunden dar und sind Voraussetzung für die Umsetzung weiterer Use Cases, aufgrund des nötigen Know-hows und Komplexität sind sie daher von der Priorität mittig angesetzt. +
 UC03 und UC04 sind nicht zwangsläufig für die Benutzung der Webanwendung nötig, daher sind es unsere am niedrigsten priorisierten Funktionalitäten.
 
 <<<
@@ -47,21 +49,27 @@ actor Antragssteller as AS
 actor Antragsverwalter as AV
 actor Systemadministrator as SA
 
+
 package Use-Cases {
     usecase "Antrag stellen" as UC1
+    usecase "Sitzung anlegen" as UC7
     usecase "Tagesordnung erstellen" as UC2
     usecase "Beschlüsse einpflegen" as UC6
-    usecase "Tagesordnung abschließen" as UC3
+    usecase "Sitzung abschließen" as UC3
     usecase "Plenumssitzung vertagen" as UC4
     usecase "Antragsverwalter anmelden" as UC5
+    
+    
 }
-AS --> UC1
-AV --> UC2
-AV --> UC6
-AV --> UC3
-AV --> UC4
-AV --> UC5
-SA --> UC5
+
+AS -- UC1
+AV -- UC7
+AV -- UC2
+AV -- UC6
+AV -- UC3
+AV -- UC4
+AV -- UC5
+SA -- UC5
 
 @enduml
 ....
@@ -93,4 +101,7 @@ include::use_case_05.inc.adoc[leveloffset=+1]
 
 <<<
 include::use_case_06.inc.adoc[leveloffset=+1]
+
+<<<
+include::use_case_07.inc.adoc[leveloffset=+1]
 

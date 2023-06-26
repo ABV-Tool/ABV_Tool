@@ -17,14 +17,15 @@ Ist zuständig für die jeweilige Plenumssitzung.
 
 - Antragsverwalter muss angemeldet sein.
 
-- System hat Plenumssitzung bereits angelegt. (Plenumssitzungen werden 4 Wochen in voraus vom System generiert.)
+- Die Sitzung muss angelegt sein.
 
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
-. Der Use Case beginnt, wenn der Antragsverwalter auf "Sitzung verwalten" klickt. 
+. Der Use Case beginnt, wenn der Antragsverwalter auf "Sitzungsverwaltung" klickt. 
 . System zeigt bereits vorhandene Sitzungen an.
 . Der Antragsverwalter klickt auf "Sitzung vertagen".
-. System bindet die Tagesordnung der ausgewählten Sitzung samt Anträgen in die nächste Sitzung ein und makiert die aktuelle Sitzung als "vertagt".
+. Der Antragsverwalter gibt das Datum der nächsten Sitzung ein.
+. Das Datum der Sitzung wird geändert. 
 . Der Use Case ist beendet.
 
 === Wireframe
