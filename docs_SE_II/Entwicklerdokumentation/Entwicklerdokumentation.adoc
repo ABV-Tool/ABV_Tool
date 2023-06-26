@@ -34,7 +34,7 @@ Container_Boundary(c0, "Container im StuRa Server") {
 
     Rel(avbt,db, "speichert in")
     Rel(as, avbt, "stellt Antrag in")
-    Rel(sa, av, "Erstellt/Löscht Nutzer")
+    Rel(sa, avbt, "Erstellt/Löscht Nutzer")
     Rel(sa, mail_system, Administriert)
     Rel(avbt,mail_system,"sendet Informationen")
     Rel(mail_system,as,"Informiert über Antragseingang")
