@@ -27,9 +27,17 @@ Das Antrags- und Beschlussverwaltungssystem bietet zuerst für unangemeldete Nut
 
 Hier können Antragsteller Anträge stellen [*UC1*] und sich über die Anträge informieren. Ebenfalls können alle Personen über den Reiter "Archiv" die bereits beschlossenen Anträge abgeschlossener Sitzungen einsehen. Zuletzt findet man über den Reiter "Über Uns" die Website des StuRa der HTWD.
 
+image::abv-homepage-abgemeldet.png[title="ABV - Homepage - Kein Benutzer angemeldet"]
+
+image::abv-archiv.png[title="ABV - Archiv"]
+
 === Interner Bereich
 
-Dieser ist das Herzstück des Antrags- und Beschlussverwaltungssystems. Hier finden sich der Großteil der umgesetzten Use-Cases. Dabei ist der Interne Bereich in 4 große Abschnitte unterteilt:
+Dieser ist das Herzstück des Antrags- und Beschlussverwaltungssystems. Hier finden sich der Großteil der umgesetzten Use-Cases.
+
+image::abv-homepage-angemeldet.png[title="ABV - Homepage - Antragsverwalter angemeldet"]
+
+Dabei ist der Interne Bereich in 4 große Abschnitte unterteilt:
 
 ==== Referate
 
