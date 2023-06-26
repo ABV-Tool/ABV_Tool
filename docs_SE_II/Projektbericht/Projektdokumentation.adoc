@@ -235,6 +235,7 @@ Insgesamt werden wir dem StuRa der HTW Dresden ein funktionierendes System über
 <<<
 === Reflexion der Teammitglieder
 //Was habe ich gelernt? Worauf bin ich stolz? Was hat gut funktioniert? Was würde ich beim nächsten Projekt anders machen?
+//Simon und Mirjam haben die gleiche Wortzahl
 
 ==== Reflexion von Göran Heinemann
 
