@@ -3,15 +3,24 @@
 = Anwenderdokumentation: {project-name}
 :chapter-signifier: Kapitel
 include::../../docs_SE_I/_includes/default-attributes.inc.adoc[] 
-//8-10 Seiten inkl. Screenshots
 
 == Einführung
-//Zweck und Funktionsumfang des Systems
-Das Tool wurde konzipiert, um die Arbeit der gewählten studentischen Vertretung zu erleichtern, da die bisherigen Arbeitsbläufe, insbesondere die Erstellung und Verwaltung von Anträgen und deren Beschlüssen bisher viele manuelle schritte involviert. Dafür müssen derzeit manuell die Antragsnummern vergeben werden, welche teilweise auch aus verschiedenen Sitzungen zusammengesucht werden müssen. Für die vergabe einheitlicher, konsistenter Antragsnummern wurde daher schon vor drei Jahren vorgeschlagen ein Software-Engineering Projekt anzubieten, um in Zusammenarbeit mit Informatik-Studenten eine maßgefertigte Lösung zu erstellen und damit den Studenten ein interessantes Projekt zu bieten.
-Dazu muss das System Antragstellern (Studierende, Mitarbeiter, oder auch Externe) einfach eine Möglichkeit bieten, jede im StuRa übliche Art von Aträgen zu stellen. Nachdem ein Antrag gestellt wurde, soll dann jeweils eine E-Mail Benachrichtigung an die AntragstellerIn und and den im System hinterlegten E-Mail-Verteiler des Referates, an das der Antrag gestellt wird, versendet werden. Beim Stellen eines Antrages kann außerdem angegeben werden, ob es sich um einen Eilantrag handelt, falls, die Fristen zur Einreichung nicht eingehalten werden konnten. Den jeweiligen Antragsverwaltern wird dies auch gesondert gekennzeichnet, damit vor der Sitzung noch entschieden werden kann, ob der Eilantrag angenommen, oder abgelehnt wird.
-Für die jeweis vom  Referat berechtigten Nutzer sind nach dem Login in das System drei weitere Menüpunkte verfügbar, mit denen die Referate, Sitzungen und Anträge gesichtet und bearbeitet werden können. Nachdem alle Anträge für eine Sitzung gesichtet wurden kann eine Tagesordnung generiert werden. Diese wird dann direkt in das im StuRa gehostete Etherpad exportiert und kann für die Sitzung verwendet werden. Während, oder nach der Sitzung kann in dem Selben Menü dann auch zu jedem Antrag ein Beschluss eingepflegt werden. Nachdem jeder Antrag entweder angenommen, abgelehnt, oder vertagt wurde kann die Sitzung dann abgeschlossen werden.
+
+Das Tool wurde konzipiert, um die Arbeit der gewählten studentischen Vertretung zu erleichtern, da die bisherigen Arbeitsbläufe, insbesondere die Erstellung und Verwaltung von Anträgen und deren Beschlüssen bisher viele manuelle schritte involviert. Dafür müssen derzeit manuell die Antragsnummern vergeben werden, welche teilweise auch aus verschiedenen Sitzungen zusammengesucht werden müssen. 
+
+Für die Vergabe einheitlicher, konsistenter Antragsnummern wurde daher schon vor drei Jahren vorgeschlagen ein Software-Engineering Projekt anzubieten, um in Zusammenarbeit mit Informatik-Studenten eine maßgefertigte Lösung zu erstellen und damit den Studenten ein interessantes Projekt zu bieten.
+
+Dazu muss das System Antragstellern (Studierende, Mitarbeiter, oder auch Externe) eine einfache Möglichkeit bieten, jede im StuRa übliche Art von Anträgen zu stellen. Nachdem ein Antrag gestellt wurde, soll dann jeweils eine E-Mail Benachrichtigung an die AntragstellerIn und and den im System hinterlegten E-Mail-Verteiler des Referates, an das der Antrag gestellt wird, versendet werden. 
+
+Beim Stellen eines Antrages kann außerdem angegeben werden, ob es sich um einen Eilantrag handelt, falls, die Fristen zur Einreichung nicht eingehalten werden konnten. Den jeweiligen Antragsverwaltern wird dies auch gesondert gekennzeichnet, damit vor der Sitzung noch entschieden werden kann, ob der Eilantrag angenommen, oder abgelehnt wird.
+
+Für die jeweils vom  Referat berechtigten Nutzer sind nach dem Login in das System drei weitere Menüpunkte verfügbar, mit denen die Referate, Sitzungen und Anträge gesichtet und bearbeitet werden können. Nachdem alle Anträge für eine Sitzung gesichtet wurden kann eine Tagesordnung generiert werden. Diese wird dann direkt in das im StuRa gehostete Etherpad exportiert und kann für die Sitzung verwendet werden. 
+
+Während, oder nach der Sitzung kann in dem Selben Menü dann auch zu jedem Antrag ein Beschluss eingepflegt werden. Nachdem jeder Antrag entweder angenommen, abgelehnt, oder vertagt wurde kann die Sitzung dann abgeschlossen werden.
+
 
 == Aufbau/Organisation der Benutzeroberfläche
+
 Das Antrags- und Beschlussverwaltungssystem bietet zuerst für unangemeldete Nutzer die Möglichkeit auf der Startseite verschiedene Arten von Anträgen zu stellen. Dafür muss eine der orangen (mit der jeweiligen Antragsart beschrifteten) Schaltflächen angeclickt werden. Danach wird man auf eine neue Seite weitergeleitet, auf der die einzelnen Felder zu dem jeweiligen Antrag ausgefüllt werden können. Dabei muss bei allen Antragsarten als erstes der Name des Antragstellers und eine E-Mail angegeben werden. Diese E-Mail Adresse wird später für Bestätigungen verwendet.
 
 === Regulärer Bereich
