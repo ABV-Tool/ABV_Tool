@@ -114,6 +114,10 @@ Software in folgender Form: Antrags- und Beschlussverwaltungstool bestehend aus:
 Hiermit wird die Abnahme vollständig/mit Mängeln bestätigt.
 
 Bemerkungen:
+ + 
+ + 
+ + 
+
 
 [%header, cols="3,3"]
 |===
