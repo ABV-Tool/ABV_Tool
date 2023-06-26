@@ -283,3 +283,16 @@ Der große Dokumentationsaufwand schien mir teilweise etwas überflüssig. Denno
 
 <<<
 ==== Reflexion von Simon Voges
+Während der Arbeit an dem ABV-Tool Projekts in Software Engineering II erhöhte sich mein Wissen in vielen Bereichen. Das Ziel dieses Semesters war das Antrags Verwaltung Tools des StuRas zu entwickeln. Mein Aufgabenbereich in diesem Projekt war die Teamleitung und, wegen eines unglücklich abgeschlossenen Jahresabos, das Erstellen von vielen der Diagramme und Wireframes. Obwohl ich aufgrund einer früheren Tätigkeit bereits Erfahrung mit der Arbeit im Team habe, habe ich viel darüber gelernt, wie man effektiv im Team zusammenarbeitet und wie wichtig Kommunikation für den Erfolg eines Gruppenprojekts ist.
+
+Ich hatte bereits einige Erfahrung mit den Programmiersprachen Python und C++, allerdings nicht im Rahmen eines großen Gruppenprojekts. Deshalb fand ich es spannend, mit anderen Studenten an einer komplexen Aufgabe zu arbeiten.
+
+Zu Beginn des zweiten Semesters hatte unser Team einige Probleme. Es war schwer für mich, zu dem Arbeitsfluss zurückzukehren, den ich im ersten Semester aufgebaut hatte. Nach einiger Zeit konnte ich jedoch mehr Motivation sammeln, und vor allem die ersten Treffen mit dem Team brachten mich wieder in den Arbeitsfluss, den ich am Ende der SE I hatte. Im Allgemeinen würde ich die Atmosphäre im Team als sehr positiv beschreiben. Ich konnte viel von meinen Teamkollegen lernen und durch den gegenseitigen Austausch von Ideen konnten wir viele Probleme und Fragen zu Layout und Design gemeinsam lösen. Aufgrund der unterschiedlichen Kenntnisse und Fähigkeiten innerhalb eines Teams war die Arbeitsbelastung manchmal ungleich verteilt, was im Nachhinein betrachtet, anders hätte gehandhabt werden sollen.
+
+Durch die Erstellung verschiedener Diagramme, wie z.B. des Domänenmodells, konnte ich besser verstehen, wie wichtig Architekturentscheidungen in einem Softwareprojekt sind und wie hilfreich Modelle bei der Implementierung des Projekts sein können.
+
+Ich habe die Arbeit und die Kommunikation mit dem StuRa größtenteils als effektiv empfunden. Ich denke, wir hätten zu Beginn der SE II mehr Treffen haben können, um zu sehen, ob sich die Anforderungen geändert haben. Die Sitzungen, die wir hatten, waren jedoch sehr produktiv und es mussten nicht viele Änderungen vorgenommen werden.
+
+Für kommende Projekte nehme ich es mir vor strukturierter zu Arbeiten und mehr auf Zeitaufwand und Prioritäten setzen zu achten.
+
+Ich habe dank dieses Projekts eine Menge gelernt, und es war insgesamt eine sehr angenehme Erfahrung. Manchmal dachte ich, dass die geforderte Dokumentation ein wenig Exzessive war, jedoch merkte ich schnell, wie hilfreich sie für mein Verständnis war. Auch wenn wir einige Probleme hatten, bin ich dennoch sehr glücklich und stolz auf das fertige Projekt und unsere Arbeit als Team und hoffe, dass es den Anforderungen des StuRa entspricht und ihm bei der Verwaltung und Reduzierung des Papierkrams in den Sitzungen helfen wird.
