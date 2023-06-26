@@ -7,9 +7,21 @@
     <!-- insert custom header elements -->
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-lock"></i> Intern</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'sitzungsverwaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-list-check"></i> {{ sitzung }}</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-sharp fa-solid fa-file"></i> {{ antrag|truncatechars:100 }}</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'antrag-vertagen' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-regular fa-calendar-xmark"></i> Vertagen</a>
+{% endblock %}
+
 {% block content %}
     <!-- insert content -->
-    <form method="POST" action="" class="ml-96 mr-96">
+    <form method="POST" action="" class="xl:mr-5 xl:ml-5 2xl:mr-96 2xl:ml-96">
         {% csrf_token %}
 
         <h1 class="text-center"><b>{{ title }}</b></h1>

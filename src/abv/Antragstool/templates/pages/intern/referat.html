@@ -6,9 +6,27 @@
     {{ block.super }}
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-lock"></i> Intern</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'referatsverwaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-rectangle-list"></i> Referate</a>
+    <i class="fa-solid fa-angle-right"></i>
+    {% if aktion|lower == 'erstellen' %}
+        <a href="{% url 'referat-erstellen' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-circle-plus"></i> Erstellen</a>
+    {% elif aktion|lower == 'bearbeiten' %}
+        <a href="#" class="ml-4 mr-4 cursor-default">{{ referat }}</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'referat-bearbeiten' refID=referat.refID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-pen-to-square"></i> Bearbeiten</a>
+    {% elif aktion|lower == 'loeschen' %}
+        <a href="#" class="ml-4 mr-4 cursor-default">{{ referat }}</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'referat-loeschen' refID=referat.refID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-trash-can"></i> Löschen</a>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
 
-    <form method="POST" action="#feedback" class="ml-96 mr-96">
+    <form method="POST" action="#feedback" class="xl:mr-5 xl:ml-5 2xl:mr-96 2xl:ml-96">
         {% csrf_token %}
 
         <h1 class="text-center"><b>{{ title }}</b></h1>

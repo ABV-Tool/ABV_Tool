@@ -8,11 +8,8 @@ from abv.settings import EMAIL_TOOL
 from .models import Antrag, Referat, Sitzung
 
 
-# TODO: Überlegungen zu weiteren E-Mails machen & StuRa fragen, ob die E-Mails so in Ordnung sind
-
 #----------{ E-Mails an Antragssteller }----------#
 
-# TODO: Binde Option ein, dass der Antragsteller seinen Antrag mit einem Token im Nachhinein bearbeiten kann
 def mailAstellerEingangsbestaetigung(antrag: Antrag):
     """
     Sende dem Antragssteller eine Eingangsbestätigung für seinen Antrag
@@ -40,7 +37,6 @@ def mailAstellerVertagungAntrag(antrag: Antrag):
     """
     print("Mail => Vertagung Antrag an Antragsteller: ", antrag.astellerID.astellerName)
     
-    # TODO: E-Mail Nachricht anpassen
     message = get_template("emails/asteller/vertagung_antrag.html").render({
         'antrag': antrag
     })
@@ -62,7 +58,6 @@ def mailAstellerVertagungSitzung(sitzung: Sitzung):
     antraege_sitzung = Antrag.objects.filter(sitzID=sitzung.sitzID)
     print("Mail => Vertagung Sitzung an alle Antragsteller: ", [antrag.astellerID.astellerEmail for antrag in antraege_sitzung])
     
-    # TODO: E-Mail Nachricht anpassen
     message = get_template("emails/asteller/vertagung_sitzung.html").render({
         'sitzung': sitzung,
         'antraege': antraege_sitzung
@@ -86,7 +81,6 @@ def mailAstellerErgebnisAntrag(antrag: Antrag):
     """
     print("Mail => Ergebnis Beschluss an Antragsteller: ", antrag.astellerID.astellerName)
     
-    # TODO: E-Mail Nachricht anpassen
     message = get_template("emails/asteller/ergebnis_antrag.html").render({
         'antrag': antrag
     })
@@ -103,7 +97,6 @@ def mailAstellerErgebnisAntrag(antrag: Antrag):
 
 #----------{ E-Mails an Referate }----------#
 
-# TODO: Prüfe, ob der Antrag ein Eilantrag ist und verschicke eine andere E-Mail
 def mailReferatAntragEingegangen(antrag: Antrag):
     """
     Sende dem Referat eine Information über den Eingang eines neuen Antrags

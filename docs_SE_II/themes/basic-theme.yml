@@ -1,0 +1,29 @@
+extends: default
+footer:
+  recto:
+    left:
+      content: '{chapter-title}'
+    right:
+      content: 'Seite {page-number} von {page-count}'
+  verso:
+    left:
+      content: '{chapter-title}'
+    right:
+      content: 'Seite {page-number} von {page-count}'
+header:
+  height: $base_line_height_length * 2
+  border_color: dddddd
+  border_width: 0.5
+  recto:
+    right:
+      content: 'Team I5 – {project-name}'
+  verso:
+    right:
+      content: 'Team I5 – {project-name}'
+
+page:
+  numbering:
+    start-at: start
+
+
+ 

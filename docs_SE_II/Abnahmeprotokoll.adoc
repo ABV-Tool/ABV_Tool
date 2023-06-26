@@ -27,8 +27,6 @@
 * Entwicklerdokumentation
 * Testdokumentation
 
-Die Dokumentationen werden bis #26.06.2023# als PDF per E-Mail an #p@stura.htw-dresden.de# gesendet.
-
 == Funktionalität
 
 [%header, cols="3,1,2"]
@@ -59,6 +57,10 @@ Die Dokumentationen werden bis #26.06.2023# als PDF per E-Mail an #p@stura.htw-d
 |
 
 |UC 6 - Beschlüsse einpflegen
+|
+|
+
+|UC 7 - Sitzung anlegen
 |
 |
 

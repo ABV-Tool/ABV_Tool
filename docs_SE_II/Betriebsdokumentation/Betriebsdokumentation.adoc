@@ -9,8 +9,9 @@
 * PostgreSQL
 * WSGI-kompatibler Webserver (Apache, Nginx)
 * Betriebssystem (idealerweise NixOS)
-* Python 3.9
-* Docker
+* Python 3.11.1
+* Django 4.2.2
+* Docker Desktop
 * lokal laufendes Etherpad
 * CertBot
 
@@ -21,28 +22,28 @@ Mindestanforderungen der Hardware sind die gleichen wie die vom WSGI-kompatiblen
 // Wie müssen diese installiert (… kopiert, registriert, …) werden? Verzeichnisstruktur?
 // Wie müssen die Bestandteile ihres Systems konfiguriert werden? IP-Adressen, Passwörter, Berechtigungen, …
 
+Die Befehle sollen per Terminal eingegeben werden.
 
-1. Alles im Ordner _.src_\ muss auf den Server kopiert werden.
+1. Alles im Ordner `./src` muss auf den Server bzw. dem dedizierten Speicherort kopiert werden.
 
-2. Mithilfe von _cd src_\ und dem Befehl _pip install -r requirements.txt_ werden die nötigen Bibliotheken installiert.
+2. `cd src`
 
-3. Anschließend muss die Datendank eingerichtet werden. Diese soll leer sein und einen Nutzer haben. Die Datei _settings.py_ muss an die neu erstellte Datenbank angepasst, ein secret Key generiert und Debug auf false gesetzt werden.
+3. `docker-compose up -d` um die Datenbank und Djangoanwendung zu starten.
 
-4. Sie wird anschließend mit _docker-compose up_ gestartet.
+4. `docker exec -i abv-tool bash < dbinit.sh` befüllt die Datenbank mit den in `./src/abv/Antragstool/fixtures` festgelegten Default-Daten.
 
-5. Als Nächstes muss Django migriert werden. Mit _cd srv_\ _abv_\ und anschließend _python manage.py makemigrations_ und _python manage.py migrate_.
+5. `docker exec -it abv-tool python3 abv/manage.py createsuperuser` kreiert einen Nutzer für den internen Bereich im Tool.
 
-6. Es ist wichtig die folgenden Befehle in der Reihenfolge einzugeben, damit die Daten ordentlich auf der Datenbank hinterlegt werden! Zuerst _python manage.py loaddata referate.json_, dann _python manage.py loaddata antragstyp.json_ und anschließend _python manage.py loaddata sitzungen.json_.
-
-7. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen. Ein TLS Zertifikat muss zuletzt erstellt werden, damit die Verschlüsselung der Verbindungen möglich ist.
-
-8. Zuletzt muss der Django Server gestartet werden mit _python manage.py runserver 127.0.0.1:8000_
+6. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen.
 
 == Systembetreuung
 // FAQ für Benutzersupport 
 // Fehlerdiagnose, z.B. anhand von Logfile-Einträgen
 // Datensicherung und –wiederherstellung
-Bei der Installation können automatische Updates aktiviert werden. Außerdem sollte in regelmäßigen Abständen Updates von Python Paketen installiert werden. Hierbei muss allerdings beachtet werden, dass hierbei keine Kompatibilitätsprobleme auftreten. Ggf. muss in solchen Fällen der Anwendungscode angepasst werden.
 
-Sonst:
-Frag am Besten Göran Kappa
+=== Updates von Bibliotheken
+Bei der Installation können automatische Updates aktiviert werden. Außerdem sollte in regelmäßigen Abständen Updates von Python Paketen installiert werden, dies macht man mithilfe des Befehls _docker-compose build_ . Hierbei muss allerdings beachtet werden, dass hierbei keine Kompatibilitätsprobleme auftreten. Ggf. muss in solchen Fällen der Anwendungscode angepasst werden.
+
+=== Ausfallsicherheit
+
+Die Uptime des Tools ist mit der Uptime des StuRa-Servers verbunden. Die Sicherheit der Daten musste nicht näher betrachtet werden, da wir eine Datenbank in Postgresql im ACID Format nutzen und der StuRa-Server täglich ein Backup macht.

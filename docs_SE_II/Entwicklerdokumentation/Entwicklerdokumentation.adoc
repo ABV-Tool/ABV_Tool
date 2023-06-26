@@ -1,100 +1,64 @@
+= Entwicklerdokumentation: {project-name}
+:chapter-signifier: Kapitel
 :imagesdir: images
-
-= Entwicklerdokumentation
+include::../../docs_SE_I/_includes/default-attributes.inc.adoc[] 
 
 == Entwurfsdokumentation
 
 === Systemarchitektur
 // r logisch und ggf. physisch, z.B. mittels Paket- / Komponenten- / Klassen- / Verteilungsdiagramm
-[plantuml, "{diagramsdir}/klassendiagramm", svg]
+image::classdiagramm.png[title="Klassendiagramm (automatisch generiert)"]
+
+[plantuml, "{diagramsdir}/c4-model-container", svg, title="Container Diagramm"]
 ....
-database Datenbank{
+@startuml example-c4-modell-diagram
+' source: https://github.com/plantuml-stdlib/C4-PlantUML
+' C4 Model
+!include <c4/C4_Context.puml>
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-}
+' Images
+!include <office/Users/user.puml>
+!include <office/Users/mobile_user.puml>
 
-interface ABVT <<Interface>> {
-  +LoginPage
-  +LogoutPage
-  +RefaratListe
-  +SitzungenVonRefarat
-  +AntraegeVonSitzung
-  +Antrag verschiedene
-}
+' Diagram syntax
+Person(as, Antragsteller, "Stellt Antrag")
+Person(av, Antragverwalter, "Verwaltet Anträge")
+Person(sa, Systemadmin, "Betreut das System")
 
-class Refarat{
-    -db_table = referat
-    #refID : uuid
-    +refName
-    +refZyklus
-}
-class Sitzung{
-    -db_table = sitzung
-    #sitzID : uuid
-    #refID : id
-    +sitzDate
-}
-class Antragssteller{
-    -db_table = antragssteller
-    #astellerID : uuid
-    #astellerIstMitglied : Boolean
-    +astellerName
-    +astellerVorname
-    +astellerEmail
-}
-class Antragstyp{
-    -db_table = antragstyp
-    #typID : int
-    +typName
-    +typSlug
-}
-class Antrag{
-    -db_table = antrag
-    #antragID : uuid
-    #sitzID : uuid
-    #typID : id
-    #astellerID : uuid
-    +antragTitel
-    +antragText
-    +antragAnlagen
-    +antragGrund
-    +antragVorschlag
-    +antragKostenposition
-    +antragSumme
-    +antragVorstellungPerson
-    +antragFragenZumAmt
-    +antragZeitraum
-    +antragVerantwortlichkeit
-}
+System(mail_system, "E-Mail System", "Das interne E-Mailsystem.")
 
-Refarat "m" *-- "n" Sitzung
-Antragstyp "1" *-- "n" Antrag
-Antragssteller "1" *-- "n" Antrag
-Sitzung "1" *-- "n" Antrag
-ABVT -> Antrag
-ABVT -> Sitzung
-ABVT -> Refarat
-ABVT -> Antragssteller
-ABVT -> Antragstyp
-ABVT -> Datenbank
+Container_Boundary(c0, "Container im StuRa Server") {
 
+    System(avbt, "ABV-Tool", "Speichert Anträge und Beschlüsse und lässt bestimmte Nutzer verwalten.", )
+    ContainerDb(db,"Datenbank","Archiv","Speichert alle gestellten und bearbeiteten Anträge, Beschlüsse und Tagesordnungen")
 
+    Rel(avbt,db, "speichert in")
+    Rel(as, avbt, "stellt Antrag in")
+    Rel(sa, avbt, "Erstellt/Löscht Nutzer")
+    Rel(sa, mail_system, Administriert)
+    Rel(avbt,mail_system,"sendet Informationen")
+    Rel(mail_system,as,"Informiert über Antragseingang")
+    Rel(av,avbt,"Verwaltet Sitzungen und Anträge")
+}
+SHOW_LEGEND()
+@enduml
 ....
+
 
 === Verwendete Bibliotheken/Frameworks...
 
-Wir verwenden als Framework verwenden wir Django, welches auf der Programmiersprache Python basiert, da wir das Projekt der vorangehenden Grupppe als Grundlage nutzen. Wir nehmen die Version 3 oder höher, da es sonst zu Kompatibilitätsproblemen mit verschiedenen Funktionen von Django selbst kommt. Tailwind ist die Frameworkgrundlage für das Frontend, da wir dadurch mehr . Zusätzlich werden folgende Erweiterungen von Python und Django benötigt:
+Wir verwenden als Framework Django, welches auf der Programmiersprache Python basiert, da wir das Projekt der vorangehenden Gruppe als Grundlage nutzen. Wir nutzen dabei die Version 3 oder höher, da es sonst zu Kompatibilitätsproblemen mit verschiedenen Funktionen von Django selbst kommt. Tailwind ist das Framework für das Frontend, da wir dadurch mehr Freiheiten haben als bei Bootstrap und reines CSS zu aufwendig zu implementieren wäre. Zusätzlich werden folgende Erweiterungen von Python und Django benötigt:
 
-* martor
-* gunicorn
-* psycopg2
 * django-money
-* fontawesomefree
-
-Für die Entwicklung benötigten wir noch:
-
 * django-tailwind
 * django-browser-reload
-
+* flake8
+* fontawesomefree
+* gunicorn
+* psycopg2
+* python-dotenv
+* requests
 
 === Datenbankschema
 
@@ -103,27 +67,67 @@ Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu hab
 image::Datenbankschema.png[title="Datenbankschema"]
 === Schnittstellen
 
+* Django liefert selbst eine ORM Schnittstelle zur Datenbank sowie zu den Mailserver.
+
+* API-Schnittstelle zum Etherpad
 
 
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
 
-[plantuml, "{diagramsdir}/sequenzdiagramm", svg]
+Zur Vereinfachten Darstellung nutzen wir keine expliziten Funktionen, da bei jedem Schritt zu viele Funktionen aufgerufen werden und es so zu unübersichtlich wird.
+
+[plantuml, "{diagramsdir}/sequenzdiagramm_antragsteller", svg, title="Sequenz Diagramm Antrag stellen"]
 ....
 actor Antragssteller
-boundary Foo2
-control Foo3
-entity Foo4
-database Foo5
-collections Foo6
-Foo1 -> Foo2 : To boundary
-Foo1 -> Foo3 : To control
-Foo1 -> Foo4 : To entity
-Foo1 -> Foo5 : To database
-Foo1 -> Foo6 : To collections
+boundary Frontend
+boundary Backend
+database Datenbank
+entity Mailserver
+
+Antragssteller -> Frontend  : klickt auf Antrag stellen
+Frontend -> Backend         : fordert Daten an
+Backend -> Datenbank        : fordert Daten aus Datenbank an
+Datenbank -> Backend        : Gibt Daten für "Antrag stellen"-Seite
+Backend -> Frontend         : gibt Daten an korrekten Platz
+Frontend -> Antragssteller  : Stellt "Antrag stellen"-Seite dar
+Antragssteller -> Frontend  : Gibt Antragsdaten ein
+Frontend -> Backend         : Gibt Daten weiter
+Backend -> Datenbank        : Speichert Daten an der korrekten Stelle
+Datenbank -> Mailserver     : Gibt Mailadressen weiter
+Mailserver -> Antragssteller: Sendet Auftragsbestätigung
 
 ....
 
-== Softwaredokumentation
-// Namen und Beschreibung aller Klassen
-// Namen, Kurzbeschreibung sowie Parameter aller Funktionenen
+[plantuml, "{diagramsdir}/sequenzdiagramm_beschluesse", svg, title="Sequenz Diagramm Beschlüsse einpflegen"]
+....
+actor Antragsverwalter
+boundary Frontend
+boundary Backend
+database Datenbank
+entity Mailserver
 
+Antragsverwalter -> Frontend    : Klickt auf Sitzungsverwaltung
+Frontend -> Backend             : Fordert Sitzungen an
+Backend -> Datenbank            : Fordert Daten aus Datenbank an
+Datenbank -> Backend            : Gibt Sitzungen
+Backend -> Frontend             : Gibt Daten an korrekten Platz
+Frontend -> Antragsverwalter    : Lädt Sitzungen
+Antragsverwalter -> Frontend    : Wählt Sitzung aus
+Frontend -> Backend             : Fordert Sitzungsdaten an
+Backend -> Datenbank            : Fordert Daten aus Datenbank an
+Datenbank -> Backend            : Gibt Sitzungsdaten
+Backend -> Frontend             : Gibt Daten an korrekten Platz
+Frontend -> Antragsverwalter    : Lädt alle Anträge der Sitzung
+Antragsverwalter -> Frontend    : Drückt auf Beschließen beim Antrag
+Frontend -> Backend             : Fordert Antragsdaten an
+Backend -> Datenbank            : Fordert Daten aus Datenbank an
+Datenbank -> Backend            : Gibt Antragsdaten
+Backend -> Frontend             : Gibt Daten an korrekten Platz
+Frontend -> Antragsverwalter    : Lädt Antragsdaten
+Antragsverwalter -> Frontend    : Gibt Beschlussdaten ein
+Frontend -> Backend             : Gibt Daten weiter
+Backend -> Datenbank            : Speichert Daten am korrekten Platz
+Datenbank -> Mailserver         : Gibt Mailadressen weiter
+Mailserver -> Antragsverwalter  : Sendet Auftragsbestätigung
+
+....

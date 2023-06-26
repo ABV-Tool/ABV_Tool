@@ -8,10 +8,10 @@ from .views import AntragsverwaltungPage, AntragAnzeigenPage, AntragBearbeitenPa
 from .views import AntragAllgemein, AntragFinanziell, AntragVeranstaltung, AntragMitglied, AntragAmt, AntragBenehmen
 from .views import TagesordnungVorschauPage, TagesordnungErstellenPage
 
-#TODO: Internen Bereich nur für superuser freigeben
 
 def is_admin(user):
     return user.is_authenticated and user.is_superuser
+
 
 urlpatterns = [
     # Hauptseiten

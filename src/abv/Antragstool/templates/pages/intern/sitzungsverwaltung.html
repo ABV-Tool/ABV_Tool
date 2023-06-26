@@ -7,78 +7,171 @@
     <!-- insert custom header elements -->
 {% endblock %}
 
+{% block breadcrumbs %}
+    <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-lock"></i> Intern</a>
+    <i class="fa-solid fa-angle-right"></i>
+    <a href="{% url 'sitzungsverwaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung</a>
+{% endblock %}
+
 {% block content %}
     <!-- insert content -->
 
-    <div class="ml-80 mr-80">
+    <div class="xl:mr-5 xl:ml-5 2xl:mr-40 2xl:ml-40">
 
-        <div class="w-full">
-            <a href="{% url 'sitzung-anlegen' %}" class="btn btn-success w-full hover:cursor-pointer">
+        <div class="flex flex-row mt-3 text-center select-none">
+            <a href="{% url 'sitzung-anlegen' %}" class="btn btn-success p-5 w-full hover:cursor-pointer">
                 <i class="fa-solid fa-circle-plus"></i> Sitzung anlegen
             </a>
         </div>
 
 
+        <div>
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+            <form action="" method="GET">
+
+
+                <div class="flex flex-row mt-3">
+
+                    <!-- Referat -->
+                    <div class="w-1/3 mr-3">
+                        <label class="block" for="{{ form.ref.id_for_label }}">
+                            <b>{{ form.ref.label }}</b>
+                        </label>
+                        <select name="{{ form.ref.name }}" class="w-full" {% if form.ref.field.required %}required{% endif %}>
+                            {% for choice in form.ref.field.choices %}
+                                <option class="p-2" value="{{ choice.0 }}" {% if request.GET.ref == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+
+                    <!-- Status -->
+                    <div class="w-1/3 mr-6">
+                        <label class="block" for="{{ form.s.id_for_label }}">
+                            <b>{{ form.s.label }}</b>
+                        </label>
+                        <select name="{{ form.s.name }}" class="w-full" {% if form.s.field.required %}required{% endif %}>
+                            {% for choice in form.s.field.choices %}
+                                <option class="p-2" value="{{ choice.0 }}" {% if request.GET.s == choice.0 %}selected{% endif %}>{{ choice.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+
+                    <a href="{% url 'sitzungsverwaltung' %}" class="btn btn-stura-orange w-1/3 hover:cursor-pointer h-11 mt-6 text-center">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> Filter zurücksetzen
+                    </a>
+
+
+                </div>
+
+
+                <div class="flex flex-row mt-3">
+
+                     <!-- Datum Von -->
+                     <div class="w-1/3 mr-3">
+                        <label class="block" for="{{ form.dv.id_for_label }}"><b>{{ form.dv.label }}</b></label>
+                        <input class="w-full" type="text" placeholder="01.01.2023" id="{{ form.dv.id_for_label }}" 
+                            name="{{ form.dv.name }}" maxlength="{{ form.dv.field.max_length }}"
+                            {% if form.dv.field.required %}required{% endif %} 
+                            {% if request.GET.dv %}value="{{ request.GET.dv }}"{% endif %}
+                        >
+                    </div>
+
+                    <!-- Datum Bis -->
+                    <div class="w-1/3 mr-6">
+                        <label class="block" for="{{ form.db.id_for_label }}"><b>{{ form.db.label }}</b></label>
+                        <input class="w-full" type="text" placeholder="{% now 'd.m.Y' %}" id="{{ form.db.id_for_label }}" 
+                            name="{{ form.db.name }}" maxlength="{{ form.db.field.max_length }}"
+                            {% if form.db.field.required %}required{% endif %} 
+                            {% if request.GET.db %}value="{{ request.GET.db }}"{% endif %}
+                        >
+                    </div>
+                    
+
+                    <button type="submit" class="btn btn-success w-1/3 hover:cursor-pointer h-11 mt-6"><i class="fa-solid fa-magnifying-glass"></i> Suchen</button>
+    
+
+                </div>
+            </form>
+            <hr class="bg-gray-600 opacity-80 border-none h-1">
+        </div>
+
+
         <!-- Ausgabe der Referate ohne Sitzung -->
         {% if referate_ohne_sitzung|length > 0 %}
-            {% with referate_ohne_sitzung|join:", " as referate %}
-                {% include 'components/alert.html' with type="WARNING" text="Folgende <b>Referate</b> haben derzeit <b>keine Sitzungen</b> vorgemerkt: "|add:referate %}
-            {% endwith %}
+            <div>
+                {% with referate_ohne_sitzung|join:", " as referate %}
+                    {% include 'components/alert.html' with type="WARNING" text="Folgende <b>Referate</b> haben derzeit <b>keine Sitzungen</b> für die nächsten <b>14 Tagen</b> vorgemerkt: <u>"|add:referate|add:"</u>" %}
+                {% endwith %}
+            </div>
         {% endif %}
 
 
-        <table class="table-auto w-full text-left overflow-x-auto mt-3 border-separate border-spacing-y-2">
-            <caption class="text-left">
-                <h2><b>Alle aktuellen Sitzungen</b></h2>
-            </caption>
-            <thead>
-                <tr>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Referat</th>
-                    <th scope="col">Anträge</th>
-                    <th scope="col">Aktionen</th>
-                    <th scope="col">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for sitzung in sitzungen %}
-                <tr>
-                    <td>{{ sitzung.sitzDate | date:"d.m.Y" }}</td>
-                    <td>{{ sitzung.refID.refName }}</td>
-                    <td>{{ sitzung.anzAntraege }}</td>
-                    <td>
+        <div class="relative overflow-x-auto bg-[#b4b4b4] p-5 rounded-lg">
+            <table class="table-auto w-full text-left overflow-x-auto border-collapse border-spacing-y-2">
+                <thead class="text-gray-700 uppercase">
+                    <tr class="border-b border-b-[#dcdcdc]">
+                        <th scope="col" class="px-2 py-3 select-none">Datum</th>
+                        <th scope="col" class="px-2 py-3 select-none">Referat</th>
+                        <th scope="col" class="px-2 py-3 select-none text-center">Anträge</th>
+                        <th scope="col" class="px-2 py-3 select-none text-center">Aktionen</th>
+                        <th scope="col" class="px-2 py-3 select-none">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sitzung in sitzungen %}
+                    <tr class="border-b border-b-[#dcdcdc]">
+                        <td class="px-2 py-3">{{ sitzung.sitzDate | date:"d.m.Y" }}</td>
+                        <td class="px-2 py-3">{{ sitzung.refID.refName|truncatechars:40 }}</td>
+                        <td class="px-2 py-3 text-center">{{ sitzung.anzAntraege }}</td>
+                        <td class="px-2 py-3 text-center">
 
-                        <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
-                            <i class="fa-solid fa-list-check"></i> Verwalten
-                        </a>
+                            <a href="{% url 'sitzung-verwalten' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange select-none mr-5">
+                                <i class="fa-solid fa-list-check"></i>
+                                {% if sitzung.sitzStatus|lower == "vertagt" %}
+                                    <s>Verwalten</s>
+                                {% else %}
+                                    Verwalten
+                                {% endif %}
+                            </a>
+                            <br class="2xl:hidden">
+                            <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange select-none mr-5">
+                                <i class="fa-regular fa-calendar-xmark"></i>
+                                {% if sitzung.sitzStatus|lower != "offen" %}
+                                    <s>Vertagen</s>
+                                {% else %}
+                                    Vertagen
+                                {% endif %}
+                            </a>
+                            <br class="2xl:hidden">
+                            <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange select-none">
+                                <i class="fa-solid fa-trash-can"></i>
+                                {% if sitzung.sitzStatus|lower != "offen" %}
+                                    <s>Löschen</s>
+                                {% else %}
+                                    Löschen
+                                {% endif %}
+                            </a>
 
-                        <a href="{% url 'sitzung-vertagen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange mr-5">
-                            <i class="fa-regular fa-calendar-xmark"></i>
-                            {% if sitzung.sitzStatus|lower != "offen" %}
-                                <s>Vertagen</s>
-                            {% else %}
-                                Vertagen
-                            {% endif %}
-                        </a>
+                        </td>
+                        
+                        <td class="px-2 py-3 select-none">
+                            {% include 'components/table_column_sitzung.html' with status=sitzung.sitzStatus %}
+                        </td>
+                    </tr>
 
-                        <a href="{% url 'sitzung-loeschen' sitzID=sitzung.sitzID %}" class="hover:cursor-pointer hover:text-stura-orange">
-                            <i class="fa-solid fa-trash-can"></i>
-                            {% if sitzung.sitzStatus|lower != "offen" %}
-                                <s>Löschen</s>
-                            {% else %}
-                                Löschen
-                            {% endif %}
-                        </a>
+                    {% empty %}
 
-                    </td>
-                    
-                    <td>
-                        {% include 'components/table_column_sitzung.html' with status=sitzung.sitzStatus %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                    <tr>
+                        <td colspan="5" class="text-center mt-5 pt-5">Es konnten keine Sitzungen nach diesen Kriterien gefunden werden!</td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
 
 
         <!-- Feedback: Anzeigen von Fehlermeldungen/Rückmeldungen -->
@@ -90,16 +183,6 @@
             {% endfor %}
         {% endif %}
 
-        
-        <script>
-            // Wenn der Nutzer über den Browser zurück navigiert, wird die Seite neu geladen
-            // Dadurch werden die Daten wieder aktuell geladen
-            var perfEntries = performance.getEntriesByType("navigation");
-
-            if (perfEntries[0].type === "back_forward") {
-                location.reload(true);
-            }
-        </script>
 
     </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 
 {% load static %}
+{% load l10n %}
 
 {% block head %}
     {{ block.super }}
@@ -8,21 +9,65 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 {% endblock %}
 
+{% block breadcrumbs %}
+    <!-- Home > Anträge -->
+    {% if 'intern' not in request.path and 'archiv' not in request.path %}
+        <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-house"></i> Home</a>
+        <i class="fa-solid fa-angle-right"></i>
+        {% if antragstyp.typSlug == 'antrag-ohne-finanzielle-mittel' %}
+            <a href="{% url 'antrag-allgemein' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-file"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'antrag-mit-finanziellen-mitteln' %}
+            <a href="{% url 'antrag-finanziell' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-money-bill-1-wave"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'antrag-fuer-veranstaltungen' %}
+            <a href="{% url 'antrag-veranstaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-calendar-plus"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'beratendes-mitglied' %}
+            <a href="{% url 'antrag-mitglied' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-user"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'wahl-auf-stelle-oder-amt' %}
+            <a href="{% url 'antrag-amt' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-building"></i> {{ antragstyp.typName }}</a>
+        {% elif antragstyp.typSlug == 'herstellung-des-benehmens' %}
+            <a href="{% url 'antrag-benehmen' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-gavel"></i> {{ antragstyp.typName }}</a>
+        {% endif %}
+    <!-- Intern > Sitzungsverwaltung > {Sitzung} > {Antrag} > Anzeigen/Bearbeiten -->
+    {% elif 'intern' in request.path and 'sitzung' in request.path or 'antrag' in request.path %}
+        <a href="/" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-lock"></i> Intern</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'sitzungsverwaltung' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-calendar-days"></i> Sitzungsverwaltung</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'sitzung-verwalten' sitzID=antrag.sitzID.sitzID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-list-check"></i> {{ antrag.sitzID }}</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-sharp fa-solid fa-file"></i> {{ antrag|truncatechars:100 }}</a>
+        <i class="fa-solid fa-angle-right"></i>
+        {% if aktion|lower == "anzeigen" %}
+            <a href="{% url 'antrag-anzeigen' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-eye"></i> Anzeigen</a>
+        {% elif aktion|lower == "bearbeiten" %}
+            <a href="{% url 'antrag-bearbeiten' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-pen-to-square"></i> Bearbeiten</a>
+        {% endif %}
+    <!-- Archiv > {Antrag} > Anzeigen -->
+    {% elif 'archiv' in request.path%}
+        <a href="{% url 'archiv' %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-solid fa-box-archive"></i> Archiv</a>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="{% url 'archiv-anzeigen' antragID=antrag.antragID %}" class="cursor-pointer hover:text-stura-orange ml-4 mr-4"><i class="fa-sharp fa-solid fa-file"></i> {{ antrag|truncatechars:100 }}</a>
+    {% endif %}
+{% endblock %}
+
 {% block content %}
-    <form method="POST" action="#feedback" class="ml-80 mr-80" enctype="multipart/form-data">
+    <form method="POST" action="#feedback" class="xl:mr-5 xl:ml-5 2xl:mr-80 2xl:ml-80" enctype="multipart/form-data">
         {% csrf_token %}
 
         <h1 class="text-center"><b>{{ title }}</b></h1>
 
 
-        <!-- Anzeigen der Sitzung / des Beschlussses, wenn man über das Archiv darauf zugreift -->
+        <!-- Anzeigen der Sitzung / des Beschlussses, wenn man über das Archiv/die Antragsverwaltung darauf zugreift -->
         {% if aktion|lower == "anzeigen" %}
         <div class="mb-8">
             <hr class="bg-gray-600 opacity-80 border-none h-1">
             <h2 class="text-center">Behandelt in: <b>{{ antrag.sitzID }}</b></h2>
-            <h4 class="text-center italic">Beschluss: <b>{{ antrag.beschlussID }}</b></h4>
+            <h4 class="text-center italic">Beschluss: <b>{{ antrag.beschlussID|default:"Beschluss nicht gefasst" }}</b></h4>
+            <h4 class="text-center italic">ABV-Nummer: <b>{{ antrag.abvNummer|default:"Sitzung nicht abgeschlossen" }}</b></h4>
             <hr class="bg-gray-600 opacity-80 border-none h-1">
         </div>
+        {% elif aktion|lower == "bearbeiten" %}
+            {% include 'components/alert.html' with type="INFO" text="In dieser Ansicht können lediglich die <b>Textfelder</b> sowie der <b>Titel</b> des Antrags zwecks Rechtschreibkorrektur o. ä. <b>bearbeitet</b> werden. <b>Stammdaten</b> sowie die <b>Stelle</b> oder das Häkchen bei <b>Eilantrag</b> können <b>nicht bearbeitet</b> werden!" %}
         {% endif %}
 
 
@@ -112,6 +157,7 @@
             <script>
                 $(document).ready(function() {
                     let referatSelect = $('select[name="{{ form.referat.name }}"]');
+                    let istEilantrag = $('input[name="{{ form.ist_eilantrag.name }}"]');
                     
                     // Wenn die Seite neu gelanden wird, zeige das Datum der nächsten Sitzung an
                     updateDatum(referatSelect.val());
@@ -120,17 +166,31 @@
                     referatSelect.change(function() {
                         updateDatum($(this).val());
                     });
+
+                    // Wenn der Eilantrag-Checkbox ausgewählt wurde, zeige das Datum der nächsten Sitzung an
+                    istEilantrag.change(function() {
+                        updateDatum(referatSelect.val());
+                    });
                 });
 
                 function updateDatum(refID) {
-                    // Array mit allen Sitzungen, die in der Datenbank gespeichert sind
-                    let sitzungen = [ {% for sitzung in sitzungen %} [{{ sitzung.refID.refID }}, "{{ sitzung.sitzDate | date:"d.m.Y" }}"], {% endfor %}];
-                    
-                    // Prüfe, ob die ausgewählte Referat-ID in der Liste der Sitzungen vorhanden ist
+                    // Array mit allen sitzungen_fristgerecht, die in der Datenbank gespeichert sind
+                    let sitzungen_fristgerecht = [ {% for sitzung in sitzungen_fristgerecht %} [{{ sitzung.refID.refID }}, "{{ sitzung.sitzDate | date:"d.m.Y" }}"], {% endfor %}];
+                    let sitzungen_eilantrag = [ {% for sitzung in sitzungen_eilantrag %} [{{ sitzung.refID.refID }}, "{{ sitzung.sitzDate | date:"d.m.Y" }}"], {% endfor %}];
+
+                    // Prüfe, ob es ein Eilantrag ist
+                    let sitzungen = []
+                    if ($('#{{ form.ist_eilantrag.id_for_label }}').prop('checked')) {
+                        sitzungen = sitzungen_eilantrag;
+                    } else {
+                        sitzungen = sitzungen_fristgerecht;
+                    }
+
+                    // Prüfe, ob die ausgewählte Referat-ID in der Liste der sitzungen_fristgerecht vorhanden ist
                     let selectedSitzung = sitzungen.find(function(sitzung) {
                         return sitzung[0] == refID;
-                    
                     });
+
                     if (selectedSitzung) {
                         $('#info_sitzungsdatum').html("Die <b>nächste Sitzung</b>, in welcher dein jetzt gestellter Antrag behandelt wird, findet am <b>" + selectedSitzung[1] + "</b> statt.")
                     } else {
@@ -328,6 +388,12 @@
                 {% if form.fragen_amt.field.max_length %} maxlength="{{ form.fragen_amt.field.max_length }}"{% endif %}
                 >{% if antrag.antragFragenZumAmt %}{{ antrag.antragFragenZumAmt }}{% endif %}</textarea>
         </div>
+        {% endif %}
+
+
+        <!-- Hinweis zu Antrag mit finanziellen Mitteln -->
+        {% if request.path == '/antrag/finanziell/' %}
+            {% include 'components/alert.html' with type="WARNING" text="Neben der Kostenposition sowie der Summe benötigen wir noch eine <b>Kostenaufstellung</b> für deinen Antrag. Füge diesen einfach als <b>Anlage</b> zu deinem Antrag bei." %}
         {% endif %}
 
 

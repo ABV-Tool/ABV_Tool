@@ -6,6 +6,7 @@ from djmoney.money import Currency
 
 
 class Referat(models.Model):
+    """Model für die Referate im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'referat'
     refID = models.PositiveIntegerField(primary_key=True,
@@ -20,6 +21,7 @@ class Referat(models.Model):
 
 
 class Sitzung(models.Model):
+    """Model für die Sitzungen im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'sitzung'
         
@@ -47,6 +49,7 @@ class Sitzung(models.Model):
 
 
 class Antragssteller(models.Model):
+    """Model für die Antragssteller im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'antragssteller'
     astellerID = models.UUIDField(primary_key=True,
@@ -62,6 +65,7 @@ class Antragssteller(models.Model):
 
 
 class Beschluss(models.Model):
+    """Model für die Beschlüsse im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'beschluss'
         
@@ -104,6 +108,7 @@ class Beschluss(models.Model):
 
 
 class Antragstyp(models.Model):
+    """Model für die Antragstypen im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'antragstyp'
     typID = models.PositiveIntegerField(primary_key=True,
@@ -117,9 +122,10 @@ class Antragstyp(models.Model):
 
 
 class Antrag(models.Model):
+    """Model für die Anträge im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'antrag'
-        
+
     # Stammdaten jedes Antrags
     antragID = models.UUIDField(primary_key=True,
                                 default=uuid.uuid4,
@@ -148,7 +154,6 @@ class Antrag(models.Model):
     istEilantrag = models.BooleanField(db_column='ist_eilantrag', default=False, blank=False)
     
     # Antragsspezifische Daten
-    # TODO: Überlegung zu besserer Strukturierung in DB
     antragGrund = models.TextField(db_column='antrag_grund', blank=True)
     antragVorschlag = models.TextField(db_column='antrag_vorschlag', blank=True)
     antragKostenposition = models.TextField(db_column='antrag_kostenposition', blank=True)
@@ -165,19 +170,22 @@ class Antrag(models.Model):
     erstelltDate = models.DateField(db_column='erstellt_date', auto_now_add=True)
     bearbeitetDate = models.DateField(db_column='bearbeitet_date', auto_now=True)
     
+    abvNummer = models.CharField(db_column='abv_nummer', max_length=20, blank=True)
+    
     # Flag um zu Verhindern, dass E-Mail an Asteller/Referat mehrfach versendet wird
     wurdeVertagt = models.BooleanField(db_column='wurde_vertagt', default=False)
-    neueSitzID = models.UUIDField(db_column='neue_antrag_id', null=True, blank=True)
+    originaleAntragID = models.UUIDField(db_column='originale_antrag_id', null=True, blank=True)
     
     def __str__(self):
         return str(self.antragTitel) + " von " + self.astellerID.astellerName
 
 
 class Anlage(models.Model):
+    """Model für die Anlagen im ABV-Tool und der Datenbank"""
     anlage = models.FileField(db_column='anlage', blank=True, null=True, upload_to='anlagen/')
     anlageName = models.TextField(db_column='anlage_name', blank=True)
     antragID = models.ForeignKey(Antrag,
                                  on_delete=models.CASCADE,
                                  db_column='antrag_id',
                                  null=True,
-                                 blank=True) 
+                                 blank=True)
