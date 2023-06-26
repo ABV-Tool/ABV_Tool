@@ -51,7 +51,7 @@ In diesem Bereich werden alle gestellten Anträge in einer Tabelle dargestellt. 
 
 Sollte man nach einem bestimmten Antrag suchen, kann man die Suche über der Tabelle verwenden. Dabei kann man nach einem Suchbegriff, dem Antragstyp, dem gestellten Datum sowie dem Beschluss filtern.
 
-image::abv-referate.png[title="ABV - Anträge"]
+image::abv-antraege.png[title="ABV - Anträge"]
 
 ==== Sitzungsverwaltung
 
