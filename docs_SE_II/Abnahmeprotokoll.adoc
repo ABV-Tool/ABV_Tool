@@ -1,5 +1,5 @@
-= Abnahmeprotokoll Antrags- und Beschlussverwaltungstool
-
+= Abnahmeprotokoll: Antrags- und Beschlussverwaltungstool
+:author: Team I5
 
 == Projektangaben
 
@@ -13,14 +13,13 @@
 
 *Datum:* 27.06.2023
 
-*Zeit:* 15:00
+*Zeit:* 15:00 Uhr
 
 *Abnahmeumgebung:* Docker-Container mit Django-Webserver und PostgreSQL-Datenbank
 
 == Lieferumfang
 
-Software in folgender Form: Antrags- und Beschlussverwaltungstool bestehend aus:
-
+* Software in folgender Form: Antrags- und Beschlussverwaltungstool bestehend aus Django-Anwendung und Docker-compose-Datei, welche die Datenbank bereitstellt
 * Anwenderdokumentation
 * Betriebsdokumentation
 * Anforderungsspezifikationen
@@ -113,7 +112,7 @@ Software in folgender Form: Antrags- und Beschlussverwaltungstool bestehend aus:
 
 Hiermit wird die Abnahme vollständig/mit Mängeln bestätigt.
 
-Bemerkungen:
+Bemerkungen: 
 
 [%header, cols="3,3"]
 |===
