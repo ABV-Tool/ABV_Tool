@@ -48,7 +48,11 @@ SHOW_LEGEND()
 
 === Verwendete Bibliotheken/Frameworks...
 
-Wir verwenden als Framework Django, welches auf der Programmiersprache Python basiert, da wir das Projekt der vorangehenden Gruppe als Grundlage nutzen. Wir nutzen dabei die Version 3 oder höher, da es sonst zu Kompatibilitätsproblemen mit verschiedenen Funktionen von Django selbst kommt. Tailwind ist das Framework für das Frontend, da wir dadurch mehr Freiheiten haben als bei Bootstrap und reines CSS zu aufwendig zu implementieren wäre. Zusätzlich werden folgende Erweiterungen von Python und Django benötigt:
+Wir verwenden als Framework *Django*, welches auf der Programmiersprache *Python* basiert, da wir das Projekt der vorangehenden Gruppe als Grundlage nutzen. Wir nutzen dabei die Version 3 oder höher, weil es sonst zu Kompatibilitätsproblemen mit verschiedenen Funktionen von Django selbst kommt. 
+
+*TailwindCSS* ist das Framework für das Frontend, da wir dadurch mehr Freiheiten haben als bei Bootstrap und reines CSS zu aufwendig zu implementieren wäre. 
+
+Zusätzlich werden folgende Erweiterungen von Python und Django benötigt:
 
 * django-money
 * django-tailwind
@@ -60,17 +64,19 @@ Wir verwenden als Framework Django, welches auf der Programmiersprache Python ba
 * python-dotenv
 * requests
 
+Diese sind ebenfalls in der `requirements.txt` zu finden.
+
 === Datenbankschema
 
 Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu haben, während wir eine hochdetaillierte Aufteilung der Daten behalten können.
 
 image::Datenbankschema.png[title="Datenbankschema"]
+
 === Schnittstellen
 
 * Django liefert selbst eine ORM Schnittstelle zur Datenbank sowie zu den Mailserver.
 
 * API-Schnittstelle zum Etherpad
-
 
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
 
