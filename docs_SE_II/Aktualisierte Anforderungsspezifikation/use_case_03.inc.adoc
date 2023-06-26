@@ -1,10 +1,10 @@
 //Nutzen Sie dieses Template als Grundlage für die Spezifikation *einzelner* Use-Cases. Diese lassen sich dann per Include in das Use-Case Model Dokument einbinden (siehe Beispiel dort).
 
-== UC03 => Tagesordnung abschließen
+== UC03 => Sitzung abschließen
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
-Der Use Case beschreibt die Fertigstellung der Tagesordnung.
+Der Use Case beschreibt den Abschluss der Sitzung.
 
 === Kurzbeschreibung der Akteure
 
@@ -29,13 +29,23 @@ Ist zuständig für die jeweilige Plenumssitzung.
 === Standardablauf (Basic Flow)
 //Der Standardablauf definiert die Schritte für den Erfolgsfall ("Happy Path")
 
-. Der Use Case beginnt, wenn der Antragsverwalter die aktuelle Sitzung auswählt. Dabei wird ihm die Markdown-Tagesordnung angezeigt.
+. Der Use Case beginnt, wenn der Antragsverwalter in der Sitzungsverwaltung die gewünschte Sitzung auswählt. 
 . Der Antragsverwalter sieht alle Beschlüsse aus der Sitzung.
-. Der Antragsverwalter klickt auf "Tagesordnung exportieren".
-. Das System übergibt die Tagesordnung als PDF.
-. Er klickt auf "Tagesordnung abschließen".
-. Sitzung wird als Abgeschlossen makiert.
+. Der Antragsverwalter klickt auf "Sitzung abschließen".
+. Der Antragsverwalter wird auf eine Hilfeseite weitergeleitet.
+. Er klickt auf "Sitzung abschließen".
+. Sitzung wird als "Stattgefunden" markiert.
+. Alle Antragssteller werden per E-Mail über das Ergebnis ihres Antrages informiert.
+. Die angenommenen oder abgelehnten Anträge werden dem Archiv hinzugefügt.
 . Der Use Case ist beendet.
+
+=== Alternative Abläufe
+//Nutzen Sie alternative Abläufe für Fehlerfälle, Ausnahmen und Erweiterungen zum Standardablauf
+
+==== Alternativer Ablauf fehlende Antragsbeschlüsse 
+Wenn nicht für alle Anträge der Sitzung ein Beschluss eingetragen wurde, dann wird eine entsprechende Fehlermeldung ausgegeben. Ein Abschluss ist nicht möglich.
+
+Der Use Case wird in Schritt 2 fortgesetzt.
 
 ////
 

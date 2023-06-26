@@ -20,9 +20,14 @@ NOTE: Die funktionalen Anforderungen, die sich aus der Interaktion von Nutzern m
 === SWFA-1: Das System muss alle Anträge und Tagesordnungen persistent speichern.
 Zur Überprüfung wird die Datenbank mit Testdaten gefüllt. Anschließend wird das System ausgeschaltet. Die Daten müssen nach dem Neustart des Systems vollständig vorhanden sein.
 
-=== SWFA-2: Das System muss sicherstellen, dass nur berechtigte Benutzer die Tagesordnung bearbeiten können.
+=== SWFA-2: Das System muss sicherstellen, dass die E-Mails ordentlich versendet werden.
+Zur Überprüfung werden Anträge gestellt und geändert und der Mailcatcher überprüft, ob die Mail gesendet wurde.
+
+=== SWFA-3: Das System muss sicherstellen, dass nur berechtigte Benutzer die Tagesordnung bearbeiten können.
 Zur Überprüfung werden Konten ohne die nötigen Berechtigungen angelegt und es wird versucht, die Daten in der Tagesordnung zu ändern.
 
+=== SWFA-4: Das System muss sicherstellen, dass nur berechtigte Benutzer die Anträge bearbeiten können.
+Zur Überprüfung werden Konten ohne die nötigen Berechtigungen angelegt und es wird versucht, die Daten in den Anträgen zu ändern.
 
 == Qualitätsanforderungen für das Gesamtsystem
 //Qualitätsanforderungen repräsentieren das "URPS" im FURPS+ zu Klassifikation von Anforderungen
@@ -37,6 +42,9 @@ Zur Überprüfung werden ungültige Eingaben (z.B. falsch formatierte E-Mail Adr
 
 ==== NFAU-3: Der Antragsteller erhält für seinen ausgewählen Antrag Hilfetexte, die Ihm beim korrekten Ausfüllen des Antrag helfen sollen.
 Es wird geprüft, ob die Hilfetexte des ausgewählten Antrags korrekt angezeigt werden.
+
+==== NFAU-4: Die Sitzung kann nicht geschlossen werden, sofern nicht alle Anträge beschlossen wurden.
+Zur Überprüfung wird versucht eine Sitzung mit offenen oder keinen Anträgen zu schließen.
 
 === Zuverlässigkeit (Reliability)
 // Zuverlässigkeit beinhaltet die Fähigkeit des Produkts und/oder des Systems unter Stress und ungünstigen Bedingungen am laufen zu bleiben. Spezifizieren Sie Anforderungen für zuverlässige Akzeptanzstufen, und wie diese gemessen und evaluiert werden. Vorgeschlagene Themen sind Verfügbarkeit, Häufigkeit und Schwere von Fehlern und Wiederherstellbarkeit.

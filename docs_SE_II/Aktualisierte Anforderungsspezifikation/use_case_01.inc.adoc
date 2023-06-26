@@ -4,7 +4,7 @@
 
 === Kurzbeschreibung
 //<Kurze Beschreibung des Use Case>
-Jede natürliche Person und insbesondere Studenten und StuRa-Mitgleider können Anträge stellen, die anschließend in der Plenumssitzung beschlossen werden.
+Jede natürliche Person und insbesondere Studenten und StuRa-Mitglieder können Anträge stellen, die anschließend in der Plenumssitzung beschlossen werden.
 
 === Kurzbeschreibung der Akteure
 
@@ -23,8 +23,8 @@ Grundsätzlich kann jede natürliche Person einen Antrag beim StuRa einreichen. 
 . Der Use Case beginnt mit dem Aufruf des Online-Tools.
 . Der Antragsteller wählt seine gewünschte Antragsart aus. 
 . Der Antragsteller füllt den entsprechenden Antrag mit korrekten Angaben aus.
-. Der Antragsteller klickt auf "Antrag absenden".
-. Der Antrag bekommt eine Antragsnummer zugewiesen und Antragsteller wird daüber informiert.
+. Der Antragsteller klickt auf "Antrag abschicken".
+. Der Antrag bekommt eine Antragsnummer zugewiesen und der Antragsteller eine Eingangsbestätigung per E-Mail zugesendet.
 . Der Use Case ist abgeschlossen.
 
 === Alternative Abläufe
@@ -37,9 +37,8 @@ Wenn der Antragsteller in Schritt 2 des Standardablaufes einen Finanzantrag ausw
 Wenn der Antragsteller in Schritt 2 des Standardablaufes Antrag auf Veranstaltung auswählt, dann muss dieser eine verantwortliche Person benennen, die für die Nachbereitung der Veranstaltung verantwortlich ist (Pflichfeld).
 
 ==== Alternativer Ablauf Dringlichkeitsantrag
-Wenn Antragsteller in Schritt 4 des Standardablaufes auf "Antrag absenden" klickt und die nächste Plenumssitzung in weniger als einer Woche stattfindet, so wird er über die Verschiebung seines Antrags auf die übernächste Plenumssitzung informiert. 
+Bei Auswahl der zuständigen Stelle wird den Antragsteller in Schritt 3 die nächste Sitzung angezeigt. Möchte er den Antrag in die vorher stattfindende Sitzung hinzufügen, kann er den Antrag als Eilantrag abschicken. 
 
-Des Weiteren wird er informiert, dass er ein Dringlichkeitsantrag stellen kann, um seinen Antrag auf die nächstmögliche Sitzung zu vertagen. 
 
 // === Unterabläufe (subflows)
 // //Nutzen Sie Unterabläufe, um wiederkehrende Schritte auszulagern
@@ -60,7 +59,7 @@ Des Weiteren wird er informiert, dass er ein Dringlichkeitsantrag stellen kann, 
 === Nachbedingungen
 // //Nachbedingungen beschreiben das Ergebnis des Use Case, z.B. einen bestimmten Systemzustand.
 
-- Persistene Speicherung der Antragsdaten ohne Datenverlust durch das System
+- Persistente Speicherung der Antragsdaten ohne Datenverlust durch das System
 - Vergabe einer AntragsID (nicht die Antragsnummer)
 - Antrag wird je nach Antragsart einer Kategorie für die Tagesordnung zugeordnet
 
