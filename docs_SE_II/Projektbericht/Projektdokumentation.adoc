@@ -115,7 +115,7 @@ In der zweiten Iteration der Elaboration Phase besprachen wir nochmals abschlie�
 In der letzten Vorlesungswoche und auch der letzten Woche der Elaboration Phase fand eine Präsentation der Projekte zum Semesterende statt. Dafür mussten wir auch einen ersten Prototyp implementieren. Bevor wir damit beginnen konnten, musste sich jedoch in das Vorgängerprojekt eingearbeitet werden, da wir das Design der Benutzeroberfläche von diesem übernehmen wollten. +
 Am selben Tag präsentierten wir den Prototypen sowie unseren Stand zur Analyse am Ende von SE I auch dem StuRa um unsere formulierten Anforderungen nochmals abzugleichen und uns Feedback einzuholen. Die restliche Woche beendeten wir die Dokumentation und schauten insbesondere, dass das Erzeugen der PDF funktionierte und alle Abbildungen und Diagramme richtig eingebunden und angezeigt wurden. Das kostete am Ende doch mehr Zeit als gedacht, aber die Arbeit hat sich gelohnt und wir konnten am Freitag den Beleg abgeben. Damit endete auch die Elaboration Phase mit dem Erreichen des Meilenstein Lifecycle Architecture. 
 
-=== Start von SE II und Construction Phase (AM, SV, MM)
+=== Start von SE II und Construction Phase (GH, AM, MM, HN, MP, SV)
 
 Zu Beginn von SE II stand zunächst die Auswertung des Beleges von SE I mit unserem Coach an. Dazu trafen wir uns in der HTW und gingen den Beleg Schritt für Schritt durch und besprachen die einzelnen Teile. Insgesamt erhielten wir hier gutes Feedback, hatten aber auch einige Punkte, die unserseits nachgearbeitet werden mussten. Diese übernahmen wir gleich als erste Aufgaben in der kommenden Iteration. 
 
@@ -317,4 +317,4 @@ Ich habe die Arbeit und die Kommunikation mit dem StuRa größtenteils als effek
 
 Für kommende Projekte nehme ich es mir vor strukturierter zu Arbeiten und mehr auf Zeitaufwand und Prioritäten setzen zu achten.
 
-Ich habe dank dieses Projekts eine Menge gelernt, und es war insgesamt eine sehr angenehme Erfahrung. Manchmal dachte ich, dass die geforderte Dokumentation ein wenig Exzessive war, jedoch merkte ich schnell, wie hilfreich sie für mein Verständnis war. Auch wenn wir einige Probleme hatten, bin ich dennoch sehr glücklich und stolz auf das fertige Projekt und unsere Arbeit als Team und hoffe, dass es den Anforderungen des StuRa entspricht und ihm bei der Verwaltung und Reduzierung des Papierkrams in den Sitzungen helfen wird.
+Ich habe dank dieses Projekts eine Menge gelernt, und es war insgesamt eine sehr angenehme Erfahrung. Manchmal dachte ich, dass die geforderte Dokumentation ein wenig exzessiv war, jedoch merkte ich schnell, wie hilfreich sie für mein Verständnis war. Auch wenn wir einige Probleme hatten, bin ich dennoch sehr glücklich und stolz auf das fertige Projekt und unsere Arbeit als Team und hoffe, dass es den Anforderungen des StuRa entspricht und ihm bei der Verwaltung und Reduzierung des Papierkrams in den Sitzungen helfen wird.
