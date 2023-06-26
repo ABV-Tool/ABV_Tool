@@ -241,12 +241,31 @@ Insgesamt konnte dem StuRa der HTW Dresden ein funktionierendes System übergebe
 <<<
 ==== Reflexion von Alexander Minukow
 
-<<<
+Rückblickend war das Projekt ein wertvoller Einblick in das Software-Engineering, bei dem ich gezwungen wurde, mich mit allen Bereichen eines Softwareprojekts auseinanderzusetzen. Dabei traten natürlich viele Probleme und Herausforderungen auf, aber die Bewältigung dieser Schwierigkeiten war der beste Weg, aus Fehlern und Fehleinschätzungen zu lernen. Das Projekt ermöglichte mir umfangreiche Erfahrungen in Bereichen wie Analyse, Entwurf, Entwicklung und Testing zu sammeln. Doch eines hatten sie alle gemeinsam: Softskills. Denn um ein umfangreiches Softwareprojekt erfolgreich umzusetzen, reicht es nicht aus, nur in einem Bereich gut zu sein. Die Art und Weise, wie man kommuniziert, plant und zusammenarbeitet, prägt den Erfolg des Projektes maßgeblich. Dies betrifft nicht nur den Umgang innerhalb des Teams, sondern auch den Umgang mit dem Kunden. Die Fähigkeit, eine angemessene Beziehung zum Kunden aufzubauen, ist der Grundbaustein jedes Softwareprojekts und genauso wichtig wie die strukturelle Organisation des Projektablaufs und die regelmäßige Absprache innerhalb des Teams. Darüber hinaus habe ich erkannt, dass es von Vorteil ist, eng im Team zusammenzuarbeiten, um Wissen zu teilen und die Stärken der Teammitglieder optimal zu nutzen.
+
+Die Auseinandersetzung mit dem Thema DevOps mithilfe von GitHub war ebenfalls eine wichtige und wertvolle Erfahrung. Durch das Projekt konnte man grundlegende Konzepte wie den Umgang mit Issues und das Merging erlernen, aber auch fortgeschrittene Funktionen wie Actions/Pipelines von GitHub nutzen.
+
+Des Weiteren wurde mir vermittelt, wie wichtig es ist, gemeinsam mit dem Team Modelle zu erstellen und diese durchzusprechen. Regelmäßige konstruktive Diskussionen sind entscheidend, um wichtige Entscheidungen kritisch zu hinterfragen und Denkfehler eines Einzelnen zu vermeiden.
+
+Die Entwicklung des Antrags- und Beschlussverwaltungstools war sehr umfangreich, und wir mussten uns intensiv mit dem Workflow des Stura auseinandersetzen. Dadurch erhielt ich einen wertvollen Einblick in das Thema Analyse. Zudem mussten wir uns mit Programmiersprachen, Frameworks und anderen Technologien auseinandersetzen, mit denen wir zuvor keine Erfahrung hatten. Dadurch konnte ich wertvolle Fähigkeiten im Bereich Testing und Analyse erlernen.
+
+Für meine zukünftigen Softwareprojekte habe ich mir vorgenommen, die Aufgaben strukturierter zu planen und abzuarbeiten. Außerdem werde ich verstärkt Absprachen mit meinen Teammitgliedern treffen, um gemeinsame Vorgehensweisen zu besprechen.
+
+Abschließend kann ich sagen, dass das Projekt ein Erfolg war und wir als Team stolz auf unsere umgesetzte Webseite sein können.
+
 ==== Reflexion von Mirjam Müller
 
 <<<
 ==== Reflexion von Xuan Huy Nguyen
+Diese Reflexion gilt der Gruppenarbeit im zweisemestrigen Modul Software Engineering. Wir haben hierbei das Projekt I5 Antrags- und Beschlussverwaltungstool für den StuRa bearbeitet. Die Aufgabe war es ein Tool für den StuRa der HTW Dresden zu entwickeln, welches die Möglichkeit bietet digital Anträge zu stellen, diese in der gewünschten Reihenfolge eine Tagesordnung einzufügen, sie dann zu beschließen und schließlich um sie zu archivieren. Damit sollte die nervenaufreibende und zeitfressende Papierarbeit von den jeweiligen Sitzungen eingeschränkt werden und der Workflow verbessert werden. Ich habe im Rahmen dieses Projektes die Rolle im Entwurf eingenommen.
 
+Am Anfang hatte ich Vorkenntnisse in der Programmierung von C, C++, Python und einigen anderen Sprachen, allerdings waren diese nur grundlegend vorhanden und ich hatte kaum Erfahrungen, was die Entwicklung von größeren Anwendungen angeht und vorallem nicht in einer Gruppe. Das war der Hauptgrund, warum ich sehr auf geregt auf diese Arbeit war. Es gab mir die Möglichkeiten meine aktuellen Kenntnisse aktiv mit anderen zu verlgeichen, teilen und fortlaufend zu verbessern. Zumindest waren dies meine Erwartungen.
+
+Zu Beginn hatten wir einen recht holprigen Start, da wir Probleme mit Terminfindungen in der Gruppe hatten und so auch ein Workflow nicht wirklich existierte. Allerdings lernten wir uns mit der Zeit kennen und haben eine guten Arbeitsrythmus gefunden. Genrell bin ich sehr froh über unsere Gruppendynamik. Durch ein ähnliches Denken und einer guten Kritikfähigkeit von jedem Teammitglied konnten wir Entscheidungen zu Design, grundlegende Architektur und den Programmierprinzipien sehr schnell fällen. Ich habe sehr viel über webbasiertes Programmieren von Max gelernt. Dafür möchte ich ihm hier auch danken!
+
+Dennoch sind nicht nur gute Dinge vorgefallen. Gerade in der Motivation fehlte es mir zum Anfang von SE II. Dies führte zu einem sehr geringen Fortschritt des gesamten Projektes zu der Zeit. Doch ich konnte mich mit Hilfe der Gruppe fangen und wir können ein Produkt präsentieren, auf das wir stolz sind. Besonders stolz bin ich allerdings nur auf eine kleine Sache. Das grundlegende Datenbankschema, welches wir uns zu Anfang überlegten, ist fast eins zu eins auch so in die finale Version umgesetzt worden. Natürlich sind deutlich mehr Spalten pro Tabelle hinzugekommen, aber das war uns von Anfang an klar.
+
+Der große Dokumentationsaufwand schien mir teilweise etwas überflüssig. Dennoch bin ich der festen Überzeugung, dass ich nur daraus gelernt habe. Insgesamt war die Projektarbeit ein voller Erfolg. Sie war eine gute Mischung aus Spaß und Freundschaft, Disziplin und Einzelarbeit, Austausch und Auffassung, Lernen und Verstehen und Frustration und Erfolg. Die verbesserten Softskills, Kenntnisse und erlernten Methoden werden mir weiterhin nützlich bleiben.
 <<<
 ==== Reflexion von Max Patecky
 

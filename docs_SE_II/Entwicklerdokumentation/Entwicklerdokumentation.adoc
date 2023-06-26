@@ -23,7 +23,7 @@ image::classdiagramm.png[title="Klassendiagramm (automatisch generiert)"]
 
 ' Diagram syntax
 Person(as, Antragsteller, "Stellt Antrag")
-Person(av, Antragverwalter, "Verwaltet Anträge")
+Person(av, Nutzer:Antragverwalter, "Verwaltet Anträge")
 Person(sa, Systemadmin, "Betreut das System")
 
 System(mail_system, "E-Mail System", "Das interne E-Mailsystem.")
@@ -68,7 +68,7 @@ Diese sind ebenfalls in der `requirements.txt` zu finden.
 
 === Datenbankschema
 
-Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu haben, während wir eine hochdetaillierte Aufteilung der Daten behalten können.
+Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu haben, während wir eine hochdetaillierte Aufteilung der Daten behalten können. Wir nutzen eine Datenbank von PostgreSQL
 
 image::Datenbankschema.png[title="Datenbankschema"]
 
