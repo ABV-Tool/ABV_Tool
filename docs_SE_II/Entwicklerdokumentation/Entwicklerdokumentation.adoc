@@ -68,7 +68,7 @@ Diese sind ebenfalls in der `requirements.txt` zu finden.
 
 === Datenbankschema
 
-Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu haben, während wir eine hochdetaillierte Aufteilung der Daten behalten können. Wir nutzen eine Datenbank von PostgreSQL
+Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu haben, während wir eine hochdetaillierte Aufteilung der Daten behalten können. Wir nutzen eine Datenbank von PostgreSQL, welche für Sicherheits- und Leistungsfunktionen, sowie auch der Erweiterbarkeit bekannt ist.
 
 image::Datenbankschema.png[title="Datenbankschema"]
 
@@ -76,7 +76,7 @@ image::Datenbankschema.png[title="Datenbankschema"]
 
 * Django liefert selbst eine ORM Schnittstelle zur Datenbank sowie zu den Mailserver.
 
-* API-Schnittstelle zum Etherpad
+* Die API-Schnittstelle zum Etherpad über django.request Bibliothek genutzt.
 
 === Zusammenarbeit zwischen Komponenten mittels Sequenzdiagramm
 
