@@ -6,6 +6,7 @@ from djmoney.money import Currency
 
 
 class Referat(models.Model):
+    """Model für die Referate im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'referat'
     refID = models.PositiveIntegerField(primary_key=True,
@@ -20,6 +21,7 @@ class Referat(models.Model):
 
 
 class Sitzung(models.Model):
+    """Model für die Sitzungen im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'sitzung'
         
@@ -47,6 +49,7 @@ class Sitzung(models.Model):
 
 
 class Antragssteller(models.Model):
+    """Model für die Antragssteller im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'antragssteller'
     astellerID = models.UUIDField(primary_key=True,
@@ -62,6 +65,7 @@ class Antragssteller(models.Model):
 
 
 class Beschluss(models.Model):
+    """Model für die Beschlüsse im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'beschluss'
         
@@ -104,6 +108,7 @@ class Beschluss(models.Model):
 
 
 class Antragstyp(models.Model):
+    """Model für die Antragstypen im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'antragstyp'
     typID = models.PositiveIntegerField(primary_key=True,
@@ -117,6 +122,7 @@ class Antragstyp(models.Model):
 
 
 class Antrag(models.Model):
+    """Model für die Anträge im ABV-Tool und der Datenbank"""
     class Meta:
         db_table = 'antrag'
 
@@ -175,6 +181,7 @@ class Antrag(models.Model):
 
 
 class Anlage(models.Model):
+    """Model für die Anlagen im ABV-Tool und der Datenbank"""
     anlage = models.FileField(db_column='anlage', blank=True, null=True, upload_to='anlagen/')
     anlageName = models.TextField(db_column='anlage_name', blank=True)
     antragID = models.ForeignKey(Antrag,
