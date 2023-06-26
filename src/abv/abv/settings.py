@@ -24,7 +24,7 @@ load_dotenv(dotenv_path)
 
 
 # ENV: DEVELOPMENT / PRODUCTION
-ENV ='DEVELOPMENT'
+ENV ='PRODUCTION'
 
 if ENV == 'DEVELOPMENT':
     MESSAGE_LEVEL = 10 # DEBUG
@@ -65,7 +65,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'fontawesomefree',
     'tailwind',
-    'django_browser_reload',
+    #'django_browser_reload',
     'Antragstool'
 ]
 
@@ -77,7 +77,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware"
+    #"django_browser_reload.middleware.BrowserReloadMiddleware"
 ]
 
 ROOT_URLCONF = 'abv.urls'
