@@ -1,3 +1,5 @@
+:imagesdir: images
+
 = Anwenderdokumentation: {project-name}
 :chapter-signifier: Kapitel
 include::../../docs_SE_I/_includes/default-attributes.inc.adoc[] 
@@ -5,11 +7,106 @@ include::../../docs_SE_I/_includes/default-attributes.inc.adoc[]
 
 == Einführung
 //Zweck und Funktionsumfang des Systems
-Das Antrags- und Beschlussverwaltungssystem bietet zuerst für unangemeldete Nutzer die Möglichkeit auf der Startseite verschiedene Arten von Anträgen zu stellen. Dafür muss eine der orangen (mit der jeweiligen Antragsart beschrifteten) Schaltflächen angeclickt werden. Danach wird man auf eine neue Seite weitergeleitet, auf der die einzelnen Felder zu dem jeweiligen Antrag ausgefüllt werden können. Dabei muss bei allen Antragsarten als erstes der Name des Antragstellers und eine E-Mail angegeben werden. Diese E-Mail Adresse wird später für Bestätigungen verwendet.
+Das Antrags- und Beschlussverwaltungssystem bietet für unangemeldete Nutzer die Möglichkeit, auf der Startseite zwischen verschiedene Arten von Anträgen auszuwählen und einen entsprechenden Antrag zu stellen. 
+
+Dafür muss eine der orangenen (mit der jeweiligen Antragsart beschrifteten) Schaltflächen angeclickt werden. Danach wird man auf die Seite des jeweiligen Antrages weitergeleitet, auf der die einzelnen Felder ausgefüllt werden müssen. 
+
+Dabei müssen als Erstes die Stammdaten des Antragstellers angegeben werden. Diese sind für alle Antragsarten gleich. Dabei dient die E-Mail Adresse lediglich zur Kontaktaufnahme mit dem Antragsteller.
+
+Anschließend müssen die benötigten Daten des Antrages angegeben werden. Diese sind je nach Antragsart unterschiedlich. Generell
+
+Dabei muss bei allen Antragsarten als erstes der Name des Antragstellers und eine E-Mail angegeben werden. Diese E-Mail Adresse wird später für Bestätigungen verwendet.
+
 
 == Aufbau/Organisation der Benutzeroberfläche
 
-== Beschreibung
-//Prägnante Beschreibung der Nutzung entlang der wichtigsten Aufgaben (→ Use Cases)
+Wir unterscheiden zwischen dem regulären Bereich und dem internen Bereich. Der reguläre Bereich ist für alle Nutzer zugänglich, während der interne Bereich nur für den Antragsverwalter zugänglich ist.
 
-== #Selten genutzte Funktionen und FAQ#
+=== Regulärer Bereich
+
+Hier können Antragsteller Anträge stellen [*UC1*] und sich über die Anträge informieren. Ebenfalls können alle Personen über den Reiter "Archiv" die bereits beschlossenen Anträge abgeschlossener Sitzungen einsehen. Zuletzt findet man über den Reiter "Über Uns" die Website des StuRa der HTWD.
+
+=== Interner Bereich
+
+Dieser ist das Herzstück des Antrags- und Beschlussverwaltungssystems. Hier finden sich der Großteil der umgesetzten Use-Cases. Dabei ist der Interne Bereich in 4 große Abschnitte unterteilt:
+
+==== Referate
+
+Hier können Referate angesehen, angelegt, bearbeitet und gelöscht werden. Dabei können für jedes Referat beliebig viele Sitzungen eingetragen werden, für welche Anträge eingereicht werden können.
+
+image::abv-referate.png[title="ABV - Referate"]
+
+==== Anträge
+
+In diesem Bereich werden alle gestellten Anträge in einer Tabelle dargestellt. Diese kann man sich einzeln anzeigen lassen oder auf bspw. Rechtschreibfehler korrigieren. Ebenfalls findet man einen Shortcut zur Sitzung des Antrags.
+
+Sollte man nach einem bestimmten Antrag suchen, kann man die Suche über der Tabelle verwenden. Dabei kann man nach einem Suchbegriff, dem Antragstyp, dem gestellten Datum sowie dem Beschluss filtern.
+
+image::abv-referate.png[title="ABV - Anträge"]
+
+==== Sitzungsverwaltung
+
+Die Sitzungsverwaltung enthält alle vorgemerkten Sitzungen der Referate. Diese können dabei angelegt [*UC7*] verwaltet, vertagt [*UC4*] oder - sofern noch keine Anträge für diese Sitzung eingegangen sind - vertagt werden. Ebenfalls wird der Status sowie das Datum der jeweiligen Sitzung angezeigt.
+
+Auch hier lässt sich nach konkreten Sitzungen filtern. Die Kriterien sind dabei: das Referat, der Status sowie das Datum der Sitzung.
+
+image::abv-sitzungsverwaltung.png[title="ABV - Sitzungsverwaltung"]
+
+==== Sitzungsverwaltung => Sitzung verwalten
+
+In dieser werden alle Anträge, welche für die Sitzung eingegangen sind, angezeigt. Diese können dabei in eine andere Sitzung vertagt, beschlossen [*UC6*] oder angezeigt werden. Ebenfalls lässt sich mit dem Button links die Priorität der Anträge ändern.
+
+Weiterhin kann man mit dem Button "_Tagesordnung erstellen_" [*UC2*] eine Tagesordnung für die Sitzung erstellen. Dabei wird die Vorlage der Tagesordnung in das hinterlegte Etherpad geschrieben und mit den Anträgen nach Priorität ergänzt. Anschließend wird die URL des Etherpads ausgegeben.
+
+Zuletzt kann die Sitzung mit dem Button "_Sitzung abschließen_" [*UC3*] abgeschlossen werden. Dabei müssen alle Anträge entweder einen Beschluss haben oder in eine andere Sitzung vertagt worden sein. Ist die Sitzung nun abgeschlossen, sind die Anträge im Archiv einsehbar.
+
+image::abv-sitzung-verwalten.png[title="ABV - Sitzung verwalten"]
+
+
+== Selten genutzte Funktionen und FAQ
+
+Einige Funktionen werden nur selten genutzt, weshalb sie nicht im aktuellen Frontend implementiert sind. Diese Funktionen sind jedoch im Backend implementiert und können über die Django-Admin-Oberfläche genutzt werden.
+
+image::django-admin.png[title="Django Admin-Oberfläche - Standardansicht"]
+
+Bevor diese Funktionen genutzt werden können muss sichergestellt werden, dass die Anwendung funktionsfähig ist und der Antragsverwalter angemeldet ist.
+
+Folgende Funktionen zählen darunter:
+
+=== Antragsverwalter Anmelden [*UC5*]
+
+1. Klicke in der Navigationsleiste auf "_Administration_"
+2. Es öffnet sich ein extra Fenster: die Django-Admin-Oberfläche
+3. Klicke links unten unter dem Reiter "Authentifizierung und Autorisierung" auf "_Benutzer_"
+4. Es öffnet sich eine Liste mit allen Benutzern
+5. Klicke oben rechts auf den Button "_Benutzer hinzufügen_"
+6. Gebe einen Benutzernamen sowie ein Passwort ein
+7. Klicke links unten auf "_Sichern_"
+8. Der Benutzer ist nun angelegt und kann sich mit den angegebenen Daten anmelden
+
+=== Antragstyp verwalten
+
+1. Klicke in der Navigationsleiste auf "_Administration_"
+2. Es öffnet sich ein extra Fenster: die Django-Admin-Oberfläche
+3. Klicke links in der Seitenleiste auf "_Antragstyp_"
+4. Es öffnet sich eine Liste mit allen Antragstypen
+
+Auf dieser Seite können Antragstypen hinzugefügt, umbenannt und gelöscht werden.
+
+==== Antragstyp hinzufügen
+
+1. Klicke oben rechts auf den Button "_Antragstyp hinzufügen_"
+2. Es öffnet sich ein Fenster mit den Feldern `TypID`, `TypName` & `TypSlug`
+3. Gebe die gewünschten Daten ein:
+    . *TypID*: Die ID des Antragstyps; Achte darauf, dass diese einzigartig ist
+    . *TypName*: Der Name des Antragstyps; Achte darauf, dass dieser einzigartig ist
+    . *TypSlug*: Der Slug des Antragstyps; Wird für die URL verwendet; Achte darauf, dass dieser einzigartig ist
+4. Klicke links unten auf "_Sichern_"
+5. Der Antragstyp ist nun angelegt
+
+==== Antragstyp bearbeiten
+
+1. Wählen einen Antragstyp aus der Liste aus
+2. Klicke links auf die entsprechende `TypID`
+3. Ändere die Daten des Antragstyps
+4. Klicke links unten auf "_Sichern_"
