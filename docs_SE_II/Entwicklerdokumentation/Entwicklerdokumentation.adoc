@@ -72,6 +72,7 @@ Das Ziel unseres Datenbankschemas ist es, so wenig Redundanz wie möglich zu hab
 
 image::Datenbankschema.png[title="Datenbankschema"]
 
+<<<
 === Schnittstellen
 
 * Django liefert selbst eine ORM Schnittstelle zur Datenbank sowie zu den Mailserver.

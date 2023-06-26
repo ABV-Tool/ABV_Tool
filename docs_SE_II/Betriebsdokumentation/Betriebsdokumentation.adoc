@@ -1,4 +1,7 @@
-= Betriebsdokumentation
+= Betriebsdokumentation: {project-name}
+:chapter-signifier: Kapitel
+:imagesdir: images
+include::../../docs_SE_I/_includes/default-attributes.inc.adoc[] 
 
 //Ziel: Administrator beim Einrichten, Konfigurieren und Betreuen des Systems unterstützen
 
