@@ -6,36 +6,56 @@
 // Mindestanforderungen für Hardware: CPU, RAM, Festplatte, Netz 
 // Softwareanforderungen: Name und Version von Betriebssystem, Datenbank, Webserver, Browser
 
-* PostgreSQL
-* WSGI-kompatibler Webserver (Apache, Nginx)
-* Betriebssystem (idealerweise NixOS)
-* Python 3.11.1
-* Django 4.2.2
-* Docker Desktop
-* lokal laufendes Etherpad
-* CertBot
+Die Mindestanforderungen der Hardware sind die gleichen wie die vom WSGI-kompatiblen Webserver und die vom Betriebssystem.
 
-Mindestanforderungen der Hardware sind die gleichen wie die vom WSGI-kompatiblen Webserver und die vom Betriebssystem.
+=== Betriebssystem
+
+Hier ist es wichtig, dass ein beliebiges `UNIX`-System verwendet wird. Wir empfehlen `NixOS`, da wir damit die beste Erfahrung gemacht haben. Allerdings ist es auch möglich, das Tool auf einem anderen `UNIX`-System zu installieren.
+
+=== Virtualisierung
+
+Für das Deployment verwenden wir `Docker` sowie `docker-compose`. Diese müssen auf dem Zielserver installiert sein. 
+
+=== Datenbank
+
+Wir verwenden eine `PostgreSQL` Datenbank. Diese wird mittels der `docker-compose.yml` automatisch installiert und über `Django` konfiguriert.
+
+=== Webserver
+
+Es wird ein *WSGI-kompatibler Webserver* benötigt. Wir nutzen hier `Nginx`, da wir damit die beste Erfahrung gemacht haben. Allerdings ist es auch möglich, das Tool auf einem anderen Webserver wie `Apache` zu installieren.
+
+=== Software
+
+Damit alles ordnungsgemäß funktioniert, müssen folgende Softwarepakete installiert sein:
+* Python == 3.11.1
+* Django == 4.2.2
+
+Ebenfalls benötigen wir für die Generierung der Tagesordnung eine Etherpad-Instanz, welche vom Webserver aus erreichbar ist. Diese muss in der `settings.py` konfiguriert werden.
+
 
 == Systemeinrichtung
 // Aus welchen Komponenten (EXE, JAR, JS, HTML, CSS, …) besteht die Software? 
 // Wie müssen diese installiert (… kopiert, registriert, …) werden? Verzeichnisstruktur?
 // Wie müssen die Bestandteile ihres Systems konfiguriert werden? IP-Adressen, Passwörter, Berechtigungen, …
 
-Die Befehle sollen per Terminal eingegeben werden.
+Die Befehle müssen über ein beliebiges UNIX-Terminal eingegeben werden.
 
-1. Alles im Ordner `./src` muss auf den Server bzw. dem dedizierten Speicherort kopiert werden.
+1. Klone das Git-Repository auf den Zielserver, auf welchem `Docker` & `docker-compose` installiert sind.
+    - `git clone git@github.com:ABV-Tool/ABV_Tool.git`
 
-2. `cd src`
+2. Wechsle in den Ordner `src`:
+    - `cd src/`
 
-3. `docker-compose up -d` um die Datenbank und Djangoanwendung zu starten.
+3. Starte die einzelnen Docker-Container (Datenbank, Django-Anwendung):
+    - `docker-compose up -d`
 
-4. `docker exec -i abv-tool bash < dbinit.sh` befüllt die Datenbank mit den in `./src/abv/Antragstool/fixtures` festgelegten Default-Daten.
+4. Befülle die Datenbank mit den in `abv/Antragstool/fixtures` festgelegten Standard-Daten
+    - `docker exec -i abv-tool bash < dbinit.sh` 
 
-5. `docker exec -it abv-tool python3 abv/manage.py createsuperuser` kreiert einen Nutzer für den internen Bereich im Tool.
+5. Erstelle einen Antragsverwalter (superuser)
+    - `docker exec -it abv-tool python3 abv/manage.py createsuperuser`
 
-6. Danach müssen alle gewünschten DNS-Einträge auf den Server zeigen.
-
+6. Die Anwendung ist nun einsatzbereit.
 
 == Systembetreuung
 // FAQ für Benutzersupport 
@@ -43,8 +63,11 @@ Die Befehle sollen per Terminal eingegeben werden.
 // Datensicherung und –wiederherstellung
 
 === Updates von Bibliotheken
-Bei der Installation können automatische Updates aktiviert werden. Außerdem sollte in regelmäßigen Abständen Updates von Python Paketen installiert werden, dies macht man mithilfe des Befehls _docker-compose build_ . Hierbei muss allerdings beachtet werden, dass hierbei keine Kompatibilitätsprobleme auftreten. Ggf. muss in solchen Fällen der Anwendungscode angepasst werden.
+
+Bei der Installation können automatische Updates aktiviert werden. Außerdem sollte in regelmäßigen Abständen Updates von Python Paketen installiert werden. Dies ist an mithilfe des Befehls `docker-compose build` möglich: dabei werden jeweils die neusten Pakete, welche in der `requirements.txt` hinterlegt sind, installiert. 
+
+Allerdings muss beachtet werden, dass hierbei keine Kompatibilitätsprobleme auftreten; andernfalls muss der Anwendungscode bearbeitet oder lediglich eine ältere Version der Pakete installiert werden.
 
 === Ausfallsicherheit
 
-Die Uptime des Tools ist mit der Uptime des StuRa-Servers verbunden. Die Sicherheit der Daten musste nicht näher betrachtet werden, da wir eine Datenbank in Postgresql im ACID Format nutzen und der StuRa-Server täglich ein Backup macht.
+Die Uptime des Tools ist mit der Uptime des StuRa-Servers verbunden. Die Sicherheit der Daten musste nicht näher betrachtet werden, da wir eine Datenbank in Postgresql im ACID Format nutzen und der StuRa-Server tägliche Backups durchführt.
