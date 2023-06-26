@@ -1,6 +1,6 @@
 = Aktualisierte Anforderungsspezifikation: {project-name}
-{localdatetime}
 :figure-caption: Abbildung
+:chapter-signifier: Kapitel
 ifndef::plantumlsdir[:plantumlsdir: plantuml]
 ifndef::diagramsdir[:diagramsdir: diagrams]
 include::../../docs_SE_I/_includes/default-attributes.inc.adoc[]
