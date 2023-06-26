@@ -41,5 +41,10 @@ Die Befehle sollen per Terminal eingegeben werden.
 // FAQ für Benutzersupport 
 // Fehlerdiagnose, z.B. anhand von Logfile-Einträgen
 // Datensicherung und –wiederherstellung
+
+=== Updates von Bibliotheken
 Bei der Installation können automatische Updates aktiviert werden. Außerdem sollte in regelmäßigen Abständen Updates von Python Paketen installiert werden, dies macht man mithilfe des Befehls _docker-compose build_ . Hierbei muss allerdings beachtet werden, dass hierbei keine Kompatibilitätsprobleme auftreten. Ggf. muss in solchen Fällen der Anwendungscode angepasst werden.
 
+=== Ausfallsicherheit
+
+Die Uptime des Tools ist mit der Uptime des StuRa-Servers verbunden. Die Sicherheit der Daten musste nicht näher betrachtet werden, da wir eine Datenbank in Postgresql im ACID Format nutzen und der StuRa-Server täglich ein Backup macht.
