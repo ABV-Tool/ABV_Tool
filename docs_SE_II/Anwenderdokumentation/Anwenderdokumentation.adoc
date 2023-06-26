@@ -5,6 +5,7 @@ include::../../docs_SE_I/_includes/default-attributes.inc.adoc[]
 
 == Einführung
 //Zweck und Funktionsumfang des Systems
+Das Antrags- und Beschlussverwaltungssystem bietet zuerst für unangemeldete Nutzer die Möglichkeit auf der Startseite verschiedene Arten von Anträgen zu stellen. Dafür muss eine der orangen (mit der jeweiligen Antragsart beschrifteten) Schaltflächen angeclickt werden. Danach wird man auf eine neue Seite weitergeleitet, auf der die einzelnen Felder zu dem jeweiligen Antrag ausgefüllt werden können. Dabei muss bei allen Antragsarten als erstes der Name des Antragstellers und eine E-Mail angegeben werden. Diese E-Mail Adresse wird später für Bestätigungen verwendet.
 
 == Aufbau/Organisation der Benutzeroberfläche
 
