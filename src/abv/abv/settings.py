@@ -24,7 +24,7 @@ load_dotenv(dotenv_path)
 
 
 # ENV: DEVELOPMENT / PRODUCTION
-ENV ='DEVELOPMENT'
+ENV ='PRODUCTION'
 
 if ENV == 'DEVELOPMENT':
     MESSAGE_LEVEL = 10 # DEBUG
@@ -39,10 +39,12 @@ elif ENV == 'PRODUCTION':
     ]
     CORS_ALLOWED_ORIGINS = [
         "http://localhost:8010",
+        "http://abv.htw.stura-dresden.de:8020",
         "http://localhost:8020"
     ]
     CSRF_TRUSTED_ORIGINS = [
         "http://localhost:8010",
+        "http://abv.htw.stura-dresden.de:8020",
         "http://localhost:8020"
     ]
 
