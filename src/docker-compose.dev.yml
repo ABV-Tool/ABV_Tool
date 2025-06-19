@@ -15,7 +15,7 @@ services:
 
   mailcatcher:
     restart: on-failure
-    image: gitlab.goeranh.de/goeranh/mailcatcher:latest
+    image: dockage/mailcatcher
     environment:
     - MDNS_HOSTNAME=mailcatcher
     ports:
