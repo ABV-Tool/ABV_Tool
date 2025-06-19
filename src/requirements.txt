@@ -1,7 +1,7 @@
 # production dependencies
 gunicorn
 Django
-psycopg2
+psycopg2-binary
 django-money
 fontawesomefree
 requests
@@ -14,4 +14,3 @@ django-browser-reload
 
 # testing dependencies
 flake8
-psycopg2
